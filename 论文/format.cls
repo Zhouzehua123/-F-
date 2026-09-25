@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{cumcmthesis}
+\ProvidesClass{format}
               [2017/09/16 v2.6 Standard LaTeX Template for CUMCM]
 %% Inital Code
 \newif\if@mcm@bwprint\@mcm@bwprintfalse
@@ -116,6 +116,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{fontspec}
 \newfontfamily\yaheiconsola{DejaVu Sans Mono}
 \setmonofont{DejaVu Sans Mono}
+\renewcommand{\lstlistingname}{程序}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 
@@ -123,22 +124,25 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \lstset
 {
     tabsize=4,
-    captionpos=b,
-    numbers=left,                    
-    numbersep=1em,                  
+    captionpos=t,
+    numbers=left,
+    numbersep=6pt,
+    xleftmargin=2em,
+    linewidth=\linewidth,
     sensitive=true,
-    showtabs=false, 
-    frame=shadowbox,
+    showtabs=false,
+    emptylines=1,
+    frame=none,
     breaklines=true,
-    keepspaces=true,                 
-    showspaces=false,                
+    keepspaces=true,
+    showspaces=false,
     showstringspaces=false,
-    breakatwhitespace=false,         
-    basicstyle=\yaheiconsola,
-    keywordstyle=\color{NavyBlue},
-    commentstyle=\color{codegreen},
+    breakatwhitespace=false,
+    basicstyle=\yaheiconsola\fontsize{10}{12}\selectfont,
+    keywordstyle=\color{black},
+    commentstyle=\color{black}\song\zihao{-4},
     numberstyle=\color{gray},
-    stringstyle=\color{PineGreen!90!black},
+    stringstyle=\color{black},
     rulesepcolor=\color{red!20!green!20!blue!20}
 }
 % 首行缩进
@@ -168,16 +172,15 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 %% Document Layout
 % 页面布局
 \geometry{top=25mm,bottom=25mm,left=25mm,right=25mm}
-\renewcommand*{\baselinestretch}{1.28}
-% 修改tabular 环境, 设置表格中的行间距为正文行间距.
-\let\mcm@oldtabular\tabular
-\let\mcm@endoldtabular\endtabular
-\renewenvironment{tabular}%
-	{\bgroup%
-	\renewcommand{\arraystretch}{1.38}%
-	\mcm@oldtabular}%
-	{\mcm@endoldtabular\egroup}
-\BeforeBeginEnvironment{tabular}{\zihao{-5}}
+\renewcommand*{\baselinestretch}{1}
+% 表格沿用正文字号；局部表格可自行设置行高。
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\urlstyle{same}
+\setlength{\emergencystretch}{1em}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
 % 每行缩进两个汉字
 \setlength\parindent{2em}
 
@@ -214,7 +217,7 @@ AutoFakeBold = 2
 
 
 \renewcommand\normalsize{%
-	\@setfontsize\normalsize{12.05}{14.45}%
+	\@setfontsize\normalsize{12}{14.4}%
 	\abovedisplayskip 12\p@ \@plus3\p@ \@minus7\p@
 	\abovedisplayshortskip \z@ \@plus3\p@
 	\belowdisplayshortskip 6.5\p@ \@plus3.5\p@ \@minus3\p@}
@@ -262,13 +265,15 @@ AutoFakeBold = 2
 \DeclareCaptionFont{song}{\songti}
 \DeclareCaptionFont{minusfour}{\zihao{-4}}
 \captionsetup[figure]{%
-	format=hang,   % 标题从第二行开始都有缩进, 应该和 justification=raggedright 的效果一样.
+	format=plain,
+	justification=centering,   % 标题从第二行开始都有缩进, 应该和 justification=raggedright 的效果一样.
 	labelsep=quad, % 分隔符是一个空格
 	font={song,minusfour,bf}, % 图的字体, 宋体小四
 	position=bottom % position=bottom, 不代表标题放在下面, 标题仍放在你放\caption的位置.
 }
 \captionsetup[table]{%
-	format=hang,   % 标题从第二行开始都有缩进, 应该和 justification=raggedright 的效果一样.
+	format=plain,
+	justification=centering,   % 标题从第二行开始都有缩进, 应该和 justification=raggedright 的效果一样.
 	labelsep=quad, % 分隔符是一个空格
 	font={song,minusfour,bf}, % 表的字体, 宋体小四
 	position=top % position=bottom, 不代表标题放在下面, 标题仍放在你放\caption的位置.
@@ -292,8 +297,8 @@ AutoFakeBold = 2
     CJKbookmarks=true,
     bookmarksnumbered=true,
     bookmarksopen=true,
-    colorlinks, 
-    pdfborder=001, 
+    colorlinks,
+    pdfborder=001,
     allcolors=black,
     breaklinks=true
 }
@@ -560,11 +565,11 @@ AutoFakeBold = 2
 \renewcommand\section{\@startsection{section}{1}{\z@}%
 	{-3.5ex \@plus -1ex \@minus -.2ex}%
 	{2.3ex \@plus.2ex}%
-	{\centering\normalfont\Large\bfseries\song}}
+	{\centering\normalfont\zihao{4}\heiti}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
 	{-3.25ex\@plus -1ex \@minus -.2ex}%
 	{1.5ex \@plus .2ex}%
-	{\normalfont\large\bfseries\song}}
+	{\normalfont\zihao{-4}\bfseries\song}}
 
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
 	{-3.25ex\@plus -1ex \@minus -.2ex}%
@@ -588,7 +593,7 @@ AutoFakeBold = 2
 %% 摘要两个字设置为 4 号.
 %% 定义摘要环境
 % 字体钩子默认保持原模板样式；摘要变体可在局部分组内重定义。
-\newcommand*{\mriteabstracttitlefont}{\bfseries}
+\newcommand*{\mriteabstracttitlefont}{\heiti}
 \newcommand*{\mritekeywordslabelfont}{\songti\bfseries}
 \renewenvironment{abstract}{%
 \if@twocolumn

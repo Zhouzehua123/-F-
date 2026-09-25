@@ -8,7 +8,7 @@
 
 \subsubsection{具体分析}
 
-问题一需要回答三个相互关联的问题：如何将 22 个质量指标合成为可比较的评分，如何识别并处理指标评价之间的冲突，以及训练领域配比如何影响验证损失。本文据此建立质量综合评价、冲突分析和配比回归三个模块，分别采用熵权法、成对标准化得分差与 Kendall 协同系数、岭正则线性混合回归。质量评价给出样本、语料和领域三个层次的评分，配比回归则描述 17 个训练领域配比与 13 个验证领域交叉熵损失之间的关系\cite{xie2023doremi}。
+问题一需要回答三个相互关联的问题：如何将 22 个质量指标合成为可比较的评分，如何识别并处理指标评价之间的冲突，以及训练领域配比如何影响验证损失。本文据此建立质量综合评价、冲突分析和配比回归三个模块，分别采用熵权法、成对标准化得分差与 Kendall 协同系数、岭正则线性混合回归。质量评价给出样本、语料和领域三个层次的评分，配比回归则描述 17 个训练领域配比与 13 个验证领域交叉熵损失之间的关系\cite{liu2024regmix}。
 
 具体求解分为两条流程。质量评价流程从 A1--A3 的质量信号出发，经过缺失处理、指标标量化、方向统一和归一化，计算综合评分并分析指标冲突。配比建模流程将训练配方与验证损失按索引匹配，用岭回归估计配比与损失的关系，再利用 1M、60M、1B 检验集及 10B、70B 外推表考察模型表现，求得有界推荐配比。两条流程通过领域映射表关联，整体步骤见图\ref{fig:q1_workflow}。
 
@@ -21,7 +21,8 @@
 
 \subsubsection{模型准备}
 
-\textbf{1. 数据来源与预处理}
+\Needspace{4\baselineskip}
+\textbf{1. 数据来源与预处理}\par\nopagebreak[4]
 
 问题一使用两类数据。配方表 A4 包含 17 个 The Pile 子领域的训练配比，各分量非负且总和为 1\cite{gao2020pile}；损失表 A5 包含 13 个验证领域的交叉熵损失，两表通过 index 列对应。nih\_\allowbreak{}exporter、enron\_\allowbreak{}emails、europarl 和 philpapers 四个训练领域没有对应的验证损失列，因此保留其配比分量，并在系数解释中将其标为“间接影响域”。
 
@@ -36,7 +37,6 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 其中，$m_j$ 和 $\text{MAD}_j$ 分别为对数尺度上的中位数和中位绝对偏差。处理后的 $x'_j$ 位于 $[0,1]$，数值越大表示质量越高。表\ref{tab:p1_dir}列出了各指标的类型、方向依据及熵权。8 个列表型指标按有序类别 logits 处理，先由 softmax 概率计算归一化期望级别，将其压缩为标量，再参与归一化。
 
 \begingroup
-\small
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.33\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\raggedright\arraybackslash}p{0.31\textwidth}>{\centering\arraybackslash}p{0.08\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}@{}}
   \caption{22 个质量指标的方向判定与熵权}
@@ -86,7 +86,6 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 读取质量信号时逐字段检查缺失情况，结果见表\ref{tab:p1_missing}。缺失值按对应指标的中位数填充，以避免将缺失直接解释为高质量或低质量。
 
 \begingroup
-\small
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.44\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}@{}}
   \caption{质量信号的字段级缺失审计（A1--A3 全量 272{,}505 条）}
@@ -108,12 +107,12 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \end{longtable}
 \endgroup
 
-\textbf{2. 方法选择及其依据}
+\Needspace{4\baselineskip}
+\textbf{2. 方法选择及其依据}\par\nopagebreak[4]
 
 质量聚合比较熵权法、等权平均和 PCA 第一主成分三种方案，结果见表\ref{tab:algo1}。冲突分析采用成对标准化得分差与 Kendall 协同系数，分别考察单个样本的评价分歧和整体排序的一致程度。配比建模则比较普通最小二乘、岭回归与随机森林。
 
 \begingroup
-\small
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}>{\centering\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}@{}}
   \caption{问题一赋权方案对比（样本级相关性与域级排序一致性）}
@@ -141,7 +140,8 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 \subsubsection{模型建立}
 
-\textbf{1. 综合质量评分}
+\Needspace{4\baselineskip}
+\textbf{1. 综合质量评分}\par\nopagebreak[4]
 
 将 $m$ 条质量样本的 22 个指标统一方向并归一化，记所得矩阵为 $\bm X=(x'_{ij})$。由各指标在样本间的分布计算信息熵 $e_j$，再确定熵权 $w_j$：
 \begin{equation}
@@ -154,7 +154,8 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \end{equation}
 其中 $\bar L_d$ 为领域 $d$ 的平均交叉熵损失。该代理指标仅在 13 个可测损失域上有定义，与 A1--A3 的 7 个质量域并非同一分类体系，二者的关联由 A16 映射表建立、并在模型求解中作一致性检验。
 
-\textbf{2. 质量冲突的定义与处理}
+\Needspace{4\baselineskip}
+\textbf{2. 质量冲突的定义与处理}\par\nopagebreak[4]
 
 当两个质量指标对同一文本给出显著不一致的评价时即产生冲突。以方向统一后的标准化得分为基础，定义第 $i$ 样本在指标 $j$ 与 $k$ 上的冲突指示：
 \begin{equation}
@@ -172,7 +173,8 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \end{equation}
 其中 $r_{ij}$ 为第 $i$ 样本在第 $j$ 指标上的秩。消解规则为：若某样本被判为冲突，则以其上“多数指标”的方向（即加权得分 $Q_i$ 相对该样本所在域中位数的偏离方向）作为该样本的最终质量裁决，并在报告中保留冲突标记以供下游剔除或降权。
 
-\textbf{3. 领域配比的线性混合回归}
+\Needspace{4\baselineskip}
+\textbf{3. 领域配比的线性混合回归}\par\nopagebreak[4]
 
 记训练配方矩阵为 $\bm P\in[0,1]^{n\times17}$，每行对应一组配方且分量之和为 1；损失矩阵为 $\bm L\in\mathbb R^{n\times13}$。对每个验证领域建立线性混合模型：
 \begin{equation}
@@ -193,7 +195,8 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \end{equation}
 其中 $\tilde{\bm P}=[\bm P,\ \bm 1]$，$\bm D=\mathrm{diag}(1,\dots,1,0)$（不惩罚截距），$\lambda=10^{-3}$。
 
-\textbf{4. 混合质量指数及其增量检验}
+\Needspace{4\baselineskip}
+\textbf{4. 混合质量指数及其增量检验}\par\nopagebreak[4]
 
 为考察质量评分的引入方式，构造混合质量指数 $\bar Q(\bm p)=\sum_k p_kQ_k$。其中，$Q_k$ 依据 A16 建立映射：direct 和 near\_\allowbreak{}direct 领域取 A1--A3 的相应领域质量，inferred 领域取全局均值。将该指数加入配比回归，进行增量检验：
 \begin{equation}
@@ -201,7 +204,8 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \end{equation}
 若质量项带来的 $R^2$ 增量可忽略，则说明线性配比已吸收质量信息，此时不宜重复引入以免共线；质量评分转而作为独立资源交由问题二、三使用。
 
-\textbf{5. 配比优化与有界推荐}
+\Needspace{4\baselineskip}
+\textbf{5. 配比优化与有界推荐}\par\nopagebreak[4]
 
 以系数矩阵 $\bm A$ 为基础，将缺少对应验证损失的四个领域固定在参考配比，优化其余 13 个领域，使验证损失的加权均值最小：
 \begin{equation}
@@ -214,7 +218,8 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 模型求解使用 A1--A3 的质量信号及 A4--A15 的配方与损失数据。质量记录共 $272{,}505$ 条，其中 A1 抽样集包含 $51{,}230$ 条，A2 与 A3 扩展集合计 $221{,}275$ 条。
 
-\textbf{1. 质量评分与冲突分析}
+\Needspace{4\baselineskip}
+\textbf{1. 质量评分与冲突分析}\par\nopagebreak[4]
 
 质量域的领域级评分如图\ref{fig:p1_quality_full}所示，A1 抽样集与扩展集的对照结果如表\ref{tab:p1_qa}所示。
 
@@ -226,7 +231,6 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \end{figure}
 
 \begingroup
-\small
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}>{\centering\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}@{}}
   \caption{抽样集 A1 与扩展集 A2/A3 的域级质量对照}
@@ -259,7 +263,6 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 冲突与一致性检验结果如表\ref{tab:p1_conf}所示，冲突最集中的指标对与熵权分布见图\ref{fig:p1_conf}。
 
 \begingroup
-\small
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}>{\centering\arraybackslash}p{0.18\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}@{}}
   \caption{质量冲突与一致性检验结果}
@@ -296,7 +299,8 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 据此本文按“多数指标方向裁决 + 冲突标记保留”的规则消解：冲突样本仍参与领域均值，但以 $Q_i$ 相对域中位数的偏离方向标注其可信度，并在问题二、三中不单独使用冲突样本。
 
-\textbf{2. 领域配比与损失的拟合及验证}
+\Needspace{4\baselineskip}
+\textbf{2. 领域配比与损失的拟合及验证}\par\nopagebreak[4]
 
 图\ref{fig:p1_structure}展示训练配方的构成。模型的拟合与检验表现见图\ref{fig:p1_r2}，同尺度预测值与观测值的比较见图\ref{fig:p1_scatter}，不同训练领域的回归系数见图\ref{fig:p1_heatmap}。
 
@@ -347,12 +351,12 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 由图\ref{fig:p1_quality}(a)可知，13 个损失域的内在难度差异显著，dm\_\allowbreak{}mathematics 最易（代理质量 $1.000$）、ubuntu\_\allowbreak{}irc 最难（代理质量 $0.000$）；图\ref{fig:p1_quality}(b)显示，A16 的 direct/near\_\allowbreak{}direct 映射中两套口径的 Spearman 排序相关为 $0.60$：arxiv、stackexchange、github 三个域在两种口径下同向（文本质量高、损失也相对低），但 wikipedia、book、pile\_\allowbreak{}cc 存在明显分歧——文本质量较高而该域损失并不低（学术与百科长文属“高质量但难拟合”）。因此质量评分必须按用途区分：面向数据治理使用 A1--A3 的文本质量，面向性能预测使用损失难度代理。
 
-\textbf{3. 配比推荐与跨尺度分析}
+\Needspace{4\baselineskip}
+\textbf{3. 配比推荐与跨尺度分析}\par\nopagebreak[4]
 
 无约束优化倾向于把配比集中于单一低损失域（预测加权平均损失 $4.177$），不具备可落地性；故采用 2.5 倍上限的有界推荐作为最终方案，推荐配比与参考配比的对比见表\ref{tab:p1_rec}，该方案使预测加权平均损失由 $5.336$ 降至 $5.136$（下降 $0.199$）。
 
 \begingroup
-\small
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}>{\centering\arraybackslash}p{0.30\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}@{}}
   \caption{有界推荐配比调整}
@@ -395,4 +399,5 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 本节得到领域质量评分、配比与损失的定量关系及有界推荐配比，并通过质量口径对照、同尺度检验和跨尺度分析考察结果，为后续资源配置研究提供数据侧输入。
 
+\FloatBarrier
 \endgroup

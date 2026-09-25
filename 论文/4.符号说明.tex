@@ -1,58 +1,60 @@
-% ════════════════════════════════════════════
-% 符号说明（4.符号说明.tex）写作规则 —— 模板内嵌，AI 先读本文件再写
-% ════════════════════════════════════════════
 \section{符号说明}
 
-本文使用的主要符号及其含义如表\ref{tab:符号说明}所示。
+主要符号列于表\ref{tab:符号说明}。表中“1”表示无量纲，B 表示十亿。问题二拟合时以十亿参数和十亿 tokens 计量规模，问题三计算成本时转换为参数个数和 token 数。
 
-% longtable：可跨页，>{\centering\arraybackslash}p{} 居中，比例按内容调整
-\begin{longtable}{@{}>{\centering\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.76\textwidth}@{}}
-  \caption{符号说明}
-  \label{tab:符号说明} \\
-  \toprule
-  符号 & 说明 \\
-  \midrule
-  \endfirsthead
-  \caption{符号说明（续）} \\
-  \toprule
-  符号 & 说明 \\
-  \midrule
-  \endhead
-  \bottomrule
-  \endfoot
-  $N$ & 模型参数量（单位：B，十亿参数） \\
-  $D$ & 训练数据规模（单位：B tokens） \\
-  $L$ & 验证交叉熵损失（越低越好） \\
-  $Q$ & 数据质量评分（$Q\in[0,1]$，越高越好） \\
-  $Q_0$ & 基线数据质量（参考语料配比加权平均，$Q_0=0.5510$） \\
-  $\bm p$ & 17 个训练领域的配比向量（分量非负且和为 1） \\
-  $E$ & 不可约损失（$N,D\to\infty$ 且 $Q=1$ 时的极限损失） \\
-  $A,B$ & 标度律中规模项与数据项的系数 \\
-  $\alpha,\beta$ & 标度律中规模项与数据项的指数 \\
-  $C,\gamma$ & 广义标度律中质量缺口项的系数与指数 \\
-  $\varepsilon_N,\varepsilon_D,\varepsilon_Q$ & 损失对参数量、数据量、质量的弹性 \\
-  $M(\bm p)$ & 配比项对损失的平移修正（相对参考配比） \\
-  $C_{\text{train}},C_Q,C_{\text{attn}}$ & 基础训练、质量提升、长文本注意力三类算力开销 \\
-  $C_{\text{budget}}$ & 算力预算（单位：FLOPs） \\
-  $g(Q)$ & 数据质量成本函数（指数型/幂函数型/对数渐进型） \\
-  $\eta$ & 长文本注意力的算力系数（$\eta=2\times10^{-4}$） \\
-  $\lambda(L_{\text{ctx}})$ & 注意力开销相对训练开销的倍数 $\eta L_{\text{ctx}}/6$ \\
-  $L_{\text{crit}}$ & 注意力开销等于训练开销的临界上下文长度（$L_{\text{crit}}=6/\eta=30{,}000$） \\
-  $\tau(Q)$ & 质量投入的等效附加数据量（k tokens） \\
-  $\Theta(C),e_\Theta$ & 质量提升完成度及其对预算的弹性（结构性转移识别量） \\
-  $F(t)$ & 时刻 $t$ 的模型能力前沿（Leaderboard 六维均分） \\
-  $K,r,t_0$ & logistic 饱和外推的饱和上界、增长率与拐点 \\
-  $b_P,b_t$ & 面板回归中的规模系数（分/10 倍参数）与时间系数（分/年） \\
-  $\alpha_t$ & 面板回归的年份固定效应（非规模技术进步） \\
-  $\bar B$ & Leaderboard 六维平均得分 \\
-  $Q_i,Q_d,\bar Q(\bm p)$ & 问题一的样本质量、领域质量与配比加权的混合质量指数 \\
-  $\bm P,\bm L$ & 问题一的训练配方矩阵与验证损失矩阵 \\
-  $\bm A,\bm b$ & 问题一的配比回归系数矩阵与截距向量 \\
-  $\lambda$ & 问题一的岭正则系数，取 $10^{-3}$ \\
-  $\tau$ & 问题一中成对标准化得分差的冲突阈值，取 $1.5$ \\
-  $w_j,e_j$ & 第 $j$ 个质量指标的熵权与信息熵 \\
-  $W$ & Kendall 协同系数（指标一致性度量） \\
-  $\rho_c,\rho_0$ & 冲突率与指标独立时的冲突基准 \\
-  $R^2$ & 决定系数 \\
-  RMSE / MAE / MAPE & 均方根误差 / 平均绝对误差 / 平均绝对百分比误差 \\
+\begingroup
+\captionsetup[table]{font={bundledsong,minusfour,bf}}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.52\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}@{}}
+\caption{主要符号、含义与单位}\label{tab:符号说明}\\
+\toprule
+符号 & 含义 & 单位\\
+\midrule
+\endfirsthead
+\caption{主要符号、含义与单位（续）}\\
+\toprule
+符号 & 含义 & 单位\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+$N$ & 模型参数规模 & B 或参数个数\\
+$D$ & 训练数据规模 & B tokens 或 tokens\\
+$L,E$ & 验证交叉熵损失、不可约损失 & 1\\
+$Q$ & 数值越大质量越高的数据评分 & 1\\
+$Q_0$ & 质量基线；问题二说明来源间的参考水平，问题三采用参考配比加权质量 & 1\\
+$\bm p$ & 分量非负、总和为 1 的领域配比向量 & 1\\
+$A,B$ & 参数规模项、数据规模项的标度系数 & 随规模计量单位确定\\
+$\alpha,\beta$ & 参数规模项、数据规模项的幂指数 & 1\\
+$C,C_q$ & 质量缺口系数，问题三记为 $C_q$ & 1\\
+$\gamma$ & 质量缺口的幂指数 & 1\\
+$\varepsilon_N,\varepsilon_D,\varepsilon_Q$ & 损失对参数量、数据量和质量的弹性 & 1\\
+$M(\bm p)$ & 相对参考配比的损失平移修正 & 1\\
+$C_{\text{train}},C_Q,C_{\text{attn}}$ & 基础训练、质量提升和注意力开销 & FLOPs\\
+$C_{\text{budget}},C_{\mathrm b}$ & 总算力预算，问题三简记为 $C_{\mathrm b}$ & FLOPs\\
+$g(Q)$ & 单个 token 的质量处理成本 & FLOPs/token\\
+$\eta$ & 注意力开销系数；参数个数作为计数代入成本公式 & FLOPs/token$^2$\\
+$L_{\text{ctx}},L_{\text{crit}}$ & 上下文长度、注意力与训练开销相等时的长度 & tokens\\
+$\lambda(L_{\text{ctx}})$ & 注意力开销与基础训练开销的比值 & 1\\
+$\tau(Q)$ & 质量处理成本折算的等效附加参数规模 & 参数个数\\
+$\Theta(C_{\mathrm b})$ & 质量提升完成度 & 1\\
+$F(t),K$ & 能力前沿及 logistic 饱和上界 & 分\\
+$t,t_0$ & 以 2019 年为原点的时间、logistic 拐点时间 & 年\\
+$r$ & logistic 增长率 & 年$^{-1}$\\
+$b_P$ & 参数量每扩大十倍对应的回归得分变化 & 分\\
+$b_t$ & 面板回归的年度得分变化系数 & 分/年\\
+$\alpha_t$ & 面板回归的年份固定效应 & 分\\
+$\bar B$ & Leaderboard 六维平均得分 & 分\\
+$Q_i,Q_d,\bar Q(\bm p)$ & 问题一的样本质量、领域质量与配比加权的混合质量指数 & 1\\
+$\bm P,\bm L$ & 问题一的训练配方矩阵与验证损失矩阵 & 1\\
+$\bm A,\bm b$ & 问题一的配比回归系数矩阵与截距向量 & 1\\
+$\lambda$ & 问题一的岭正则系数，取 $10^{-3}$ & 1\\
+$\tau$ & 问题一中成对标准化得分差的冲突阈值，取 $1.5$ & 1\\
+$w_j,e_j$ & 第 $j$ 个质量指标的熵权与信息熵 & 1\\
+$W$ & Kendall 协同系数 & 1\\
+$\rho_c,\rho_0$ & 冲突率、指标独立时的冲突基准 & 1\\
+$R^2$ & 决定系数 & 1\\
+RMSE、MAE & 均方根误差、平均绝对误差 & 与响应变量一致\\
+MAPE & 平均绝对百分比误差 & \%\\
 \end{longtable}
+\endgroup
