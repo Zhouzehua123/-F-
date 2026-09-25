@@ -20,7 +20,10 @@ C1 的提交日期覆盖 2024 年 6 月 8 日至 2025 年 3 月 13 日。本文�
 \centering
 \caption{主样本的形成及模型类型构成}
 \label{tab:p4_funnel}
-\begin{tabularx}{0.98\textwidth}{@{}l r >{\raggedright\arraybackslash}X@{}}
+\begin{tabularx}{0.98\textwidth}{@{}
+>{\hsize=1\hsize\linewidth=\hsize\raggedright\arraybackslash}X
+>{\hsize=0.45\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=1.55\hsize\linewidth=\hsize\raggedright\arraybackslash}X@{}}
 \toprule
 数据层次 & 记录数 & 判定依据或构成 \\
 \midrule
@@ -48,7 +51,12 @@ C8 记录原始评测指标，C1 则采用基准调整后的汇总得分。例�
 \centering
 \caption{原始指标与汇总得分的记录级一致性}
 \label{tab:p4_c8chk}
-\begin{tabularx}{0.98\textwidth}{@{}>{\raggedright\arraybackslash}X c c c c@{}}
+\begin{tabularx}{0.98\textwidth}{@{}
+>{\hsize=1.4\hsize\linewidth=\hsize\raggedright\arraybackslash}X
+>{\hsize=0.95\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=0.8\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=0.8\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=1.05\hsize\linewidth=\hsize\centering\arraybackslash}X@{}}
 \toprule
 评测维度 & \makecell{有效配对\\记录数} & \makecell{秩相关\\$\rho$} & \makecell{线性相关\\$r$} & \makecell{平均绝对\\偏差 / 分} \\
 \midrule
@@ -81,7 +89,12 @@ MMLU-PRO & 1{,}896 & 0.998 & 0.998 & 7.56 \\
 \centering
 \caption{损失映射的方向、解释度与误差}
 \label{tab:p4_bridge}
-\begin{tabularx}{0.98\textwidth}{@{}>{\raggedright\arraybackslash}X c c c c@{}}
+\begin{tabularx}{0.98\textwidth}{@{}
+>{\hsize=1.25\hsize\linewidth=\hsize\raggedright\arraybackslash}X
+>{\hsize=0.9375\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=0.9375\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=0.9375\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=0.9375\hsize\linewidth=\hsize\centering\arraybackslash}X@{}}
 \toprule
 评价量 & \makecell{C6 高可比\\$n=7$} & \makecell{C6 中可比\\$n=68$} & \makecell{C6 合并\\$n=75$} & \makecell{C5 对照\\$n=43$} \\
 \midrule
@@ -122,7 +135,12 @@ $b_P$ 表示控制年份后参数量扩大十倍对应的得分差，$b_t$ 表�
 \centering
 \caption{全样本与类型子样本的规模、时间系数}
 \label{tab:p4_panel}
-\begin{tabularx}{0.98\textwidth}{@{}>{\raggedright\arraybackslash}X c c c c@{}}
+\begin{tabularx}{0.98\textwidth}{@{}
+>{\hsize=2\hsize\linewidth=\hsize\raggedright\arraybackslash}X
+>{\hsize=0.6\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=0.85\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=0.85\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=0.7\hsize\linewidth=\hsize\centering\arraybackslash}X@{}}
 \toprule
 样本与时间设定 & $n$ & \makecell{$b_P$\\分/十倍参数} & \makecell{$b_t$\\分/年} & $R^2$ \\
 \midrule
@@ -155,6 +173,7 @@ C3 中有 13 条记录的 Average 与六维均值相差超过 5 分，已在构�
 \label{fig:p4_decomp}
 \end{figure}
 
+\Needspace{6\baselineskip}
 在评测框架一致的 C1 近端窗口中，2024 年 6 月至 9 月的前沿由 37.99 升至 51.00，前列组的最大参数量由 70.6B 变为 78.0B，$\Delta\log_{10}P=0.043$。对应规模项为 0.60 分，非规模项为 12.41 分，占比分别为 4.6\% 和 95.4\%。图\ref{fig:p4_decomp}说明，该窗口的得分增长主要未被参数扩张解释；但短期残差占比不能直接推广到整年或未来，也不足以分别量化数据工程与对齐方法的贡献。
 
 \subsubsection{前沿曲线与条件预测}
@@ -225,7 +244,12 @@ logistic 增速减半 & 53.27 & 53.27 \\
 \centering
 \caption{六维能力的总体水平与前沿差距}
 \label{tab:p4_task}
-\begin{tabularx}{0.98\textwidth}{@{}>{\raggedright\arraybackslash}X c c c c@{}}
+\begin{tabularx}{0.98\textwidth}{@{}
+>{\hsize=1.3\hsize\linewidth=\hsize\raggedright\arraybackslash}X
+>{\hsize=0.85\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=1.05\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=0.9\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=0.9\hsize\linewidth=\hsize\centering\arraybackslash}X@{}}
 \toprule
 任务维度 & 中位数 & 前 $1\%$ 均值 & 最优得分 & \makecell{距满分差值\\/ 分} \\
 \midrule
@@ -255,7 +279,13 @@ IFEval 的最优得分为 89.98，距满分仅 10.0 分，但中位数仍为 43.
 \centering
 \caption{距满分差值最大的六个子任务}
 \label{tab:p4_sub}
-\begin{tabularx}{0.98\textwidth}{@{}l >{\raggedright\arraybackslash}X r c c c@{}}
+\begin{tabularx}{0.98\textwidth}{@{}
+>{\hsize=0.8\hsize\linewidth=\hsize\raggedright\arraybackslash}X
+>{\hsize=2\hsize\linewidth=\hsize\raggedright\arraybackslash}X
+>{\hsize=0.6\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=0.9\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=0.85\hsize\linewidth=\hsize\centering\arraybackslash}X
+>{\hsize=0.85\hsize\linewidth=\hsize\centering\arraybackslash}X@{}}
 \toprule
 所属类别 & 子任务 & $n$ & \makecell{前 $5\%$\\均值} & 最优得分 & \makecell{距满分\\差值 / 分} \\
 \midrule
