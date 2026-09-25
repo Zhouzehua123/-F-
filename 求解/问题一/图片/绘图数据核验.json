@@ -1,5 +1,16 @@
 {
-  "source_revision": "8ca02a9",
+  "source_revision": "fb9e541f382bfd3ba48ff8f4c813beda689f1db7",
+  "style": "建模展示风",
+  "skill": "academic-research-suite 3.22.0 / visualization_agent",
+  "scripts_sha256": {
+    "重绘图表.py": "2639bf66dae5e2eeecab9c17a7ed3a29577324eb913bc74b199b686815a107e9",
+    "绘图数据.py": "52b50416100075fa5b252d07a9ac511fd0a4d5aee378f83a9621acc86907d061",
+    "展示风格公共.py": "a01fc481b91a5fe67cd4e4a9b934aff170bd95fb070fd511ec0acd6f1a507d2a",
+    "展示风格冲突.py": "b6ded27fe7fc0fa55c5e89159c23ea53ac67f8ad9ff0864860639072b906129b",
+    "展示风格概览.py": "6456fe830ce7b41ea7852a8740c32d9aee1947a20421e4c7114a387eb574423f",
+    "展示风格流程.py": "13705787b4f4082dbaec89f7143b478ea680d3e8e44bc4f2980b863b47f94431",
+    "展示风格诊断.py": "6d38eae68229bad6a9e31ee1f7212f9e8ac950baba9002c07dec3df0e96591bc"
+  },
   "input_checks": {
     "中心化系数": {
       "passed": true,
