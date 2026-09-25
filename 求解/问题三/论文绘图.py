@@ -100,45 +100,44 @@ valid = sw.Q.notna()
 start = float(sw.loc[valid & (sw.Q > q0+1e-7), "C"].iloc[0])
 sat = float(sw.loc[valid & (sw.Q >= 1-1e-7), "C"].iloc[0])
 peak = sw.loc[sw.f_qual.idxmax()]
-fig, axs = plt.subplots(2, 2, figsize=(7.0, 4.85), layout="constrained")
-for row in range(2):
-    a, b = axs[row]
-    a.plot(sw.C, theta*100, color=ORANGE, lw=1.8)
-    for col, color, ls, label in [("f_base", BLUE, "-", "基础训练"),
-                                 ("f_qual", ORANGE, "--", "质量提升"),
-                                 ("f_attn", PURPLE, "-.", "注意力计算")]:
-        b.plot(sw.C, sw[col]*100, color=color, ls=ls, lw=1.6, label=label)
-    for aa in (a, b):
-        aa.set_xscale("log")
-        aa.set_ylim(-3, 108)
-        aa.axvline(start, color="#7A7A7A", lw=.85, ls="--")
-        aa.axvline(sat, color="#7A7A7A", lw=.85, ls=":")
-        aa.axvspan(start, sat, color=ORANGE, alpha=.07)
-        aa.set_xlabel(r"算力预算 $C_{\mathrm{b}}$（FLOPs）")
-    a.set_ylabel(r"质量完成度 $\Theta$（%）")
-    b.set_ylabel("预算份额（%）")
-    if row == 0:
-        for aa in (a, b):
-            aa.set_xlim(1e18, 1e25)
-            aa.set_xticks([1e18, 1e20, 1e22, 1e24])
-        for x, label in [(3e18, "基线期"), (3.5e19, "提升期"), (1e23, "饱和期")]:
-            a.text(x, 104, label, ha="center", va="bottom", fontsize=8)
-        b.legend(loc="center right", framealpha=.95)
-    else:
-        for aa in (a, b):
-            aa.set_xlim(1e19, 1.1e20)
-            aa.set_xticks([1e19, 2e19, 5e19, 1e20])
-            aa.set_xticklabels(["$10^{19}$", "$2×10^{19}$", "$5×10^{19}$", "$10^{20}$"])
-            aa.xaxis.set_minor_locator(ticker.NullLocator())
-        b.plot(peak.C, peak.f_qual*100, "o", color=ORANGE, ms=4)
-        b.annotate("峰值 40.7%", (peak.C, peak.f_qual*100), xytext=(1.1e19, 48),
-                   textcoords="data", fontsize=9,
-                   arrowprops={"arrowstyle": "-", "color": ORANGE, "lw": .8})
-        a.text(1.07e19, 30, "投入启动\n"+r"$1.78×10^{19}$", fontsize=8)
-        a.text(2.45e19, 87, "达到上界\n"+r"$7.08×10^{19}$", fontsize=8)
-for a, label in zip(axs.flat, ["(a) 完整预算范围：质量", "(b) 完整预算范围：份额",
-                                "(c) 转移区间放大：质量", "(d) 转移区间放大：份额"]):
-    panel(a, label)
+fig, axs = plt.subplots(1, 2, figsize=(7.2, 3.35), layout="constrained")
+a, b = axs
+a.plot(sw.C, theta*100, color=ORANGE, lw=1.8)
+for col, color, ls, label in [("f_base", BLUE, "-", "基础训练"),
+                             ("f_qual", ORANGE, "--", "质量提升"),
+                             ("f_attn", PURPLE, "-.", "注意力计算")]:
+    b.plot(sw.C, sw[col]*100, color=color, ls=ls, lw=1.6, label=label)
+for aa in axs:
+    aa.set_xscale("log")
+    aa.set_xlim(1e18, 1e25)
+    aa.set_ylim(-3, 108)
+    aa.set_xticks([1e18, 1e20, 1e22, 1e24])
+    aa.xaxis.set_minor_locator(ticker.NullLocator())
+    aa.axvline(start, color="#777777", lw=.8, ls="--")
+    aa.axvline(sat, color="#777777", lw=.8, ls=":")
+    aa.axvspan(start, sat, color=ORANGE, alpha=.07)
+    aa.set_xlabel(r"算力预算 $C_{\mathrm{b}}$（FLOPs）")
+a.set_ylabel(r"质量完成度 $\Theta$（%）")
+b.set_ylabel("预算份额（%）")
+panel(a, "(a) 质量由基线升至上界")
+panel(b, "(b) 质量份额先升后降")
+b.legend(loc="upper right", bbox_to_anchor=(1,.78), fontsize=8, framealpha=.95)
+b.annotate("峰值 40.7%", (peak.C, peak.f_qual*100), xytext=(2e21, 42),
+           fontsize=8, arrowprops={"arrowstyle":"-", "color":ORANGE, "lw":.8})
+zoom = a.inset_axes([.40, .14, .57, .50])
+zoom.plot(sw.C, theta*100, color=ORANGE, lw=1.4)
+zoom.set_xscale("log")
+zoom.set_xlim(1e19, 1e20)
+zoom.set_ylim(-4,104)
+zoom.set_xticks([1e19,1e20])
+zoom.set_xticklabels([r"$10^{19}$",r"$10^{20}$"],fontsize=8)
+zoom.xaxis.set_minor_locator(ticker.NullLocator())
+zoom.set_yticks([0,50,100])
+zoom.tick_params(labelsize=8)
+zoom.axvline(start,color="#777777",ls="--",lw=.8)
+zoom.axvline(sat,color="#777777",ls=":",lw=.8)
+zoom.text(.04,.9,"转移区间放大",transform=zoom.transAxes,fontsize=8)
+zoom.grid(axis="y",color="#e4e7ea",lw=.5)
 finish(fig, "图2_预算份额结构性转移")
 
 ctx = read("上下文长度敏感性")
