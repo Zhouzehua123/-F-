@@ -1,100 +1,86 @@
 \subsection{问题二：跨维度数据融合与广义标度律}
 \begingroup
-\setlength{\tabcolsep}{3pt}
+\setlength{\tabcolsep}{2pt}
 
 \subsubsection{具体分析}
 
 问题二需要回答：在参数规模与训练数据量之外，数据质量和领域配比如何影响验证损失，以及质量提升能够在何种条件下替代规模扩张。难点在于附件 A 与 B 并非同一组联合实验，质量评分与配比效应不能未经校准便直接叠加。本文以经典标度律描述规模效应，在附件 B 内比较质量项的候选形式，再利用问题一输出讨论领域效应及其迁移条件。
 
-具体而言，先在 Pythia 训练轨迹上拟合经典关系，并以较小模型拟合、较大模型留出的方式检验族内迁移表现；随后核对半合成质量字段的方向，比较四类广义模型；最后在既定模型下计算局部弹性与质量--参数等效关系，结合多源检验界定结论的适用范围。领域分析沿用问题一的配比系数，区分效应模式相似性与尚待验证的互补增益。
+具体而言，先在 Pythia 训练轨迹上拟合经典关系，并以较小模型拟合、较大模型留出的方式检验族内迁移表现；随后核对半合成质量字段的方向，比较四类广义模型；最后在既定模型下计算局部弹性与质量--参数等效关系，结合多源检验界定结论的适用范围。领域分析利用问题一的配比系数，考察各训练域在不同验证任务上的效应差异。
 
 \subsubsection{模型准备}
 
-\textbf{1.数据组织与变量口径}
+\textbf{1.数据组织与变量口径}\par\nopagebreak[4]
+经典标度律以 B1 为主拟合数据。该表包含 8 个 Pythia 模型的训练轨迹，每个模型具有 147 个检查点，共 1{,}176 条记录\cite{biderman2023pythia}。质量项由 B6 半合成实验提供信息，B7 中去除与 B6 重复的记录后用于扩展检验。其余数据按用途分层：B2、B3 检查轨迹一致性，B4、B5 评价跨族及文献数据上的适用性，B8 用于口径诊断，B10 用于大规模估算对照。
 
-经典标度律以 B1 为主拟合数据。该表包含 8 个 Pythia 模型的训练轨迹，每个模型具有 147 个检查点，共 1{,}176 条记录\cite{biderman2023pythia}。质量项由 B6 半合成实验提供信息，B7 中去除与 B6 重复的记录后用于扩展检验。其余数据按用途分层：B2、B3 检查轨迹一致性，B4、B5 评价跨族及文献数据上的适用性，B8 用于口径诊断，B10 用于大规模估算对照。B9 与 B10 的元数据匹配尚需补充，不能将单独读取 B9 视为已完成联合分析。
+记参数量为 $N$，训练数据量为 $D$，验证集交叉熵损失为 $L$。本节计算中，$N$ 以十亿个参数为单位，$D$ 以十亿 tokens 为单位，质量变量记为 $Q$。问题三的算力计算采用参数个数与 token 数，二者分别为本节 $N$、$D$ 数值的 $10^9$ 倍。拟合直接针对原函数进行，以保留不可约损失项 $E$；因此，参数估计不依赖忽略常数项的双对数线性化。
 
-记参数量为 $N$，训练数据量为 $D$，验证集交叉熵损失为 $L$。本节计算中，$N$ 以十亿个参数为单位，$D$ 以十亿 tokens 为单位，质量变量记为 $Q$。将参数传入问题三的算力公式时，须恢复参数个数与 token 数的实际单位。拟合直接针对原函数进行，以保留不可约损失项 $E$；因此，参数估计不依赖忽略常数项的双对数线性化。
+\textbf{2.质量字段方向检验}\par\nopagebreak[4]
+附件 B 以 $Q_{\text{score}}$ 表示质量，不同补充数据集的方向一致性通过组内相关检验考察。本文在固定 $(N,D)$ 的各组内计算质量字段与损失的 Pearson 相关系数，再取组间算术平均，以检查方向一致性。负相关对应质量提高时损失下降，正相关则表明数据与这一方向约定不一致。组间平均相关系数仅描述方向，不代表统计显著性。检验结果如表\ref{tab:p2_dir}所示。
 
-\textbf{2.质量字段方向审计}
-
-附件 B 将 $Q_{\text{score}}$ 用作质量变量，但不同补充数据集的生成口径仍需核对。本文在固定 $(N,D)$ 的各组内计算质量字段与损失的 Pearson 相关系数，再取组间算术平均，以检查方向一致性。负相关符合“质量越高、损失越低”的预期；正相关则提示口径冲突，不能仅凭相关符号认定其为难度变量。该统计量用于方向诊断，不作为显著性检验。审计结果如表\ref{tab:p2_dir}所示。
-
-\begin{longtable}{>{\centering\arraybackslash}p{0.18\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}}
-  \caption{质量字段 $Q_{\text{score}}$ 的方向审计（控制 $N$、$D$ 的组内相关）}
-  \label{tab:p2_dir} \\
+\begin{table}[htbp]
+  \centering
+  \caption{质量字段 $Q_{\text{score}}$ 的方向检验（控制 $N$、$D$ 的组内相关）}
+  \label{tab:p2_dir}
+\begin{tabular}{>{\centering\arraybackslash}p{0.18\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}}
   \toprule
   数据集 & 样本数 & 分组数 & 组内相关 $r$ & 结论 \\
   \midrule
-  \endfirsthead
-  \caption{质量字段方向审计（续）} \\
-  \toprule
-  数据集 & 样本数 & 分组数 & 组内相关 $r$ & 结论 \\
-  \midrule
-  \endhead
-  \bottomrule
-  \endfoot
-  B6 & 360 & 45 & $-0.925$ & $Q$ 越大损失越低：\textbf{质量指标}（$Q=1$ 为最优） \\
+B6 & 360 & 45 & $-0.925$ & $Q$ 越大损失越低：\textbf{质量指标}（$Q=1$ 为最优） \\
   B7 & 450 & 45 & $-0.918$ & 含 B6 的全部记录，仅新增点用于检验 \\
   B8（校准段） & 984 & 90 & $+0.995$ & 方向与 B6/B7 相反：\textbf{口径不一致} \\
   B8（外推段） & 720 & 60 & $+0.968$ & 同上 \\
-\end{longtable}
+  \bottomrule
+\end{tabular}
+\end{table}
 
-由表\ref{tab:p2_dir}可知，B6 与 B7 的平均组内相关分别为 $-0.925$ 和 $-0.918$，支持在这两套数据中沿用 $Q=Q_{\text{score}}$。经逐行核对，B7 包含 B6 的全部 360 条记录，故其全量统计不能视为独立证据；后续仅以 90 个新增点进行扩展检验。B8 两个子集的相关方向均与 B6/B7 相反，且其部分损失低于本文估计的基线下限，表明当前模型与该数据不能直接兼容。本文不将 B8 纳入主拟合，仅尝试 $1-Q_{\text{score}}$ 的方向变换进行诊断；这一操作并不证明 B8 的真实语义，也不代表口径差异已被消除。
+由表\ref{tab:p2_dir}可知，B6 与 B7 的平均组内相关分别为 $-0.925$ 和 $-0.918$，支持在这两套数据中沿用 $Q=Q_{\text{score}}$。经逐行核对，B7 包含 B6 的全部 360 条记录，故其全量统计不能视为独立证据；后续仅以 90 个新增点进行扩展检验。B8 两个子集的相关方向均与 B6/B7 相反，且其部分损失低于本文估计的基线下限，表明当前模型与该数据不能直接兼容。本文不将 B8 纳入主拟合，仅尝试 $1-Q_{\text{score}}$ 的方向变换进行诊断；变换后的预测误差用于衡量单纯方向调整的解释能力。
 
-需要区分评分方向与评分尺度：问题一的综合评分和附件 B 的 $Q_{\text{score}}$ 均取“越高越好”，但这不足以证明两者数值可直接互换。二者之间的尺度校准及跨来源迁移假设，仍是后续衔接需要检验的条件。
+问题一的综合评分与附件 B 的 $Q_{\text{score}}$ 均采用“越高越好”的方向，但来源和构造方式不同。本节质量效应的参数估计以附件 B 的评分尺度为依据，数值解释限于该尺度；评分方向一致不意味着跨来源分数等值。
 
-\textbf{3.参数估计方法与候选模型比较}
-
+\textbf{3.参数估计方法与候选模型比较}\par\nopagebreak[4]
 模型参数采用带界约束的非线性最小二乘估计，并使用 soft-$L_1$ 损失减弱大残差对拟合的影响。该方法能够直接保留常数项与幂函数结构，同时限制参数取值范围。对四类质量项，使用相同的联合样本比较拟合优度，并结合 B6 内部误差、B7 新增点预测相关和残差信息评分评价其表现。比较结果见表\ref{tab:p2_form}。
 
-\begin{longtable}{>{\centering\arraybackslash}p{0.28\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}}
+\begin{table}[htbp]
+  \centering
   \caption{广义标度律候选形式的比较}
-  \label{tab:p2_form} \\
+  \label{tab:p2_form}
+\begin{tabular}{>{\centering\arraybackslash}p{0.28\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}}
   \toprule
   质量项形式 & 联合 $R^2$ & B6 拟合 $R^2$ & B7 新增点 $r$ & 参数数 & $I_{\mathrm{RSS}}$ \\
   \midrule
-  \endfirsthead
-  \caption{广义标度律候选形式的比较（续）} \\
-  \toprule
-  质量项形式 & 联合 $R^2$ & B6 拟合 $R^2$ & B7 新增点 $r$ & 参数数 & $I_{\mathrm{RSS}}$ \\
-  \midrule
-  \endhead
-  \bottomrule
-  \endfoot
-  \textbf{加性质量缺口 $C(1-Q)^{\gamma}$} & \textbf{0.9896} & \textbf{0.9556} & 0.991 & 7 & $\mathbf{-10236}$ \\
+\textbf{加性质量缺口 $C(1-Q)^{\gamma}$} & \textbf{0.9896} & \textbf{0.9556} & 0.991 & 7 & $\mathbf{-10236}$ \\
   质量同时乘 $N$ 与 $D$ & 0.9882 & 0.9495 & \textbf{0.991} & 7 & $-10042$ \\
   加性质量亏损 $CQ^{-\gamma}$ & 0.9848 & 0.9349 & 0.991 & 7 & $-9660$ \\
   质量作有效数据乘子 & 0.9745 & 0.8905 & 0.983 & 6 & $-8866$ \\
-\end{longtable}
+  \bottomrule
+\end{tabular}
+\end{table}
 
-如表\ref{tab:p2_form}所示，四类形式在 B7 新增点上的预测相关均不低于 $0.983$，但相关性本身不能检验预测偏差，也不能单独识别质量效应。加性质量缺口形式在本次联合拟合与 B6 内部拟合中表现最好，因此保留其作为工作模型。表中 $I_{\mathrm{RSS}}=n\ln(\mathrm{RSS}/n)+2k$ 按现有拟合残差计算，其中 $n$ 为样本数、$k$ 为模型参数数。由于参数采用 soft-$L_1$ 稳健损失估计，该评分仅作同一样本下的辅助比较，不作为严格高斯极大似然 AIC 的证据。B7 新增点已参与候选比较，因此后续在这些点上的结果也不属于完全独立的最终测试。
+表\ref{tab:p2_form}中，四类形式在 B7 新增点上的预测相关均不低于 $0.983$。加性质量缺口形式具有最高的联合拟合与 B6 内部拟合 $R^2$，因此本文采用该形式。预测偏差进一步由 RMSE 与 MAPE 衡量。表中 $I_{\mathrm{RSS}}=n\ln(\mathrm{RSS}/n)+2k$ 由拟合残差计算，其中 $n$ 为样本数、$k$ 为模型参数数。参数采用 soft-$L_1$ 稳健估计，因此该评分仅用于同一样本下的辅助比较，并非严格的高斯极大似然 AIC。B7 新增点用于模型比较与扩展检验，两者共享样本，结果按开发阶段的验证性能解释。
 
 \subsubsection{模型建立}
 
-\textbf{1.经典标度律}
-
+\textbf{1.经典标度律}\par\nopagebreak[4]
 以 Chinchilla 标度律为基础\cite{hoffmann2022chinchilla}，验证损失 $L$ 满足：
 \begin{equation}
     L(N,D) = E + \frac{A}{N^{\alpha}} + \frac{B}{D^{\beta}}
 \end{equation}
 其中，$E$ 表示 $N,D\to\infty$ 时模型给出的损失极限；$A$、$B$ 为尺度系数，$\alpha$、$\beta$ 为衰减指数，分别共同决定参数规模与数据规模的收益变化。该模型将数据质量固定在参考水平。
 
-\textbf{2.质量缺口修正}
-
+\textbf{2.质量缺口修正}\par\nopagebreak[4]
 将质量项以“质量缺口”形式引入，得到广义标度律：
 \begin{equation}
     L(N,D,Q) = E + \frac{A}{N^{\alpha}} + \frac{B}{D^{\beta}} + C\,(1-Q)^{\gamma},
     \qquad C>0,\ \gamma>0
 \end{equation}
-本文采用题目允许的参考归一化约定：$Q=1$ 时质量缺口项消失，模型在函数形式上退化为经典标度律。该约定不意味着 Pythia 语料已达到客观意义上的完美质量，重新联合估计后的参数也不必与经典拟合相同。在此模型假设下，固定质量对应的渐近损失为：
+本文将 $Q=1$ 设为参考质量，此时质量缺口项为零，广义模型退化为经典标度律的函数形式。Pythia 样本的 $Q=1$ 是归一化设定，不是对其语料质量的实测结论；联合估计允许各参数相对于经典拟合重新调整。在此模型假设下，固定质量对应的渐近损失为：
 \begin{equation}
     \lim_{N,D\to\infty} L(N,D,Q) = E + C\,(1-Q)^{\gamma} \;\ge\; E
 \end{equation}
-因此，在固定 $Q$ 的模型情景内，仅增加 $N$、$D$ 不能消除质量缺口项。这是所选函数形式的条件性推论，尚不能视为对真实大模型极限的实证证明。质量项非负，使该模型的渐近下限不低于 $E$。
+在这一加性结构下，质量缺口决定渐近损失相对于 $E$ 的增量。固定 $Q<1$ 时，增加 $N$、$D$ 可以减小规模项，但质量项保持不变。该渐近关系是模型的理论性质，其适用范围受拟合数据限制。
 
-\textbf{3.边际效用与弹性}
-
+\textbf{3.边际效用与弹性}\par\nopagebreak[4]
 在参考点 $(N_0,D_0,Q_0)$ 处，各因素的边际效用为：
 \begin{equation}
     \frac{\partial L}{\partial N} = -\alpha A N^{-\alpha-1},\quad
@@ -108,29 +94,29 @@
     \varepsilon_Q = \frac{\partial L}{\partial Q}\frac{Q_0}{L_0}
 \end{equation}
 
-\textbf{4.质量提升与参数扩张的局部等效关系}
-
+\textbf{4.质量提升与参数扩张的局部等效关系}\par\nopagebreak[4]
 在固定 $D$ 和配比的条件下，分别考察从同一参考点出发的微小质量提升与参数扩张。定义 $R_{NQ}$ 为两种方案产生相同一阶损失降幅时的正向等效增量比：
 \begin{equation}
-    \left|\frac{\partial L}{\partial Q}\right|\mathrm dQ = \left|\frac{\partial L}{\partial N}\right|\mathrm dN
-    \quad\Longrightarrow\quad
-    R_{NQ} = \frac{\mathrm dN_{\mathrm{eq}}}{\mathrm dQ} = \frac{\gamma C (1-Q)^{\gamma-1}}{\alpha A N^{-\alpha-1}}
-    = \frac{\gamma C}{\alpha A}\,(1-Q)^{\gamma-1}N^{\alpha+1}
+    \begin{aligned}
+      \left|\frac{\partial L}{\partial Q}\right|\mathrm dQ
+      &=\left|\frac{\partial L}{\partial N}\right|\mathrm dN_{\mathrm{eq}},\\
+      R_{NQ}=\frac{\mathrm dN_{\mathrm{eq}}}{\mathrm dQ}
+      &=\frac{\gamma C(1-Q)^{\gamma-1}}{\alpha A N^{-\alpha-1}}
+       =\frac{\gamma C}{\alpha A}(1-Q)^{\gamma-1}N^{\alpha+1}.
+    \end{aligned}
 \end{equation}
-需注意，正向等效增量比与等损失曲线斜率不同：沿同一条等损失曲线有 $\mathrm dN/\mathrm dQ=-R_{NQ}$，即提高质量允许减少参数。固定 $Q$ 时，$R_{NQ}$ 随 $N^{\alpha+1}$ 增长，反映参数扩张的边际收益递减；但是否更节约算力，还需结合问题三的质量处理成本判断，不能仅凭替代率作成本优劣结论。
+沿等损失曲线有 $\mathrm dN/\mathrm dQ=-R_{NQ}$，即提高质量允许减少参数。固定 $Q$ 时，$R_{NQ}$ 随 $N^{\alpha+1}$ 增长，反映参数扩张的边际收益递减。该指标度量损失效果的等价关系，算力效率则同时取决于参数训练与质量处理的成本。
 
-\textbf{5.领域效应的相似性}
-
+\textbf{5.领域效应的相似性}\par\nopagebreak[4]
 线性混合模型下，两个训练域 $i$、$j$ 对 13 个验证域损失的效应向量分别为 $\bm a_i,\bm a_j$。采用中心化后的余弦相似度描述两域的相对效应模式：
 \begin{equation}
     s_{ij} = \frac{\langle \bm a_i-\bar{\bm a},\ \bm a_j-\bar{\bm a}\rangle}{\|\bm a_i-\bar{\bm a}\|\,\|\bm a_j-\bar{\bm a}\|}
 \end{equation}
-其中 $\bar{\bm a}$ 为 17 个域的平均效应向量。$s_{ij}\to1$ 表示两域在验证任务上的相对效应模式趋同；$s_{ij}\to-1$ 表示效应模式相反，可用于识别任务间的收益权衡。余弦相似度不包含效应幅值，不能单独证明等量替代；负相似度也不能证明联合使用具有增益。当前线性配比模型没有交互项，因此本指标仅作领域效应结构描述，不作为严格互补性的判据。
+其中 $\bar{\bm a}$ 为 17 个域的平均效应向量。$s_{ij}\to1$ 表示两域在验证任务上的相对效应模式趋同；$s_{ij}\to-1$ 表示效应模式相反，反映任务间的收益权衡。余弦相似度不包含效应幅值，且线性配比模型不含交互项，因而这一指标描述的是效应结构，不识别等量替代关系或联合使用带来的额外增益。
 
 \subsubsection{模型求解}
 
-\textbf{1.经典标度律拟合与留出验证}
-
+\textbf{1.经典标度律拟合与留出验证}\par\nopagebreak[4]
 经典标度律在 B1 全量 1{,}176 点上的拟合结果如图\ref{fig:p2_classic}所示，参数估计如下：
 \begin{equation}
     L(N,D) = 1.6898 + \frac{0.3540}{N^{0.3400}} + \frac{1.2403}{D^{0.2799}}
@@ -146,31 +132,26 @@
 
 B1 拟合残差的标准差为 $1.5\times10^{-4}$，远小于损失本身的标准差 $0.342$。这一结果表明附件中的规模关系与所选函数高度吻合，但不能由此推断跨数据来源的泛化能力。下文使用 B4、B5 评估外部适用性，并将 B2 的半合成轨迹结果单独讨论。
 
-\textbf{2.广义标度律参数估计}
-
+\textbf{2.广义标度律参数估计}\par\nopagebreak[4]
 将 Pythia（无质量信息，取参考质量 $Q=1$）与 B6 质量实验联合拟合，采用表\ref{tab:p2_form}选定的加性质量缺口形式，参数估计如表\ref{tab:p2_params}所示。
 
-\begin{longtable}{>{\centering\arraybackslash}p{0.30\textwidth}>{\centering\arraybackslash}p{0.18\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}}
+\begin{table}[htbp]
+  \centering
   \caption{广义标度律参数估计}
-  \label{tab:p2_params} \\
+  \label{tab:p2_params}
+\begin{tabular}{>{\centering\arraybackslash}p{0.28\textwidth}>{\centering\arraybackslash}p{0.14\textwidth}>{\centering\arraybackslash}p{0.30\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}}
   \toprule
   参数 & 估计值 & 参数 & 估计值 \\
   \midrule
-  \endfirsthead
-  \caption{广义标度律参数估计（续）} \\
-  \toprule
-  参数 & 估计值 & 参数 & 估计值 \\
-  \midrule
-  \endhead
-  \bottomrule
-  \endfoot
-  不可约损失 $E$ & 1.6558 & 数据规模指数 $\beta$ & 0.2767 \\
+不可约损失 $E$ & 1.6558 & 数据规模指数 $\beta$ & 0.2767 \\
   规模系数 $A$ & 0.3808 & 质量缺口系数 $C$ & 0.3544 \\
   规模指数 $\alpha$ & 0.3266 & 质量指数 $\gamma$ & 0.9779 \\
   数据系数 $B$ & 1.2515 & 联合拟合 $R^2$ & 0.9896 \\
-\end{longtable}
+  \bottomrule
+\end{tabular}
+\end{table}
 
-由表\ref{tab:p2_params}可知，质量指数 $\gamma=0.9779\approx1$，说明质量缺口近似线性地抬高模型的渐近损失下限；联合拟合 $R^2=0.9896$、RMSE $=0.036$、MAPE $=0.66\%$。由于联合数据与经典拟合数据不同，两者的 $R^2$ 不能直接用于判断引入质量项是否提高精度。质量缺口对损失的影响如图\ref{fig:p2_quality}所示，质量对损失下限的决定作用可由式 $E+C(1-Q)^{\gamma}$ 直接读出：当 $Q=1$ 时下限为 $1.656$，$Q=0.6$ 时为 $1.801$，$Q=0.3$ 时为 $1.906$。
+由表\ref{tab:p2_params}可知，质量指数 $\gamma=0.9779\approx1$，说明质量缺口近似线性地抬高模型的渐近损失下限；联合拟合 $R^2=0.9896$、RMSE $=0.036$、MAPE $=0.66\%$。由于联合数据与经典拟合数据不同，两者的 $R^2$ 不能直接用于判断引入质量项是否提高精度。图\ref{fig:p2_quality}展示固定规模下的预测质量效应。由模型的渐近表达式 $E+C(1-Q)^{\gamma}$ 可得：当 $Q=1$ 时下限为 $1.656$，$Q=0.6$ 时为 $1.801$，$Q=0.3$ 时为 $1.906$。
 
 \begin{figure}[ht]
   \centering
@@ -179,31 +160,26 @@ B1 拟合残差的标准差为 $1.5\times10^{-4}$，远小于损失本身的标�
   \label{fig:p2_quality}
 \end{figure}
 
-\textbf{3.分层检验与适用范围}
-
+\textbf{3.分层检验与适用范围}\par\nopagebreak[4]
 广义标度律在 6 组不同来源与性质的数据上的分层检验结果如表\ref{tab:p2_val}所示，预测值与各来源给定值的对比如图\ref{fig:p2_general}所示。
 
-\begin{longtable}{>{\raggedright\arraybackslash}p{0.32\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.14\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}}
+\begin{table}[htbp]
+  \centering
   \caption{广义标度律的分层验证}
-  \label{tab:p2_val} \\
+  \label{tab:p2_val}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.32\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.14\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}}
   \toprule
   验证来源 & 样本数 & 性质 & $r$ & RMSE & MAPE(\%) \\
   \midrule
-  \endfirsthead
-  \caption{广义标度律的分层验证（续）} \\
-  \toprule
-  验证来源 & 样本数 & 性质 & $r$ & RMSE & MAPE(\%) \\
-  \midrule
-  \endhead
-  \bottomrule
-  \endfoot
-  B4 跨族收敛点 & 57 & 真实 & 0.975 & 0.293 & 8.8 \\
+B4 跨族收敛点 & 57 & 真实 & 0.975 & 0.293 & 8.8 \\
   B5 已发表标度律 & 44 & 真实 & 0.910 & 0.193 & 8.0 \\
   B7 质量扩展新增点 & 90 & 半合成 & 0.991 & 0.056 & 1.6 \\
   B10 百亿参数以上 & 128 & 估算 & 1.000 & 0.020 & 1.0 \\
   B2 Cerebras 族外 & 1{,}029 & 半合成 & 0.666 & 1.245 & 33.7 \\
   B8 大规模矩阵（方向重定向） & 984 & 半合成 & 0.638 & 1.294 & 133.4 \\
-\end{longtable}
+  \bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}[ht]
   \centering
@@ -214,14 +190,13 @@ B1 拟合残差的标准差为 $1.5\times10^{-4}$，远小于损失本身的标�
 
 由表\ref{tab:p2_val}可知，模型在 B4 与 B5 上的相关系数分别为 $0.975$ 和 $0.910$，MAPE 分别为 $8.8\%$ 和 $8.0\%$，表明其能够描述部分跨族规模趋势，但仍存在来源差异与绝对误差。B7 的 90 个新增点给出 $1.6\%$ 的 MAPE，支持同一半合成框架内的扩展一致性；B10 属于估算数据，且检验中统一设定 $Q=1$，因而其低误差既不是独立实验验证，也不能用于验证质量项。
 
-B2 的 MAPE 为 $33.7\%$，B8 校准段在尝试反向变换后仍达 $133.4\%$。这些失败结果应保留为模型跨来源迁移受限的证据，不能因误差较大而排除其对结论的约束。低于本文估计下限的损失说明两者不能直接兼容，但不足以判定附件本身错误。
+B2 的 MAPE 为 $33.7\%$，B8 校准段在尝试反向变换后仍达 $133.4\%$。较大的误差表明，该模型不能统一解释所有补充数据的损失水平。B8 的部分损失低于本文估计的渐近下限，方向变换也未消除偏差，反映出不同来源之间的损失尺度或生成机制差异。
 
-主拟合中，B1 的参数范围约为 $0.07$--$12$B、数据范围为 $0.134$--$299.893$B tokens；B6 的参数范围约为 $0.07$--$11.97$B、数据范围为 $10$--$600$B tokens。质量效应的定量证据主要来自 B6/B7 半合成数据，不能将更大规模估算点的吻合扩展解释为整个参数区间均已得到实证验证。
+主拟合中，B1 的参数范围约为 $0.07$--$12$B、数据范围为 $0.134$--$299.893$B tokens；B6 的参数范围约为 $0.07$--$11.97$B、数据范围为 $10$--$600$B tokens。质量效应的定量证据主要来自 B6/B7 半合成数据；大规模估算点用于考察外推一致性，其证据等级低于直接实验观测。
 
 此外，用 B3 的 8 条插值轨迹检验数据规模指数：在每条轨迹内（$N$ 固定）以 $L-(E+AN^{-\alpha})$ 对 $D$ 做双对数回归，得到的幂指数为 $-0.2806\sim-0.2803$，与经典拟合的 $-\beta=-0.2799$ 高度一致，说明插值轨迹与经典拟合基本自洽；由于 B3 来源于 Pythia 检查点插值，该结果不是独立观测验证。
 
-\textbf{4.弹性结果与领域效应}
-
+\textbf{4.弹性结果与领域效应}\par\nopagebreak[4]
 规模与质量的边际效用对比如图\ref{fig:p2_margin}所示，等损失曲线如图\ref{fig:p2_subst}所示，弹性与替代率计算结果如表\ref{tab:p2_subst}所示。
 
 \begin{figure}[ht]
@@ -238,27 +213,23 @@ B2 的 MAPE 为 $33.7\%$，B8 校准段在尝试反向变换后仍达 $133.4\%$�
   \label{fig:p2_subst}
 \end{figure}
 
-\begin{longtable}{>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.11\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}}
+\begin{table}[htbp]
+  \centering
   \caption{弹性与质量—参数替代关系}
-  \label{tab:p2_subst} \\
+  \label{tab:p2_subst}
+\begin{tabular}{>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.11\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}}
   \toprule
   $N_0$(B) & $D_0$(B) & $Q_0$ & $\varepsilon_N$ & $\varepsilon_D$ & $\varepsilon_Q$ & $R_{NQ}$ (B/单位质量) \\
   \midrule
-  \endfirsthead
-  \caption{弹性与质量—参数替代关系（续）} \\
-  \toprule
-  $N_0$(B) & $D_0$(B) & $Q_0$ & $\varepsilon_N$ & $\varepsilon_D$ & $\varepsilon_Q$ & $R_{NQ}$ (B/单位质量) \\
-  \midrule
-  \endhead
-  \bottomrule
-  \endfoot
-  1 & 100 & 0.6 & $-0.0491$ & $-0.0383$ & $-0.0838$ & 2.844 \\
+1 & 100 & 0.6 & $-0.0491$ & $-0.0383$ & $-0.0838$ & 2.844 \\
   12 & 300 & 0.6 & $-0.0248$ & $-0.0321$ & $-0.0953$ & 76.838 \\
-\end{longtable}
+  \bottomrule
+\end{tabular}
+\end{table}
 
-在 $(N_0,D_0,Q_0)=(1,100,0.6)$ 处，质量弹性的绝对值约为参数弹性的 $1.7$ 倍。这一比较针对自变量的相同比例变化，并不表示相同资金或算力投入。表中 $R_{NQ}=2.844$ 与 $76.838$ 均为参考点的一阶局部替代率；直接乘以 $0.1$ 得到的 $0.284$B 与 $7.684$B 只是线性近似，较大的质量增量应由原模型分别比较两种方案，不能视为精确等价增量。
+在 $(N_0,D_0,Q_0)=(1,100,0.6)$ 处，质量弹性的绝对值约为参数弹性的 $1.7$ 倍，即在相同比例的微小变量变化下，质量改善产生更大的损失降幅。两个参考点的局部替代率分别为 $2.844$ 与 $76.838$ B/单位质量。以质量提升 $0.1$ 作一阶估计，对应的等效参数增量分别为 $0.284$B 与 $7.684$B；这些数值为局部线性近似，其误差随变化幅度增加而扩大，不表示等成本投入。
 
-当前估计 $\gamma=0.9779<1$，故 $|\partial L/\partial Q|$ 在 $Q<1$ 内随质量缓慢增加，并在 $Q\to1^-$ 时发散。图\ref{fig:p2_margin}仅绘制至 $Q=0.99$，不把边界奇点替换为有限值。这一边界行为属于现有函数形式的局限，不能据此宣称完美质量附近具有可实现的无限收益。图\ref{fig:p2_subst}给出固定 $D$ 下的等损失情景，其曲线并非指数函数；超出主拟合规模的部分仅反映模型外推，不应作为可实现配置的依据。
+估计值 $\gamma=0.9779<1$ 使 $|\partial L/\partial Q|$ 在 $Q<1$ 内单调增加，并在 $Q\to1^-$ 时发散。因此，质量边际效应的定量解释限于远离端点的区域，$Q=1$ 附近的导数不具有可靠的资源配置含义。图\ref{fig:p2_subst}中的等损失曲线描述固定数据量下的参数需求；超出主拟合规模的部分属于理论外推。
 
 领域效应的相似与相反模式如图\ref{fig:p2_dom}所示。
 
@@ -269,9 +240,9 @@ B2 的 MAPE 为 $33.7\%$，B8 校准段在尝试反向变换后仍达 $133.4\%$�
   \label{fig:p2_dom}
 \end{figure}
 
-图\ref{fig:p2_dom}中，wikipedia\_en 与 pile\_cc、pubmed\_central 与 pubmed\_abstracts 的相似度分别为 $0.925$ 和 $0.903$，表明它们在 13 个验证域上的相对效应模式接近。pubmed\_central 与 enron\_emails 的相似度为 $-0.967$，表示两者的效应方向存在明显差异。上述结果可辅助描述配比调整时的任务权衡，但不能仅据此断言两域必须搭配，或证明问题一推荐配比的形成机制。
+图\ref{fig:p2_dom}中，wikipedia\_en 与 pile\_cc、pubmed\_central 与 pubmed\_abstracts 的相似度分别为 $0.925$ 和 $0.903$，表明它们在 13 个验证域上的相对效应模式接近。pubmed\_central 与 enron\_emails 的相似度为 $-0.967$，表示两者的效应方向存在明显差异。这些差异反映了配比调整对不同验证任务的影响并不一致，单一领域的收益需要结合整体任务权重评价。
 
-最后，现有实现从问题一的线性配比模型中计算相对参考配比的损失变化，作为拟议的配比修正项 $M(\bm p)$。问题一推荐方案对应 $M=\hat L(\bm p_{\mathrm{rec}})-\hat L(\bm p_{\mathrm{ref}})=-0.1988$；这一数值是在附件 A 的验证域加权损失口径下计算得到的。将其直接作为附件 B 标度律的水平平移，需要额外假设：配比效应的尺度可迁移，且不随 $N,D,Q$ 改变。当前分层检验并未验证这一假设，因此 $0.1988$ 不能写成所有规模下均可实现的损失改善。
+利用问题一的线性配比模型，推荐配比相对于参考配比的加权损失差为 $M=\hat L(\bm p_{\mathrm{rec}})-\hat L(\bm p_{\mathrm{ref}})=-0.1988$。该结果对应附件 A 的验证域及权重口径。在配比效应与规模、质量项可分离且损失增量尺度可迁移的假设下，$M(\bm p)$ 可作为广义标度律的加性情景修正。跨来源检验显示损失水平存在差异，因此这一修正的跨规模解释依赖上述假设，$0.1988$ 不代表所有规模下均可实现的损失降幅。
 
-本节保留原有经典标度律与加性质量缺口模型，给出局部替代关系及分层检验结果。向问题三传递参数时，应同时传递半合成质量证据、边界导数行为和跨来源配比迁移的适用限制。质量尺度对接、完整配比项及严格互补性识别仍需补充论证，现阶段不将其表述为已经完成的实证结论。
+模型结果表明，参数扩张的边际收益随规模增大而递减，质量改善与参数扩张之间存在参考点相关的局部等效关系。跨族与文献数据上的 MAPE 分别为 $8.8\%$ 和 $8.0\%$，而半合成数据的检验误差存在明显差异。由此，资源配置分析以所估标度关系为基础，同时受质量评分尺度、数据来源和外推范围的约束。
 \endgroup
