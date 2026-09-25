@@ -18,11 +18,11 @@
 \node[archhead] at (-0.8,0.65) {建模任务与方法};
 \node[archhead] at (4.8,0.65) {主要产出};
 
-\node[archdata] (a) at (-5.8,-0.75) {附件 A\\质量信号、配方与损失};
+\node[archdata] (a) at (-5.8,-0.75) {附件 A\\质量信号\\配方与验证损失};
 \node[archmodel, fill=archblue, text=white] (q1) at (-0.8,-0.75)
   {问题一：数据质量与领域配比\\熵权评价、冲突分析、岭回归};
 \node[archoutput] (o1) at (4.8,-0.75)
-  {综合质量评分\\配比与损失关系、推荐配比};
+  {综合质量评分\\配比与损失关系\\推荐配比};
 
 \node[archdata] (b) at (-5.8,-2.8) {附件 B\\规模、训练量与质量};
 \node[archmodel] (q2) at (-0.8,-2.8)
@@ -35,7 +35,7 @@
 \node[archmodel] (q3) at (-0.8,-4.85)
   {问题三：算力约束下的配置\\成本建模与约束优化};
 \node[archoutput] (o3) at (4.8,-4.85)
-  {参数量、数据量与质量配置\\预算变化下的配置特征};
+  {最优配置 $(N,D,Q)$\\预算变化下的\\配置特征};
 
 \node[archdata] (d) at (-5.8,-6.9)
   {附件 C\\历史模型与评测信息};
@@ -44,9 +44,9 @@
 \node[archoutput] (o4) at (4.8,-6.9)
   {规模与非规模贡献\\能力前沿预测区间};
 
-\foreach \source/\model/\output in {a/q1/o1,b/q2/o2,c/q3/o3,d/q4/o4} {
-  \draw[archlink] (\source.east) -- (\model.west);
-  \draw[archlink] (\model.east) -- (\output.west);
+\foreach \archsrc/\archmid/\archdst in {a/q1/o1,b/q2/o2,c/q3/o3,d/q4/o4} {
+  \draw[archlink] (\archsrc.east) -- (\archmid.west);
+  \draw[archlink] (\archmid.east) -- (\archdst.west);
 }
 \end{tikzpicture}
 \endgroup
