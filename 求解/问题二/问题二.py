@@ -310,63 +310,8 @@ save_csv_safe(pd.DataFrame({
              subst, mix_delta_rec]}), '问题二_拟合汇总.csv')
 
 # ============ 9. 绘图 ============
-plt.rcParams['font.size'] = 12
-fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.5))
-axes[0].scatter(N_p, L_p, s=5, alpha=.2)
-ns = np.logspace(-1.2, 1.3, 100)
-axes[0].plot(ns, classic(r0.x, ns, np.full_like(ns, 300)), color='#d62728')
-axes[0].set_xscale('log'); axes[0].set_xlabel('N (B)'); axes[0].set_ylabel('Loss')
-axes[0].set_title('(a) 参数标度')
-for n in [.07, 1., 6.9]:
-    ds = np.logspace(-1, 2.6, 100)
-    axes[1].plot(ds, classic(r0.x, np.full_like(ds, n), ds), label='N=%sB' % n)
-axes[1].scatter(D_p, L_p, s=4, alpha=.1)
-axes[1].set_xscale('log'); axes[1].set_xlabel('D (B tokens)'); axes[1].set_ylabel('Loss')
-axes[1].set_title('(b) 数据标度'); axes[1].legend()
-fig.tight_layout(); save_fig(fig, '图1_经典标度律拟合')
-
-fig, ax = plt.subplots(figsize=(6, 6))
-for name, y, ph in [('B1+B6 联合拟合', L_all, Lhat)] + pred_sets:
-    ax.scatter(y, ph, s=9, alpha=.45, label=name)
-lo = min(np.min(x[1]) for x in [('', L_all, Lhat)] + pred_sets)
-hi = max(np.max(x[1]) for x in [('', L_all, Lhat)] + pred_sets)
-ax.plot([lo, hi], [lo, hi], 'k--')
-ax.set_xlabel('观测/给定 Loss'); ax.set_ylabel('预测 Loss')
-ax.set_title('广义标度律分层验证'); ax.legend(fontsize=7)
-fig.tight_layout(); save_fig(fig, '图2_广义标度律验证')
-
-Qg = np.linspace(.05, 1, 120)
-fig, ax = plt.subplots(figsize=(7, 4.8))
-for n in [.41, 2.8, 12]:
-    ax.plot(Qg, fn_best(r1x, n, 300, Qg), label='N=%sB' % n)
-ax.set_xlabel('数据质量 Q'); ax.set_ylabel('Loss')
-ax.set_title('质量缺口惩罚随 Q 消失（Q=1 退化为经典标度律）')
-ax.legend(); despine(ax); fig.tight_layout(); save_fig(fig, '图3_质量边际影响')
-
-fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.5))
-Ng = np.logspace(-1.2, 2.5, 100)
-axes[0].plot(Ng, alpha * A * Ng ** (-alpha - 1))
-axes[0].set_xscale('log'); axes[0].set_yscale('log')
-axes[0].set_title('(a) 参数边际效用 |∂L/∂N|'); axes[0].set_xlabel('N (B)')
-axes[1].plot(Qg, Cq * gamma * (1 - Qg + 1e-9) ** (gamma - 1))
-axes[1].set_title('(b) 质量边际效用 |∂L/∂Q|'); axes[1].set_xlabel('Q')
-fig.tight_layout(); save_fig(fig, '图4_边际效用对比')
-
-fig, ax = plt.subplots(figsize=(7, 5.2))
-for target in [2.30, 2.10, 1.95]:
-    rhs = target - E - B * 300.0 ** (-beta) - Cq * (1 - Qg) ** gamma
-    Ns2 = np.where(rhs > 0, (A / np.maximum(rhs, 1e-12)) ** (1 / alpha), np.nan)
-    ax.plot(Qg, Ns2, label='L=%.2f' % target)
-ax.set_yscale('log'); ax.set_xlabel('数据质量 Q'); ax.set_ylabel('所需 N (B)')
-ax.set_title('质量—参数等损失曲线（D=300B）'); ax.legend()
-despine(ax); fig.tight_layout(); save_fig(fig, '图5_质量参数替代')
-
-fig, ax = plt.subplots(figsize=(7.5, 6))
-mesh = safe_heatmap(ax, sim, row_labels=domains, col_labels=domains, cmap='RdBu_r', fontsize=7)
-mesh.set_clim(-1, 1)
-cb = fig.colorbar(mesh, ax=ax, shrink=0.8); cb.set_label('系数向量余弦相似度')
-ax.set_title('训练领域的替代/互补结构（暖=互补，冷=可替代）')
-fig.tight_layout(); save_fig(fig, '图6_领域替代互补')
+from 重绘图表 import render_all
+render_all()
 
 print('\n===== 问题二求解完成 =====')
 print('经典 R2=%.8f，留出 R2=%.8f；广义 R2=%.4f；替代率 dN/dQ=%.3f B/单位质量'
