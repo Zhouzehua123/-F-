@@ -4,6 +4,9 @@
 \PassOptionsToPackage{quiet}{xeCJK}
 \documentclass[withoutpreface,bwprint]{format}
 
+% 使用项目随附字体，避免图表标题依赖预览器的外部中文字体映射。
+\DeclareCaptionFont{bundledsong}{\song}
+
 \title{算力约束下提升大语言模型能力的资源配置建模}
 
 % 此入口只提供华为杯封面和题目页，不内置外部模板的摘要正文。
