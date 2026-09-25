@@ -1,6 +1,6 @@
 \subsection{问题三：算力约束下的资源配置与结构性转移}
 \begingroup
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{5pt}
 
 \subsubsection{具体分析}
 
@@ -36,9 +36,11 @@
 题设的三类质量成本列于表\ref{tab:p3_functions}。比较时使用增量 $\Delta g(Q)$，各函数在 $Q_0$ 处的增量成本均为零。
 \begin{table}[htbp]
  \centering
+ \normalfont\normalsize\color{black}
+ \renewcommand{\arraystretch}{1.15}
  \caption{质量处理成本函数（$g$ 的单位为 FLOPs/token）}
  \label{tab:p3_functions}
- \begin{tabular}{lll}
+ \begin{tabularx}{0.98\textwidth}{@{}*{3}{>{\centering\arraybackslash}X}@{}}
  \toprule
  成本类型 & $g(Q)$ & 本节用途\\
  \midrule
@@ -46,7 +48,7 @@
  指数型 & $10^7e^{6Q}$ & 成本形式对照\\
  对数渐进型 & $2\times10^9\ln(1+10Q)$ & 成本形式对照\\
  \bottomrule
- \end{tabular}
+ \end{tabularx}
 \end{table}
 
 \textbf{2.预算约束下的配置模型}\par\nopagebreak[4]
@@ -104,17 +106,19 @@ $\tau(Q)$ 是把质量处理费用按单位参数训练成本折算的附加规�
 
 \begin{table}[htbp]
  \centering
+ \normalfont\normalsize\color{black}
+ \renewcommand{\arraystretch}{1.15}
  \caption{三档预算的基准配置（幂函数型成本，$L_{\mathrm{ctx}}=2048$，$M=0$）}
  \label{tab:p3_opt}
- \begin{tabular}{ccccccc}
+ \begin{tabularx}{0.98\textwidth}{@{}*{7}{>{\centering\arraybackslash}X}@{}}
  \toprule
- 预算（FLOPs） & $N^*$（B） & $D^*$（B tokens） & $Q^*$ & $L^*$ & $D^*/N^*$ & $f_Q$（\%）\\
+ \makecell{预算\\（FLOPs）} & $N^*$（B） & \makecell{$D^*$\\（B tokens）} & $Q^*$ & $L^*$ & $D^*/N^*$ & $f_Q$（\%）\\
  \midrule
  $10^{19}$ & 0.225 & 6.9 & 0.551 & 3.170 & 30.9 & 0.0\\
  $10^{22}$ & 6.089 & 229.5 & 1.000 & 2.145 & 37.7 & 10.4\\
  $10^{24}$ & 44.937 & 3418.0 & 1.000 & 1.897 & 76.1 & 1.6\\
  \bottomrule
- \end{tabular}
+ \end{tabularx}
 \end{table}
 
 三档结果尚不能说明质量在何时提升。为此，图\ref{fig:p3_shift}将预算扫描结果与三档配置联系起来，左图展示质量完成度，右图展示三类成本的份额。
@@ -148,25 +152,27 @@ $\tau(Q)$ 是把质量处理费用按单位参数训练成本折算的附加规�
 
 \begin{table}[htbp]
  \centering
+ \normalfont\normalsize\color{black}
+ \renewcommand{\arraystretch}{1.15}
  \caption{三类质量成本下的配置对比（$L_{\mathrm{ctx}}=2048$，$M=0$）}
  \label{tab:p3_cost}
- \begin{tabular}{clrrrrr}
+ \begin{tabularx}{0.98\textwidth}{@{}>{\hsize=0.95\hsize\linewidth=\hsize\centering\arraybackslash}X>{\hsize=1.4\hsize\linewidth=\hsize\centering\arraybackslash}X>{\hsize=0.93\hsize\linewidth=\hsize\centering\arraybackslash}X>{\hsize=0.93\hsize\linewidth=\hsize\centering\arraybackslash}X>{\hsize=0.93\hsize\linewidth=\hsize\centering\arraybackslash}X>{\hsize=0.93\hsize\linewidth=\hsize\centering\arraybackslash}X>{\hsize=0.93\hsize\linewidth=\hsize\centering\arraybackslash}X@{}}
  \toprule
- 预算（FLOPs） & 成本类型 & $N^*$（B） & $D^*$（B tokens） & $Q^*$ & $L^*$ & $f_Q$（\%）\\
+ \makecell{预算\\（FLOPs）} & 成本类型 & $N^*$（B） & \makecell{$D^*$\\（B tokens）} & $Q^*$ & $L^*$ & $f_Q$（\%）\\
  \midrule
  $10^{19}$ & 指数型 & 0.265 & 5.1 & 0.660 & 3.163 & 12.9\\
  & 幂函数型 & 0.225 & 6.9 & 0.551 & 3.170 & 0.0\\
  & 对数渐进型 & 0.354 & 3.0 & 1.000 & 3.113 & 31.6\\
- \midrule
+ \addlinespace[4pt]
  $10^{22}$ & 指数型 & 5.972 & 237.9 & 1.000 & 2.144 & 8.9\\
  & 幂函数型 & 6.089 & 229.5 & 1.000 & 2.145 & 10.4\\
  & 对数渐进型 & 5.527 & 274.2 & 1.000 & 2.138 & 2.9\\
- \midrule
+ \addlinespace[4pt]
  $10^{24}$ & 指数型 & 44.796 & 3437.7 & 1.000 & 1.897 & 1.3\\
  & 幂函数型 & 44.937 & 3418.0 & 1.000 & 1.897 & 1.6\\
  & 对数渐进型 & 44.298 & 3509.0 & 1.000 & 1.897 & 0.4\\
  \bottomrule
- \end{tabular}
+ \end{tabularx}
 \end{table}
 
 在 $10^{19}$ FLOPs 下，三类成本给出了不同选择：幂函数型保持 $Q^*=0.551$，指数型将质量提高至 0.660，对数渐进型则达到上界。对数渐进型在这一预算下的质量投入份额也最高，为 $31.6\%$。三种配置的预测损失相差约 0.057，但质量份额从 0 到 $31.6\%$ 不等，说明相近损失可以对应明显不同的投入结构。
@@ -185,11 +191,13 @@ $\tau(Q)$ 是把质量处理费用按单位参数训练成本折算的附加规�
 
 \begin{table}[htbp]
  \centering
+ \normalfont\normalsize\color{black}
+ \renewcommand{\arraystretch}{1.15}
  \caption{上下文长度敏感性（$C_{\mathrm b}=10^{22}$ FLOPs，幂函数型成本，$M=0$）}
  \label{tab:p3_ctx}
- \begin{tabular}{rrrrrrr}
+ \begin{tabularx}{0.98\textwidth}{@{}>{\hsize=1\hsize\linewidth=\hsize\centering\arraybackslash}X>{\hsize=0.9\hsize\linewidth=\hsize\centering\arraybackslash}X>{\hsize=0.95\hsize\linewidth=\hsize\centering\arraybackslash}X>{\hsize=1\hsize\linewidth=\hsize\centering\arraybackslash}X>{\hsize=0.9\hsize\linewidth=\hsize\centering\arraybackslash}X>{\hsize=0.95\hsize\linewidth=\hsize\centering\arraybackslash}X>{\hsize=1.3\hsize\linewidth=\hsize\centering\arraybackslash}X@{}}
  \toprule
- $L_{\mathrm{ctx}}$（tokens） & $\lambda$ & $N^*$（B） & $D^*$（B tokens） & $Q^*$ & $L^*$ & 注意力份额（\%）\\
+ \makecell{$L_{\mathrm{ctx}}$\\（tokens）} & $\lambda$ & $N^*$（B） & \makecell{$D^*$\\（B tokens）} & $Q^*$ & $L^*$ & \makecell{注意力份额\\（\%）}\\
  \midrule
  2048 & 0.068 & 6.089 & 229.5 & 1.000 & 2.145 & 5.7\\
  4096 & 0.137 & 5.897 & 223.5 & 1.000 & 2.149 & 10.8\\
@@ -197,7 +205,7 @@ $\tau(Q)$ 是把质量处理费用按单位参数训练成本折算的附加规�
  32768 & 1.092 & 4.318 & 170.2 & 1.000 & 2.194 & 48.2\\
  131072 & 4.369 & 2.705 & 109.1 & 1.000 & 2.273 & 77.3\\
  \bottomrule
- \end{tabular}
+ \end{tabularx}
 \end{table}
 
 上下文由 2048 增至 131072 tokens 时，注意力份额从 $5.7\%$ 升至 $77.3\%$，参数量和数据量分别减少约 $55.6\%$ 和 $52.5\%$，预测损失增加约 0.128。五档质量均保持为 1，额外注意力开销主要压缩了规模投入。值得区分的是，32768 tokens 已使注意力成本超过基础训练，但其总预算份额仍为 $48.2\%$，因为质量处理也占用预算。
