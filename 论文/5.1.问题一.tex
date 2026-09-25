@@ -39,41 +39,41 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \begingroup
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.33\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\raggedright\arraybackslash}p{0.31\textwidth}>{\centering\arraybackslash}p{0.08\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}@{}}
-  \caption{22 个质量指标的方向判定与熵权}
+  \caption{质量指标的含义、评价方向及熵权}
   \label{tab:p1_dir} \\
   \toprule
-  指标 & 类型 & 语义（方向依据） & 方向 & 熵权 $w_j$ \\
+  指标字段 & 数据类型 & 指标含义与判向依据 & 评价方向 & 熵权 $w_j$ \\
   \midrule
   \endfirsthead
-  \caption{22 个质量指标的方向判定与熵权（续）} \\
+  \caption{质量指标的含义、评价方向及熵权（续）} \\
   \toprule
-  指标 & 类型 & 语义（方向依据） & 方向 & 熵权 $w_j$ \\
+  指标字段 & 数据类型 & 指标含义与判向依据 & 评价方向 & 熵权 $w_j$ \\
   \midrule
   \endhead
   \bottomrule
   \endfoot
-  fineweb\_\allowbreak{}edu & 列表(1) & 教育价值 & 正向 & 0.0437 \\
+  fineweb\_\allowbreak{}edu & 列表(1) & 文本用于教育的价值 & 正向 & 0.0437 \\
   fluency\_\allowbreak{}en & 列表(2) & 英语流畅度（第 1 类=流畅，已核验） & 正向 & 0.0682 \\
-  modernbert\_\allowbreak{}cleanliness & 列表(6) & 文本洁净度 & 正向 & 0.1434 \\
-  modernbert\_\allowbreak{}readability & 列表(6) & 可读性 & 正向 & 0.0567 \\
-  modernbert\_\allowbreak{}reasoning & 列表(6) & 推理性 & 正向 & \textbf{0.1517} \\
-  modernbert\_\allowbreak{}professionalism & 列表(6) & 专业性 & 正向 & 0.0396 \\
-  dsir\_\allowbreak{}books & 标量 & 书籍域重要性权重 & 正向 & 0.0081 \\
-  dsir\_\allowbreak{}wiki & 标量 & 维基域重要性权重 & 正向 & 0.0081 \\
-  dsir\_\allowbreak{}math & 标量 & 数学域重要性权重 & 正向 & 0.0086 \\
+  modernbert\_\allowbreak{}cleanliness & 列表(6) & 文本内容的洁净程度 & 正向 & 0.1434 \\
+  modernbert\_\allowbreak{}readability & 列表(6) & 文本的易读程度 & 正向 & 0.0567 \\
+  modernbert\_\allowbreak{}reasoning & 列表(6) & 内容体现的推理程度 & 正向 & \textbf{0.1517} \\
+  modernbert\_\allowbreak{}professionalism & 列表(6) & 内容的专业程度 & 正向 & 0.0396 \\
+  dsir\_\allowbreak{}books & 标量 & 相对于书籍领域的重要性权重 & 正向 & 0.0081 \\
+  dsir\_\allowbreak{}wiki & 标量 & 相对于维基领域的重要性权重 & 正向 & 0.0081 \\
+  dsir\_\allowbreak{}math & 标量 & 相对于数学领域的重要性权重 & 正向 & 0.0086 \\
   qurater & 列表(4) & 教育质量评级（4 项取均值） & 正向 & 0.0492 \\
   ad\_\allowbreak{}en & 列表(2) & 广告含量（\textbf{第 1 类=“无广告”，正向}；依据：原文抽查） & 正向 & 0.0072 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}word\_\allowbreak{}count & 标量 & 文档词数 & 长度型 & 0.0516 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}num\_\allowbreak{}sentences & 标量 & 文档句数 & 长度型 & 0.0523 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy & 标量 & 一元词熵（多样性） & 正向 & 0.0347 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words & 标量 & 唯一词占比 & 正向 & 0.0538 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}no\_\allowbreak{}alph\_\allowbreak{}words & 标量 & 非字母字符占比 & 负向 & 0.0287 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}2gram & 标量 & 字符 2-gram 重复度 & 负向 & 0.0130 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}3gram & 标量 & 字符 3-gram 重复度 & 负向 & 0.0119 \\
-  rps\_\allowbreak{}lines\_\allowbreak{}uppercase\_\allowbreak{}letter\_\allowbreak{}fraction & 标量 & 大写字母行占比 & 负向 & 0.0316 \\
-  rps\_\allowbreak{}lines\_\allowbreak{}ending\_\allowbreak{}with\_\allowbreak{}terminal\_\allowbreak{}punctution\_\allowbreak{}mark & 标量 & 终止标点结尾行占比 & 正向 & 0.0880 \\
-  rps\_\allowbreak{}lines\_\allowbreak{}numerical\_\allowbreak{}chars\_\allowbreak{}fraction & 标量 & 含数字行占比 & 负向 & 0.0125 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}mean\_\allowbreak{}word\_\allowbreak{}length & 标量 & 平均词长 & 长度型 & 0.0373 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}word\_\allowbreak{}count & 标量 & 文档包含的词总数 & 长度型 & 0.0516 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}num\_\allowbreak{}sentences & 标量 & 文档包含的句子总数 & 长度型 & 0.0523 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy & 标量 & 用一元词熵衡量词汇多样性 & 正向 & 0.0347 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words & 标量 & 不同词项所占比例 & 正向 & 0.0538 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}no\_\allowbreak{}alph\_\allowbreak{}words & 标量 & 非字母字符所占比例 & 负向 & 0.0287 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}2gram & 标量 & 字符 2-gram 的重复程度 & 负向 & 0.0130 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}3gram & 标量 & 字符 3-gram 的重复程度 & 负向 & 0.0119 \\
+  rps\_\allowbreak{}lines\_\allowbreak{}uppercase\_\allowbreak{}letter\_\allowbreak{}fraction & 标量 & 大写字母行所占比例 & 负向 & 0.0316 \\
+  rps\_\allowbreak{}lines\_\allowbreak{}ending\_\allowbreak{}with\_\allowbreak{}terminal\_\allowbreak{}punctution\_\allowbreak{}mark & 标量 & 以终止标点结束的行所占比例 & 正向 & 0.0880 \\
+  rps\_\allowbreak{}lines\_\allowbreak{}numerical\_\allowbreak{}chars\_\allowbreak{}fraction & 标量 & 含有数字的行所占比例 & 负向 & 0.0125 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}mean\_\allowbreak{}word\_\allowbreak{}length & 标量 & 词项长度的平均值 & 长度型 & 0.0373 \\
 \end{longtable}
 \endgroup
 
@@ -88,22 +88,22 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \begingroup
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.44\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}@{}}
-  \caption{质量信号的字段级缺失审计（A1--A3 全量 272{,}505 条）}
+  \caption{A1--A3 中 272{,}505 条记录的质量字段缺失统计}
   \label{tab:p1_missing} \\
   \toprule
-  指标 & 缺失记录数 & 形态 \\
+  缺失字段 & 涉及记录数 & 缺失情况 \\
   \midrule
   \endfirsthead
-  \caption{质量信号的字段级缺失审计（续）} \\
+  \caption{质量字段缺失统计（续）} \\
   \toprule
-  指标 & 缺失记录数 & 形态 \\
+  缺失字段 & 涉及记录数 & 缺失情况 \\
   \midrule
   \endhead
   \bottomrule
   \endfoot
-  modernbert\_\allowbreak{}reasoning & 13 & 整行 6 维取值均为 NaN \\
-  modernbert\_\allowbreak{}professionalism & 6 & 整行 6 维取值均为 NaN \\
-  其余 20 个指标 & 0 & 无缺失 \\
+  modernbert\_\allowbreak{}reasoning & 13 & 该记录中此字段的 6 个分量均为 NaN \\
+  modernbert\_\allowbreak{}professionalism & 6 & 该记录中此字段的 6 个分量均为 NaN \\
+  其余 20 个指标 & 0 & 未发现缺失值 \\
 \end{longtable}
 \endgroup
 
@@ -115,15 +115,15 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \begingroup
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}>{\centering\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}@{}}
-  \caption{问题一赋权方案对比（样本级相关性与域级排序一致性）}
+  \caption{不同赋权方式下的样本得分及领域排序比较}
   \label{tab:algo1} \\
   \toprule
-  方案 & 得分均值 & 与熵权法相关性 & 域级 Spearman 排序一致性（对熵权法） \\
+  赋权方法 & 样本平均得分 & 与熵权得分的相关系数 & 领域排序的 Spearman 相关系数\newline 以熵权法为参照 \\
   \midrule
   \endfirsthead
-  \caption{问题一赋权方案对比（续）} \\
+  \caption{不同赋权方式下的样本得分及领域排序比较（续）} \\
   \toprule
-  方案 & 得分均值 & 与熵权法相关性 & 域级 Spearman 排序一致性（对熵权法） \\
+  赋权方法 & 样本平均得分 & 与熵权得分的相关系数 & 领域排序的 Spearman 相关系数\newline 以熵权法为参照 \\
   \midrule
   \endhead
   \bottomrule
@@ -233,15 +233,15 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \begingroup
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}>{\centering\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}@{}}
-  \caption{抽样集 A1 与扩展集 A2/A3 的域级质量对照}
+  \caption{各领域在 A1 抽样集与 A2/A3 扩展集中的质量评分}
   \label{tab:p1_qa} \\
   \toprule
-  质量域 & $Q$（A1） & $Q$（扩展集） & 差值 & 对应配方域 \\
+  质量信号领域 & A1 评分 $Q$ & 扩展集评分 $Q$ & 评分差值 & 训练配方对应领域 \\
   \midrule
   \endfirsthead
-  \caption{抽样集 A1 与扩展集 A2/A3 的域级质量对照（续）} \\
+  \caption{各领域在 A1 抽样集与 A2/A3 扩展集中的质量评分（续）} \\
   \toprule
-  质量域 & $Q$（A1） & $Q$（扩展集） & 差值 & 对应配方域 \\
+  质量信号领域 & A1 评分 $Q$ & 扩展集评分 $Q$ & 评分差值 & 训练配方对应领域 \\
   \midrule
   \endhead
   \bottomrule
@@ -265,15 +265,15 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \begingroup
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}>{\centering\arraybackslash}p{0.18\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}@{}}
-  \caption{质量冲突与一致性检验结果}
+  \caption{各数据集的指标冲突比例与排序一致性}
   \label{tab:p1_conf} \\
   \toprule
-  数据集 & 样本数 & Kendall $W$ & 冲突率 $\rho_c$ & 独立基准 $\rho_0$ & $\rho_c/\rho_0$ \\
+  统计范围 & 记录数 & Kendall $W$ & 冲突比例 $\rho_c$ & 独立基准 $\rho_0$ & $\rho_c/\rho_0$ \\
   \midrule
   \endfirsthead
-  \caption{质量冲突与一致性检验结果（续）} \\
+  \caption{各数据集的指标冲突比例与排序一致性（续）} \\
   \toprule
-  数据集 & 样本数 & Kendall $W$ & 冲突率 $\rho_c$ & 独立基准 $\rho_0$ & $\rho_c/\rho_0$ \\
+  统计范围 & 记录数 & Kendall $W$ & 冲突比例 $\rho_c$ & 独立基准 $\rho_0$ & $\rho_c/\rho_0$ \\
   \midrule
   \endhead
   \bottomrule
@@ -359,15 +359,15 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \begingroup
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}>{\centering\arraybackslash}p{0.30\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}@{}}
-  \caption{有界推荐配比调整}
+  \caption{配比上限约束下的推荐方案与参考方案}
   \label{tab:p1_rec} \\
   \toprule
-  领域 & 参考配比 & 推荐配比 & 调整量 \\
+  训练领域 & 参考占比 & 推荐占比 & 占比变化量 \\
   \midrule
   \endfirsthead
-  \caption{有界推荐配比调整（续）} \\
+  \caption{配比上限约束下的推荐方案与参考方案（续）} \\
   \toprule
-  领域 & 参考配比 & 推荐配比 & 调整量 \\
+  训练领域 & 参考占比 & 推荐占比 & 占比变化量 \\
   \midrule
   \endhead
   \bottomrule
