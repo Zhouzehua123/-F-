@@ -2,9 +2,11 @@
 
 用法：python 求解/问题三/论文绘图.py
 依赖：numpy、pandas、matplotlib。输出同名 PNG（300 dpi）和矢量 PDF。
-缺失求解点保留为 NaN，不插值补造结果。
+圆点对应 CSV 有效记录；缺失区间用虚线连接两端，仅引导视线，不补算或插值。
 """
 from pathlib import Path
+import hashlib
+import json
 import numpy as np
 import pandas as pd
 import matplotlib
@@ -25,8 +27,13 @@ plt.rcParams.update({
 BLUE, ORANGE, CYAN, PURPLE = "#356B9A", "#C87530", "#238A8D", "#8064A2"
 
 
+AUDIT = {}
+
 def read(name):
-    return pd.read_csv(DATA / (name + ".csv"))
+    path = DATA / (name + ".csv")
+    df = pd.read_csv(path)
+    AUDIT[name] = {"sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "rows": len(df)}
+    return df
 
 
 def finish(fig, name):
@@ -59,6 +66,18 @@ def recover_grid(df, grid, key):
             if col != key:
                 output.loc[index, col] = row[col]
     return output
+
+
+def measured_line(ax, x, y, *, color, lw=1.3, ls="-", label=None, marker="o", ms=2.5):
+    """实心标记只画有效记录；跨缺测的连接单独用点线，不生成任何中间数据。"""
+    x, y = np.asarray(x, float), np.asarray(y, float)
+    good = np.isfinite(x) & np.isfinite(y)
+    ax.plot(x, y, color=color, lw=lw, ls=ls, label=label)
+    ax.plot(x[good], y[good], ls="none", marker=marker, ms=ms, color=color)
+    ids = np.flatnonzero(good)
+    for left, right in zip(ids[:-1], ids[1:]):
+        if right-left > 1:
+            ax.plot(x[[left,right]], y[[left,right]], color=color, lw=lw, ls=":")
 
 
 opt = read("三档预算最优配置").sort_values("C")
@@ -102,11 +121,11 @@ sat = float(sw.loc[valid & (sw.Q >= 1-1e-7), "C"].iloc[0])
 peak = sw.loc[sw.f_qual.idxmax()]
 fig, axs = plt.subplots(1, 2, figsize=(7.2, 3.35), layout="constrained")
 a, b = axs
-a.plot(sw.C, theta*100, color=ORANGE, lw=1.8)
+measured_line(a, sw.C, theta*100, color=ORANGE)
 for col, color, ls, label in [("f_base", BLUE, "-", "基础训练"),
                              ("f_qual", ORANGE, "--", "质量提升"),
                              ("f_attn", PURPLE, "-.", "注意力计算")]:
-    b.plot(sw.C, sw[col]*100, color=color, ls=ls, lw=1.6, label=label)
+    measured_line(b, sw.C, sw[col]*100, color=color, ls=ls, label=label, ms=2)
 for aa in axs:
     aa.set_xscale("log")
     aa.set_xlim(1e18, 1e25)
@@ -125,7 +144,7 @@ b.legend(loc="upper right", bbox_to_anchor=(1,.78), fontsize=8, framealpha=.95)
 b.annotate("峰值 40.7%", (peak.C, peak.f_qual*100), xytext=(2e21, 42),
            fontsize=8, arrowprops={"arrowstyle":"-", "color":ORANGE, "lw":.8})
 zoom = a.inset_axes([.40, .14, .57, .50])
-zoom.plot(sw.C, theta*100, color=ORANGE, lw=1.4)
+measured_line(zoom, sw.C, theta*100, color=ORANGE, ms=3)
 zoom.set_xscale("log")
 zoom.set_xlim(1e19, 1e20)
 zoom.set_ylim(-4,104)
@@ -144,7 +163,7 @@ ctx = read("上下文长度敏感性")
 cont = recover_grid(read("上下文长度连续扫描"), np.geomspace(1024, 200000, 40), "L_ctx")
 ql = read("上下文长度与最优质量")
 fig, ax = plt.subplots(1, 2, figsize=(7.0, 2.85), layout="constrained")
-ax[0].plot(cont.L_ctx, cont.N_B, color=BLUE, lw=1.8)
+measured_line(ax[0], cont.L_ctx, cont.N_B, color=BLUE, label="扫描有效记录")
 ax[0].plot(ctx.L_ctx, ctx.N_B, "s", color=BLUE, ms=4, label="C7 五档配置")
 ax[0].set_ylabel(r"最优参数量 $N^*$（B）")
 ax[0].set_ylim(2, 6.6)
@@ -152,10 +171,9 @@ ax[0].legend(loc="lower left", fontsize=8)
 panel(ax[0], r"(a) 规模配置：$10^{22}$ FLOPs")
 for budget, color, ls, marker, label in [(1e19, ORANGE, "-", "o", r"$10^{19}$ FLOPs"),
                                         (1e20, BLUE, "-", "s", r"$10^{20}$ FLOPs"),
-                                        (1e21, CYAN, "--", None, r"$10^{21}$ FLOPs")]:
+                                        (1e21, CYAN, "--", "^", r"$10^{21}$ FLOPs")]:
     d = recover_grid(ql.loc[ql.C.eq(budget)], np.geomspace(1024, 150000, 14), "L_ctx")
-    ax[1].plot(d.L_ctx, d.Q, color=color, ls=ls, marker=marker, ms=3,
-               lw=1.6, label=label)
+    measured_line(ax[1], d.L_ctx, d.Q, color=color, ls=ls, marker=marker, ms=3, label=label)
 ax[1].set_ylim(.49, 1.085)
 ax[1].set_ylabel(r"最优质量 $Q^*$")
 ax[1].text(1600, .925, r"$10^{20}$ 与 $10^{21}$ 曲线重合", fontsize=8)
@@ -171,19 +189,35 @@ for a in ax:
     a.set_xlabel(r"上下文长度 $L_{\mathrm{ctx}}$（tokens）")
 finish(fig, "图3_上下文长度敏感性")
 
-fig, ax = plt.subplots(figsize=(5.0, 2.7), layout="constrained")
-q = np.linspace(q0, 1, 300)
-for func, color, ls, label in [(lambda x: 5e9*x**4, BLUE, "-", "幂函数型"),
-                               (lambda x: 1e7*np.exp(6*x), ORANGE, "--", "指数型"),
-                               (lambda x: 2e9*np.log1p(10*x), CYAN, "-.", "对数渐进型")]:
-    ax.plot(q, (func(q)-func(q0))/1e9, color=color, ls=ls, lw=1.8, label=label)
-ax.set_xlabel(r"数据质量 $Q$")
-ax.set_ylabel("增量质量成本（$10^9$ FLOPs/token）")
-ax.set_xlim(q0-.015, 1.01)
-ax.set_ylim(-.12, 4.85)
-ax.legend(loc="upper left")
-ax.annotate(r"$Q_0=0.551$", (q0, 0), xytext=(8, 13), textcoords="offset points", fontsize=9)
+# 图4只使用成本函数对比.csv的九组求解记录，不再绘制解析函数采样线。
+comp = read("成本函数对比")
+fig, ax = plt.subplots(1, 2, figsize=(7.0, 2.85), layout="constrained")
+budgets = sorted(comp.C.unique())
+x = np.arange(len(budgets))
+for i, (form, color) in enumerate([("幂函数型", BLUE), ("指数型", ORANGE), ("对数渐进型", CYAN)]):
+    d = comp.loc[comp.form.eq(form)].sort_values("C")
+    assert d.C.tolist() == budgets and len(d) == 3
+    for a, column, factor in [(ax[0], "Q", 1), (ax[1], "f_qual", 100)]:
+        bars = a.bar(x+(i-1)*.24, d[column]*factor, width=.22, color=color, label=form)
+        a.bar_label(bars, labels=[f"{v:.3f}" if column == "Q" else f"{v:.1f}" for v in d[column]*factor], fontsize=8, padding=3, rotation=90)
+for a in ax:
+    a.set_xticks(x, [rf"$10^{{{int(np.log10(c))}}}$" for c in budgets])
+    a.set_xlabel(r"算力预算 $C_{\mathrm{b}}$（FLOPs）")
+ax[0].set_ylim(0, 1.3)
+ax[1].set_ylim(0, 40)
+ax[0].set_ylabel(r"最优质量 $Q^*$")
+ax[1].set_ylabel("质量投入份额（%）")
+panel(ax[0], "(a) 质量水平")
+panel(ax[1], "(b) 质量投入份额")
+fig.legend(*ax[0].get_legend_handles_labels(), loc="outside lower center", ncol=3, frameon=False)
 finish(fig, "图4_质量成本函数对比")
+
+AUDIT["预算扫略"]["valid_Q"] = int(valid.sum())
+AUDIT["预算扫略"]["missing_C"] = sw.loc[~valid, "C"].tolist()
+AUDIT["上下文长度连续扫描"]["expected_grid_rows"] = 40
+AUDIT["上下文长度连续扫描"]["missing_L_ctx"] = cont.loc[cont.N_B.isna(), "L_ctx"].tolist()
+AUDIT["上下文长度与最优质量"]["valid_rows_by_budget"] = {str(c): len(d) for c,d in ql.groupby("C")}
+(OUT / "论文绘图数据核验.json").write_text(json.dumps(AUDIT, ensure_ascii=False, indent=2), encoding="utf-8")
 
 print(f"已生成四组 PNG/PDF；扫描点 {len(sw)}，有效点 {valid.sum()}。")
 print(f"首次正投入 {start:.6g}；首次饱和 {sat:.6g}；份额峰值 {peak.f_qual:.6f}。")
