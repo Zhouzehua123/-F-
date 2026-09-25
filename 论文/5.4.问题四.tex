@@ -1,275 +1,296 @@
-\subsection{问题四的模型的建立和求解}
+\subsection{问题四：技术演进分析与能力前沿预测}
+\begingroup
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\clubpenalty=10000
+\widowpenalty=10000
 
-\subsubsection{具体分析}
+\subsubsection{能力度量与数据组织}
 
-针对问题四，本问属于\textbf{技术演进建模与前沿预测}类问题，需要结合历史评测数据建立技术演进模型，分离并量化规模扩张与非规模技术进步的贡献占比，并预测未来 12 至 24 个月开源大语言模型能力的前沿边界。本问综合采用“口径界定 $\to$ Loss—Benchmark 桥接 $\to$ 面板回归分解 $\to$ 前沿预测 $\to$ 宏观证据校验”五步框架：首先明确综合能力的度量方式、开源筛选口径、模型类型口径与时间轴口径；再按可比性分层建立交叉熵损失与 Leaderboard 得分的映射，把前三问以损失为目标的结论桥接到以评测得分为度量的能力；然后以参数规模与年份为解释变量做面板回归（含年份固定效应），把能力提升分解为“规模扩张”与“非规模技术进步”两部分；接着用 logistic 饱和模型与结构外推两条路线给出未来 12/24 个月的前沿预测与不确定性区间；最后用附件 C4 的算力、数据量与开源权重证据检验“算力增长放缓”情景的合理性。
+前三问以验证集交叉熵损失评价资源配置，本问进一步考察这些规律在下游评测中的表现。分析围绕三个问题展开：损失降低是否对应能力改善，历史能力增长有多少与规模扩张相关，以及给定增长条件后前沿还能提高多少。为此，先统一样本与评分口径，再建立分层损失映射和规模、时间回归，以贡献分解解释历史变化，以饱和曲线和结构情景刻画前沿范围，最后利用逐任务结果与宏观资源记录约束结论。
 
-本问严格完成题设的必用要求：对 C8 的逐任务评测 JSON 做逐任务聚合分析（不依赖汇总表），对 C4 的算力、数据量与开源权重字段作宏观证据检验，桥接数据按可比性等级（C6 的 High/Medium，并以 C5 对照）分层使用。
+\textbf{1.综合得分、许可筛选与时间变量}\par\nopagebreak[4]
+综合能力采用 Open LLM Leaderboard v2 的六维等权平均分 $\bar B$，满分为 100。六维分别为指令遵循 IFEval、综合推理 BBH、数学 MATH Lvl 5、研究生级问答 GPQA、多步推理 MUSR 和专业知识 MMLU-PRO。总分用于追踪共同变化，各维得分用于识别能力短板，二者不相互替代。
 
-\subsubsection{模型准备}
+C1 的提交日期覆盖 2024 年 6 月 8 日至 2025 年 3 月 13 日。本文以提交时间作为评测进入样本的时间，不将其解释为模型首次发布的时间。回归采用年度变量 $t=\text{年份}-2019$；前沿曲线采用月份中点 $t=\text{年份}-2019+(\text{月}-0.5)/12$，C3 的历史年度锚点置于年中。两种时间精度分别服务于年度系数估计和月度前沿描述。
 
-\textbf{1.口径界定}
-
-\textbf{（1）综合能力度量。} 采用 Open LLM Leaderboard v2 的六维平均分 $\bar B$：IFEval（指令遵循）、BBH（多跳推理）、MATH Lvl 5（数学）、GPQA（研究生级问答）、MUSR（多轮推理）、MMLU-PRO（专业知识）。六维等权平均，取值 $0\sim100$。
-
-\textbf{（2）时间轴口径。} 统一以 C1 的 Submission Date（提交日期）为基准，并按“年 $+$ 月”折算为连续时间变量 $t=\text{年份}-2019+(\text{月}-0.5)/12$。之所以不采用发布日期或版本日期，是因为 Leaderboard 上的评测结果均在提交时冻结、且提交日期字段完整无缺失；C3 的 Year 字段仅用于 2019--2023 的历史锚点对照。
-
-\textbf{（3）开源筛选口径。} 同时要求两个条件：（a）模型权重可获取（Type 属 pretrained、持续预训练、chat、域内微调四类）；（b）Hub License 允许研究与复现，即采用 apache-2.0、mit、gpl-3.0、cc-by-4.0、mpl-2.0、bsd-3-clause、llama2/3/3.1/3.2/3.3、gemma、cc-by-sa-4.0、openrail 等许可，排除 cc-by-nc 系列（非商用）、creativeml-openrail、bigscience-bloom-rail 等受限许可以及未知许可。筛选漏斗见表\ref{tab:p4_funnel}。
-
-\textbf{（4）模型类型口径。} 明确区分 pretrained（含持续预训练，共 231 条）与 chat/finetuned（经对话指令或监督微调，共 1{,}497 条）两类，分组统计规模效应与时间效应；base 合并模型（1{,}724 条，非独立训练过程）与多模态模型（9 条，任务构成不同）不并入主分析。
+主样本按字段完整性和许可白名单筛选，流程见表\ref{tab:p4_funnel}。白名单包括 apache-2.0、mit、gpl-3.0、cc-by-4.0、mpl-2.0、bsd-3-clause、cc-by-sa-4.0、openrail，以及 llama2、llama3、llama3.1、llama3.2、llama3.3 和 gemma。该规则用于界定本文研究的开放权重模型范围，不意味着各许可证具有相同的使用条件；其他许可和未知许可不纳入主样本。
 
 \begin{table}[!htbp]
 \centering
-\caption{数据筛选漏斗（C1 排行榜）}
+\caption{主样本的形成及模型类型构成}
 \label{tab:p4_funnel}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.56\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}@{}}
+\begin{tabularx}{0.98\textwidth}{@{}l r >{\raggedright\arraybackslash}X@{}}
 \toprule
-  筛选层级 & 记录数 & 说明 \\
-  \midrule
-
-  C1 全量记录 & 4{,}576 & 提交日期 2024-06-08 $\sim$ 2025-03-13 \\
-  六维得分完整 & 4{,}576 & 无缺失 \\
-  时间/参数/六维齐备 & 4{,}561 & 剔除 15 条参数或日期缺失 \\
-  许可允许研究复现（开源口径） & 2{,}346 & 符合上述许可白名单 \\
-  其中 pretrained & 231 & 类型为 pretrained / 持续预训练 \\
-  其中 chat/finetuned & 1{,}497 & 类型为 chat / 域内微调 \\
+数据层次 & 记录数 & 判定依据或构成 \\
+\midrule
+C1 原始记录 & 4{,}576 & 六维得分均完整；日期覆盖 2024-06 至 2025-03 \\
+完整性筛选后 & 4{,}561 & 日期、参数量和六维得分齐备，排除 15 条记录 \\
+许可白名单主样本 & 2{,}346 & 以 Hub License 字段匹配许可集合 \\
+\midrule
+预训练类 & 231 & pretrained 与持续预训练模型 \\
+对话及微调类 & 1{,}497 & chat 与领域微调模型 \\
+其他类型 & 618 & 包含 611 条合并模型记录和 7 条多模态记录 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
-\textbf{2.附件 C8 的逐任务聚合}
+主样本包含表中三类记录；模型类型只用于分组比较，未作为全样本的排除条件。为区分基础训练与后训练模型的表现，另对预训练类和对话及微调类分别估计规模系数与时间系数。C3 用于补充长周期参照，其历史记录按六维一致性和参数有效性筛选，未套用 C1 的许可白名单，因此长期结果不能直接视为同一开放权重样本的连续追踪。
 
-附件 C8 含 1{,}863 个模型子目录、1{,}958 个评测 JSON。本文按目录取最新可解析记录，提取每个模型在各任务上的原始指标（按 acc\_\allowbreak{}norm、acc、prompt\_\allowbreak{}level\_\allowbreak{}loose\_\allowbreak{}acc、inst\_\allowbreak{}level\_\allowbreak{}loose\_\allowbreak{}acc、exact\_\allowbreak{}match 的优先级选取），共成功解析 1{,}860 个模型，跳过 7 个损坏或无有效记录的目录。解析后可用的子任务维度共 37 项：BBH 子任务 24 项、MATH-Hard 子任务 7 项、GPQA 子集 3 项、MUSR 子任务 3 项。
+\textbf{2.从原始评测记录到子任务样本}\par\nopagebreak[4]
+C8 包含 1{,}863 个模型目录和 1{,}958 个 JSON 文件。各目录从最新文件开始读取，遇到无法解析的文件则回退，最终取得 1{,}860 个目录的有效结果，其余 3 个目录未取得有效记录。指标依次优先采用 acc\_norm、acc、prompt\_level\_loose\_acc、inst\_level\_loose\_acc 和 exact\_match，并转换为百分制。按规范化模型名称与主样本取交集后，保留 964 个目录；37 个子任务分别包含 BBH 24 项、MATH-Hard 7 项、GPQA 3 项和 MUSR 3 项，各任务有效样本量为 961 至 964。
 
-由于 C8 保存的是原始指标、而 C1 保存的是官方按随机基线归一化后的六维得分（例如 $\text{GPQA}=(\text{raw}-0.25)/0.75$、$\text{MMLU-PRO}=(\text{raw}-0.10)/0.90$、$\text{IFEval}=(\text{prompt\_\allowbreak{}strict}+\text{inst\_\allowbreak{}strict})/2$），两者存在系统性水平差。因此本文的处理是：跨模型得分分析使用 C1，逐任务结构分析在 C8 的原始指标空间内进行，并以秩相关作为两者的衔接验证，结果见表\ref{tab:p4_c8chk}。
+C8 记录原始评测指标，C1 则采用基准调整后的汇总得分。例如，GPQA 和 MMLU-PRO 的随机基线分别为 0.25 和 0.10，对原始比例得分 $s$ 的调整分别为 $(s-0.25)/0.75$ 和 $(s-0.10)/0.90$；IFEval 还涉及严格判定下提示级与指令级指标的平均。因此，跨模型综合分析使用 C1，子任务比较保留 C8 原始指标，不能将两者的数值直接混用。
+
+表\ref{tab:p4_c8chk}给出了规范化名称关联后的记录级校验。C1 中的同名记录在关联时予以保留，故配对记录数可超过 C8 的目录数，不代表独立模型数量。六维 Spearman 相关均超过 0.81，多数超过 0.97，支持两套得分的排序大体一致；BBH、GPQA、MUSR 的绝对偏差较大，也表明评分尺度存在差异。该校验不消除任务构成和指标归一化带来的差别。
 
 \begin{table}[!htbp]
 \centering
-\caption{C8 解析结果与 C1 的一致性校验}
+\caption{原始指标与汇总得分的记录级一致性}
 \label{tab:p4_c8chk}
-\begin{tabular}{@{}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}@{}}
+\begin{tabularx}{0.98\textwidth}{@{}>{\raggedright\arraybackslash}X c c c c@{}}
 \toprule
-  任务 & 匹配模型数 & Pearson $r$ & Spearman $\rho$ & 平均绝对偏差 \\
-  \midrule
-
-  IFEval & 1{,}896 & 0.987 & 0.987 & 2.88 \\
-  BBH & 1{,}898 & 0.998 & 0.997 & 21.06 \\
-  MATH Lvl 5 & 1{,}897 & 0.803 & 0.812 & 3.47 \\
-  GPQA & 1{,}894 & 0.987 & 0.992 & 23.38 \\
-  MUSR & 1{,}894 & 0.973 & 0.977 & 30.73 \\
-  MMLU-PRO & 1{,}896 & 0.998 & 0.998 & 7.56 \\
+评测维度 & \makecell{有效配对\\记录数} & \makecell{秩相关\\$\rho$} & \makecell{线性相关\\$r$} & \makecell{平均绝对\\偏差 / 分} \\
+\midrule
+IFEval & 1{,}896 & 0.987 & 0.987 & 2.88 \\
+BBH & 1{,}898 & 0.997 & 0.998 & 21.06 \\
+MATH Lvl 5 & 1{,}897 & 0.812 & 0.803 & 3.47 \\
+GPQA & 1{,}894 & 0.992 & 0.987 & 23.38 \\
+MUSR & 1{,}894 & 0.977 & 0.973 & 30.73 \\
+MMLU-PRO & 1{,}896 & 0.998 & 0.998 & 7.56 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
-由表\ref{tab:p4_c8chk}可知，两套数据的秩一致性均在 $0.81$ 以上（多数在 $0.97$ 以上），说明 C8 的逐任务解析结果与官方汇总得分反映同一批评测；平均绝对偏差较大的维度（GPQA 23.4、MUSR 30.7、BBH 21.1）正是“原始分”与“基线归一化分”差异最大的维度，与前述口径说明完全对应。这一校验保证了后续逐任务结论的可靠性。
+\subsubsection{损失与评测得分的分层联系}
 
-\textbf{3.算法选择}
-
-Loss—Benchmark 映射采用按可比性分层的线性最小二乘（并在全样本上给出整体拟合），分层可避免“同模型同验证集”与“跨族近似验证集”样本混用造成的偏置；规模/时间分解同时采用线性时间 OLS 与年份固定效应两种设定，后者把非规模技术进步完全交由年效应吸收，可显著缓解规模与年份的共线性；前沿外推同时采用 logistic 饱和模型（有界、符合满分 100 的物理约束）与结构外推（把分解方程直接用作预测方程），两条路线互为校验；不确定性由残差 bootstrap（600 次重抽样）与情景分析共同给出。
-
-\subsubsection{模型建立}
-
-\textbf{步骤1：Loss—Benchmark 映射模型}
-
-设验证损失 $L$ 与 Leaderboard 均分 $\bar B$ 之间存在近似线性关系：
+要将前三问的损失结果用于解释能力变化，首先需要检验二者的对应关系。设验证损失为 $L$，采用便于比较方向和误差的线性映射：
 \begin{equation}
     \bar B = a + b\,L
 \end{equation}
-系数 $a$、$b$ 由最小二乘估计，并按 C6 的 Loss\_\allowbreak{}Comparability 字段分为“高可比”（同模型同验证集，主要来自 Pythia，可与附件 B 对照）与“中可比”（Loss 来自不同技术报告或论文）两层分别估计。映射误差对结论的影响通过分层的 $R^2$、MAPE 与相关系数共同刻画。
+参数由最小二乘估计。C6 的高可比层主要包含同模型、同验证集的 Pythia 记录，可与附件 B 对照；中可比层来自不同模型族和技术报告，验证集口径存在差异。两层分别拟合，同时报告合并样本和 C5 对照结果，避免用单条回归线掩盖来源差别。
 
-\textbf{步骤2：规模扩张与技术进步分解模型}
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{../求解/问题四/图片/图1_Loss_Benchmark映射.png}
+\caption{验证损失与得分的分层关系：点为 C6 记录，线为对应层的最小二乘拟合；两面板纵轴范围不同}
+\label{fig:p4_map}
+\end{figure}
 
-以参数量对数与时间为解释变量建立面板回归：
+\begin{table}[!htbp]
+\centering
+\caption{损失映射的方向、解释度与误差}
+\label{tab:p4_bridge}
+\begin{tabularx}{0.98\textwidth}{@{}>{\raggedright\arraybackslash}X c c c c@{}}
+\toprule
+评价量 & \makecell{C6 高可比\\$n=7$} & \makecell{C6 中可比\\$n=68$} & \makecell{C6 合并\\$n=75$} & \makecell{C5 对照\\$n=43$} \\
+\midrule
+损失斜率 $b$ & $-0.882$ & $-19.185$ & $-20.417$ & $-16.155$ \\
+Pearson $r$ & $-0.397$ & $-0.502$ & $-0.510$ & $-0.502$ \\
+Spearman $\rho$ & $-0.607$ & $-0.509$ & $-0.549$ & — \\
+决定系数 $R^2$ & 0.16 & 0.25 & 0.26 & — \\
+MAPE / \% & 5.6 & 57.3 & 67.8 & — \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+图\ref{fig:p4_map}与表\ref{tab:p4_bridge}共同表明，损失与得分总体呈负相关，但映射精度有限。合并样本的 Pearson $r=-0.510$，Spearman $\rho=-0.549$，而 $R^2$ 仅为 0.26，MAPE 达 67.8\%。中可比记录之间的验证集差异限制了损失数值的直接比较，低得分样本也会放大相对误差。高可比层的 MAPE 为 5.6\%，但仅有 7 条记录，得分集中在 $5.07\sim6.06$；较低误差并不意味着该关系能迁移到高能力模型。
+
+因此，损失桥接支持“较低损失通常对应较高能力”的方向性联系，不能据此精确折算前三问的收益，更不能仅由跨模型相关认定资源调整的因果效果。后续贡献分解和前沿预测直接在 Benchmark 得分空间进行，避免将桥接误差继续累积到预测结果中。
+
+\subsubsection{规模关系与历史增量分解}
+
+\textbf{1.控制年份后的规模关联}\par\nopagebreak[4]
+令 $P_{it}$ 表示模型参数量，单位为十亿参数。对模型记录建立包含规模和时间的回归，并以年份固定效应作对照：
 \begin{equation}
     \text{Score}_{it} = b_0 + b_P\log_{10}P_{it} + b_t\,t + \varepsilon_{it}
     \qquad\text{或}\qquad
     \text{Score}_{it} = \alpha_t + b_P\log_{10}P_{it} + \varepsilon_{it}
 \end{equation}
-其中 $b_P$ 为规模系数（参数量每增大 10 倍带来的得分提升），$b_t$ 为时间系数（每年非规模技术进步带来的得分提升），$\alpha_t$ 为年份固定效应。前沿提升的 shift-share 分解为
+$b_P$ 表示控制年份后参数量扩大十倍对应的得分差，$b_t$ 表示控制规模后的年度得分变化，$\alpha_t$ 吸收各年度的共同差异。这些系数是条件关联，不直接识别数据工程、架构或对齐技术的独立因果贡献。
+
+主样本在 2024、2025 年分别有 1{,}588 和 758 条记录。由于只包含两个年份，线性年度变量与年份固定效应的表示空间等价，两者得到相同的规模系数和 $R^2$ 是预期结果，不构成相互独立的稳健性检验。图\ref{fig:p4_scale}保留了年度内的离散程度，表\ref{tab:p4_panel}进一步比较不同类型模型的估计值。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{../求解/问题四/图片/图7_年度规模效应.png}
+\caption{按提交年份分组的规模与得分关系：点为主样本记录，直线使用同一规模系数及对应年份效应}
+\label{fig:p4_scale}
+\end{figure}
+
+\begin{table}[!htbp]
+\centering
+\caption{全样本与类型子样本的规模、时间系数}
+\label{tab:p4_panel}
+\begin{tabularx}{0.98\textwidth}{@{}>{\raggedright\arraybackslash}X c c c c@{}}
+\toprule
+样本与时间设定 & $n$ & \makecell{$b_P$\\分/十倍参数} & \makecell{$b_t$\\分/年} & $R^2$ \\
+\midrule
+主样本，年份固定效应 & 2{,}346 & 13.842 & — & 0.475 \\
+主样本，线性年度项 & 2{,}346 & 13.842 & 4.844 & 0.475 \\
+预训练类，线性年度项 & 231 & 6.414 & 1.552 & 0.460 \\
+对话及微调类，线性年度项 & 1{,}497 & 14.853 & 4.680 & 0.484 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+全样本的规模系数为 13.842，年度系数为 4.844。预训练类对应系数为 6.414 和 1.552，对话及微调类为 14.853 和 4.680。估计值存在差异，提示模型类型和样本构成需要纳入解释；由于缺少同一模型的受控前后对照，不能将这一差别直接归因于微调带来的参数利用效率提升。线性式在极小参数端还可能给出负的拟合值，因此只用于概括规模关联和增量核算，不视为全尺度有界评分函数。
+
+\textbf{2.长周期与近端窗口的贡献核算}\par\nopagebreak[4]
+为量化历史增量，采用 shift-share 分解，将前沿得分变化拆为规模项与剩余项：
 \begin{equation}
     \Delta F = \underbrace{b_P\,\Delta\log_{10}P_{\text{frontier}}}_{\text{规模扩张贡献}}
     + \underbrace{\left[\Delta F - b_P\,\Delta\log_{10}P_{\text{frontier}}\right]}_{\text{非规模技术进步贡献}}
 \end{equation}
-两者占比即为所求贡献份额。$\Delta\log_{10}P_{\text{frontier}}$ 取各年“参数量最大的开放权重模型”的对数差，$\Delta F$ 取累计前沿（按定义单调不减）之差。
+其中非规模技术进步贡献采用剩余核算口径，除潜在技术进步外，也可能包含样本构成变化、未观测因素和测量差异。两个分量除以 $\Delta F$ 后得到贡献占比。
 
-\textbf{步骤3：能力前沿预测模型（两条路线）}
+长周期使用 C3 的年度累计最高分界定 $F$，规模代理取当年保留记录中的最大参数量，两者不一定来自同一模型。近端使用 C1 各月前 $1\%$ 得分的均值，规模代理取该前列组中的最大参数量；分解窗口从首月到峰值月。两种口径分别回答长期规模演进和短期前沿提升问题，不能将其占比合并平均。
 
-\emph{路线一（曲线外推）}：能力前沿随时间的演化以 logistic 饱和函数刻画，并用残差 bootstrap 给出区间：
+C3 中有 13 条记录的 Average 与六维均值相差超过 5 分，已在构造长期样本时剔除；最大偏差约 42.3 分，对应 GPT-3 175B 的 Average 为 50.0、六维均值仅为 7.67。清洗后的长期回归给出 $b_P=14.10$、$b_t=3.30$ 和 $R^2=0.42$。2019 至 2025 年累计前沿由 5.00 升至 52.08，共增加 47.08 分，其中规模项为 23.77 分，非规模项为 23.31 分，占比分别为 50.5\% 和 49.5\%。历史锚点仍存在评测来源差别，这一分解宜作为长期量级参照。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{../求解/问题四/图片/图2_规模时间分解.png}
+\caption{两个时间窗口的前沿增量分解：规模项与非规模项相加为总增量；非规模项为分解后的剩余部分}
+\label{fig:p4_decomp}
+\end{figure}
+
+在评测框架一致的 C1 近端窗口中，2024 年 6 月至 9 月的前沿由 37.99 升至 51.00，前列组的最大参数量由 70.6B 变为 78.0B，$\Delta\log_{10}P=0.043$。对应规模项为 0.60 分，非规模项为 12.41 分，占比分别为 4.6\% 和 95.4\%。图\ref{fig:p4_decomp}说明，该窗口的得分增长主要未被参数扩张解释；但短期残差占比不能直接推广到整年或未来，也不足以分别量化数据工程与对齐方法的贡献。
+
+\subsubsection{前沿曲线与条件预测}
+
+\textbf{1.饱和曲线及重抽样区间}\par\nopagebreak[4]
+将 C3 在 2019 至 2023 年的年度累计最高分，与 C1 的月度前 $1\%$ 均值累计最大值拼接，形成 14 个前沿点。月度前列组的大小取该月记录数的 $1\%$ 向下取整，至少为 1。用 logistic 曲线描述增长逐渐趋缓的路径，并约束饱和上界不超过 100：
 \begin{equation}
     F(t) = \frac{K}{1+e^{-r(t-t_0)}},\qquad K \text{ 为饱和上界},\ r \text{ 为增长率},\ t_0 \text{ 为拐点}
 \end{equation}
-前沿序列取“年度累计最大”与“月度前 $1\%$ 均值累计最大”拼接而成的单调不减序列。算力增长放缓情景以“增速减半”实现：
+拟合得到 $K=56.61$、$r=2.523$、$t_0=5.11$，$R^2=0.975$。对拟合残差进行 600 次 bootstrap 重抽样，以成功重拟合所得预测值的第 5 和第 95 百分位构造 $90\%$ 区间。该区间反映既定曲线下的重抽样变动，不涵盖评测口径改变和未来技术路径改变的全部风险。
+
+算力增长放缓情景以“增速减半”实现：
 \begin{equation}
     F_{\text{slow}}(t)=K\left[1+e^{-r(\min(t,t_h)-t_0)}\right]^{-1},\qquad t_h \text{ 为增速减半时刻}
 \end{equation}
 
-\emph{路线二（结构外推）}：直接把分解方程用作预测方程，
+\textbf{2.基于规模和年度系数的结构情景}\par\nopagebreak[4]
+为考察不预设短期饱和时的变化，利用规模和年度系数作结构外推：
 \begin{equation}
     \hat F(t+\Delta) = F(t) + \left[b_P\,\Delta\log_{10}P + b_t\right]\cdot\Delta
 \end{equation}
-并按“前沿模型规模持平（$\Delta\log_{10}P=0$）”“算力增长放缓（$b_t$ 减半）”“规模继续扩张（$\Delta\log_{10}P=+0.3$/年）”三种情景给出区间。
+这里 $\Delta$ 为前瞻年数，$\Delta\log_{10}P$ 表示假定的\emph{年均}参数对数增量。基准情景保持参数规模不变并沿用 $b_t$；放缓情景保持规模不变，将 $b_t$ 减半；扩容情景令参数规模每年增加 0.3 个数量级，并沿用 $b_t$。放缓情景是对非规模增长的条件假设，并非由算力增速直接估计出的传导系数。
 
-\subsubsection{模型求解}
-
-\textbf{1.Loss—Benchmark 桥接结果}
-
-映射结果如图\ref{fig:p4_map}所示，分层拟合结果如表\ref{tab:p4_bridge}所示。
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.80\textwidth]{../求解/问题四/图片/图1_Loss_Benchmark映射.png}
-  \caption{验证损失与 Leaderboard 均分的映射关系（按可比性分层）}
-  \label{fig:p4_map}
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{../求解/问题四/图片/图3_能力前沿预测.png}
+\caption{历史前沿与条件预测：上图误差棒为两个预测时点的 $90\%$ bootstrap 区间，下图为结构情景点值}
+\label{fig:p4_frontier}
 \end{figure}
 
 \begin{table}[!htbp]
 \centering
-\caption{Loss—Benchmark 映射的分层拟合结果（C6，$n=75$）}
-\label{tab:p4_bridge}
-\begin{tabular}{@{}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}@{}}
-\toprule
-  可比性 & $n$ & Pearson $r$ & Spearman $\rho$ & 斜率 $b$ & $R^2$ & MAPE(\%) \\
-  \midrule
-
-  高可比 & 7 & $-0.397$ & $-0.607$ & $-0.882$ & 0.16 & 5.6 \\
-  中可比 & 68 & $-0.502$ & $-0.509$ & $-19.185$ & 0.25 & 57.3 \\
-  全样本 & 75 & $-0.510$ & $-0.549$ & $-20.417$ & 0.26 & 67.8 \\
-  C5 对照（全样本） & 43 & $-0.502$ & — & $-16.155$ & — & — \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-由表\ref{tab:p4_bridge}可知：（1）损失与能力得分确实负相关（全样本 $r=-0.510$，Spearman $\rho=-0.549$，$p<10^{-6}$），验证了“以损失为目标的资源配置可转化为能力收益”的桥接逻辑；（2）但映射的 $R^2$ 仅 $0.26$、MAPE 高达 $67.8\%$，说明桥接关系是弱关系，其原因是中可比样本的 Loss 来自不同论文的不同验证集、量纲不完全统一；（3）高可比子集（Pythia 同模型同验证集）的斜率最缓（$-0.882$）、MAPE 最低（$5.6\%$），但其得分变化幅度极小（$5.07\sim6.06$），因为这些小规模基础模型在六维基准上都接近随机水平，损失的大幅下降并未转化为得分提升。因此本文的桥接结论仅用于方向性判定与量级估计，不用于把损失数值精确换算为得分。
-
-\textbf{2.规模扩张与非规模技术进步的贡献分解}
-
-面板回归结果见表\ref{tab:p4_panel}，贡献分解如图\ref{fig:p4_decomp}所示。
-
-\begin{table}[!htbp]
-\centering
-\caption{规模系数估计（C1 开源筛选样本，2{,}346 条，2024--2025 年）}
-\label{tab:p4_panel}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.28\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.14\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}@{}}
-\toprule
-  子样本 & $n$ & $b_P$（分/10 倍参数） & $b_t$（分/年） & $R^2$ & 说明 \\
-  \midrule
-
-  全样本（年份固定效应） & 2{,}346 & 13.842 & — & 0.475 & 年效应吸收非规模进步 \\
-  全样本（线性时间 OLS） & 2{,}346 & 13.842 & 4.844 & 0.475 & 两设定结果一致 \\
-  pretrained & 231 & 6.414 & 1.552 & 0.460 & 基础模型 \\
-  chat/finetuned & 1{,}497 & 14.853 & 4.680 & 0.484 & 指令/微调模型 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.92\textwidth]{../求解/问题四/图片/图2_规模时间分解.png}
-  \caption{规模效应与前沿提升来源分解（左：同一年内的规模效应；右：长周期贡献分解）}
-  \label{fig:p4_decomp}
-\end{figure}
-
-由表\ref{tab:p4_panel}可知：（1）规模系数 $b_P=13.84$，即参数量每增大 10 倍，六维平均分提升约 $13.8$ 分；非规模技术进步速率 $b_t=4.84$ 分/年。（2）模型类型差异显著：pretrained 子样本的规模系数仅 $6.41$、时间系数 $1.55$，而 chat/finetuned 子样本达 $14.85$ 与 $4.68$，说明经指令微调对齐后的模型对参数规模的利用效率更高，基础模型在同一评测上的得分提升要慢得多。这提示在讨论“规模扩张 vs 技术进步”时必须区分模型类型，否则会因样本构成变化而混淆两者。
-
-在长周期口径（C3，2019--2025）上，以 $b_P=14.10$、$b_t=3.30$（$R^2=0.42$）做 shift-share 分解：前沿由 $5.00$ 升至 $52.08$（提升 $47.08$ 分），其中 $b_P\Delta\log_{10}P=23.77$ 分、残差部分 $23.31$ 分，即\textbf{规模扩张贡献 $50.5\%$、非规模技术进步贡献 $49.5\%$}，二者几乎平分秋色。
-
-但需指出长周期锚点存在口径风险。本文对 C3 做了自洽性审计：比较每行 Average 与其六维均值，发现 13 条记录的差值超过 5（最大差值 $42.3$，为 GPT-3 (175B) 的 Average $=50.0$ 而六维均值仅 $7.67$），说明这些历史条目混入了不同评测标准，已予以剔除。剔除后，在评测标准完全一致的近端窗口（2024-06 至 2024-09，前沿由 $37.99$ 升至 $51.00$）内分解得：前沿模型参数量仅由 $70.6$B 增至 $78.0$B（$\Delta\log_{10}P=0.043$），规模贡献 $0.60$ 分、非规模贡献 $12.41$ 分，即\textbf{该窗口内前沿提升的 $95.4\%$ 来自非规模因素}。这与长周期口径的 $50.5\%$ 形成互补：长期看规模与技术进步各贡献约一半，但在最近一年、模型规模趋于稳定的条件下，能力提升主要由数据工程、对齐方法等非规模因素驱动。
-
-\textbf{3.能力前沿预测}
-
-前沿序列与 logistic 拟合如图\ref{fig:p4_frontier}所示，预测结果与不确定性见表\ref{tab:p4_frontier}。
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.92\textwidth]{../求解/问题四/图片/图3_能力前沿预测.png}
-  \caption{开源大语言模型能力前沿预测（未来 12/24 个月）}
-  \label{fig:p4_frontier}
-\end{figure}
-
-\begin{table}[!htbp]
-\centering
-\caption{能力前沿预测及不确定性（满分 100）}
+\caption{以 2025 年 3 月数据为基点的能力前沿预测}
 \label{tab:p4_frontier}
-\begin{tabular}{@{}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.11\textwidth}>{\centering\arraybackslash}p{0.11\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}@{}}
+\begin{tabularx}{0.98\textwidth}{@{}>{\raggedright\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X@{}}
 \toprule
-  前瞻期 & logistic 预测 & 下界（5\%） & 上界（95\%） & 增速减半 & 结构外推（基准/放缓/扩容） \\
-  \midrule
-
-  $+12$ 个月（2026-03） & 56.33 & 53.62 & 64.52 & 53.27 & 55.84 / 53.42 / 59.99 \\
-  $+24$ 个月（2027-03） & 56.59 & 53.75 & 66.52 & 53.27 & 60.69 / 55.84 / 68.99 \\
+预测口径 & \makecell{前瞻 12 个月\\2026-03} & \makecell{前瞻 24 个月\\2027-03} \\
+\midrule
+logistic 点预测 & 56.33 & 56.59 \\
+bootstrap 第 5 百分位 & 53.62 & 53.75 \\
+bootstrap 第 95 百分位 & 64.52 & 66.52 \\
+logistic 增速减半 & 53.27 & 53.27 \\
+\midrule
+结构外推：规模持平 & 55.84 & 60.69 \\
+结构外推：非规模增速减半 & 53.42 & 55.84 \\
+结构外推：每年扩容 0.3 dex & 59.99 & 68.99 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
-logistic 拟合参数为 $K=56.61$、$r=2.523$、$t_0=5.11$（自 2019 年起算），拟合 $R^2=0.975$。由表\ref{tab:p4_frontier}可知：（1）曲线外推给出未来 12/24 个月前沿约 $56.3$ 与 $56.6$，$90\%$ 置信区间分别为 $[53.6,64.5]$ 与 $[53.8,66.5]$；（2）若算力增长放缓、非规模技术增速减半，前沿将降至 $53.3$ 附近并在两年内基本停滞；（3）结构外推在三种情景下给出 $53.4\sim69.0$ 的区间。两条路线的差异来自“当前前沿是否已接近饱和”这一判断，因此本文以\textbf{区间}而非点值作为结论：未来 12 个月开源模型六维平均分前沿预计达 $53\sim60$，24 个月达 $54\sim69$；若算力增长显著放缓，前沿增速将接近停滞（约 $53\sim56$）。
+预测基点固定为附件的观测截止日 2025 年 3 月 13 日，前瞻 12、24 个月分别对应 2026 年 3 月与 2027 年 3 月。表\ref{tab:p4_frontier}中，logistic 基准曲线给出约 56.3 与 56.6 分；其 $90\%$ 区间分别为 $[53.62,64.52]$ 和 $[53.75,66.52]$。结构外推的三种情景则分别覆盖 $53.42\sim59.99$ 和 $55.84\sim68.99$ 分。这是情景点值的范围，不是置信区间。用外侧整数概括时，12 个月约为 $53\sim60$ 分，24 个月为 $55\sim69$ 分。
 
-需强调该预测的局限：本文可用的评测标准一致的窗口仅约 10 个月（2024-06 至 2025-03，Leaderboard v2 已停更），2019--2023 的锚点口径不完全一致（已剔除异常条目），故外推期约为一致窗口的 $1.2\sim2.4$ 倍，结论应理解为情景化区间而非精确点预测。
+图\ref{fig:p4_frontier}显示，两条路线的主要分歧在于是否延续当前年度增量。饱和曲线在两期之间变化很小，结构基准则继续增长；在结构放缓情景下，两期为 53.42 和 55.84 分，增长速度降低但不等于停滞。可比的 C1 观测仅覆盖约 10 个月，前瞻长度已达该窗口的 $1.2\sim2.4$ 倍，且早期 C3 锚点口径并不完全一致。因此，拟合优度较高不能替代样本外验证，预测应限定在既定评分体系和情景条件下解释。
 
-\textbf{4.逐任务聚合分析}
+\subsubsection{从综合前沿到具体任务瓶颈}
 
-六维前沿与剩余空间见表\ref{tab:p4_task}，C8 子任务中的瓶颈见表\ref{tab:p4_sub}。图\ref{fig:p4_task}进一步比较全部 37 个子任务的中位数与最优得分，展示各任务中总体水平与前列模型之间的差距。
+\textbf{1.六维能力的分布差异}\par\nopagebreak[4]
+综合前沿掩盖了任务之间的发展差异。图\ref{fig:p4_distribution}展示主样本在六个维度上的完整分布范围；表\ref{tab:p4_task}保留中位数、前列均值和最优得分，便于同时比较总体水平与前沿。表中的距满分差值为 $100-\text{最优得分}$，只是该评分尺度上的算术余量，不代表必然能够实现的能力增益。
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.92\textwidth]{../求解/问题四/图片/图4_逐任务聚合.png}
-  \caption{C8 全部子任务的中位数与最优得分对照}
-  \label{fig:p4_task}
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{../求解/问题四/图片/图6_六维能力分布.png}
+\caption{主样本的六维能力分布：每维 $n=2{,}346$，箱体为第 25 至第 75 百分位，箱内线为中位数，须线为最小值至最大值}
+\label{fig:p4_distribution}
 \end{figure}
 
 \begin{table}[!htbp]
 \centering
-\caption{六维 Benchmark 逐任务聚合结果（开源筛选集，$n=2{,}346$）}
+\caption{六维能力的总体水平与前沿差距}
 \label{tab:p4_task}
-\begin{tabular}{@{}>{\centering\arraybackslash}p{0.18\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.15\textwidth}>{\centering\arraybackslash}p{0.15\textwidth}>{\raggedright\arraybackslash}p{0.21\textwidth}@{}}
+\begin{tabularx}{0.98\textwidth}{@{}>{\raggedright\arraybackslash}X c c c c@{}}
 \toprule
-  任务 & 最优得分 & 前 1\% 均值 & 中位数 & 剩余空间 \\
-  \midrule
-
-  IFEval & 89.98 & 84.45 & 43.51 & $10.0\%$ \\
-  MMLU-PRO & 66.80 & 55.26 & 25.98 & $33.2\%$ \\
-  BBH & 65.47 & 59.95 & 28.52 & $34.5\%$ \\
-  MATH Lvl 5 & 62.54 & 58.02 & 9.93 & $37.5\%$ \\
-  MUSR & 38.69 & 28.06 & 9.97 & $61.3\%$ \\
-  GPQA & 27.74 & 22.80 & 5.70 & $72.3\%$ \\
+任务维度 & 中位数 & 前 $1\%$ 均值 & 最优得分 & \makecell{距满分差值\\/ 分} \\
+\midrule
+GPQA & 5.70 & 22.80 & 27.74 & 72.3 \\
+MUSR & 9.97 & 28.06 & 38.69 & 61.3 \\
+MATH Lvl 5 & 9.93 & 58.02 & 62.54 & 37.5 \\
+BBH & 28.52 & 59.95 & 65.47 & 34.5 \\
+MMLU-PRO & 25.98 & 55.26 & 66.80 & 33.2 \\
+IFEval & 43.51 & 84.45 & 89.98 & 10.0 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
+
+IFEval 的最优得分为 89.98，距满分仅 10.0 分，但中位数仍为 43.51，说明前列模型的较高表现不能代表总体已接近饱和。GPQA 和 MUSR 的最优值分别为 27.74、38.69，且中位数更低，是当前样本中较明显的薄弱维度。MATH Lvl 5 的最优值达到 62.54，而中位数为 9.93，提示数学能力的前沿提升尚未普遍体现在主体模型上。
+
+\textbf{2.原始子任务中的瓶颈位置}\par\nopagebreak[4]
+进一步使用 C8 原始 JSON 的聚合结果，将 37 个子任务按类别展开，如图\ref{fig:p4_task}所示。中位数、前 $5\%$ 均值和最优值依次反映总体、前列组与单项最高表现。按距满分差值排序的六项见表\ref{tab:p4_sub}，中文名称与图中保持一致。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{../求解/问题四/图片/图4_逐任务聚合.png}
+\caption{C8 的 37 个子任务表现：圆点、短线和菱形依次为中位数、前 $5\%$ 均值与最优得分；每项 $n=961\sim964$，采用原始指标口径}
+\label{fig:p4_task}
+\end{figure}
 
 \begin{table}[!htbp]
 \centering
-\caption{C8 子任务层面剩余空间最大的 6 项（原始指标口径）}
+\caption{距满分差值最大的六个子任务}
 \label{tab:p4_sub}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.42\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\raggedright\arraybackslash}p{0.12\textwidth}@{}}
+\begin{tabularx}{0.98\textwidth}{@{}l >{\raggedright\arraybackslash}X r c c c@{}}
 \toprule
-  子任务 & 样本数 & 最优得分 & 前 5\% 均值 & 剩余空间 \\
-  \midrule
-
-  math\_\allowbreak{}intermediate\_\allowbreak{}algebra\_\allowbreak{}hard（MATH） & 962 & 31.79 & 20.11 & $68.2\%$ \\
-  math\_\allowbreak{}precalculus\_\allowbreak{}hard（MATH） & 962 & 36.30 & 22.89 & $63.7\%$ \\
-  math\_\allowbreak{}geometry\_\allowbreak{}hard（MATH） & 962 & 40.91 & 28.72 & $59.1\%$ \\
-  bbh\_\allowbreak{}tracking\_\allowbreak{}shuffled\_\allowbreak{}objects\_\allowbreak{}seven（BBH） & 964 & 41.20 & 32.67 & $58.8\%$ \\
-  bbh\_\allowbreak{}tracking\_\allowbreak{}shuffled\_\allowbreak{}objects\_\allowbreak{}five（BBH） & 964 & 41.60 & 31.24 & $58.4\%$ \\
-  gpqa\_\allowbreak{}extended（GPQA） & 961 & 44.87 & 39.74 & $55.1\%$ \\
+所属类别 & 子任务 & $n$ & \makecell{前 $5\%$\\均值} & 最优得分 & \makecell{距满分\\差值 / 分} \\
+\midrule
+MATH & 中级代数 & 962 & 20.11 & 31.79 & 68.2 \\
+MATH & 预备微积分 & 962 & 22.89 & 36.30 & 63.7 \\
+MATH & 几何 & 962 & 28.72 & 40.91 & 59.1 \\
+BBH & 位置跟踪，7 个对象 & 964 & 32.67 & 41.20 & 58.8 \\
+BBH & 位置跟踪，5 个对象 & 964 & 31.24 & 41.60 & 58.4 \\
+GPQA & Extended 子集 & 961 & 39.74 & 44.87 & 55.1 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
-由表\ref{tab:p4_task}与表\ref{tab:p4_sub}可知：（1）六维能力发展极不均衡，指令遵循（IFEval，$89.98$）已接近满分、剩余空间仅 $10.0\%$，而研究生级问答（GPQA，$27.74$）与多轮推理（MUSR，$38.69$）远未饱和，剩余空间分别达 $72.3\%$ 与 $61.3\%$。（2）C8 子任务层面进一步定位了瓶颈：MATH-Hard 中的中级代数、预备微积分、几何三个子任务最优得分仅 $31.8\sim40.9$（该类别 7 个子任务的平均最优得分为 $55.5$，而整体中位数低至 $3.7$），BBH 中“跟踪被洗牌对象”类多步状态推理子任务最优得分约 $41$，GPQA 的 extended 子集为 $44.9$，这些是未来能力增量的主要方向。（3）C8 各类别的中位数普遍远低于最优值（BBH 中位数 $48.8$ 对最优 $81.8$；MATH 中位数 $3.7$ 对最优 $55.5$），说明开源社区的能力分布高度长尾，前列模型与总体水平差距巨大。
+MATH-Hard 的中级代数、预备微积分和几何最高仅为 $31.8\sim40.9$ 分；BBH 的 5、7 对象位置跟踪任务约为 41 分；GPQA 的 Extended 子集为 44.9 分。这些任务在前列模型中仍表现偏弱，可作为后续改进的重点观察对象，但不同任务的随机基线和测量难度不同，原始得分不能被视为等价的能力刻度。
 
-\textbf{5.附件 C4 的宏观证据与“算力增长放缓”情景校验}
+在类别汇总层面，MATH 各子任务最优值的平均为 55.5，全部模型与子任务观测混合后的中位数为 3.7；BBH 的对应量分别为 81.8 与 48.8。前者是多个子任务最高值的平均，并不代表某一个模型同时达到这些值。结合图中的任务内差距，可以判断总体表现与单项前沿之间仍有距离，无须据此假定所有任务服从同一分布。
 
-C4 的宏观趋势如图\ref{fig:p4_c4}所示。
+\subsubsection{宏观资源证据与预测边界}
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.92\textwidth]{../求解/问题四/图片/图5_C4宏观趋势.png}
-  \caption{C4 宏观证据（左：训练算力的年度演化；右：开源权重模型占比）}
-  \label{fig:p4_c4}
+C4 提供算力、训练数据量和开放权重状态，用于观察资源环境，不与 C1 的得分记录逐行拼接。其规范化模型名称与 C1 仅匹配到 1 条，强行合并难以形成有效样本。图\ref{fig:p4_c4}分别呈现 Language 领域的年度算力跨度、开放权重标记比例，以及 C4 全量记录的字段覆盖，区分演进趋势与证据完整性。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{../求解/问题四/图片/图5_C4宏观趋势.png}
+\caption{C4 的资源演进与字段覆盖：上图连接每年算力中位数与最大值；左下为 Language 记录中权重标记 Yes 的比例；右下以全量 3{,}523 条记录为背景，浅色部分为字段缺失或状态未明确}
+\label{fig:p4_c4}
 \end{figure}
 
-由图\ref{fig:p4_c4}可知：（1）C4 中 Language 域模型的前沿训练算力持续增长，对数尺度上的年增速约 $+0.589$ 个数量级（约 $3.88$ 倍/年），表明近年算力投入仍在快速扩张；但年际波动明显（2024 年前沿算力低于 2023 年，2025 年再创新高），说明算力增速并非单调外推、存在阶段性放缓的可能，这也正是本文把“算力增长放缓”作为\textbf{情景}（非规模增速减半）而非基准假设、并同时给出基准情景的原因。（2）开源权重模型的占比由 2018 年的 $26.7\%$ 持续上升至 2025 年的 $59.4\%$，说明本文以开源筛选样本刻画“能力前沿”具有良好的代表性与可持续性。（3）C4 中共有 1{,}390 条记录含训练算力、1{,}424 条含训练数据量、2{,}653 条标注开源权重（Yes 1{,}325、No 1{,}328）。需要说明的是，C4 的模型命名体系与 C1 不通用（规范化名称匹配仅命中 1 条），故 C4 仅作宏观尺度证据，不与 C1 逐行合并。
+2018 至 2026 年的 Language 子集包含 1{,}783 条记录。以这九个年度的最大训练算力作对数趋势拟合，年斜率约为 0.589 个数量级，对应约 3.88 倍的年度倍数。算力总体扩张，但并非逐年单调增加；2024 年最大值低于 2023 年。2026 年仅收录 40 条 Language 记录，其中 5 条含算力，因此该年点值可能受覆盖不完整影响，不宜将其下降直接解释为技术趋势逆转。
+
+Language 记录中开放权重标记为 Yes 的比例由 2018 年的 26.7\% 变为 2025 年的 59.4\%，期间也有回落。分母为当年全部 Language 记录，包含权重状态缺失者，所以该比例描述数据库收录结构，不能推断总体市场份额，也不能据此证明 C1 样本具有代表性。
+
+C4 全量 3{,}523 条记录中，有 1{,}390 条包含算力、1{,}424 条包含训练数据量，权重状态明确的有 2{,}653 条，其中 Yes 为 1{,}325、No 为 1{,}328。数据量字段的缺失及来源口径差异限制了训练数据投入的统一年度比较，因而本节将其用于评估证据覆盖，不额外估计数据增长率。宏观记录支持设置不同资源增长路径进行敏感性比较，但不足以从数据中确定“算力放缓必然使非规模进步减半”的传导关系。
+
+由此，问题四形成了从损失方向性联系、历史增量核算到条件前沿预测的证据链。长期样本中规模与非规模项约各占一半，2024 年 6 至 9 月的近端增量则主要落在非规模项；两者均受各自样本和口径约束。未来边界需同时保留曲线重抽样区间与结构情景分歧，具体改进方向则由数学、研究生级问答和多步推理等薄弱任务提供依据。
 
 \FloatBarrier
-
-综合以上结果，本节完成了问题四的求解：明确并执行了时间轴、开源筛选与模型类型三类口径；完成了 C8 的逐任务聚合（1{,}860 个模型、37 个子任务维度）并与 C1 交叉校验；建立了分层 Loss—Benchmark 桥接并量化了映射误差；用面板回归分离出规模扩张与非规模技术进步的贡献（长周期各约 $50\%$，近端一致窗口内非规模因素占 $95.4\%$）；给出了未来 12/24 个月能力前沿的情景化预测区间与逐任务瓶颈定位。
+\endgroup
