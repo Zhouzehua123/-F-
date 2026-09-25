@@ -79,7 +79,15 @@ B6 & 360 & 45 & $-0.925$ & $Q$ 越大损失越低：\textbf{质量指标}（$Q=1
 \end{tabular}
 \end{table}
 
-表\ref{tab:p2_form}中，四类形式在 B7 新增点上的预测相关均不低于 $0.983$。加性质量缺口形式具有最高的联合拟合与 B6 内部拟合 $R^2$，因此本文采用该形式。预测偏差进一步由 RMSE 与 MAPE 衡量。表中 $I_{\mathrm{RSS}}=n\ln(\mathrm{RSS}/n)+2k$ 由拟合残差计算，其中 $n$ 为样本数、$k$ 为模型参数数。参数采用 soft-$L_1$ 稳健估计，因此该评分仅用于同一样本下的辅助比较，并非严格的高斯极大似然 AIC。B7 新增点用于模型比较与扩展检验，两者共享样本，结果按开发阶段的验证性能解释。
+\begin{samepage}
+表\ref{tab:p2_form}中，四类形式在 B7 新增点上的预测相关均不低于 $0.983$。加性质量缺口形式具有最高的联合拟合与 B6 内部拟合 $R^2$，因此本文采用该形式。预测偏差进一步由 RMSE 与 MAPE 衡量。
+\par
+\end{samepage}
+
+\begin{samepage}
+表中 $I_{\mathrm{RSS}}=n\ln(\mathrm{RSS}/n)+2k$ 由拟合残差计算，其中 $n$ 为样本数、$k$ 为模型参数数。参数采用 soft-$L_1$ 稳健估计，因此该评分仅用于同一样本下的辅助比较，并非严格的高斯极大似然 AIC。B7 新增点用于模型比较与扩展检验，两者共享样本，结果按开发阶段的验证性能解释。
+\par
+\end{samepage}
 
 \subsubsection{模型建立}
 
@@ -175,7 +183,7 @@ B1 拟合残差的标准差为 $1.5\times10^{-4}$，远小于损失本身的标�
 \textbf{2.广义标度律参数估计}\par\nopagebreak[4]
 将 Pythia（无质量信息，取参考质量 $Q=1$）与 B6 质量实验联合拟合，采用表\ref{tab:p2_form}选定的加性质量缺口形式，参数估计如表\ref{tab:p2_params}所示。
 
-\begin{table}[htbp]
+\begin{table}[H]
   \centering
   \caption{广义标度律参数估计}
   \label{tab:p2_params}
@@ -191,7 +199,15 @@ B1 拟合残差的标准差为 $1.5\times10^{-4}$，远小于损失本身的标�
 \end{tabular}
 \end{table}
 
-由表\ref{tab:p2_params}可知，质量指数 $\gamma=0.9779\approx1$，说明质量缺口近似线性地抬高模型的渐近损失下限；联合拟合 $R^2=0.9896$、RMSE $=0.036$、MAPE $=0.66\%$。由于联合数据与经典拟合数据不同，两者的 $R^2$ 不能直接用于判断引入质量项是否提高精度。图\ref{fig:p2_quality}左图展示固定 $D=300$B tokens 时的规模--质量响应面，空心点标明 B6 半合成实验的设计位置，底色与等值线来自已估模型。右图以 $E$ 为起点展示质量缺口对渐近损失的抬升。
+\begin{samepage}
+由表\ref{tab:p2_params}可知，质量指数 $\gamma=0.9779\approx1$，说明质量缺口近似线性地抬高模型的渐近损失下限；联合拟合 $R^2=0.9896$、RMSE $=0.036$、MAPE $=0.66\%$。由于联合数据与经典拟合数据不同，两者的 $R^2$ 不能直接用于判断引入质量项是否提高精度。
+\par
+\end{samepage}
+
+\begin{samepage}
+图\ref{fig:p2_quality}左图展示固定 $D=300$B tokens 时的规模--质量响应面，空心点标明 B6 半合成实验的设计位置，底色与等值线来自已估模型。右图以 $E$ 为起点展示质量缺口对渐近损失的抬升。
+\par
+\end{samepage}
 
 由模型的渐近表达式 $E+C(1-Q)^{\gamma}$ 可得：当 $Q=1$ 时下限为 $1.656$，$Q=0.6$ 时为 $1.801$，$Q=0.3$ 时为 $1.906$。
 
@@ -247,14 +263,17 @@ B2 的 MAPE 为 $33.7\%$，B8 校准段在尝试反向变换后仍达 $133.4\%$�
 \par
 \end{samepage}
 
+\begin{samepage}
 \textbf{4.大规模模型的对应与外推范围}\par\nopagebreak[4]
 按 B9 的模型名称与 B10 的模型族名称进行一对一匹配，B10 的 128 条记录均可在 B9 中找到对应项，且 $N$、$D$ 逐条一致。B9 共 132 条记录，其中另外 4 条的训练数据量记为 0，且无对应的 B10 损失，因此不进入对照。将匹配记录按参数规模分组，结果见表\ref{tab:p2_large}。
+\par\nopagebreak[4]
 
-\begin{table}[!htbp]
+\begin{table}[H]
   \centering
   \caption{B9 模型元数据与 B10 估算损失的匹配对照}
   \label{tab:p2_large}
-  \begin{tabular}{cccc}
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabularx}{0.94\textwidth}{@{}*{4}{>{\centering\arraybackslash}X}@{}}
     \toprule
     参数规模 $N$/B & 匹配记录数 & 数据量 $D$/B tokens & MAPE/\% \\
     \midrule
@@ -262,12 +281,13 @@ B2 的 MAPE 为 $33.7\%$，B8 校准段在尝试反向变换后仍达 $133.4\%$�
     $[300,1000)$ & 43 & $0.3$--$30{,}000$ & 1.08 \\
     $[1000,10000]$ & 20 & $0.1$--$36{,}000$ & 1.12 \\
     \bottomrule
-  \end{tabular}
+  \end{tabularx}
   \par\smallskip
   \begin{minipage}{0.94\textwidth}\small
   注：统一取参考质量 $Q=1$；MAPE 比较本文模型预测与 B10 估算值，数据量列为各组的实际最小值和最大值。
   \end{minipage}
 \end{table}
+\end{samepage}
 
 匹配样本的参数规模覆盖 $100$--$10{,}000$B，全部超出主拟合的规模上限。三个规模组的相对误差约为 $1\%$，表明本文模型与 B10 的估算关系接近；但 B10 本身由标度律估算生成，低误差不构成真实大模型性能的独立验证，也不能证明质量效应可直接迁移至该范围。
 
@@ -282,7 +302,7 @@ B2 的 MAPE 为 $33.7\%$，B8 校准段在尝试反向变换后仍达 $133.4\%$�
   \label{fig:p2_margin}
 \end{figure}
 
-\begin{table}[htbp]
+\begin{table}[H]
   \centering
   \caption{弹性与质量—参数替代关系}
   \label{tab:p2_subst}
@@ -312,15 +332,15 @@ B2 的 MAPE 为 $33.7\%$，B8 校准段在尝试反向变换后仍达 $133.4\%$�
 
 \begin{samepage}
 图\ref{fig:p2_dom}左图基于距离 $d_{ij}=\sqrt{2-2s_{ij}}$ 采用平均连接法，对 17 个训练域的效应模式进行层次聚类；右图列出相似度最高与最低的各四对领域。绿色表示相对效应趋同，金色表示相对效应相反。聚类用于概括效应结构，不识别领域联合使用的额外收益。
-\par
-\end{samepage}
+\par\nopagebreak[4]
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图6_领域替代互补.png}
   \caption{训练领域效应聚类与典型领域对比较}
   \label{fig:p2_dom}
 \end{figure}
+\end{samepage}
 
 图\ref{fig:p2_dom}中，百科与网页、医学全文与医学摘要的相似度分别为 $0.925$ 和 $0.903$，表明它们在 13 个验证域上的相对效应模式接近。医学全文与邮件的相似度为 $-0.967$，表示两者的效应方向存在明显差异。这些差异反映了配比调整对不同验证任务的影响并不一致，单一领域的收益需要结合整体任务权重评价。具体而言，在单纯形内将比例 $h$ 从领域 $i$ 转移到领域 $j$，且 $0\leq h\leq p_i$ 时，线性模型给出的加权损失变化为
 \begin{equation}
