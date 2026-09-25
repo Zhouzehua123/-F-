@@ -106,7 +106,8 @@
 
 \subsubsection{模型建立}
 
-\textbf{步骤1：质量评价模型}
+\Needspace{4\baselineskip}
+\textbf{步骤1：质量评价模型}\par\nopagebreak[4]
 
 设 $m$ 条质量信号样本、22 个指标经方向统一与归一化后构成矩阵 $\bm X=(x'_{ij})$。第 $j$ 个指标的信息熵与熵权为：
 \begin{equation}
@@ -119,7 +120,8 @@
 \end{equation}
 其中 $\bar L_d$ 为领域 $d$ 的平均交叉熵损失。该代理指标仅在 13 个可测损失域上有定义，与 A1--A3 的 7 个质量域并非同一分类体系，二者的关联由 A16 映射表建立、并在模型求解中作一致性检验。
 
-\textbf{步骤2：质量冲突消解模型}
+\Needspace{4\baselineskip}
+\textbf{步骤2：质量冲突消解模型}\par\nopagebreak[4]
 
 当两个质量指标对同一文本给出显著不一致的评价时即产生冲突。以方向统一后的标准化得分为基础，定义第 $i$ 样本在指标 $j$ 与 $k$ 上的冲突指示：
 \begin{equation}
@@ -137,7 +139,8 @@
 \end{equation}
 其中 $r_{ij}$ 为第 $i$ 样本在第 $j$ 指标上的秩。消解规则为：若某样本被判为冲突，则以其上“多数指标”的方向（即加权得分 $Q_i$ 相对该样本所在域中位数的偏离方向）作为该样本的最终质量裁决，并在报告中保留冲突标记以供下游剔除或降权。
 
-\textbf{步骤3：领域配比建模（线性混合回归）}
+\Needspace{4\baselineskip}
+\textbf{步骤3：领域配比建模（线性混合回归）}\par\nopagebreak[4]
 
 设训练配方矩阵 $\bm P\in[0,1]^{n\times 17}$（行和为 1），损失矩阵 $\bm L\in\mathbb R^{n\times 13}$。建立各验证域损失对配比的线性混合模型：
 \begin{equation}
@@ -154,7 +157,8 @@
 \end{equation}
 其中 $\tilde{\bm P}=[\bm P,\ \bm 1]$，$\bm D=\mathrm{diag}(1,\dots,1,0)$（不惩罚截距），$\lambda=10^{-3}$。
 
-\textbf{步骤4：质量信息的引入方式与检验}
+\Needspace{4\baselineskip}
+\textbf{步骤4：质量信息的引入方式与检验}\par\nopagebreak[4]
 
 问题一要求论证“是否以及如何引入质量评分 $Q$”。本文构造混合质量指数 $\bar Q(\bm p)=\sum_k p_k Q_k$（$Q_k$ 由 A16 映射得到：direct/near\_\allowbreak{}direct 域直接取用 A1--A3 域级质量，inferred 域取全局均值），并做增量回归检验：
 \begin{equation}
@@ -162,7 +166,8 @@
 \end{equation}
 若质量项带来的 $R^2$ 增量可忽略，则说明线性配比已吸收质量信息，此时不宜重复引入以免共线；质量评分转而作为独立资源交由问题二、三使用。
 
-\textbf{步骤5：最优配比与稳健推荐}
+\Needspace{4\baselineskip}
+\textbf{步骤5：最优配比与稳健推荐}\par\nopagebreak[4]
 
 在系数矩阵 $\bm A$ 基础上，固定未测量域配比于参考值，优化 13 个可测域的配比使加权平均损失最小：
 \begin{equation}
@@ -251,7 +256,7 @@
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.72\textwidth]{../求解/问题一/图片/图2_线性模型R2.png}
+  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图2_线性模型R2.png}
   \caption{线性混合回归的拟合与泛化表现}
   \label{fig:p1_r2}
 \end{figure}
@@ -260,7 +265,7 @@
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.78\textwidth]{../求解/问题一/图片/图4_混合系数热力图.png}
+  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图4_混合系数热力图.png}
   \caption{领域配比对交叉熵损失的相对影响热力图}
   \label{fig:p1_heatmap}
 \end{figure}
@@ -291,21 +296,15 @@
 
 无约束优化倾向于把配比集中于单一低损失域（预测加权平均损失 $4.177$），不具备可落地性；故采用 2.5 倍上限的有界推荐作为最终方案，推荐配比与参考配比的对比见表\ref{tab:p1_rec}，该方案使预测加权平均损失由 $5.336$ 降至 $5.136$（下降 $0.199$）。
 
-\begin{longtable}{@{}>{\centering\arraybackslash}p{0.30\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}@{}}
+\begin{table}[!htbp]
+\centering
   \caption{有界推荐配比调整}
-  \label{tab:p1_rec} \\
-  \toprule
+  \label{tab:p1_rec}
+\begin{tabular}{@{}>{\centering\arraybackslash}p{0.30\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}@{}}
+\toprule
   领域 & 参考配比 & 推荐配比 & 调整量 \\
   \midrule
-  \endfirsthead
-  \caption{有界推荐配比调整（续）} \\
-  \toprule
-  领域 & 参考配比 & 推荐配比 & 调整量 \\
-  \midrule
-  \endhead
-  \bottomrule
-  \endfoot
-  pubmed\_\allowbreak{}central & 0.1137 & 0.2843 & $+0.1706$ \\
+pubmed\_\allowbreak{}central & 0.1137 & 0.2843 & $+0.1706$ \\
   stackexchange & 0.0994 & 0.2486 & $+0.1491$ \\
   pubmed\_\allowbreak{}abstracts & 0.0662 & 0.1654 & $+0.0993$ \\
   gutenberg\_\allowbreak{}pg\_\allowbreak{}19 & 0.0469 & 0.1173 & $+0.0704$ \\
@@ -315,7 +314,9 @@
   github & 0.1107 & 0.0000 & $-0.1107$ \\
   arxiv & 0.1130 & 0.0000 & $-0.1130$ \\
   pile\_\allowbreak{}cc & 0.1195 & 0.0000 & $-0.1195$ \\
-\end{longtable}
+\bottomrule
+\end{tabular}
+\end{table}
 
 由表\ref{tab:p1_rec}可知，推荐方案应显著增加 pubmed\_\allowbreak{}central、stackexchange、pubmed\_\allowbreak{}abstracts 等学术领域的配比，同时压缩 pile\_\allowbreak{}cc、arxiv、github、freelaw 等领域的占比。需要说明的是，这一结论是针对“13 个验证域加权平均损失”这一目标的优化结果，与“提升单个域自身表现”并不等价（例如 arxiv 的配比下降并不意味着 arxiv 质量低，而是因为其对加权平均损失的边际贡献为负）。外推稳健性方面，10B 与 70B 外推表的损失尺度因子（est/train）在各损失域上高度一致（10B 均值 $0.338$、标准差 $0.038$；70B 均值 $0.266$、标准差 $0.036$），且同配方下 60M 与 1M 的跨尺度损失比稳定（均值 $0.51\sim0.82$），说明同一套配比—损失系数可在不同参数规模间复用、具备跨尺度外推能力，如图\ref{fig:p1_extrap}所示。
 
@@ -325,5 +326,7 @@
   \caption{外推稳健性验证（左：10B 外推尺度因子；右：同配方 60M/1M 跨尺度损失比）}
   \label{fig:p1_extrap}
 \end{figure}
+
+\FloatBarrier
 
 综合以上结果，本节完成了问题一的求解，得到领域质量评分 $Q$、最优配比 $\bm p$ 与配比—损失定量关系，为后续问题提供质量与配比输入。

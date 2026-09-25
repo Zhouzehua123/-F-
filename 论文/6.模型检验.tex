@@ -45,21 +45,15 @@
 
 为考察模型结论对关键输入与假设的稳健性，分别对赋权方案、冲突阈值、正则系数、质量成本函数形式、质量基线口径、上下文长度与算力预算进行扰动分析，结果如表\ref{tab:sensitivity}所示。
 
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}>{\raggedright\arraybackslash}p{0.26\textwidth}@{}}
+\begin{table}[!htbp]
+\centering
   \caption{灵敏度分析结果}
-  \label{tab:sensitivity} \\
-  \toprule
+  \label{tab:sensitivity}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}>{\raggedright\arraybackslash}p{0.26\textwidth}@{}}
+\toprule
   参数/设定变化 & 输出变化 & 灵敏度评估 \\
   \midrule
-  \endfirsthead
-  \caption{灵敏度分析结果（续）} \\
-  \toprule
-  参数/设定变化 & 输出变化 & 灵敏度评估 \\
-  \midrule
-  \endhead
-  \bottomrule
-  \endfoot
-  赋权方案：熵权法 $\to$ 等权平均 $\to$ PCA & 域级质量排序一致性 $0.679\to0.679$；样本级得分相关 $0.854/0.881$；得分均值 $0.495\to0.639\to0.520$ & 中等敏感：整体格局稳定，但领域名次会变化 \\
+赋权方案：熵权法 $\to$ 等权平均 $\to$ PCA & 域级质量排序一致性 $0.679\to0.679$；样本级得分相关 $0.854/0.881$；得分均值 $0.495\to0.639\to0.520$ & 中等敏感：整体格局稳定，但领域名次会变化 \\
   指标方向：ad\_en 按“第 1 类=无广告”（正向）$\to$ 若误判为负向 & 领域质量排序由「arxiv $>$ stackexchange $>$ c4 $>$ commoncrawl $>$ book $\approx$ wikipedia $>$ github」变为「c4 $>$ commoncrawl $>$ arxiv $>$ stackexchange $>$ book $>$ wikipedia $>$ github」 & 高度敏感：方向判定必须用实证证据 \\
   冲突阈值 $\tau$：$0.5\to1.0\to1.5\to2.0\to2.5$ & 冲突率 $0.670\to0.402\to0.223\to0.121\to0.067$；与独立基准之比 $0.93\to0.84\to0.77\to0.77\to0.86$ & 结论稳健：任一阈值下冲突率均显著低于独立基准 \\
   岭正则系数 $\lambda$：$10^{-4}\sim10^{-1}$ & 训练 $R^2$ 由 $0.6291$ 降至 $0.6238$，检验 $R^2$ 由 $0.6187$ 降至 $0.6157$ & 不敏感，估计稳定 \\
@@ -69,7 +63,11 @@
   上下文长度：$2{,}048\to131{,}072$ tokens（C7 可行取值） & 注意力/训练倍数 $0.07\to4.37$；$N^{*}$ 由 $6.089$B 降至 $2.705$B；损失上升 $6.0\%$ & 高度敏感，存在临界点 $L_{\text{crit}}=30{,}000$ \\
   算力预算 $C$：$10^{19}\to10^{24}$ FLOPs & $Q^{*}$ 由 $0.551$ 升至 $1.000$；$D^*/N^*$ 由 $30.9$ 升至 $76.1$；质量份额 $0\to0.407\to0.016$ & 高度敏感，发生三段式结构性转移 \\
   半合成数据口径：并入 B2 / B8 & B2 使 MAPE 升至 $33.7\%$；B8 使 MAPE 升至 $133.4\%$ 且预测低于不可约损失下限 & 不可并入；已划出可信度边界 \\
-\end{longtable}
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier
 
 由表\ref{tab:sensitivity}可知，本文结论可按稳健程度分为三类：
 

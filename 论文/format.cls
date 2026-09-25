@@ -116,6 +116,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{fontspec}
 \newfontfamily\yaheiconsola{DejaVu Sans Mono}
 \setmonofont{DejaVu Sans Mono}
+\renewcommand{\lstlistingname}{程序}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 

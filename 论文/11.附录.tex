@@ -132,7 +132,7 @@
 程序整理、绘图代码编写与结果核对使用 Codex 辅助，模型为 OpenAI 的 GPT-5.4（2026-03-05）及 GPT-6 系列（2026-09-03 首发）\cite{ai_codex54,ai_codex6}；运行输入、参数及输出以随文提供的源程序和结果文件为准。
 
 
-程序采用 Python 3，依赖 NumPy、pandas、SciPy 与 Matplotlib；数据解压和 JSON 读取使用 Python 标准库。四问程序共同调用\path{求解/_common.py}，附件查找以该文件中的数据根目录为准。完整源程序保存在各问目录，下列代码仅摘录核心计算，所需导入、数据加载、全局变量和结果写出均见对应完整文件。代码行号沿用源文件，以便定位。
+程序采用 Python 3，依赖 NumPy、pandas、SciPy 与 Matplotlib；数据解压和 JSON 读取使用 Python 标准库。四问程序共同调用 求解/\allowbreak{}\_common.py，附件查找以该文件中的数据根目录为准。完整源程序保存在各问目录，下列代码仅摘录核心计算，所需导入、数据加载、全局变量和结果写出均见对应完整文件。代码行号沿用源文件，以便定位。
 
 运行顺序为问题一、问题二、问题三；问题四单独读取附件 C，可独立运行。问题一输出质量、配比及关键量，问题二据此标定配比修正并输出广义标度律参数，问题三读取两问的共享文件。输入和输出关系见表\ref{tab:code_map}。
 
@@ -143,36 +143,59 @@
 \toprule
 问题 & 核心程序 & 输入 & 主要输出\\
 \midrule
-一 & \path{求解/问题一/问题一.py} & 附件 A & 质量评分、回归系数、推荐配比\\
-二 & \path{求解/问题二/问题二.py} & 附件 B、问题一结果 & 标度律参数、验证指标、配比修正\\
-三 & \path{求解/问题三/问题三.py} & 前两问共享结果、附件 C7 & 三档配置、预算扫描与敏感性\\
-四 & \path{求解/问题四/问题四.py} & 附件 C & 任务聚合、贡献分解与前沿预测\\
+一 & 求解/\allowbreak{}问题一/\allowbreak{}问题一.py & 附件 A & 质量评分、回归系数、推荐配比\\
+二 & 求解/\allowbreak{}问题二/\allowbreak{}问题二.py & 附件 B、问题一结果 & 标度律参数、验证指标、配比修正\\
+三 & 求解/\allowbreak{}问题三/\allowbreak{}问题三.py & 前两问共享结果、附件 C7 & 三档配置、预算扫描与敏感性\\
+四 & 求解/\allowbreak{}问题四/\allowbreak{}问题四.py & 附件 C & 任务聚合、贡献分解与前沿预测\\
 \bottomrule
 \end{tabularx}
 \end{table}
+\FloatBarrier
 
+\Needspace{15\baselineskip}
 \subsubsection*{问题一：质量预处理、综合评分与冲突统计}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=76,lastline=85,firstnumber=76,caption={问题一核心计算},label={code:p1}]{../求解/问题一/问题一.py}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=155,lastline=179,firstnumber=155]{../求解/问题一/问题一.py}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=214,lastline=234,firstnumber=214]{../求解/问题一/问题一.py}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=338,lastline=358,firstnumber=338]{../求解/问题一/问题一.py}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=434,lastline=466,firstnumber=434]{../求解/问题一/问题一.py}
 
+\Needspace{15\baselineskip}
 \subsubsection*{问题二：标度律估计、质量方向与边际分析}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=43,lastline=63,firstnumber=43,caption={问题二核心计算},label={code:p2}]{../求解/问题二/问题二.py}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=84,lastline=100,firstnumber=84]{../求解/问题二/问题二.py}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=116,lastline=131,firstnumber=116]{../求解/问题二/问题二.py}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=145,lastline=166,firstnumber=145]{../求解/问题二/问题二.py}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=211,lastline=225,firstnumber=211]{../求解/问题二/问题二.py}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=248,lastline=270,firstnumber=248]{../求解/问题二/问题二.py}
 
+\Needspace{15\baselineskip}
 \subsubsection*{问题三：损失、成本函数与约束优化}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=52,lastline=72,firstnumber=52,caption={问题三核心计算},label={code:p3}]{../求解/问题三/问题三.py}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=90,lastline=124,firstnumber=90]{../求解/问题三/问题三.py}
 
+\Needspace{15\baselineskip}
 \subsubsection*{问题四：分层桥接、规模时间分解与前沿预测}
-\lstinputlisting[language=Python,firstline=153,lastline=177,firstnumber=153]{../求解/问题四/问题四.py}
-\lstinputlisting[language=Python,firstline=194,lastline=212,firstnumber=194,caption={问题四核心计算},label={code:p4}]{../求解/问题四/问题四.py}
+\Needspace{8\baselineskip}
+\lstinputlisting[language=Python,firstline=153,lastline=177,firstnumber=153,caption={问题四核心计算},label={code:p4}]{../求解/问题四/问题四.py}
+\Needspace{8\baselineskip}
+\lstinputlisting[language=Python,firstline=194,lastline=212,firstnumber=194]{../求解/问题四/问题四.py}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=242,lastline=260,firstnumber=242]{../求解/问题四/问题四.py}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=369,lastline=396,firstnumber=369]{../求解/问题四/问题四.py}
+\Needspace{8\baselineskip}
 \lstinputlisting[language=Python,firstline=399,lastline=420,firstnumber=399]{../求解/问题四/问题四.py}
