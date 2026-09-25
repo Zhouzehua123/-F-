@@ -1,4 +1,8 @@
 \subsection{问题一：数据质量评价与领域配比建模}
+\begingroup
+\widowpenalty=10000
+\clubpenalty=10000
+\emergencystretch=1em
 
 \subsubsection{具体分析}
 
@@ -17,7 +21,7 @@
 
 \textbf{1. 数据来源与预处理}
 
-问题一使用两类数据。配方表 A4 包含 17 个 The Pile 子领域的训练配比，各分量非负且总和为 1\cite{gao2020pile}；损失表 A5 包含 13 个验证领域的交叉熵损失，两表通过 index 列对应。nih\_exporter、enron\_emails、europarl 和 philpapers 四个训练领域没有对应的验证损失列，因此保留其配比分量，并在系数解释中将其标为“间接影响域”。
+问题一使用两类数据。配方表 A4 包含 17 个 The Pile 子领域的训练配比，各分量非负且总和为 1\cite{gao2020pile}；损失表 A5 包含 13 个验证领域的交叉熵损失，两表通过 index 列对应。nih\_\allowbreak{}exporter、enron\_\allowbreak{}emails、europarl 和 philpapers 四个训练领域没有对应的验证损失列，因此保留其配比分量，并在系数解释中将其标为“间接影响域”。
 
 A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需要统一其方向。设第 $j$ 个指标的原始值为 $x_j$，正向指标作极差归一化，负向指标反向缩放；对于过长或过短均不合适的长度型指标，使用其与稳健中心的接近程度表示质量：
 \begin{equation}
@@ -75,7 +79,7 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \begin{equation}
     Q_i = \sum_{j=1}^{22} w_j\, x'_{ij},\qquad Q_d=\frac{1}{n_d}\sum_{i\in\mathcal D_d}Q_i,\qquad \sum_j w_j=1
 \end{equation}
-权重 $w_j$ 由熵权法确定。表\ref{tab:p1_dir}中，modernbert\_reasoning 和 modernbert\_cleanliness 的权重分别为 $0.152$ 和 $0.143$，在本指标体系中提供的信息量最多。熵权对指标分布形态较敏感，极端左偏的指标可能获得较大权重，因此还需考察赋权方案变化对结果的影响，相关检验见第\ref{sec:check}节。
+权重 $w_j$ 由熵权法确定。表\ref{tab:p1_dir}中，modernbert\_\allowbreak{}reasoning 和 modernbert\_\allowbreak{}cleanliness 的权重分别为 $0.152$ 和 $0.143$，在本指标体系中提供的信息量最多。熵权对指标分布形态较敏感，极端左偏的指标可能获得较大权重，因此还需考察赋权方案变化对结果的影响，相关检验见第\ref{sec:check}节。
 
 读取质量信号时逐字段检查缺失情况，结果见表\ref{tab:p1_missing}。缺失值按对应指标的中位数填充，以避免将缺失直接解释为高质量或低质量。
 
@@ -189,7 +193,7 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 \textbf{4. 混合质量指数及其增量检验}
 
-为考察质量评分的引入方式，构造混合质量指数 $\bar Q(\bm p)=\sum_k p_kQ_k$。其中，$Q_k$ 依据 A16 建立映射：direct 和 near\_direct 领域取 A1--A3 的相应领域质量，inferred 领域取全局均值。将该指数加入配比回归，进行增量检验：
+为考察质量评分的引入方式，构造混合质量指数 $\bar Q(\bm p)=\sum_k p_kQ_k$。其中，$Q_k$ 依据 A16 建立映射：direct 和 near\_\allowbreak{}direct 领域取 A1--A3 的相应领域质量，inferred 领域取全局均值。将该指数加入配比回归，进行增量检验：
 \begin{equation}
     \hat{\bm L} = \bm P \bm A + \bm 1 \bm b^{\top} + \bm 1\, c^{\top}\bar Q(\bm p)
 \end{equation}
@@ -248,7 +252,7 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 由表\ref{tab:p1_qa}可知，在同时具有抽样与扩展质量信号的两个域上（arxiv、github），两种口径的域级质量差异不超过 $0.002$（arxiv $+0.0021$、github $+0.0006$），说明抽样集对扩展集具有代表性、评分口径可跨集合迁移。
 
-全体记录的领域质量排序为 arxiv（0.703）$>$ stackexchange（0.655）$>$ c4（0.637）$>$ commoncrawl（0.615）$>$ book（0.552）$\approx$ wikipedia（0.551）$>$ github（0.455）。需要指出，该排序是 22 个分类器信号的合成结果，其中若干信号（如 rps\_doc\_frac\_unique\_words、rps\_doc\_unigram\_entropy）与文档长度相关，因此“c4/commoncrawl 高于 book/wikipedia”反映的是信号体系的口径，而非对语料价值的终极判断——这一点在使用该评分时须注意。
+全体记录的领域质量排序为 arxiv（0.703）$>$ stackexchange（0.655）$>$ c4（0.637）$>$ commoncrawl（0.615）$>$ book（0.552）$\approx$ wikipedia（0.551）$>$ github（0.455）。需要指出，该排序是 22 个分类器信号的合成结果，其中若干信号（如 rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words、rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy）与文档长度相关，因此“c4/commoncrawl 高于 book/wikipedia”反映的是信号体系的口径，而非对语料价值的终极判断——这一点在使用该评分时须注意。
 
 冲突与一致性检验结果如表\ref{tab:p1_conf}所示，冲突最集中的指标对与熵权分布见图\ref{fig:p1_conf}。
 
@@ -286,7 +290,7 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 （2）Kendall 协同系数为 $0.069$（$\chi^2$ 检验 $p<0.001$，样本量极大故显著性很高），属于“正相关但一致性较弱”的水平，与冲突率 $22.3\%$ 一致，说明“各质量指标完全一致、不存在冲突”的判断并不成立；（3）但冲突率低于指标完全独立时的基准 $28.9\%$（比值 $0.774$），说明指标间确为正相关，冲突主要发生在语义上本就不同的指标之间。
 
-冲突成因可归纳为三类：一是度量对象不同（如 rps\_doc\_unigram\_entropy 与 rps\_doc\_frac\_unique\_words 同测“多样性”但量纲不同），二是内容类型差异（如 modernbert\_professionalism 对学术文本与论坛文本的评价尺度不同），三是分布形态差异（如 ad\_en 为二分类概率、在长文档上两极化）。
+冲突成因可归纳为三类：一是度量对象不同（如 rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy 与 rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words 同测“多样性”但量纲不同），二是内容类型差异（如 modernbert\_\allowbreak{}professionalism 对学术文本与论坛文本的评价尺度不同），三是分布形态差异（如 ad\_\allowbreak{}en 为二分类概率、在长文档上两极化）。
 
 据此本文按“多数指标方向裁决 + 冲突标记保留”的规则消解：冲突样本仍参与领域均值，但以 $Q_i$ 相对域中位数的偏离方向标注其可信度，并在问题二、三中不单独使用冲突样本。
 
@@ -326,7 +330,7 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 由于不同参数规模下损失水平本身不同（60M 与 1M 的损失比约 $0.68$），跨尺度直接比较 $R^2$ 无意义，故改用尺度无关的 Pearson 相关：60M 与 1B 检验集上的平均相关分别为 $0.782$ 与 $0.651$，表明同一套配比—损失系数可在不同参数规模间复用。
 
-由图\ref{fig:p1_heatmap}可知，各训练域对验证损失的相对影响差异明显，dm\_mathematics、arxiv 等域降低损失，而 pile\_cc、ubuntu\_irc 等域抬高损失，印证了领域配比是影响模型性能的关键变量。
+由图\ref{fig:p1_heatmap}可知，各训练域对验证损失的相对影响差异明显，dm\_\allowbreak{}mathematics、arxiv 等域降低损失，而 pile\_\allowbreak{}cc、ubuntu\_\allowbreak{}irc 等域抬高损失，印证了领域配比是影响模型性能的关键变量。
 
 为验证质量信息的引入方式，本文比较了“仅配比”与“配比+混合质量指数 $\bar Q$”两种设定：追加质量项后 13 个损失域的平均 $R^2$ 增量仅为 $9.9\times10^{-5}$，说明线性配比系数已经吸收了质量信息。因此本文不把质量评分再次作为配比模型的解释变量，而是将其作为独立资源交由问题二、三使用。
 
@@ -339,7 +343,7 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
   \label{fig:p1_quality}
 \end{figure}
 
-由图\ref{fig:p1_quality}(a)可知，13 个损失域的内在难度差异显著，dm\_mathematics 最易（代理质量 $1.000$）、ubuntu\_irc 最难（代理质量 $0.000$）；图\ref{fig:p1_quality}(b)显示，A16 的 direct/near\_direct 映射中两套口径的 Spearman 排序相关为 $0.60$：arxiv、stackexchange、github 三个域在两种口径下同向（文本质量高、损失也相对低），但 wikipedia、book、pile\_cc 存在明显分歧——文本质量较高而该域损失并不低（学术与百科长文属“高质量但难拟合”）。因此质量评分必须按用途区分：面向数据治理使用 A1--A3 的文本质量，面向性能预测使用损失难度代理。
+由图\ref{fig:p1_quality}(a)可知，13 个损失域的内在难度差异显著，dm\_\allowbreak{}mathematics 最易（代理质量 $1.000$）、ubuntu\_\allowbreak{}irc 最难（代理质量 $0.000$）；图\ref{fig:p1_quality}(b)显示，A16 的 direct/near\_\allowbreak{}direct 映射中两套口径的 Spearman 排序相关为 $0.60$：arxiv、stackexchange、github 三个域在两种口径下同向（文本质量高、损失也相对低），但 wikipedia、book、pile\_\allowbreak{}cc 存在明显分歧——文本质量较高而该域损失并不低（学术与百科长文属“高质量但难拟合”）。因此质量评分必须按用途区分：面向数据治理使用 A1--A3 的文本质量，面向性能预测使用损失难度代理。
 
 \textbf{3. 配比推荐与跨尺度分析}
 
@@ -375,11 +379,12 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \end{longtable}
 \endgroup
 
-由表\ref{tab:p1_rec}可知，推荐方案应显著增加 pubmed\_central、stackexchange、pubmed\_abstracts 等学术领域的配比，同时压缩 pile\_cc、arxiv、github、freelaw 等领域的占比。需要说明的是，这一结论是针对“13 个验证域加权平均损失”这一目标的优化结果，与“提升单个域自身表现”并不等价（例如 arxiv 的配比下降并不意味着 arxiv 质量低，而是因为其对加权平均损失的边际贡献为负）。
+由表\ref{tab:p1_rec}可知，推荐方案应显著增加 pubmed\_\allowbreak{}central、stackexchange、pubmed\_\allowbreak{}abstracts 等学术领域的配比，同时压缩 pile\_\allowbreak{}cc、arxiv、github、freelaw 等领域的占比。需要说明的是，这一结论是针对“13 个验证域加权平均损失”这一目标的优化结果，与“提升单个域自身表现”并不等价（例如 arxiv 的配比下降并不意味着 arxiv 质量低，而是因为其对加权平均损失的边际贡献为负）。
 
 外推稳健性方面，10B 与 70B 外推表的损失尺度因子（est/train）在各损失域上高度一致（10B 均值 $0.338$、标准差 $0.038$；70B 均值 $0.266$、标准差 $0.036$），且同配方下 60M 与 1M 的跨尺度损失比稳定（均值 $0.51\sim0.82$），说明同一套配比—损失系数可在不同参数规模间复用、具备跨尺度外推能力，如图\ref{fig:p1_extrap}所示。
 
-\begin{figure}[ht]
+\clearpage
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.92\textwidth]{../求解/问题一/图片/图7_外推与跨尺度.png}
   \caption{外推稳健性验证（左：10B 外推尺度因子；右：同配方 60M/1M 跨尺度损失比）}
@@ -387,3 +392,5 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \end{figure}
 
 本节得到领域质量评分、配比与损失的定量关系及有界推荐配比，并通过质量口径对照、同尺度检验和跨尺度分析考察结果，为后续资源配置研究提供数据侧输入。
+
+\endgroup
