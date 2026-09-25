@@ -1,0 +1,56 @@
+name: Compile paper
+
+on:
+  push:
+    paths:
+      - '**.tex'
+      - '**.cls'
+      - '论文/figures/**'
+      - '论文/fonts/**'
+      - '求解/*/图片/**'
+      - '.github/workflows/build-paper.yml'
+  pull_request:
+    paths:
+      - '**.tex'
+      - '**.cls'
+      - '论文/figures/**'
+      - '论文/fonts/**'
+      - '求解/*/图片/**'
+      - '.github/workflows/build-paper.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare font fallbacks for the Linux preview
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('论文/format.cls')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace(r'\setmainfont{Times New Roman}', r'\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}')
+          s = s.replace(r'\setsansfont{Arial}', r'\IfFontExistsTF{Arial}{\setsansfont{Arial}}{\setsansfont{TeX Gyre Heros}}')
+          s = s.replace(r'\setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}', r'\IfFontExistsTF{simkai.ttf}{\setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}}{\setCJKfamilyfont{kai}[AutoFakeBold]{FandolKai-Regular}}')
+          s = s.replace(r'\newfontfamily\yaheiconsola{DejaVu Sans Mono}', r'\IfFontExistsTF{DejaVu Sans Mono}{\newfontfamily\yaheiconsola{DejaVu Sans Mono}}{\newfontfamily\yaheiconsola{Latin Modern Mono}}')
+          s = s.replace(r'\setmonofont{DejaVu Sans Mono}', r'\IfFontExistsTF{DejaVu Sans Mono}{\setmonofont{DejaVu Sans Mono}}{\setmonofont{Latin Modern Mono}}')
+          p.write_text(s, encoding='utf-8')
+      - name: Compile with XeLaTeX
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: 论文.tex
+          working_directory: 论文
+          latexmk_use_xelatex: true
+      - name: Upload compiled PDF and build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-preview
+          path: |
+            论文/论文.pdf
+            论文/论文.log
+          if-no-files-found: error
