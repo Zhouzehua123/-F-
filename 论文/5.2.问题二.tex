@@ -30,18 +30,23 @@
 
 \begin{table}[htbp]
   \centering
-  \caption{质量字段 $Q_{\text{score}}$ 的方向检验（控制 $N$、$D$ 的组内相关）}
+  \caption{质量评分方向与样本使用方式}
   \label{tab:p2_dir}
-\begin{tabular}{>{\centering\arraybackslash}p{0.18\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}}
-  \toprule
-  数据集 & 样本数 & 分组数 & 组内相关 $r$ & 结论 \\
-  \midrule
-B6 & 360 & 45 & $-0.925$ & $Q$ 越大损失越低：\textbf{质量指标}（$Q=1$ 为最优） \\
-  B7 & 450 & 45 & $-0.918$ & 含 B6 的全部记录，仅新增点用于检验 \\
-  B8（校准段） & 984 & 90 & $+0.995$ & 方向与 B6/B7 相反：\textbf{口径不一致} \\
-  B8（外推段） & 720 & 60 & $+0.968$ & 同上 \\
-  \bottomrule
-\end{tabular}
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabularx}{0.98\textwidth}{@{}lcc>{\raggedright\arraybackslash}X@{}}
+    \toprule
+    数据分组 & \makecell{平均组内\\相关系数} & \makecell{记录数 /\\实验组数} & 评分解释与使用方式 \\
+    \midrule
+    B6 & $-0.925$ & 360 / 45 & 沿用原评分；$Q=1$ 为最优参考 \\
+    B7 & $-0.918$ & 450 / 45 & 与 B6 同向，仅新增记录用于检验 \\
+    B8 校准段 & $+0.995$ & 984 / 90 & 方向相反，翻转评分后作诊断 \\
+    B8 外推段 & $+0.968$ & 720 / 60 & 方向相反，不纳入主拟合 \\
+    \bottomrule
+  \end{tabularx}
+  \par\smallskip
+  \begin{minipage}{0.98\textwidth}\small
+  注：实验组固定 $N,D$。B7 包含 B6 的全部 360 条记录，新增 90 条；均值只描述方向，不表示显著性。
+  \end{minipage}
 \end{table}
 
 B6、B7 的平均组内相关分别为 $-0.925$、$-0.918$，因此在这两套数据中采用 $Q=Q_{\text{score}}$。但两者不能当作相互独立的证据：逐行匹配显示，B7 已包含 B6 的全部 360 条记录，后续检验仅使用其余 90 个新增点。B8 两个子集均呈相反方向，且部分损失低于本文估计的基线下限。基于这一差异，主拟合不使用 B8，仅以 $1-Q_{\text{score}}$ 作诊断性变换，考察翻转方向后还剩多少预测偏差。
@@ -74,18 +79,24 @@ B6、B7 的平均组内相关分别为 $-0.925$、$-0.918$，因此在这两套�
 
 \begin{table}[htbp]
   \centering
-  \caption{广义标度律候选形式的比较}
+  \caption{不同质量作用形式的拟合与扩展检验指标}
   \label{tab:p2_form}
-\begin{tabular}{>{\centering\arraybackslash}p{0.28\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}}
-  \toprule
-  质量项形式 & 联合 $R^2$ & B6 拟合 $R^2$ & B7 新增点 $r$ & 参数数 & $I_{\mathrm{RSS}}$ \\
-  \midrule
-\textbf{加性质量缺口 $C(1-Q)^{\gamma}$} & \textbf{0.9896} & \textbf{0.9556} & 0.991 & 7 & $\mathbf{-10236}$ \\
-  质量同时乘 $N$ 与 $D$ & 0.9882 & 0.9495 & \textbf{0.991} & 7 & $-10042$ \\
-  加性质量亏损 $CQ^{-\gamma}$ & 0.9848 & 0.9349 & 0.991 & 7 & $-9660$ \\
-  质量作有效数据乘子 & 0.9745 & 0.8905 & 0.983 & 6 & $-8866$ \\
-  \bottomrule
-\end{tabular}
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabularx}{0.98\textwidth}{@{}>{\raggedright\arraybackslash}X*{4}{>{\centering\arraybackslash}p{0.17\textwidth}}@{}}
+    \toprule
+    比较指标 & \makecell{加性质量缺口\\$C(1-Q)^\gamma$} & \makecell{质量同时乘\\$N$ 与 $D$} & \makecell{加性质量亏损\\$CQ^{-\gamma}$} & \makecell{质量作为\\有效数据乘子} \\
+    \midrule
+    联合样本 $R^2$ & \textbf{0.9896} & 0.9882 & 0.9848 & 0.9745 \\
+    B6 样本 $R^2$ & \textbf{0.9556} & 0.9495 & 0.9349 & 0.8905 \\
+    B7 新增点 $r$ & 0.991 & \textbf{0.991} & 0.991 & 0.983 \\
+    待估参数个数 & 7 & 7 & 7 & 6 \\
+    残差信息评分 $I_{\mathrm{RSS}}$ & $\mathbf{-10236}$ & $-10042$ & $-9660$ & $-8866$ \\
+    \bottomrule
+  \end{tabularx}
+  \par\smallskip
+  \begin{minipage}{0.98\textwidth}\small
+  注：相关系数保留三位小数；加粗的最优指标按未舍入值确定。$I_{\mathrm{RSS}}$ 越小越优，仅用于同样本比较。
+  \end{minipage}
 \end{table}
 
 \begin{samepage}
@@ -189,18 +200,23 @@ B3 提供了另一项族内检查。对 8 条插值轨迹分别固定 $N$，以�
 
 \begin{table}[H]
   \centering
-  \caption{广义标度律参数估计}
+  \caption{广义模型各损失项的参数配置}
   \label{tab:p2_params}
-\begin{tabular}{>{\centering\arraybackslash}p{0.28\textwidth}>{\centering\arraybackslash}p{0.14\textwidth}>{\centering\arraybackslash}p{0.30\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}}
-  \toprule
-  参数 & 估计值 & 参数 & 估计值 \\
-  \midrule
-不可约损失 $E$ & 1.6558 & 数据规模指数 $\beta$ & 0.2767 \\
-  规模系数 $A$ & 0.3808 & 质量缺口系数 $C$ & 0.3544 \\
-  规模指数 $\alpha$ & 0.3266 & 质量指数 $\gamma$ & 0.9779 \\
-  数据系数 $B$ & 1.2515 & 联合拟合 $R^2$ & 0.9896 \\
-  \bottomrule
-\end{tabular}
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabularx}{0.94\textwidth}{@{}>{\raggedright\arraybackslash}Xcccc@{}}
+    \toprule
+    损失组成 & 系数符号 & 系数估计 & 指数符号 & 指数估计 \\
+    \midrule
+    不可约损失 & $E$ & 1.6558 & -- & -- \\
+    参数规模项 & $A$ & 0.3808 & $\alpha$ & 0.3266 \\
+    训练数据项 & $B$ & 1.2515 & $\beta$ & 0.2767 \\
+    质量缺口项 & $C$ & 0.3544 & $\gamma$ & 0.9779 \\
+    \bottomrule
+  \end{tabularx}
+  \par\smallskip
+  \begin{minipage}{0.94\textwidth}\small
+  注：联合拟合 $R^2=0.9896$；不可约损失为常数项，不含衰减指数。
+  \end{minipage}
 \end{table}
 
 \begin{samepage}
@@ -227,20 +243,27 @@ B3 提供了另一项族内检查。对 8 条插值轨迹分别固定 $N$，以�
 
 \begin{table}[htbp]
   \centering
-  \caption{广义标度律的分层验证}
+  \caption{按数据性质区分的预测误差与相关性}
   \label{tab:p2_val}
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.32\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.14\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}}
-  \toprule
-  验证来源 & 样本数 & 性质 & $r$ & RMSE & MAPE(\%) \\
-  \midrule
-B4 跨族收敛点 & 57 & 真实 & 0.975 & 0.293 & 8.8 \\
-  B5 已发表标度律 & 44 & 真实 & 0.910 & 0.193 & 8.0 \\
-  B7 质量扩展新增点 & 90 & 半合成 & 0.991 & 0.056 & 1.6 \\
-  B2 Cerebras 族外 & 1{,}029 & 半合成 & 0.666 & 1.245 & 33.7 \\
-  B8 大规模矩阵（方向重定向） & 984 & 半合成 & 0.638 & 1.294 & 133.4 \\
-  B10 百亿参数以上 & 128 & 估算 & 1.000 & 0.020 & 1.0 \\
-  \bottomrule
-\end{tabular}
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabularx}{0.98\textwidth}{@{}l>{\raggedright\arraybackslash}Xrrrr@{}}
+    \toprule
+    数据性质 & 对照样本 & 记录数 & MAPE/\% & RMSE & $r$ \\
+    \midrule
+    \multirow{2}{*}{真实} & B4 跨模型族收敛点 & 57 & 8.8 & 0.293 & 0.975 \\
+      & B5 文献标度记录 & 44 & 8.0 & 0.193 & 0.910 \\
+    \addlinespace[3pt]
+    \multirow{3}{*}{半合成} & B7 新增质量实验 & 90 & 1.6 & 0.056 & 0.991 \\
+      & B2 Cerebras 轨迹 & 1{,}029 & 33.7 & 1.245 & 0.666 \\
+      & B8 校准段（方向变换） & 984 & 133.4 & 1.294 & 0.638 \\
+    \addlinespace[3pt]
+    估算 & B10 大规模估算损失 & 128 & 1.0 & 0.020 & 1.000 \\
+    \bottomrule
+  \end{tabularx}
+  \par\smallskip
+  \begin{minipage}{0.98\textwidth}\small
+  注：B8 使用 $1-Q_{\text{score}}$；B10 统一取 $Q=1$。B7 属于开发阶段验证，B10 不构成独立实验验证。
+  \end{minipage}
 \end{table}
 
 \begin{figure}[!htbp]
@@ -278,21 +301,22 @@ B7 的 90 个新增点得到 $1.6\%$ 的 MAPE，支持质量关系在同一半�
 
 \begin{table}[H]
   \centering
-  \caption{B9 模型元数据与 B10 估算损失的匹配对照}
+  \caption{大规模匹配样本的覆盖范围与估算偏差}
   \label{tab:p2_large}
   \renewcommand{\arraystretch}{1.15}
-  \begin{tabularx}{0.94\textwidth}{@{}*{4}{>{\centering\arraybackslash}X}@{}}
+  \begin{tabularx}{0.94\textwidth}{@{}>{\raggedright\arraybackslash}X*{3}{>{\centering\arraybackslash}p{0.19\textwidth}}@{}}
     \toprule
-    参数规模 $N$/B & 匹配记录数 & 数据量 $D$/B tokens & MAPE/\% \\
+    参数规模区间 $N$/B & $[100,300)$ & $[300,1000)$ & $[1000,10000]$ \\
     \midrule
-    $[100,300)$ & 65 & $1.3$--$36{,}000$ & 0.94 \\
-    $[300,1000)$ & 43 & $0.3$--$30{,}000$ & 1.08 \\
-    $[1000,10000]$ & 20 & $0.1$--$36{,}000$ & 1.12 \\
+    成功匹配记录数 & 65 & 43 & 20 \\
+    最小数据量 / B tokens & 1.3 & 0.3 & 0.1 \\
+    最大数据量 / B tokens & $36{,}000$ & $30{,}000$ & $36{,}000$ \\
+    MAPE / \% & 0.94 & 1.08 & 1.12 \\
     \bottomrule
   \end{tabularx}
   \par\smallskip
   \begin{minipage}{0.94\textwidth}\small
-  注：统一取参考质量 $Q=1$；MAPE 比较本文模型预测与 B10 估算值，数据量列为各组的实际最小值和最大值。
+  注：B9 元数据与 B10 损失按名称匹配；统一取 $Q=1$，MAPE 比较本文预测与 B10 估算值。数据量上下限为各组记录的实际极值。
   \end{minipage}
 \end{table}
 \end{samepage}
@@ -306,16 +330,23 @@ B7 的 90 个新增点得到 $1.6\%$ 的 MAPE，支持质量关系在同一半�
 
 \begin{table}[H]
   \centering
-  \caption{弹性与质量—参数替代关系}
+  \caption{两个参考情景下的局部敏感度与等效增量比}
   \label{tab:p2_subst}
-\begin{tabular}{>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.11\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}}
-  \toprule
-  $N_0$(B) & $D_0$(B) & $Q_0$ & $\varepsilon_N$ & $\varepsilon_D$ & $\varepsilon_Q$ & $R_{NQ}$ (B/单位质量) \\
-  \midrule
-1 & 100 & 0.6 & $-0.0491$ & $-0.0383$ & $-0.0838$ & 2.844 \\
-  12 & 300 & 0.6 & $-0.0248$ & $-0.0321$ & $-0.0953$ & 76.838 \\
-  \bottomrule
-\end{tabular}
+  \renewcommand{\arraystretch}{1.18}
+  \begin{tabularx}{0.94\textwidth}{@{}>{\raggedright\arraybackslash}X*{2}{>{\centering\arraybackslash}p{0.25\textwidth}}@{}}
+    \toprule
+    指标 & \makecell{参考情景一\\$N_0=1,\ D_0=100$\\$Q_0=0.6$} & \makecell{参考情景二\\$N_0=12,\ D_0=300$\\$Q_0=0.6$} \\
+    \midrule
+    参数量弹性 $\varepsilon_N$ & $-0.0491$ & $-0.0248$ \\
+    数据量弹性 $\varepsilon_D$ & $-0.0383$ & $-0.0321$ \\
+    质量弹性 $\varepsilon_Q$ & $-0.0838$ & $-0.0953$ \\
+    局部等效增量比 $R_{NQ}$ & 2.844 & 76.838 \\
+    \bottomrule
+  \end{tabularx}
+  \par\smallskip
+  \begin{minipage}{0.94\textwidth}\small
+  注：$N_0$ 以 B 参数计，$D_0$ 以 B tokens 计；弹性无量纲，$R_{NQ}$ 的单位为 B/单位质量。弹性保留方向，图中展示其绝对值。
+  \end{minipage}
 \end{table}
 
 \begin{samepage}
@@ -339,7 +370,15 @@ B7 的 90 个新增点得到 $1.6\%$ 的 MAPE，支持质量关系在同一半�
   \label{fig:p2_subst}
 \end{figure}
 
-图\ref{fig:p2_subst}把局部比较扩展为固定 $D=300$B tokens 下的等损失配置。三个子图各给定一个目标损失，横轴为参数量，纵轴为所需质量；实线对应主拟合规模范围，虚线对应外推。$L=1.95$ 的子图放大高质量区间，横轴延伸至 $10^4$B 仅为显示理论关系，不代表工程可行。还需注意，$\gamma=0.9779<1$ 使 $|\partial L/\partial Q|$ 在 $Q<1$ 区间内递增，并在 $Q\to1^-$ 时发散。因此，接近 $Q=1$ 时不宜依据导数给出资源配置判断，质量边际效应的定量解释应避开这一端点。
+\begin{samepage}
+图\ref{fig:p2_subst}把局部比较扩展为固定 $D=300$B tokens 下的等损失配置。三个子图各给定一个目标损失，横轴为参数量，纵轴为所需质量；实线对应主拟合规模范围，虚线对应外推。$L=1.95$ 的子图放大高质量区间，横轴延伸至 $10^4$B 仅为显示理论关系，不代表工程可行。
+\par
+\end{samepage}
+
+\begin{samepage}
+还需注意，$\gamma=0.9779<1$ 使 $|\partial L/\partial Q|$ 在 $Q<1$ 区间内递增，并在 $Q\to1^-$ 时发散。因此，接近 $Q=1$ 时不宜依据导数给出资源配置判断，质量边际效应的定量解释应避开这一端点。
+\par
+\end{samepage}
 
 \begin{samepage}
 \textbf{6.领域效应与配比衔接}\par\nopagebreak[4]

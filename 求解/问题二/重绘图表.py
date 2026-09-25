@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager as fm
 from matplotlib.colors import LinearSegmentedColormap, Normalize
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
-from matplotlib.ticker import ScalarFormatter
+from matplotlib.ticker import ScalarFormatter, NullLocator, NullFormatter
 from scipy.cluster.hierarchy import linkage, leaves_list
 from scipy.spatial.distance import squareform
 
@@ -68,6 +68,13 @@ def render_all(data_root=None):
     def model(N,D,Q): return E+A*np.asarray(N)**(-a)+B*np.asarray(D)**(-b)+C*(1-np.asarray(Q))**g
     def save(fig, name):
         from matplotlib.text import Text
+        # Dense automatic log minor ticks form a serrated edge at manuscript scale.
+        # Retain the scale, limits, major ticks and all plotted values.
+        for ax in fig.axes:
+            for axis, scale in [(ax.xaxis, ax.get_xscale()), (ax.yaxis, ax.get_yscale())]:
+                if scale in ('log', 'symlog'):
+                    axis.set_minor_locator(NullLocator())
+                    axis.set_minor_formatter(NullFormatter())
         for text in fig.findobj(Text):
             if text.get_text().strip() and text.get_fontsize() < 11:
                 text.set_fontsize(11)
