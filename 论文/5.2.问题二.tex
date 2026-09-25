@@ -33,7 +33,12 @@
   \caption{质量评分方向与样本使用方式}
   \label{tab:p2_dir}
   \renewcommand{\arraystretch}{1.15}
-  \begin{tabularx}{0.98\textwidth}{@{}lcc>{\raggedright\arraybackslash}X@{}}
+  \setlength{\tabcolsep}{5pt}
+  \begin{tabularx}{0.98\textwidth}{@{}
+    >{\hsize=0.65\hsize\linewidth=\hsize\centering\arraybackslash}X
+    >{\hsize=0.65\hsize\linewidth=\hsize\centering\arraybackslash}X
+    >{\hsize=0.70\hsize\linewidth=\hsize\centering\arraybackslash}X
+    >{\hsize=2.00\hsize\linewidth=\hsize\raggedright\arraybackslash}X@{}}
     \toprule
     数据分组 & \makecell{平均组内\\相关系数} & \makecell{记录数 /\\实验组数} & 评分解释与使用方式 \\
     \midrule
@@ -203,7 +208,8 @@ B3 提供了另一项族内检查。对 8 条插值轨迹分别固定 $N$，以�
   \caption{广义模型各损失项的参数配置}
   \label{tab:p2_params}
   \renewcommand{\arraystretch}{1.15}
-  \begin{tabularx}{0.94\textwidth}{@{}>{\raggedright\arraybackslash}Xcccc@{}}
+  \setlength{\tabcolsep}{5pt}
+  \begin{tabularx}{0.94\textwidth}{@{}*{5}{>{\centering\arraybackslash}X}@{}}
     \toprule
     损失组成 & 系数符号 & 系数估计 & 指数符号 & 指数估计 \\
     \midrule
@@ -246,7 +252,14 @@ B3 提供了另一项族内检查。对 8 条插值轨迹分别固定 $N$，以�
   \caption{按数据性质区分的预测误差与相关性}
   \label{tab:p2_val}
   \renewcommand{\arraystretch}{1.15}
-  \begin{tabularx}{0.98\textwidth}{@{}l>{\raggedright\arraybackslash}Xrrrr@{}}
+  \setlength{\tabcolsep}{5pt}
+  \begin{tabularx}{0.98\textwidth}{@{}
+    >{\hsize=0.75\hsize\linewidth=\hsize\centering\arraybackslash}X
+    >{\hsize=2.25\hsize\linewidth=\hsize\raggedright\arraybackslash}X
+    >{\hsize=0.75\hsize\linewidth=\hsize\centering\arraybackslash}X
+    >{\hsize=0.80\hsize\linewidth=\hsize\centering\arraybackslash}X
+    >{\hsize=0.75\hsize\linewidth=\hsize\centering\arraybackslash}X
+    >{\hsize=0.70\hsize\linewidth=\hsize\centering\arraybackslash}X@{}}
     \toprule
     数据性质 & 对照样本 & 记录数 & MAPE/\% & RMSE & $r$ \\
     \midrule
