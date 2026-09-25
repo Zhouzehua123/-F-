@@ -1,0 +1,23 @@
+﻿indicator,list_type,direction,semantics,entropy,weight
+fineweb_edu,True,positive,教育价值（列表型，1 维 logit）,0.9911916206725553,0.04373847632638154
+fluency_en,True,positive,英语流畅度（列表型，2 维，取第 2 类概率）,0.986273316774334,0.06816057608178624
+modernbert_cleanliness,True,positive,文本洁净度（列表型，6 级，取归一化期望级别）,0.9711204173433788,0.14340310463319242
+modernbert_readability,True,positive,可读性（列表型，6 级）,0.9885740573431453,0.056736126343506305
+modernbert_reasoning,True,positive,推理性（列表型，6 级）,0.9694500065277636,0.15169761843625706
+modernbert_professionalism,True,positive,专业性（列表型，6 级）,0.9920204912158449,0.03962267553175058
+dsir_books,False,positive,DSIR 书籍域重要性权重,0.9983590436983474,0.008148255846433985
+dsir_wiki,False,positive,DSIR 维基域重要性权重,0.9983636688933762,0.008125289194368437
+dsir_math,False,positive,DSIR 数学域重要性权重,0.9982594424485007,0.008642831153258267
+qurater,True,positive,教育质量评级（列表型，4 级）,0.9900886217125401,0.049215476363191214
+ad_en,True,positive,广告含量（列表型，2 维；第 1 类=“无广告”，正向。依据：原文抽查显示第 1 类概率最低的样本均为广告文案）,0.998559531483561,0.007152723079132117
+rps_doc_word_count,False,target,文档词数（过短/过长均不佳）,0.9896124325027971,0.051580019226635916
+rps_doc_num_sentences,False,target,文档句数（过少/过多均不佳）,0.989473103503746,0.05227186478641876
+rps_doc_unigram_entropy,False,positive,一元词熵（越高越多样）,0.9930179055328143,0.034669961659127564
+rps_doc_frac_unique_words,False,positive,唯一词占比（越高越多样）,0.9891679667952683,0.05378703735153254
+rps_doc_frac_no_alph_words,False,negative,非字母字符占比（越低越好）,0.9942152708848098,0.028724380280824836
+rps_doc_frac_chars_top_2gram,False,negative,Top-2 字符 2-gram 占比（重复度，越低越好）,0.9973884606500127,0.012967737626709106
+rps_doc_frac_chars_top_3gram,False,negative,Top-2 字符 3-gram 占比（重复度，越低越好）,0.9975982603668412,0.0119259659673993
+rps_lines_uppercase_letter_fraction,False,negative,大写字母行占比（越低越好）,0.9936288486166397,0.03163629126241746
+rps_lines_ending_with_terminal_punctution_mark,False,positive,以终止标点结尾的行占比（越高越好）,0.9822792731502606,0.08799321225740697
+rps_lines_numerical_chars_fraction,False,negative,含数字字符行占比（越低越好）,0.9974845411152731,0.012490644963121954
+rps_doc_mean_word_length,False,target,平均词长（过短/过长均不佳）,0.9924862890434876,0.03730973162914744

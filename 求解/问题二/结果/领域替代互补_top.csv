@@ -1,0 +1,17 @@
+﻿domain_i,domain_j,coefficient_similarity,关系
+wikipedia_en,pile_cc,0.9247479236640128,可替代
+pubmed_central,pubmed_abstracts,0.9030642561328911,可替代
+freelaw,pile_cc,0.8894247795552284,可替代
+github,stackexchange,0.8789315673484912,可替代
+arxiv,pubmed_central,0.8368598299769928,可替代
+gutenberg_pg_19,pile_cc,0.8364244940483564,可替代
+pubmed_abstracts,uspto_backgrounds,0.8275327168654729,可替代
+pile_cc,uspto_backgrounds,0.8259079589274649,可替代
+wikipedia_en,enron_emails,-0.7767680788600403,互补或冲突
+wikipedia_en,philpapers,-0.7793179873495912,互补或冲突
+freelaw,philpapers,-0.8500906588599049,互补或冲突
+enron_emails,uspto_backgrounds,-0.8722929640543585,互补或冲突
+arxiv,enron_emails,-0.8833566609956977,互补或冲突
+enron_emails,pubmed_abstracts,-0.8884380934901464,互补或冲突
+philpapers,pile_cc,-0.9019028952823156,互补或冲突
+pubmed_central,enron_emails,-0.9669982230119342,互补或冲突
