@@ -396,15 +396,15 @@ B7 的 90 个新增点得到 $1.6\%$ 的 MAPE，支持质量关系在同一半�
 \begin{samepage}
 \textbf{6.领域效应与配比衔接}\par\nopagebreak[4]
 规模与质量的分析之外，领域配比还会改变各验证任务的损失。图\ref{fig:p2_dom}左侧以 $d_{ij}=\sqrt{2-2s_{ij}}$ 为距离，通过平均连接法聚类 17 个训练域；右侧选取相似度最高和最低的各四对领域，绿色、金色分别标记相对效应趋同与相反。聚类展示的是效应结构，不代表领域联合使用存在额外收益。
-\par\nopagebreak[4]
+\par
+\end{samepage}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图6_领域替代互补.png}
   \caption{训练领域效应聚类与典型领域对比较}
   \label{fig:p2_dom}
 \end{figure}
-\end{samepage}
 
 从图\ref{fig:p2_dom}可见，百科与网页、医学全文与医学摘要的相似度为 $0.925$、$0.903$，其在 13 个验证域上的相对效应较接近；医学全文与邮件的相似度为 $-0.967$，则体现出明显的任务收益差异。判断能否替换某一领域，还必须结合效应幅值与验证任务权重。具体地，在单纯形内将比例 $h$ 从领域 $i$ 转移至 $j$，并满足 $0\leq h\leq p_i$，线性模型给出的加权损失变化为
 \begin{equation}
