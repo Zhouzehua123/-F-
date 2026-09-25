@@ -225,7 +225,7 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.62\textwidth]{../求解/问题一/图片/图0_A1-A3全量质量评分.png}
+  \includegraphics[width=0.95\textwidth]{../求解/问题一/图片/图0_A1-A3全量质量评分.png}
   \caption{A1--A3 全量质量信号的领域级评分（均值±标准差）}
   \label{fig:p1_quality_full}
 \end{figure}
@@ -286,8 +286,8 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.92\textwidth]{../求解/问题一/图片/图6_冲突与赋权诊断.png}
-  \caption{冲突最集中的指标对（左）与熵权分布（右）}
+  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图6_冲突与赋权诊断.png}
+  \caption{前 12 对高冲突指标的冲突比例与 22 项指标的熵权分布}
   \label{fig:p1_conf}
 \end{figure}
 
@@ -302,33 +302,33 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \Needspace{4\baselineskip}
 \textbf{2. 领域配比与损失的拟合及验证}\par\nopagebreak[4]
 
-图\ref{fig:p1_structure}展示训练配方的构成。模型的拟合与检验表现见图\ref{fig:p1_r2}，同尺度预测值与观测值的比较见图\ref{fig:p1_scatter}，不同训练领域的回归系数见图\ref{fig:p1_heatmap}。
+图\ref{fig:p1_structure}将前 8 组训练配方的领域占比绘为热图，并按相同领域顺序列出全部配方的平均占比。图\ref{fig:p1_r2}分别比较同尺度的决定系数与跨尺度的相关系数。同尺度预测值与观测值的分布见图\ref{fig:p1_scatter}；图\ref{fig:p1_heatmap}以气泡颜色区分中心化回归系数的正负，以气泡面积表示系数的绝对值。
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.92\textwidth]{../求解/问题一/图片/图1_训练配比结构.png}
-  \caption{训练配方结构（左：前 8 组配方堆叠；右：全部配方平均配比）}
+  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图1_训练配比结构.png}
+  \caption{前 8 组训练配方的领域占比热图与全部 512 组配方的平均占比}
   \label{fig:p1_structure}
 \end{figure}
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.72\textwidth]{../求解/问题一/图片/图2_线性模型R2.png}
-  \caption{线性混合回归的拟合与泛化表现}
+  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图2_线性模型R2.png}
+  \caption{线性混合回归的同尺度决定系数与跨尺度相关系数}
   \label{fig:p1_r2}
 \end{figure}
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.78\textwidth]{../求解/问题一/图片/图4_混合系数热力图.png}
-  \caption{领域配比对交叉熵损失的相对影响热力图}
+  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图4_混合系数热力图.png}
+  \caption{训练领域配比与验证损失的中心化回归系数气泡矩阵}
   \label{fig:p1_heatmap}
 \end{figure}
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.58\textwidth]{../求解/问题一/图片/图3_预测vs实测.png}
-  \caption{同尺度检验集（1M）预测损失与实测损失对比}
+  \includegraphics[width=0.86\textwidth]{../求解/问题一/图片/图3_预测vs实测.png}
+  \caption{1M 检验集实测与预测损失的六边形分箱频数及边缘分布}
   \label{fig:p1_scatter}
 \end{figure}
 
@@ -344,8 +344,8 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.92\textwidth]{../求解/问题一/图片/图5_领域质量评分.png}
-  \caption{左：13 个验证域的损失难度代理；右：A1--A3 质量与损失难度代理的排序一致性}
+  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图5_领域质量评分.png}
+  \caption{13 个验证域的损失难度代理得分及 6 个映射领域的两套质量名次对照}
   \label{fig:p1_quality}
 \end{figure}
 
@@ -392,8 +392,8 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \clearpage
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.92\textwidth]{../求解/问题一/图片/图7_外推与跨尺度.png}
-  \caption{外推稳健性验证（左：10B 外推尺度因子；右：同配方 60M/1M 跨尺度损失比）}
+  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图7_外推与跨尺度.png}
+  \caption{10B 外推尺度因子的分布与同配方 60M/1M 损失比的均值及标准差}
   \label{fig:p1_extrap}
 \end{figure}
 
