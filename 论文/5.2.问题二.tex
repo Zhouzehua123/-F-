@@ -49,7 +49,7 @@
     \bottomrule
   \end{tabularx}
   \par\smallskip
-  \begin{minipage}{0.98\textwidth}\small
+  \begin{minipage}{0.98\textwidth}\normalsize
   注：实验组固定 $N,D$。B7 包含 B6 的全部 360 条记录，新增 90 条；均值只描述方向，不表示显著性。
   \end{minipage}
 \end{table}
@@ -99,7 +99,7 @@ B6、B7 的平均组内相关分别为 $-0.925$、$-0.918$，因此在这两套�
     \bottomrule
   \end{tabularx}
   \par\smallskip
-  \begin{minipage}{0.98\textwidth}\small
+  \begin{minipage}{0.98\textwidth}\normalsize
   注：相关系数保留三位小数；加粗的最优指标按未舍入值确定。$I_{\mathrm{RSS}}$ 越小越优，仅用于同样本比较。
   \end{minipage}
 \end{table}
@@ -220,7 +220,7 @@ B3 提供了另一项族内检查。对 8 条插值轨迹分别固定 $N$，以�
     \bottomrule
   \end{tabularx}
   \par\smallskip
-  \begin{minipage}{0.94\textwidth}\small
+  \begin{minipage}{0.94\textwidth}\normalsize
   注：联合拟合 $R^2=0.9896$；不可约损失为常数项，不含衰减指数。
   \end{minipage}
 \end{table}
@@ -245,7 +245,7 @@ B3 提供了另一项族内检查。对 8 条插值轨迹分别固定 $N$，以�
 \end{figure}
 
 \textbf{3.分层检验与适用范围}\par\nopagebreak[4]
-模型能否用于配置分析，需要结合数据来源判断。表\ref{tab:p2_val}列出 6 组数据的检验指标，图\ref{fig:p2_general}补充误差分布。图左侧采用有符号相对误差 $100(\hat L-L)/L$，负值表示低估、正值表示高估；为同时呈现较小与较大的偏差，横轴在 $\pm10\%$ 内保持线性，外侧使用对称对数刻度。图右侧汇总 MAPE 与相关系数。
+模型能否用于配置分析，需要结合数据来源判断。表\ref{tab:p2_val}列出 6 组数据的检验指标，图\ref{fig:p2_general}补充误差分布。图中采用有符号相对误差 $100(\hat L-L)/L$，负值表示低估、正值表示高估；为同时呈现较小与较大的偏差，横轴在 $\pm10\%$ 内保持线性，外侧使用对称对数刻度。MAPE、RMSE 与相关系数由表中给出。
 
 \begin{table}[htbp]
   \centering
@@ -274,7 +274,7 @@ B3 提供了另一项族内检查。对 8 条插值轨迹分别固定 $N$，以�
     \bottomrule
   \end{tabularx}
   \par\smallskip
-  \begin{minipage}{0.98\textwidth}\small
+  \begin{minipage}{0.98\textwidth}\normalsize
   注：B8 使用 $1-Q_{\text{score}}$；B10 统一取 $Q=1$。B7 属于开发阶段验证，B10 不构成独立实验验证。
   \end{minipage}
 \end{table}
@@ -282,7 +282,7 @@ B3 提供了另一项族内检查。对 8 条插值轨迹分别固定 $N$，以�
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图2_广义标度律验证.png}
-  \caption{不同数据来源的相对误差分布与验证指标}
+  \caption{不同数据来源的有符号相对误差分布}
   \label{fig:p2_general}
 \end{figure}
 
@@ -328,7 +328,7 @@ B7 的 90 个新增点得到 $1.6\%$ 的 MAPE，支持质量关系在同一半�
     \bottomrule
   \end{tabularx}
   \par\smallskip
-  \begin{minipage}{0.94\textwidth}\small
+  \begin{minipage}{0.94\textwidth}\normalsize
   注：B9 元数据与 B10 损失按名称匹配；统一取 $Q=1$，MAPE 比较本文预测与 B10 估算值。数据量上下限为各组记录的实际极值。
   \end{minipage}
 \end{table}
@@ -357,7 +357,7 @@ B7 的 90 个新增点得到 $1.6\%$ 的 MAPE，支持质量关系在同一半�
     \bottomrule
   \end{tabularx}
   \par\smallskip
-  \begin{minipage}{0.94\textwidth}\small
+  \begin{minipage}{0.94\textwidth}\normalsize
   注：$N_0$ 以 B 参数计，$D_0$ 以 B tokens 计；弹性无量纲，$R_{NQ}$ 的单位为 B/单位质量。弹性保留方向，图中展示其绝对值。
   \end{minipage}
 \end{table}

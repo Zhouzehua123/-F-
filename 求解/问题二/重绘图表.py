@@ -174,12 +174,11 @@ def redesign(py,b6,b7,b7n,b8,b8c,read,model,classic,E,A,a,B,b,C,g,save):
     foot(fig,'B1：8 个模型 × 147 个检查点；左图颜色表示验证损失。\n右图：记录点、四分位区间及金色中位点；轮廓表示平滑密度。')
     save(fig,'图1_经典标度律拟合')
 
-    # 2. Error distributions and MAPE replace the six overlapping prediction clouds.
+    # 2. Signed error distributions complement the summary-metric table.
     sets=[('B4  跨族收敛点','真实',read('scaling_baseline.csv'),1.,BLUE),('B5  文献标度数据','真实',read('published_scaling_data.csv'),1.,BLUE),
         ('B7  新增质量点','半合成',b7n,b7n.Q_score,TEAL),('B2  Cerebras','半合成',read('cerebras_training_log.csv'),1.,TEAL),
         ('B8  校准段','半合成',b8c,1-b8c.Q_score,TEAL),('B10 大规模损失','估算',read('supplementary_large_baseline.csv'),1.,RED)]
-    fig=plt.figure(figsize=(7.8,4.2));gs=fig.add_gridspec(1,2,width_ratios=[1.75,1],wspace=.25)
-    ax=fig.add_subplot(gs[0]);ar=fig.add_subplot(gs[1],sharey=ax);rng=np.random.default_rng(20260925)
+    fig,ax=plt.subplots(figsize=(6.2,3.8));rng=np.random.default_rng(20260925)
     saved=pd.read_csv(HERE/'结果/广义标度律分层验证.csv');labels=[]
     for j,(name,kind,df,q,col) in enumerate(sets):
         y=df.val_loss.to_numpy();pred=model(df.N_params_B,df.D_tokens_B,q);err=100*(pred-y)/y;mape=np.mean(abs(err));r=np.corrcoef(y,pred)[0,1]
@@ -189,14 +188,11 @@ def redesign(py,b6,b7,b7n,b8,b8c,read,model,classic,E,A,a,B,b,C,g,save):
         v=ax.violinplot([err],positions=[j],vert=False,widths=.62,showextrema=False);v['bodies'][0].set(facecolor=col,edgecolor=col,alpha=.2)
         ax.scatter(err,j+rng.uniform(-.1,.1,len(err)),s=5,alpha=.26,color=col,lw=0)
         q25,med,q75=np.quantile(err,[.25,.5,.75]);ax.plot([q25,q75],[j,j],lw=3,color=col);ax.scatter(med,j,s=20,fc='white',ec=col,zorder=4)
-        ar.plot([.5,mape],[j,j],color=col,lw=2);ar.scatter(mape,j,s=45,color=col,zorder=3)
-        ar.annotate(f'{mape:.1f}%',(mape,j),xytext=(7,0),textcoords='offset points',va='center',fontsize=11,color=col);ar.text(1.35,j,f'{r:.3f}',transform=ar.get_yaxis_transform(),va='center',ha='center',fontsize=11)
-    ax.axvline(0,color=INK,lw=.8,ls='--');ax.set(yticks=np.arange(6),yticklabels=labels,ylim=(5.6,-.65),xlabel='有符号相对误差 / %');title(ax,'(a) 误差方向与样本分布');style(ax)
+    ax.axvline(0,color=INK,lw=.8,ls='--');ax.set(yticks=np.arange(6),yticklabels=labels,ylim=(5.6,-.65),xlabel='有符号相对误差 / %');style(ax)
     ax.set_xscale('symlog',linthresh=10);ax.set_xticks([-50,-10,0,10,100,500]);ax.set_xticklabels(['−50','−10','0','10','100','500'],fontsize=11)
-    ar.set(xscale='log',xlim=(.5,350),xlabel='MAPE / %（对数轴）');ar.tick_params(axis='y',left=False,labelleft=False)
-    ar.set_xticks([1,10,100]);ar.set_xticklabels(['1','10','100']);title(ar,'(b) 平均误差');ar.text(1.35,-.6,'r',transform=ar.get_yaxis_transform(),ha='center',va='center',fontstyle='italic');style(ar)
-    fig.subplots_adjust(left=.2,right=.89,bottom=.22,top=.88)
-    foot(fig,'相对误差 = 100 × (预测值 − 给定值) / 给定值；左轴在 ±10% 内线性。\nB8 使用 1−Q；空心点：中位数；粗线：四分位区间；轮廓：平滑密度。');save(fig,'图2_广义标度律验证')
+    fig.subplots_adjust(left=.26,right=.98,bottom=.25,top=.96)
+    foot(fig,'相对误差 = 100 × (预测值 − 给定值) / 给定值；横轴在 ±10% 内线性。\nB8 使用 1−Q；空心点：中位数；粗线：四分位区间；轮廓：平滑密度。')
+    save(fig,'图2_广义标度律验证')
 
     # 3. N-Q contour map and asymptotic loss increments; raw design sites are explicit.
     fig=plt.figure(figsize=(7.8,3.7));gs=fig.add_gridspec(1,2,width_ratios=[1.25,1],wspace=.42)

@@ -10,7 +10,7 @@
 
 对问题一的岭正则线性混合回归、问题二的经典/广义标度律、问题四的 Loss—Benchmark 桥接与面板回归，分别计算决定系数 $R^2$、均方根误差 RMSE、平均绝对误差 MAE 与平均绝对百分比误差 MAPE，结果如表\ref{tab:error}所示。
 
-\begin{longtable}{>{\raggedright\arraybackslash}p{0.40\textwidth}>{\centering\arraybackslash}p{0.11\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.33\textwidth}>{\centering\arraybackslash}p{0.17\textwidth}>{\centering\arraybackslash}p{0.15\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}@{}}
   \caption{模型误差分析结果}
   \label{tab:error} \\
   \toprule
@@ -39,13 +39,13 @@
   问题三优化约束残差（$|C_{\text{total}}/C_{\text{budget}}-1|$） & — & $<10^{-6}$ & — & — \\
 \end{longtable}
 
-由表\ref{tab:error}可知：（1）问题一的岭回归在 13 个损失域上的平均训练 $R^2=0.629$、同尺度检验 $R^2=0.619$，训练与检验精度基本一致（差距 $0.010$），未出现明显过拟合；MAPE 约 $8.5\%$，相对误差可控。（2）问题二的经典标度律在 B1 上 $R^2\approx1.000$、MAPE $0.004\%$，且以小模型训练、大模型留出的验证结果几乎不变（$R^2=0.9999997$）——但如 5.2 节所述，B1 的拟合残差标准差仅 $1.5\times10^{-4}$ 而损失标准差为 $0.342$，说明该附件近乎无噪声，此处的极高精度只能证明函数形式自洽，真正的泛化证据来自 B4（跨族真实数据，$r=0.975$、MAPE $8.8\%$）与 B5（文献数据，$r=0.910$、MAPE $8.0\%$）。（3）引入质量项后的广义标度律在 $1{,}536$ 个联合样本上 $R^2=0.990$、MAPE $0.66\%$，说明加入质量维未牺牲拟合精度。（4）问题四的 Loss—Benchmark 桥接 $R^2$ 仅 $0.26$、MAPE 达 $67.8\%$，这是本文误差最大的环节，其成因已在 5.4 节说明（中可比样本的验证集不统一、高可比样本的得分变化幅度过小），因此桥接结果仅用于方向性判定。（5）问题三的优化模型在所有求解点上均满足预算约束（相对残差 $<10^{-6}$），无约束违反。
+由表\ref{tab:error}可知：（1）问题一的岭回归在 13 个损失域上的平均训练 $R^2=0.629$、同尺度检验 $R^2=0.619$，训练与检验精度基本一致（差距 $0.010$），未出现明显过拟合；MAPE 约 $8.5\%$，相对误差可控。（2）问题二的经典标度律在 B1 上 $R^2\approx1.000$、MAPE $0.004\%$，且以小模型训练、大模型留出的验证结果几乎不变（$R^2=0.9999997$）——但如 5.2 节所述，B1 的拟合残差标准差仅 $1.5\times10^{-4}$ 而损失标准差为 $0.342$，说明该附件近乎无噪声，此处的极高精度只能证明函数形式自洽，真正的泛化证据来自 B4（跨族真实数据，$r=0.975$、MAPE $8.8\%$）与 B5（文献数据，$r=0.910$、MAPE $8.0\%$）。（3）引入质量项后的广义标度律在 $1{,}536$ 个联合样本上 $R^2=0.990$、MAPE $0.66\%$，表明该模型能够描述这组联合样本；由于其样本组成与经典拟合不同，两者的拟合优度不能直接用于判断质量项是否改善泛化精度。（4）问题四的 Loss—Benchmark 桥接 $R^2$ 仅 $0.26$、MAPE 达 $67.8\%$，这是本文误差最大的环节，其成因已在 5.4 节说明（中可比样本的验证集不统一、高可比样本的得分变化幅度过小），因此桥接结果仅用于方向性判定。（5）问题三的优化模型在所有求解点上均满足预算约束（相对残差 $<10^{-6}$），无约束违反。
 
 \subsection{灵敏度分析}
 
 为考察模型结论对关键输入与假设的稳健性，分别对赋权方案、冲突阈值、正则系数、质量成本函数形式、质量基线口径、上下文长度与算力预算进行扰动分析，结果如表\ref{tab:sensitivity}所示。
 
-\begin{longtable}{>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}>{\raggedright\arraybackslash}p{0.26\textwidth}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}>{\raggedright\arraybackslash}p{0.26\textwidth}@{}}
   \caption{灵敏度分析结果}
   \label{tab:sensitivity} \\
   \toprule
