@@ -29,7 +29,10 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 \end{equation}
 其中，$m_j$ 和 $\text{MAD}_j$ 分别为对数尺度上的中位数和中位绝对偏差。处理后的 $x'_j$ 位于 $[0,1]$，数值越大表示质量越高。表\ref{tab:p1_dir}列出了各指标的类型、方向依据及熵权。8 个列表型指标按有序类别 logits 处理，先由 softmax 概率计算归一化期望级别，将其压缩为标量，再参与归一化。
 
-\begin{longtable}{>{\raggedright\arraybackslash}p{0.30\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.12\textwidth}}
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.33\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\raggedright\arraybackslash}p{0.31\textwidth}>{\centering\arraybackslash}p{0.08\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}@{}}
   \caption{22 个质量指标的方向判定与熵权}
   \label{tab:p1_dir} \\
   \toprule
@@ -43,29 +46,30 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
   \endhead
   \bottomrule
   \endfoot
-  fineweb\_edu & 列表(1) & 教育价值 & 正向 & 0.0437 \\
-  fluency\_en & 列表(2) & 英语流畅度（第 1 类=流畅，已核验） & 正向 & 0.0682 \\
-  modernbert\_cleanliness & 列表(6) & 文本洁净度 & 正向 & 0.1434 \\
-  modernbert\_readability & 列表(6) & 可读性 & 正向 & 0.0567 \\
-  modernbert\_reasoning & 列表(6) & 推理性 & 正向 & \textbf{0.1517} \\
-  modernbert\_professionalism & 列表(6) & 专业性 & 正向 & 0.0396 \\
-  dsir\_books & 标量 & 书籍域重要性权重 & 正向 & 0.0081 \\
-  dsir\_wiki & 标量 & 维基域重要性权重 & 正向 & 0.0081 \\
-  dsir\_math & 标量 & 数学域重要性权重 & 正向 & 0.0086 \\
+  fineweb\_\allowbreak{}edu & 列表(1) & 教育价值 & 正向 & 0.0437 \\
+  fluency\_\allowbreak{}en & 列表(2) & 英语流畅度（第 1 类=流畅，已核验） & 正向 & 0.0682 \\
+  modernbert\_\allowbreak{}cleanliness & 列表(6) & 文本洁净度 & 正向 & 0.1434 \\
+  modernbert\_\allowbreak{}readability & 列表(6) & 可读性 & 正向 & 0.0567 \\
+  modernbert\_\allowbreak{}reasoning & 列表(6) & 推理性 & 正向 & \textbf{0.1517} \\
+  modernbert\_\allowbreak{}professionalism & 列表(6) & 专业性 & 正向 & 0.0396 \\
+  dsir\_\allowbreak{}books & 标量 & 书籍域重要性权重 & 正向 & 0.0081 \\
+  dsir\_\allowbreak{}wiki & 标量 & 维基域重要性权重 & 正向 & 0.0081 \\
+  dsir\_\allowbreak{}math & 标量 & 数学域重要性权重 & 正向 & 0.0086 \\
   qurater & 列表(4) & 教育质量评级（4 项取均值） & 正向 & 0.0492 \\
-  ad\_en & 列表(2) & 广告含量（\textbf{第 1 类=“无广告”，正向}；依据：原文抽查） & 正向 & 0.0072 \\
-  rps\_doc\_word\_count & 标量 & 文档词数 & 长度型 & 0.0516 \\
-  rps\_doc\_num\_sentences & 标量 & 文档句数 & 长度型 & 0.0523 \\
-  rps\_doc\_unigram\_entropy & 标量 & 一元词熵（多样性） & 正向 & 0.0347 \\
-  rps\_doc\_frac\_unique\_words & 标量 & 唯一词占比 & 正向 & 0.0538 \\
-  rps\_doc\_frac\_no\_alph\_words & 标量 & 非字母字符占比 & 负向 & 0.0287 \\
-  rps\_doc\_frac\_chars\_top\_2gram & 标量 & 字符 2-gram 重复度 & 负向 & 0.0130 \\
-  rps\_doc\_frac\_chars\_top\_3gram & 标量 & 字符 3-gram 重复度 & 负向 & 0.0119 \\
-  rps\_lines\_uppercase\_letter\_fraction & 标量 & 大写字母行占比 & 负向 & 0.0316 \\
-  rps\_lines\_ending\_with\_terminal\_punctution\_mark & 标量 & 终止标点结尾行占比 & 正向 & 0.0880 \\
-  rps\_lines\_numerical\_chars\_fraction & 标量 & 含数字行占比 & 负向 & 0.0125 \\
-  rps\_doc\_mean\_word\_length & 标量 & 平均词长 & 长度型 & 0.0373 \\
+  ad\_\allowbreak{}en & 列表(2) & 广告含量（\textbf{第 1 类=“无广告”，正向}；依据：原文抽查） & 正向 & 0.0072 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}word\_\allowbreak{}count & 标量 & 文档词数 & 长度型 & 0.0516 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}num\_\allowbreak{}sentences & 标量 & 文档句数 & 长度型 & 0.0523 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy & 标量 & 一元词熵（多样性） & 正向 & 0.0347 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words & 标量 & 唯一词占比 & 正向 & 0.0538 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}no\_\allowbreak{}alph\_\allowbreak{}words & 标量 & 非字母字符占比 & 负向 & 0.0287 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}2gram & 标量 & 字符 2-gram 重复度 & 负向 & 0.0130 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}3gram & 标量 & 字符 3-gram 重复度 & 负向 & 0.0119 \\
+  rps\_\allowbreak{}lines\_\allowbreak{}uppercase\_\allowbreak{}letter\_\allowbreak{}fraction & 标量 & 大写字母行占比 & 负向 & 0.0316 \\
+  rps\_\allowbreak{}lines\_\allowbreak{}ending\_\allowbreak{}with\_\allowbreak{}terminal\_\allowbreak{}punctution\_\allowbreak{}mark & 标量 & 终止标点结尾行占比 & 正向 & 0.0880 \\
+  rps\_\allowbreak{}lines\_\allowbreak{}numerical\_\allowbreak{}chars\_\allowbreak{}fraction & 标量 & 含数字行占比 & 负向 & 0.0125 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}mean\_\allowbreak{}word\_\allowbreak{}length & 标量 & 平均词长 & 长度型 & 0.0373 \\
 \end{longtable}
+\endgroup
 
 在统一指标方向后，以加权和计算样本质量 $Q_i$，再对同一领域内的样本取均值，得到领域质量 $Q_d$：
 \begin{equation}
@@ -75,7 +79,10 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 读取质量信号时逐字段检查缺失情况，结果见表\ref{tab:p1_missing}。缺失值按对应指标的中位数填充，以避免将缺失直接解释为高质量或低质量。
 
-\begin{longtable}{>{\raggedright\arraybackslash}p{0.44\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}}
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.44\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}@{}}
   \caption{质量信号的字段级缺失审计（A1--A3 全量 272{,}505 条）}
   \label{tab:p1_missing} \\
   \toprule
@@ -89,16 +96,20 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
   \endhead
   \bottomrule
   \endfoot
-  modernbert\_reasoning & 13 & 整行 6 维取值均为 NaN \\
-  modernbert\_professionalism & 6 & 整行 6 维取值均为 NaN \\
+  modernbert\_\allowbreak{}reasoning & 13 & 整行 6 维取值均为 NaN \\
+  modernbert\_\allowbreak{}professionalism & 6 & 整行 6 维取值均为 NaN \\
   其余 20 个指标 & 0 & 无缺失 \\
 \end{longtable}
+\endgroup
 
 \textbf{2. 方法选择及其依据}
 
 质量聚合比较熵权法、等权平均和 PCA 第一主成分三种方案，结果见表\ref{tab:algo1}。冲突分析采用成对标准化得分差与 Kendall 协同系数，分别考察单个样本的评价分歧和整体排序的一致程度。配比建模则比较普通最小二乘、岭回归与随机森林。
 
-\begin{longtable}{>{\centering\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}}
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}@{}}
   \caption{问题一赋权方案对比（样本级相关性与域级排序一致性）}
   \label{tab:algo1} \\
   \toprule
@@ -116,6 +127,7 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
   等权平均 & 0.639 & 0.854 & 0.679 \\
   PCA 第一主成分 & 0.520 & 0.881 & 0.679 \\
 \end{longtable}
+\endgroup
 
 表\ref{tab:algo1}显示，等权方案与熵权方案的样本级得分相关系数为 $0.854$，领域排序的 Spearman 相关系数为 $0.679$。两种方案的主体格局相近，但部分领域名次会随赋权方式改变，因此将赋权方案纳入灵敏度分析。本文采用熵权法，利用指标自身的信息量确定权重；PCA 虽可降维并减少相关性，但主成分含义较难解释，受篇幅限制不作备选。
 
@@ -207,7 +219,10 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
   \label{fig:p1_quality_full}
 \end{figure}
 
-\begin{longtable}{>{\centering\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}}
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}@{}}
   \caption{抽样集 A1 与扩展集 A2/A3 的域级质量对照}
   \label{tab:p1_qa} \\
   \toprule
@@ -224,11 +239,12 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
   arxiv & 0.7031 & 0.7011 & $+0.0021$ & arxiv \\
   stackexchange & 0.6549 & — & — & stackexchange \\
   c4 & 0.6368 & — & — & （配方侧无同名列） \\
-  commoncrawl & 0.6153 & — & — & pile\_cc \\
-  book & 0.5524 & — & — & gutenberg\_pg\_19 \\
-  wikipedia & 0.5509 & — & — & wikipedia\_en \\
+  commoncrawl & 0.6153 & — & — & pile\_\allowbreak{}cc \\
+  book & 0.5524 & — & — & gutenberg\_\allowbreak{}pg\_\allowbreak{}19 \\
+  wikipedia & 0.5509 & — & — & wikipedia\_\allowbreak{}en \\
   github & 0.4553 & 0.4547 & $+0.0006$ & github \\
 \end{longtable}
+\endgroup
 
 由表\ref{tab:p1_qa}可知，在同时具有抽样与扩展质量信号的两个域上（arxiv、github），两种口径的域级质量差异不超过 $0.002$（arxiv $+0.0021$、github $+0.0006$），说明抽样集对扩展集具有代表性、评分口径可跨集合迁移。
 
@@ -236,7 +252,10 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 冲突与一致性检验结果如表\ref{tab:p1_conf}所示，冲突最集中的指标对与熵权分布见图\ref{fig:p1_conf}。
 
-\begin{longtable}{>{\centering\arraybackslash}p{0.18\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}}
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.18\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}@{}}
   \caption{质量冲突与一致性检验结果}
   \label{tab:p1_conf} \\
   \toprule
@@ -254,6 +273,7 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
   A2+A3 扩展集 & 221{,}275 & 0.0628 & 0.2208 & 0.2888 & 0.764 \\
   全量 & 272{,}505 & 0.0687 & 0.2235 & 0.2888 & 0.774 \\
 \end{longtable}
+\endgroup
 
 \begin{figure}[ht]
   \centering
@@ -325,7 +345,10 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
 
 无约束优化倾向于把配比集中于单一低损失域（预测加权平均损失 $4.177$），不具备可落地性；故采用 2.5 倍上限的有界推荐作为最终方案，推荐配比与参考配比的对比见表\ref{tab:p1_rec}，该方案使预测加权平均损失由 $5.336$ 降至 $5.136$（下降 $0.199$）。
 
-\begin{longtable}{>{\centering\arraybackslash}p{0.30\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}}
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.30\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}@{}}
   \caption{有界推荐配比调整}
   \label{tab:p1_rec} \\
   \toprule
@@ -339,17 +362,18 @@ A1--A3 提供 22 个质量指标。为使各指标能够共同参与评分，需
   \endhead
   \bottomrule
   \endfoot
-  pubmed\_central & 0.1137 & 0.2843 & $+0.1706$ \\
+  pubmed\_\allowbreak{}central & 0.1137 & 0.2843 & $+0.1706$ \\
   stackexchange & 0.0994 & 0.2486 & $+0.1491$ \\
-  pubmed\_abstracts & 0.0662 & 0.1654 & $+0.0993$ \\
-  gutenberg\_pg\_19 & 0.0469 & 0.1173 & $+0.0704$ \\
-  dm\_mathematics & 0.0255 & 0.0637 & $+0.0382$ \\
-  uspto\_backgrounds & 0.0755 & 0.0000 & $-0.0755$ \\
+  pubmed\_\allowbreak{}abstracts & 0.0662 & 0.1654 & $+0.0993$ \\
+  gutenberg\_\allowbreak{}pg\_\allowbreak{}19 & 0.0469 & 0.1173 & $+0.0704$ \\
+  dm\_\allowbreak{}mathematics & 0.0255 & 0.0637 & $+0.0382$ \\
+  uspto\_\allowbreak{}backgrounds & 0.0755 & 0.0000 & $-0.0755$ \\
   freelaw & 0.0968 & 0.0000 & $-0.0968$ \\
   github & 0.1107 & 0.0000 & $-0.1107$ \\
   arxiv & 0.1130 & 0.0000 & $-0.1130$ \\
-  pile\_cc & 0.1195 & 0.0000 & $-0.1195$ \\
+  pile\_\allowbreak{}cc & 0.1195 & 0.0000 & $-0.1195$ \\
 \end{longtable}
+\endgroup
 
 由表\ref{tab:p1_rec}可知，推荐方案应显著增加 pubmed\_central、stackexchange、pubmed\_abstracts 等学术领域的配比，同时压缩 pile\_cc、arxiv、github、freelaw 等领域的占比。需要说明的是，这一结论是针对“13 个验证域加权平均损失”这一目标的优化结果，与“提升单个域自身表现”并不等价（例如 arxiv 的配比下降并不意味着 arxiv 质量低，而是因为其对加权平均损失的边际贡献为负）。
 

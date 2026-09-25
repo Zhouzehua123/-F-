@@ -2,7 +2,21 @@ name: Compile paper
 
 on:
   push:
+    paths:
+      - '**.tex'
+      - '**.cls'
+      - '论文/figures/**'
+      - '论文/fonts/**'
+      - '求解/*/图片/**'
+      - '.github/workflows/build-paper.yml'
   pull_request:
+    paths:
+      - '**.tex'
+      - '**.cls'
+      - '论文/figures/**'
+      - '论文/fonts/**'
+      - '求解/*/图片/**'
+      - '.github/workflows/build-paper.yml'
   workflow_dispatch:
 
 permissions:
