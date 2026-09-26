@@ -14,16 +14,16 @@
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图0_问题二分析框架.png}
-  \caption{规模、质量与领域效应的分析框架}
+  \caption{问题二分析流程}
   \label{fig:p2_framework}
 \end{figure}
 
 \subsubsection{模型准备}
 
 \textbf{1.数据组织与变量口径}\par\nopagebreak[4]
-规模关系由 B1 估计。该附件覆盖 8 个 Pythia 模型，每个模型记录 147 个检查点，总计 1{,}176 条\cite{biderman2023pythia}。质量关系主要从 B6 半合成实验取得，B7 只保留与 B6 不重复的部分作扩展检查。剩余附件按用途分别对照：训练轨迹看 B2、B3，跨族及文献结果看 B4、B5，质量方向看 B8，大模型的估算损失则由 B9、B10 匹配后比较。
+规模项使用 B1 的 Pythia 记录估计：8 个模型各含 147 个检查点，共 1{,}176 条\cite{biderman2023pythia}。质量项主要由 B6 半合成实验提供，B7 只加入未重复记录作扩展检查。B2、B3用于轨迹对照，B4、B5用于跨族和文献检验，B8用于方向诊断，B9、B10则配对比较大模型的估算损失。
 
-验证集交叉熵损失记为 $L$，三个解释量为参数量 $N$、数据量 $D$ 和质量 $Q$。为便于表示规模，本节以十亿参数和十亿 tokens 分别计量 $N$、$D$；问题三核算算力时再各乘 $10^9$。拟合保留原函数中的常数项 $E$，直接求解，避免取双对数时把不可约损失漏掉。
+记验证集交叉熵损失为 $L$，模型变量为参数量 $N$、数据量 $D$ 和质量 $Q$。本节将 $N$、$D$ 都按十亿为单位记录，问题三计算 FLOPs 时再换回实际参数数和 token 数，即各乘 $10^9$。拟合保留常数项 $E$，不通过双对数变换处理，以免把不可约损失并入其他项。
 
 \textbf{2.质量字段方向检验}\par\nopagebreak[4]
 质量高分是否真的对应较低损失，要先核对字段方向。为减少规模差异的影响，在每个固定 $(N,D)$ 的实验组内计算 $Q_{\text{score}}$ 与损失的 Pearson 相关，再求组间算术平均。均值为负时，方向与本文的质量定义相符；均值为正时，则需要进一步检查。表\ref{tab:p2_dir}据此说明方向，不据此作显著性判断。
@@ -61,7 +61,7 @@ B6、B7 的评分与损失呈负相关，组内相关的平均值分别为 $-0.9
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图7_质量方向对照.png}
-  \caption{质量字段与损失的组内相关分布}
+  \caption{质量方向检验}
   \label{fig:p2_direction}
 \end{figure}
 
@@ -191,7 +191,7 @@ B6、B7 的评分与损失呈负相关，组内相关的平均值分别为 $-0.9
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图1_经典标度律拟合.png}
-  \caption{Pythia 的参数量、数据量与验证损失，以及分模型拟合残差}
+  \caption{经典标度律拟合}
   \label{fig:p2_classic}
 \end{figure}
 
@@ -228,7 +228,7 @@ B6、B7 的评分与损失呈负相关，组内相关的平均值分别为 $-0.9
 \end{table}
 
 \begin{samepage}
-质量项的指数为 $\gamma=0.9779\approx1$，说明质量缺口增大时，渐近损失接近线性上升，参数见表\ref{tab:p2_params}。联合样本的拟合误差为 RMSE $=0.036$、MAPE $=0.66\%$，对应 $R^2=0.9896$。由于样本中新增了质量实验，不能拿它与经典拟合的 $R^2$ 直接相减，作为质量项收益的衡量。
+表\ref{tab:p2_params}中的 $\gamma=0.9779\approx1$，使质量缺口对应的渐近损失近似线性增加。联合拟合的 RMSE 为 $0.036$，MAPE 为 $0.66\%$，$R^2=0.9896$。联合样本加入了质量实验，与经典拟合使用的样本不同，因此两个 $R^2$ 不能直接作差来衡量质量项的收益。
 \par
 \end{samepage}
 
@@ -242,7 +242,7 @@ B6、B7 的评分与损失呈负相关，组内相关的平均值分别为 $-0.9
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图3_质量边际影响.png}
-  \caption{固定数据量时的参数--质量损失等值线，以及质量缺口对应的损失下限}
+  \caption{质量项影响}
   \label{fig:p2_quality}
 \end{figure}
 
@@ -284,7 +284,7 @@ B6、B7 的评分与损失呈负相关，组内相关的平均值分别为 $-0.9
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图2_广义标度律验证.png}
-  \caption{不同数据来源的有符号相对误差分布}
+  \caption{分层验证误差}
   \label{fig:p2_general}
 \end{figure}
 
@@ -365,23 +365,23 @@ B9 提供大模型元数据，B10 提供估算损失，两者先按模型名称�
 \end{table}
 
 \begin{samepage}
-表中较小参考点 $(N_0,D_0,Q_0)=(1,100,0.6)$ 的质量弹性绝对值约为参数弹性的 $1.7$ 倍，同样小比例的改善中，提高质量对应的损失降幅较大。两个参考点的局部替代率分别为 $2.844$ 与 $76.838$ B/单位质量；若用一阶式代入 $0.1$ 的质量增量，分别相当于增加 $0.284$B、$7.684$B 参数。这组数值用于说明起点规模的影响，有限变化仍应按式\eqref{eq:p2_finite}计算，并检查拟合范围。它们表示损失效果相近，不表示成本相同。
+在 $(N_0,D_0,Q_0)=(1,100,0.6)$ 处，质量弹性绝对值约为参数弹性的 $1.7$ 倍。因此，参数量与质量分别提高同一较小比例时，提高质量对应的损失降幅更大。两个参考点的局部替代率为 $2.844$ 和 $76.838$ B/单位质量；按一阶近似，$0.1$ 的质量增量分别对应 $0.284$B、$7.684$B 参数。这里只比较损失降幅，有限变化仍须用式\eqref{eq:p2_finite}计算并检查拟合范围，不能据此判断成本。
 \par
 \end{samepage}
 
-图\ref{fig:p2_margin}把参考位置的变化展开。前两图分别展示参数、质量的边际导数绝对值，由于单位不同，两图数值不能直接比较。第三图使用无量纲弹性，能够比较两个参考点上相同比例投入带来的影响。
+图\ref{fig:p2_margin}把参考位置的变化展开。前两图分别展示参数、质量的边际导数绝对值，由于单位不同，两图数值不能直接比较。第三图使用无量纲弹性，比较两个参考点上参数量或质量发生相同微小相对变化时的损失响应。
 
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图4_边际效用对比.png}
-  \caption{参数量与质量的边际导数，以及两个参考配置的损失弹性}
+  \caption{边际效用与弹性}
   \label{fig:p2_margin}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图5_质量参数替代.png}
-  \caption{三个目标损失下的规模--质量配置边界}
+  \caption{规模与质量替代}
   \label{fig:p2_subst}
 \end{figure}
 
@@ -404,7 +404,7 @@ B9 提供大模型元数据，B10 提供估算损失，两者先按模型名称�
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图6_领域替代互补.png}
-  \caption{训练领域回归系数的相似性聚类与相似度最高、最低的领域对}
+  \caption{领域相似性}
   \label{fig:p2_dom}
 \end{figure}
 
