@@ -1,3 +1,4 @@
+# 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-6）辅助。
 """问题一双泳道流程图；仅调整展示，不运行模型或读取原始附件。
 
 使用 academic-research-suite 的 visualization_agent 绘图检查规范；
@@ -86,11 +87,11 @@ def plot_workflow(data, out):
     y, w, h = .59, 1.40, 1.04
     node(.18, y, w, h, 'A4—A5 配方与损失',
          '按 index 对齐\n17 域训练配比\n13 域验证损失', TEAL, body_size=9)
-    node(1.76, y, w, h, '线性混合回归',
-         '岭正则估计系数\n预测验证损失', TEAL)
+    node(1.76, y, w, h, '岭回归与核岭',
+         '线性系数解释\n核岭同尺度预测', TEAL)
     node(3.34, y, w, h, '检验与跨尺度',
          '1M / 60M / 1B 检验\n10B / 70B 外推表', BLUE, body_size=9)
-    node(4.92, y, w, h, '有界配比推荐',
+    node(4.92, y, w, h, '线性有界推荐',
          '固定未测量域\n其余领域配比\n受设定上限约束', GOLD, body_size=9)
     for right, left in [(1.58, 1.76), (3.16, 3.34), (4.74, 4.92)]:
         arrow([(right + .025, 1.105), (left - .025, 1.105)], TEAL)

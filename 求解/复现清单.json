@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-09-26T07:51:30.815014+00:00",
+  "random_seed": 20260926,
+  "input_files": [
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\_common.py",
+      "sha256": "b034a3b5087f7391a9e1ab417ee9b77a3f3762b088a4b9396aa02005a25537a9",
+      "bytes": 13694
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\复现论文.py",
+      "sha256": "cdfed4dab087fa5493ea9c6ed95ab6e2f619108769b26df0ef384996d1380967",
+      "bytes": 6903
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\问题一.py",
+      "sha256": "637010b33cc2732aab10b03fd6be13d80b27f63408423d23e94c9be15eea700d",
+      "bytes": 27940
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题二\\问题二.py",
+      "sha256": "36e3ef2bd47acedf147f7e8753e1a4c2b265af8f8b97e83d4108d21d96d40bf5",
+      "bytes": 17730
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题三\\问题三.py",
+      "sha256": "32eeac8bea0916879c7aa135dd02a7b1d556f81b00307093423774f663d1bf4f",
+      "bytes": 19410
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题四\\问题四.py",
+      "sha256": "dacd3416e8da93c03dbff8c2512412b1e92c83d716f9e8dbaa669bcda7bdf30b",
+      "bytes": 28366
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\非线性代理对照.py",
+      "sha256": "d9353973b4e97ce8612ff33539010c010d70007a03851ddcab8596adf4e31265",
+      "bytes": 11296
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\广义标度律参数.csv",
+      "sha256": "7008f219457a593451c19f97c37e370eecbb8736e2e5ff274d39322d79186c37",
+      "bytes": 182
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一_关键量.json",
+      "sha256": "f4818bcb7be81bc70e19a4a582e012a38bcb68352cc4cec75998f697fac317af",
+      "bytes": 541
+    }
+  ],
+  "runtime": {
+    "name": "python",
+    "version": "3.14.0",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "dependencies": {
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2",
+      "scikit-learn": "1.9.1",
+      "Pillow": "12.3.0"
+    }
+  },
+  "key_parameters": {
+    "kernel_gamma": 0.0625,
+    "kernel_lambda": 0.0001,
+    "q3_budget_constraint": "1-C_total/C_budget >=0"
+  },
+  "reproduce_command": "python 求解/复现论文.py --data-dir <附件根目录> --mode verify-models"
+}

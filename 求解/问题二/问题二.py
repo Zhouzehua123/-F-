@@ -314,7 +314,7 @@ save_csv_safe(pd.DataFrame({
 
 # ============ 9. 绘图 ============
 from 重绘图表 import render_all
-render_all()
+render_all(DATA_DIR)
 
 print('\n===== 问题二求解完成 =====')
 print('经典 R2=%.8f，留出 R2=%.8f；广义 R2=%.4f；替代率 dN/dQ=%.3f B/单位质量'

@@ -1,3 +1,4 @@
+# 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-6）辅助。
 """从已保存的 CSV 重绘论文图；不运行优化器，也不修改原始结果。
 
 用法：python 求解/问题三/论文绘图.py
@@ -141,7 +142,7 @@ b.set_ylabel("预算份额（%）")
 panel(a, "(a) 质量由基线升至上界")
 panel(b, "(b) 质量份额先升后降")
 b.legend(loc="upper right", bbox_to_anchor=(1,.78), fontsize=8, framealpha=.95)
-b.annotate("峰值 40.7%", (peak.C, peak.f_qual*100), xytext=(2e21, 42),
+b.annotate(f"峰值 {peak.f_qual*100:.1f}%", (peak.C, peak.f_qual*100), xytext=(2e21, 42),
            fontsize=8, arrowprops={"arrowstyle":"-", "color":ORANGE, "lw":.8})
 zoom = a.inset_axes([.40, .14, .57, .50])
 measured_line(zoom, sw.C, theta*100, color=ORANGE, ms=3)

@@ -1,3 +1,4 @@
+# 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-6）辅助。
 """用原有前 12 对冲突关系和 22 项熵权绘制网络与权重面板。"""
 from pathlib import Path
 

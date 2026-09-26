@@ -59,11 +59,12 @@ def hashes():
             for p in RESULT.rglob('*') if p.is_file()}
 
 def style():
-    skill = Path.home() / '.codex/skills/math-modeling/tools/figure/scripts'
-    if skill.exists():
-        sys.path.insert(0, str(skill))
-        from setup_style import setup_style
-        setup_style(journal='general', lang='zh', serif_for_zh=True)
+    # 固定原导出样式，避免依赖绘图者个人目录中的可选技能包。
+    plt.rcParams.update({'figure.dpi':150, 'figure.figsize':[5,3.5],
+        'font.sans-serif':['Arial','Helvetica','DejaVu Sans'],
+        'font.serif':['Noto Serif SC','Times New Roman','Times','DejaVu Serif'],
+        'lines.linewidth':1.2, 'lines.markersize':5, 'pdf.fonttype':42,
+        'ps.fonttype':42, 'savefig.dpi':300})
     for name in ['simsun.ttc', 'times.ttf']:
         p = Path('C:/Windows/Fonts') / name
         if p.exists():

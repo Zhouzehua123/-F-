@@ -3,13 +3,14 @@
   "style": "建模展示风",
   "skill": "academic-research-suite 3.22.0 / visualization_agent",
   "scripts_sha256": {
-    "重绘图表.py": "2639bf66dae5e2eeecab9c17a7ed3a29577324eb913bc74b199b686815a107e9",
-    "绘图数据.py": "32c29eb2b3b5278fb59e0af7c56da5ba70615536c301cf8ae4185dfd3f0bd059",
-    "展示风格公共.py": "be012153f6e78fe4f70b9398cce5bbe6931f90084280feca8e1f26d820d3470d",
-    "展示风格冲突.py": "b6ded27fe7fc0fa55c5e89159c23ea53ac67f8ad9ff0864860639072b906129b",
-    "展示风格概览.py": "91c9c39f6abd568768e74a12ef581eca157285bdc4c0e592d869ac6028f0e10b",
-    "展示风格流程.py": "bfb33ab2b3e0a9769635011ee1a871d23cc75f6b6c6b426ff8bb8378e4a1132d",
-    "展示风格诊断.py": "93321e7aff7378bb09b36dd338d8603c1ac7a7fa855433bacbae0e638acd92e7"
+    "重绘图表.py": "07039f5d557a256099ec5b0dd19e9d75530e0ff025fc166c2a907255738ec421",
+    "绘图数据.py": "14b248cb6881e0ad37404763b8357f6fe88a5bf6b97767f07f46c918226bfcfa",
+    "展示风格公共.py": "b149c3924e175ae1df312fb4014b0faca5238aec63d53dea6dd62c217ec21ee0",
+    "展示风格冲突.py": "6203a6a266aacbef83aba63939d4622f3438aaac5f71786aa53bc5c7d95b4678",
+    "展示风格概览.py": "884290d3a66b9ee3b7f3f014da82d3d526c9ace3846242516b6ecab4879ae1b2",
+    "展示风格流程.py": "21431472cd71fbb5e189b22ece4992865f14faf17a6a8b19a57e4c8acff75285",
+    "展示风格诊断.py": "6d0ee4a75496630e15acdbff7a51f378f3c3880f57c39cc59ed056b977f0f12a",
+    "展示风格非线性.py": "92268bd45948be4d7fa86a9f3fc3f1e8dd7e36be10cb9bf56537e96eeff80074"
   },
   "input_checks": {
     "中心化系数": {
@@ -155,8 +156,16 @@
     }
   },
   "output_figures": [
+    "图0_A1-A3全量质量评分",
     "图1_训练配比结构",
-    "图2_线性模型R2"
+    "图2_线性模型R2",
+    "图3_预测vs实测",
+    "图4_混合系数热力图",
+    "图5_领域质量评分",
+    "图6_冲突与赋权诊断",
+    "图7_外推与跨尺度",
+    "图8_问题一求解流程",
+    "图9_非线性代理对照"
   ],
   "indicator_key": [
     {

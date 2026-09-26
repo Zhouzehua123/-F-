@@ -1,3 +1,4 @@
+# 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-6）辅助。
 """Q1 展示版的字体、分组标题和导出约定。"""
 from pathlib import Path
 import json

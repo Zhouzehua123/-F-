@@ -1,3 +1,4 @@
+# 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-6）辅助。
 """读取问题一既有结果并核对绘图数值；不拟合、不优化、不写结果表。"""
 from pathlib import Path
 from types import SimpleNamespace

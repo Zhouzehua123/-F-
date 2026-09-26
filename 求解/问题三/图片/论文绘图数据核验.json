@@ -1,41 +1,35 @@
 {
   "三档预算最优配置": {
-    "sha256": "3ccd0f6fc1f5c7eb48231168adff2a436938d155d81354d0d442a8026e162714",
+    "sha256": "8a39d6e78ad48dc64b62d1bc4a731726e90359f78222dc326ec5550fb3944dbc",
     "rows": 3
   },
   "预算扫略": {
-    "sha256": "3ecf8229fab681dadb24d7e221048007fc1bce293af88442adeb9b8a892ea6e9",
+    "sha256": "a86f725476608c8a32411ad45efbff22b729eb008b01f422cf14f55f014d9d5a",
     "rows": 141,
-    "valid_Q": 140,
-    "missing_C": [
-      1.4125375446227497e+19
-    ]
+    "valid_Q": 141,
+    "missing_C": []
   },
   "上下文长度敏感性": {
-    "sha256": "dce08034083699a59d8442c64ab589685bcb0e87962d8a927f035493c1c5aa6b",
+    "sha256": "cb83006538f1c15db4b861edeb7f9412efe857c78db9d4339f5258a37fcc9387",
     "rows": 5
   },
   "上下文长度连续扫描": {
-    "sha256": "4e4e8acea4bb4157b3b0eab6b9f810488e798bd930cd3d31d98dfe40523ea81e",
-    "rows": 37,
+    "sha256": "1283dad320d4eacefa3f817cd1a1d7c603f45d9706872f54fd89b6e617084212",
+    "rows": 40,
     "expected_grid_rows": 40,
-    "missing_L_ctx": [
-      1342.0642012502074,
-      3021.2961549146594,
-      3959.7396590682224
-    ]
+    "missing_L_ctx": []
   },
   "上下文长度与最优质量": {
-    "sha256": "a5b1b183c34d366fa36f761f8e674a83f141102dfd5794b1e2744f2c40016695",
-    "rows": 36,
+    "sha256": "4de9deb7651e03ab26501686903b67757e16b4341fdf16e39b1b98c0bbeb2591",
+    "rows": 42,
     "valid_rows_by_budget": {
-      "1e+19": 11,
-      "1e+20": 13,
-      "1e+21": 12
+      "1e+19": 14,
+      "1e+20": 14,
+      "1e+21": 14
     }
   },
   "成本函数对比": {
-    "sha256": "86b95d18f7d3237a8393955b669acbaa9c6e37df7a24d70065784688d1ffc0d4",
+    "sha256": "0d6cd45d2d3a632000abdc0916eb7e15bc6ae7da299b509521ccb58160d13aba",
     "rows": 9
   }
 }

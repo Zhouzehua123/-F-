@@ -168,9 +168,9 @@ z
    </g>
    <g id="text_1">
     <!-- 质量评价 -->
-    <g style="fill: #665080" transform="translate(16.56 29.233828) scale(0.105 -0.105)">
+    <g style="fill: #665080" transform="translate(16.56 29.772568) scale(0.105 -0.105)">
      <defs>
-      <path id="SimSun-8d28" d="M 275 -425
+      <path id="SimSun-4358" d="M 275 -425
 Q 1175 1025 1125 3000
 Q 1125 4250 1100 4750
 L 1450 4525
@@ -236,7 +236,7 @@ Q 4350 275 3600 625
 L 3625 725
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-91cf" d="M 1700 2400
+      <path id="SimSun-47ff" d="M 1700 2400
 L 1700 1875
 L 3025 1875
 L 3025 2400
@@ -331,7 +331,7 @@ Q 750 2975 475 2900
 L 250 3125
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-8bc4" d="M 750 4925
+      <path id="SimSun-41f4" d="M 750 4925
 L 825 4975
 Q 1150 4725 1375 4500
 Q 1600 4275 1587 4087
@@ -397,7 +397,7 @@ L 4500 2475
 Q 5050 3325 5325 4175
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-4ef7" d="M 4175 4875
+      <path id="SimSun-527" d="M 4175 4875
 L 3950 4725
 Q 4350 4025 4900 3562
 Q 5450 3100 6125 2950
@@ -451,17 +451,17 @@ L 1325 3250
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-8d28"/>
-     <use xlink:href="#SimSun-91cf" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-8bc4" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-4ef7" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-4358"/>
+     <use xlink:href="#SimSun-47ff" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-41f4" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-527" transform="translate(300 0)"/>
     </g>
    </g>
    <g id="text_2">
     <!-- 配比回归 -->
-    <g style="fill: #287c78" transform="translate(16.56 197.672812) scale(0.105 -0.105)">
+    <g style="fill: #287c78" transform="translate(16.56 198.252568) scale(0.105 -0.105)">
      <defs>
-      <path id="SimSun-914d" d="M 5625 4450
+      <path id="SimSun-477d" d="M 5625 4450
 Q 5625 3150 5650 2525
 L 5300 2375
 L 5300 2725
@@ -549,7 +549,7 @@ L 2775 1225
 L 975 1225
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-6bd4" d="M 1050 3400
+      <path id="SimSun-2204" d="M 1050 3400
 Q 1050 4525 1025 5075
 L 1625 4800
 L 1400 4600
@@ -591,7 +591,7 @@ Q 3425 -200 3425 275
 L 3425 3825
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-56de" d="M 2450 3200
+      <path id="SimSun-d0e" d="M 2450 3200
 L 2450 1800
 L 3925 1800
 L 3925 3200
@@ -635,7 +635,7 @@ L 5175 4550
 L 1250 4550
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5f52" d="M 1275 3950
+      <path id="SimSun-1582" d="M 1275 3950
 Q 1275 1675 1300 1075
 L 900 875
 Q 925 1775 925 2800
@@ -680,10 +680,10 @@ L 5650 4000
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-914d"/>
-     <use xlink:href="#SimSun-6bd4" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-56de" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-5f52" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-477d"/>
+     <use xlink:href="#SimSun-2204" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-d0e" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-1582" transform="translate(300 0)"/>
     </g>
    </g>
    <g id="patch_15">
@@ -792,9 +792,9 @@ z
    </g>
    <g id="text_3">
     <!-- 主要处理流程 -->
-    <g style="fill: #637186" transform="translate(51.84 311.085703) scale(0.09 -0.09)">
+    <g style="fill: #637186" transform="translate(51.84 311.600215) scale(0.09 -0.09)">
      <defs>
-      <path id="SimSun-4e3b" d="M 2450 5100
+      <path id="SimSun-46b" d="M 2450 5100
 Q 3125 4750 3337 4562
 Q 3550 4375 3550 4200
 Q 3550 4075 3437 3925
@@ -832,7 +832,7 @@ Q 1175 3525 900 3450
 L 675 3675
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-8981" d="M 2675 4600
+      <path id="SimSun-3fb1" d="M 2675 4600
 L 2675 3850
 L 3675 3850
 L 3675 4600
@@ -914,7 +914,7 @@ L 2200 1775
 Q 2425 2175 2525 2575
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5904" d="M 1700 3500
+      <path id="SimSun-f34" d="M 1700 3500
 Q 1600 3200 1500 2900
 Q 1750 1900 2200 1250
 Q 2625 2150 2850 3500
@@ -964,7 +964,7 @@ Q 5675 2050 5575 2250
 Q 5325 2650 4375 3350
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-7406" d="M 325 575
+      <path id="SimSun-2a36" d="M 325 575
 Q 1075 775 1350 875
 L 1350 2550
 L 1225 2550
@@ -1052,7 +1052,7 @@ L 5250 3375
 L 4350 3375
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-6d41" d="M 3500 -475
+      <path id="SimSun-2371" d="M 3500 -475
 Q 3525 -100 3525 250
 L 3525 1850
 Q 3525 2150 3500 2425
@@ -1155,7 +1155,7 @@ Q 1250 4425 875 4850
 L 925 4925
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-7a0b" d="M 3050 2750
+      <path id="SimSun-303b" d="M 3050 2750
 Q 3075 3325 3075 3887
 Q 3075 4450 3050 5000
 L 3425 4775
@@ -1238,19 +1238,19 @@ L 1475 4525
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-4e3b"/>
-     <use xlink:href="#SimSun-8981" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-5904" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-7406" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-6d41" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-7a0b" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-46b"/>
+     <use xlink:href="#SimSun-3fb1" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-f34" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-2a36" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-2371" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-303b" transform="translate(500 0)"/>
     </g>
    </g>
    <g id="text_4">
     <!-- 质量项增量检验 -->
-    <g style="fill: #637186" transform="translate(257.76 311.120859) scale(0.09 -0.09)">
+    <g style="fill: #637186" transform="translate(257.76 311.617793) scale(0.09 -0.09)">
      <defs>
-      <path id="SimSun-9879" d="M 1700 1400
+      <path id="SimSun-4ea9" d="M 1700 1400
 L 2700 1725
 L 2750 1625
 Q 1200 950 950 787
@@ -1315,7 +1315,7 @@ Q 4900 525 4400 950
 L 4450 1025
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-589e" d="M 3100 5175
+      <path id="SimSun-ece" d="M 3100 5175
 Q 3825 4775 3812 4562
 Q 3800 4350 3725 4275
 Q 3650 4200 3600 4200
@@ -1421,7 +1421,7 @@ L 1225 4250
 Q 1225 4650 1200 5125
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-68c0" d="M 3725 5275
+      <path id="SimSun-1ef0" d="M 3725 5275
 L 4275 4975
 L 4075 4850
 Q 4775 3450 6125 3250
@@ -1499,7 +1499,7 @@ Q 1925 2525 1650 2825
 L 1650 750
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-9a8c" d="M 4050 5225
+      <path id="SimSun-50bc" d="M 4050 5225
 L 4550 4925
 L 4350 4800
 Q 5050 3225 6125 2975
@@ -1590,13 +1590,13 @@ L 225 1075
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-8d28"/>
-     <use xlink:href="#SimSun-91cf" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-9879" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-589e" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-91cf" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-68c0" transform="translate(500 0)"/>
-     <use xlink:href="#SimSun-9a8c" transform="translate(600 0)"/>
+     <use xlink:href="#SimSun-4358"/>
+     <use xlink:href="#SimSun-47ff" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-4ea9" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-ece" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-47ff" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-1ef0" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-50bc" transform="translate(600 0)"/>
     </g>
    </g>
    <g id="patch_23">
@@ -1665,9 +1665,9 @@ z
    </g>
    <g id="text_5">
     <!-- A1—A3  质量信号 -->
-    <g style="fill: #665080" transform="translate(44.741437 51.191734) scale(0.094 -0.094)">
+    <g style="fill: #665080" transform="translate(44.741437 51.710754) scale(0.094 -0.094)">
      <defs>
-      <path id="TimesNewRomanPSMT-41" d="M 2928 1419
+      <path id="TimesNewRomanPSMT-24" d="M 2928 1419
 L 1288 1419
 L 1000 750
 Q 894 503 894 381
@@ -1697,7 +1697,7 @@ L 1384 1650
 L 2841 1650
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-31" d="M 750 3822
+      <path id="TimesNewRomanPSMT-14" d="M 750 3822
 L 1781 4325
 L 1884 4325
 L 1884 747
@@ -1718,14 +1718,14 @@ Q 1003 3822 797 3725
 L 750 3822
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-2014" d="M 6456 1416
+      <path id="TimesNewRomanPSMT-b2" d="M 6456 1416
 L -59 1416
 L -59 1647
 L 6456 1647
 L 6456 1416
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-33" d="M 325 3431
+      <path id="TimesNewRomanPSMT-16" d="M 325 3431
 Q 506 3859 782 4092
 Q 1059 4325 1472 4325
 Q 1981 4325 2253 3994
@@ -1760,8 +1760,8 @@ Q 753 3900 428 3381
 L 325 3431
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-20" transform="scale(0.015625)"/>
-      <path id="SimSun-4fe1" d="M 3425 5125
+      <path id="TimesNewRomanPSMT-3" transform="scale(0.015625)"/>
+      <path id="SimSun-611" d="M 3425 5125
 L 3500 5200
 Q 4000 4900 4125 4737
 Q 4250 4575 4250 4500
@@ -1829,7 +1829,7 @@ L 1750 3300
 L 1550 3150
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-53f7" d="M 4800 4675
+      <path id="SimSun-a27" d="M 4800 4675
 Q 4800 3550 4825 3225
 L 4450 3075
 L 4450 3325
@@ -1879,24 +1879,24 @@ L 4950 1375
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#TimesNewRomanPSMT-41"/>
-     <use xlink:href="#TimesNewRomanPSMT-31" transform="translate(72.216797 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-2014" transform="translate(122.216797 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-41" transform="translate(222.216797 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-33" transform="translate(294.433594 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(344.433594 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(369.433594 0)"/>
-     <use xlink:href="#SimSun-8d28" transform="translate(394.433594 0)"/>
-     <use xlink:href="#SimSun-91cf" transform="translate(494.433594 0)"/>
-     <use xlink:href="#SimSun-4fe1" transform="translate(594.433594 0)"/>
-     <use xlink:href="#SimSun-53f7" transform="translate(694.433594 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-24"/>
+     <use xlink:href="#TimesNewRomanPSMT-14" transform="translate(72.21875 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-b2" transform="translate(122.21875 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-24" transform="translate(222.21875 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-16" transform="translate(294.4375 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(344.4375 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(369.4375 0)"/>
+     <use xlink:href="#SimSun-4358" transform="translate(394.4375 0)"/>
+     <use xlink:href="#SimSun-47ff" transform="translate(494.4375 0)"/>
+     <use xlink:href="#SimSun-611" transform="translate(594.4375 0)"/>
+     <use xlink:href="#SimSun-a27" transform="translate(694.4375 0)"/>
     </g>
    </g>
    <g id="text_6">
     <!-- 22 项指标的缺失处理 -->
-    <g style="fill: #243348" transform="translate(39.53 77.010146) scale(0.092 -0.092)">
+    <g style="fill: #243348" transform="translate(39.53 77.609465) scale(0.092 -0.092)">
      <defs>
-      <path id="TimesNewRomanPSMT-32" d="M 2934 816
+      <path id="TimesNewRomanPSMT-15" d="M 2934 816
 L 2638 0
 L 138 0
 L 138 116
@@ -1921,7 +1921,7 @@ Q 2738 675 2819 816
 L 2934 816
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-6307" d="M 3000 3200
+      <path id="SimSun-1937" d="M 3000 3200
 Q 3000 4875 2975 5175
 L 3575 4900
 L 3350 4700
@@ -2002,7 +2002,7 @@ L 350 3750
 L 1450 3750
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-6807" d="M 4775 2225
+      <path id="SimSun-1e37" d="M 4775 2225
 Q 5725 1275 5825 1050
 Q 5925 825 5925 700
 Q 5925 525 5825 375
@@ -2070,7 +2070,7 @@ Q 2200 1775 2100 2075
 Q 1925 2475 1675 2725
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-7684" d="M 1125 3775
+      <path id="SimSun-2cb4" d="M 1125 3775
 L 1125 2175
 L 2425 2175
 L 2425 3775
@@ -2132,7 +2132,7 @@ Q 3825 2200 3475 2675
 L 3525 2750
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-7f3a" d="M 1950 725
+      <path id="SimSun-356a" d="M 1950 725
 L 2525 825
 L 2525 2125
 L 3000 1875
@@ -2216,7 +2216,7 @@ L 2850 2200
 L 3825 2200
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5931" d="M 950 2525
+      <path id="SimSun-f61" d="M 950 2525
 L 875 2575
 Q 1425 3600 1550 4675
 L 2125 4375
@@ -2258,22 +2258,22 @@ Q 1300 2925 950 2525
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#TimesNewRomanPSMT-32"/>
-     <use xlink:href="#TimesNewRomanPSMT-32" transform="translate(50 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-9879" transform="translate(125 0)"/>
-     <use xlink:href="#SimSun-6307" transform="translate(225 0)"/>
-     <use xlink:href="#SimSun-6807" transform="translate(325 0)"/>
-     <use xlink:href="#SimSun-7684" transform="translate(425 0)"/>
-     <use xlink:href="#SimSun-7f3a" transform="translate(525 0)"/>
-     <use xlink:href="#SimSun-5931" transform="translate(625 0)"/>
-     <use xlink:href="#SimSun-5904" transform="translate(725 0)"/>
-     <use xlink:href="#SimSun-7406" transform="translate(825 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-15"/>
+     <use xlink:href="#TimesNewRomanPSMT-15" transform="translate(50 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-4ea9" transform="translate(125 0)"/>
+     <use xlink:href="#SimSun-1937" transform="translate(225 0)"/>
+     <use xlink:href="#SimSun-1e37" transform="translate(325 0)"/>
+     <use xlink:href="#SimSun-2cb4" transform="translate(425 0)"/>
+     <use xlink:href="#SimSun-356a" transform="translate(525 0)"/>
+     <use xlink:href="#SimSun-f61" transform="translate(625 0)"/>
+     <use xlink:href="#SimSun-f34" transform="translate(725 0)"/>
+     <use xlink:href="#SimSun-2a36" transform="translate(825 0)"/>
     </g>
     <!-- 列表标量化、方向统一 -->
-    <g style="fill: #243348" transform="translate(36.08 87.640789) scale(0.092 -0.092)">
+    <g style="fill: #243348" transform="translate(36.08 88.734187) scale(0.092 -0.092)">
      <defs>
-      <path id="SimSun-5217" d="M 550 4550
+      <path id="SimSun-847" d="M 550 4550
 L 3175 4550
 L 3500 4875
 L 3975 4400
@@ -2326,7 +2326,7 @@ Q 5325 25 5325 350
 L 5325 3950
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-8868" d="M 2300 -25
+      <path id="SimSun-3e98" d="M 2300 -25
 L 3600 525
 L 3650 425
 Q 2550 -225 2100 -600
@@ -2384,7 +2384,7 @@ Q 2775 1900 2300 1450
 L 2300 -25
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5316" d="M 1375 -600
+      <path id="SimSun-946" d="M 1375 -600
 Q 1400 200 1400 925
 L 1400 3125
 Q 850 2300 350 1775
@@ -2428,7 +2428,7 @@ L 1925 1025
 Q 2800 1525 3450 2125
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-3001" d="M 1675 325
+      <path id="SimSun-1c3" d="M 1675 325
 Q 1450 850 700 1300
 L 725 1375
 Q 1300 1250 1612 1062
@@ -2439,7 +2439,7 @@ Q 2050 -100 2000 -100
 Q 1850 -100 1675 325
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-65b9" d="M 275 3925
+      <path id="SimSun-1be9" d="M 275 3925
 L 5250 3925
 L 5625 4300
 L 6150 3775
@@ -2476,7 +2476,7 @@ Q 2975 4725 2625 5075
 L 2675 5150
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5411" d="M 2475 2650
+      <path id="SimSun-a41" d="M 2475 2650
 L 2475 1350
 L 3875 1350
 L 3875 2650
@@ -2523,7 +2523,7 @@ L 4225 2550
 L 4225 1525
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-7edf" d="M 3675 5150
+      <path id="SimSun-350f" d="M 3675 5150
 L 3725 5225
 Q 4350 4925 4425 4737
 Q 4500 4550 4375 4387
@@ -2615,7 +2615,7 @@ Q 2525 3575 2100 3050
 Q 1650 2525 1000 1825
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-4e00" d="M 350 2650
+      <path id="SimSun-430" d="M 350 2650
 L 5000 2650
 L 5500 3050
 L 6050 2500
@@ -2625,21 +2625,21 @@ L 350 2650
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-5217"/>
-     <use xlink:href="#SimSun-8868" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-6807" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-91cf" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-5316" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-3001" transform="translate(500 0)"/>
-     <use xlink:href="#SimSun-65b9" transform="translate(600 0)"/>
-     <use xlink:href="#SimSun-5411" transform="translate(700 0)"/>
-     <use xlink:href="#SimSun-7edf" transform="translate(800 0)"/>
-     <use xlink:href="#SimSun-4e00" transform="translate(900 0)"/>
+     <use xlink:href="#SimSun-847"/>
+     <use xlink:href="#SimSun-3e98" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-1e37" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-47ff" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-946" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-1c3" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-1be9" transform="translate(600 0)"/>
+     <use xlink:href="#SimSun-a41" transform="translate(700 0)"/>
+     <use xlink:href="#SimSun-350f" transform="translate(800 0)"/>
+     <use xlink:href="#SimSun-430" transform="translate(900 0)"/>
     </g>
     <!-- 归一化并保留领域标签 -->
-    <g style="fill: #243348" transform="translate(36.08 98.319229) scale(0.092 -0.092)">
+    <g style="fill: #243348" transform="translate(36.08 99.840941) scale(0.092 -0.092)">
      <defs>
-      <path id="SimSun-5e76" d="M 2575 3550
+      <path id="SimSun-14a6" d="M 2575 3550
 L 2575 1950
 L 3950 1950
 L 3950 3550
@@ -2686,7 +2686,7 @@ L 400 1950
 L 2225 1950
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-4fdd" d="M 5300 4500
+      <path id="SimSun-60d" d="M 5300 4500
 Q 5300 3250 5325 2875
 L 4975 2750
 L 4975 3000
@@ -2750,7 +2750,7 @@ L 1575 3200
 L 1575 850
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-7559" d="M 5200 1900
+      <path id="SimSun-2b89" d="M 5200 1900
 Q 5200 200 5225 -400
 L 4850 -550
 L 4850 -200
@@ -2833,7 +2833,7 @@ Q 3450 4450 3175 4375
 L 2950 4600
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-9886" d="M 2100 4850
+      <path id="SimSun-4eb6" d="M 2100 4850
 Q 1950 4775 1800 4475
 Q 2500 4025 2712 3850
 Q 2925 3675 2975 3562
@@ -2924,7 +2924,7 @@ Q 5200 275 4525 750
 L 4550 825
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-57df" d="M 2500 1375
+      <path id="SimSun-e0f" d="M 2500 1375
 Q 2525 1825 2525 2350
 Q 2525 2875 2500 3275
 L 2825 3075
@@ -3017,7 +3017,7 @@ Q 775 3200 500 3125
 L 275 3350
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-7b7e" d="M 1550 5200
+      <path id="SimSun-31ae" d="M 1550 5200
 L 2050 4850
 Q 1825 4750 1575 4300
 L 2650 4300
@@ -3118,23 +3118,23 @@ L 1825 1950
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-5f52"/>
-     <use xlink:href="#SimSun-4e00" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-5316" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-5e76" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-4fdd" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-7559" transform="translate(500 0)"/>
-     <use xlink:href="#SimSun-9886" transform="translate(600 0)"/>
-     <use xlink:href="#SimSun-57df" transform="translate(700 0)"/>
-     <use xlink:href="#SimSun-6807" transform="translate(800 0)"/>
-     <use xlink:href="#SimSun-7b7e" transform="translate(900 0)"/>
+     <use xlink:href="#SimSun-1582"/>
+     <use xlink:href="#SimSun-430" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-946" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-14a6" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-60d" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-2b89" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-4eb6" transform="translate(600 0)"/>
+     <use xlink:href="#SimSun-e0f" transform="translate(700 0)"/>
+     <use xlink:href="#SimSun-1e37" transform="translate(800 0)"/>
+     <use xlink:href="#SimSun-31ae" transform="translate(900 0)"/>
     </g>
    </g>
    <g id="text_7">
     <!-- 熵权综合评价 -->
-    <g style="fill: #665080" transform="translate(209.4 51.246813) scale(0.094 -0.094)">
+    <g style="fill: #665080" transform="translate(209.4 51.729113) scale(0.094 -0.094)">
      <defs>
-      <path id="SimSun-71b5" d="M 3675 1500
+      <path id="SimSun-27e5" d="M 3675 1500
 L 3675 675
 L 4500 675
 L 4500 1500
@@ -3253,7 +3253,7 @@ Q 575 2900 675 3575
 L 775 3575
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-6743" d="M 3300 4250
+      <path id="SimSun-1d73" d="M 3300 4250
 Q 3500 2475 4125 1500
 Q 4725 2525 5025 4250
 L 3300 4250
@@ -3303,7 +3303,7 @@ Q 2600 1650 2475 1925
 Q 2275 2325 1825 2725
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-7efc" d="M 1450 5100
+      <path id="SimSun-352c" d="M 1450 5100
 L 1950 4775
 Q 1700 4650 1425 4175
 Q 1150 3700 750 3000
@@ -3397,7 +3397,7 @@ L 1875 -375
 Q 2800 500 3200 1525
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5408" d="M 3575 4875
+      <path id="SimSun-a38" d="M 3575 4875
 L 3350 4750
 Q 3650 4225 4312 3662
 Q 4975 3100 6125 2825
@@ -3443,19 +3443,19 @@ L 4725 1375
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-71b5"/>
-     <use xlink:href="#SimSun-6743" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-7efc" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-5408" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-8bc4" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-4ef7" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-27e5"/>
+     <use xlink:href="#SimSun-1d73" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-352c" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-a38" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-41f4" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-527" transform="translate(500 0)"/>
     </g>
    </g>
    <g id="text_8">
     <!-- 样本与语料评分 -->
-    <g style="fill: #243348" transform="translate(205.4 78.431233) scale(0.092 -0.092)">
+    <g style="fill: #243348" transform="translate(205.4 79.15792) scale(0.092 -0.092)">
      <defs>
-      <path id="SimSun-6837" d="M 2800 5025
+      <path id="SimSun-1e67" d="M 2800 5025
 L 2850 5100
 Q 3625 4675 3700 4512
 Q 3775 4350 3775 4300
@@ -3530,7 +3530,7 @@ Q 1950 2450 1650 2775
 L 1650 750
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-672c" d="M 3400 850
+      <path id="SimSun-1d5c" d="M 3400 850
 Q 3400 -50 3425 -525
 L 3000 -675
 Q 3025 425 3025 850
@@ -3566,7 +3566,7 @@ L 4900 850
 L 3400 850
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-4e0e" d="M 375 1250
+      <path id="SimSun-43e" d="M 375 1250
 L 3750 1250
 L 4075 1575
 L 4550 1100
@@ -3603,7 +3603,7 @@ L 1500 2425
 L 1700 2600
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-8bed" d="M 3050 1450
+      <path id="SimSun-421d" d="M 3050 1450
 L 3050 75
 L 5000 75
 L 5000 1450
@@ -3685,7 +3685,7 @@ Q 1550 150 1375 -100
 L 1025 275
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-6599" d="M 1900 225
+      <path id="SimSun-1bc9" d="M 1900 225
 Q 1900 -25 1925 -400
 L 1550 -625
 Q 1575 550 1575 2125
@@ -3765,7 +3765,7 @@ Q 2400 3800 2550 4550
 L 3000 4225
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5206" d="M 2350 5050
+      <path id="SimSun-836" d="M 2350 5050
 L 2850 4675
 L 2625 4550
 Q 2200 3750 1687 3125
@@ -3808,29 +3808,29 @@ L 1375 2625
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-6837"/>
-     <use xlink:href="#SimSun-672c" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-4e0e" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-8bed" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-6599" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-8bc4" transform="translate(500 0)"/>
-     <use xlink:href="#SimSun-5206" transform="translate(600 0)"/>
+     <use xlink:href="#SimSun-1e67"/>
+     <use xlink:href="#SimSun-1d5c" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-43e" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-421d" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-1bc9" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-41f4" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-836" transform="translate(600 0)"/>
     </g>
     <!-- 领域质量评分 -->
-    <g style="fill: #243348" transform="translate(210 89.014079) scale(0.092 -0.092)">
-     <use xlink:href="#SimSun-9886"/>
-     <use xlink:href="#SimSun-57df" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-8d28" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-91cf" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-8bc4" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-5206" transform="translate(500 0)"/>
+    <g style="fill: #243348" transform="translate(210 90.31858) scale(0.092 -0.092)">
+     <use xlink:href="#SimSun-4eb6"/>
+     <use xlink:href="#SimSun-e0f" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-4358" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-47ff" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-41f4" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-836" transform="translate(500 0)"/>
     </g>
    </g>
    <g id="text_9">
     <!-- A16  领域映射 -->
-    <g style="fill: #665080" transform="translate(359.555719 51.210094) scale(0.094 -0.094)">
+    <g style="fill: #665080" transform="translate(359.555719 51.747473) scale(0.094 -0.094)">
      <defs>
-      <path id="TimesNewRomanPSMT-36" d="M 2869 4325
+      <path id="TimesNewRomanPSMT-19" d="M 2869 4325
 L 2869 4209
 Q 2456 4169 2195 4045
 Q 1934 3922 1679 3669
@@ -3862,7 +3862,7 @@ Q 1463 2403 1327 2353
 Q 1191 2303 925 2138
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-6620" d="M 2725 4175
+      <path id="SimSun-1c50" d="M 2725 4175
 L 3050 3950
 L 3850 3950
 Q 3850 4725 3825 5200
@@ -3936,7 +3936,7 @@ Q 625 900 625 2050
 Q 625 3200 600 4475
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5c04" d="M 1300 4200
+      <path id="SimSun-1234" d="M 1300 4200
 L 1300 3450
 L 2525 3450
 L 2525 4200
@@ -4015,22 +4015,22 @@ Q 3625 2100 3325 2625
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#TimesNewRomanPSMT-41"/>
-     <use xlink:href="#TimesNewRomanPSMT-31" transform="translate(72.216797 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-36" transform="translate(122.216797 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(172.216797 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(197.216797 0)"/>
-     <use xlink:href="#SimSun-9886" transform="translate(222.216797 0)"/>
-     <use xlink:href="#SimSun-57df" transform="translate(322.216797 0)"/>
-     <use xlink:href="#SimSun-6620" transform="translate(422.216797 0)"/>
-     <use xlink:href="#SimSun-5c04" transform="translate(522.216797 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-24"/>
+     <use xlink:href="#TimesNewRomanPSMT-14" transform="translate(72.21875 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-19" transform="translate(122.21875 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(172.21875 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(197.21875 0)"/>
+     <use xlink:href="#SimSun-4eb6" transform="translate(222.21875 0)"/>
+     <use xlink:href="#SimSun-e0f" transform="translate(322.21875 0)"/>
+     <use xlink:href="#SimSun-1c50" transform="translate(422.21875 0)"/>
+     <use xlink:href="#SimSun-1234" transform="translate(522.21875 0)"/>
     </g>
    </g>
    <g id="text_10">
     <!-- 构造配比加权 -->
-    <g style="fill: #243348" transform="translate(361.2 78.389366) scale(0.092 -0.092)">
+    <g style="fill: #243348" transform="translate(361.2 79.175889) scale(0.092 -0.092)">
      <defs>
-      <path id="SimSun-6784" d="M 3475 3825
+      <path id="SimSun-1db4" d="M 3475 3825
 Q 3025 3050 2575 2575
 L 2500 2625
 Q 3250 3750 3575 5250
@@ -4098,7 +4098,7 @@ Q 2350 1775 2225 2050
 Q 2050 2475 1725 2800
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-9020" d="M 3050 1950
+      <path id="SimSun-4650" d="M 3050 1950
 L 3050 800
 L 4850 800
 L 4850 1950
@@ -4182,7 +4182,7 @@ L 1550 2700
 L 1550 775
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-52a0" d="M 1500 3800
+      <path id="SimSun-8d0" d="M 1500 3800
 Q 1500 4700 1475 5250
 L 2075 4975
 L 1850 4800
@@ -4236,17 +4236,17 @@ L 4075 3775
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-6784"/>
-     <use xlink:href="#SimSun-9020" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-914d" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-6bd4" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-52a0" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-6743" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-1db4"/>
+     <use xlink:href="#SimSun-4650" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-477d" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-2204" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-8d0" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-1d73" transform="translate(500 0)"/>
     </g>
     <!-- 质量指数 -->
-    <g style="fill: #243348" transform="translate(370.4 89.020009) scale(0.092 -0.092)">
+    <g style="fill: #243348" transform="translate(370.4 90.300611) scale(0.092 -0.092)">
      <defs>
-      <path id="SimSun-6570" d="M 1875 1525
+      <path id="SimSun-1ba0" d="M 1875 1525
 Q 1675 1200 1500 900
 Q 1825 825 2275 725
 Q 2500 975 2725 1525
@@ -4346,17 +4346,17 @@ Q 3625 3200 4050 5250
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-8d28"/>
-     <use xlink:href="#SimSun-91cf" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-6307" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-6570" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-4358"/>
+     <use xlink:href="#SimSun-47ff" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-1937" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-1ba0" transform="translate(300 0)"/>
     </g>
    </g>
    <g id="text_11">
     <!-- 指标冲突诊断 -->
-    <g style="fill: #bc8030" transform="translate(53.88 133.308453) scale(0.094 -0.094)">
+    <g style="fill: #bc8030" transform="translate(53.88 133.827473) scale(0.094 -0.094)">
      <defs>
-      <path id="SimSun-51b2" d="M 2400 1350
+      <path id="SimSun-7e2" d="M 2400 1350
 Q 2425 2025 2425 2675
 Q 2425 3325 2400 3975
 L 2775 3775
@@ -4418,7 +4418,7 @@ Q 875 1125 275 1350
 L 300 1475
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-7a81" d="M 5050 3525
+      <path id="SimSun-30b1" d="M 5050 3525
 L 5325 4125
 L 1100 4125
 Q 1150 3775 1037 3587
@@ -4495,7 +4495,7 @@ Q 4225 2625 3775 2950
 L 3825 3025
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-8bca" d="M 1050 4925
+      <path id="SimSun-41fa" d="M 1050 4925
 L 1125 4950
 Q 1425 4750 1612 4550
 Q 1800 4350 1787 4175
@@ -4559,7 +4559,7 @@ Q 3450 -125 4312 450
 Q 5175 1025 5475 1400
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-65ad" d="M 1300 4400
+      <path id="SimSun-1bdd" d="M 1300 4400
 Q 1675 4125 1800 3962
 Q 1925 3800 1925 3700
 Q 1925 3575 1837 3450
@@ -4643,19 +4643,19 @@ L 4975 -525
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-6307"/>
-     <use xlink:href="#SimSun-6807" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-51b2" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-7a81" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-8bca" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-65ad" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-1937"/>
+     <use xlink:href="#SimSun-1e37" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-7e2" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-30b1" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-41fa" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-1bdd" transform="translate(500 0)"/>
     </g>
    </g>
    <g id="text_12">
     <!-- 成对标准化差异 -->
-    <g style="fill: #243348" transform="translate(50.58 151.216467) scale(0.09 -0.09)">
+    <g style="fill: #243348" transform="translate(50.58 151.962513) scale(0.09 -0.09)">
      <defs>
-      <path id="SimSun-6210" d="M 4325 5075
+      <path id="SimSun-1840" d="M 4325 5075
 Q 4850 4775 5025 4612
 Q 5200 4450 5162 4287
 Q 5125 4125 5025 4062
@@ -4714,7 +4714,7 @@ Q 4975 1625 4525 975
 Q 5050 350 5625 100
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5bf9" d="M 400 4250
+      <path id="SimSun-1229" d="M 400 4250
 L 2375 4250
 L 2575 4500
 L 3000 4150
@@ -4771,7 +4771,7 @@ Q 3550 1300 3525 1650
 Q 3450 2125 3100 2775
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-51c6" d="M 2575 -600
+      <path id="SimSun-7f6" d="M 2575 -600
 Q 2600 300 2600 550
 L 2600 3375
 Q 2200 2725 1675 2200
@@ -4854,7 +4854,7 @@ Q 700 1650 300 1725
 L 300 1825
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5dee" d="M 1600 5100
+      <path id="SimSun-141e" d="M 1600 5100
 L 1650 5175
 Q 2300 4925 2400 4775
 Q 2500 4625 2500 4525
@@ -4918,7 +4918,7 @@ L 2350 1075
 L 2150 1275
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5f02" d="M 325 1450
+      <path id="SimSun-1532" d="M 325 1450
 L 2100 1450
 Q 2125 2050 2075 2475
 L 2675 2225
@@ -4976,18 +4976,18 @@ L 1725 4725
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-6210"/>
-     <use xlink:href="#SimSun-5bf9" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-6807" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-51c6" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-5316" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-5dee" transform="translate(500 0)"/>
-     <use xlink:href="#SimSun-5f02" transform="translate(600 0)"/>
+     <use xlink:href="#SimSun-1840"/>
+     <use xlink:href="#SimSun-1229" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-1e37" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-7f6" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-946" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-141e" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-1532" transform="translate(600 0)"/>
     </g>
     <!-- Kendall 排序一致性 -->
-    <g style="fill: #243348" transform="translate(44.209688 161.569252) scale(0.09 -0.09)">
+    <g style="fill: #243348" transform="translate(44.209688 162.845394) scale(0.09 -0.09)">
      <defs>
-      <path id="TimesNewRomanPSMT-4b" d="M 1913 2350
+      <path id="TimesNewRomanPSMT-2e" d="M 1913 2350
 L 3475 797
 Q 3859 413 4131 273
 Q 4403 134 4675 116
@@ -5039,7 +5039,7 @@ Q 3125 3572 2559 2994
 L 1913 2350
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-65" d="M 681 1784
+      <path id="TimesNewRomanPSMT-48" d="M 681 1784
 Q 678 1147 991 784
 Q 1303 422 1725 422
 Q 2006 422 2214 576
@@ -5064,7 +5064,7 @@ Q 1125 2728 920 2526
 Q 716 2325 681 1966
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-6e" d="M 1034 2341
+      <path id="TimesNewRomanPSMT-51" d="M 1034 2341
 Q 1538 2947 1994 2947
 Q 2228 2947 2397 2830
 Q 2566 2713 2666 2444
@@ -5105,7 +5105,7 @@ L 1034 2947
 L 1034 2341
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-64" d="M 2222 322
+      <path id="TimesNewRomanPSMT-47" d="M 2222 322
 Q 2013 103 1813 7
 Q 1613 -88 1381 -88
 Q 913 -88 563 304
@@ -5143,7 +5143,7 @@ Q 1334 256 1672 256
 Q 1956 256 2222 541
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-61" d="M 1822 413
+      <path id="TimesNewRomanPSMT-44" d="M 1822 413
 Q 1381 72 1269 19
 Q 1100 -59 909 -59
 Q 613 -59 420 144
@@ -5187,7 +5187,7 @@ Q 1022 303 1197 303
 Q 1434 303 1822 616
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-6c" d="M 1184 4444
+      <path id="TimesNewRomanPSMT-4f" d="M 1184 4444
 L 1184 647
 Q 1184 378 1223 290
 Q 1263 203 1344 158
@@ -5208,7 +5208,7 @@ L 1044 4444
 L 1184 4444
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-6392" d="M 3400 -575
+      <path id="SimSun-19c2" d="M 3400 -575
 Q 3425 75 3425 1200
 L 2500 1200
 L 2275 1150
@@ -5283,7 +5283,7 @@ L 275 3750
 L 1325 3750
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5e8f" d="M 1000 4575
+      <path id="SimSun-14bf" d="M 1000 4575
 L 1375 4350
 L 5050 4350
 L 5425 4725
@@ -5341,7 +5341,7 @@ Q 3325 -275 2675 -125
 L 2675 0
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-81f4" d="M 1600 1675
+      <path id="SimSun-3824" d="M 1600 1675
 L 1600 2775
 Q 1350 2725 1125 2662
 Q 900 2600 750 2500
@@ -5425,7 +5425,7 @@ L 6075 3675
 L 5275 3675
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-6027" d="M 3975 3450
+      <path id="SimSun-1657" d="M 3975 3450
 Q 3975 4800 3950 5200
 L 4575 4925
 L 4325 4750
@@ -5491,26 +5491,26 @@ L 1575 3950
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#TimesNewRomanPSMT-4b"/>
-     <use xlink:href="#TimesNewRomanPSMT-65" transform="translate(72.216797 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-6e" transform="translate(116.601562 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-64" transform="translate(166.601562 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-61" transform="translate(216.601562 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-6c" transform="translate(260.986328 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-6c" transform="translate(288.769531 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(316.552734 0)"/>
-     <use xlink:href="#SimSun-6392" transform="translate(341.552734 0)"/>
-     <use xlink:href="#SimSun-5e8f" transform="translate(441.552734 0)"/>
-     <use xlink:href="#SimSun-4e00" transform="translate(541.552734 0)"/>
-     <use xlink:href="#SimSun-81f4" transform="translate(641.552734 0)"/>
-     <use xlink:href="#SimSun-6027" transform="translate(741.552734 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-2e"/>
+     <use xlink:href="#TimesNewRomanPSMT-48" transform="translate(72.21875 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-51" transform="translate(116.609375 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-47" transform="translate(166.609375 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-44" transform="translate(216.609375 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-4f" transform="translate(261 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-4f" transform="translate(288.78125 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(316.5625 0)"/>
+     <use xlink:href="#SimSun-19c2" transform="translate(341.5625 0)"/>
+     <use xlink:href="#SimSun-14bf" transform="translate(441.5625 0)"/>
+     <use xlink:href="#SimSun-430" transform="translate(541.5625 0)"/>
+     <use xlink:href="#SimSun-3824" transform="translate(641.5625 0)"/>
+     <use xlink:href="#SimSun-1657" transform="translate(741.5625 0)"/>
     </g>
    </g>
    <g id="text_13">
     <!-- A4—A5 配方与损失 -->
-    <g style="fill: #287c78" transform="translate(22.496437 218.915016) scale(0.094 -0.094)">
+    <g style="fill: #287c78" transform="translate(22.496437 219.470754) scale(0.094 -0.094)">
      <defs>
-      <path id="TimesNewRomanPSMT-34" d="M 2978 1563
+      <path id="TimesNewRomanPSMT-17" d="M 2978 1563
 L 2978 1119
 L 2409 1119
 L 2409 0
@@ -5529,7 +5529,7 @@ L 406 1563
 L 1894 1563
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-35" d="M 2778 4238
+      <path id="TimesNewRomanPSMT-18" d="M 2778 4238
 L 2534 3706
 L 1259 3706
 L 981 3138
@@ -5555,7 +5555,7 @@ L 1259 4238
 L 2778 4238
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-635f" d="M 1450 3725
+      <path id="SimSun-198f" d="M 1450 3725
 Q 1450 4700 1425 5175
 L 2050 4900
 L 1800 4725
@@ -5642,24 +5642,24 @@ L 4175 700
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#TimesNewRomanPSMT-41"/>
-     <use xlink:href="#TimesNewRomanPSMT-34" transform="translate(72.216797 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-2014" transform="translate(122.216797 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-41" transform="translate(222.216797 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-35" transform="translate(294.433594 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(344.433594 0)"/>
-     <use xlink:href="#SimSun-914d" transform="translate(369.433594 0)"/>
-     <use xlink:href="#SimSun-65b9" transform="translate(469.433594 0)"/>
-     <use xlink:href="#SimSun-4e0e" transform="translate(569.433594 0)"/>
-     <use xlink:href="#SimSun-635f" transform="translate(669.433594 0)"/>
-     <use xlink:href="#SimSun-5931" transform="translate(769.433594 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-24"/>
+     <use xlink:href="#TimesNewRomanPSMT-17" transform="translate(72.21875 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-b2" transform="translate(122.21875 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-24" transform="translate(222.21875 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-18" transform="translate(294.4375 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(344.4375 0)"/>
+     <use xlink:href="#SimSun-477d" transform="translate(369.4375 0)"/>
+     <use xlink:href="#SimSun-1be9" transform="translate(469.4375 0)"/>
+     <use xlink:href="#SimSun-43e" transform="translate(569.4375 0)"/>
+     <use xlink:href="#SimSun-198f" transform="translate(669.4375 0)"/>
+     <use xlink:href="#SimSun-f61" transform="translate(769.4375 0)"/>
     </g>
    </g>
    <g id="text_14">
     <!-- 按 index 对齐 -->
-    <g style="fill: #243348" transform="translate(37.612266 246.102497) scale(0.09 -0.09)">
+    <g style="fill: #243348" transform="translate(37.612266 246.583494) scale(0.09 -0.09)">
      <defs>
-      <path id="SimSun-6309" d="M 5175 3300
+      <path id="SimSun-1939" d="M 5175 3300
 L 5425 3925
 L 3025 3925
 Q 3050 3450 2900 3362
@@ -5750,7 +5750,7 @@ L 1725 3600
 L 1725 2525
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-69" d="M 928 4444
+      <path id="TimesNewRomanPSMT-4c" d="M 928 4444
 Q 1059 4444 1151 4351
 Q 1244 4259 1244 4128
 Q 1244 3997 1151 3903
@@ -5781,7 +5781,7 @@ L 1050 2947
 L 1188 2947
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-78" d="M 84 2863
+      <path id="TimesNewRomanPSMT-5b" d="M 84 2863
 L 1431 2863
 L 1431 2747
 Q 1303 2747 1251 2703
@@ -5825,7 +5825,7 @@ Q 275 2747 84 2747
 L 84 2863
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-9f50" d="M 2675 5250
+      <path id="SimSun-5580" d="M 2675 5250
 Q 3250 5050 3375 4912
 Q 3500 4775 3500 4675
 Q 3500 4575 3412 4437
@@ -5875,21 +5875,21 @@ Q 2150 1225 2100 2075
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-6309"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(100 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-69" transform="translate(125 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-6e" transform="translate(152.783203 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-64" transform="translate(202.783203 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-65" transform="translate(252.783203 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-78" transform="translate(297.167969 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(347.167969 0)"/>
-     <use xlink:href="#SimSun-5bf9" transform="translate(372.167969 0)"/>
-     <use xlink:href="#SimSun-9f50" transform="translate(472.167969 0)"/>
+     <use xlink:href="#SimSun-1939"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(100 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-4c" transform="translate(125 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-51" transform="translate(152.78125 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-47" transform="translate(202.78125 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-48" transform="translate(252.78125 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-5b" transform="translate(297.171875 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(347.171875 0)"/>
+     <use xlink:href="#SimSun-1229" transform="translate(372.171875 0)"/>
+     <use xlink:href="#SimSun-5580" transform="translate(472.171875 0)"/>
     </g>
     <!-- 17 域训练配比 -->
-    <g style="fill: #243348" transform="translate(35.235 256.455281) scale(0.09 -0.09)">
+    <g style="fill: #243348" transform="translate(35.235 257.483953) scale(0.09 -0.09)">
      <defs>
-      <path id="TimesNewRomanPSMT-37" d="M 644 4238
+      <path id="TimesNewRomanPSMT-1a" d="M 644 4238
 L 2916 4238
 L 2916 4119
 L 1503 -88
@@ -5902,7 +5902,7 @@ L 238 3234
 L 644 4238
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-8bad" d="M 3925 4575
+      <path id="SimSun-41dd" d="M 3925 4575
 L 4475 4350
 L 4275 4200
 L 4275 1050
@@ -5958,7 +5958,7 @@ Q 2800 1625 2800 2650
 Q 2800 3675 2775 5000
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-7ec3" d="M 700 3175
+      <path id="SimSun-34f3" d="M 700 3175
 L 1775 3250
 Q 1950 3525 2125 3925
 L 2600 3550
@@ -6051,19 +6051,19 @@ L 3425 3075
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#TimesNewRomanPSMT-31"/>
-     <use xlink:href="#TimesNewRomanPSMT-37" transform="translate(50 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-57df" transform="translate(125 0)"/>
-     <use xlink:href="#SimSun-8bad" transform="translate(225 0)"/>
-     <use xlink:href="#SimSun-7ec3" transform="translate(325 0)"/>
-     <use xlink:href="#SimSun-914d" transform="translate(425 0)"/>
-     <use xlink:href="#SimSun-6bd4" transform="translate(525 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-14"/>
+     <use xlink:href="#TimesNewRomanPSMT-1a" transform="translate(50 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-e0f" transform="translate(125 0)"/>
+     <use xlink:href="#SimSun-41dd" transform="translate(225 0)"/>
+     <use xlink:href="#SimSun-34f3" transform="translate(325 0)"/>
+     <use xlink:href="#SimSun-477d" transform="translate(425 0)"/>
+     <use xlink:href="#SimSun-2204" transform="translate(525 0)"/>
     </g>
     <!-- 13 域验证损失 -->
-    <g style="fill: #243348" transform="translate(35.235 266.808066) scale(0.09 -0.09)">
+    <g style="fill: #243348" transform="translate(35.235 268.366834) scale(0.09 -0.09)">
      <defs>
-      <path id="SimSun-8bc1" d="M 825 4775
+      <path id="SimSun-41f1" d="M 825 4775
 L 875 4825
 Q 1325 4575 1500 4400
 Q 1675 4225 1637 4062
@@ -6120,21 +6120,180 @@ L 2175 4550
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#TimesNewRomanPSMT-31"/>
-     <use xlink:href="#TimesNewRomanPSMT-33" transform="translate(50 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-57df" transform="translate(125 0)"/>
-     <use xlink:href="#SimSun-9a8c" transform="translate(225 0)"/>
-     <use xlink:href="#SimSun-8bc1" transform="translate(325 0)"/>
-     <use xlink:href="#SimSun-635f" transform="translate(425 0)"/>
-     <use xlink:href="#SimSun-5931" transform="translate(525 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-14"/>
+     <use xlink:href="#TimesNewRomanPSMT-16" transform="translate(50 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-e0f" transform="translate(125 0)"/>
+     <use xlink:href="#SimSun-50bc" transform="translate(225 0)"/>
+     <use xlink:href="#SimSun-41f1" transform="translate(325 0)"/>
+     <use xlink:href="#SimSun-198f" transform="translate(425 0)"/>
+     <use xlink:href="#SimSun-f61" transform="translate(525 0)"/>
     </g>
    </g>
    <g id="text_15">
-    <!-- 线性混合回归 -->
-    <g style="fill: #287c78" transform="translate(148.92 218.970094) scale(0.094 -0.094)">
+    <!-- 岭回归与核岭 -->
+    <g style="fill: #287c78" transform="translate(148.92 219.507473) scale(0.094 -0.094)">
      <defs>
-      <path id="SimSun-7ebf" d="M 3900 3400
+      <path id="SimSun-12dd" d="M 400 925
+Q 525 1000 500 1350
+L 500 2975
+Q 500 3375 475 3975
+L 1050 3725
+L 825 3525
+L 825 975
+L 1300 1075
+L 1300 4400
+Q 1300 4800 1275 5225
+L 1825 5000
+L 1625 4800
+L 1625 1125
+L 2100 1225
+L 2100 3125
+Q 2100 3475 2075 3975
+L 2600 3700
+L 2425 3525
+Q 2425 1575 2425 1300
+Q 2425 1025 2450 725
+L 2100 500
+L 2100 1100
+Q 875 700 675 450
+L 400 925
+z
+M 3900 5275
+L 4450 4975
+L 4250 4825
+Q 4575 4075 5100 3600
+Q 5625 3125 6125 3025
+L 6125 2925
+Q 5775 2925 5600 2650
+Q 5075 3100 4725 3575
+Q 4375 4050 4175 4725
+Q 3875 3975 3512 3437
+Q 3150 2900 2525 2400
+L 2475 2475
+Q 3050 3075 3412 3837
+Q 3775 4600 3900 5275
+z
+M 3750 3400
+L 3825 3450
+Q 4375 3125 4450 2987
+Q 4525 2850 4525 2775
+Q 4525 2650 4425 2537
+Q 4325 2425 4275 2425
+Q 4200 2425 4150 2625
+Q 4075 2950 3750 3400
+z
+M 3075 950
+Q 3725 750 4125 600
+L 4850 1900
+L 3700 1900
+Q 3375 1900 3100 1825
+L 2875 2050
+L 4875 2050
+L 5075 2300
+L 5525 1900
+Q 5225 1800 4987 1512
+Q 4750 1225 4250 550
+Q 5000 250 5050 25
+Q 5100 -200 5100 -275
+Q 5100 -375 5062 -450
+Q 5025 -525 4975 -525
+Q 4900 -525 4700 -300
+Q 4425 25 3987 325
+Q 3550 625 3050 850
+L 3075 950
+z
+" transform="scale(0.015625)"/>
+      <path id="SimSun-1e68" d="M 3625 5200
+L 3700 5250
+Q 4225 4950 4287 4837
+Q 4350 4725 4350 4625
+Q 4350 4475 4262 4362
+Q 4175 4250 4125 4250
+Q 4050 4250 4000 4500
+Q 3900 4850 3625 5200
+z
+M 3100 2575
+L 4300 2575
+Q 4475 2825 4587 3025
+Q 4700 3225 4825 3525
+L 5300 3125
+L 5050 3025
+Q 3875 1300 2325 525
+L 2300 625
+Q 3350 1275 4225 2450
+Q 3150 2350 2950 2125
+L 2725 2600
+Q 2975 2625 3275 3075
+Q 3575 3525 3750 4025
+L 2950 4025
+L 2725 3975
+L 2525 4175
+L 5275 4175
+L 5575 4475
+L 6025 4025
+L 3850 4025
+L 4275 3725
+L 4050 3650
+Q 3625 3050 3100 2575
+z
+M 5250 2375
+L 5725 2000
+L 5500 1925
+Q 5050 1350 4550 875
+Q 5425 375 5600 175
+Q 5775 -25 5775 -200
+Q 5775 -275 5712 -400
+Q 5650 -525 5600 -525
+Q 5500 -525 5350 -200
+Q 5100 275 4450 775
+Q 3400 -175 2100 -575
+L 2075 -475
+Q 4175 425 5250 2375
+z
+M 1700 775
+Q 1700 450 1725 -425
+L 1325 -625
+Q 1350 850 1350 2425
+Q 950 1475 375 800
+L 325 875
+Q 1000 2025 1325 3575
+L 775 3575
+L 550 3525
+L 350 3725
+L 1350 3725
+Q 1350 4550 1325 5275
+L 1900 5000
+L 1700 4825
+L 1700 3725
+L 2025 3725
+L 2300 4000
+L 2725 3575
+L 1700 3575
+L 1700 2950
+Q 2225 2750 2362 2612
+Q 2500 2475 2500 2325
+Q 2500 2200 2450 2075
+Q 2400 1950 2375 1950
+Q 2275 1950 2150 2225
+Q 1950 2600 1700 2825
+L 1700 775
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#SimSun-12dd"/>
+     <use xlink:href="#SimSun-d0e" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-1582" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-43e" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-1e68" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-12dd" transform="translate(500 0)"/>
+    </g>
+   </g>
+   <g id="text_16">
+    <!-- 线性系数解释 -->
+    <g style="fill: #243348" transform="translate(149.52 251.975889) scale(0.092 -0.092)">
+     <defs>
+      <path id="SimSun-34ef" d="M 3900 3400
 Q 3900 3050 3950 2475
 L 5125 2600
 L 5450 2975
@@ -6217,379 +6376,7 @@ Q 700 25 575 -100
 L 325 375
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-6df7" d="M 2975 4475
-L 2975 3750
-L 5125 3750
-L 5125 4475
-L 2975 4475
-z
-M 2975 3600
-L 2975 2800
-L 5125 2800
-L 5125 3600
-L 2975 3600
-z
-M 2625 2400
-Q 2650 2975 2650 3612
-Q 2650 4250 2625 4850
-L 2975 4625
-L 5075 4625
-L 5325 4875
-L 5675 4525
-L 5450 4400
-Q 5450 2900 5475 2600
-L 5125 2400
-L 5125 2650
-L 2975 2650
-L 2975 2550
-L 2625 2400
-z
-M 2525 550
-L 2525 1600
-Q 2525 2075 2500 2375
-L 3050 2100
-L 2850 1900
-L 2850 1475
-L 3275 1475
-L 3550 1775
-L 3925 1325
-L 2850 1325
-L 2850 225
-L 3850 575
-L 3875 475
-Q 3000 50 2700 -325
-L 2425 75
-Q 2550 175 2525 550
-z
-M 4100 1875
-Q 4100 2300 4075 2575
-L 4650 2275
-L 4425 2100
-L 4425 1300
-Q 5175 1750 5450 2200
-L 5825 1750
-L 5575 1725
-Q 4850 1325 4425 1150
-L 4425 275
-Q 4425 -25 4675 -25
-L 5425 -25
-Q 5575 0 5612 250
-Q 5650 500 5675 1050
-L 5800 1050
-Q 5800 450 5862 300
-Q 5925 150 6125 25
-Q 5925 -350 5450 -325
-L 4550 -325
-Q 4100 -325 4100 175
-L 4100 1875
-z
-M 2450 4175
-Q 1550 1500 1462 1187
-Q 1375 875 1387 425
-Q 1400 -25 1425 -200
-Q 1425 -300 1300 -300
-Q 1200 -300 1050 -250
-Q 900 -200 900 -25
-Q 900 100 975 350
-Q 1050 600 1050 750
-Q 1050 925 937 1025
-Q 825 1125 450 1225
-L 450 1325
-Q 900 1275 1012 1287
-Q 1125 1300 1262 1512
-Q 1400 1725 2350 4200
-L 2450 4175
-z
-M 375 3750
-Q 1250 3300 1250 3012
-Q 1250 2725 1112 2625
-Q 975 2525 875 2875
-Q 750 3200 325 3675
-L 375 3750
-z
-M 1050 5050
-Q 1750 4700 1812 4525
-Q 1875 4350 1875 4275
-Q 1875 4150 1787 4050
-Q 1700 3950 1650 3950
-Q 1575 3950 1500 4200
-Q 1375 4525 1000 4975
-L 1050 5050
-z
-" transform="scale(0.015625)"/>
-     </defs>
-     <use xlink:href="#SimSun-7ebf"/>
-     <use xlink:href="#SimSun-6027" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-6df7" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-5408" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-56de" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-5f52" transform="translate(500 0)"/>
-    </g>
-   </g>
-   <g id="text_16">
-    <!-- 岭正则估计系数 -->
-    <g style="fill: #243348" transform="translate(144.92 251.291069) scale(0.092 -0.092)">
-     <defs>
-      <path id="SimSun-5cad" d="M 400 925
-Q 525 1000 500 1350
-L 500 2975
-Q 500 3375 475 3975
-L 1050 3725
-L 825 3525
-L 825 975
-L 1300 1075
-L 1300 4400
-Q 1300 4800 1275 5225
-L 1825 5000
-L 1625 4800
-L 1625 1125
-L 2100 1225
-L 2100 3125
-Q 2100 3475 2075 3975
-L 2600 3700
-L 2425 3525
-Q 2425 1575 2425 1300
-Q 2425 1025 2450 725
-L 2100 500
-L 2100 1100
-Q 875 700 675 450
-L 400 925
-z
-M 3900 5275
-L 4450 4975
-L 4250 4825
-Q 4575 4075 5100 3600
-Q 5625 3125 6125 3025
-L 6125 2925
-Q 5775 2925 5600 2650
-Q 5075 3100 4725 3575
-Q 4375 4050 4175 4725
-Q 3875 3975 3512 3437
-Q 3150 2900 2525 2400
-L 2475 2475
-Q 3050 3075 3412 3837
-Q 3775 4600 3900 5275
-z
-M 3750 3400
-L 3825 3450
-Q 4375 3125 4450 2987
-Q 4525 2850 4525 2775
-Q 4525 2650 4425 2537
-Q 4325 2425 4275 2425
-Q 4200 2425 4150 2625
-Q 4075 2950 3750 3400
-z
-M 3075 950
-Q 3725 750 4125 600
-L 4850 1900
-L 3700 1900
-Q 3375 1900 3100 1825
-L 2875 2050
-L 4875 2050
-L 5075 2300
-L 5525 1900
-Q 5225 1800 4987 1512
-Q 4750 1225 4250 550
-Q 5000 250 5050 25
-Q 5100 -200 5100 -275
-Q 5100 -375 5062 -450
-Q 5025 -525 4975 -525
-Q 4900 -525 4700 -300
-Q 4425 25 3987 325
-Q 3550 625 3050 850
-L 3075 950
-z
-" transform="scale(0.015625)"/>
-      <path id="SimSun-6b63" d="M 1600 2725
-Q 1600 2900 1575 3325
-L 2200 3025
-L 1950 2850
-L 1950 25
-L 3200 25
-L 3200 4500
-L 1675 4500
-Q 1350 4500 1075 4425
-L 850 4650
-L 5075 4650
-L 5450 5025
-L 5975 4500
-L 3550 4500
-L 3550 2525
-L 4775 2525
-L 5125 2875
-L 5625 2375
-L 3550 2375
-L 3550 25
-L 5075 25
-L 5475 425
-L 6025 -125
-L 1200 -125
-Q 875 -125 600 -200
-L 375 25
-L 1600 25
-L 1600 2725
-z
-" transform="scale(0.015625)"/>
-      <path id="SimSun-5219" d="M 3325 2150
-Q 3325 1700 3350 1375
-L 3000 1175
-L 3000 4575
-L 1250 4575
-L 1250 1175
-L 900 1000
-Q 925 1625 925 2912
-Q 925 4200 900 4950
-L 1250 4725
-L 2975 4725
-L 3150 4975
-L 3525 4675
-L 3325 4500
-L 3325 2150
-z
-M 375 -525
-Q 1325 175 1612 800
-Q 1900 1425 1937 2062
-Q 1975 2700 1950 4025
-L 2500 3775
-L 2300 3600
-L 2300 2550
-Q 2325 1575 1950 787
-Q 1575 0 425 -600
-L 375 -525
-z
-M 2275 1075
-Q 3525 475 3587 275
-Q 3650 75 3650 -25
-Q 3650 -175 3587 -287
-Q 3525 -400 3500 -400
-Q 3400 -400 3250 -100
-Q 3000 325 2225 1000
-L 2275 1075
-z
-M 4150 875
-Q 4175 1500 4175 2637
-Q 4175 3775 4150 4400
-L 4700 4125
-L 4500 3950
-L 4500 1800
-Q 4500 1325 4525 1050
-L 4150 875
-z
-M 4200 50
-Q 4700 0 4987 0
-Q 5275 0 5275 300
-L 5275 4225
-Q 5275 4700 5250 5200
-L 5825 4925
-L 5625 4750
-L 5625 150
-Q 5650 -400 5075 -625
-Q 5025 -225 4200 -50
-L 4200 50
-z
-" transform="scale(0.015625)"/>
-      <path id="SimSun-4f30" d="M 2900 1950
-L 2900 175
-L 5100 175
-L 5100 1950
-L 2900 1950
-z
-M 2525 -575
-Q 2550 -125 2550 900
-Q 2550 1925 2525 2325
-L 2925 2100
-L 3800 2100
-L 3800 3500
-L 2850 3500
-Q 2525 3500 2250 3425
-L 2025 3650
-L 3800 3650
-Q 3800 4800 3775 5200
-L 4350 4950
-L 4150 4725
-L 4150 3650
-L 5300 3650
-L 5625 3975
-L 6100 3500
-L 4150 3500
-L 4150 2100
-L 5050 2100
-L 5300 2350
-L 5675 2025
-L 5450 1875
-L 5450 425
-Q 5450 50 5475 -350
-L 5100 -525
-L 5100 25
-L 2900 25
-L 2900 -425
-L 2525 -575
-z
-M 1500 3375
-L 1825 3225
-L 1675 3050
-L 1675 525
-Q 1675 75 1700 -500
-L 1300 -700
-Q 1325 0 1325 400
-L 1325 3050
-Q 850 2375 325 1875
-L 250 1950
-Q 825 2625 1200 3412
-Q 1575 4200 1875 5100
-L 2400 4750
-L 2150 4600
-Q 1800 3925 1500 3375
-z
-" transform="scale(0.015625)"/>
-      <path id="SimSun-8ba1" d="M 975 4975
-L 1000 5050
-Q 1550 4800 1762 4625
-Q 1975 4450 1975 4275
-Q 1975 4100 1887 4025
-Q 1800 3950 1775 3950
-Q 1650 3950 1550 4250
-Q 1375 4625 975 4975
-z
-M 1650 375
-L 2625 1225
-L 2675 1150
-Q 1800 25 1600 -350
-L 1225 75
-Q 1325 225 1325 550
-L 1325 2800
-L 675 2800
-L 900 2800
-Q 750 2800 475 2725
-L 250 2950
-L 1275 2950
-L 1550 3225
-L 1900 2875
-L 1650 2700
-L 1650 375
-z
-M 3850 2925
-Q 3850 4600 3825 5100
-L 4425 4825
-L 4225 4625
-L 4225 2925
-L 5350 2925
-L 5675 3250
-L 6125 2775
-L 4225 2775
-L 4225 500
-Q 4225 0 4250 -425
-L 3825 -600
-Q 3850 175 3850 575
-L 3850 2775
-L 2575 2775
-L 2950 2775
-Q 2650 2775 2375 2700
-L 2150 2925
-L 3850 2925
-z
-" transform="scale(0.015625)"/>
-      <path id="SimSun-7cfb" d="M 4975 1950
+      <path id="SimSun-332b" d="M 4975 1950
 L 3600 1850
 L 3600 200
 Q 3650 -400 3025 -575
@@ -6651,19 +6438,396 @@ Q 925 25 1437 462
 Q 1950 900 2250 1400
 z
 " transform="scale(0.015625)"/>
+      <path id="SimSun-4013" d="M 5700 4550
+Q 5675 3850 5637 3625
+Q 5600 3400 5500 3262
+Q 5400 3125 5075 3025
+Q 5100 3250 4475 3450
+L 4500 3550
+Q 4875 3475 5062 3462
+Q 5250 3450 5300 3625
+Q 5350 3800 5375 4625
+L 4375 4625
+Q 4350 4100 4075 3675
+Q 3800 3250 3075 2900
+L 3000 2975
+Q 3550 3325 3775 3787
+Q 4000 4250 4000 4625
+L 3650 4625
+L 3425 4550
+L 3200 4775
+L 5350 4775
+L 5550 5000
+L 5900 4700
+L 5700 4550
+z
+M 4400 -625
+Q 4425 -100 4425 975
+L 3775 975
+Q 3450 975 3175 900
+L 2950 1125
+L 4425 1125
+L 4425 2025
+L 3750 2025
+Q 3400 1525 3100 1275
+L 3050 1325
+Q 3300 1700 3487 2200
+Q 3675 2700 3725 3000
+L 4200 2700
+L 3975 2575
+L 3800 2175
+L 4425 2175
+Q 4425 2825 4400 3175
+L 4950 2900
+L 4750 2750
+L 4750 2175
+L 5200 2175
+L 5475 2450
+L 5875 2025
+L 4750 2025
+L 4750 1125
+L 5450 1125
+L 5750 1425
+L 6175 975
+L 4750 975
+Q 4750 -50 4775 -450
+L 4400 -625
+z
+M 1475 5200
+L 1975 4875
+L 1750 4775
+Q 1600 4525 1500 4275
+L 2175 4275
+L 2400 4500
+L 2775 4125
+Q 2550 4025 2437 3912
+Q 2325 3800 1975 3375
+L 2525 3375
+L 2750 3600
+L 3075 3275
+L 2875 3125
+L 2875 -200
+Q 2875 -325 2800 -425
+Q 2725 -525 2500 -625
+Q 2500 -425 2075 -250
+L 2075 -150
+Q 2375 -200 2475 -200
+Q 2575 -200 2575 -75
+L 2575 1300
+L 2000 1300
+Q 2000 400 2025 -50
+L 1675 -250
+Q 1700 250 1700 1300
+L 1125 1300
+Q 1075 150 275 -625
+L 225 -550
+Q 575 -50 687 412
+Q 800 875 812 1137
+Q 825 1400 825 3250
+Q 600 3000 350 2775
+L 300 2850
+Q 850 3550 1112 4162
+Q 1375 4775 1475 5200
+z
+M 1125 2275
+L 1125 1450
+L 1700 1450
+L 1700 2275
+L 1125 2275
+z
+M 1125 3225
+L 1125 2425
+L 1700 2425
+L 1700 3225
+L 1125 3225
+z
+M 2000 3225
+L 2000 2425
+L 2575 2425
+L 2575 3225
+L 2000 3225
+z
+M 2000 2275
+L 2000 1450
+L 2575 1450
+L 2575 2275
+L 2000 2275
+z
+M 1450 4125
+Q 1275 3825 1050 3475
+L 1175 3375
+L 1850 3375
+L 2200 4125
+L 1450 4125
+z
+" transform="scale(0.015625)"/>
+      <path id="SimSun-47fa" d="M 2825 4750
+L 4900 4750
+L 5075 4975
+L 5500 4625
+L 5275 4500
+Q 4800 3750 4375 3300
+Q 5075 2775 6075 2750
+L 6075 2650
+Q 5625 2600 5550 2350
+Q 4800 2600 4175 3125
+Q 3475 2550 2475 2225
+L 2450 2300
+Q 3400 2775 3950 3300
+Q 3525 3850 3300 4625
+L 3025 4550
+L 2825 4750
+z
+M 3400 4600
+Q 3700 3925 4150 3475
+Q 4675 4075 4925 4600
+L 3400 4600
+z
+M 3950 -600
+Q 3975 25 3975 850
+L 3275 850
+Q 2950 850 2675 775
+L 2450 1000
+L 3975 1000
+L 3975 1725
+L 3650 1725
+Q 3325 1725 3050 1650
+L 2825 1875
+L 3975 1875
+Q 3975 2325 3950 2725
+L 4475 2475
+L 4300 2350
+L 4300 1875
+L 4850 1875
+L 5150 2175
+L 5575 1725
+L 4300 1725
+L 4300 1000
+L 5300 1000
+L 5600 1300
+L 6025 850
+L 4300 850
+Q 4300 -100 4325 -425
+L 3950 -600
+z
+M 1850 2200
+Q 1850 425 1875 -475
+L 1500 -650
+Q 1525 525 1525 2100
+Q 1025 1200 275 475
+L 225 550
+Q 1150 1775 1425 2775
+L 1125 2775
+Q 800 2775 525 2700
+L 300 2925
+L 1525 2925
+L 1525 4450
+Q 950 4375 400 4325
+L 400 4425
+Q 1075 4525 1612 4687
+Q 2150 4850 2400 5050
+L 2750 4625
+Q 2475 4650 1850 4500
+L 1850 3275
+Q 2225 3925 2350 4275
+L 2775 3950
+Q 2600 3925 2400 3700
+Q 2200 3475 1850 3100
+L 1850 2925
+L 2400 2925
+L 2675 3225
+L 3075 2775
+L 1850 2775
+L 1850 2325
+Q 2250 2175 2425 2037
+Q 2600 1900 2600 1750
+Q 2600 1650 2550 1525
+Q 2500 1400 2450 1400
+Q 2400 1400 2300 1600
+Q 2150 1925 1850 2200
+z
+M 600 4050
+L 650 4100
+Q 1050 3825 1137 3687
+Q 1225 3550 1225 3475
+Q 1225 3350 1125 3237
+Q 1025 3125 975 3125
+Q 900 3125 875 3325
+Q 825 3625 600 4050
+z
+" transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-5cad"/>
-     <use xlink:href="#SimSun-6b63" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-5219" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-4f30" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-8ba1" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-7cfb" transform="translate(500 0)"/>
-     <use xlink:href="#SimSun-6570" transform="translate(600 0)"/>
+     <use xlink:href="#SimSun-34ef"/>
+     <use xlink:href="#SimSun-1657" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-332b" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-1ba0" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-4013" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-47fa" transform="translate(500 0)"/>
     </g>
-    <!-- 预测验证损失 -->
-    <g style="fill: #243348" transform="translate(149.52 261.826118) scale(0.092 -0.092)">
+    <!-- 核岭同尺度预测 -->
+    <g style="fill: #243348" transform="translate(144.92 263.100611) scale(0.092 -0.092)">
      <defs>
-      <path id="SimSun-9884" d="M 475 4825
+      <path id="SimSun-a3c" d="M 1650 3725
+L 4075 3725
+L 4400 4050
+L 4875 3575
+L 2375 3575
+Q 2100 3575 1875 3500
+L 1650 3725
+z
+M 2475 2600
+L 2475 1400
+L 4000 1400
+L 4000 2600
+L 2475 2600
+z
+M 2125 2950
+L 2475 2750
+L 3975 2750
+L 4150 3000
+L 4525 2700
+L 4325 2525
+L 4325 1600
+Q 4325 1275 4350 950
+L 4000 825
+L 4000 1250
+L 2475 1250
+L 2475 875
+L 2125 750
+Q 2150 1175 2150 1787
+Q 2150 2400 2125 2950
+z
+M 4175 125
+Q 4700 50 4987 37
+Q 5275 25 5275 400
+L 5275 4650
+L 1275 4650
+L 1275 -425
+L 875 -575
+Q 925 250 925 750
+L 925 3900
+Q 925 4450 900 5050
+L 1275 4800
+L 5250 4800
+L 5425 5050
+L 5825 4725
+L 5625 4575
+L 5625 250
+Q 5650 -350 5025 -575
+Q 5025 -250 4175 0
+L 4175 125
+z
+" transform="scale(0.015625)"/>
+      <path id="SimSun-126a" d="M 5250 4375
+Q 5250 3975 5250 3600
+Q 5250 3225 5275 2650
+L 4900 2500
+L 4900 2900
+L 3325 2900
+Q 3675 1550 4387 850
+Q 5100 150 6100 -125
+L 6100 -225
+Q 5650 -275 5500 -550
+Q 4350 125 3825 1037
+Q 3300 1950 3175 2900
+L 1825 2900
+Q 1800 1500 1487 762
+Q 1175 25 275 -675
+L 225 -575
+Q 775 -25 1050 525
+Q 1325 1075 1400 1862
+Q 1475 2650 1425 4850
+L 1825 4625
+L 4850 4625
+L 5050 4875
+L 5450 4550
+L 5250 4375
+z
+M 1825 4475
+L 1825 3050
+L 4900 3050
+L 4900 4475
+L 1825 4475
+z
+" transform="scale(0.015625)"/>
+      <path id="SimSun-14d6" d="M 2550 2025
+Q 2575 2525 2575 3175
+L 1925 3175
+L 1625 3125
+L 1425 3325
+L 2575 3325
+Q 2575 3700 2550 4150
+L 3100 3875
+L 2900 3750
+L 2900 3325
+L 4300 3325
+Q 4300 3750 4275 4125
+L 4850 3875
+L 4625 3725
+L 4625 3325
+L 5100 3325
+L 5425 3650
+L 5900 3175
+L 4625 3175
+Q 4625 2450 4650 2225
+L 4300 2075
+L 4300 2300
+L 2900 2300
+L 2900 2175
+L 2550 2025
+z
+M 4875 1500
+Q 4300 775 3900 425
+Q 4700 -75 6025 -125
+L 6025 -225
+Q 5625 -300 5550 -550
+Q 4375 -325 3675 225
+Q 2475 -450 1075 -625
+L 1050 -525
+Q 2375 -275 3450 450
+Q 2975 925 2575 1625
+L 2325 1625
+L 2100 1575
+L 1900 1775
+L 4525 1775
+L 4750 2000
+L 5125 1625
+L 4875 1500
+z
+M 2700 1625
+Q 3175 975 3650 625
+Q 4150 1100 4500 1625
+L 2700 1625
+z
+M 2900 3175
+L 2900 2450
+L 4300 2450
+L 4300 3175
+L 2900 3175
+z
+M 975 4650
+L 1400 4400
+L 3375 4400
+Q 3350 4550 3262 4725
+Q 3175 4900 2900 5225
+L 2975 5275
+Q 3550 5025 3637 4887
+Q 3725 4750 3725 4725
+Q 3725 4575 3525 4400
+L 5150 4400
+L 5500 4750
+L 6000 4250
+L 1375 4250
+Q 1400 2750 1287 1912
+Q 1175 1075 925 475
+Q 675 -125 300 -625
+L 225 -575
+Q 725 300 862 1250
+Q 1000 2200 1012 3187
+Q 1025 4175 975 4650
+z
+" transform="scale(0.015625)"/>
+      <path id="SimSun-4eb4" d="M 475 4825
 L 2225 4825
 L 2425 5075
 L 2825 4675
@@ -6748,7 +6912,7 @@ Q 5250 250 4600 875
 L 4650 950
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-6d4b" d="M 1975 1000
+      <path id="SimSun-237b" d="M 1975 1000
 Q 2000 1475 2000 2925
 Q 2000 4375 1975 5000
 L 2350 4775
@@ -6841,19 +7005,20 @@ L 800 5100
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-9884"/>
-     <use xlink:href="#SimSun-6d4b" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-9a8c" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-8bc1" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-635f" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-5931" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-1e68"/>
+     <use xlink:href="#SimSun-12dd" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-a3c" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-126a" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-14d6" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-4eb4" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-237b" transform="translate(600 0)"/>
     </g>
    </g>
    <g id="text_17">
     <!-- 检验与跨尺度 -->
-    <g style="fill: #365e8d" transform="translate(262.68 219.006813) scale(0.094 -0.094)">
+    <g style="fill: #365e8d" transform="translate(262.68 219.507473) scale(0.094 -0.094)">
      <defs>
-      <path id="SimSun-8de8" d="M 950 4525
+      <path id="SimSun-4418" d="M 950 4525
 L 950 3225
 L 2075 3225
 L 2075 4525
@@ -6950,129 +7115,20 @@ L 5675 2000
 L 3825 2000
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5c3a" d="M 5250 4375
-Q 5250 3975 5250 3600
-Q 5250 3225 5275 2650
-L 4900 2500
-L 4900 2900
-L 3325 2900
-Q 3675 1550 4387 850
-Q 5100 150 6100 -125
-L 6100 -225
-Q 5650 -275 5500 -550
-Q 4350 125 3825 1037
-Q 3300 1950 3175 2900
-L 1825 2900
-Q 1800 1500 1487 762
-Q 1175 25 275 -675
-L 225 -575
-Q 775 -25 1050 525
-Q 1325 1075 1400 1862
-Q 1475 2650 1425 4850
-L 1825 4625
-L 4850 4625
-L 5050 4875
-L 5450 4550
-L 5250 4375
-z
-M 1825 4475
-L 1825 3050
-L 4900 3050
-L 4900 4475
-L 1825 4475
-z
-" transform="scale(0.015625)"/>
-      <path id="SimSun-5ea6" d="M 2550 2025
-Q 2575 2525 2575 3175
-L 1925 3175
-L 1625 3125
-L 1425 3325
-L 2575 3325
-Q 2575 3700 2550 4150
-L 3100 3875
-L 2900 3750
-L 2900 3325
-L 4300 3325
-Q 4300 3750 4275 4125
-L 4850 3875
-L 4625 3725
-L 4625 3325
-L 5100 3325
-L 5425 3650
-L 5900 3175
-L 4625 3175
-Q 4625 2450 4650 2225
-L 4300 2075
-L 4300 2300
-L 2900 2300
-L 2900 2175
-L 2550 2025
-z
-M 4875 1500
-Q 4300 775 3900 425
-Q 4700 -75 6025 -125
-L 6025 -225
-Q 5625 -300 5550 -550
-Q 4375 -325 3675 225
-Q 2475 -450 1075 -625
-L 1050 -525
-Q 2375 -275 3450 450
-Q 2975 925 2575 1625
-L 2325 1625
-L 2100 1575
-L 1900 1775
-L 4525 1775
-L 4750 2000
-L 5125 1625
-L 4875 1500
-z
-M 2700 1625
-Q 3175 975 3650 625
-Q 4150 1100 4500 1625
-L 2700 1625
-z
-M 2900 3175
-L 2900 2450
-L 4300 2450
-L 4300 3175
-L 2900 3175
-z
-M 975 4650
-L 1400 4400
-L 3375 4400
-Q 3350 4550 3262 4725
-Q 3175 4900 2900 5225
-L 2975 5275
-Q 3550 5025 3637 4887
-Q 3725 4750 3725 4725
-Q 3725 4575 3525 4400
-L 5150 4400
-L 5500 4750
-L 6000 4250
-L 1375 4250
-Q 1400 2750 1287 1912
-Q 1175 1075 925 475
-Q 675 -125 300 -625
-L 225 -575
-Q 725 300 862 1250
-Q 1000 2200 1012 3187
-Q 1025 4175 975 4650
-z
-" transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-68c0"/>
-     <use xlink:href="#SimSun-9a8c" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-4e0e" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-8de8" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-5c3a" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-5ea6" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-1ef0"/>
+     <use xlink:href="#SimSun-50bc" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-43e" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-4418" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-126a" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-14d6" transform="translate(500 0)"/>
     </g>
    </g>
    <g id="text_18">
     <!-- 1M / 60M / 1B 检验 -->
-    <g style="fill: #243348" transform="translate(253.750078 251.319846) scale(0.09 -0.09)">
+    <g style="fill: #243348" transform="translate(253.750078 252.042513) scale(0.09 -0.09)">
      <defs>
-      <path id="TimesNewRomanPSMT-4d" d="M 2619 0
+      <path id="TimesNewRomanPSMT-30" d="M 2619 0
 L 981 3566
 L 981 734
 Q 981 344 1066 247
@@ -7112,14 +7168,14 @@ L 2722 0
 L 2619 0
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-2f" d="M 1794 4444
+      <path id="TimesNewRomanPSMT-12" d="M 1794 4444
 L 259 -88
 L 9 -88
 L 1544 4444
 L 1794 4444
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-30" d="M 231 2094
+      <path id="TimesNewRomanPSMT-13" d="M 231 2094
 Q 231 2819 450 3342
 Q 669 3866 1031 4122
 Q 1313 4325 1613 4325
@@ -7145,7 +7201,7 @@ Q 1006 3669 925 3112
 Q 844 2556 844 2016
 z
 " transform="scale(0.015625)"/>
-      <path id="TimesNewRomanPSMT-42" d="M 2956 2163
+      <path id="TimesNewRomanPSMT-25" d="M 2956 2163
 Q 3397 2069 3616 1863
 Q 3919 1575 3919 1159
 Q 3919 844 3719 555
@@ -7192,27 +7248,27 @@ L 1319 306
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#TimesNewRomanPSMT-31"/>
-     <use xlink:href="#TimesNewRomanPSMT-4d" transform="translate(50 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(138.916016 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-2f" transform="translate(163.916016 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(191.699219 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-36" transform="translate(216.699219 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-30" transform="translate(266.699219 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-4d" transform="translate(316.699219 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(405.615234 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-2f" transform="translate(430.615234 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(458.398438 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-31" transform="translate(483.398438 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-42" transform="translate(533.398438 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(600.097656 0)"/>
-     <use xlink:href="#SimSun-68c0" transform="translate(625.097656 0)"/>
-     <use xlink:href="#SimSun-9a8c" transform="translate(725.097656 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-14"/>
+     <use xlink:href="#TimesNewRomanPSMT-30" transform="translate(50 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(138.921875 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-12" transform="translate(163.921875 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(191.703125 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-19" transform="translate(216.703125 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-13" transform="translate(266.703125 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-30" transform="translate(316.703125 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(405.625 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-12" transform="translate(430.625 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(458.40625 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-14" transform="translate(483.40625 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-25" transform="translate(533.40625 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(600.109375 0)"/>
+     <use xlink:href="#SimSun-1ef0" transform="translate(625.109375 0)"/>
+     <use xlink:href="#SimSun-50bc" transform="translate(725.109375 0)"/>
     </g>
     <!-- 10B / 70B 外推表 -->
-    <g style="fill: #243348" transform="translate(257.751562 261.625873) scale(0.09 -0.09)">
+    <g style="fill: #243348" transform="translate(257.751562 262.907815) scale(0.09 -0.09)">
      <defs>
-      <path id="SimSun-5916" d="M 4400 2825
+      <path id="SimSun-f46" d="M 4400 2825
 L 4400 600
 Q 4400 -75 4425 -450
 L 4025 -625
@@ -7254,7 +7310,7 @@ Q 900 2325 1312 3387
 Q 1725 4450 1825 5175
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-63a8" d="M 2925 -550
+      <path id="SimSun-19d8" d="M 2925 -550
 Q 2950 150 2950 3125
 Q 2750 2725 2325 2100
 L 2250 2150
@@ -7343,26 +7399,26 @@ L 525 50
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#TimesNewRomanPSMT-31"/>
-     <use xlink:href="#TimesNewRomanPSMT-30" transform="translate(50 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-42" transform="translate(100 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(166.699219 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-2f" transform="translate(191.699219 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(219.482422 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-37" transform="translate(244.482422 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-30" transform="translate(294.482422 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-42" transform="translate(344.482422 0)"/>
-     <use xlink:href="#TimesNewRomanPSMT-20" transform="translate(411.181641 0)"/>
-     <use xlink:href="#SimSun-5916" transform="translate(436.181641 0)"/>
-     <use xlink:href="#SimSun-63a8" transform="translate(536.181641 0)"/>
-     <use xlink:href="#SimSun-8868" transform="translate(636.181641 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-14"/>
+     <use xlink:href="#TimesNewRomanPSMT-13" transform="translate(50 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-25" transform="translate(100 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(166.703125 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-12" transform="translate(191.703125 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(219.484375 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-1a" transform="translate(244.484375 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-13" transform="translate(294.484375 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-25" transform="translate(344.484375 0)"/>
+     <use xlink:href="#TimesNewRomanPSMT-3" transform="translate(411.1875 0)"/>
+     <use xlink:href="#SimSun-f46" transform="translate(436.1875 0)"/>
+     <use xlink:href="#SimSun-19d8" transform="translate(536.1875 0)"/>
+     <use xlink:href="#SimSun-3e98" transform="translate(636.1875 0)"/>
     </g>
    </g>
    <g id="text_19">
-    <!-- 有界配比推荐 -->
-    <g style="fill: #bc8030" transform="translate(376.44 218.988453) scale(0.094 -0.094)">
+    <!-- 线性有界推荐 -->
+    <g style="fill: #bc8030" transform="translate(376.44 219.489113) scale(0.094 -0.094)">
      <defs>
-      <path id="SimSun-6709" d="M 2225 3025
+      <path id="SimSun-1d39" d="M 2225 3025
 L 2225 2150
 L 4525 2150
 L 4525 3025
@@ -7409,7 +7465,7 @@ Q 4350 -325 3650 -125
 L 3650 0
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-754c" d="M 1400 2600
+      <path id="SimSun-2b7c" d="M 1400 2600
 Q 1425 3225 1425 3837
 Q 1425 4450 1400 5050
 L 1800 4825
@@ -7476,7 +7532,7 @@ L 4725 3825
 L 3375 3825
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-8350" d="M 2025 1950
+      <path id="SimSun-3980" d="M 2025 1950
 L 2025 150
 Q 2025 -125 2050 -450
 L 1650 -650
@@ -7562,19 +7618,19 @@ L 2150 3575
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-6709"/>
-     <use xlink:href="#SimSun-754c" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-914d" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-6bd4" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-63a8" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-8350" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-34ef"/>
+     <use xlink:href="#SimSun-1657" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-1d39" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-2b7c" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-19d8" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-3980" transform="translate(500 0)"/>
     </g>
    </g>
    <g id="text_20">
     <!-- 固定未测量域 -->
-    <g style="fill: #243348" transform="translate(377.64 246.014782) scale(0.09 -0.09)">
+    <g style="fill: #243348" transform="translate(377.64 246.601072) scale(0.09 -0.09)">
      <defs>
-      <path id="SimSun-56fa" d="M 4350 2325
+      <path id="SimSun-d2a" d="M 4350 2325
 Q 4350 1100 4375 625
 L 4025 475
 L 4025 1000
@@ -7634,7 +7690,7 @@ L 5175 4775
 L 1175 4775
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-5b9a" d="M 1975 1775
+      <path id="SimSun-11ca" d="M 1975 1775
 Q 1875 1450 1825 1200
 Q 2075 800 2400 537
 Q 2725 275 3025 175
@@ -7695,7 +7751,7 @@ Q 5525 3875 4975 3275
 L 4900 3325
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-672a" d="M 2975 -625
+      <path id="SimSun-1d5a" d="M 2975 -625
 Q 3000 475 3000 2175
 Q 2025 675 400 -75
 L 350 0
@@ -7732,17 +7788,17 @@ L 2975 -625
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-56fa"/>
-     <use xlink:href="#SimSun-5b9a" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-672a" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-6d4b" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-91cf" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-57df" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-d2a"/>
+     <use xlink:href="#SimSun-11ca" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-1d5a" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-237b" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-47ff" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-e0f" transform="translate(500 0)"/>
     </g>
     <!-- 其余领域配比 -->
-    <g style="fill: #243348" transform="translate(377.64 256.414324) scale(0.09 -0.09)">
+    <g style="fill: #243348" transform="translate(377.64 257.501531) scale(0.09 -0.09)">
      <defs>
-      <path id="SimSun-5176" d="M 4025 4275
+      <path id="SimSun-7a6" d="M 4025 4275
 Q 4025 4775 4000 5250
 L 4575 4975
 L 4375 4775
@@ -7806,7 +7862,7 @@ Q 5300 -600 5125 -375
 Q 4850 0 3750 900
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-4f59" d="M 2000 25
+      <path id="SimSun-589" d="M 2000 25
 Q 2575 -75 2775 -75
 Q 2975 -75 2975 200
 L 2975 1800
@@ -7867,17 +7923,17 @@ Q 2775 4625 3025 5275
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-5176"/>
-     <use xlink:href="#SimSun-4f59" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-9886" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-57df" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-914d" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-6bd4" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-7a6"/>
+     <use xlink:href="#SimSun-589" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-4eb6" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-e0f" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-477d" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-2204" transform="translate(500 0)"/>
     </g>
     <!-- 受设定上限约束 -->
-    <g style="fill: #243348" transform="translate(373.14 266.860624) scale(0.09 -0.09)">
+    <g style="fill: #243348" transform="translate(373.14 268.366834) scale(0.09 -0.09)">
      <defs>
-      <path id="SimSun-53d7" d="M 975 4500
+      <path id="SimSun-a07" d="M 975 4500
 Q 2100 4575 3300 4762
 Q 4500 4950 4950 5200
 L 5350 4700
@@ -7944,7 +8000,7 @@ Q 3800 1350 4150 2025
 L 2175 2025
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-8bbe" d="M 1025 5050
+      <path id="SimSun-41ee" d="M 1025 5050
 L 1100 5100
 Q 1500 4850 1662 4675
 Q 1825 4500 1812 4337
@@ -8018,7 +8074,7 @@ L 4850 4625
 L 4850 3600
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-4e0a" d="M 2725 5175
+      <path id="SimSun-43a" d="M 2725 5175
 L 3400 4875
 L 3125 4675
 L 3125 3000
@@ -8038,7 +8094,7 @@ L 2750 4225
 Q 2750 4675 2725 5175
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-9650" d="M 3175 3500
+      <path id="SimSun-4c80" d="M 3175 3500
 L 3175 2550
 L 4925 2550
 L 4925 3500
@@ -8106,7 +8162,7 @@ L 4925 4600
 L 3175 4600
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-7ea6" d="M 3400 2650
+      <path id="SimSun-34d6" d="M 3400 2650
 Q 4275 2050 4275 1787
 Q 4275 1525 4187 1425
 Q 4100 1325 4050 1325
@@ -8166,7 +8222,7 @@ Q 925 -175 775 -375
 L 450 125
 z
 " transform="scale(0.015625)"/>
-      <path id="SimSun-675f" d="M 3350 3250
+      <path id="SimSun-1d8f" d="M 3350 3250
 L 3350 2075
 L 4750 2075
 L 4750 3250
@@ -8222,28 +8278,28 @@ L 1600 3250
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-53d7"/>
-     <use xlink:href="#SimSun-8bbe" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-5b9a" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-4e0a" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-9650" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-7ea6" transform="translate(500 0)"/>
-     <use xlink:href="#SimSun-675f" transform="translate(600 0)"/>
+     <use xlink:href="#SimSun-a07"/>
+     <use xlink:href="#SimSun-41ee" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-11ca" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-43a" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-4c80" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-34d6" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-1d8f" transform="translate(600 0)"/>
     </g>
    </g>
    <g id="text_21">
     <g id="patch_31">
-     <path d="M 233.01 163.196016
-L 325.71 163.196016
-L 325.71 152.163984
-L 233.01 152.163984
+     <path d="M 233.01 163.710176
+L 325.71 163.710176
+L 325.71 151.649824
+L 233.01 151.649824
 z
 " style="fill: #f8f7f9"/>
     </g>
     <!-- 追加质量项的增量检验 -->
-    <g style="fill: #665080" transform="translate(234.36 159.920859) scale(0.09 -0.09)">
+    <g style="fill: #665080" transform="translate(234.36 160.417793) scale(0.09 -0.09)">
      <defs>
-      <path id="SimSun-8ffd" d="M 2900 4100
+      <path id="SimSun-462d" d="M 2900 4100
 L 2900 3100
 L 4800 3100
 L 4800 4100
@@ -8319,16 +8375,16 @@ Q 1100 4425 775 4875
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#SimSun-8ffd"/>
-     <use xlink:href="#SimSun-52a0" transform="translate(100 0)"/>
-     <use xlink:href="#SimSun-8d28" transform="translate(200 0)"/>
-     <use xlink:href="#SimSun-91cf" transform="translate(300 0)"/>
-     <use xlink:href="#SimSun-9879" transform="translate(400 0)"/>
-     <use xlink:href="#SimSun-7684" transform="translate(500 0)"/>
-     <use xlink:href="#SimSun-589e" transform="translate(600 0)"/>
-     <use xlink:href="#SimSun-91cf" transform="translate(700 0)"/>
-     <use xlink:href="#SimSun-68c0" transform="translate(800 0)"/>
-     <use xlink:href="#SimSun-9a8c" transform="translate(900 0)"/>
+     <use xlink:href="#SimSun-462d"/>
+     <use xlink:href="#SimSun-8d0" transform="translate(100 0)"/>
+     <use xlink:href="#SimSun-4358" transform="translate(200 0)"/>
+     <use xlink:href="#SimSun-47ff" transform="translate(300 0)"/>
+     <use xlink:href="#SimSun-4ea9" transform="translate(400 0)"/>
+     <use xlink:href="#SimSun-2cb4" transform="translate(500 0)"/>
+     <use xlink:href="#SimSun-ece" transform="translate(600 0)"/>
+     <use xlink:href="#SimSun-47ff" transform="translate(700 0)"/>
+     <use xlink:href="#SimSun-1ef0" transform="translate(800 0)"/>
+     <use xlink:href="#SimSun-50bc" transform="translate(900 0)"/>
     </g>
    </g>
   </g>

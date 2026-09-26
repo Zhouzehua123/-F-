@@ -1,0 +1,80 @@
+{
+  "seed": 20260926,
+  "n_train": 512,
+  "n_domains": 13,
+  "selected_gamma": 0.0625,
+  "selected_lambda": 0.0001,
+  "baseline_lambda": 0.001,
+  "profiles": [
+    {
+      "scope": "train",
+      "n": 512,
+      "min_share": 0.0,
+      "max_row_sum_error": 0.0039999999999998925
+    },
+    {
+      "scope": "1m",
+      "n": 256,
+      "min_share": 0.0,
+      "max_row_sum_error": 0.0030000000000001137
+    },
+    {
+      "scope": "60m",
+      "n": 256,
+      "min_share": 0.0,
+      "max_row_sum_error": 0.0030000000000001137
+    },
+    {
+      "scope": "1B",
+      "n": 64,
+      "min_share": 0.0,
+      "max_row_sum_error": 0.0020000000000000018
+    }
+  ],
+  "lambda_grid": [
+    1e-06,
+    1e-05,
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "gamma_grid": [
+    0.015625,
+    0.03125,
+    0.0625,
+    0.125,
+    0.25,
+    0.5,
+    1.0,
+    2.0,
+    4.0
+  ],
+  "selection": "minimum pooled out-of-fold RMSE; not nested CV",
+  "preprocessing": "KRR: row closure, sqrt, fold-local kernel/output centering; ridge: original shares",
+  "test_status": "previously inspected existing test sets; not a fresh blind holdout",
+  "python": "3.14.0",
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1"
+  },
+  "inputs": {
+    "A_data_value\\regmix_tables\\train_mixture_1m.csv": "04a32ef4ab594376bf90e11404c033668f887c351d6a03ad3744824c7296a2d8",
+    "A_data_value\\regmix_tables\\train_pile_loss_1m.csv": "49a959aa07ce5c20831d5abe3a7896ff0cd90a398bd407c8913fd5588be0465a",
+    "A_data_value\\regmix_tables\\test_mixture_1m.csv": "197267b7d6f15367e2f46c881e564c35b0d34e51b1754bb09d07e650cf8e1ce8",
+    "A_data_value\\regmix_tables\\test_pile_loss_1m.csv": "e027b1674f60140a65a87b5e4a59ab5f09dc33e8fd02c080682678074b160f53",
+    "A_data_value\\regmix_tables\\test_mixture_60m.csv": "197267b7d6f15367e2f46c881e564c35b0d34e51b1754bb09d07e650cf8e1ce8",
+    "A_data_value\\regmix_tables\\test_pile_loss_60m.csv": "8fe69d59ab7dd4fae4736459f4265ec93c7ed1ad1eca407346052560edc72b5b",
+    "A_data_value\\regmix_tables\\test_mixture_1B.csv": "dd38052949c0a5f84165bdcb3ae3a331c7f07efd9bb83848bd579dfc4ce75a2c",
+    "A_data_value\\regmix_tables\\test_pile_loss_1B.csv": "b2451e2b7fa15400688edc39e4d32f21ccbe0fb356e07d62a0e9ccddf247114f"
+  },
+  "script_sha256": "d9353973b4e97ce8612ff33539010c010d70007a03851ddcab8596adf4e31265",
+  "command": "python 求解/问题一/非线性代理对照.py --data-dir <附件根目录>",
+  "elapsed_seconds": 2.9586160999606363,
+  "shared_outputs_modified": false
+}

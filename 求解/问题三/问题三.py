@@ -98,7 +98,8 @@ def optimize(C_budget, L_ctx=2048, form='幂函数型', M_p=0.0, n_starts=8, Qca
     def obj(x):
         return loss(np.exp(x[0]), np.exp(x[1]), x[2], M_p)
     def con(x):
-        return C_budget - total_cost(np.exp(x[0]), np.exp(x[1]), x[2], L_ctx, form)
+        # 无量纲等价约束，避免 1e19--1e24 的量级导致有限差分数值失败。
+        return 1.0 - total_cost(np.exp(x[0]), np.exp(x[1]), x[2], L_ctx, form) / C_budget
     best = None
     for k in range(n_starts):
         frac = (k + 1) / (n_starts + 1)
@@ -221,15 +222,17 @@ Qc = sw['Q'].to_numpy(float)
 logC = np.log10(C_sweep)
 ok = np.isfinite(Qc)
 # 结构性转移的定量定义：
-#   以“质量投入份额 f_qual 的相对变化方向反转 + 最优质量对预算的弹性改变符号/量级”为标志。
+#   完成度与费用份额对 log10(C) 的变化率，用于定位变化最陡的区间；不称为弹性。
 inQ = (Qc - Q0) / (1 - Q0)                     # 质量提升完成度
 d_inQ = np.gradient(inQ[ok], logC[ok])
 fQ = sw['f_qual'].to_numpy(float)
 d_fQ = np.gradient(fQ[ok], logC[ok])
-shift = {'质量提升完成度弹性 dln(Theta)/dlnC 的最大值点预算': float(C_sweep[ok][np.argmax(d_inQ)]),
-         '质量投入启动边界（份额由零转正的拐点预算）': float(C_sweep[ok][np.argmax(d_fQ)]),
+shift = {'完成度变化率 dTheta/dlog10C 的峰值预算': float(C_sweep[ok][np.argmax(d_inQ)]),
+         '质量投入份额变化率 df_Q/dlog10C 的峰值预算': float(C_sweep[ok][np.argmax(d_fQ)]),
          '质量投入份额峰值预算': float(C_sweep[ok][np.argmax(fQ[ok])]),
          '质量投入份额峰值': float(np.nanmax(fQ[ok]))}
+shift['质量投入首次正值预算'] = float(sw.loc[sw.Q > Q0 + 1e-7, 'C'].iloc[0])
+shift['质量首次达到上界预算'] = float(sw.loc[sw.Q >= 1 - 1e-7, 'C'].iloc[0])
 # 以"质量提升完成度" Theta=(Q*-Q0)/(1-Q0) 报告门槛，避免 Q0 本身已高于固定阈值时失去意义
 for frac in [0.25, 0.5, 0.75, 0.99]:
     hit = Qc[ok] >= Q0 + frac * (1 - Q0)
@@ -302,7 +305,7 @@ fig.tight_layout(); save_fig(fig, '图1_三档预算最优配置')
 fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.5))
 axes[0].plot(C_sweep, Qc, lw=2, color=C3_)
 axes[0].axhline(Q0, color='gray', ls=':', lw=1.2, label='基线质量 Q₀=%.3f' % Q0)
-axes[0].axvline(shift['质量投入启动边界（份额由零转正的拐点预算）'], color='#d62728', ls='--', lw=1.2,
+axes[0].axvline(shift['质量投入份额变化率 df_Q/dlog10C 的峰值预算'], color='#d62728', ls='--', lw=1.2,
                 label='投入份额拐点')
 axes[0].set_xscale('log'); axes[0].set_xlabel('算力预算 C (FLOPs)')
 axes[0].set_ylabel('最优质量 Q*'); axes[0].set_ylim(0, 1.05)
@@ -361,3 +364,7 @@ print('  临界上下文长度 L_crit = 6/eta = %.0f tokens；C7 可行取值 %s
 print('  三档预算（幂函数型）：' +
       '；'.join('C=%.0e -> N*=%.3fB D*=%.1fB Q*=%.4f L*=%.4f'
                 % (r['C'], r['N_B'], r['D_B'], r['Q'], r['L']) for r in rows))
+
+# 以保存的扫描结果生成正文正式图；旧绘图辅助计算不作为最终图版本。
+import subprocess as _subprocess
+_subprocess.run([sys.executable, os.path.join(BASE_DIR, '论文绘图.py')], check=True)

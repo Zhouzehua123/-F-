@@ -1,0 +1,188 @@
+[
+  {
+    "tex": "论文/figures/q1-workflow.tex",
+    "figure": "求解/问题一/图片/图8_问题一求解流程.png",
+    "source": "求解/问题一/重绘图表.py",
+    "sha256": "fbf378ce04208ee3e487bb36cf58c2fe35a3bf2b6755b88262aac02da77fd1cf"
+  },
+  {
+    "tex": "论文/5.1.问题一.tex",
+    "figure": "求解/问题一/图片/图0_A1-A3全量质量评分.png",
+    "source": "求解/问题一/重绘图表.py",
+    "sha256": "1b4327f12d468f377bdd4f11852bfbd4c7362d22d57037d685441dc8b2dc5d51"
+  },
+  {
+    "tex": "论文/5.1.问题一.tex",
+    "figure": "求解/问题一/图片/图6_冲突与赋权诊断.png",
+    "source": "求解/问题一/重绘图表.py",
+    "sha256": "7648d17a0c17604daa31df9853f06445d3ab58d7880aa8256b0a4db872e56c1c"
+  },
+  {
+    "tex": "论文/5.1.问题一.tex",
+    "figure": "求解/问题一/图片/图1_训练配比结构.png",
+    "source": "求解/问题一/重绘图表.py",
+    "sha256": "a8e21c469ce4db510063d39dd42705e14c5105a4d33bf3a7b5cbb49a467f6a6b"
+  },
+  {
+    "tex": "论文/5.1.问题一.tex",
+    "figure": "求解/问题一/图片/图2_线性模型R2.png",
+    "source": "求解/问题一/重绘图表.py",
+    "sha256": "40ac73df70bc8c2114ad71ec412a624cc27606bd4c9d702d40d52c1a1ef0f0bb"
+  },
+  {
+    "tex": "论文/5.1.问题一.tex",
+    "figure": "求解/问题一/图片/图9_非线性代理对照.png",
+    "source": "求解/问题一/重绘图表.py",
+    "sha256": "230f818359e94c8d6a94498bcd0ad7b7bd4a851e577f008b1eb274b81379510f"
+  },
+  {
+    "tex": "论文/5.1.问题一.tex",
+    "figure": "求解/问题一/图片/图4_混合系数热力图.png",
+    "source": "求解/问题一/重绘图表.py",
+    "sha256": "fe8629cd4b84edb3d000bb2b89c2baf69c50befdd2e25a065e83446519133932"
+  },
+  {
+    "tex": "论文/5.1.问题一.tex",
+    "figure": "求解/问题一/图片/图3_预测vs实测.png",
+    "source": "求解/问题一/重绘图表.py",
+    "sha256": "549f776a701cf83f29965e0e3f66bf807e0a1e72a58a6d37d20654ec07a0deb8"
+  },
+  {
+    "tex": "论文/5.1.问题一.tex",
+    "figure": "求解/问题一/图片/图5_领域质量评分.png",
+    "source": "求解/问题一/重绘图表.py",
+    "sha256": "ad940bd7057043cbc11e81e1876ed95a7daa1710b6863220100ab810f7bd7575"
+  },
+  {
+    "tex": "论文/5.1.问题一.tex",
+    "figure": "求解/问题一/图片/图7_外推与跨尺度.png",
+    "source": "求解/问题一/重绘图表.py",
+    "sha256": "c3007556ba5af1d0cbb07dac4c46b17413fff48633ae9c708e0d2e26daef63e5"
+  },
+  {
+    "tex": "论文/5.2.问题二.tex",
+    "figure": "求解/问题二/图片/图0_问题二分析框架.png",
+    "source": "求解/问题二/重绘图表.py",
+    "sha256": "28aefa897b7445f4fdaa4c55bd6e25bcac64c623eef7062609c7c7617da23ec5"
+  },
+  {
+    "tex": "论文/5.2.问题二.tex",
+    "figure": "求解/问题二/图片/图7_质量方向对照.png",
+    "source": "求解/问题二/重绘图表.py",
+    "sha256": "43269e1e6e93f8d04d3eef15c2eb7d21615c3ae5df81b5917852f4f55150d70f"
+  },
+  {
+    "tex": "论文/5.2.问题二.tex",
+    "figure": "求解/问题二/图片/图1_经典标度律拟合.png",
+    "source": "求解/问题二/重绘图表.py",
+    "sha256": "6b76ecae63096c561702ab15bd06390abe3fac6067ab444240688a000d4bf9ae"
+  },
+  {
+    "tex": "论文/5.2.问题二.tex",
+    "figure": "求解/问题二/图片/图3_质量边际影响.png",
+    "source": "求解/问题二/重绘图表.py",
+    "sha256": "8be4d451162b526046ac0f2054670a744a21593714c5abe9a42ff00df1affed8"
+  },
+  {
+    "tex": "论文/5.2.问题二.tex",
+    "figure": "求解/问题二/图片/图2_广义标度律验证.png",
+    "source": "求解/问题二/重绘图表.py",
+    "sha256": "00b08d283dc76928c0fdb1e111e6bbf534717412031a09f021b8b69940b42093"
+  },
+  {
+    "tex": "论文/5.2.问题二.tex",
+    "figure": "求解/问题二/图片/图4_边际效用对比.png",
+    "source": "求解/问题二/重绘图表.py",
+    "sha256": "77dc1b7fcb81d1ba94a0e12e9af6700ac46be5f4a9e2055b0cd09bae77e280bd"
+  },
+  {
+    "tex": "论文/5.2.问题二.tex",
+    "figure": "求解/问题二/图片/图5_质量参数替代.png",
+    "source": "求解/问题二/重绘图表.py",
+    "sha256": "c75158f039b553d80f6b85ced234d754f2fc2509c2edaab8825df4901b3e88a3"
+  },
+  {
+    "tex": "论文/5.2.问题二.tex",
+    "figure": "求解/问题二/图片/图6_领域替代互补.png",
+    "source": "求解/问题二/重绘图表.py",
+    "sha256": "7c8f387cd2468f5be6556a4da8226654226e8383a607764792737acea63f1a7f"
+  },
+  {
+    "tex": "论文/5.3.问题三.tex",
+    "figure": "论文/figures/q3-workflow.pdf",
+    "source": "求解/绘制问题三四流程图.py",
+    "sha256": "a990e31f39536e297a0ea93934507b0a4c1f4e59087bd6fac88810163888c463"
+  },
+  {
+    "tex": "论文/5.3.问题三.tex",
+    "figure": "求解/问题三/图片/图2_预算份额结构性转移.png",
+    "source": "求解/问题三/论文绘图.py",
+    "sha256": "86662cc942c910323d7a98352ef914cfa7043954f6c1d461e50c383f953583ce"
+  },
+  {
+    "tex": "论文/5.3.问题三.tex",
+    "figure": "求解/问题三/图片/图4_质量成本函数对比.png",
+    "source": "求解/问题三/论文绘图.py",
+    "sha256": "6358489c2eb7038737cdb86eebccb0dd43eec5bffcbee226d9ca2c55d641b644"
+  },
+  {
+    "tex": "论文/5.3.问题三.tex",
+    "figure": "求解/问题三/图片/图3_上下文长度敏感性.png",
+    "source": "求解/问题三/论文绘图.py",
+    "sha256": "bef50230e39dc2c38fc24610e625d1543318287825b85628a5782a78e5394d5a"
+  },
+  {
+    "tex": "论文/5.4.问题四.tex",
+    "figure": "论文/figures/q4-workflow.pdf",
+    "source": "求解/绘制问题三四流程图.py",
+    "sha256": "c0e576282431dc3902101d783f2f7c63666781690466bee9339fb2fee042645e"
+  },
+  {
+    "tex": "论文/5.4.问题四.tex",
+    "figure": "求解/问题四/图片/图1_Loss_Benchmark映射.png",
+    "source": "求解/问题四/重绘图表.py",
+    "sha256": "a4bd9c77ec66d879581eb2e0925e66c6d30b7131fba61be17cda26aa4f6df7aa"
+  },
+  {
+    "tex": "论文/5.4.问题四.tex",
+    "figure": "求解/问题四/图片/图7_年度规模效应.png",
+    "source": "求解/问题四/重绘图表.py",
+    "sha256": "f90231c7f3a545ca68ce5e335d2c6ca3701960957a8c3151af4905d31c0f56ad"
+  },
+  {
+    "tex": "论文/5.4.问题四.tex",
+    "figure": "求解/问题四/图片/图2_规模时间分解.png",
+    "source": "求解/问题四/重绘图表.py",
+    "sha256": "597f8cc5576314a544e262d0a3c57cc676b201c9c1de69b5296e74b9bbacee71"
+  },
+  {
+    "tex": "论文/5.4.问题四.tex",
+    "figure": "求解/问题四/图片/图3_能力前沿预测.png",
+    "source": "求解/问题四/重绘图表.py",
+    "sha256": "f828159eacfc8b030cc0beff965a9a04600ebf8a400dabe021a298b0a9fea8fa"
+  },
+  {
+    "tex": "论文/5.4.问题四.tex",
+    "figure": "求解/问题四/图片/图6_六维能力分布.png",
+    "source": "求解/问题四/重绘图表.py",
+    "sha256": "9c76ea13d00a20fbf00d2e97d5d98f25e5b3e7738ce9236ac4057c9dd0f2dbc2"
+  },
+  {
+    "tex": "论文/5.4.问题四.tex",
+    "figure": "求解/问题四/图片/图4_逐任务聚合.png",
+    "source": "求解/问题四/重绘图表.py",
+    "sha256": "195b5c29a06db69f9aae947af18d66bf15510c22f4661e5a8d0743912c9c5e8c"
+  },
+  {
+    "tex": "论文/5.4.问题四.tex",
+    "figure": "求解/问题四/图片/图5_C4宏观趋势.png",
+    "source": "求解/问题四/重绘图表.py",
+    "sha256": "a9f59986332ff945426c6c2e6fefd7b890503e30dbe97d5325f4ada8ce145e68"
+  },
+  {
+    "tex": "论文/2.总体分析.tex",
+    "figure": "论文/figures/overall-architecture.tex",
+    "source": "原生TikZ，随论文编译",
+    "sha256": "50dceaa289af0185c2e5a83ca025dc0aa2e94b357d256ecdb9f8f737453dc0c8"
+  }
+]

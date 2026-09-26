@@ -484,85 +484,10 @@ save_csv_safe(task_df, '逐任务聚合.csv')
 print('\n=== 7. 六维 Benchmark 前沿与剩余空间（开源筛选集，n=%d）===' % len(lb_o))
 print(task_df.to_string(index=False))
 
-# ============ 8. 绘图 ============
-plt.rcParams['font.size'] = 12
-C1_, C2_, C3_ = '#3b6ea5', '#e07a3f', '#5aa05a'
-
-fig, ax = plt.subplots(figsize=(6.8, 5))
-hi_pt = br[br.cmp.eq('高可比')]; me_pt = br[br.cmp.eq('中可比')]
-ax.scatter(hi_pt.Val_Loss, hi_pt.LB_Average, s=30, color=C1_,
-           label='高可比 (n=%d)' % len(hi_pt))
-ax.scatter(me_pt.Val_Loss, me_pt.LB_Average, s=20, color='#aec7e8',
-           label='中可比 (n=%d)' % len(me_pt))
-Ls = np.linspace(br.Val_Loss.min(), br.Val_Loss.max(), 50)
-ax.plot(Ls, fits['全样本'][1] + fits['全样本'][0] * Ls, '--', color='#d62728', lw=1.6,
-        label='全样本 r=%.2f' % bridge_df.iloc[2]['Pearson_r'])
-ax.set_xlabel('验证交叉熵损失 L'); ax.set_ylabel('Leaderboard 均分 B')
-ax.set_title('Loss 与 Benchmark 得分的桥接（按可比性分层）')
-ax.legend(fontsize=9); despine(ax); fig.tight_layout(); save_fig(fig, '图1_Loss_Benchmark映射')
-
-fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.5))
-ax = axes[0]
-sc = ax.scatter(panel.logP, panel.avg, s=8, c=panel.Year, cmap='viridis', alpha=.5)
-cb = fig.colorbar(sc, ax=ax, shrink=.85); cb.set_label('提交年份')
-Pg = np.linspace(panel.logP.min(), panel.logP.max(), 50)
-for yy in [2023, 2024, 2025]:
-    k = yy - 2019
-    if k in list(years):
-        off = float(panel.loc[panel.t.eq(k), 'alpha_t'].iloc[0])
-        ax.plot(Pg, off + bP_fe * Pg, lw=1.6, label='%d 年拟合（含年效应）' % yy)
-ax.set_xlabel('log₁₀ 参数量 (B)'); ax.set_ylabel('Leaderboard 均分')
-ax.set_title('(a) 同一年内的规模效应'); ax.legend(fontsize=8); despine(ax)
-ax = axes[1]
-d0 = dec.iloc[0]
-ax.bar(['规模扩张', '非规模技术进步'], [d0['规模贡献分'], d0['非规模贡献分']],
-       color=[C1_, C2_], width=.5)
-for i, v in enumerate([d0['规模贡献分'], d0['非规模贡献分']]):
-    ax.text(i, v + .3, '%.1f%%' % ([d0['规模占比%'], d0['非规模占比%']][i]), ha='center')
-ax.set_ylabel('对前沿提升的贡献（分）')
-ax.set_title('(b) %s 前沿提升来源分解' % d0['前沿区间']); despine(ax)
-fig.tight_layout(); save_fig(fig, '图2_规模时间分解')
-
-fig, ax = plt.subplots(figsize=(8, 5))
-ax.plot(t_front, s_front, 'o', color=C1_, ms=4, label='历史前沿（年度锚点+月频前1%）')
-tt = np.linspace(0, t_pred[-1] + 1, 300)
-ax.plot(tt, logistic(tt, K_fit, r_fit, t0_fit), '-', color='#d62728', lw=2, label='logistic 饱和外推')
-ax.plot(t_pred, s_pred, 's', color=C2_, ms=8, label='预测前沿')
-ax.fill_between(t_pred, lo, hi, color=C2_, alpha=.2, label='90% 置信区间（残差 bootstrap）')
-ax.plot(t_pred, s_slow, 'v--', color='gray', ms=7, label='情景：技术增速减半')
-ax.set_xlabel('年份（2019 起算）'); ax.set_ylabel('能力前沿（Leaderboard 均分）')
-ax.set_ylim(0, 100); ax.legend(fontsize=8); despine(ax)
-ax.set_title('开源大语言模型能力前沿预测（未来 12/24 个月）')
-fig.tight_layout(); save_fig(fig, '图3_能力前沿预测')
-
-fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.6))
-ax = axes[0]
-td = task_df.sort_values('max')
-ax.barh(td['task'], td['max'], color=C1_, label='任务最优得分')
-ax.barh(td['task'], td['top1_mean'], color='#aec7e8', label='前 1% 均值')
-ax.axvline(100, color='gray', ls=':', lw=1)
-ax.set_xlabel('Benchmark 得分（满分 100）'); ax.set_title('(a) 六维前沿与饱和程度')
-ax.legend(fontsize=9); despine(ax)
-ax = axes[1]
-top = sub_df.nlargest(10, '剩余空间_%').sort_values('剩余空间_%')
-ax.barh(top['子任务'], top['剩余空间_%'], color=C2_)
-ax.set_xlabel('相对满分的剩余空间 (%)'); ax.set_title('(b) C8 子任务剩余空间最大 10 项')
-despine(ax); fig.tight_layout(); save_fig(fig, '图4_逐任务聚合')
-
-fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.5))
-ax = axes[0]
-gg = g.dropna(subset=['前沿算力_max'])
-ax.plot(gg.year, gg.前沿算力_max, 'o-', color=C1_, label='年度前沿训练算力')
-ax.plot(gg.year, gg.前沿算力_中位, 's--', color=C2_, label='年度中位训练算力')
-ax.set_yscale('log'); ax.set_xlabel('发布年份'); ax.set_ylabel('训练算力 (FLOP)')
-ax.set_title('(a) C4：训练算力的年度演化'); ax.legend(fontsize=8); despine(ax)
-ax = axes[1]
-ax.bar(g.year, g.开源权重占比 * 100, color=C3_)
-ax.set_xlabel('发布年份'); ax.set_ylabel('开源权重模型占比 (%)')
-ax.set_title('(b) C4：开源权重比例'); despine(ax)
-fig.tight_layout(); save_fig(fig, '图5_C4宏观趋势')
+# 正式图表由文件末尾的独立绘图入口生成。
 
 # ============ 9. 汇总 ============
+d0 = dec.iloc[0]
 print('\n===== 问题四求解完成 =====')
 print('  桥接：全样本 r=%.3f；分解（%s）：规模 %.1f%% / 非规模 %.1f%%；'
       'OLS 版：规模 %.1f%% / 非规模 %.1f%%'
@@ -580,3 +505,7 @@ print('  两条路线互为校验：曲线外推（logistic）给出约 %.0f-%.0
       '%.0f-%.0f；差异来自“前沿是否已饱和”的判断，故以区间而非点值作为结论。'
       % (min(fut.frontier_pred.min(), fut['CI_low_5%'].min()), fut['CI_high_95%'].max(),
          scen_df['结构外推前沿'].min(), scen_df['结构外推前沿'].max()))
+
+# 模型结果全部保存后生成正文采用的正式图。
+import subprocess as _subprocess
+_subprocess.run([sys.executable, os.path.join(BASE_DIR, '重绘图表.py'), '--data', DATA_DIR], check=True)

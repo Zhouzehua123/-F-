@@ -15,10 +15,11 @@ from 展示风格概览 import plot_quality, plot_mixture, plot_fit
 from 展示风格诊断 import plot_prediction, plot_coefficients, plot_quality_comparison, plot_extrapolation
 from 展示风格冲突 import plot_conflicts
 from 展示风格流程 import plot_workflow
+from 展示风格非线性 import plot_nonlinear
 
 NAMES = ['图0_A1-A3全量质量评分', '图1_训练配比结构', '图2_线性模型R2',
          '图3_预测vs实测', '图4_混合系数热力图', '图5_领域质量评分',
-         '图6_冲突与赋权诊断', '图7_外推与跨尺度', '图8_问题一求解流程']
+         '图6_冲突与赋权诊断', '图7_外推与跨尺度', '图8_问题一求解流程', '图9_非线性代理对照']
 
 
 def main():
@@ -27,14 +28,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--data-dir', type=Path)
     parser.add_argument('--output-dir', type=Path, default=HERE/'图片')
-    parser.add_argument('--only', type=int, nargs='+', choices=range(9), help='只重绘指定图文件编号')
+    parser.add_argument('--only', type=int, nargs='+', choices=range(10), help='只重绘指定图文件编号')
     args = parser.parse_args()
     configure()
     data = load_plot_data(args.data_dir)
     args.output_dir.mkdir(parents=True,exist_ok=True)
     functions = [plot_quality,plot_mixture,plot_fit,plot_prediction,plot_coefficients,
-                 plot_quality_comparison,plot_conflicts,plot_extrapolation,plot_workflow]
-    selected = args.only if args.only is not None else list(range(9))
+                 plot_quality_comparison,plot_conflicts,plot_extrapolation,plot_workflow,plot_nonlinear]
+    selected = args.only if args.only is not None else list(range(10))
     for i in selected:
         functions[i](data,args.output_dir)
         print(f'已绘制 {NAMES[i]}',flush=True)

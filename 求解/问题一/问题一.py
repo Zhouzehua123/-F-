@@ -6,7 +6,7 @@
 问题一：数据质量评价、质量冲突消解与领域配比建模
 数据：附件 A（A1-A3 质量信号；A4-A15 配方/Loss；A16 域映射）
 方法：1) 22 指标方向统一 + 1%--99% 分位数截断归一化 + 熵权法三级综合评分（样本/语料/领域）
-      2) 成对 z 分数差冲突定义 + Kendall 协同系数一致性检验 + 多数方向裁决
+      2) 成对 z 分数差冲突定义 + Kendall 协同系数一致性检验 + 域内中位数裁决
       3) 岭正则线性混合回归刻画 17 域配比 -> 13 域损失，并检验追加质量项的增量解释力
 输出：图片到 图片/，结果 CSV 到 结果/
 """
@@ -252,6 +252,15 @@ def quality_evaluation():
     Zall = (norm.values - norm.values.mean(axis=0)) / (norm.values.std(axis=0) + 1e-12)
     iu_all = np.triu_indices(22, 1)
     pd_all = np.abs(Zall[:, iu_all[0]] - Zall[:, iu_all[1]])
+    # 样本至少一对指标超过阈值即作标记；22.3%仍指“样本×指标对”的比例。
+    # 裁决仅提供域内相对标签，不删样本、不降权，也不改变质量评分。
+    flagged = (pd_all > CONFLICT_TAU).any(axis=1)
+    median = meta.groupby('domain')['quality_Q'].transform('median')
+    decision = np.where(meta.quality_Q > median, '高于域中位数',
+                        np.where(meta.quality_Q < median, '低于域中位数', '等于域中位数'))
+    diagnostic = meta[['domain']].assign(conflict_flag=flagged, decision=decision)
+    summary = diagnostic.groupby(['domain', 'conflict_flag', 'decision']).size().reset_index(name='n')
+    save_csv_safe(summary, '冲突样本裁决汇总.csv')
     for tau in [0.5, 1.0, 1.5, 2.0, 2.5]:
         rc = float((pd_all > tau).mean())
         r0 = float(2 * stats.norm.sf(tau / np.sqrt(2)))
@@ -463,120 +472,12 @@ rec_df = pd.DataFrame({'domain': DOMAINS, 'reference_mixture': ref, 'recommended
                        'adjustment': p_b - ref}).sort_values('adjustment', ascending=False)
 save_csv_safe(rec_df, '推荐配比调整.csv')
 print('\n无约束最优加权平均损失 %.4f；有界推荐 %.4f；参考配方 %.4f'
-      % (obj(res.x), obj(res_b.x), obj(p0m)))
+      % (obj(res.x), obj(res_b.x), float(w_ref @ predict(ref[None, :], A, b)[0])))
 print('有界推荐配比（调整量最大增/减各 5 域）：')
 print(rec_df.head(5).to_string(index=False))
 print(rec_df.tail(5).to_string(index=False))
 
-# ============ 7. 绘图 ============
-plt.rcParams['font.size'] = 12
-cmap = safe_cmap('tab20')
-colors = [cmap(i % 20) for i in range(17)]
-
-fig, ax = plt.subplots(figsize=(8.5, 4.8))
-ax.barh(quality_domain['domain'], quality_domain['quality_mean'],
-        xerr=quality_domain['quality_std'], color='#3b6ea5', alpha=0.85)
-ax.set_xlabel('全量质量评分 Q（均值±标准差）')
-ax.set_title('A1–A3 全量质量信号的域级评分')
-despine(ax); fig.tight_layout(); save_fig(fig, '图0_A1-A3全量质量评分')
-
-fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.5))
-ax = axes[0]
-for r in range(8):
-    bottom = 0
-    for k in range(17):
-        ax.bar(r, Xtr[r, k], bottom=bottom, color=colors[k], width=0.7)
-        bottom += Xtr[r, k]
-ax.set_xticks(range(8)); ax.set_xticklabels(['#%d' % (r + 1) for r in range(8)])
-ax.set_ylabel('领域配比 p_k'); ax.set_title('(a) 训练配方示例（前 8 组）'); ax.set_ylim(0, 1.05)
-ax = axes[1]
-order = np.argsort(-ref)
-ax.bar(range(17), ref[order], color=[colors[k] for k in order])
-ax.set_xticks(range(17)); ax.set_xticklabels([DOMAINS[k] for k in order],
-                                             rotation=60, ha='right', fontsize=8)
-ax.set_ylabel('平均配比'); ax.set_title('(b) 全部训练配方平均配比（参考配方）')
-fig.tight_layout(); save_fig(fig, '图1_训练配比结构')
-
-fig, ax = plt.subplots(figsize=(10, 4.8))
-x = np.arange(13); w = 0.22
-ax.bar(x - w, r2_tr, w, label='训练集(1M)', color='#3b6ea5')
-ax.bar(x, r2_te1, w, label='检验(1M, 同尺度)', color='#e07a3f')
-ax.bar(x + w, r_te2, w, label='检验(60M, 跨尺度 r)', color='#5aa05a')
-ax.axhline(0, color='k', lw=0.8)
-ax.set_xticks(x); ax.set_xticklabels(LOSS_DOMAINS, rotation=45, ha='right', fontsize=9)
-ax.set_ylabel('R² / Pearson r'); ax.set_title('线性混合回归的拟合与泛化表现')
-ax.legend(); despine(ax); fig.tight_layout(); save_fig(fig, '图2_线性模型R2')
-
-fig, ax = plt.subplots(figsize=(6, 6))
-Yh = predict(Xte1, A, b)
-all_y, all_h = Yte1.ravel(), Yh.ravel()
-lo, hi = min(all_y.min(), all_h.min()), max(all_y.max(), all_h.max())
-ax.scatter(all_y, all_h, s=6, alpha=0.35, color='#3b6ea5')
-ax.plot([lo, hi], [lo, hi], 'r--', lw=1.2, label='$y=\\hat y$')
-ax.set_xlabel('实测交叉熵损失'); ax.set_ylabel('模型预测损失')
-ax.set_title('同尺度检验集(1M)：预测 vs 实测')
-ax.legend(); despine(ax); fig.tight_layout(); save_fig(fig, '图3_预测vs实测')
-
-fig, ax = plt.subplots(figsize=(11, 6.5))
-mesh = safe_heatmap(ax, A_cent.T, row_labels=LOSS_DOMAINS, col_labels=DOMAINS,
-                    cmap='RdBu_r', fontsize=9)
-vmax = np.abs(A_cent).max()
-mesh.set_clim(-vmax, vmax)
-cb = fig.colorbar(mesh, ax=ax, shrink=0.85)
-cb.set_label('中心化混合系数（相对效应）')
-ax.set_xlabel('训练领域 k（17 域）'); ax.set_ylabel('验证损失领域 d（13 域）')
-ax.set_title('领域配比对交叉熵损失的相对影响（暖=更难，冷=更易）')
-fig.tight_layout(); save_fig(fig, '图4_混合系数热力图')
-
-fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.6))
-ax = axes[0]
-qs = q_df.sort_values('quality_score_Q(loss代理)')
-ax.barh(qs['domain'], qs['quality_score_Q(loss代理)'],
-        color=plt.colormaps['RdYlGn'](qs['quality_score_Q(loss代理)'].values))
-ax.set_xlabel('Loss 反向映射代理（越高表示越易）')
-ax.set_title('(a) 13 个验证域的 Loss 难度代理')
-despine(ax)
-ax = axes[1]
-ax.scatter(link.Q_A1A3, link.Q_loss代理, s=45, color='#3b6ea5')
-for _, r in link.iterrows():
-    ax.annotate(r.mixture_domain, (r.Q_A1A3, r.Q_loss代理), fontsize=7,
-                xytext=(3, 3), textcoords='offset points')
-ax.set_xlabel('A1–A3 域级质量 Q'); ax.set_ylabel('Loss 难度代理质量')
-ax.set_title('(b) 两套口径排序一致性 Spearman ρ=%.2f' % rho_link)
-despine(ax); fig.tight_layout(); save_fig(fig, '图5_领域质量评分')
-
-fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.6))
-ax = axes[0]
-tp = quality_pairs['全量'].sort_values(ascending=False).head(12)[::-1]
-ax.barh(range(len(tp)), tp.values, color='#c44e52')
-ax.set_yticks(range(len(tp))); ax.set_yticklabels(tp.index, fontsize=7)
-ax.set_xlabel('该指标对的冲突样本占比')
-ax.set_title('(a) 冲突最集中的指标对（|z_j-z_k|>%.1f）' % CONFLICT_TAU)
-despine(ax)
-ax = axes[1]
-wi = np.argsort(quality_weights)[::-1]
-ax.bar(range(22), quality_weights[wi], color='#4c72b0')
-ax.set_xticks(range(22)); ax.set_xticklabels([QUALITY_COLS[k] for k in wi],
-                                             rotation=75, ha='right', fontsize=7)
-ax.set_ylabel('熵权 w_j'); ax.set_title('(b) 熵权分布（客观赋权诊断）')
-despine(ax); fig.tight_layout(); save_fig(fig, '图6_冲突与赋权诊断')
-
-fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.5))
-ax = axes[0]
-bp = safe_boxplot(ax, [ratio10[:, j] for j in range(13)], LOSS_DOMAINS)
-for box in bp['boxes']:
-    box.set_facecolor('#aec7e8')
-ax.set_xticklabels(LOSS_DOMAINS, rotation=45, ha='right', fontsize=8)
-ax.axhline(ratio10.mean(), color='r', ls='--', lw=1, label='均值 %.3f' % ratio10.mean())
-ax.set_ylabel('损失比 est/train'); ax.set_title('(a) 10B 外推尺度因子'); ax.legend()
-ax = axes[1]
-x = np.arange(13)
-ax.bar(x, ratio_scale.mean(axis=0), 0.5, yerr=ratio_scale.std(axis=0),
-       color='#ff9f68', capsize=2, label='60M vs 1M')
-ax.axhline(1, color='k', ls='--', lw=0.8)
-ax.set_xticks(x); ax.set_xticklabels(LOSS_DOMAINS, rotation=45, ha='right', fontsize=8)
-ax.set_ylabel('损失比 60M/1M'); ax.set_title('(b) 跨尺度损失比（同配方）'); ax.legend()
-fig.tight_layout(); save_fig(fig, '图7_外推与跨尺度')
+# 正式图表由文件末尾的独立绘图入口生成。
 
 # ============ 8. 汇总 ============
 save_csv_safe(pd.DataFrame({'loss_domain': LOSS_DOMAINS, 'train_R2': r2_tr, 'test1m_R2': r2_te1,
@@ -608,3 +509,8 @@ print('追加混合质量指数 Qbar 的平均 R2 增量 = %.5f' % (r2_z - r2_tr
 print('全局平均质量 Q0 = %.4f（供问题三基线使用）' % quality_meta.quality_Q.mean())
 if RC_FAILS:
     print('注意：以下结果文件因被占用而改存：', RC_FAILS)
+
+# 模型结果全部保存后生成正文采用的正式图。
+import subprocess as _subprocess
+_subprocess.run([sys.executable, os.path.join(BASE_DIR, '非线性代理对照.py'), '--data-dir', DATA_DIR], check=True)
+_subprocess.run([sys.executable, os.path.join(BASE_DIR, '重绘图表.py'), '--data-dir', DATA_DIR], check=True)

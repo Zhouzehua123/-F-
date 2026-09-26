@@ -1,3 +1,4 @@
+# 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-6）辅助。
 """问题一预测、系数、质量口径及尺度诊断的展示图；不重新求解。"""
 from 展示风格公共 import panel, clean, save, PURPLE, TEAL, GOLD, BLUE, INK, GRAY
 import numpy as np

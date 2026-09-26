@@ -1,3 +1,4 @@
+# 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-6）辅助。
 # 公共代码模板：求解/_common.py（系统自动播种，每个任务只写一次，不要覆写覆盖函数）
 import sys, os
 try:
@@ -100,11 +101,12 @@ os.makedirs(OUT_DIR, exist_ok=True)
 
 # ★ 数据目录：兼容工程内“数据/”与赛题目录中的 real_attachments/。
 _project_root = os.path.normpath(os.path.join(BASE_DIR, '..', '..'))
-_data_candidates = [
+_data_candidates = ([os.environ['MODELING_DATA_DIR']] if os.environ.get('MODELING_DATA_DIR') else []) + [
     os.path.join(_project_root, '数据'),
     os.path.join(_project_root, 'real_attachments'),
-    r'C:\Users\qq190\Desktop\第二十三届中国研究生数学建模竞赛 - 中文题目\中文题目\F题\real_attachments',
 ]
+from pathlib import Path as _Path
+_data_candidates += [str(p / 'real_attachments') for p in _Path(BASE_DIR).parents]
 DATA_DIR = next((p for p in _data_candidates if os.path.isdir(p)), _data_candidates[0])
 _DATA_INDEX = None
 
@@ -120,6 +122,8 @@ def data_path(name):
             for fn in files:
                 _DATA_INDEX.setdefault(fn.lower(), os.path.join(root, fn))
     key = os.path.basename(name).lower()
+    if key not in _DATA_INDEX and key.endswith('.jsonl') and key + '.xz' in _DATA_INDEX:
+        key += '.xz'
     if key not in _DATA_INDEX:
         raise FileNotFoundError(f'附件中未找到数据文件: {name}（根目录 {DATA_DIR}）')
     return _DATA_INDEX[key]
