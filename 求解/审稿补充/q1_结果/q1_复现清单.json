@@ -1,8 +1,13 @@
 {
-  "section": "all",
+  "section": "decision",
   "python": "3.13.12",
   "description": "Independent diagnostics; original result hashes unchanged. No language model training.",
-  "script_sha256": "796292d824fd261ef8198dc075b729744ca2f38628240f739d96fa7ed6b42ac3",
+  "script_sha256": "ea350ba0bb14d125b5ace3a5ad3585ac37e7ff383ddc1354633a68c76c0319dd",
+  "method_sources": {
+    "求解/问题一/问题一.py": "0c3f26f9b40452b76c039d04f73fe95d7709ff0b0c9bc236ca00b4c384021b7f",
+    "求解/问题一/非线性代理对照.py": "8b5cddeeb7dfe2e6802f8ba0d13fdae4f5813dcea3cc9e7dd8366d919f312e0b",
+    "求解/问题一/核岭支持域推荐.py": "f06ca6926fe7b765d9c4f506aaf8a7c04cea4c08d0fbf2ff8065fd6f91adbff2"
+  },
   "protected_inputs": {
     "求解/问题一/结果/17域质量映射.csv": "d8e12a6fa9b45a6a481e0fba3beb59acf7f297be953fb96cd22f0aa9ff964af8",
     "求解/问题一/结果/Loss代理领域难度.csv": "66deef641e71a910d62ca140cbc8a68179dbfca7993c05e5cb0294809ec46f9c",
@@ -15,11 +20,15 @@
     "求解/问题一/结果/广告方向敏感性.csv": "6f6d08f3c548693b3c6332f2587047fcae193bbe6536616b135ad9aafbce20f4",
     "求解/问题一/结果/截距.csv": "1a9047516b40b80f64f21342992f03ecf9fe62d90cca03fdf9134c52fa00214e",
     "求解/问题一/结果/抽样集与扩展集域级对照.csv": "665326361e16d54d2c6e8a5c22bff2477d2cdcf4cc2bf828ecac4532e05f60df",
-    "求解/问题一/结果/推荐配比调整.csv": "242165ca62d254cb74def1a0d7771bcf8b8e22b2463433d031f9b647c8edf318",
+    "求解/问题一/结果/推荐配比调整.csv": "d4329087f5604f4b585fa0eaedac8e82bcbb0079386f4d7ca8356e055c7bb90d",
     "求解/问题一/结果/最优配比预测.csv": "fa8eb64b727eab6d93d477c4f1b239643f3e1ad32065b277a43d2da1dbfa7490",
     "求解/问题一/结果/样本级质量评分.csv": "fd7da0146d3dbecc39432c84df6efa7ad4efa3fee1dcf8564b390133b44e6c1d",
+    "求解/问题一/结果/核岭推荐_多初值.csv": "93cb0bdf4bc4aa3759814fa7646705f15c7d8acf5fc9c681d7d492053407bb1a",
+    "求解/问题一/结果/核岭推荐_目标对照.csv": "cb7e197515e65cb377a1694be9c12ce7551837b76d0cc07c77810b947211cffd",
+    "求解/问题一/结果/核岭推荐_训练凸组合.csv": "dcb2aaf688435515e67dc1bdb0dea25ebba2d4fc9853d1aa8decfe4a168897b8",
     "求解/问题一/结果/混合系数矩阵.csv": "8a8c96a5702e29b736b3aa6a55de589edeed0046df703af2a929272c80a807e5",
     "求解/问题一/结果/混合系数矩阵_中心化.csv": "93c3da47c2cfdc8a0f1b7c3ee4b2c44e2b0d750a741ec5ad9dfcfee34945d4be",
+    "求解/问题一/结果/线性有界配比对照.csv": "242165ca62d254cb74def1a0d7771bcf8b8e22b2463433d031f9b647c8edf318",
     "求解/问题一/结果/训练域边际效应.csv": "9c37d501dc1c3d2ebc4d17e9b160240ba2ae04db0b598996b07fd10674c3bd2c",
     "求解/问题一/结果/质量与损失难度一致性.csv": "c79e5d8461844fbd1503824ed317e86d19c54df9cf36ff7e752d108c47b9f026",
     "求解/问题一/结果/质量信号缺失审计.csv": "f231f07f84aa6931421a66e4eef4e7f85b289687d50c5ef0c749cf861e97b3a3",
@@ -57,12 +66,13 @@
   "outputs": {
     "q1_A1标尺域均分对照.csv": "ec4febfe36333de2cc11eb4876bd513338478bbedb0a34a6c774b7ec4d970384",
     "q1_A1标尺权重对照.csv": "86306a90b30a3676402ff29f05b7fb4c371c847a8ad47d0708dd316405507057",
-    "q1_A1标尺诊断.json": "13a4ad984be36d9429e3b540e15039273800310b1d91dedc3006dbbe964083bf",
+    "q1_A1标尺诊断.json": "ac5c6d61d6d82a5747159c3ca6df2dd9d282fe19e3024f1180c11ae4a5818f62",
     "q1_冲突标签定位.csv": "36bcf7d1aa24174e1c5f11e08308052cf2b92cc36b8bde1d2184f88940af7950",
-    "q1_决策诊断.json": "2b66b00b32104edde886360949b33d46e6cfda821bba7cbfb10fbbad54aa3104",
+    "q1_决策诊断.json": "b987162eccc14f9538e4b5fce8ba2d2772c167ea34dba2d6ea8afeb86c5fbc54",
+    "q1_核岭正式配方核验.json": "1b91490871357401b6aab9a8cd320dd5f87dc093693d1a0461feb2a9d08891f6",
     "q1_正则条件候选配比.csv": "f95b3f83a52343eedb85481fe88743770b2afe48d7fdd4d3d77a0995f2978438",
     "q1_正则配置敏感性.csv": "8c82640e54893436f11f86e07648d5fd508987e73475c72574d443f64e1fc775",
     "q1_目标一致检验.csv": "cf043557c2ba9ff69417e1b36da2ec4101374f28d0e5b65863621bf0e92cae7c",
-    "q1_线性候选双代理对照.csv": "675bce1d13f2d6718ec4155878de73951d6a21a7e61ac24d0efb1a98dddd3c66"
+    "q1_线性候选双代理对照.csv": "f2415abcb1165c4c12ac80afaff46d59fec79d73c77e813e8a0aa0f13ea70605"
   }
 }

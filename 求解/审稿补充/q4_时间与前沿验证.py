@@ -108,10 +108,52 @@ def prepare(data):
     return core, valid, frontier.reset_index(drop=True)
 
 
+def verify_scale_pairing(core, c3):
+    """从原始候选集合核对已保存配对及分解，不调用或改写正式求解程序。"""
+    annual = pd.read_csv(PAPER_RESULT/'前沿序列.csv')
+    for row in annual.itertuples(index=False):
+        past = c3[c3.Year <= row.Year]
+        winners = past[past.avg.eq(past.avg.max())].sort_values(['Year', 'P', 'Model'])
+        expected = winners.iloc[0]
+        assert row.frontier_model == expected.Model
+        assert row.frontier_record_year == expected.Year
+        assert np.allclose([row.P, row.cum_avg, row.avg],
+                           [expected.P, expected.avg, c3.loc[c3.Year.eq(row.Year), 'avg'].max()])
+    # 独立回算横截面规模斜率，并逐列核对新配对定义下的保存结果。
+    X = np.column_stack([np.ones(len(c3)), np.log10(c3.P), c3.Year-2019])
+    b_long = np.linalg.lstsq(X, c3.avg, rcond=None)[0][1]
+    long_gain = annual.cum_avg.iloc[-1]-annual.cum_avg.iloc[0]
+    long_logp = np.log10(annual.P.iloc[-1]/annual.P.iloc[0])
+    monthly = []
+    for month, group in core.groupby('month', sort=True):
+        selected = group.nlargest(max(1, int(len(group)*.01)), 'avg')
+        monthly.append((str(month), float(selected.avg.mean()), float(np.log10(selected.P).mean())))
+    first = monthly[0]
+    peak = max(monthly, key=lambda item: item[1])
+    near_gain, near_logp = peak[1]-first[1], peak[2]-first[2]
+    saved = pd.read_csv(PAPER_RESULT/'规模时间分解.csv')
+    details = {}
+    for i, (key, gain, logp, bp) in enumerate([
+        ('C3', long_gain, long_logp, b_long),
+        ('C1', near_gain, near_logp, ols(core)['b_P']),
+    ]):
+        scale = bp*logp
+        values = [gain, logp, bp, scale, gain-scale, scale/gain*100, (gain-scale)/gain*100]
+        columns = ['前沿提升分', 'Δlog10P', 'bP', '规模贡献分', '非规模贡献分', '规模占比%', '非规模占比%']
+        assert np.allclose(saved.iloc[i][columns].astype(float), values, rtol=1e-9, atol=1e-9)
+        details[key] = dict(zip(columns, map(float, values)))
+    long_saved = pd.read_csv(PAPER_RESULT/'规模时间分解_长周期.csv')
+    assert np.allclose(long_saved[columns].to_numpy(float), saved.loc[[0], columns].to_numpy(float))
+    return {'annual_record_pairing_verified': True,
+            'C3_rule': '截至当年最高分；并列依次取较早年份、较小参数、模型名',
+            'C1_rule': '当月前1%同组平均分与平均对数参数量',
+            'saved_decomposition_verified': True, 'decomposition': details}
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--data', type=Path, default=os.environ.get('MODELING_DATA_DIR'))
-    ap.add_argument('--output', type=Path, default=HERE/'q4_结果')
+    ap.add_argument('--data', '--data-dir', dest='data', type=Path, default=os.environ.get('MODELING_DATA_DIR'))
+    ap.add_argument('--output', '--output-dir', dest='output', type=Path, default=HERE/'q4_结果')
     args = ap.parse_args()
     if args.data is None:
         ap.error('请用 --data 或 MODELING_DATA_DIR 指定 real_attachments。')
@@ -120,6 +162,7 @@ def main():
         ap.error('输出目录不能位于原始附件或问题四原结果目录内。')
     before = result_hashes()
     core, c3, frontier = prepare(data)
+    scale_pairing = verify_scale_pairing(core, c3)
     t = frontier.t.to_numpy(float)
     y = frontier.cumulative_frontier.to_numpy(float)
     if len(t) != 14 or not np.isclose(t[-1], 2025-2019+(3-.5)/12):
@@ -180,6 +223,7 @@ def main():
         'mean_date_gap_years':float(core.groupby('Year').continuous_t.mean().diff().iloc[-1]),
         'origin_observed_cumulative':float(y[-1]),'origin_logistic_fitted':float(logistic(t[-1],*original)),
         'original_R2':original_r2,'original_result_verified':True,
+        'scale_pairing':scale_pairing,
         'curve_inputs':'C3年度累计最高分与C1月度前1%均值累计最大值；未作历史量表校准',
         'diagnostic_limits':'删点改变权重和时间窗口；单次留出为事后检查，不能用于宣称基线普遍优越',
         'versions':{'numpy':np.__version__,'pandas':pd.__version__,'scipy':scipy.__version__},

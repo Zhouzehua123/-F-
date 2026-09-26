@@ -9,7 +9,7 @@
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -54,7 +54,7 @@ L 0 3.5
       </g>
      </g>
      <g id="text_1">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="59.6736" y="217.530875" transform="rotate(-0 59.6736 217.530875)">0.0</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="59.6736" y="217.539" transform="rotate(-0 59.6736 217.539)">0.0</text>
      </g>
     </g>
     <g id="xtick_2">
@@ -69,7 +69,7 @@ L 90.276831 23.652
       </g>
      </g>
      <g id="text_2">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="90.276831" y="217.530875" transform="rotate(-0 90.276831 217.530875)">0.2</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="90.276831" y="217.539" transform="rotate(-0 90.276831 217.539)">0.2</text>
      </g>
     </g>
     <g id="xtick_3">
@@ -84,7 +84,7 @@ L 120.880062 23.652
       </g>
      </g>
      <g id="text_3">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="120.880062" y="217.530875" transform="rotate(-0 120.880062 217.530875)">0.4</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="120.880062" y="217.539" transform="rotate(-0 120.880062 217.539)">0.4</text>
      </g>
     </g>
     <g id="xtick_4">
@@ -99,7 +99,7 @@ L 151.483293 23.652
       </g>
      </g>
      <g id="text_4">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="151.483293" y="217.530875" transform="rotate(-0 151.483293 217.530875)">0.6</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="151.483293" y="217.539" transform="rotate(-0 151.483293 217.539)">0.6</text>
      </g>
     </g>
     <g id="xtick_5">
@@ -114,7 +114,7 @@ L 182.086524 23.652
       </g>
      </g>
      <g id="text_5">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="182.086524" y="217.530875" transform="rotate(-0 182.086524 217.530875)">0.8</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="182.086524" y="217.539" transform="rotate(-0 182.086524 217.539)">0.8</text>
      </g>
     </g>
     <g id="xtick_6">
@@ -129,11 +129,11 @@ L 212.689755 23.652
       </g>
      </g>
      <g id="text_6">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="212.689755" y="217.530875" transform="rotate(-0 212.689755 217.530875)">1.0</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="212.689755" y="217.539" transform="rotate(-0 212.689755 217.539)">1.0</text>
      </g>
     </g>
     <g id="text_7">
-     <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #243348" x="138.094379" y="230.64025" transform="rotate(-0 138.094379 230.64025)">逐域 R²</text>
+     <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #243348" x="138.094379" y="229.586813" transform="rotate(-0 138.094379 229.586813)">逐域 R²</text>
     </g>
    </g>
    <g id="matplotlib.axis_2">
@@ -149,7 +149,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_8">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="35.175614" transform="rotate(-0 52.6736 35.175614)">学术预印本</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="34.741864" transform="rotate(-0 52.6736 34.741864)">学术预印本</text>
      </g>
     </g>
     <g id="ytick_2">
@@ -159,7 +159,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_9">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="48.928511" transform="rotate(-0 52.6736 48.928511)">法律判例</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="48.479136" transform="rotate(-0 52.6736 48.479136)">法律判例</text>
      </g>
     </g>
     <g id="ytick_3">
@@ -169,7 +169,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_10">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="62.650159" transform="rotate(-0 52.6736 62.650159)">医学全文</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="62.169534" transform="rotate(-0 52.6736 62.169534)">医学全文</text>
      </g>
     </g>
     <g id="ytick_4">
@@ -179,7 +179,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_11">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="76.387432" transform="rotate(-0 52.6736 76.387432)">百科</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="75.953682" transform="rotate(-0 52.6736 75.953682)">百科</text>
      </g>
     </g>
     <g id="ytick_5">
@@ -189,7 +189,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_12">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="90.124705" transform="rotate(-0 52.6736 90.124705)">数学</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="89.67533" transform="rotate(-0 52.6736 89.67533)">数学</text>
      </g>
     </g>
     <g id="ytick_6">
@@ -199,7 +199,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_13">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="103.861977" transform="rotate(-0 52.6736 103.861977)">代码</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="103.412602" transform="rotate(-0 52.6736 103.412602)">代码</text>
      </g>
     </g>
     <g id="ytick_7">
@@ -209,7 +209,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_14">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="117.59925" transform="rotate(-0 52.6736 117.59925)">专业问答</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="117.13425" transform="rotate(-0 52.6736 117.13425)">专业问答</text>
      </g>
     </g>
     <g id="ytick_8">
@@ -219,7 +219,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_15">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="131.336523" transform="rotate(-0 52.6736 131.336523)">图书</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="130.902773" transform="rotate(-0 52.6736 130.902773)">图书</text>
      </g>
     </g>
     <g id="ytick_9">
@@ -229,7 +229,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_16">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="145.02692" transform="rotate(-0 52.6736 145.02692)">网页</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="144.570045" transform="rotate(-0 52.6736 144.570045)">网页</text>
      </g>
     </g>
     <g id="ytick_10">
@@ -239,7 +239,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_17">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="158.811068" transform="rotate(-0 52.6736 158.811068)">技术聊天</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="158.361693" transform="rotate(-0 52.6736 158.361693)">技术聊天</text>
      </g>
     </g>
     <g id="ytick_11">
@@ -249,7 +249,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_18">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="172.548341" transform="rotate(-0 52.6736 172.548341)">科技社区</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="172.114591" transform="rotate(-0 52.6736 172.114591)">科技社区</text>
      </g>
     </g>
     <g id="ytick_12">
@@ -259,7 +259,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_19">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="186.285614" transform="rotate(-0 52.6736 186.285614)">医学摘要</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="185.804989" transform="rotate(-0 52.6736 185.804989)">医学摘要</text>
      </g>
     </g>
     <g id="ytick_13">
@@ -269,7 +269,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_20">
-      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="200.022886" transform="rotate(-0 52.6736 200.022886)">专利背景</text>
+      <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="52.6736" y="199.573511" transform="rotate(-0 52.6736 199.573511)">专利背景</text>
      </g>
     </g>
    </g>
@@ -409,19 +409,19 @@ L 216.515158 204.984
    <g id="legend_1">
     <g id="PathCollection_3">
      <g>
-      <use xlink:href="#m0d57b91306" x="68.599938" y="255.610318" style="fill: #665080; stroke: #665080"/>
+      <use xlink:href="#m0d57b91306" x="68.599938" y="255.62563" style="fill: #665080; stroke: #665080"/>
      </g>
     </g>
     <g id="text_22">
-     <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: start; fill: #243348" x="78.999938" y="257.710318" transform="rotate(-0 78.999938 257.710318)">线性岭</text>
+     <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: start; fill: #243348" x="78.999938" y="257.72563" transform="rotate(-0 78.999938 257.72563)">线性岭</text>
     </g>
     <g id="PathCollection_4">
      <g>
-      <use xlink:href="#m3c9bd3d4bf" x="118.199938" y="255.610318" style="fill: #287c78; stroke: #287c78"/>
+      <use xlink:href="#m3c9bd3d4bf" x="118.199938" y="255.62563" style="fill: #287c78; stroke: #287c78"/>
      </g>
     </g>
     <g id="text_23">
-     <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: start; fill: #243348" x="128.599938" y="257.710318" transform="rotate(-0 128.599938 257.710318)">平方根核岭</text>
+     <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: start; fill: #243348" x="128.599938" y="257.72563" transform="rotate(-0 128.599938 257.72563)">平方根核岭</text>
     </g>
    </g>
   </g>
@@ -447,7 +447,7 @@ L 310.408593 43.026383
       </g>
      </g>
      <g id="text_24">
-      <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="310.408593" y="198.849852" transform="rotate(-0 310.408593 198.849852)">5.0</text>
+      <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="310.408593" y="198.858992" transform="rotate(-0 310.408593 198.858992)">5.0</text>
      </g>
     </g>
     <g id="xtick_8">
@@ -462,7 +462,7 @@ L 347.78833 43.026383
       </g>
      </g>
      <g id="text_25">
-      <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="347.78833" y="198.849852" transform="rotate(-0 347.78833 198.849852)">5.5</text>
+      <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="347.78833" y="198.858992" transform="rotate(-0 347.78833 198.858992)">5.5</text>
      </g>
     </g>
     <g id="xtick_9">
@@ -477,11 +477,11 @@ L 385.168067 43.026383
       </g>
      </g>
      <g id="text_26">
-      <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="385.168067" y="198.849852" transform="rotate(-0 385.168067 198.849852)">6.0</text>
+      <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #637186" x="385.168067" y="198.858992" transform="rotate(-0 385.168067 198.858992)">6.0</text>
      </g>
     </g>
     <g id="text_27">
-     <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #243348" x="350.685983" y="212.139891" transform="rotate(-0 350.685983 212.139891)">观测平均损失</text>
+     <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #243348" x="350.685983" y="211.085555" transform="rotate(-0 350.685983 211.085555)">观测平均损失</text>
     </g>
    </g>
    <g id="matplotlib.axis_4">
@@ -497,7 +497,7 @@ L 421.9776 154.595389
       </g>
      </g>
      <g id="text_28">
-      <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="272.394365" y="157.715507" transform="rotate(-0 272.394365 157.715507)">5.0</text>
+      <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="272.394365" y="157.720077" transform="rotate(-0 272.394365 157.720077)">5.0</text>
      </g>
     </g>
     <g id="ytick_15">
@@ -512,7 +512,7 @@ L 421.9776 117.215652
       </g>
      </g>
      <g id="text_29">
-      <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="272.394365" y="120.335769" transform="rotate(-0 272.394365 120.335769)">5.5</text>
+      <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="272.394365" y="120.34034" transform="rotate(-0 272.394365 120.34034)">5.5</text>
      </g>
     </g>
     <g id="ytick_16">
@@ -527,11 +527,11 @@ L 421.9776 79.835915
       </g>
      </g>
      <g id="text_30">
-      <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="272.394365" y="82.956032" transform="rotate(-0 272.394365 82.956032)">6.0</text>
+      <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: end; fill: #243348" x="272.394365" y="82.960603" transform="rotate(-0 272.394365 82.960603)">6.0</text>
      </g>
     </g>
     <g id="text_31">
-     <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #243348" x="255.201982" y="114.318" transform="rotate(-90 255.201982 114.318)">预测平均损失</text>
+     <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #243348" x="255.219209" y="114.318" transform="rotate(-90 255.219209 114.318)">预测平均损失</text>
     </g>
    </g>
    <g id="PathCollection_5">
@@ -1333,7 +1333,7 @@ L 421.9776 185.609617
 " style="fill: none; stroke: #9aa7b7; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_32">
-    <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: start; fill: #243348" x="285.097694" y="56.686794" transform="rotate(-0 285.097694 56.686794)">配方均值 RMSE = 0.0733</text>
+    <text style="font-size: 8px; font-family: 'Times New Roman', 'SimSun'; text-anchor: start; fill: #243348" x="285.097694" y="55.788044" transform="rotate(-0 285.097694 55.788044)">配方均值 RMSE = 0.0733</text>
    </g>
    <g id="text_33">
     <text style="font-size: 9px; font-family: 'Times New Roman', 'SimSun'; text-anchor: middle; fill: #243348" x="350.685983" y="37.026383" transform="rotate(-0 350.685983 37.026383)">(b) 256 组检验配方</text>

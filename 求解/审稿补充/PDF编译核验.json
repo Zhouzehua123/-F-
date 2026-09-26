@@ -1,50 +1,430 @@
 {
-  "engine": "WSL Ubuntu XeLaTeX and latexmk",
-  "pdf_pages": 180,
-  "pdf_sha256": "8790d0a1cd79b25680ce148cfa18820f74a646ba3dca1e57fe329d4de2aa3bcf",
+  "baseline_main": "529d586",
+  "engine": "WSL Ubuntu XeLaTeX/latexmk via latex-thesis-zh compile.py",
+  "compile_exit_code": 0,
+  "pdf_pages": 211,
+  "appendix_start_physical": 66,
   "checks": {
     "latex_errors": [],
     "undefined_references": [],
     "undefined_citations": [],
     "overfull_boxes": []
   },
-  "existing_nonfatal_warnings": [
-    "cover PDF 1.7 embedded in PDF 1.5 output",
-    "duplicate cover page anchor page.1",
-    "caption hypcap and underfull box warnings"
+  "pdf_sha256": "b5b12c251f2b20c14145b301177d93a7fdad458a49ae180847d677263f148bc3",
+  "contact_sheets_visually_inspected_physical_pages": [
+    1,
+    67
   ],
-  "selected_physical_pages": [
-    18,
-    26,
-    27,
-    38,
-    43,
-    48,
-    53,
-    57
+  "detail_pages_visually_inspected": [
+    25,
+    46,
+    58,
+    59,
+    61
+  ],
+  "layout_metrics": {
+    "pages": 211,
+    "appendix_start_physical": 66,
+    "body_page_metrics": [
+      {
+        "page": 1,
+        "bottom_blank_fraction": 0.411,
+        "max_inner_gap_fraction": 0.103
+      },
+      {
+        "page": 2,
+        "bottom_blank_fraction": 0.043,
+        "max_inner_gap_fraction": 0.052
+      },
+      {
+        "page": 3,
+        "bottom_blank_fraction": 0.062,
+        "max_inner_gap_fraction": 0.025
+      },
+      {
+        "page": 4,
+        "bottom_blank_fraction": 0.01,
+        "max_inner_gap_fraction": 0.035
+      },
+      {
+        "page": 5,
+        "bottom_blank_fraction": 0.021,
+        "max_inner_gap_fraction": 0.035
+      },
+      {
+        "page": 6,
+        "bottom_blank_fraction": 0.006,
+        "max_inner_gap_fraction": 0.035
+      },
+      {
+        "page": 7,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.035
+      },
+      {
+        "page": 8,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.062
+      },
+      {
+        "page": 9,
+        "bottom_blank_fraction": 0.012,
+        "max_inner_gap_fraction": 0.031
+      },
+      {
+        "page": 10,
+        "bottom_blank_fraction": 0.043,
+        "max_inner_gap_fraction": 0.029
+      },
+      {
+        "page": 11,
+        "bottom_blank_fraction": 0.029,
+        "max_inner_gap_fraction": 0.023
+      },
+      {
+        "page": 12,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.029
+      },
+      {
+        "page": 13,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.029
+      },
+      {
+        "page": 14,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.027
+      },
+      {
+        "page": 15,
+        "bottom_blank_fraction": 0.058,
+        "max_inner_gap_fraction": 0.031
+      },
+      {
+        "page": 16,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.064
+      },
+      {
+        "page": 17,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.027
+      },
+      {
+        "page": 18,
+        "bottom_blank_fraction": 0.13,
+        "max_inner_gap_fraction": 0.035
+      },
+      {
+        "page": 19,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.037
+      },
+      {
+        "page": 20,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.035
+      },
+      {
+        "page": 21,
+        "bottom_blank_fraction": 0.064,
+        "max_inner_gap_fraction": 0.039
+      },
+      {
+        "page": 22,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.058
+      },
+      {
+        "page": 23,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.029
+      },
+      {
+        "page": 24,
+        "bottom_blank_fraction": 0.2,
+        "max_inner_gap_fraction": 0.021
+      },
+      {
+        "page": 25,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.041
+      },
+      {
+        "page": 26,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.056
+      },
+      {
+        "page": 27,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.029
+      },
+      {
+        "page": 28,
+        "bottom_blank_fraction": 0.097,
+        "max_inner_gap_fraction": 0.027
+      },
+      {
+        "page": 29,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.027
+      },
+      {
+        "page": 30,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.029
+      },
+      {
+        "page": 31,
+        "bottom_blank_fraction": 0.008,
+        "max_inner_gap_fraction": 0.023
+      },
+      {
+        "page": 32,
+        "bottom_blank_fraction": 0.006,
+        "max_inner_gap_fraction": 0.025
+      },
+      {
+        "page": 33,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.025
+      },
+      {
+        "page": 34,
+        "bottom_blank_fraction": 0.081,
+        "max_inner_gap_fraction": 0.027
+      },
+      {
+        "page": 35,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.025
+      },
+      {
+        "page": 36,
+        "bottom_blank_fraction": 0.008,
+        "max_inner_gap_fraction": 0.025
+      },
+      {
+        "page": 37,
+        "bottom_blank_fraction": 0.021,
+        "max_inner_gap_fraction": 0.048
+      },
+      {
+        "page": 38,
+        "bottom_blank_fraction": 0.037,
+        "max_inner_gap_fraction": 0.035
+      },
+      {
+        "page": 39,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.031
+      },
+      {
+        "page": 40,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.027
+      },
+      {
+        "page": 41,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.029
+      },
+      {
+        "page": 42,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.027
+      },
+      {
+        "page": 43,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.023
+      },
+      {
+        "page": 44,
+        "bottom_blank_fraction": 0.004,
+        "max_inner_gap_fraction": 0.025
+      },
+      {
+        "page": 45,
+        "bottom_blank_fraction": 0.017,
+        "max_inner_gap_fraction": 0.031
+      },
+      {
+        "page": 46,
+        "bottom_blank_fraction": 0.132,
+        "max_inner_gap_fraction": 0.087
+      },
+      {
+        "page": 47,
+        "bottom_blank_fraction": 0.031,
+        "max_inner_gap_fraction": 0.021
+      },
+      {
+        "page": 48,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.033
+      },
+      {
+        "page": 49,
+        "bottom_blank_fraction": 0.006,
+        "max_inner_gap_fraction": 0.031
+      },
+      {
+        "page": 50,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.041
+      },
+      {
+        "page": 51,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.048
+      },
+      {
+        "page": 52,
+        "bottom_blank_fraction": 0.124,
+        "max_inner_gap_fraction": 0.031
+      },
+      {
+        "page": 53,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.033
+      },
+      {
+        "page": 54,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.039
+      },
+      {
+        "page": 55,
+        "bottom_blank_fraction": 0.074,
+        "max_inner_gap_fraction": 0.019
+      },
+      {
+        "page": 56,
+        "bottom_blank_fraction": 0.006,
+        "max_inner_gap_fraction": 0.029
+      },
+      {
+        "page": 57,
+        "bottom_blank_fraction": 0.048,
+        "max_inner_gap_fraction": 0.05
+      },
+      {
+        "page": 58,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.027
+      },
+      {
+        "page": 59,
+        "bottom_blank_fraction": 0.017,
+        "max_inner_gap_fraction": 0.029
+      },
+      {
+        "page": 60,
+        "bottom_blank_fraction": 0.004,
+        "max_inner_gap_fraction": 0.031
+      },
+      {
+        "page": 61,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.023
+      },
+      {
+        "page": 62,
+        "bottom_blank_fraction": 0.008,
+        "max_inner_gap_fraction": 0.031
+      },
+      {
+        "page": 63,
+        "bottom_blank_fraction": 0.002,
+        "max_inner_gap_fraction": 0.037
+      },
+      {
+        "page": 64,
+        "bottom_blank_fraction": 0.006,
+        "max_inner_gap_fraction": 0.035
+      },
+      {
+        "page": 65,
+        "bottom_blank_fraction": 0.012,
+        "max_inner_gap_fraction": 0.012
+      },
+      {
+        "page": 66,
+        "bottom_blank_fraction": 0.008,
+        "max_inner_gap_fraction": 0.052
+      },
+      {
+        "page": 67,
+        "bottom_blank_fraction": 0.004,
+        "max_inner_gap_fraction": 0.012
+      }
+    ]
+  },
+  "layout_changes": [
+    "Q1 scatter H -> !htbp",
+    "Q1 final plot htbp -> H",
+    "Q2 opening workflow H -> !htbp",
+    "Q4 opening workflow H -> !htbp"
   ],
   "tex_source_sha256": {
-    "论文/0.摘要.tex": "d59b97e99a96ab4a8e162c220c0735a8ade1acee55829d3b79b61f6dd48c47ea",
-    "论文/1.引言.tex": "2fe395ab22af2d609f68d849339829e8485a0bccc47793cbe0e1da3bc989bc68",
-    "论文/10.参考文献.tex": "79355aab22c1006b749b65d8b95abdf397c53e9034d8bde577473750451e708b",
-    "论文/11.附录.tex": "9d474bdb6bc807b601c8410cbfb4d6cd12c4d54277f1bc699e4f4091f1915ab8",
-    "论文/2.总体分析.tex": "f0efe895752d3f4c1e323f5a099fcc2b53134b260cda7d45cd53b43c23b28acc",
-    "论文/3.模型假设.tex": "49791369eaf9dd8a89c37d9ff578166c0f589cff7ae5fcd9d86a6250da283368",
-    "论文/4.符号说明.tex": "23cd57a9162ee43ef4e312023cdb74bbbe24381f0548e0c13b4aa8c2a4783c69",
+    "论文/0.摘要.tex": "f3980900cf76571f5d7622123a6d8cb184c2dfef43a9049184831ab4f909d0c6",
+    "论文/1.引言.tex": "50eeeea62383fc9d8c85ff8186efc367f76dfc2233b7a22ff6390246420a191b",
+    "论文/10.参考文献.tex": "1358fa041d31948457ada27a63822d0ba15fdd849dd72dea5a00b551a4d20c78",
+    "论文/11.附录.tex": "3c7cf9a2f87af3a5f0536a9219d549cfa227bae97b3c40fa618bbc82e9027faa",
+    "论文/2.总体分析.tex": "0a895f94ee3b4e2a22cb320278c030ac373111fd50f22acb5b8543b4c316ce53",
+    "论文/3.模型假设.tex": "18edaa59e825985b90094abd4502293910b83697a5fb661f3e48bc4f199aa476",
+    "论文/4.符号说明.tex": "020321b44de52eb62645dbcff4c998342d906de3cbd81a250fb611d52c7a44bb",
     "论文/5.1.1.具体分析.tex": "5ad2d1f7fcf3dec1157a79cdd5a688c8115c2f990a81a4fca8a9f28db0796d75",
     "论文/5.1.2.模型准备.tex": "9a26126985ed861b16ac3fa065759081646e765b0ea92bb2e0489953338fac7d",
     "论文/5.1.3.模型建立.tex": "293f5d467db88a13324a6e4c47b054d926c8579bef8105f9e782ad73f0f69a2c",
     "论文/5.1.4.模型求解.tex": "64094dac88c5b323aa6388b0072d03a5ac363c816364c1216b8f2dd067cf7b74",
-    "论文/5.1.问题一.tex": "f68b7941b41a364d3074ed90901750645eb28829b900a36e1307f6e15d280341",
-    "论文/5.2.问题二.tex": "4e4d75182466a047c3cbe803fb348d9f8b4463ab297606e09e205daf1fc5c0d1",
-    "论文/5.3.问题三.tex": "1579a2c732c638f7c12d545291336c743900a78de0017a5b97a9481d8f1da8f4",
-    "论文/5.4.问题四.tex": "b9bea0e147ea03454da92c5685edc2b8f85edded63d352753f7c0ceb7e5639a2",
+    "论文/5.1.问题一.tex": "21889ec53c57b69c48034c0c4c530d177efbf260fe01e19598fca1f50c1e0bb8",
+    "论文/5.2.问题二.tex": "8e0c17b0f70146463682fd0c7e4527f290ceb44bec5504e6081e5e92db24b871",
+    "论文/5.3.问题三.tex": "c748866dadf7fe81d4abc92be209855621704c0b62460aa33b981a74c0df2dde",
+    "论文/5.4.问题四.tex": "c63113d50d1562be307629f0d3a7de263993e638d969e511db425b6e3b6fc93c",
     "论文/5.模型的建立与求解.tex": "94b5c61e0df940ddfb505a712a996cf21d1edf8c17a03c53d3bcd4890fccb7f7",
-    "论文/6.模型检验.tex": "3dca990d1cdcee4e5d8db0c39954e216b415da55a95e8ebc1d97baf1cff4e330",
-    "论文/7.模型评价.tex": "c5bd3993ecc2a0b02d38348e0b3714248466ffaedd187143c0b4bdbe5b438b36",
-    "论文/8.模型改进推广.tex": "c33ab3f267d736364ff08a2e96ad6affc9531f441689e79be0b3a7d8c581b1b4",
+    "论文/6.模型检验.tex": "35c47c0e52e5a46403009de09a59903fbaac16157a77a30f4a448755cb53dba1",
+    "论文/7.模型评价.tex": "0134da33aabe5eafc0b580e8ccd8ad5f918c850f01a89199a2ebcf3f7c73ff14",
+    "论文/8.模型改进推广.tex": "13f541e4de3f5ef1086f9d585786fa8a5c8bf75c3ed3159a323fb254f492cd7e",
     "论文/论文.tex": "1ef1002ad32787a2f62421dba7fb9a2373e7e5afeffe6b6f5417a6cad43010e4",
-    "论文/figures/overall-architecture.tex": "2928f0fa1e139f8eaa1a78da0dd7b566cce41dc4a404c13aee77985776f2ad5c",
+    "论文/figures/overall-architecture.tex": "975f850641936f7f9398825a0ff24023e075fde76938562b377ab97510d6f3a2",
     "论文/figures/q1-workflow.tex": "1fc2b91b2ddd6a19c56154cc5d06a71f7cab45a58b458138d5896c68e7a0b66e"
+  },
+  "included_python_sha256": {
+    "求解/问题一/问题一.py": "0c3f26f9b40452b76c039d04f73fe95d7709ff0b0c9bc236ca00b4c384021b7f",
+    "求解/问题二/问题二.py": "8925678239dc34176f3c35eeda93971558b7531c4ef0b65d2d2a748e98eeab00",
+    "求解/问题三/问题三.py": "9747f83ed62da1370831738a6b71563b58c84b8b5867fd238b60ece059476457",
+    "求解/问题四/问题四.py": "00e040edbb3920330964e8d5fbdeefe6581b85d25af009e504287e98bffee38f",
+    "求解/复现论文.py": "59266edbbd494b76cdaf415895a88c99fc9ac499668f7848decf3be477062e29",
+    "求解/补充检验.py": "ac3a4ad3cf3087b2211830bc327101b3334969ec287561e2589f902dd7b45860",
+    "求解/_common.py": "403bd4d3efa96e10625630730b847f3e2b3df947bf12bf1f1df599b7f6479ced",
+    "求解/问题一/非线性代理对照.py": "8b5cddeeb7dfe2e6802f8ba0d13fdae4f5813dcea3cc9e7dd8366d919f312e0b",
+    "求解/问题一/核岭支持域推荐.py": "f06ca6926fe7b765d9c4f506aaf8a7c04cea4c08d0fbf2ff8065fd6f91adbff2",
+    "求解/问题一/重绘图表.py": "a4373820a847053428a941538889aa0f6561da8a1b18f7ebb738c7e1d44be451",
+    "求解/问题一/绘图数据.py": "c9cf6a7c71bc10f94e8e290b826e37438bc3c8ef245e335ec32fa7d10365e839",
+    "求解/问题一/展示风格公共.py": "5f0f0e69c5c71c35af44e33518a86191fdacf10ea50ebd2922d24dd7d5d78548",
+    "求解/问题一/展示风格概览.py": "cac81035acd992e10805fec0680495cb17935b0220d7633e3b3bf300a331bd2e",
+    "求解/问题一/展示风格诊断.py": "0ceeef44a28e6a363d03699e0aa1e773dfc6d36b6fba9c4ddbea18064e1d8c34",
+    "求解/问题一/展示风格冲突.py": "6b9f29afc8ddb674628d055d4d6a7e2c0181a459bcb4cc9388b9d14c8092c1a4",
+    "求解/问题一/展示风格流程.py": "8e8cc09e1f771f65aac3e8a0b062e99b5816cb9c871af65c67d34c6f037e08a2",
+    "求解/问题一/展示风格非线性.py": "10785c134c6d4f5e2dda7a9b29138cd45784c87ccd61609a1a9af954acb4d6c0",
+    "求解/问题一/出版导出.py": "25bfc85c7ef711d2079b588222d70aade9971030da79ac662ed574d5ee216dfa",
+    "求解/问题二/重绘图表.py": "7dc17ba8096a1bb1242b7a972b604908087b75c0eb0da2156015e3de1591ca50",
+    "求解/问题三/论文绘图.py": "87d533bababd0640321264ae14c0933b1c1cb0748722b568c304ebfe1326f23b",
+    "求解/问题四/重绘图表.py": "4a78f275df5957671bc72b049b8f3118f3e831f43931b70af3181c8dd5dc206f",
+    "求解/绘制问题三四流程图.py": "c6f3ec782ce0b4535de725d28f7d5bd7f4f4d1da7b86912ec7f447e19790e449",
+    "求解/审稿补充/q1_决策与稳健性.py": "ea350ba0bb14d125b5ace3a5ad3585ac37e7ff383ddc1354633a68c76c0319dd",
+    "求解/审稿补充/q23_尺度与结构敏感性.py": "067a856e491c4d840a0b90d5171d85a0895cdce998abb195c99135c61d3b7c93",
+    "求解/审稿补充/q4_时间与前沿验证.py": "738babbcbb95d32b47863ec2bc4e4678ddfca525139dc9752fe6d9cd2a797173"
+  },
+  "format_script": {
+    "exit_code": 1,
+    "status": "WARNING",
+    "mixed_punctuation_candidates": 293,
+    "chktex_available": false,
+    "note": "Heuristic candidates include mathematics and citations; not an official competition-format pass."
   }
 }

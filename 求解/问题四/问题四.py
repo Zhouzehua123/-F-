@@ -8,7 +8,7 @@
 流程：1) 明确口径：时间轴(提交日期)、开放权重样本口径(许可白名单)、模型类型(pretrained/chat)
       2) C8 逐任务聚合（必做），并与 C1 六维交叉校验
       3) C6 桥接（按可比性分层）+ C5 对照，建立 Loss -> Benchmark 映射
-      4) 面板回归（含年份固定效应）分离规模扩张与非规模技术进步贡献
+      4) 合并横截面回归（含年份控制项）核算规模关联项与未解释剩余项
       5) 情景设定下 logistic 饱和外推 12/24 个月能力前沿 + 残差 bootstrap 不确定性
       6) C4 宏观算力/数据量/开放权重参照，不直接代入能力回归
 输出：图片到 图片/，结果 CSV 到 结果/
@@ -234,9 +234,10 @@ print('  说明：全样本 |r|=%.2f（R2=%.2f），映射误差较大；高可�
          int(bridge_df.iloc[0]['n']),
          br[br.cmp.eq('高可比')].LB_Average.min(), br[br.cmp.eq('高可比')].LB_Average.max()))
 
-# ============ 4. 面板回归与贡献分解（规模扩张 vs 非规模技术进步） ============
+# ============ 4. 合并横截面回归与增量核算 ============
 # 思路：规模系数 bP 在“同一年内的横截面”上识别最稳健（年份效应吸收了当年的技术水平），
-#      再由 bP 与前沿模型的 Δlog10 P 做 shift-share 分解，残差部分归为非规模技术进步。
+#      再由 bP 与配对前沿规模的 Δlog10 P 核算规模关联项，其余为未解释剩余项。
+#      历史 CSV 文件名“面板回归数据”及贡献/分年列名为接口兼容保留，不表示纵向或因果估计。
 panel = core_o.copy()
 lb_o = core_o.copy()
 panel['logP'] = np.log10(panel.P)
@@ -266,13 +267,13 @@ save_csv_safe(panel[['Model', 'P', 'logP', 't', 'avg', 'type_group', 'Year']],
 print('\n=== 4. 规模系数估计（C1 开源筛选样本，%d 条，%d-%d 年）==='
       % (len(panel), int(panel.Year.min()), int(panel.Year.max())))
 print('  年份固定效应模型：bP=%.3f 分/10 倍参数，R2=%.3f' % (bP_fe, R2_fe))
-print('  线性时间 OLS 模型：bP=%.3f 分/10 倍参数，bt=%.3f 分/年，R2=%.3f'
+print('  合并横截面 OLS：bP=%.3f 分/10 倍参数，年份组差=%.3f 分，R2=%.3f'
       % (bP_ols, bt_ols, R2_ols))
 for tg in ['pretrained', 'chat/finetuned']:
     sub = panel[panel.type_group.eq(tg)]
     if len(sub) > 30:
         bP_t, bt_t, R2_t = fit_model(sub, tg, False)
-        print('  %s 子样本（n=%d）：bP=%.3f 分/10 倍参数，bt=%.3f 分/年，R2=%.3f'
+        print('  %s 子样本（n=%d）：bP=%.3f 分/10 倍参数，年份组差=%.3f 分，R2=%.3f'
               % (tg, len(sub), bP_t, bt_t, R2_t))
 
 # 口径分层：C3 全期序列（2019-2025，跨年标准混合）用于长周期分解；
@@ -302,8 +303,19 @@ pred_l = Xl @ bl
 R2_l = 1 - np.sum((ts_ok.avg.values - pred_l) ** 2) / \
     np.sum((ts_ok.avg.values - ts_ok.avg.values.mean()) ** 2)
 
-front_year = ts_ok.groupby('Year').agg(avg=('avg', 'max'), P=('P', 'max')).reset_index()
-front_year['cum_avg'] = front_year.avg.cummax()      # 前沿边界按定义单调不减
+def matched_annual_frontier(records):
+    """累计最高分与其模型规模配对；同分时保留先达到的前沿记录。"""
+    rows=[];incumbent=None
+    for year,group in records.groupby('Year',sort=True):
+        candidate=group.sort_values(['avg','P','Model'],ascending=[False,True,True]).iloc[0]
+        if incumbent is None or candidate.avg>incumbent.avg:
+            incumbent=candidate
+        rows.append(dict(Year=int(year),avg=float(candidate.avg),P=float(incumbent.P),
+                         cum_avg=float(incumbent.avg),frontier_model=incumbent.Model,
+                         frontier_record_year=int(incumbent.Year)))
+    return pd.DataFrame(rows)
+
+front_year = matched_annual_frontier(ts_ok)
 front_year['t'] = front_year.Year - 2019
 front_year['logP'] = np.log10(front_year.P)
 save_csv_safe(front_year, '前沿序列.csv')
@@ -321,7 +333,7 @@ save_csv_safe(dec, '规模时间分解_长周期.csv')
 print('\n  前沿序列（年度最高分 + 累计最大，%d-%d）：'
       % (front_year.Year.iloc[0], front_year.Year.iloc[-1]))
 print(front_year.round(2).to_string(index=False))
-print('  贡献分解：')
+print('  规模关联项与未解释剩余项核算（CSV 沿用历史列名）：')
 print(dec.round(2).to_string(index=False))
 print('  提示：C3 早期年份为公开报告值（每 1-7 条），跨年评测标准不完全一致（C3 标注'
       '为“混合”口径），故长周期占比视为量级参考；C1 近端口径标准一致但窗口仅约 1 年。')
@@ -348,7 +360,8 @@ t_front, s_front = t_front[idx], np.maximum.accumulate(s_front[idx])
 def month_stats(period):
     g = lb_o[lb_o.date.dt.to_period('M').eq(period)]
     g = g.nlargest(max(1, int(len(g) * 0.01)), 'avg')
-    return float(g.avg.mean()), float(g.P.max())
+    # 同一组模型的均分与平均对数规模配对；返回几何均值用于原对数比公式。
+    return float(g.avg.mean()), float(10**np.log10(g.P).mean())
 
 p0, pk = mon_top1.index[0], mon_top1.idxmax()
 F0_, P0_ = month_stats(p0)
@@ -366,9 +379,9 @@ dec1 = pd.DataFrame([{
 dec_all = pd.concat([dec, dec1], ignore_index=True)
 save_csv_safe(dec_all, '规模时间分解.csv')
 print('\n  近端口径（一致窗口）分解：前沿 %s->%s 由 %.2f 升至 %.2f（+%.2f 分），'
-      '前沿模型规模 %sB->%sB（Δlog10P=%.3f）'
+      '前列组参数几何均值 %sB->%sB（Δlog10P=%.3f）'
       % (str(p0), str(pk), F0_, Fk_, dF1, ('%.1f' % P0_), ('%.1f' % Pk_), dLP1))
-print('  -> 规模贡献 %.2f 分，非规模贡献 %.2f 分；该窗口内前沿提升基本来自非规模因素。'
+print('  -> 规模关联项 %.2f 分，未解释剩余项 %.2f 分；剩余项不能识别技术进步的因果份额。'
       % (bP_fe * dLP1, dF1 - bP_fe * dLP1))
 
 def logistic(t, K, r, t0):
@@ -419,6 +432,7 @@ save_csv_safe(fut, '前沿预测.csv')
 F_last = float(np.max(s_front))
 scen = []
 for yrs in [1, 2]:
+    # 情景名和列名沿用历史 CSV 接口；实际假设为把年份组差逐年累加或减半，不估计算力传导。
     for dlogP, bt_use, lbl in [(0.0, bt_ols, '基准（前沿模型规模持平，非规模增速不变）'),
                                (0.0, bt_ols / 2, '算力增长放缓（非规模增速减半）'),
                                (0.3, bt_ols, '规模继续扩张（前沿 +0.3 dex/年）')]:
@@ -491,8 +505,8 @@ print(task_df.to_string(index=False))
 # ============ 9. 汇总 ============
 d0 = dec.iloc[0]
 print('\n===== 问题四求解完成 =====')
-print('  桥接：全样本 r=%.3f；分解（%s）：规模 %.1f%% / 非规模 %.1f%%；'
-      'OLS 版：规模 %.1f%% / 非规模 %.1f%%'
+print('  桥接：全样本 r=%.3f；核算（%s）：规模关联 %.1f%% / 未解释剩余 %.1f%%；'
+      '近端：规模关联 %.1f%% / 未解释剩余 %.1f%%'
       % (bridge_df.iloc[2]['Pearson_r'], d0['前沿区间'], d0['规模占比%'], d0['非规模占比%'],
          dec_all.iloc[1]['规模占比%'], dec_all.iloc[1]['非规模占比%']))
 print('  前沿预测（+12/+24 个月）：%s %.2f（90%%CI %.2f-%.2f）；%s %.2f（90%%CI %.2f-%.2f）；'

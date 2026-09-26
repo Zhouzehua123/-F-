@@ -3,13 +3,13 @@
     "tex": "论文/figures/q1-workflow.tex",
     "figure": "求解/问题一/图片/图8_问题一求解流程.png",
     "source": "求解/问题一/重绘图表.py",
-    "sha256": "4e8b35231d00b0478bab3b6efa224b945f957e368b225fbde96e5c145f2c0801"
+    "sha256": "30c7efac5023dc9473142b78515f138096c7bd34223d303b71690346ddaf324e"
   },
   {
     "tex": "论文/5.1.问题一.tex",
     "figure": "求解/问题一/图片/图0_A1-A3全量质量评分.png",
     "source": "求解/问题一/重绘图表.py",
-    "sha256": "0b99726d106310f157b3b943512868a2e2836d12f0e3662f0899b4d9c95143f5"
+    "sha256": "65d50e4d477d77627d1fa206d085d09b335acbb02b1ecc69c7bece3631475009"
   },
   {
     "tex": "论文/5.1.问题一.tex",
@@ -21,49 +21,49 @@
     "tex": "论文/5.1.问题一.tex",
     "figure": "求解/问题一/图片/图1_训练配比结构.png",
     "source": "求解/问题一/重绘图表.py",
-    "sha256": "a8e21c469ce4db510063d39dd42705e14c5105a4d33bf3a7b5cbb49a467f6a6b"
+    "sha256": "9cc1aae62493b38c24cb45e1e0c6f9afc551ba3d8822fa86a3bc6ea34d71526d"
   },
   {
     "tex": "论文/5.1.问题一.tex",
     "figure": "求解/问题一/图片/图2_线性模型R2.png",
     "source": "求解/问题一/重绘图表.py",
-    "sha256": "40ac73df70bc8c2114ad71ec412a624cc27606bd4c9d702d40d52c1a1ef0f0bb"
+    "sha256": "29a7c143fd2c58ea2de3b05c2ee367c69fb3618791674eee98aa89d457b8f530"
   },
   {
     "tex": "论文/5.1.问题一.tex",
     "figure": "求解/问题一/图片/图9_非线性代理对照.png",
     "source": "求解/问题一/重绘图表.py",
-    "sha256": "230f818359e94c8d6a94498bcd0ad7b7bd4a851e577f008b1eb274b81379510f"
+    "sha256": "f9cb019187798a7bcc4a7d42f06d86622c842e20ce6e65b0ccae1365a47b8a5e"
   },
   {
     "tex": "论文/5.1.问题一.tex",
     "figure": "求解/问题一/图片/图4_混合系数热力图.png",
     "source": "求解/问题一/重绘图表.py",
-    "sha256": "fe8629cd4b84edb3d000bb2b89c2baf69c50befdd2e25a065e83446519133932"
+    "sha256": "bde7dab6eb8eeb06a5b22b5493caef94639e00481819c369b1057b4462d48bba"
   },
   {
     "tex": "论文/5.1.问题一.tex",
     "figure": "求解/问题一/图片/图3_预测vs实测.png",
     "source": "求解/问题一/重绘图表.py",
-    "sha256": "549f776a701cf83f29965e0e3f66bf807e0a1e72a58a6d37d20654ec07a0deb8"
+    "sha256": "fb812e4ad862d2d0ed569d9d0064305023174463956496909ef362999d85ef94"
   },
   {
     "tex": "论文/5.1.问题一.tex",
     "figure": "求解/问题一/图片/图5_领域质量评分.png",
     "source": "求解/问题一/重绘图表.py",
-    "sha256": "ad940bd7057043cbc11e81e1876ed95a7daa1710b6863220100ab810f7bd7575"
+    "sha256": "5dcd7cea35ebbc41a45f7b5d13fa7778f540849f6e4169ecd2dd18b5850c71e0"
   },
   {
     "tex": "论文/5.1.问题一.tex",
     "figure": "求解/问题一/图片/图7_外推与跨尺度.png",
     "source": "求解/问题一/重绘图表.py",
-    "sha256": "c3007556ba5af1d0cbb07dac4c46b17413fff48633ae9c708e0d2e26daef63e5"
+    "sha256": "e9bb9fb127b3cee6fbc6dfea3ea1ee05490c34e4bbf4db0c47a8f88ff2da30b0"
   },
   {
     "tex": "论文/5.2.问题二.tex",
     "figure": "求解/问题二/图片/图0_问题二分析框架.png",
     "source": "求解/问题二/重绘图表.py",
-    "sha256": "28aefa897b7445f4fdaa4c55bd6e25bcac64c623eef7062609c7c7617da23ec5"
+    "sha256": "33195c8cc8eec709d2d7ad042b227dcc4be995922e02f092af35159339c4a9b4"
   },
   {
     "tex": "论文/5.2.问题二.tex",
@@ -153,7 +153,7 @@
     "tex": "论文/5.4.问题四.tex",
     "figure": "求解/问题四/图片/图2_规模时间分解.png",
     "source": "求解/问题四/重绘图表.py",
-    "sha256": "3a4510659a36c937229ee163094b2a489f7bab99358f955dea8a2dc265da3f15"
+    "sha256": "17c4eef58109f860ccfdb0940919e9759f8f1a588c727ba17a7369b8a7b86798"
   },
   {
     "tex": "论文/5.4.问题四.tex",
@@ -183,6 +183,6 @@
     "tex": "论文/2.总体分析.tex",
     "figure": "论文/figures/overall-architecture.tex",
     "source": "原生TikZ，随论文编译",
-    "sha256": "2928f0fa1e139f8eaa1a78da0dd7b566cce41dc4a404c13aee77985776f2ad5c"
+    "sha256": "975f850641936f7f9398825a0ff24023e075fde76938562b377ab97510d6f3a2"
   }
 ]

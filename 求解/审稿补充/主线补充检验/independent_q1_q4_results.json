@@ -1,0 +1,317 @@
+{
+  "q1": {
+    "weights": {
+      "arxiv": 0.1160730406731105,
+      "freelaw": 0.09943787089086019,
+      "pubmed_central": 0.11681733010741041,
+      "wikipedia_en": 0.07711721254579086,
+      "dm_mathematics": 0.026152444920575692,
+      "github": 0.11369572805951107,
+      "stackexchange": 0.10212413383567846,
+      "gutenberg_pg_19": 0.048186220815227644,
+      "pile_cc": 0.12272750982020697,
+      "ubuntu_irc": 0.020131925803772408,
+      "hackernews": 0.011964803736292839,
+      "pubmed_abstracts": 0.06797107903912436,
+      "uspto_backgrounds": 0.07760069975243851
+    },
+    "same_objective": [
+      {
+        "scope": "1B",
+        "model": "ridge",
+        "n": 64,
+        "spearman": -0.07953296703296703,
+        "selected_index": 36,
+        "selected_observed_rank": 64,
+        "selected_observed": 2.2808723350214,
+        "best_observed": 2.045844187678184,
+        "selection_regret": 0.2350281473432161
+      },
+      {
+        "scope": "1B",
+        "model": "sqrt_krr",
+        "n": 64,
+        "spearman": 0.6396062271062269,
+        "selected_index": 12,
+        "selected_observed_rank": 2,
+        "selected_observed": 2.0524204739730187,
+        "best_observed": 2.045844187678184,
+        "selection_regret": 0.0065762862948348655
+      },
+      {
+        "scope": "1m",
+        "model": "ridge",
+        "n": 256,
+        "spearman": 0.4279833772030212,
+        "selected_index": 240,
+        "selected_observed_rank": 58,
+        "selected_observed": 5.071982386360637,
+        "best_observed": 4.8084621512735986,
+        "selection_regret": 0.2635202350870385
+      },
+      {
+        "scope": "1m",
+        "model": "sqrt_krr",
+        "n": 256,
+        "spearman": 0.9627896829938201,
+        "selected_index": 239,
+        "selected_observed_rank": 1,
+        "selected_observed": 4.8084621512735986,
+        "best_observed": 4.8084621512735986,
+        "selection_regret": 0.0
+      },
+      {
+        "scope": "60m",
+        "model": "ridge",
+        "n": 256,
+        "spearman": 0.40169446669718467,
+        "selected_index": 240,
+        "selected_observed_rank": 72,
+        "selected_observed": 3.6036350362031517,
+        "best_observed": 3.3680238696299973,
+        "selection_regret": 0.2356111665731544
+      },
+      {
+        "scope": "60m",
+        "model": "sqrt_krr",
+        "n": 256,
+        "spearman": 0.9571891451132981,
+        "selected_index": 239,
+        "selected_observed_rank": 4,
+        "selected_observed": 3.3952473282948428,
+        "best_observed": 3.3680238696299973,
+        "selection_regret": 0.027223458664845435
+      },
+      {
+        "scope": "train_oof",
+        "model": "ridge",
+        "n": 512,
+        "spearman": 0.3154312186001534,
+        "selected_index": 125,
+        "selected_observed_rank": 142,
+        "selected_observed": 5.102075044291968,
+        "best_observed": 4.833092749241491,
+        "selection_regret": 0.26898229505047677
+      },
+      {
+        "scope": "train_oof",
+        "model": "sqrt_krr",
+        "n": 512,
+        "spearman": 0.956684215533125,
+        "selected_index": 170,
+        "selected_observed_rank": 2,
+        "selected_observed": 4.861148867604878,
+        "best_observed": 4.833092749241491,
+        "selection_regret": 0.02805611836338695
+      }
+    ],
+    "krr_rebuild_max_abs_error": 3.865352482534945e-12,
+    "reference_and_recommended": {
+      "linear": [
+        5.334831088274078,
+        5.136032004666196
+      ],
+      "sqrt_krr": [
+        4.817337853603887,
+        4.988626147774963
+      ],
+      "linear_change": -0.19879908360788257,
+      "krr_change": 0.1712882941710756
+    },
+    "hull": {
+      "reference_closed": {
+        "feasible": true,
+        "status": 0,
+        "minimum_linf_distance": 0.0
+      },
+      "recommended": {
+        "feasible": false,
+        "status": 2,
+        "minimum_linf_distance": 0.01003192001278899
+      }
+    },
+    "regularization": {
+      "centered_relative_change": 0.5633399541339644,
+      "sign_flips": 16,
+      "domains": [
+        "arxiv",
+        "freelaw",
+        "nih_exporter",
+        "pubmed_central",
+        "wikipedia_en",
+        "dm_mathematics",
+        "github",
+        "philpapers",
+        "stackexchange",
+        "enron_emails",
+        "gutenberg_pg_19",
+        "pile_cc",
+        "ubuntu_irc",
+        "europarl",
+        "hackernews",
+        "pubmed_abstracts",
+        "uspto_backgrounds"
+      ],
+      "mixture_lambda_001": [
+        0.0,
+        0.0,
+        0.005888671875,
+        0.2843212890625,
+        0.016309570312500354,
+        0.06365234374999999,
+        0.0,
+        0.005486328125,
+        0.24855957031249976,
+        0.0022109375,
+        0.1172802734375,
+        0.0,
+        0.0489990234375,
+        0.012736328125,
+        0.02912109375,
+        0.1654345703125,
+        0.0
+      ],
+      "mixture_lambda_01": [
+        0.0,
+        0.0,
+        0.005888671875,
+        0.11293554687500029,
+        0.1876953125,
+        0.06365234374999999,
+        0.0,
+        0.005486328125,
+        0.24855957031249976,
+        0.0022109375,
+        0.1172802734375,
+        0.0,
+        0.0489990234375,
+        0.012736328125,
+        0.02912109375,
+        0.1654345703125,
+        0.0
+      ],
+      "objective_lambda_001": 5.13603200466619,
+      "objective_lambda_01": 5.1377159635041005,
+      "both_recipes_under_original_model": [
+        5.13603200466619,
+        5.138313465209946
+      ]
+    },
+    "github_shares": {
+      "full": 0.7843966165758427,
+      "A1": 0.19519812609798945
+    }
+  },
+  "q4": {
+    "records": 2346,
+    "unique_model_names": 2294,
+    "names_across_years": 0,
+    "year_mean_dates": {
+      "2024.0": "2024-09-21 02:46:51.083123",
+      "2025.0": "2025-02-06 13:10:17.414248"
+    },
+    "mean_date_gap_years": 0.37900874372971965,
+    "annual_label_regression": {
+      "intercept": -15.464052050140005,
+      "scale": 13.842039557725968,
+      "time": 4.843812529258716,
+      "r2": 0.47473516214708544
+    },
+    "continuous_date_regression": {
+      "intercept": -70.62465689659176,
+      "scale": 14.167886504274204,
+      "time": 13.803144359069911,
+      "r2": 0.515980761302157
+    },
+    "annual_frontier_subjects": [
+      {
+        "year": 2019,
+        "score_peak_model": "GPT-2 (1.5B)",
+        "score_peak": 5.0,
+        "score_peak_parameters": 1.5,
+        "max_size_model": "GPT-2 (1.5B)",
+        "max_size": 1.5,
+        "max_size_model_score": 5.0
+      },
+      {
+        "year": 2021,
+        "score_peak_model": "GPT-J (6B)",
+        "score_peak": 5.0,
+        "score_peak_parameters": 6.0,
+        "max_size_model": "GPT-J (6B)",
+        "max_size": 6.0,
+        "max_size_model_score": 5.0
+      },
+      {
+        "year": 2022,
+        "score_peak_model": "BLOOM (7B)",
+        "score_peak": 5.0,
+        "score_peak_parameters": 7.1,
+        "max_size_model": "BLOOM (7B)",
+        "max_size": 7.1,
+        "max_size_model_score": 5.0
+      },
+      {
+        "year": 2023,
+        "score_peak_model": "LLaMA (7B)",
+        "score_peak": 10.0,
+        "score_peak_parameters": 7.0,
+        "max_size_model": "Pythia-12B",
+        "max_size": 12.0,
+        "max_size_model_score": 8.0
+      },
+      {
+        "year": 2024,
+        "score_peak_model": "MaziyarPanahi/calme-3.2-instruct-78b",
+        "score_peak": 52.08,
+        "score_peak_parameters": 77.965,
+        "max_size_model": "mistral-community/mixtral-8x22B-v0.3",
+        "max_size": 140.63,
+        "max_size_model_score": 25.8
+      },
+      {
+        "year": 2025,
+        "score_peak_model": "fluently-lm/FluentlyLM-Prinum",
+        "score_peak": 47.22,
+        "score_peak_parameters": 32.764,
+        "max_size_model": "Baptiste-HUVELLE-10/LeTriomphant2.2_ECE_iLAB",
+        "max_size": 72.706,
+        "max_size_model_score": 41.3
+      }
+    ],
+    "frontier": {
+      "n": 14,
+      "historical_n": 4,
+      "monthly_n": 10,
+      "peak_repeated_points": 7,
+      "parameters": [
+        56.61015835873779,
+        2.522783031648232,
+        5.110918224289404
+      ],
+      "prediction": [
+        56.32654893658683,
+        56.58729733292205
+      ],
+      "truncated_last_3_parameters": [
+        71.40353344426846,
+        1.9086853386354319,
+        5.374695364576467
+      ],
+      "truncated_last_3_prediction": [
+        69.31020725536828,
+        71.08519626345401
+      ],
+      "holdout_cutoff": "2024-09",
+      "holdout_n": 6,
+      "holdout_logistic_parameters": [
+        99.99999999998722,
+        1.7098634712858916,
+        5.746288639521343
+      ],
+      "holdout_logistic_rmse": 11.139537612045002,
+      "holdout_persistence_rmse": 0.0
+    }
+  },
+  "official_results_unchanged": true
+}

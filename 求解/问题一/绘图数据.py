@@ -113,7 +113,8 @@ def load_plot_data(data_dir=None):
     train_y = attachment('train_pile_loss_1m.csv', 'metric/the_pile_').loc[:, coef.columns]
     if not train_x.index.equals(train_y.index):
         raise ValueError('训练配方与损失的 index 不一致。')
-    same('参考配比', train_x.mean(axis=0), recommended.reference_mixture)
+    mean_mixture=train_x.mean(axis=0)
+    same('闭合参考配比', mean_mixture/mean_mixture.sum(), recommended.reference_mixture)
     same('训练领域平均损失', train_y.mean(axis=0), metrics.mean_loss)
 
     def r_squared(y, pred):

@@ -99,11 +99,11 @@
     "saved/求解/问题三/结果/预算扫略.csv": "da9450bcb7753c618da61b84fd94f748e216f492d491140bce04642355a71e46",
     "saved/求解/广义标度律参数.csv": "7008f219457a593451c19f97c37e370eecbb8736e2e5ff274d39322d79186c37",
     "saved/求解/问题一_关键量.json": "67352ca69b02130cb19683cfa13c1c9932c5c576715e71d8cc5e02aaac208af1",
-    "saved/求解/问题三/问题三.py": "f05a50b16bf0083e1c747dd1afadff178f85bcfb2290dd41bc0f15274793b9b6",
+    "saved/求解/问题三/问题三.py": "9747f83ed62da1370831738a6b71563b58c84b8b5867fd238b60ece059476457",
     "regenerated/求解/问题三/结果/预算扫略.csv": "055eab7200d911e29bda4595a030bc053476f8fd3d73ac359310430f93492744",
     "regenerated/求解/广义标度律参数.csv": "471d0f0122f78e16a646b12213642d3a56d787dbd7e7122a2d61be062268f286",
     "regenerated/求解/问题一_关键量.json": "0a56a6219aa43f1fdbe60d6876de2467fa768603eb40122ed341a217ea890eeb",
-    "regenerated/求解/问题三/问题三.py": "f05a50b16bf0083e1c747dd1afadff178f85bcfb2290dd41bc0f15274793b9b6"
+    "regenerated/求解/问题三/问题三.py": "9747f83ed62da1370831738a6b71563b58c84b8b5867fd238b60ece059476457"
   },
   "profile_method": "Budget elimination; logN brentq; Q derivative sign-change roots on 513-point grid plus endpoint-tail grid; include both endpoints. Finite diagnostic, not global proof.",
   "profile_candidates": [
@@ -684,5 +684,6 @@
       ]
     }
   ],
+  "baseline_main": "529d586b6537b154eb44103d4e90a59a60d76282",
   "final_reproduction_inputs_match_diagnosed_run": true
 }

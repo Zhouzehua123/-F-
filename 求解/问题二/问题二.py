@@ -261,13 +261,10 @@ def mix_obj(p):
     return float(w_ref @ (np.asarray(p) @ coef.loc[domains].to_numpy()
                           + inter.loc[loss_domains].to_numpy()))
 
-ref_obj = mix_obj(p_ref)
-rec = pd.read_csv(os.path.join(p1_dir, '推荐配比调整.csv')).set_index('domain').loc[domains]
-p_rec = rec.recommended_mixture.to_numpy(float)
-mix_delta_rec = mix_obj(p_rec) - ref_obj
-save_csv_safe(pd.DataFrame([{'mixture': '参考配比', 'predicted_weighted_loss': ref_obj, 'M_p': 0.},
-                            {'mixture': '问题一有界推荐', 'predicted_weighted_loss': mix_obj(p_rec),
-                             'M_p': mix_delta_rec}]), '配比项校准.csv')
+mix_cal = pd.read_csv(os.path.join(p1_dir, '核岭推荐_目标对照.csv'))
+mix_delta_rec = float(mix_cal.loc[mix_cal.mixture.eq('问题一有界推荐'),'M_p'].iloc[0])
+# 配比修正沿用同一核岭目标，线性系数仅用于下方领域关联解释。
+save_csv_safe(mix_cal, '配比项校准.csv')
 
 Cn = coef.loc[domains].to_numpy()
 Cc = Cn - Cn.mean(axis=0, keepdims=True)

@@ -92,8 +92,8 @@ def plot_workflow(data, out):
          '线性系数解释\n核岭同尺度预测', TEAL)
     node(3.34, y, w, h, '检验与跨尺度',
          '1M / 60M / 1B 检验\n10B / 70B 外推表', BLUE, body_size=9)
-    node(4.92, y, w, h, '线性条件候选',
-         '固定未测量域\n其余领域配比\n受设定上限约束', GOLD, body_size=9)
+    node(4.92, y, w, h, '核岭支持域推荐',
+         '训练配方凸组合\n固定未测量域\n保留配比上限', GOLD, body_size=9)
     for right, left in [(1.58, 1.76), (3.16, 3.34), (4.74, 4.92)]:
         arrow([(right + .025, 1.105), (left - .025, 1.105)], TEAL)
 

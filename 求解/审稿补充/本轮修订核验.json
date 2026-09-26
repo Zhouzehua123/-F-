@@ -1,514 +1,3416 @@
 {
-  "baseline": "90beddeb17699edbd49f6fab5036517f42a8d2b9",
-  "scope": "current files; main algorithms and saved numerical results retained; added diagnostics separate",
+  "root": "C:\\Users\\admin\\.codex\\worktrees\\huawei-f-review-integration",
+  "baseline_revision": "529d586b6537b154eb44103d4e90a59a60d76282",
+  "started_at_utc": "2026-09-26T20:24:17.222302+00:00",
+  "scope": "Static preservation and artifact integrity only; no model execution.",
+  "assertions": [
+    {
+      "name": "algorithm:求解/问题一/问题一.py",
+      "passed": true
+    },
+    {
+      "name": "algorithm:求解/问题二/问题二.py",
+      "passed": true
+    },
+    {
+      "name": "algorithm:求解/问题三/问题三.py",
+      "passed": true
+    },
+    {
+      "name": "algorithm:求解/问题四/问题四.py",
+      "passed": true
+    },
+    {
+      "name": "algorithm:求解/问题一/核岭支持域推荐.py",
+      "passed": true
+    },
+    {
+      "name": "algorithm:求解/问题一/非线性代理对照.py",
+      "passed": true
+    },
+    {
+      "name": "algorithm:求解/_common.py",
+      "passed": true
+    },
+    {
+      "name": "five Q1 metadata exceptions only",
+      "passed": true
+    },
+    {
+      "name": "85 distinct expected outputs",
+      "passed": true,
+      "details": {
+        "count": 85,
+        "by_question": {
+          "问题一": 41,
+          "问题二": 16,
+          "问题三": 9,
+          "问题四": 19
+        }
+      }
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/17域质量映射.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/Loss代理领域难度.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/冲突指标对_top20.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/冲突样本裁决汇总.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/冲突阈值灵敏度.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/原文抽查.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/外推尺度因子.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/岭正则敏感性.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/广告方向敏感性.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/截距.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/抽样集与扩展集域级对照.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/推荐配比调整.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/最优配比预测.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/样本级质量评分.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/混合系数矩阵.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/混合系数矩阵_中心化.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/训练域边际效应.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/质量与损失难度一致性.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/质量信号缺失审计.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/质量冲突与一致性.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/质量域评分_全量.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/质量域评分_抽样与扩展.csv",
+      "passed": true
+    },
+    {
+      "name": "exactly five saved semantics corrected",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/质量指标熵权.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/质量项增量检验.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/赋权方案对比.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/跨尺度损失比_60m_vs_1m.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/问题一_拟合汇总.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/非线性代理对照_五折.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/非线性代理对照_参数搜索.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/非线性代理对照_复现清单.json",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/非线性代理对照_折分配.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/非线性代理对照_汇总.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/非线性代理对照_逐域.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/非线性代理对照_预测明细.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/领域质量评分.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/17域质量映射.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一_关键量.json",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/线性有界配比对照.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/核岭推荐_训练凸组合.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/核岭推荐_多初值.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题一/结果/核岭推荐_目标对照.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/B3轨迹验证.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/广义标度律分层验证.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/广义标度律参数.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/广义标度律形式对比.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/弹性与替代关系.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/替代率随质量变化.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/百亿参数以上外推.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/经典标度律参数.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/质量与损失下限.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/质量参数替代关系.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/质量字段方向审计.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/配比项校准.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/问题二_拟合汇总.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/领域替代互补_top.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题二/结果/领域替代互补矩阵.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/广义标度律参数.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题三/结果/三档预算最优配置.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题三/结果/上下文长度与最优质量.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题三/结果/上下文长度敏感性.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题三/结果/上下文长度连续扫描.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题三/结果/成本函数对比.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题三/结果/结构性转移识别.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题三/结果/质量基线灵敏度.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题三/结果/配比项算力等价.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题三/结果/预算扫略.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/C3口径异常行.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/C4宏观摘要.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/C4宏观趋势.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/C8与C1一致性校验.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/C8子任务类别汇总.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/C8逐任务聚合.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/C8逐任务解析结果.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/logistic参数.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/Loss_Benchmark映射.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/Loss_Benchmark映射明细.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/前沿序列.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/前沿预测.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/前沿预测_结构外推情景.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/年份效应.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/筛选漏斗.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/规模时间分解.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/规模时间分解_长周期.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/逐任务聚合.csv",
+      "passed": true
+    },
+    {
+      "name": "saved_output:求解/问题四/结果/面板回归数据.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/domain_mapping_guide.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_domain_sample.jsonl.xz",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_domain_summary.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_tables/est_mixture_10b.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_tables/est_mixture_70b.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_tables/est_pile_loss_10b.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_tables/est_pile_loss_70b.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_tables/test_mixture_1B.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_tables/test_mixture_1m.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_tables/test_mixture_60m.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_tables/test_pile_loss_1B.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_tables/test_pile_loss_1m.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_tables/test_pile_loss_60m.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_tables/train_mixture_1m.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/regmix_tables/train_pile_loss_1m.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/slimpajama_quality_extended/arxiv_part-6777d8857c6e-000486.jsonl.xz",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/slimpajama_quality_extended/github_part-6777d8857c6e-000275.jsonl.xz",
+      "passed": true
+    },
+    {
+      "name": "raw_input:A_data_value/slimpajama_quality_signal_sample.jsonl.xz",
+      "passed": true
+    },
+    {
+      "name": "raw_input:attachment_size_summary.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/cerebras_training_log.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/open_model_family_metadata.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/published_scaling_data.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/pythia_checkpoint_index.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/pythia_training_log_existing.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/scaling_baseline.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/supplementary_large_baseline.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/supplementary_large_models.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/supplementary_NQ_experiment.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/supplementary_NQ_experiment_expanded.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/supplementary_NQ_experiment_large.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/training_trajectories/pythia_0.070542B_trajectory.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/training_trajectories/pythia_0.162405B_trajectory.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/training_trajectories/pythia_0.409009B_trajectory.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/training_trajectories/pythia_1.040867B_trajectory.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/training_trajectories/pythia_1.416184B_trajectory.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/training_trajectories/pythia_11.965825B_trajectory.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/training_trajectories/pythia_2.782831B_trajectory.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:B_scaling_laws/training_trajectories/pythia_6.86104B_trajectory.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:C_efficiency_evolution/epoch_all_ai_models.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:C_efficiency_evolution/leaderboard_cleaned.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:C_efficiency_evolution/leaderboard_enhanced.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:C_efficiency_evolution/leaderboard_extended_timeseries.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:C_efficiency_evolution/loss_benchmark_bridge.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:C_efficiency_evolution/loss_benchmark_bridge_expanded.csv",
+      "passed": true
+    },
+    {
+      "name": "raw_input:C_efficiency_evolution/model_architecture_metadata.csv",
+      "passed": true
+    },
+    {
+      "name": "all 45 manifest raw inputs mapped",
+      "passed": true,
+      "details": {
+        "raw_count": 45,
+        "historical_code_and_generated_artifact_entries_excluded": 24
+      }
+    },
+    {
+      "name": "active TeX references and code inputs",
+      "passed": true,
+      "details": {
+        "active_files": 18,
+        "files": [
+          "论文/论文.tex",
+          "论文/0.摘要.tex",
+          "论文/1.引言.tex",
+          "论文/2.总体分析.tex",
+          "论文/figures/overall-architecture.tex",
+          "论文/3.模型假设.tex",
+          "论文/4.符号说明.tex",
+          "论文/5.模型的建立与求解.tex",
+          "论文/5.1.问题一.tex",
+          "论文/figures/q1-workflow.tex",
+          "论文/5.2.问题二.tex",
+          "论文/5.3.问题三.tex",
+          "论文/5.4.问题四.tex",
+          "论文/6.模型检验.tex",
+          "论文/7.模型评价.tex",
+          "论文/8.模型改进推广.tex",
+          "论文/10.参考文献.tex",
+          "论文/11.附录.tex"
+        ],
+        "labels": 123,
+        "bibliography": 27,
+        "code_listings": 26,
+        "missing_inputs": [],
+        "missing_refs": [],
+        "missing_citations": [],
+        "duplicate_labels": [],
+        "duplicate_bibliography_keys": [],
+        "missing_code_listings": []
+      }
+    },
+    {
+      "name": "31 active figure resources exist",
+      "passed": true
+    },
+    {
+      "name": "31 registered figure hashes match",
+      "passed": true
+    },
+    {
+      "name": "no unresolved text conflict markers",
+      "passed": true
+    },
+    {
+      "name": "all repository Python files parse",
+      "passed": true
+    },
+    {
+      "name": "observed repository files remained unchanged during this audit",
+      "passed": true,
+      "details": []
+    }
+  ],
   "main_sources": {
     "求解/问题一/问题一.py": {
-      "ast_equal_after_documented_description_correction": true,
-      "sha256": "37ceec536cec35245b0f5f85805fc72190cbdbeb0b6c8a89ba2c44f21e94e553"
+      "computational_ast_equal": true,
+      "print_evaluation_ast_equal_except_text_literals": true,
+      "sha256": "0c3f26f9b40452b76c039d04f73fe95d7709ff0b0c9bc236ca00b4c384021b7f",
+      "allowed_description_keys": [
+        "rps_doc_frac_no_alph_words",
+        "rps_doc_frac_chars_top_2gram",
+        "rps_doc_frac_chars_top_3gram",
+        "rps_lines_uppercase_letter_fraction",
+        "rps_lines_numerical_chars_fraction"
+      ],
+      "docstrings_old": [
+        {
+          "line": 5,
+          "text": "\n问题一：数据质量评价、质量冲突消解与领域配比建模\n数据：附件 A（A1-A3 质量信号；A4-A15 配方/Loss；A16 域映射）\n方法：1) 22 指标方向统一 + 1%--99% 分位数截断归一化 + 熵权法三级综合评分（样本/语料/领域）\n      2) 成对 z 分数差冲突定义 + Kendall 协同系数一致性检验 + 域内中位数裁决\n      3) 岭正则线性混合回归刻画 17 域配比 -> 13 域损失，并对照冗余质量特征的拟合变化\n输出：图片到 图片/，结果 CSV 到 结果/\n"
+        },
+        {
+          "line": 21,
+          "text": "保存 CSV；若目标被其他进程占用则回退为 *_new.csv，保证流程不中断。"
+        },
+        {
+          "line": 80,
+          "text": "把有序类别 logits 压缩为 [0,1] 上的归一化期望级别。"
+        },
+        {
+          "line": 91,
+          "text": "四维含义依次为写作风格、所需专业知识、事实知识、教育价值。\n\n    本文选取四维同向等权；各维缺失以中位数填补，按1%--99%分位缩放。\n    聚合后作为22指标之一，仍进入统一的外层方向与分位归一化。\n    "
+        },
+        {
+          "line": 126,
+          "text": "流式读取 A1-A3 全量记录，只保留建模字段和 A1 原文摘要。"
+        },
+        {
+          "line": 134,
+          "text": "字段级缺失判定：None、空列表、列表内含 None/NaN、标量为非有限数均计为缺失。"
+        },
+        {
+          "line": 184,
+          "text": "方向统一 -> 分位数截断的稳健极差归一化（正向缩放、负向取补、长度型转中心接近度）。"
+        },
+        {
+          "line": 198,
+          "text": "对象为行、评价指标为列；平均秩并扣除各列的并列秩修正项。"
+        }
+      ],
+      "docstrings_current": [
+        {
+          "line": 5,
+          "text": "\n问题一：数据质量评价、质量冲突消解与领域配比建模\n数据：附件 A（A1-A3 质量信号；A4-A15 配方/Loss；A16 域映射）\n方法：1) 22 指标方向统一 + 1%--99% 分位数截断归一化 + 熵权法三级综合评分（样本/语料/领域）\n      2) 成对 z 分数差冲突定义 + Kendall 协同系数一致性检验 + 域内中位数裁决\n      3) 岭正则线性混合回归刻画 17 域配比 -> 13 域损失，并对照冗余质量特征的拟合变化\n输出：图片到 图片/，结果 CSV 到 结果/\n"
+        },
+        {
+          "line": 21,
+          "text": "保存 CSV；若目标被其他进程占用则回退为 *_new.csv，保证流程不中断。"
+        },
+        {
+          "line": 80,
+          "text": "把有序类别 logits 压缩为 [0,1] 上的归一化期望级别。"
+        },
+        {
+          "line": 91,
+          "text": "四维含义依次为写作风格、所需专业知识、事实知识、教育价值。\n\n    本文选取四维同向等权；各维缺失以中位数填补，按1%--99%分位缩放。\n    聚合后作为22指标之一，仍进入统一的外层方向与分位归一化。\n    "
+        },
+        {
+          "line": 126,
+          "text": "流式读取 A1-A3 全量记录，只保留建模字段和 A1 原文摘要。"
+        },
+        {
+          "line": 134,
+          "text": "字段级缺失判定：None、空列表、列表内含 None/NaN、标量为非有限数均计为缺失。"
+        },
+        {
+          "line": 184,
+          "text": "方向统一 -> 分位数截断的稳健极差归一化（正向缩放、负向取补、长度型转中心接近度）。"
+        },
+        {
+          "line": 198,
+          "text": "对象为行、评价指标为列；平均秩并扣除各列的并列秩修正项。"
+        }
+      ],
+      "prints_old": [
+        {
+          "line": 29,
+          "expression": "print('  ! %s 被占用，已改存为 %s' % (name_cn, os.path.basename(alt)))"
+        },
+        {
+          "line": 178,
+          "expression": "print('\\n质量信号缺失审计（合计 %d 个指标取值缺失）：' % int(miss_df.missing_count.sum()))"
+        },
+        {
+          "line": 179,
+          "expression": "print(miss_df[miss_df.missing_count > 0].to_string(index=False))"
+        },
+        {
+          "line": 180,
+          "expression": "print('  处理方式：方向统一前按该指标中位数填充（不把缺失当作高质量或低质量）。')"
+        },
+        {
+          "line": 357,
+          "expression": "print('质量全量记录 %s 条；A1=%s，A2+A3=%s' % (f'{len(meta):,}', f\"{int((meta.source == 'A1').sum()):,}\", f\"{int((meta.source != 'A1').sum()):,}\"))"
+        },
+        {
+          "line": 359,
+          "expression": "print(pd.DataFrame(ag).to_string(index=False))"
+        },
+        {
+          "line": 360,
+          "expression": "print('\\n赋权方案对比：')"
+        },
+        {
+          "line": 361,
+          "expression": "print(cmp_df.to_string(index=False))"
+        },
+        {
+          "line": 362,
+          "expression": "print('\\nad_en 熵权 = %.4f（方向敏感性另列对照）' % w_entropy[QUALITY_COLS.index('ad_en')])"
+        },
+        {
+          "line": 364,
+          "expression": "print('冲突最集中的 5 组指标对：')"
+        },
+        {
+          "line": 365,
+          "expression": "print(top_pairs.head(5).to_string())"
+        },
+        {
+          "line": 428,
+          "expression": "print('\\n=== 岭回归训练 R2（各损失域）===')"
+        },
+        {
+          "line": 430,
+          "expression": "print('  %-20s %.4f' % (d, v))"
+        },
+        {
+          "line": 431,
+          "expression": "print('训练平均 R2 = %.4f；同尺度 1M 检验平均 R2 = %.4f' % (r2_tr.mean(), r2_te1.mean()))"
+        },
+        {
+          "line": 432,
+          "expression": "print('跨尺度 Pearson：60M 平均 %.4f，1B 平均 %.4f' % (r_te2.mean(), r_te3.mean()))"
+        },
+        {
+          "line": 487,
+          "expression": "print('\\n=== 外推尺度因子（est/train 损失比）===')"
+        },
+        {
+          "line": 488,
+          "expression": "print('  10B 均值 %.4f (std %.4f)' % (ratio10.mean(), ratio10.std()))"
+        },
+        {
+          "line": 489,
+          "expression": "print('  70B 均值 %.4f (std %.4f)' % (ratio70.mean(), ratio70.std()))"
+        },
+        {
+          "line": 528,
+          "expression": "print('\\n线性对照：无约束最优加权平均损失 %.4f；有界方案 %.4f；参考配方 %.4f' % (obj(res.x), obj(res_b.x), float(w_ref @ predict(ref[None, :], A, b)[0])))"
+        },
+        {
+          "line": 530,
+          "expression": "print('线性有界对照配比（调整量最大增/减各 5 域；正式推荐见后续核岭输出）：')"
+        },
+        {
+          "line": 531,
+          "expression": "print(rec_df.head(5).to_string(index=False))"
+        },
+        {
+          "line": 532,
+          "expression": "print(rec_df.tail(5).to_string(index=False))"
+        },
+        {
+          "line": 559,
+          "expression": "print('\\n===== 问题一求解完成 =====')"
+        },
+        {
+          "line": 560,
+          "expression": "print('训练平均 R2=%.4f; 同尺度检验 R2=%.4f; 跨尺度相关 60M=%.4f, 1B=%.4f' % (r2_tr.mean(), r2_te1.mean(), r_te2.mean(), r_te3.mean()))"
+        },
+        {
+          "line": 562,
+          "expression": "print('追加混合质量指数 Qbar 的平均 R2 增量 = %.5f' % (r2_z - r2_tr).mean())"
+        },
+        {
+          "line": 563,
+          "expression": "print('全局平均质量 = %.4f；参考配比加权基线 Q0 = %.4f' % (quality_meta.quality_Q.mean(), float(ref @ qvec)))"
+        },
+        {
+          "line": 566,
+          "expression": "print('注意：以下结果文件因被占用而改存：', RC_FAILS)"
+        }
+      ],
+      "prints_current": [
+        {
+          "line": 29,
+          "expression": "print('  ! %s 被占用，已改存为 %s' % (name_cn, os.path.basename(alt)))"
+        },
+        {
+          "line": 178,
+          "expression": "print('\\n质量信号缺失审计（合计 %d 个指标取值缺失）：' % int(miss_df.missing_count.sum()))"
+        },
+        {
+          "line": 179,
+          "expression": "print(miss_df[miss_df.missing_count > 0].to_string(index=False))"
+        },
+        {
+          "line": 180,
+          "expression": "print('  处理方式：方向统一前按该指标中位数填充（不把缺失当作高质量或低质量）。')"
+        },
+        {
+          "line": 357,
+          "expression": "print('质量全量记录 %s 条；A1=%s，A2+A3=%s' % (f'{len(meta):,}', f\"{int((meta.source == 'A1').sum()):,}\", f\"{int((meta.source != 'A1').sum()):,}\"))"
+        },
+        {
+          "line": 359,
+          "expression": "print(pd.DataFrame(ag).to_string(index=False))"
+        },
+        {
+          "line": 360,
+          "expression": "print('\\n赋权方案对比：')"
+        },
+        {
+          "line": 361,
+          "expression": "print(cmp_df.to_string(index=False))"
+        },
+        {
+          "line": 362,
+          "expression": "print('\\nad_en 熵权 = %.4f（方向敏感性另列对照）' % w_entropy[QUALITY_COLS.index('ad_en')])"
+        },
+        {
+          "line": 364,
+          "expression": "print('冲突最集中的 5 组指标对：')"
+        },
+        {
+          "line": 365,
+          "expression": "print(top_pairs.head(5).to_string())"
+        },
+        {
+          "line": 428,
+          "expression": "print('\\n=== 岭回归训练 R2（各损失域）===')"
+        },
+        {
+          "line": 430,
+          "expression": "print('  %-20s %.4f' % (d, v))"
+        },
+        {
+          "line": 431,
+          "expression": "print('训练平均 R2 = %.4f；同尺度 1M 检验平均 R2 = %.4f' % (r2_tr.mean(), r2_te1.mean()))"
+        },
+        {
+          "line": 432,
+          "expression": "print('跨尺度 Pearson：60M 平均 %.4f，1B 平均 %.4f' % (r_te2.mean(), r_te3.mean()))"
+        },
+        {
+          "line": 487,
+          "expression": "print('\\n=== 外推尺度因子（est/train 损失比）===')"
+        },
+        {
+          "line": 488,
+          "expression": "print('  10B 均值 %.4f (std %.4f)' % (ratio10.mean(), ratio10.std()))"
+        },
+        {
+          "line": 489,
+          "expression": "print('  70B 均值 %.4f (std %.4f)' % (ratio70.mean(), ratio70.std()))"
+        },
+        {
+          "line": 528,
+          "expression": "print('\\n线性对照：无约束最优加权平均损失 %.4f；有界方案 %.4f；参考配方 %.4f' % (obj(res.x), obj(res_b.x), float(w_ref @ predict(ref[None, :], A, b)[0])))"
+        },
+        {
+          "line": 530,
+          "expression": "print('线性有界对照配比（调整量最大增/减各 5 域；正式推荐见后续核岭输出）：')"
+        },
+        {
+          "line": 531,
+          "expression": "print(rec_df.head(5).to_string(index=False))"
+        },
+        {
+          "line": 532,
+          "expression": "print(rec_df.tail(5).to_string(index=False))"
+        },
+        {
+          "line": 559,
+          "expression": "print('\\n===== 问题一求解完成 =====')"
+        },
+        {
+          "line": 560,
+          "expression": "print('训练平均 R2=%.4f; 同尺度检验 R2=%.4f; 跨尺度相关 60M=%.4f, 1B=%.4f' % (r2_tr.mean(), r2_te1.mean(), r_te2.mean(), r_te3.mean()))"
+        },
+        {
+          "line": 562,
+          "expression": "print('追加混合质量指数 Qbar 的平均 R2 增量 = %.5f' % (r2_z - r2_tr).mean())"
+        },
+        {
+          "line": 563,
+          "expression": "print('全局平均质量 = %.4f；参考配比加权基线 Q0 = %.4f' % (quality_meta.quality_Q.mean(), float(ref @ qvec)))"
+        },
+        {
+          "line": 566,
+          "expression": "print('注意：以下结果文件因被占用而改存：', RC_FAILS)"
+        }
+      ]
     },
     "求解/问题二/问题二.py": {
-      "ast_equal_after_documented_description_correction": true,
-      "sha256": "20f76a94d116bfe79b70097b769205a7c77e2771ecc2186e5da14160a2a1e27b"
+      "computational_ast_equal": true,
+      "print_evaluation_ast_equal_except_text_literals": true,
+      "sha256": "8925678239dc34176f3c35eeda93971558b7531c4ef0b65d2d2a748e98eeab00",
+      "allowed_description_keys": [],
+      "docstrings_old": [
+        {
+          "line": 5,
+          "text": "\n问题二：跨维度数据融合与广义标度律\n数据：附件 B（B1 主拟合；B2/B3 族外与轨迹验证；B4/B5 跨族与文献验证；\n      B6/B7 质量 Q；B8 大规模矩阵（方向异常，仅作可信度边界警示）；B9/B10 百亿参数以上外推）\n模型：经典 L = E + A N^-a + B D^-b\n      广义 L = E + A N^-a + B D^-b + C (1-Q)^g（Q=1 退化为经典形式）\n输出：图片到 图片/，结果 CSV 到 结果/，参数共享至 求解/广义标度律参数.csv\n"
+        }
+      ],
+      "docstrings_current": [
+        {
+          "line": 5,
+          "text": "\n问题二：跨维度数据融合与广义标度律\n数据：附件 B（B1 主拟合；B2/B3 族外与轨迹验证；B4/B5 跨族与文献验证；\n      B6/B7 质量 Q；B8 大规模矩阵（方向异常，仅作可信度边界警示）；B9/B10 百亿参数以上外推）\n模型：经典 L = E + A N^-a + B D^-b\n      广义 L = E + A N^-a + B D^-b + C (1-Q)^g（Q=1 退化为经典形式）\n输出：图片到 图片/，结果 CSV 到 结果/，参数共享至 求解/广义标度律参数.csv\n"
+        }
+      ],
+      "prints_old": [
+        {
+          "line": 27,
+          "expression": "print('  ! %s 被占用，已改存为 %s' % (name_cn, os.path.basename(alt)))"
+        },
+        {
+          "line": 71,
+          "expression": "print('=== 1. 经典标度律（B1 Pythia, n=%d）===' % len(pythia))"
+        },
+        {
+          "line": 72,
+          "expression": "print('  E=%.4f A=%.4f alpha=%.4f B=%.4f beta=%.4f' % (E0, A0, a0, B0, b0))"
+        },
+        {
+          "line": 73,
+          "expression": "print('  拟合 R2=%.8f  RMSE=%.6f  MAPE=%.4f%%' % (R2_cls, RMSE_cls, np.mean(np.abs(L_p - Lph) / L_p) * 100))"
+        },
+        {
+          "line": 75,
+          "expression": "print('  留出验证（4 小模型 -> 4 大模型）：R2=%.8f RMSE=%.6f MAPE=%.4f%%' % (hold['留出R2'], hold['留出RMSE'], hold['留出MAPE_%']))"
+        },
+        {
+          "line": 77,
+          "expression": "print('  提示：B1 拟合残差标准差仅 %.5f（损失标准差 %.4f），说明该附件近乎无观测噪声，其上高 R2 只能确认函数形式自洽，不能替代外部验证。' % (float(np.std(L_p - Lph)), float(np.std(L_p))))"
+        },
+        {
+          "line": 107,
+          "expression": "print('\\n=== 2. 质量字段方向审计（控制 N、D 的组内相关）===')"
+        },
+        {
+          "line": 108,
+          "expression": "print(pd.DataFrame(audit).to_string(index=False))"
+        },
+        {
+          "line": 109,
+          "expression": "print('  结论：B6/B7 的 Q_score 与损失负相关（r=%.3f / %.3f），是“质量”而非“难度”，故取 Q = Q_score（Q=1 最优），与问题一“越高越好”口径一致。' % (corr6, corr7))"
+        },
+        {
+          "line": 111,
+          "expression": "print('  B8 校准段方向相反（r=%.3f）：两套半合成数据口径不一致，B8 不并入拟合。' % corr8)"
+        },
+        {
+          "line": 164,
+          "expression": "print('\\n=== 3. 广义标度律形式对比 ===')"
+        },
+        {
+          "line": 165,
+          "expression": "print(sv.to_string(index=False))"
+        },
+        {
+          "line": 175,
+          "expression": "print('\\n选定形式：%s' % best_name)"
+        },
+        {
+          "line": 176,
+          "expression": "print('  E=%.4f A=%.4f alpha=%.4f B=%.4f beta=%.4f C=%.4f gamma=%.4f  R2=%.4f RMSE=%.4f MAPE=%.2f%%' % (E, A, alpha, B, beta, Cq, gamma, R2_gen, RMSE_gen, MAPE_gen))"
+        },
+        {
+          "line": 206,
+          "expression": "print('\\n=== 4. 广义标度律分层验证 ===')"
+        },
+        {
+          "line": 207,
+          "expression": "print(val_df.to_string(index=False))"
+        },
+        {
+          "line": 230,
+          "expression": "print('\\n=== 5. 弹性与质量—参数替代关系 ===')"
+        },
+        {
+          "line": 231,
+          "expression": "print(el_df.round(4).to_string(index=False))"
+        },
+        {
+          "line": 282,
+          "expression": "print('\\n=== 6. 领域替代与互补（系数向量余弦相似度）===')"
+        },
+        {
+          "line": 283,
+          "expression": "print('最可替代的 4 组：')"
+        },
+        {
+          "line": 283,
+          "expression": "print(pair_sim.head(4).to_string(index=False))"
+        },
+        {
+          "line": 284,
+          "expression": "print('最互补的 4 组：')"
+        },
+        {
+          "line": 284,
+          "expression": "print(pair_sim.tail(4).to_string(index=False))"
+        },
+        {
+          "line": 285,
+          "expression": "print('推荐配比带来的加权平均损失变化 M(p) = %.4f' % mix_delta_rec)"
+        },
+        {
+          "line": 299,
+          "expression": "print('\\n=== 7. B3 插值轨迹验证（轨迹内损失对 D 的幂指数 vs 经典 beta）===')"
+        },
+        {
+          "line": 300,
+          "expression": "print(traj_df.round(4).to_string(index=False))"
+        },
+        {
+          "line": 316,
+          "expression": "print('\\n===== 问题二求解完成 =====')"
+        },
+        {
+          "line": 317,
+          "expression": "print('经典 R2=%.8f，留出 R2=%.8f；广义 R2=%.4f；替代率 dN/dQ=%.3f B/单位质量' % (R2_cls, hold['留出R2'], R2_gen, subst))"
+        }
+      ],
+      "prints_current": [
+        {
+          "line": 27,
+          "expression": "print('  ! %s 被占用，已改存为 %s' % (name_cn, os.path.basename(alt)))"
+        },
+        {
+          "line": 71,
+          "expression": "print('=== 1. 经典标度律（B1 Pythia, n=%d）===' % len(pythia))"
+        },
+        {
+          "line": 72,
+          "expression": "print('  E=%.4f A=%.4f alpha=%.4f B=%.4f beta=%.4f' % (E0, A0, a0, B0, b0))"
+        },
+        {
+          "line": 73,
+          "expression": "print('  拟合 R2=%.8f  RMSE=%.6f  MAPE=%.4f%%' % (R2_cls, RMSE_cls, np.mean(np.abs(L_p - Lph) / L_p) * 100))"
+        },
+        {
+          "line": 75,
+          "expression": "print('  留出验证（4 小模型 -> 4 大模型）：R2=%.8f RMSE=%.6f MAPE=%.4f%%' % (hold['留出R2'], hold['留出RMSE'], hold['留出MAPE_%']))"
+        },
+        {
+          "line": 77,
+          "expression": "print('  提示：B1 拟合残差标准差仅 %.5f（损失标准差 %.4f），说明该附件近乎无观测噪声，其上高 R2 只能确认函数形式自洽，不能替代外部验证。' % (float(np.std(L_p - Lph)), float(np.std(L_p))))"
+        },
+        {
+          "line": 107,
+          "expression": "print('\\n=== 2. 质量字段方向审计（控制 N、D 的组内相关）===')"
+        },
+        {
+          "line": 108,
+          "expression": "print(pd.DataFrame(audit).to_string(index=False))"
+        },
+        {
+          "line": 109,
+          "expression": "print('  结论：B6/B7 的 Q_score 与损失负相关（r=%.3f / %.3f），是“质量”而非“难度”，故取 Q = Q_score（Q=1 最优），与问题一“越高越好”口径一致。' % (corr6, corr7))"
+        },
+        {
+          "line": 111,
+          "expression": "print('  B8 校准段方向相反（r=%.3f）：两套半合成数据口径不一致，B8 不并入拟合。' % corr8)"
+        },
+        {
+          "line": 164,
+          "expression": "print('\\n=== 3. 广义标度律形式对比 ===')"
+        },
+        {
+          "line": 165,
+          "expression": "print(sv.to_string(index=False))"
+        },
+        {
+          "line": 175,
+          "expression": "print('\\n选定形式：%s' % best_name)"
+        },
+        {
+          "line": 176,
+          "expression": "print('  E=%.4f A=%.4f alpha=%.4f B=%.4f beta=%.4f C=%.4f gamma=%.4f  R2=%.4f RMSE=%.4f MAPE=%.2f%%' % (E, A, alpha, B, beta, Cq, gamma, R2_gen, RMSE_gen, MAPE_gen))"
+        },
+        {
+          "line": 206,
+          "expression": "print('\\n=== 4. 广义标度律分层验证 ===')"
+        },
+        {
+          "line": 207,
+          "expression": "print(val_df.to_string(index=False))"
+        },
+        {
+          "line": 230,
+          "expression": "print('\\n=== 5. 弹性与质量—参数替代关系 ===')"
+        },
+        {
+          "line": 231,
+          "expression": "print(el_df.round(4).to_string(index=False))"
+        },
+        {
+          "line": 282,
+          "expression": "print('\\n=== 6. 领域替代与互补（系数向量余弦相似度）===')"
+        },
+        {
+          "line": 283,
+          "expression": "print('最可替代的 4 组：')"
+        },
+        {
+          "line": 283,
+          "expression": "print(pair_sim.head(4).to_string(index=False))"
+        },
+        {
+          "line": 284,
+          "expression": "print('最互补的 4 组：')"
+        },
+        {
+          "line": 284,
+          "expression": "print(pair_sim.tail(4).to_string(index=False))"
+        },
+        {
+          "line": 285,
+          "expression": "print('推荐配比带来的加权平均损失变化 M(p) = %.4f' % mix_delta_rec)"
+        },
+        {
+          "line": 299,
+          "expression": "print('\\n=== 7. B3 插值轨迹验证（轨迹内损失对 D 的幂指数 vs 经典 beta）===')"
+        },
+        {
+          "line": 300,
+          "expression": "print(traj_df.round(4).to_string(index=False))"
+        },
+        {
+          "line": 316,
+          "expression": "print('\\n===== 问题二求解完成 =====')"
+        },
+        {
+          "line": 317,
+          "expression": "print('经典 R2=%.8f，留出 R2=%.8f；广义 R2=%.4f；替代率 dN/dQ=%.3f B/单位质量' % (R2_cls, hold['留出R2'], R2_gen, subst))"
+        }
+      ]
     },
     "求解/问题三/问题三.py": {
-      "ast_equal_after_documented_description_correction": true,
-      "sha256": "f05a50b16bf0083e1c747dd1afadff178f85bcfb2290dd41bc0f15274793b9b6"
+      "computational_ast_equal": true,
+      "print_evaluation_ast_equal_except_text_literals": true,
+      "sha256": "9747f83ed62da1370831738a6b71563b58c84b8b5867fd238b60ece059476457",
+      "allowed_description_keys": [],
+      "docstrings_old": [
+        {
+          "line": 5,
+          "text": "\n问题三：算力约束下的多维资源联合优化与结构性转移\n输入：问题二广义标度律参数 L(N,D,Q)=E+A/N^a+B/D^b+C(1-Q)^g；\n      问题一的质量基线 Q0 与配比修正 M(p)；附件 C7 的上下文长度可行取值。\n成本（严格按赛题附录 B 与正文公式）：\n      C_total = C_train + C_Q + C_attn\n              = 6 N D + D * [g(Q) - g(Q0)]_+ + eta * N * D * L_ctx,  eta = 2e-4\n      g(Q) 取附录 B 三型（指数型 1e7*exp(6Q)、幂函数型 5e9*Q^4、对数渐进型 2e9*ln(1+10Q)）\n临界上下文长度：注意力开销 = 基础训练开销 <=> eta*N*D*L = 6*N*D <=> L_crit = 6/eta = 30000\n方法：三档预算联合优化（SLSQP，对数参数化）；预算扫略 + 结构性转移识别；L_ctx 敏感性。\n输出：图片到 图片/，结果 CSV 到 结果/。\n"
+        },
+        {
+          "line": 56,
+          "text": "验证损失：参数以 B 为单位代入问题二标度律，M_p 为配比项修正。"
+        },
+        {
+          "line": 97,
+          "text": "SLSQP 对数参数化联合优化 (N, D, Q)。"
+        }
+      ],
+      "docstrings_current": [
+        {
+          "line": 5,
+          "text": "\n问题三：算力约束下的多维资源联合优化与结构性转移\n输入：问题二广义标度律参数 L(N,D,Q)=E+A/N^a+B/D^b+C(1-Q)^g；\n      问题一的质量基线 Q0 与配比修正 M(p)；附件 C7 的上下文长度可行取值。\n成本（严格按赛题附录 B 与正文公式）：\n      C_total = C_train + C_Q + C_attn\n              = 6 N D + D * [g(Q) - g(Q0)]_+ + eta * N * D * L_ctx,  eta = 2e-4\n      g(Q) 取附录 B 三型（指数型 1e7*exp(6Q)、幂函数型 5e9*Q^4、对数渐进型 2e9*ln(1+10Q)）\n临界上下文长度：注意力开销 = 基础训练开销 <=> eta*N*D*L = 6*N*D <=> L_crit = 6/eta = 30000\n方法：三档预算联合优化（SLSQP，对数参数化）；预算扫略 + 结构性转移识别；L_ctx 敏感性。\n输出：图片到 图片/，结果 CSV 到 结果/。\n"
+        },
+        {
+          "line": 56,
+          "text": "验证损失：参数以 B 为单位代入问题二标度律，M_p 为配比项修正。"
+        },
+        {
+          "line": 97,
+          "text": "SLSQP 对数参数化联合优化 (N, D, Q)。"
+        }
+      ],
+      "prints_old": [
+        {
+          "line": 31,
+          "expression": "print('  ! %s 被占用，已改存为 %s' % (name_cn, os.path.basename(alt)))"
+        },
+        {
+          "line": 50,
+          "expression": "print('=== 0. 质量基线与模型参数（来自问题一、二）===')"
+        },
+        {
+          "line": 51,
+          "expression": "print('  参考语料配比加权基线质量 Q0 = %.4f（全量样本均值 %.4f）' % (Q0, Q0_sample))"
+        },
+        {
+          "line": 52,
+          "expression": "print('  标度律：E=%.4f A=%.4f alpha=%.4f B=%.4f beta=%.4f C=%.4f gamma=%.4f' % (E, A, alpha, B, beta, Cq, gamma))"
+        },
+        {
+          "line": 78,
+          "expression": "print('  g(%s) 在 Q0=%.3f 处为 %.4e，在 Q=1 处为 %.4e（单位算力/token）' % (form, Q0, g_of(Q0, form), g_of(1.0, form)))"
+        },
+        {
+          "line": 86,
+          "expression": "print('\\n=== 1. 临界上下文长度（解析解）===')"
+        },
+        {
+          "line": 87,
+          "expression": "print('  C_attn = eta*N*D*L_ctx, C_train = 6ND -> L_crit = 6/eta = %.0f tokens' % L_CRIT)"
+        },
+        {
+          "line": 88,
+          "expression": "print('  C7 给出的可行上下文长度（max_position_embeddings）: %s' % L_FEAS)"
+        },
+        {
+          "line": 89,
+          "expression": "print('  可行取值中跨越临界值的一对：8192（%.2f 倍）与 32768（%.2f 倍）' % (ETA * 8192 / 6, ETA * 32768 / 6))"
+        },
+        {
+          "line": 131,
+          "expression": "print('\\n=== 2. 三档预算最优配置（幂函数型质量成本，L_ctx=2048）===')"
+        },
+        {
+          "line": 136,
+          "expression": "print('  C=%.0e: N*=%.3fB D*=%.1fB Q*=%.4f L*=%.4f  [base %.1f%% qual %.1f%% attn %.1f%%]' % (Cb, r['N_B'], r['D_B'], r['Q'], r['L'], r['f_base'] * 100, r['f_qual'] * 100, r['f_attn'] * 100))"
+        },
+        {
+          "line": 143,
+          "expression": "print('\\n=== 3. 质量成本函数对最优解的影响 ===')"
+        },
+        {
+          "line": 153,
+          "expression": "print('  C=%.0e' % Cb)"
+        },
+        {
+          "line": 155,
+          "expression": "print('    %-6s N*=%.3fB D*=%.1fB Q*=%.4f L*=%.4f 质量投入占比 %.1f%%' % (r['form'], r['N_B'], r['D_B'], r['Q'], r['L'], r['f_qual'] * 100))"
+        },
+        {
+          "line": 161,
+          "expression": "print('\\n=== 3b. 质量基线口径灵敏度（Q0 由配比加权 %.4f 改为样本均值 %.4f）===' % (_Q0_main, Q0_sample))"
+        },
+        {
+          "line": 167,
+          "expression": "print('  C=%.0e: N*=%.3fB D*=%.1fB Q*=%.4f L*=%.4f 质量投入占比 %.1f%%' % (Cb, r['N_B'], r['D_B'], r['Q'], r['L'], r['f_qual'] * 100))"
+        },
+        {
+          "line": 175,
+          "expression": "print('\\n=== 4. 领域配比修正的算力等价效果（M(p)=%.4f）===' % M_p)"
+        },
+        {
+          "line": 178,
+          "expression": "print('  C=1e22：参考配比 L*=%.4f（N*=%.3fB D*=%.1fB Q*=%.4f）' % (r_ref['L'], r_ref['N_B'], r_ref['D_B'], r_ref['Q']))"
+        },
+        {
+          "line": 180,
+          "expression": "print('          推荐配比 L*=%.4f（N*=%.3fB D*=%.1fB Q*=%.4f）' % (r_mix['L'], r_mix['N_B'], r_mix['D_B'], r_mix['Q']))"
+        },
+        {
+          "line": 198,
+          "expression": "print('  推荐配比在 C=1e22 时得到的损失 %.4f，若改用参考配比实现同一损失需要 C≈%.3e FLOPs，即配比优化的效果等价于约 %.1f 倍算力扩张' % (r_mix['L'], C_eq, C_eq / 1e+22))"
+        },
+        {
+          "line": 201,
+          "expression": "print('  （说明：M(p) 是损失水平上的固定平移，与算力无关，故换算为算力收益会被损失的算力弹性放大，此倍数宜作量级参考。）')"
+        },
+        {
+          "line": 210,
+          "expression": "print('\\n=== 5. 预算扫略与结构性转移 ===')"
+        },
+        {
+          "line": 244,
+          "expression": "print('  %s = %.3e FLOPs' % (k, v))"
+        },
+        {
+          "line": 248,
+          "expression": "print('  D/N 比：C=1e19 时 %.1f，C=1e22 时 %.1f，C=1e24 时 %.1f' % tuple((sw.loc[(sw.C - c).abs().idxmin(), 'D_over_N'] for c in [1e+19, 1e+22, 1e+24])))"
+        },
+        {
+          "line": 253,
+          "expression": "print('\\n=== 6. 上下文长度敏感性（C=1e22，幂函数型）===')"
+        },
+        {
+          "line": 260,
+          "expression": "print('  L=%6d（%.2f 倍训练开销）: N*=%.3fB D*=%.1fB Q*=%.4f L*=%.4f 注意力占比 %.1f%%%s' % (L, r['attn_over_train'], r['N_B'], r['D_B'], r['Q'], r['L'], r['f_attn'] * 100, '  [超临界]' if L > L_CRIT else ''))"
+        },
+        {
+          "line": 364,
+          "expression": "print('\\n===== 问题三求解完成 =====')"
+        },
+        {
+          "line": 365,
+          "expression": "print('  临界上下文长度 L_crit = 6/eta = %.0f tokens；C7 可行取值 %s' % (L_CRIT, L_FEAS))"
+        },
+        {
+          "line": 366,
+          "expression": "print('  三档预算（幂函数型）：' + '；'.join(('C=%.0e -> N*=%.3fB D*=%.1fB Q*=%.4f L*=%.4f' % (r['C'], r['N_B'], r['D_B'], r['Q'], r['L']) for r in rows)))"
+        }
+      ],
+      "prints_current": [
+        {
+          "line": 31,
+          "expression": "print('  ! %s 被占用，已改存为 %s' % (name_cn, os.path.basename(alt)))"
+        },
+        {
+          "line": 50,
+          "expression": "print('=== 0. 质量基线与模型参数（来自问题一、二）===')"
+        },
+        {
+          "line": 51,
+          "expression": "print('  参考语料配比加权基线质量 Q0 = %.4f（全量样本均值 %.4f）' % (Q0, Q0_sample))"
+        },
+        {
+          "line": 52,
+          "expression": "print('  标度律：E=%.4f A=%.4f alpha=%.4f B=%.4f beta=%.4f C=%.4f gamma=%.4f' % (E, A, alpha, B, beta, Cq, gamma))"
+        },
+        {
+          "line": 78,
+          "expression": "print('  g(%s) 在 Q0=%.3f 处为 %.4e，在 Q=1 处为 %.4e（单位算力/token）' % (form, Q0, g_of(Q0, form), g_of(1.0, form)))"
+        },
+        {
+          "line": 86,
+          "expression": "print('\\n=== 1. 临界上下文长度（解析解）===')"
+        },
+        {
+          "line": 87,
+          "expression": "print('  C_attn = eta*N*D*L_ctx, C_train = 6ND -> L_crit = 6/eta = %.0f tokens' % L_CRIT)"
+        },
+        {
+          "line": 88,
+          "expression": "print('  C7 给出的可行上下文长度（max_position_embeddings）: %s' % L_FEAS)"
+        },
+        {
+          "line": 89,
+          "expression": "print('  可行取值中跨越临界值的一对：8192（%.2f 倍）与 32768（%.2f 倍）' % (ETA * 8192 / 6, ETA * 32768 / 6))"
+        },
+        {
+          "line": 131,
+          "expression": "print('\\n=== 2. 三档预算最优配置（幂函数型质量成本，L_ctx=2048）===')"
+        },
+        {
+          "line": 136,
+          "expression": "print('  C=%.0e: N*=%.3fB D*=%.1fB Q*=%.4f L*=%.4f  [base %.1f%% qual %.1f%% attn %.1f%%]' % (Cb, r['N_B'], r['D_B'], r['Q'], r['L'], r['f_base'] * 100, r['f_qual'] * 100, r['f_attn'] * 100))"
+        },
+        {
+          "line": 143,
+          "expression": "print('\\n=== 3. 质量成本函数对最优解的影响 ===')"
+        },
+        {
+          "line": 153,
+          "expression": "print('  C=%.0e' % Cb)"
+        },
+        {
+          "line": 155,
+          "expression": "print('    %-6s N*=%.3fB D*=%.1fB Q*=%.4f L*=%.4f 质量投入占比 %.1f%%' % (r['form'], r['N_B'], r['D_B'], r['Q'], r['L'], r['f_qual'] * 100))"
+        },
+        {
+          "line": 161,
+          "expression": "print('\\n=== 3b. 质量基线口径灵敏度（Q0 由配比加权 %.4f 改为样本均值 %.4f）===' % (_Q0_main, Q0_sample))"
+        },
+        {
+          "line": 167,
+          "expression": "print('  C=%.0e: N*=%.3fB D*=%.1fB Q*=%.4f L*=%.4f 质量投入占比 %.1f%%' % (Cb, r['N_B'], r['D_B'], r['Q'], r['L'], r['f_qual'] * 100))"
+        },
+        {
+          "line": 175,
+          "expression": "print('\\n=== 4. 领域配比修正的算力等价效果（M(p)=%.4f）===' % M_p)"
+        },
+        {
+          "line": 178,
+          "expression": "print('  C=1e22：参考配比 L*=%.4f（N*=%.3fB D*=%.1fB Q*=%.4f）' % (r_ref['L'], r_ref['N_B'], r_ref['D_B'], r_ref['Q']))"
+        },
+        {
+          "line": 180,
+          "expression": "print('          推荐配比 L*=%.4f（N*=%.3fB D*=%.1fB Q*=%.4f）' % (r_mix['L'], r_mix['N_B'], r_mix['D_B'], r_mix['Q']))"
+        },
+        {
+          "line": 198,
+          "expression": "print('  推荐配比在 C=1e22 时得到的损失 %.4f，若改用参考配比实现同一损失需要 C≈%.3e FLOPs，即配比优化的效果等价于约 %.1f 倍算力扩张' % (r_mix['L'], C_eq, C_eq / 1e+22))"
+        },
+        {
+          "line": 201,
+          "expression": "print('  （说明：M(p) 是损失水平上的固定平移，与算力无关，故换算为算力收益会被损失的算力弹性放大，此倍数宜作量级参考。）')"
+        },
+        {
+          "line": 210,
+          "expression": "print('\\n=== 5. 预算扫略与结构性转移 ===')"
+        },
+        {
+          "line": 244,
+          "expression": "print('  %s = %.3e FLOPs' % (k, v))"
+        },
+        {
+          "line": 248,
+          "expression": "print('  D/N 比：C=1e19 时 %.1f，C=1e22 时 %.1f，C=1e24 时 %.1f' % tuple((sw.loc[(sw.C - c).abs().idxmin(), 'D_over_N'] for c in [1e+19, 1e+22, 1e+24])))"
+        },
+        {
+          "line": 253,
+          "expression": "print('\\n=== 6. 上下文长度敏感性（C=1e22，幂函数型）===')"
+        },
+        {
+          "line": 260,
+          "expression": "print('  L=%6d（%.2f 倍训练开销）: N*=%.3fB D*=%.1fB Q*=%.4f L*=%.4f 注意力占比 %.1f%%%s' % (L, r['attn_over_train'], r['N_B'], r['D_B'], r['Q'], r['L'], r['f_attn'] * 100, '  [超临界]' if L > L_CRIT else ''))"
+        },
+        {
+          "line": 364,
+          "expression": "print('\\n===== 问题三求解完成 =====')"
+        },
+        {
+          "line": 365,
+          "expression": "print('  临界上下文长度 L_crit = 6/eta = %.0f tokens；C7 可行取值 %s' % (L_CRIT, L_FEAS))"
+        },
+        {
+          "line": 366,
+          "expression": "print('  三档预算（幂函数型）：' + '；'.join(('C=%.0e -> N*=%.3fB D*=%.1fB Q*=%.4f L*=%.4f' % (r['C'], r['N_B'], r['D_B'], r['Q'], r['L']) for r in rows)))"
+        }
+      ]
     },
     "求解/问题四/问题四.py": {
-      "ast_equal_after_documented_description_correction": true,
-      "sha256": "ce51c8229bb80fb5f34d1b960070214584cba03c64ce0ee9701bf042215f7411"
+      "computational_ast_equal": true,
+      "print_evaluation_ast_equal_except_text_literals": true,
+      "sha256": "00e040edbb3920330964e8d5fbdeefe6581b85d25af009e504287e98bffee38f",
+      "allowed_description_keys": [],
+      "docstrings_old": [
+        {
+          "line": 5,
+          "text": "\n问题四：技术演进分析与前沿预测\n数据：C1/C2 排行榜、C3 时序、C4 Epoch 宏观元数据、C5/C6 Loss-Benchmark 桥接、C7 架构、C8 逐任务 JSON\n流程：1) 明确口径：时间轴(提交日期)、开放权重样本口径(许可白名单)、模型类型(pretrained/chat)\n      2) C8 逐任务聚合（必做），并与 C1 六维交叉校验\n      3) C6 桥接（按可比性分层）+ C5 对照，建立 Loss -> Benchmark 映射\n      4) 面板回归（含年份固定效应）分离规模扩张与非规模技术进步贡献\n      5) 情景设定下 logistic 饱和外推 12/24 个月能力前沿 + 残差 bootstrap 不确定性\n      6) C4 宏观算力/数据量/开放权重参照，不直接代入能力回归\n输出：图片到 图片/，结果 CSV 到 结果/\n"
+        },
+        {
+          "line": 55,
+          "text": "按本文列明的许可白名单筛选；不将各许可的具体条款视为相同。"
+        },
+        {
+          "line": 306,
+          "text": "累计最高分与其模型规模配对；同分时保留先达到的前沿记录。"
+        },
+        {
+          "line": 417,
+          "text": "减速前沿用原曲线，减速后增长参数为 r/2，连接点连续。"
+        }
+      ],
+      "docstrings_current": [
+        {
+          "line": 5,
+          "text": "\n问题四：技术演进分析与前沿预测\n数据：C1/C2 排行榜、C3 时序、C4 Epoch 宏观元数据、C5/C6 Loss-Benchmark 桥接、C7 架构、C8 逐任务 JSON\n流程：1) 明确口径：时间轴(提交日期)、开放权重样本口径(许可白名单)、模型类型(pretrained/chat)\n      2) C8 逐任务聚合（必做），并与 C1 六维交叉校验\n      3) C6 桥接（按可比性分层）+ C5 对照，建立 Loss -> Benchmark 映射\n      4) 合并横截面回归（含年份控制项）核算规模关联项与未解释剩余项\n      5) 情景设定下 logistic 饱和外推 12/24 个月能力前沿 + 残差 bootstrap 不确定性\n      6) C4 宏观算力/数据量/开放权重参照，不直接代入能力回归\n输出：图片到 图片/，结果 CSV 到 结果/\n"
+        },
+        {
+          "line": 55,
+          "text": "按本文列明的许可白名单筛选；不将各许可的具体条款视为相同。"
+        },
+        {
+          "line": 307,
+          "text": "累计最高分与其模型规模配对；同分时保留先达到的前沿记录。"
+        },
+        {
+          "line": 418,
+          "text": "减速前沿用原曲线，减速后增长参数为 r/2，连接点连续。"
+        }
+      ],
+      "prints_old": [
+        {
+          "line": 31,
+          "expression": "print('  ! %s 被占用，已改存为 %s' % (name_cn, os.path.basename(alt)))"
+        },
+        {
+          "line": 74,
+          "expression": "print('=== 1. 数据口径与筛选漏斗 ===')"
+        },
+        {
+          "line": 75,
+          "expression": "print(pd.DataFrame(funnel).to_string(index=False))"
+        },
+        {
+          "line": 76,
+          "expression": "print('  时间轴口径：以 C1 的 Submission Date（提交日期）为基准。')"
+        },
+        {
+          "line": 77,
+          "expression": "print('  主样本口径：时间、参数量与六维得分完整，且 Hub License 在本文白名单中。')"
+        },
+        {
+          "line": 78,
+          "expression": "print('  模型类型口径：主样本保留全部类型；pretrained 与 chat/finetuned 另作分组分析。')"
+        },
+        {
+          "line": 79,
+          "expression": "print('  主样本中的其他类型：base 合并模型 %d 条，多模态 %d 条。' % (int(core_o['Type'].eq(TYPE_EXCL[0]).sum()), int(core_o['Type'].eq(TYPE_EXCL[1]).sum())))"
+        },
+        {
+          "line": 82,
+          "expression": "print('  提交日期范围：%s ~ %s' % (str(lb.date.min())[:10], str(lb.date.max())[:10]))"
+        },
+        {
+          "line": 123,
+          "expression": "print('\\n=== 2. C8 逐任务聚合（必做）===')"
+        },
+        {
+          "line": 124,
+          "expression": "print('  模型目录 %d 个；成功解析 %d 个；跳过损坏/无有效记录 %d 个' % (len(dirs), len(c8), broken))"
+        },
+        {
+          "line": 149,
+          "expression": "print('  C8 与 C1 逐维一致性（规范化模型名匹配，得到 %d 条配对记录）：' % len(mrg))"
+        },
+        {
+          "line": 150,
+          "expression": "print(chk.to_string(index=False))"
+        },
+        {
+          "line": 151,
+          "expression": "print('  口径说明：C8 存的是各任务的原始指标（acc/acc_norm/exact_match），C1 存的是官方按随机基线归一化后的六维得分（例如 GPQA=(raw-0.25)/0.75、MMLU-PRO=(raw-0.10)/0.90、IFEval=(prompt_strict+inst_strict)/2），故两者存在系统性水平差但秩一致性很高。因此：跨模型得分分析用 C1，逐任务结构分析在 C8 的原始指标空间内进行。')"
+        },
+        {
+          "line": 166,
+          "expression": "print('  C8 子任务维度数：' + '，'.join(('%s %d 项' % (k, len(v)) for k, v in sub_cols.items())))"
+        },
+        {
+          "line": 184,
+          "expression": "print('\\n  子任务层面最弱 6 项（剩余空间最大）：')"
+        },
+        {
+          "line": 185,
+          "expression": "print(sub_df.nlargest(6, '剩余空间_%')[['类别', '子任务', '样本数', '最优得分', '前5%均值', '剩余空间_%']].to_string(index=False))"
+        },
+        {
+          "line": 195,
+          "expression": "print('\\n  子任务类别汇总：')"
+        },
+        {
+          "line": 196,
+          "expression": "print(pd.DataFrame(CAT_ROWS).to_string(index=False))"
+        },
+        {
+          "line": 202,
+          "expression": "print('\\n=== 3. Loss-Benchmark 桥接（C6 扩展桥接）===')"
+        },
+        {
+          "line": 218,
+          "expression": "print(bridge_df.to_string(index=False))"
+        },
+        {
+          "line": 226,
+          "expression": "print('  C5（原始桥接，n=%d）对照：r=%.3f，斜率=%.3f' % (len(b5), float(np.corrcoef(b5.Val_Loss, b5.LB_Average)[0, 1]), s5))"
+        },
+        {
+          "line": 229,
+          "expression": "print('  C5 对照读取失败：', e)"
+        },
+        {
+          "line": 230,
+          "expression": "print('  说明：全样本 |r|=%.2f（R2=%.2f），映射误差较大；高可比子集仅 %d 条且落在 Pythia 小模型区间，得分变化幅度极小（%.2f-%.2f），故桥接误差对能力结论的影响必须显式讨论。' % (abs(bridge_df.iloc[2]['Pearson_r']), bridge_df.iloc[2]['R2'], int(bridge_df.iloc[0]['n']), br[br.cmp.eq('高可比')].LB_Average.min(), br[br.cmp.eq('高可比')].LB_Average.max()))"
+        },
+        {
+          "line": 266,
+          "expression": "print('\\n=== 4. 规模系数估计（C1 开源筛选样本，%d 条，%d-%d 年）===' % (len(panel), int(panel.Year.min()), int(panel.Year.max())))"
+        },
+        {
+          "line": 268,
+          "expression": "print('  年份固定效应模型：bP=%.3f 分/10 倍参数，R2=%.3f' % (bP_fe, R2_fe))"
+        },
+        {
+          "line": 269,
+          "expression": "print('  线性时间 OLS 模型：bP=%.3f 分/10 倍参数，bt=%.3f 分/年，R2=%.3f' % (bP_ols, bt_ols, R2_ols))"
+        },
+        {
+          "line": 275,
+          "expression": "print('  %s 子样本（n=%d）：bP=%.3f 分/10 倍参数，bt=%.3f 分/年，R2=%.3f' % (tg, len(sub), bP_t, bt_t, R2_t))"
+        },
+        {
+          "line": 294,
+          "expression": "print('\\n  C3 自洽性审计：|Average - 六维均值| > 5 的记录 %d 条（跨口径混入，已剔除），最大差值 %.1f（%s）' % (len(bad), bad.gap.max(), bad.loc[bad.gap.idxmax(), 'Model']))"
+        },
+        {
+          "line": 332,
+          "expression": "print('\\n  前沿序列（年度最高分 + 累计最大，%d-%d）：' % (front_year.Year.iloc[0], front_year.Year.iloc[-1]))"
+        },
+        {
+          "line": 334,
+          "expression": "print(front_year.round(2).to_string(index=False))"
+        },
+        {
+          "line": 335,
+          "expression": "print('  贡献分解：')"
+        },
+        {
+          "line": 336,
+          "expression": "print(dec.round(2).to_string(index=False))"
+        },
+        {
+          "line": 337,
+          "expression": "print('  提示：C3 早期年份为公开报告值（每 1-7 条），跨年评测标准不完全一致（C3 标注为“混合”口径），故长周期占比视为量级参考；C1 近端口径标准一致但窗口仅约 1 年。')"
+        },
+        {
+          "line": 380,
+          "expression": "print('\\n  近端口径（一致窗口）分解：前沿 %s->%s 由 %.2f 升至 %.2f（+%.2f 分），前沿模型规模 %sB->%sB（Δlog10P=%.3f）' % (str(p0), str(pk), F0_, Fk_, dF1, '%.1f' % P0_, '%.1f' % Pk_, dLP1))"
+        },
+        {
+          "line": 383,
+          "expression": "print('  -> 规模贡献 %.2f 分，非规模贡献 %.2f 分；该窗口内前沿提升基本来自非规模因素。' % (bP_fe * dLP1, dF1 - bP_fe * dLP1))"
+        },
+        {
+          "line": 399,
+          "expression": "print('logistic 拟合失败：', e)"
+        },
+        {
+          "line": 446,
+          "expression": "print('\\n=== 5. 能力前沿 logistic 外推 ===')"
+        },
+        {
+          "line": 447,
+          "expression": "print('  F(t)=K/(1+exp(-r(t-t0)))：K=%.2f, r=%.3f, t0=%.2f（2019 起算），R2=%.3f' % (K_fit, r_fit, t0_fit, R2_log))"
+        },
+        {
+          "line": 449,
+          "expression": "print(fut.round(2).to_string(index=False))"
+        },
+        {
+          "line": 471,
+          "expression": "print('\\n=== 6. C4 宏观证据（Epoch AI 全模型元数据，Language 域）===')"
+        },
+        {
+          "line": 472,
+          "expression": "print(g.round(3).to_string(index=False))"
+        },
+        {
+          "line": 476,
+          "expression": "print('  前沿训练算力的年增长率：log10(C) 每年 +%.3f 个数量级（即约 %.2f 倍/年）' % (sl_c, 10 ** sl_c))"
+        },
+        {
+          "line": 479,
+          "expression": "print('  C4 开源权重字段分布：' + '；'.join(('%s=%d' % (k, v) for k, v in ov.value_counts().head(4).items())))"
+        },
+        {
+          "line": 498,
+          "expression": "print('\\n=== 7. 六维 Benchmark 前沿与剩余空间（开源筛选集，n=%d）===' % len(lb_o))"
+        },
+        {
+          "line": 499,
+          "expression": "print(task_df.to_string(index=False))"
+        },
+        {
+          "line": 505,
+          "expression": "print('\\n===== 问题四求解完成 =====')"
+        },
+        {
+          "line": 506,
+          "expression": "print('  桥接：全样本 r=%.3f；分解（%s）：规模 %.1f%% / 非规模 %.1f%%；OLS 版：规模 %.1f%% / 非规模 %.1f%%' % (bridge_df.iloc[2]['Pearson_r'], d0['前沿区间'], d0['规模占比%'], d0['非规模占比%'], dec_all.iloc[1]['规模占比%'], dec_all.iloc[1]['非规模占比%']))"
+        },
+        {
+          "line": 510,
+          "expression": "print('  前沿预测（+12/+24 个月）：%s %.2f（90%%CI %.2f-%.2f）；%s %.2f（90%%CI %.2f-%.2f）；logistic 增长参数减半情景 %.2f / %.2f' % (fut['对应日历时点'].iloc[0], fut.frontier_pred.iloc[0], fut['CI_low_5%'].iloc[0], fut['CI_high_95%'].iloc[0], fut['对应日历时点'].iloc[1], fut.frontier_pred.iloc[1], fut['CI_low_5%'].iloc[1], fut['CI_high_95%'].iloc[1], fut['情景_技术增速减半'].iloc[0], fut['情景_技术增速减半'].iloc[1]))"
+        },
+        {
+          "line": 516,
+          "expression": "print('\\n  结构外推情景（基准前沿 F=%.2f）：' % F_last)"
+        },
+        {
+          "line": 517,
+          "expression": "print(scen_df.round(2).to_string(index=False))"
+        },
+        {
+          "line": 518,
+          "expression": "print('  两条路线用于比较预测假设，不构成独立验证。logistic 的重抽样区间见上表；结构外推给出的是情景点值，其范围不能作为置信区间。')"
+        }
+      ],
+      "prints_current": [
+        {
+          "line": 31,
+          "expression": "print('  ! %s 被占用，已改存为 %s' % (name_cn, os.path.basename(alt)))"
+        },
+        {
+          "line": 74,
+          "expression": "print('=== 1. 数据口径与筛选漏斗 ===')"
+        },
+        {
+          "line": 75,
+          "expression": "print(pd.DataFrame(funnel).to_string(index=False))"
+        },
+        {
+          "line": 76,
+          "expression": "print('  时间轴口径：以 C1 的 Submission Date（提交日期）为基准。')"
+        },
+        {
+          "line": 77,
+          "expression": "print('  主样本口径：时间、参数量与六维得分完整，且 Hub License 在本文白名单中。')"
+        },
+        {
+          "line": 78,
+          "expression": "print('  模型类型口径：主样本保留全部类型；pretrained 与 chat/finetuned 另作分组分析。')"
+        },
+        {
+          "line": 79,
+          "expression": "print('  主样本中的其他类型：base 合并模型 %d 条，多模态 %d 条。' % (int(core_o['Type'].eq(TYPE_EXCL[0]).sum()), int(core_o['Type'].eq(TYPE_EXCL[1]).sum())))"
+        },
+        {
+          "line": 82,
+          "expression": "print('  提交日期范围：%s ~ %s' % (str(lb.date.min())[:10], str(lb.date.max())[:10]))"
+        },
+        {
+          "line": 123,
+          "expression": "print('\\n=== 2. C8 逐任务聚合（必做）===')"
+        },
+        {
+          "line": 124,
+          "expression": "print('  模型目录 %d 个；成功解析 %d 个；跳过损坏/无有效记录 %d 个' % (len(dirs), len(c8), broken))"
+        },
+        {
+          "line": 149,
+          "expression": "print('  C8 与 C1 逐维一致性（规范化模型名匹配，得到 %d 条配对记录）：' % len(mrg))"
+        },
+        {
+          "line": 150,
+          "expression": "print(chk.to_string(index=False))"
+        },
+        {
+          "line": 151,
+          "expression": "print('  口径说明：C8 存的是各任务的原始指标（acc/acc_norm/exact_match），C1 存的是官方按随机基线归一化后的六维得分（例如 GPQA=(raw-0.25)/0.75、MMLU-PRO=(raw-0.10)/0.90、IFEval=(prompt_strict+inst_strict)/2），故两者存在系统性水平差但秩一致性很高。因此：跨模型得分分析用 C1，逐任务结构分析在 C8 的原始指标空间内进行。')"
+        },
+        {
+          "line": 166,
+          "expression": "print('  C8 子任务维度数：' + '，'.join(('%s %d 项' % (k, len(v)) for k, v in sub_cols.items())))"
+        },
+        {
+          "line": 184,
+          "expression": "print('\\n  子任务层面最弱 6 项（剩余空间最大）：')"
+        },
+        {
+          "line": 185,
+          "expression": "print(sub_df.nlargest(6, '剩余空间_%')[['类别', '子任务', '样本数', '最优得分', '前5%均值', '剩余空间_%']].to_string(index=False))"
+        },
+        {
+          "line": 195,
+          "expression": "print('\\n  子任务类别汇总：')"
+        },
+        {
+          "line": 196,
+          "expression": "print(pd.DataFrame(CAT_ROWS).to_string(index=False))"
+        },
+        {
+          "line": 202,
+          "expression": "print('\\n=== 3. Loss-Benchmark 桥接（C6 扩展桥接）===')"
+        },
+        {
+          "line": 218,
+          "expression": "print(bridge_df.to_string(index=False))"
+        },
+        {
+          "line": 226,
+          "expression": "print('  C5（原始桥接，n=%d）对照：r=%.3f，斜率=%.3f' % (len(b5), float(np.corrcoef(b5.Val_Loss, b5.LB_Average)[0, 1]), s5))"
+        },
+        {
+          "line": 229,
+          "expression": "print('  C5 对照读取失败：', e)"
+        },
+        {
+          "line": 230,
+          "expression": "print('  说明：全样本 |r|=%.2f（R2=%.2f），映射误差较大；高可比子集仅 %d 条且落在 Pythia 小模型区间，得分变化幅度极小（%.2f-%.2f），故桥接误差对能力结论的影响必须显式讨论。' % (abs(bridge_df.iloc[2]['Pearson_r']), bridge_df.iloc[2]['R2'], int(bridge_df.iloc[0]['n']), br[br.cmp.eq('高可比')].LB_Average.min(), br[br.cmp.eq('高可比')].LB_Average.max()))"
+        },
+        {
+          "line": 267,
+          "expression": "print('\\n=== 4. 规模系数估计（C1 开源筛选样本，%d 条，%d-%d 年）===' % (len(panel), int(panel.Year.min()), int(panel.Year.max())))"
+        },
+        {
+          "line": 269,
+          "expression": "print('  年份固定效应模型：bP=%.3f 分/10 倍参数，R2=%.3f' % (bP_fe, R2_fe))"
+        },
+        {
+          "line": 270,
+          "expression": "print('  合并横截面 OLS：bP=%.3f 分/10 倍参数，年份组差=%.3f 分，R2=%.3f' % (bP_ols, bt_ols, R2_ols))"
+        },
+        {
+          "line": 276,
+          "expression": "print('  %s 子样本（n=%d）：bP=%.3f 分/10 倍参数，年份组差=%.3f 分，R2=%.3f' % (tg, len(sub), bP_t, bt_t, R2_t))"
+        },
+        {
+          "line": 295,
+          "expression": "print('\\n  C3 自洽性审计：|Average - 六维均值| > 5 的记录 %d 条（跨口径混入，已剔除），最大差值 %.1f（%s）' % (len(bad), bad.gap.max(), bad.loc[bad.gap.idxmax(), 'Model']))"
+        },
+        {
+          "line": 333,
+          "expression": "print('\\n  前沿序列（年度最高分 + 累计最大，%d-%d）：' % (front_year.Year.iloc[0], front_year.Year.iloc[-1]))"
+        },
+        {
+          "line": 335,
+          "expression": "print(front_year.round(2).to_string(index=False))"
+        },
+        {
+          "line": 336,
+          "expression": "print('  规模关联项与未解释剩余项核算（CSV 沿用历史列名）：')"
+        },
+        {
+          "line": 337,
+          "expression": "print(dec.round(2).to_string(index=False))"
+        },
+        {
+          "line": 338,
+          "expression": "print('  提示：C3 早期年份为公开报告值（每 1-7 条），跨年评测标准不完全一致（C3 标注为“混合”口径），故长周期占比视为量级参考；C1 近端口径标准一致但窗口仅约 1 年。')"
+        },
+        {
+          "line": 381,
+          "expression": "print('\\n  近端口径（一致窗口）分解：前沿 %s->%s 由 %.2f 升至 %.2f（+%.2f 分），前列组参数几何均值 %sB->%sB（Δlog10P=%.3f）' % (str(p0), str(pk), F0_, Fk_, dF1, '%.1f' % P0_, '%.1f' % Pk_, dLP1))"
+        },
+        {
+          "line": 384,
+          "expression": "print('  -> 规模关联项 %.2f 分，未解释剩余项 %.2f 分；剩余项不能识别技术进步的因果份额。' % (bP_fe * dLP1, dF1 - bP_fe * dLP1))"
+        },
+        {
+          "line": 400,
+          "expression": "print('logistic 拟合失败：', e)"
+        },
+        {
+          "line": 448,
+          "expression": "print('\\n=== 5. 能力前沿 logistic 外推 ===')"
+        },
+        {
+          "line": 449,
+          "expression": "print('  F(t)=K/(1+exp(-r(t-t0)))：K=%.2f, r=%.3f, t0=%.2f（2019 起算），R2=%.3f' % (K_fit, r_fit, t0_fit, R2_log))"
+        },
+        {
+          "line": 451,
+          "expression": "print(fut.round(2).to_string(index=False))"
+        },
+        {
+          "line": 473,
+          "expression": "print('\\n=== 6. C4 宏观证据（Epoch AI 全模型元数据，Language 域）===')"
+        },
+        {
+          "line": 474,
+          "expression": "print(g.round(3).to_string(index=False))"
+        },
+        {
+          "line": 478,
+          "expression": "print('  前沿训练算力的年增长率：log10(C) 每年 +%.3f 个数量级（即约 %.2f 倍/年）' % (sl_c, 10 ** sl_c))"
+        },
+        {
+          "line": 481,
+          "expression": "print('  C4 开源权重字段分布：' + '；'.join(('%s=%d' % (k, v) for k, v in ov.value_counts().head(4).items())))"
+        },
+        {
+          "line": 500,
+          "expression": "print('\\n=== 7. 六维 Benchmark 前沿与剩余空间（开源筛选集，n=%d）===' % len(lb_o))"
+        },
+        {
+          "line": 501,
+          "expression": "print(task_df.to_string(index=False))"
+        },
+        {
+          "line": 507,
+          "expression": "print('\\n===== 问题四求解完成 =====')"
+        },
+        {
+          "line": 508,
+          "expression": "print('  桥接：全样本 r=%.3f；核算（%s）：规模关联 %.1f%% / 未解释剩余 %.1f%%；近端：规模关联 %.1f%% / 未解释剩余 %.1f%%' % (bridge_df.iloc[2]['Pearson_r'], d0['前沿区间'], d0['规模占比%'], d0['非规模占比%'], dec_all.iloc[1]['规模占比%'], dec_all.iloc[1]['非规模占比%']))"
+        },
+        {
+          "line": 512,
+          "expression": "print('  前沿预测（+12/+24 个月）：%s %.2f（90%%CI %.2f-%.2f）；%s %.2f（90%%CI %.2f-%.2f）；logistic 增长参数减半情景 %.2f / %.2f' % (fut['对应日历时点'].iloc[0], fut.frontier_pred.iloc[0], fut['CI_low_5%'].iloc[0], fut['CI_high_95%'].iloc[0], fut['对应日历时点'].iloc[1], fut.frontier_pred.iloc[1], fut['CI_low_5%'].iloc[1], fut['CI_high_95%'].iloc[1], fut['情景_技术增速减半'].iloc[0], fut['情景_技术增速减半'].iloc[1]))"
+        },
+        {
+          "line": 518,
+          "expression": "print('\\n  结构外推情景（基准前沿 F=%.2f）：' % F_last)"
+        },
+        {
+          "line": 519,
+          "expression": "print(scen_df.round(2).to_string(index=False))"
+        },
+        {
+          "line": 520,
+          "expression": "print('  两条路线用于比较预测假设，不构成独立验证。logistic 的重抽样区间见上表；结构外推给出的是情景点值，其范围不能作为置信区间。')"
+        }
+      ]
+    },
+    "求解/问题一/核岭支持域推荐.py": {
+      "computational_ast_equal": true,
+      "print_evaluation_ast_equal_except_text_literals": true,
+      "sha256": "f06ca6926fe7b765d9c4f506aaf8a7c04cea4c08d0fbf2ff8065fd6f91adbff2",
+      "allowed_description_keys": [],
+      "docstrings_old": [
+        {
+          "line": 3,
+          "text": "python 求解/问题一/核岭支持域推荐.py --data-dir <附件根目录>\n推荐写入原结果目录；--output-dir 可用于隔离核验。\n"
+        }
+      ],
+      "docstrings_current": [
+        {
+          "line": 3,
+          "text": "python 求解/问题一/核岭支持域推荐.py --data-dir <附件根目录>\n推荐写入原结果目录；--output-dir 可用于隔离核验。\n\n输出字段 stationarity_gap 沿用原名称，实际记录的是“数值保护梯度间隙”：\n零份额处以 1e-30 保护平方根导数；success 仅表示该停止量达阈值。\n它与约束残差共同用于数值筛选，不构成边界光滑驻点或全局最优证书。\n"
+        }
+      ],
+      "prints_old": [
+        {
+          "line": 74,
+          "expression": "print({k: v for k, v in fits[-1].items() if k != 'weights'}, flush=True)"
+        },
+        {
+          "line": 86,
+          "expression": "print(json.dumps(dict(reference=float(scores[0]), recommended=float(scores[1]), change=float(scores[1] - scores[0]), active_training_rows=int(np.sum(z > 1e-08)), runs=[{k: v for k, v in f.items() if k != 'weights'} for f in fits]), ensure_ascii=False, indent=2))"
+        }
+      ],
+      "prints_current": [
+        {
+          "line": 79,
+          "expression": "print({k: v for k, v in fits[-1].items() if k != 'weights'}, flush=True)"
+        },
+        {
+          "line": 91,
+          "expression": "print(json.dumps(dict(reference=float(scores[0]), recommended=float(scores[1]), change=float(scores[1] - scores[0]), active_training_rows=int(np.sum(z > 1e-08)), runs=[{k: v for k, v in f.items() if k != 'weights'} for f in fits]), ensure_ascii=False, indent=2))"
+        }
+      ]
+    },
+    "求解/问题一/非线性代理对照.py": {
+      "computational_ast_equal": true,
+      "print_evaluation_ast_equal_except_text_literals": true,
+      "sha256": "8b5cddeeb7dfe2e6802f8ba0d13fdae4f5813dcea3cc9e7dd8366d919f312e0b",
+      "allowed_description_keys": [],
+      "docstrings_old": [
+        {
+          "line": 4,
+          "text": "同尺度配比预测：既有线性岭基线与平方根嵌入核岭。\n\npython 求解/问题一/非线性代理对照.py --data-dir <附件根目录>\n只写“非线性代理对照_*”结果，不写任何跨问接口。绘图另由重绘图表.py执行。\n核岭采用闭合配方、训练核中心化、未惩罚截距；全部超参数只用训练五折选择。\nCV最小值是调参得分，不是嵌套CV泛化估计；既有检验集不是新的盲测集。\n"
+        }
+      ],
+      "docstrings_current": [
+        {
+          "line": 4,
+          "text": "同尺度配比预测：既有线性岭基线与平方根嵌入核岭。\n\npython 求解/问题一/非线性代理对照.py --data-dir <附件根目录>\n只写“非线性代理对照_*”结果，不写任何跨问接口。绘图另由重绘图表.py执行。\n核岭采用闭合配方、训练核中心化、未惩罚截距；全部超参数只用训练五折选择。\nCV最小值是调参得分，不是嵌套CV泛化估计；既有检验集不是新的盲测集。\n"
+        }
+      ],
+      "prints_old": [
+        {
+          "line": 129,
+          "expression": "print(f'五折选择：{fold}/{len(folds)}', flush=True)"
+        },
+        {
+          "line": 158,
+          "expression": "print(f'最小核验通过；增广方程最大偏差 {abs(actual - reference).max():.3g}')"
+        },
+        {
+          "line": 220,
+          "expression": "print(f'选择 gamma={gamma}, lambda={lam}')"
+        },
+        {
+          "line": 221,
+          "expression": "print(tables['汇总'].to_string(index=False))"
+        }
+      ],
+      "prints_current": [
+        {
+          "line": 129,
+          "expression": "print(f'五折选择：{fold}/{len(folds)}', flush=True)"
+        },
+        {
+          "line": 158,
+          "expression": "print(f'最小核验通过；增广方程最大偏差 {abs(actual - reference).max():.3g}')"
+        },
+        {
+          "line": 220,
+          "expression": "print(f'选择 gamma={gamma}, lambda={lam}')"
+        },
+        {
+          "line": 221,
+          "expression": "print(tables['汇总'].to_string(index=False))"
+        }
+      ]
+    },
+    "求解/_common.py": {
+      "computational_ast_equal": true,
+      "print_evaluation_ast_equal_except_text_literals": true,
+      "sha256": "403bd4d3efa96e10625630730b847f3e2b3df947bf12bf1f1df599b7f6479ced",
+      "allowed_description_keys": [],
+      "docstrings_old": [
+        {
+          "line": 115,
+          "text": "按文件名定位附件；既支持平铺数据目录，也支持 A/B/C 分目录。"
+        },
+        {
+          "line": 133,
+          "text": "只保留左侧和底侧边框，移除上侧和右侧"
+        },
+        {
+          "line": 138,
+          "text": "保存单张图片，自动加.png后缀（默认 300dpi 高清）"
+        },
+        {
+          "line": 145,
+          "text": "保存图片（默认 300dpi 高清）。绘图规则只输出全彩，默认不再生成黑白版（bw=False，仅保存彩色）。\n    如需临时验证黑白效果可手动传 bw=True，但最终产出图一律不得黑白。"
+        },
+        {
+          "line": 168,
+          "text": "跨问题共享中间文件的统一路径（存到 求解/ 根，供各问题脚本互相读取）。\n    例：问题一存 shared_path('预处理数据.csv')，问题二用 pd.read_csv(shared_path('预处理数据.csv')) 读取。"
+        },
+        {
+          "line": 173,
+          "text": "检测坐标轴是否无数据（空图）"
+        },
+        {
+          "line": 178,
+          "text": "折线是否为直线（完全无变化→不画）：所有y相同或所有x相同"
+        },
+        {
+          "line": 188,
+          "text": "\n    子图布局校验，不合法返回错误原因字符串，合法返回None。\n    规则（硬性）：单图1×1；一行多列1×N(N≥2)；两行2×N且N≥4；其余禁止。\n    禁止：三行及以上；两行列数≤3；2×2四宫格。\n    "
+        },
+        {
+          "line": 200,
+          "text": "安全获取colormap的n个颜色（替代plt.cm.get_cmap，已废弃会报错）。"
+        },
+        {
+          "line": 205,
+          "text": "安全获取colormap对象（不带resampled）。"
+        },
+        {
+          "line": 209,
+          "text": "安全的boxplot（替代ax.boxplot(labels=...)，labels参数已废弃会报错）。\n    内部强制 patch_artist=True，使 boxes 为 Patch 对象，AI 可直接用 bp['boxes'][i].set_facecolor(...) 填色；\n    否则 boxes 是 Line2D，set_facecolor 会抛 AttributeError。"
+        },
+        {
+          "line": 219,
+          "text": "\n    强制带黑色细边框的热力图（替代裸 imshow/heatmap 的纯色块）。\n    用 pcolormesh 绘制，每个格子边线统一为黑色细框（edgecolor=black, linewidth=linewidth），\n    避免\"色块连成一片\"的观感。NaN 单元格填白色。默认 vmin/vmax 取数据范围。\n    用法：\n        safe_heatmap(ax, corr.values, row_labels=corr.index, col_labels=corr.columns, cmap='RdBu_r')\n    返回 pcolormesh 的 QuadMesh（可用其 .set_clim 调色标范围）。\n    "
+        },
+        {
+          "line": 246,
+          "text": "读取PNG实际宽高（字节，读16-24字节IHDR）"
+        },
+        {
+          "line": 254,
+          "text": "\n    按高宽比生成匹配档位的 \\includegraphics LaTeX 片段（直接粘论文）。\n    pair=True：同一张figure里两张并排minipage，给半宽。float_pos默认'ht'，禁止'H'锁死。\n    "
+        },
+        {
+          "line": 282,
+          "text": "将列安全转为数值：非数值元素→NaN；default 不为 None 时用 default 填充NaN。\n    用法：df['评分'] = numeric_clean(df['评分'])   # 先转数值（NaN保留）\n          df['评分'] = numeric_clean(df['评分'], default=0.0)   # 转数值并填0"
+        },
+        {
+          "line": 291,
+          "text": "安全的 idxmax：空序列/全NA 返回 default_idx，否则返回最大值索引。"
+        },
+        {
+          "line": 299,
+          "text": "安全的 idxmin：空序列/全NA 返回 default_idx，否则返回最小值索引。"
+        },
+        {
+          "line": 307,
+          "text": "检测DataFrame是否含NaN/空值（用于空值防线）。"
+        }
+      ],
+      "docstrings_current": [
+        {
+          "line": 115,
+          "text": "按文件名定位附件；既支持平铺数据目录，也支持 A/B/C 分目录。"
+        },
+        {
+          "line": 133,
+          "text": "只保留左侧和底侧边框，移除上侧和右侧"
+        },
+        {
+          "line": 138,
+          "text": "保存单张图片，自动加.png后缀（默认 300dpi 高清）"
+        },
+        {
+          "line": 145,
+          "text": "保存图片（默认 300dpi 高清）。绘图规则只输出全彩，默认不再生成黑白版（bw=False，仅保存彩色）。\n    如需临时验证黑白效果可手动传 bw=True，但最终产出图一律不得黑白。"
+        },
+        {
+          "line": 168,
+          "text": "跨问题共享中间文件的统一路径（存到 求解/ 根，供各问题脚本互相读取）。\n    例：问题一存 shared_path('预处理数据.csv')，问题二用 pd.read_csv(shared_path('预处理数据.csv')) 读取。"
+        },
+        {
+          "line": 173,
+          "text": "检测坐标轴是否无数据（空图）"
+        },
+        {
+          "line": 178,
+          "text": "折线是否为直线（完全无变化→不画）：所有y相同或所有x相同"
+        },
+        {
+          "line": 188,
+          "text": "\n    子图布局校验，不合法返回错误原因字符串，合法返回None。\n    规则（硬性）：单图1×1；一行多列1×N(N≥2)；两行2×N且N≥4；其余禁止。\n    禁止：三行及以上；两行列数≤3；2×2四宫格。\n    "
+        },
+        {
+          "line": 200,
+          "text": "安全获取colormap的n个颜色（替代plt.cm.get_cmap，已废弃会报错）。"
+        },
+        {
+          "line": 205,
+          "text": "安全获取colormap对象（不带resampled）。"
+        },
+        {
+          "line": 209,
+          "text": "安全的boxplot（替代ax.boxplot(labels=...)，labels参数已废弃会报错）。\n    内部强制 patch_artist=True，使 boxes 为 Patch 对象，AI 可直接用 bp['boxes'][i].set_facecolor(...) 填色；\n    否则 boxes 是 Line2D，set_facecolor 会抛 AttributeError。"
+        },
+        {
+          "line": 219,
+          "text": "\n    强制带黑色细边框的热力图（替代裸 imshow/heatmap 的纯色块）。\n    用 pcolormesh 绘制，每个格子边线统一为黑色细框（edgecolor=black, linewidth=linewidth），\n    避免\"色块连成一片\"的观感。NaN 单元格填白色。默认 vmin/vmax 取数据范围。\n    用法：\n        safe_heatmap(ax, corr.values, row_labels=corr.index, col_labels=corr.columns, cmap='RdBu_r')\n    返回 pcolormesh 的 QuadMesh（可用其 .set_clim 调色标范围）。\n    "
+        },
+        {
+          "line": 246,
+          "text": "读取PNG实际宽高（字节，读16-24字节IHDR）"
+        },
+        {
+          "line": 254,
+          "text": "\n    按高宽比生成匹配档位的 \\includegraphics LaTeX 片段（直接粘论文）。\n    pair=True：同一张figure里两张并排minipage，给半宽。float_pos默认'ht'，禁止'H'锁死。\n    "
+        },
+        {
+          "line": 282,
+          "text": "将列安全转为数值：非数值元素→NaN；default 不为 None 时用 default 填充NaN。\n    用法：df['评分'] = numeric_clean(df['评分'])   # 先转数值（NaN保留）\n          df['评分'] = numeric_clean(df['评分'], default=0.0)   # 转数值并填0"
+        },
+        {
+          "line": 291,
+          "text": "安全的 idxmax：空序列/全NA 返回 default_idx，否则返回最大值索引。"
+        },
+        {
+          "line": 299,
+          "text": "安全的 idxmin：空序列/全NA 返回 default_idx，否则返回最小值索引。"
+        },
+        {
+          "line": 307,
+          "text": "检测DataFrame是否含NaN/空值（用于空值防线）。"
+        }
+      ],
+      "prints_old": [
+        {
+          "line": 142,
+          "expression": "print(f'  已保存: {name_cn}.png')"
+        },
+        {
+          "line": 150,
+          "expression": "print(f'  已保存: {name_cn}.png')"
+        },
+        {
+          "line": 160,
+          "expression": "print(f'  已保存: {name_cn}_bw.png')"
+        },
+        {
+          "line": 161,
+          "expression": "print(f'  ★ 双版本完成: {name_cn}')"
+        }
+      ],
+      "prints_current": [
+        {
+          "line": 142,
+          "expression": "print(f'  已保存: {name_cn}.png')"
+        },
+        {
+          "line": 150,
+          "expression": "print(f'  已保存: {name_cn}.png')"
+        },
+        {
+          "line": 160,
+          "expression": "print(f'  已保存: {name_cn}_bw.png')"
+        },
+        {
+          "line": 161,
+          "expression": "print(f'  ★ 双版本完成: {name_cn}')"
+        }
+      ]
     }
   },
   "saved_outputs": {
     "求解/问题一/结果/17域质量映射.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "d8e12a6fa9b45a6a481e0fba3beb59acf7f297be953fb96cd22f0aa9ff964af8"
     },
     "求解/问题一/结果/Loss代理领域难度.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "66deef641e71a910d62ca140cbc8a68179dbfca7993c05e5cb0294809ec46f9c"
     },
     "求解/问题一/结果/冲突指标对_top20.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "43791325d4268436d4b7cff9b0b613976e97a2b67e5bb7012a35d2e57ca548a1"
     },
     "求解/问题一/结果/冲突样本裁决汇总.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "9f4a631f2ae8143501a99969bc64848e97fa1af91f26359b202003c302251449"
     },
     "求解/问题一/结果/冲突阈值灵敏度.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "dba71940f61391089fac45ba5dc699dd8db7f34e839f24d3fcbb374501a40713"
     },
     "求解/问题一/结果/原文抽查.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "b408342f083e0117f2587384ac7e032d1c87d0326a406e263425ffd427335705"
     },
     "求解/问题一/结果/外推尺度因子.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "6fb2c3cee1e0e19384326307524ac5e355a6d235e9f8a0779ea57b16417fa3ef"
     },
     "求解/问题一/结果/岭正则敏感性.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "73fca241c5d336949be77a6f1593020f99de982d1e4518f77b93176d414608d7"
     },
     "求解/问题一/结果/广告方向敏感性.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "6f6d08f3c548693b3c6332f2587047fcae193bbe6536616b135ad9aafbce20f4"
     },
     "求解/问题一/结果/截距.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "1a9047516b40b80f64f21342992f03ecf9fe62d90cca03fdf9134c52fa00214e"
     },
     "求解/问题一/结果/抽样集与扩展集域级对照.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "665326361e16d54d2c6e8a5c22bff2477d2cdcf4cc2bf828ecac4532e05f60df"
     },
     "求解/问题一/结果/推荐配比调整.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
-      "sha256": "242165ca62d254cb74def1a0d7771bcf8b8e22b2463433d031f9b647c8edf318"
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
+      "sha256": "d4329087f5604f4b585fa0eaedac8e82bcbb0079386f4d7ca8356e055c7bb90d"
     },
     "求解/问题一/结果/最优配比预测.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "fa8eb64b727eab6d93d477c4f1b239643f3e1ad32065b277a43d2da1dbfa7490"
     },
     "求解/问题一/结果/样本级质量评分.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "fd7da0146d3dbecc39432c84df6efa7ad4efa3fee1dcf8564b390133b44e6c1d"
     },
     "求解/问题一/结果/混合系数矩阵.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "8a8c96a5702e29b736b3aa6a55de589edeed0046df703af2a929272c80a807e5"
     },
     "求解/问题一/结果/混合系数矩阵_中心化.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "93c3da47c2cfdc8a0f1b7c3ee4b2c44e2b0d750a741ec5ad9dfcfee34945d4be"
     },
     "求解/问题一/结果/训练域边际效应.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "9c37d501dc1c3d2ebc4d17e9b160240ba2ae04db0b598996b07fd10674c3bd2c"
     },
     "求解/问题一/结果/质量与损失难度一致性.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "c79e5d8461844fbd1503824ed317e86d19c54df9cf36ff7e752d108c47b9f026"
     },
     "求解/问题一/结果/质量信号缺失审计.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "f231f07f84aa6931421a66e4eef4e7f85b289687d50c5ef0c749cf861e97b3a3"
     },
     "求解/问题一/结果/质量冲突与一致性.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "2aa41e0b0548df2f5054390d8b6f6b5e4561f801c174223db251bda33104cfd9"
     },
     "求解/问题一/结果/质量域评分_全量.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "048a3b0f7cf665bb1e1a82c066c37373c95e717d6d6bb5cff3b69a6909e79d44"
     },
     "求解/问题一/结果/质量域评分_抽样与扩展.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "8a12c303e4ca1b509315ef73a4786847b8d352e3e75f5db1c4f1078006588b9a"
     },
     "求解/问题一/结果/质量指标熵权.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": true,
+      "same_scientific_content": true,
+      "comparison": "exact CSV fields with five named semantics normalized",
+      "allowed_description_keys": [
+        "rps_doc_frac_no_alph_words",
+        "rps_doc_frac_chars_top_2gram",
+        "rps_doc_frac_chars_top_3gram",
+        "rps_lines_uppercase_letter_fraction",
+        "rps_lines_numerical_chars_fraction"
+      ],
       "sha256": "133738676ce93b3610f86eef7ccc6e4458e5438e4fd9153bdac9835e7fac4fba"
     },
     "求解/问题一/结果/质量项增量检验.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "e6a75ff46342378568fe3c5b21275cf43c4833122a9a35c2b4e79a23abf92afb"
     },
     "求解/问题一/结果/赋权方案对比.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "304bb92fb2ee449fe5f96c08621996a834423b4d5ff1ebf93512dca402af77c5"
     },
     "求解/问题一/结果/跨尺度损失比_60m_vs_1m.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "122cb9f4247864771919325d65b371b773532a5c67a30452d48998f433be108e"
     },
     "求解/问题一/结果/问题一_拟合汇总.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "b78ad028641222d91f2fcffbeef6d27287462d1dd48157a839b84482e7f68b03"
     },
     "求解/问题一/结果/非线性代理对照_五折.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "35d8d8ad973fd9ca081f9696e770e47b7f134292174af340e53e8f27dba74df2"
     },
     "求解/问题一/结果/非线性代理对照_参数搜索.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "dc12e36036e673b70727b946885c58c047bc2e5d2932ca874efa90d5448e5e91"
     },
     "求解/问题一/结果/非线性代理对照_复现清单.json": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "069fa43bf002fe0177ce8a8eb961d2b46cdf785db5f824abbf7cb5b4b0ba8182"
     },
     "求解/问题一/结果/非线性代理对照_折分配.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "09188221ced4f1e7c9462e88b750fd10d4699a93ff2850a86779fcdb7ce84df3"
     },
     "求解/问题一/结果/非线性代理对照_汇总.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "b78da54f2623c57ae96ba3d45ff5762b0b43f603471f22af3a90d89452d3915e"
     },
     "求解/问题一/结果/非线性代理对照_逐域.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "f3aee790c59f8f6256db643ca189d069b6bafec55ad2ad050e31e4859046ecc2"
     },
     "求解/问题一/结果/非线性代理对照_预测明细.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "0e5f86b6c61f912bfcdaf6027af28fac1b23ef7002b3e685a7f717c350775775"
     },
     "求解/问题一/结果/领域质量评分.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "66deef641e71a910d62ca140cbc8a68179dbfca7993c05e5cb0294809ec46f9c"
     },
     "求解/17域质量映射.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "d8e12a6fa9b45a6a481e0fba3beb59acf7f297be953fb96cd22f0aa9ff964af8"
     },
     "求解/问题一_关键量.json": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "67352ca69b02130cb19683cfa13c1c9932c5c576715e71d8cc5e02aaac208af1"
     },
+    "求解/问题一/结果/线性有界配比对照.csv": {
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
+      "sha256": "242165ca62d254cb74def1a0d7771bcf8b8e22b2463433d031f9b647c8edf318"
+    },
+    "求解/问题一/结果/核岭推荐_训练凸组合.csv": {
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
+      "sha256": "dcb2aaf688435515e67dc1bdb0dea25ebba2d4fc9853d1aa8decfe4a168897b8"
+    },
+    "求解/问题一/结果/核岭推荐_多初值.csv": {
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
+      "sha256": "93cb0bdf4bc4aa3759814fa7646705f15c7d8acf5fc9c681d7d492053407bb1a"
+    },
+    "求解/问题一/结果/核岭推荐_目标对照.csv": {
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
+      "sha256": "cb7e197515e65cb377a1694be9c12ce7551837b76d0cc07c77810b947211cffd"
+    },
     "求解/问题二/结果/B3轨迹验证.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "eb6ba9a9f1886b1aa359f835c147bd79c1b26c8d2fc0fc541d9953891aa5168f"
     },
     "求解/问题二/结果/广义标度律分层验证.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "ed427edfc6d867352d8e7ad1343669cc408353efeb98168380be2317dd58ae29"
     },
     "求解/问题二/结果/广义标度律参数.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "7008f219457a593451c19f97c37e370eecbb8736e2e5ff274d39322d79186c37"
     },
     "求解/问题二/结果/广义标度律形式对比.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "f1776f0e4f9cf62daddc6bc291c2bb6947d565dc1251cfa7bc47fa04d81e497c"
     },
     "求解/问题二/结果/弹性与替代关系.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "d16ab2a83e885a667c9447c397c7e661cd3b8990d31af69b66c62790672baeea"
     },
     "求解/问题二/结果/替代率随质量变化.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "ae36f197c928c7ebe9f748a4a5798f89c36e81976f706e06a8e488582672e771"
     },
     "求解/问题二/结果/百亿参数以上外推.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "4f4f4eeb000e18b622ba27f685aedf37b95b47e5d5078a85708161de04dd96ea"
     },
     "求解/问题二/结果/经典标度律参数.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "fd02b2cd67d7f660c00a28802d15e93a687f1ab757f8cec0fae313cf32a0ea07"
     },
     "求解/问题二/结果/质量与损失下限.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "f9491ff5433077506fc8393a0bd6d9b1f85c35b316a86dfeb10a5d66f3f869f9"
     },
     "求解/问题二/结果/质量参数替代关系.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "f10aa1a5ec893299c7837229038fa97131c9fea986a45996e65d8f6549e4002c"
     },
     "求解/问题二/结果/质量字段方向审计.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "3f22a352ddb6a441d8ad2e7bd531878817397b873a138e0ab1da543fd82a10a6"
     },
     "求解/问题二/结果/配比项校准.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
-      "sha256": "685632aeb9dfbcd734c050e24898af0f4b00da7a0eb2493b434ab92a3d83868f"
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
+      "sha256": "e9180190aa77246092f7bd0b27ab6f5b676c5dd47e7b123db9f0eaaed3c4f618"
     },
     "求解/问题二/结果/问题二_拟合汇总.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
-      "sha256": "7a8876e33d21d9e429505c55e9f602ecf03907b858b5a62c18303be9773755e1"
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
+      "sha256": "f7ff95ed524ea8194c9407a859b7be913bda0dcc3692f3e32971599cdda6eb6e"
     },
     "求解/问题二/结果/领域替代互补_top.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "e48e9c36926de86a9306fa4511030ed95340f5dd1f5a7bfa202731d53fae2784"
     },
     "求解/问题二/结果/领域替代互补矩阵.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "eac0568f4c0facafcad37cf9b99a1e632cb4d91580e615b0f1a4fa4838fc2dba"
     },
     "求解/广义标度律参数.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "7008f219457a593451c19f97c37e370eecbb8736e2e5ff274d39322d79186c37"
     },
     "求解/问题三/结果/三档预算最优配置.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "2661c8918be84c092609a5b00022032f9e5d9318827c15b822ac85ada57331e9"
     },
     "求解/问题三/结果/上下文长度与最优质量.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "0ba74d3c22e36fad98f8f7a62727a638f58a4a8c9f02d855ca741d3a91a69352"
     },
     "求解/问题三/结果/上下文长度敏感性.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "9ef50f8994789b3b0c9668e70ce212149989e17d18a042494e01b27067e532b4"
     },
     "求解/问题三/结果/上下文长度连续扫描.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "a8f02096eb859219522498cc6093289ef21aea209f8f4adb7bf63a15f86f84f8"
     },
     "求解/问题三/结果/成本函数对比.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "1c02b836457033a722b20e96aa3e53eb7050816ea2c27adedfb6593157af6f17"
     },
     "求解/问题三/结果/结构性转移识别.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "52985d6e21d2f0e2114f70d09f7c2f0fa7118198d0b92b6267a1d532a35394fb"
     },
     "求解/问题三/结果/质量基线灵敏度.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "a5f4b3f79947da8bd055a2a2c81891ad467cedd18964680639cfdfdf5d939984"
     },
     "求解/问题三/结果/配比项算力等价.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
-      "sha256": "8dbcdbb7056fc8834740eb940b7f26e2cce14a7796f506a19a42e5eb7b5dadd5"
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
+      "sha256": "c12e3b58a90359d3eb1c75629a6dde57ad93f537140b28e7dc2a340e3a878aa4"
     },
     "求解/问题三/结果/预算扫略.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "da9450bcb7753c618da61b84fd94f748e216f492d491140bce04642355a71e46"
     },
     "求解/问题四/结果/C3口径异常行.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "6036d6e0ff5a7d282421b165440f5d54c6f90ae82137127faee2f9bc35363511"
     },
     "求解/问题四/结果/C4宏观摘要.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "d19708272cf348b0916ab3d6068b72fe1e3209403b44c79fe4b2a2723b1fb9d5"
     },
     "求解/问题四/结果/C4宏观趋势.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "c76b68a7afe23197da0be816cdf10e37ebc927e1f73fe5326c5269bba56272e3"
     },
     "求解/问题四/结果/C8与C1一致性校验.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "628a0f99c8cbeb2a03c59901d8182111b2acea4dfd143f6410e85240dd9655f7"
     },
     "求解/问题四/结果/C8子任务类别汇总.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "9ddfc81e9c91ac7182266b0d9db396d503faabb3197c6c4205eb7310abc31181"
     },
     "求解/问题四/结果/C8逐任务聚合.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "08a4add415a6844c0b78d09bdf0bd50e9c6848dfccb1763a439bb8ddfb0bdc88"
     },
     "求解/问题四/结果/C8逐任务解析结果.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "8d03522e4a393e429b29013117e1a394da99f9c1dc0363812bec7f3ed3c3781b"
     },
     "求解/问题四/结果/logistic参数.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "eb54a43de67abc8e2e8916bbee48820ad8183a6b8a60aa78be70d8c6c4ea9ad1"
     },
     "求解/问题四/结果/Loss_Benchmark映射.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "646713f998e733a5174bb4d61509011c460844a0d089c4f45ecc44a7e7dcdda0"
     },
     "求解/问题四/结果/Loss_Benchmark映射明细.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "5d93a3373e19bdbe932f184f5ae20b51b7c27c25d473e6d0f9b7458c033530c0"
     },
     "求解/问题四/结果/前沿序列.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
-      "sha256": "343bbcb2f091c46a414ca8aa33eae235df659600304f12192c5ffccd348ba9c8"
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
+      "sha256": "fa2aab0313c9f730dff48c4279bf150c4a5cbfe717faeeaa4cda42b7e44a0d84"
     },
     "求解/问题四/结果/前沿预测.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "c1237cec10dc3cd76e1ee4262cb38211877b0b9e0c0615ba054166e38ff05ac8"
     },
     "求解/问题四/结果/前沿预测_结构外推情景.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "d6b4f2ca5534fca9640bd3f63405ecec94235db13d782ca31ce0f71bee0f015f"
     },
     "求解/问题四/结果/年份效应.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "3099d954fd790e9dcb9ec91c1c5196b64097e19748e99f0141ab2068efcd1848"
     },
     "求解/问题四/结果/筛选漏斗.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "84d1c0d3b2dbd57458c4311fae03551c0c729266ccf77117197080289c1ab4da"
     },
     "求解/问题四/结果/规模时间分解.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
-      "sha256": "6cf76c289059a545bb47567af66092e765d0cfa1e465e5a4db0b69f2c0a11204"
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
+      "sha256": "275bd7e565964ff6e80f0a70819f890ed6a7e8e90ec3624dee8c1e717985a705"
     },
     "求解/问题四/结果/规模时间分解_长周期.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
-      "sha256": "7878140609e43e058303e4fc3bab2ec36c79748c6e4a6fe41d79eeb5c792d44e"
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
+      "sha256": "3a49a247df3bea83c1966260477a6b3ac4812cba7ce058c7f91f6a6a30ed1b5d"
     },
     "求解/问题四/结果/逐任务聚合.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "c29c825ce23e5f460f48fbc852e6f34376ae1cfbcd001faeea24d527ec7934b1"
     },
     "求解/问题四/结果/面板回归数据.csv": {
-      "content_equal_except_declared_description": true,
-      "description_corrected": false,
+      "same_scientific_content": true,
+      "comparison": "exact text after UTF-8 BOM and CRLF normalization",
+      "allowed_description_keys": [],
       "sha256": "e36f65468f45f47d2e3e388fb517dfbe0f9e311fb456780b12405587b2118bf5"
     }
   },
   "raw_inputs": {
-    "A_data_value/domain_mapping_guide.csv": "4a4479f41b9f46116e688cd0c13ccdad4e687192fc1a38c4add690771ebff480",
-    "A_data_value/regmix_domain_sample.jsonl.xz": "4fa8eea3d39c7f789abd62a456c88c9d4e032c58a0fff4c27853b9f50e5d7b04",
-    "A_data_value/regmix_domain_summary.csv": "7696e26dc0ee809285ab3ebc5ee7da187fbe7e756a6303ee5e231d93c9221317",
-    "A_data_value/regmix_tables/est_mixture_10b.csv": "880c7ca1ebef470422e2b93d9bfcd0976db7db4e34ea57047518d95fe43327d1",
-    "A_data_value/regmix_tables/est_mixture_70b.csv": "880c7ca1ebef470422e2b93d9bfcd0976db7db4e34ea57047518d95fe43327d1",
-    "A_data_value/regmix_tables/est_pile_loss_10b.csv": "226457581f3f59e15e44d8f72dee31fa7492c821699725fef47627d82cf34c0d",
-    "A_data_value/regmix_tables/est_pile_loss_70b.csv": "d0883b2d1a44da9386a6d629a3623c724ee291cba1ac87b6d1079e5377307682",
-    "A_data_value/regmix_tables/test_mixture_1B.csv": "dd38052949c0a5f84165bdcb3ae3a331c7f07efd9bb83848bd579dfc4ce75a2c",
-    "A_data_value/regmix_tables/test_mixture_1m.csv": "197267b7d6f15367e2f46c881e564c35b0d34e51b1754bb09d07e650cf8e1ce8",
-    "A_data_value/regmix_tables/test_mixture_60m.csv": "197267b7d6f15367e2f46c881e564c35b0d34e51b1754bb09d07e650cf8e1ce8",
-    "A_data_value/regmix_tables/test_pile_loss_1B.csv": "b2451e2b7fa15400688edc39e4d32f21ccbe0fb356e07d62a0e9ccddf247114f",
-    "A_data_value/regmix_tables/test_pile_loss_1m.csv": "e027b1674f60140a65a87b5e4a59ab5f09dc33e8fd02c080682678074b160f53",
-    "A_data_value/regmix_tables/test_pile_loss_60m.csv": "8fe69d59ab7dd4fae4736459f4265ec93c7ed1ad1eca407346052560edc72b5b",
-    "A_data_value/regmix_tables/train_mixture_1m.csv": "04a32ef4ab594376bf90e11404c033668f887c351d6a03ad3744824c7296a2d8",
-    "A_data_value/regmix_tables/train_pile_loss_1m.csv": "49a959aa07ce5c20831d5abe3a7896ff0cd90a398bd407c8913fd5588be0465a",
-    "A_data_value/slimpajama_quality_extended/arxiv_part-6777d8857c6e-000486.jsonl.xz": "ae1e3399f84f605d994fc60b46984d742e14abb3355d8e7a91822eae1b99e16a",
-    "A_data_value/slimpajama_quality_extended/github_part-6777d8857c6e-000275.jsonl.xz": "7af069c71c6027a10f2013cc14dd9d5d17855c264734f69c955544ff6cff7382",
-    "A_data_value/slimpajama_quality_signal_sample.jsonl.xz": "14a4eeec4c7d98efd78942ddd9c1329640527f2108e73227be449bc1a8dbe579",
-    "attachment_size_summary.csv": "4bd3ff16d316f3f2a623e4b103d1f3a4abe3edfc8f31b80f1627b122dab2911f",
-    "B_scaling_laws/cerebras_training_log.csv": "178f878cad2cb31e4ec104c670553de23818197876d824a113fdb911125951a6",
-    "B_scaling_laws/open_model_family_metadata.csv": "641682f0ea6c46f25a0188ac723af44e0bc2e27c760e744743a15e97e29ee064",
-    "B_scaling_laws/published_scaling_data.csv": "dd858c5e48610e28589340d5db023d6abfb31df597506789ccdfc6a546731bbd",
-    "B_scaling_laws/pythia_checkpoint_index.csv": "0f7f63535cbc1bbef5165776562e71401af9f762cfe02aaea30c824f45fbc9ed",
-    "B_scaling_laws/pythia_training_log_existing.csv": "529a59644b0f57bf3a76037838b614bfedc35e58bb26b93052e34ffc63e454c2",
-    "B_scaling_laws/scaling_baseline.csv": "2272983ded93de35e05f9acbf95ebceedf43f283345e4be72b54fee94080391e",
-    "B_scaling_laws/supplementary_large_baseline.csv": "a240e210c5b37444356c28eea96c6cc36be79c29baae1621c2e08aff727ccfeb",
-    "B_scaling_laws/supplementary_large_models.csv": "ee794c1c586ed33c485a9eb9a2a3d993790402b63297e9b2765a1387930e940e",
-    "B_scaling_laws/supplementary_NQ_experiment.csv": "c7450ce0d67d8692535fef4709e60e2da60b2c184738bf96df160a4be0a33a7f",
-    "B_scaling_laws/supplementary_NQ_experiment_expanded.csv": "880fd265ca3e1d9bc93b4559af7ed7c18f89040634266c50bae03d88486e0f3a",
-    "B_scaling_laws/supplementary_NQ_experiment_large.csv": "bda0d449f75c73bbd04141e5cffbf4bea7002073e34b7fa95a638570fa095ffe",
-    "B_scaling_laws/training_trajectories/pythia_0.070542B_trajectory.csv": "19663f2f14d62af377377962ec8f794148450bfb278fdbeb2452f4641fe6a440",
-    "B_scaling_laws/training_trajectories/pythia_0.162405B_trajectory.csv": "8e2b78cde966b0a3e8b6272935c3f3dcccc5a54e94bb7db79ded2fd8fdf5a124",
-    "B_scaling_laws/training_trajectories/pythia_0.409009B_trajectory.csv": "8c803195d475d8ff320afd90887ae48cec6463f4d01a2264c6680611ed9db170",
-    "B_scaling_laws/training_trajectories/pythia_1.040867B_trajectory.csv": "bb73b2852db183bee3d76c76f55e2bdcc292d7ed0881cb27966525b56afcafc0",
-    "B_scaling_laws/training_trajectories/pythia_1.416184B_trajectory.csv": "cd0d718747fb6048cb474066dbf35f64ef852f59cba2886484cbdf14bc68a02f",
-    "B_scaling_laws/training_trajectories/pythia_11.965825B_trajectory.csv": "e223b3d48bc4fef3cbc03fd583ff7aef87e474903d829f6c417310cb99fa7b5e",
-    "B_scaling_laws/training_trajectories/pythia_2.782831B_trajectory.csv": "552f03249b69234009eb028b3296d6bd1b1cb3a52c0d3a84a669baa0e3179482",
-    "B_scaling_laws/training_trajectories/pythia_6.86104B_trajectory.csv": "8814c8414fddc914444c74e6cf8da02e3e156a0d7fb8acea6c5da05e438bf054",
-    "C_efficiency_evolution/epoch_all_ai_models.csv": "0b98a01bcb8d96958745b6fbe505416c38f719948d9029b38ff6233425c0e1c1",
-    "C_efficiency_evolution/leaderboard_cleaned.csv": "199891128629f24f83ed2f51211eee65a82a13f45275e79a8227d5dacc7c2846",
-    "C_efficiency_evolution/leaderboard_enhanced.csv": "d8ae5b1e00f36bf17adb0c3fbf88c60edd54298625d2db1aa744b2b001202799",
-    "C_efficiency_evolution/leaderboard_extended_timeseries.csv": "ab2b5715b2945ebdeeabfb18e8d040f7c68d8c76bd02c01e446959218bfcd184",
-    "C_efficiency_evolution/loss_benchmark_bridge.csv": "284dee7f8878bfe8ebf48c4efbcaa85c1c566377edc5008727c06efa6520170f",
-    "C_efficiency_evolution/loss_benchmark_bridge_expanded.csv": "e175462233c2b856e2878c603055b4ed70135f021300f912852af1bb485ba4fd",
-    "C_efficiency_evolution/model_architecture_metadata.csv": "ee24622cb3a6334f08d72c9ea373be26d5e5585bb266367c5f66d77499112ffc"
+    "A_data_value/domain_mapping_guide.csv": {
+      "expected_sha256": "4a4479f41b9f46116e688cd0c13ccdad4e687192fc1a38c4add690771ebff480",
+      "actual_sha256": "4a4479f41b9f46116e688cd0c13ccdad4e687192fc1a38c4add690771ebff480",
+      "matches": true
+    },
+    "A_data_value/regmix_domain_sample.jsonl.xz": {
+      "expected_sha256": "4fa8eea3d39c7f789abd62a456c88c9d4e032c58a0fff4c27853b9f50e5d7b04",
+      "actual_sha256": "4fa8eea3d39c7f789abd62a456c88c9d4e032c58a0fff4c27853b9f50e5d7b04",
+      "matches": true
+    },
+    "A_data_value/regmix_domain_summary.csv": {
+      "expected_sha256": "7696e26dc0ee809285ab3ebc5ee7da187fbe7e756a6303ee5e231d93c9221317",
+      "actual_sha256": "7696e26dc0ee809285ab3ebc5ee7da187fbe7e756a6303ee5e231d93c9221317",
+      "matches": true
+    },
+    "A_data_value/regmix_tables/est_mixture_10b.csv": {
+      "expected_sha256": "880c7ca1ebef470422e2b93d9bfcd0976db7db4e34ea57047518d95fe43327d1",
+      "actual_sha256": "880c7ca1ebef470422e2b93d9bfcd0976db7db4e34ea57047518d95fe43327d1",
+      "matches": true
+    },
+    "A_data_value/regmix_tables/est_mixture_70b.csv": {
+      "expected_sha256": "880c7ca1ebef470422e2b93d9bfcd0976db7db4e34ea57047518d95fe43327d1",
+      "actual_sha256": "880c7ca1ebef470422e2b93d9bfcd0976db7db4e34ea57047518d95fe43327d1",
+      "matches": true
+    },
+    "A_data_value/regmix_tables/est_pile_loss_10b.csv": {
+      "expected_sha256": "226457581f3f59e15e44d8f72dee31fa7492c821699725fef47627d82cf34c0d",
+      "actual_sha256": "226457581f3f59e15e44d8f72dee31fa7492c821699725fef47627d82cf34c0d",
+      "matches": true
+    },
+    "A_data_value/regmix_tables/est_pile_loss_70b.csv": {
+      "expected_sha256": "d0883b2d1a44da9386a6d629a3623c724ee291cba1ac87b6d1079e5377307682",
+      "actual_sha256": "d0883b2d1a44da9386a6d629a3623c724ee291cba1ac87b6d1079e5377307682",
+      "matches": true
+    },
+    "A_data_value/regmix_tables/test_mixture_1B.csv": {
+      "expected_sha256": "dd38052949c0a5f84165bdcb3ae3a331c7f07efd9bb83848bd579dfc4ce75a2c",
+      "actual_sha256": "dd38052949c0a5f84165bdcb3ae3a331c7f07efd9bb83848bd579dfc4ce75a2c",
+      "matches": true
+    },
+    "A_data_value/regmix_tables/test_mixture_1m.csv": {
+      "expected_sha256": "197267b7d6f15367e2f46c881e564c35b0d34e51b1754bb09d07e650cf8e1ce8",
+      "actual_sha256": "197267b7d6f15367e2f46c881e564c35b0d34e51b1754bb09d07e650cf8e1ce8",
+      "matches": true
+    },
+    "A_data_value/regmix_tables/test_mixture_60m.csv": {
+      "expected_sha256": "197267b7d6f15367e2f46c881e564c35b0d34e51b1754bb09d07e650cf8e1ce8",
+      "actual_sha256": "197267b7d6f15367e2f46c881e564c35b0d34e51b1754bb09d07e650cf8e1ce8",
+      "matches": true
+    },
+    "A_data_value/regmix_tables/test_pile_loss_1B.csv": {
+      "expected_sha256": "b2451e2b7fa15400688edc39e4d32f21ccbe0fb356e07d62a0e9ccddf247114f",
+      "actual_sha256": "b2451e2b7fa15400688edc39e4d32f21ccbe0fb356e07d62a0e9ccddf247114f",
+      "matches": true
+    },
+    "A_data_value/regmix_tables/test_pile_loss_1m.csv": {
+      "expected_sha256": "e027b1674f60140a65a87b5e4a59ab5f09dc33e8fd02c080682678074b160f53",
+      "actual_sha256": "e027b1674f60140a65a87b5e4a59ab5f09dc33e8fd02c080682678074b160f53",
+      "matches": true
+    },
+    "A_data_value/regmix_tables/test_pile_loss_60m.csv": {
+      "expected_sha256": "8fe69d59ab7dd4fae4736459f4265ec93c7ed1ad1eca407346052560edc72b5b",
+      "actual_sha256": "8fe69d59ab7dd4fae4736459f4265ec93c7ed1ad1eca407346052560edc72b5b",
+      "matches": true
+    },
+    "A_data_value/regmix_tables/train_mixture_1m.csv": {
+      "expected_sha256": "04a32ef4ab594376bf90e11404c033668f887c351d6a03ad3744824c7296a2d8",
+      "actual_sha256": "04a32ef4ab594376bf90e11404c033668f887c351d6a03ad3744824c7296a2d8",
+      "matches": true
+    },
+    "A_data_value/regmix_tables/train_pile_loss_1m.csv": {
+      "expected_sha256": "49a959aa07ce5c20831d5abe3a7896ff0cd90a398bd407c8913fd5588be0465a",
+      "actual_sha256": "49a959aa07ce5c20831d5abe3a7896ff0cd90a398bd407c8913fd5588be0465a",
+      "matches": true
+    },
+    "A_data_value/slimpajama_quality_extended/arxiv_part-6777d8857c6e-000486.jsonl.xz": {
+      "expected_sha256": "ae1e3399f84f605d994fc60b46984d742e14abb3355d8e7a91822eae1b99e16a",
+      "actual_sha256": "ae1e3399f84f605d994fc60b46984d742e14abb3355d8e7a91822eae1b99e16a",
+      "matches": true
+    },
+    "A_data_value/slimpajama_quality_extended/github_part-6777d8857c6e-000275.jsonl.xz": {
+      "expected_sha256": "7af069c71c6027a10f2013cc14dd9d5d17855c264734f69c955544ff6cff7382",
+      "actual_sha256": "7af069c71c6027a10f2013cc14dd9d5d17855c264734f69c955544ff6cff7382",
+      "matches": true
+    },
+    "A_data_value/slimpajama_quality_signal_sample.jsonl.xz": {
+      "expected_sha256": "14a4eeec4c7d98efd78942ddd9c1329640527f2108e73227be449bc1a8dbe579",
+      "actual_sha256": "14a4eeec4c7d98efd78942ddd9c1329640527f2108e73227be449bc1a8dbe579",
+      "matches": true
+    },
+    "attachment_size_summary.csv": {
+      "expected_sha256": "4bd3ff16d316f3f2a623e4b103d1f3a4abe3edfc8f31b80f1627b122dab2911f",
+      "actual_sha256": "4bd3ff16d316f3f2a623e4b103d1f3a4abe3edfc8f31b80f1627b122dab2911f",
+      "matches": true
+    },
+    "B_scaling_laws/cerebras_training_log.csv": {
+      "expected_sha256": "178f878cad2cb31e4ec104c670553de23818197876d824a113fdb911125951a6",
+      "actual_sha256": "178f878cad2cb31e4ec104c670553de23818197876d824a113fdb911125951a6",
+      "matches": true
+    },
+    "B_scaling_laws/open_model_family_metadata.csv": {
+      "expected_sha256": "641682f0ea6c46f25a0188ac723af44e0bc2e27c760e744743a15e97e29ee064",
+      "actual_sha256": "641682f0ea6c46f25a0188ac723af44e0bc2e27c760e744743a15e97e29ee064",
+      "matches": true
+    },
+    "B_scaling_laws/published_scaling_data.csv": {
+      "expected_sha256": "dd858c5e48610e28589340d5db023d6abfb31df597506789ccdfc6a546731bbd",
+      "actual_sha256": "dd858c5e48610e28589340d5db023d6abfb31df597506789ccdfc6a546731bbd",
+      "matches": true
+    },
+    "B_scaling_laws/pythia_checkpoint_index.csv": {
+      "expected_sha256": "0f7f63535cbc1bbef5165776562e71401af9f762cfe02aaea30c824f45fbc9ed",
+      "actual_sha256": "0f7f63535cbc1bbef5165776562e71401af9f762cfe02aaea30c824f45fbc9ed",
+      "matches": true
+    },
+    "B_scaling_laws/pythia_training_log_existing.csv": {
+      "expected_sha256": "529a59644b0f57bf3a76037838b614bfedc35e58bb26b93052e34ffc63e454c2",
+      "actual_sha256": "529a59644b0f57bf3a76037838b614bfedc35e58bb26b93052e34ffc63e454c2",
+      "matches": true
+    },
+    "B_scaling_laws/scaling_baseline.csv": {
+      "expected_sha256": "2272983ded93de35e05f9acbf95ebceedf43f283345e4be72b54fee94080391e",
+      "actual_sha256": "2272983ded93de35e05f9acbf95ebceedf43f283345e4be72b54fee94080391e",
+      "matches": true
+    },
+    "B_scaling_laws/supplementary_large_baseline.csv": {
+      "expected_sha256": "a240e210c5b37444356c28eea96c6cc36be79c29baae1621c2e08aff727ccfeb",
+      "actual_sha256": "a240e210c5b37444356c28eea96c6cc36be79c29baae1621c2e08aff727ccfeb",
+      "matches": true
+    },
+    "B_scaling_laws/supplementary_large_models.csv": {
+      "expected_sha256": "ee794c1c586ed33c485a9eb9a2a3d993790402b63297e9b2765a1387930e940e",
+      "actual_sha256": "ee794c1c586ed33c485a9eb9a2a3d993790402b63297e9b2765a1387930e940e",
+      "matches": true
+    },
+    "B_scaling_laws/supplementary_NQ_experiment.csv": {
+      "expected_sha256": "c7450ce0d67d8692535fef4709e60e2da60b2c184738bf96df160a4be0a33a7f",
+      "actual_sha256": "c7450ce0d67d8692535fef4709e60e2da60b2c184738bf96df160a4be0a33a7f",
+      "matches": true
+    },
+    "B_scaling_laws/supplementary_NQ_experiment_expanded.csv": {
+      "expected_sha256": "880fd265ca3e1d9bc93b4559af7ed7c18f89040634266c50bae03d88486e0f3a",
+      "actual_sha256": "880fd265ca3e1d9bc93b4559af7ed7c18f89040634266c50bae03d88486e0f3a",
+      "matches": true
+    },
+    "B_scaling_laws/supplementary_NQ_experiment_large.csv": {
+      "expected_sha256": "bda0d449f75c73bbd04141e5cffbf4bea7002073e34b7fa95a638570fa095ffe",
+      "actual_sha256": "bda0d449f75c73bbd04141e5cffbf4bea7002073e34b7fa95a638570fa095ffe",
+      "matches": true
+    },
+    "B_scaling_laws/training_trajectories/pythia_0.070542B_trajectory.csv": {
+      "expected_sha256": "19663f2f14d62af377377962ec8f794148450bfb278fdbeb2452f4641fe6a440",
+      "actual_sha256": "19663f2f14d62af377377962ec8f794148450bfb278fdbeb2452f4641fe6a440",
+      "matches": true
+    },
+    "B_scaling_laws/training_trajectories/pythia_0.162405B_trajectory.csv": {
+      "expected_sha256": "8e2b78cde966b0a3e8b6272935c3f3dcccc5a54e94bb7db79ded2fd8fdf5a124",
+      "actual_sha256": "8e2b78cde966b0a3e8b6272935c3f3dcccc5a54e94bb7db79ded2fd8fdf5a124",
+      "matches": true
+    },
+    "B_scaling_laws/training_trajectories/pythia_0.409009B_trajectory.csv": {
+      "expected_sha256": "8c803195d475d8ff320afd90887ae48cec6463f4d01a2264c6680611ed9db170",
+      "actual_sha256": "8c803195d475d8ff320afd90887ae48cec6463f4d01a2264c6680611ed9db170",
+      "matches": true
+    },
+    "B_scaling_laws/training_trajectories/pythia_1.040867B_trajectory.csv": {
+      "expected_sha256": "bb73b2852db183bee3d76c76f55e2bdcc292d7ed0881cb27966525b56afcafc0",
+      "actual_sha256": "bb73b2852db183bee3d76c76f55e2bdcc292d7ed0881cb27966525b56afcafc0",
+      "matches": true
+    },
+    "B_scaling_laws/training_trajectories/pythia_1.416184B_trajectory.csv": {
+      "expected_sha256": "cd0d718747fb6048cb474066dbf35f64ef852f59cba2886484cbdf14bc68a02f",
+      "actual_sha256": "cd0d718747fb6048cb474066dbf35f64ef852f59cba2886484cbdf14bc68a02f",
+      "matches": true
+    },
+    "B_scaling_laws/training_trajectories/pythia_11.965825B_trajectory.csv": {
+      "expected_sha256": "e223b3d48bc4fef3cbc03fd583ff7aef87e474903d829f6c417310cb99fa7b5e",
+      "actual_sha256": "e223b3d48bc4fef3cbc03fd583ff7aef87e474903d829f6c417310cb99fa7b5e",
+      "matches": true
+    },
+    "B_scaling_laws/training_trajectories/pythia_2.782831B_trajectory.csv": {
+      "expected_sha256": "552f03249b69234009eb028b3296d6bd1b1cb3a52c0d3a84a669baa0e3179482",
+      "actual_sha256": "552f03249b69234009eb028b3296d6bd1b1cb3a52c0d3a84a669baa0e3179482",
+      "matches": true
+    },
+    "B_scaling_laws/training_trajectories/pythia_6.86104B_trajectory.csv": {
+      "expected_sha256": "8814c8414fddc914444c74e6cf8da02e3e156a0d7fb8acea6c5da05e438bf054",
+      "actual_sha256": "8814c8414fddc914444c74e6cf8da02e3e156a0d7fb8acea6c5da05e438bf054",
+      "matches": true
+    },
+    "C_efficiency_evolution/epoch_all_ai_models.csv": {
+      "expected_sha256": "0b98a01bcb8d96958745b6fbe505416c38f719948d9029b38ff6233425c0e1c1",
+      "actual_sha256": "0b98a01bcb8d96958745b6fbe505416c38f719948d9029b38ff6233425c0e1c1",
+      "matches": true
+    },
+    "C_efficiency_evolution/leaderboard_cleaned.csv": {
+      "expected_sha256": "199891128629f24f83ed2f51211eee65a82a13f45275e79a8227d5dacc7c2846",
+      "actual_sha256": "199891128629f24f83ed2f51211eee65a82a13f45275e79a8227d5dacc7c2846",
+      "matches": true
+    },
+    "C_efficiency_evolution/leaderboard_enhanced.csv": {
+      "expected_sha256": "d8ae5b1e00f36bf17adb0c3fbf88c60edd54298625d2db1aa744b2b001202799",
+      "actual_sha256": "d8ae5b1e00f36bf17adb0c3fbf88c60edd54298625d2db1aa744b2b001202799",
+      "matches": true
+    },
+    "C_efficiency_evolution/leaderboard_extended_timeseries.csv": {
+      "expected_sha256": "ab2b5715b2945ebdeeabfb18e8d040f7c68d8c76bd02c01e446959218bfcd184",
+      "actual_sha256": "ab2b5715b2945ebdeeabfb18e8d040f7c68d8c76bd02c01e446959218bfcd184",
+      "matches": true
+    },
+    "C_efficiency_evolution/loss_benchmark_bridge.csv": {
+      "expected_sha256": "284dee7f8878bfe8ebf48c4efbcaa85c1c566377edc5008727c06efa6520170f",
+      "actual_sha256": "284dee7f8878bfe8ebf48c4efbcaa85c1c566377edc5008727c06efa6520170f",
+      "matches": true
+    },
+    "C_efficiency_evolution/loss_benchmark_bridge_expanded.csv": {
+      "expected_sha256": "e175462233c2b856e2878c603055b4ed70135f021300f912852af1bb485ba4fd",
+      "actual_sha256": "e175462233c2b856e2878c603055b4ed70135f021300f912852af1bb485ba4fd",
+      "matches": true
+    },
+    "C_efficiency_evolution/model_architecture_metadata.csv": {
+      "expected_sha256": "ee24622cb3a6334f08d72c9ea373be26d5e5585bb266367c5f66d77499112ffc",
+      "actual_sha256": "ee24622cb3a6334f08d72c9ea373be26d5e5585bb266367c5f66d77499112ffc",
+      "matches": true
+    }
   },
-  "diagnostic_sources": {
-    "求解/审稿补充/q1_决策与稳健性.py": "796292d824fd261ef8198dc075b729744ca2f38628240f739d96fa7ed6b42ac3",
-    "求解/审稿补充/q23_尺度与结构敏感性.py": "8e98251da4bf434e8328ea52b04eade4e5793ad694e5c23c04514a1a1c95bb63",
-    "求解/审稿补充/q4_时间与前沿验证.py": "30a444a0a979ad7a1b00f500dd3482ea8c5839cf8723709a39f8832849adf261"
-  },
+  "head_revision": "4f34f38acd5fc0dbe59b68e52a5d9e4be6e4315b",
+  "historical_non_raw_manifest_entries_not_in_raw_hash_scope": [
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/17域质量映射.csv",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/_common.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/复现论文.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/广义标度律参数.csv",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/绘制问题三四流程图.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题一/出版导出.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题一/展示风格公共.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题一/展示风格冲突.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题一/展示风格概览.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题一/展示风格流程.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题一/展示风格诊断.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题一/展示风格非线性.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题一/绘图数据.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题一/重绘图表.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题一/问题一.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题一/非线性代理对照.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题一_关键量.json",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题三/论文绘图.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题三/问题三.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题二/重绘图表.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题二/问题二.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题四/重绘图表.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/求解/问题四/问题四.py",
+    "C:/Users/Administrator/Desktop/数模论文/tmp/p2_publish/论文/figures/overall-architecture.tex"
+  ],
   "tex": {
     "active_files": 18,
-    "labels": 93,
+    "files": [
+      "论文/论文.tex",
+      "论文/0.摘要.tex",
+      "论文/1.引言.tex",
+      "论文/2.总体分析.tex",
+      "论文/figures/overall-architecture.tex",
+      "论文/3.模型假设.tex",
+      "论文/4.符号说明.tex",
+      "论文/5.模型的建立与求解.tex",
+      "论文/5.1.问题一.tex",
+      "论文/figures/q1-workflow.tex",
+      "论文/5.2.问题二.tex",
+      "论文/5.3.问题三.tex",
+      "论文/5.4.问题四.tex",
+      "论文/6.模型检验.tex",
+      "论文/7.模型评价.tex",
+      "论文/8.模型改进推广.tex",
+      "论文/10.参考文献.tex",
+      "论文/11.附录.tex"
+    ],
+    "labels": 123,
     "bibliography": 27,
+    "code_listings": 26,
+    "missing_inputs": [],
     "missing_refs": [],
     "missing_citations": [],
-    "duplicate_labels": []
+    "duplicate_labels": [],
+    "duplicate_bibliography_keys": [],
+    "missing_code_listings": []
   },
-  "tex_source_sha256": {
+  "figures": {
+    "actual_count": 31,
+    "registered_count": 31,
+    "files": [
+      {
+        "tex": "论文/5.1.问题一.tex",
+        "figure": "求解/问题一/图片/图0_A1-A3全量质量评分.png",
+        "sha256": "65d50e4d477d77627d1fa206d085d09b335acbb02b1ecc69c7bece3631475009"
+      },
+      {
+        "tex": "论文/5.1.问题一.tex",
+        "figure": "求解/问题一/图片/图6_冲突与赋权诊断.png",
+        "sha256": "18120e1ef87ab4f9fc41a8ea23465676cf910c6e31677df2ab192f4e1f3189e9"
+      },
+      {
+        "tex": "论文/5.1.问题一.tex",
+        "figure": "求解/问题一/图片/图1_训练配比结构.png",
+        "sha256": "9cc1aae62493b38c24cb45e1e0c6f9afc551ba3d8822fa86a3bc6ea34d71526d"
+      },
+      {
+        "tex": "论文/5.1.问题一.tex",
+        "figure": "求解/问题一/图片/图2_线性模型R2.png",
+        "sha256": "29a7c143fd2c58ea2de3b05c2ee367c69fb3618791674eee98aa89d457b8f530"
+      },
+      {
+        "tex": "论文/5.1.问题一.tex",
+        "figure": "求解/问题一/图片/图9_非线性代理对照.png",
+        "sha256": "f9cb019187798a7bcc4a7d42f06d86622c842e20ce6e65b0ccae1365a47b8a5e"
+      },
+      {
+        "tex": "论文/5.1.问题一.tex",
+        "figure": "求解/问题一/图片/图4_混合系数热力图.png",
+        "sha256": "bde7dab6eb8eeb06a5b22b5493caef94639e00481819c369b1057b4462d48bba"
+      },
+      {
+        "tex": "论文/5.1.问题一.tex",
+        "figure": "求解/问题一/图片/图3_预测vs实测.png",
+        "sha256": "fb812e4ad862d2d0ed569d9d0064305023174463956496909ef362999d85ef94"
+      },
+      {
+        "tex": "论文/5.1.问题一.tex",
+        "figure": "求解/问题一/图片/图5_领域质量评分.png",
+        "sha256": "5dcd7cea35ebbc41a45f7b5d13fa7778f540849f6e4169ecd2dd18b5850c71e0"
+      },
+      {
+        "tex": "论文/5.1.问题一.tex",
+        "figure": "求解/问题一/图片/图7_外推与跨尺度.png",
+        "sha256": "e9bb9fb127b3cee6fbc6dfea3ea1ee05490c34e4bbf4db0c47a8f88ff2da30b0"
+      },
+      {
+        "tex": "论文/figures/q1-workflow.tex",
+        "figure": "求解/问题一/图片/图8_问题一求解流程.png",
+        "sha256": "30c7efac5023dc9473142b78515f138096c7bd34223d303b71690346ddaf324e"
+      },
+      {
+        "tex": "论文/5.2.问题二.tex",
+        "figure": "求解/问题二/图片/图0_问题二分析框架.png",
+        "sha256": "33195c8cc8eec709d2d7ad042b227dcc4be995922e02f092af35159339c4a9b4"
+      },
+      {
+        "tex": "论文/5.2.问题二.tex",
+        "figure": "求解/问题二/图片/图7_质量方向对照.png",
+        "sha256": "43269e1e6e93f8d04d3eef15c2eb7d21615c3ae5df81b5917852f4f55150d70f"
+      },
+      {
+        "tex": "论文/5.2.问题二.tex",
+        "figure": "求解/问题二/图片/图1_经典标度律拟合.png",
+        "sha256": "6b76ecae63096c561702ab15bd06390abe3fac6067ab444240688a000d4bf9ae"
+      },
+      {
+        "tex": "论文/5.2.问题二.tex",
+        "figure": "求解/问题二/图片/图3_质量边际影响.png",
+        "sha256": "8be4d451162b526046ac0f2054670a744a21593714c5abe9a42ff00df1affed8"
+      },
+      {
+        "tex": "论文/5.2.问题二.tex",
+        "figure": "求解/问题二/图片/图2_广义标度律验证.png",
+        "sha256": "00b08d283dc76928c0fdb1e111e6bbf534717412031a09f021b8b69940b42093"
+      },
+      {
+        "tex": "论文/5.2.问题二.tex",
+        "figure": "求解/问题二/图片/图4_边际效用对比.png",
+        "sha256": "77dc1b7fcb81d1ba94a0e12e9af6700ac46be5f4a9e2055b0cd09bae77e280bd"
+      },
+      {
+        "tex": "论文/5.2.问题二.tex",
+        "figure": "求解/问题二/图片/图5_质量参数替代.png",
+        "sha256": "c75158f039b553d80f6b85ced234d754f2fc2509c2edaab8825df4901b3e88a3"
+      },
+      {
+        "tex": "论文/5.2.问题二.tex",
+        "figure": "求解/问题二/图片/图6_领域替代互补.png",
+        "sha256": "7c8f387cd2468f5be6556a4da8226654226e8383a607764792737acea63f1a7f"
+      },
+      {
+        "tex": "论文/5.3.问题三.tex",
+        "figure": "论文/figures/q3-workflow.pdf",
+        "sha256": "a990e31f39536e297a0ea93934507b0a4c1f4e59087bd6fac88810163888c463"
+      },
+      {
+        "tex": "论文/5.3.问题三.tex",
+        "figure": "求解/问题三/图片/图2_预算份额结构性转移.png",
+        "sha256": "8419649890bbf227b56ec6995901e7617f11a46f712eac45665c1ced0978ce06"
+      },
+      {
+        "tex": "论文/5.3.问题三.tex",
+        "figure": "求解/问题三/图片/图4_质量成本函数对比.png",
+        "sha256": "b86a30a5aab7d8610dfaf2a3d8189cf1ea488f7e97ae280c4e0b38c5969891bc"
+      },
+      {
+        "tex": "论文/5.3.问题三.tex",
+        "figure": "求解/问题三/图片/图3_上下文长度敏感性.png",
+        "sha256": "589711462b21d9e542ef0029113dc20477467a48f4d6cd605ffdc082b87a7ae8"
+      },
+      {
+        "tex": "论文/5.4.问题四.tex",
+        "figure": "论文/figures/q4-workflow.pdf",
+        "sha256": "68c2fea7ae460f2ac2e08bb8036d51d016240bf375e7f327fa2c4b63ef8df450"
+      },
+      {
+        "tex": "论文/5.4.问题四.tex",
+        "figure": "求解/问题四/图片/图1_Loss_Benchmark映射.png",
+        "sha256": "a4bd9c77ec66d879581eb2e0925e66c6d30b7131fba61be17cda26aa4f6df7aa"
+      },
+      {
+        "tex": "论文/5.4.问题四.tex",
+        "figure": "求解/问题四/图片/图7_年度规模效应.png",
+        "sha256": "f90231c7f3a545ca68ce5e335d2c6ca3701960957a8c3151af4905d31c0f56ad"
+      },
+      {
+        "tex": "论文/5.4.问题四.tex",
+        "figure": "求解/问题四/图片/图2_规模时间分解.png",
+        "sha256": "17c4eef58109f860ccfdb0940919e9759f8f1a588c727ba17a7369b8a7b86798"
+      },
+      {
+        "tex": "论文/5.4.问题四.tex",
+        "figure": "求解/问题四/图片/图3_能力前沿预测.png",
+        "sha256": "8bb6775232b64913bb0eaeb0c07db091405b3fd4465ce73bbeca3b0ff4fc6cfd"
+      },
+      {
+        "tex": "论文/5.4.问题四.tex",
+        "figure": "求解/问题四/图片/图6_六维能力分布.png",
+        "sha256": "9c76ea13d00a20fbf00d2e97d5d98f25e5b3e7738ce9236ac4057c9dd0f2dbc2"
+      },
+      {
+        "tex": "论文/5.4.问题四.tex",
+        "figure": "求解/问题四/图片/图4_逐任务聚合.png",
+        "sha256": "195b5c29a06db69f9aae947af18d66bf15510c22f4661e5a8d0743912c9c5e8c"
+      },
+      {
+        "tex": "论文/5.4.问题四.tex",
+        "figure": "求解/问题四/图片/图5_C4宏观趋势.png",
+        "sha256": "a9f59986332ff945426c6c2e6fefd7b890503e30dbe97d5325f4ada8ce145e68"
+      },
+      {
+        "tex": "论文/2.总体分析.tex",
+        "figure": "论文/figures/overall-architecture.tex",
+        "sha256": "975f850641936f7f9398825a0ff24023e075fde76938562b377ab97510d6f3a2"
+      }
+    ],
+    "missing_files": [],
+    "missing_registration": [],
+    "unused_registration": [],
+    "sha_mismatches": []
+  },
+  "conflicts": [],
+  "python_syntax": {
+    "files_checked": 28,
+    "errors": []
+  },
+  "unmerged_index_paths_informational": [
+    "求解/图表来源.json",
+    "求解/复现论文.py",
+    "求解/问题一/图片/图8_问题一求解流程.png",
+    "求解/问题一/图片/图8_问题一求解流程.svg",
+    "求解/问题一/图片/图形溯源.json",
+    "求解/问题一/图片/绘图数据核验.json",
+    "求解/问题一/展示风格流程.py",
+    "求解/问题四/图片/图2_规模时间分解.png",
+    "求解/问题四/图片/图3_能力前沿预测.png",
+    "求解/问题四/重绘图表.py",
+    "论文/0.摘要.tex",
+    "论文/11.附录.tex",
+    "论文/2.总体分析.tex",
+    "论文/3.模型假设.tex",
+    "论文/4.符号说明.tex",
+    "论文/5.1.问题一.tex",
+    "论文/5.2.问题二.tex",
+    "论文/5.3.问题三.tex",
+    "论文/5.4.问题四.tex",
+    "论文/6.模型检验.tex",
+    "论文/7.模型评价.tex",
+    "论文/figures/overall-architecture.tex",
+    "论文/论文.pdf"
+  ],
+  "repository_snapshot_sha256": {
+    "求解/问题一/问题一.py": "0c3f26f9b40452b76c039d04f73fe95d7709ff0b0c9bc236ca00b4c384021b7f",
+    "求解/问题二/问题二.py": "8925678239dc34176f3c35eeda93971558b7531c4ef0b65d2d2a748e98eeab00",
+    "求解/问题三/问题三.py": "9747f83ed62da1370831738a6b71563b58c84b8b5867fd238b60ece059476457",
+    "求解/问题四/问题四.py": "00e040edbb3920330964e8d5fbdeefe6581b85d25af009e504287e98bffee38f",
+    "求解/问题一/核岭支持域推荐.py": "f06ca6926fe7b765d9c4f506aaf8a7c04cea4c08d0fbf2ff8065fd6f91adbff2",
+    "求解/问题一/非线性代理对照.py": "8b5cddeeb7dfe2e6802f8ba0d13fdae4f5813dcea3cc9e7dd8366d919f312e0b",
+    "求解/_common.py": "403bd4d3efa96e10625630730b847f3e2b3df947bf12bf1f1df599b7f6479ced",
+    "求解/复现预期输出.json": "1fcca10b4b1267ebd6c7304d96d8879b6cec75f533647923206898f10eeb43c6",
+    "求解/问题一/结果/17域质量映射.csv": "d8e12a6fa9b45a6a481e0fba3beb59acf7f297be953fb96cd22f0aa9ff964af8",
+    "求解/问题一/结果/Loss代理领域难度.csv": "66deef641e71a910d62ca140cbc8a68179dbfca7993c05e5cb0294809ec46f9c",
+    "求解/问题一/结果/冲突指标对_top20.csv": "43791325d4268436d4b7cff9b0b613976e97a2b67e5bb7012a35d2e57ca548a1",
+    "求解/问题一/结果/冲突样本裁决汇总.csv": "9f4a631f2ae8143501a99969bc64848e97fa1af91f26359b202003c302251449",
+    "求解/问题一/结果/冲突阈值灵敏度.csv": "dba71940f61391089fac45ba5dc699dd8db7f34e839f24d3fcbb374501a40713",
+    "求解/问题一/结果/原文抽查.csv": "b408342f083e0117f2587384ac7e032d1c87d0326a406e263425ffd427335705",
+    "求解/问题一/结果/外推尺度因子.csv": "6fb2c3cee1e0e19384326307524ac5e355a6d235e9f8a0779ea57b16417fa3ef",
+    "求解/问题一/结果/岭正则敏感性.csv": "73fca241c5d336949be77a6f1593020f99de982d1e4518f77b93176d414608d7",
+    "求解/问题一/结果/广告方向敏感性.csv": "6f6d08f3c548693b3c6332f2587047fcae193bbe6536616b135ad9aafbce20f4",
+    "求解/问题一/结果/截距.csv": "1a9047516b40b80f64f21342992f03ecf9fe62d90cca03fdf9134c52fa00214e",
+    "求解/问题一/结果/抽样集与扩展集域级对照.csv": "665326361e16d54d2c6e8a5c22bff2477d2cdcf4cc2bf828ecac4532e05f60df",
+    "求解/问题一/结果/推荐配比调整.csv": "d4329087f5604f4b585fa0eaedac8e82bcbb0079386f4d7ca8356e055c7bb90d",
+    "求解/问题一/结果/最优配比预测.csv": "fa8eb64b727eab6d93d477c4f1b239643f3e1ad32065b277a43d2da1dbfa7490",
+    "求解/问题一/结果/样本级质量评分.csv": "fd7da0146d3dbecc39432c84df6efa7ad4efa3fee1dcf8564b390133b44e6c1d",
+    "求解/问题一/结果/混合系数矩阵.csv": "8a8c96a5702e29b736b3aa6a55de589edeed0046df703af2a929272c80a807e5",
+    "求解/问题一/结果/混合系数矩阵_中心化.csv": "93c3da47c2cfdc8a0f1b7c3ee4b2c44e2b0d750a741ec5ad9dfcfee34945d4be",
+    "求解/问题一/结果/训练域边际效应.csv": "9c37d501dc1c3d2ebc4d17e9b160240ba2ae04db0b598996b07fd10674c3bd2c",
+    "求解/问题一/结果/质量与损失难度一致性.csv": "c79e5d8461844fbd1503824ed317e86d19c54df9cf36ff7e752d108c47b9f026",
+    "求解/问题一/结果/质量信号缺失审计.csv": "f231f07f84aa6931421a66e4eef4e7f85b289687d50c5ef0c749cf861e97b3a3",
+    "求解/问题一/结果/质量冲突与一致性.csv": "2aa41e0b0548df2f5054390d8b6f6b5e4561f801c174223db251bda33104cfd9",
+    "求解/问题一/结果/质量域评分_全量.csv": "048a3b0f7cf665bb1e1a82c066c37373c95e717d6d6bb5cff3b69a6909e79d44",
+    "求解/问题一/结果/质量域评分_抽样与扩展.csv": "8a12c303e4ca1b509315ef73a4786847b8d352e3e75f5db1c4f1078006588b9a",
+    "求解/问题一/结果/质量指标熵权.csv": "133738676ce93b3610f86eef7ccc6e4458e5438e4fd9153bdac9835e7fac4fba",
+    "求解/问题一/结果/质量项增量检验.csv": "e6a75ff46342378568fe3c5b21275cf43c4833122a9a35c2b4e79a23abf92afb",
+    "求解/问题一/结果/赋权方案对比.csv": "304bb92fb2ee449fe5f96c08621996a834423b4d5ff1ebf93512dca402af77c5",
+    "求解/问题一/结果/跨尺度损失比_60m_vs_1m.csv": "122cb9f4247864771919325d65b371b773532a5c67a30452d48998f433be108e",
+    "求解/问题一/结果/问题一_拟合汇总.csv": "b78ad028641222d91f2fcffbeef6d27287462d1dd48157a839b84482e7f68b03",
+    "求解/问题一/结果/非线性代理对照_五折.csv": "35d8d8ad973fd9ca081f9696e770e47b7f134292174af340e53e8f27dba74df2",
+    "求解/问题一/结果/非线性代理对照_参数搜索.csv": "dc12e36036e673b70727b946885c58c047bc2e5d2932ca874efa90d5448e5e91",
+    "求解/问题一/结果/非线性代理对照_复现清单.json": "069fa43bf002fe0177ce8a8eb961d2b46cdf785db5f824abbf7cb5b4b0ba8182",
+    "求解/问题一/结果/非线性代理对照_折分配.csv": "09188221ced4f1e7c9462e88b750fd10d4699a93ff2850a86779fcdb7ce84df3",
+    "求解/问题一/结果/非线性代理对照_汇总.csv": "b78da54f2623c57ae96ba3d45ff5762b0b43f603471f22af3a90d89452d3915e",
+    "求解/问题一/结果/非线性代理对照_逐域.csv": "f3aee790c59f8f6256db643ca189d069b6bafec55ad2ad050e31e4859046ecc2",
+    "求解/问题一/结果/非线性代理对照_预测明细.csv": "0e5f86b6c61f912bfcdaf6027af28fac1b23ef7002b3e685a7f717c350775775",
+    "求解/问题一/结果/领域质量评分.csv": "66deef641e71a910d62ca140cbc8a68179dbfca7993c05e5cb0294809ec46f9c",
+    "求解/17域质量映射.csv": "d8e12a6fa9b45a6a481e0fba3beb59acf7f297be953fb96cd22f0aa9ff964af8",
+    "求解/问题一_关键量.json": "67352ca69b02130cb19683cfa13c1c9932c5c576715e71d8cc5e02aaac208af1",
+    "求解/问题一/结果/线性有界配比对照.csv": "242165ca62d254cb74def1a0d7771bcf8b8e22b2463433d031f9b647c8edf318",
+    "求解/问题一/结果/核岭推荐_训练凸组合.csv": "dcb2aaf688435515e67dc1bdb0dea25ebba2d4fc9853d1aa8decfe4a168897b8",
+    "求解/问题一/结果/核岭推荐_多初值.csv": "93cb0bdf4bc4aa3759814fa7646705f15c7d8acf5fc9c681d7d492053407bb1a",
+    "求解/问题一/结果/核岭推荐_目标对照.csv": "cb7e197515e65cb377a1694be9c12ce7551837b76d0cc07c77810b947211cffd",
+    "求解/问题二/结果/B3轨迹验证.csv": "eb6ba9a9f1886b1aa359f835c147bd79c1b26c8d2fc0fc541d9953891aa5168f",
+    "求解/问题二/结果/广义标度律分层验证.csv": "ed427edfc6d867352d8e7ad1343669cc408353efeb98168380be2317dd58ae29",
+    "求解/问题二/结果/广义标度律参数.csv": "7008f219457a593451c19f97c37e370eecbb8736e2e5ff274d39322d79186c37",
+    "求解/问题二/结果/广义标度律形式对比.csv": "f1776f0e4f9cf62daddc6bc291c2bb6947d565dc1251cfa7bc47fa04d81e497c",
+    "求解/问题二/结果/弹性与替代关系.csv": "d16ab2a83e885a667c9447c397c7e661cd3b8990d31af69b66c62790672baeea",
+    "求解/问题二/结果/替代率随质量变化.csv": "ae36f197c928c7ebe9f748a4a5798f89c36e81976f706e06a8e488582672e771",
+    "求解/问题二/结果/百亿参数以上外推.csv": "4f4f4eeb000e18b622ba27f685aedf37b95b47e5d5078a85708161de04dd96ea",
+    "求解/问题二/结果/经典标度律参数.csv": "fd02b2cd67d7f660c00a28802d15e93a687f1ab757f8cec0fae313cf32a0ea07",
+    "求解/问题二/结果/质量与损失下限.csv": "f9491ff5433077506fc8393a0bd6d9b1f85c35b316a86dfeb10a5d66f3f869f9",
+    "求解/问题二/结果/质量参数替代关系.csv": "f10aa1a5ec893299c7837229038fa97131c9fea986a45996e65d8f6549e4002c",
+    "求解/问题二/结果/质量字段方向审计.csv": "3f22a352ddb6a441d8ad2e7bd531878817397b873a138e0ab1da543fd82a10a6",
+    "求解/问题二/结果/配比项校准.csv": "e9180190aa77246092f7bd0b27ab6f5b676c5dd47e7b123db9f0eaaed3c4f618",
+    "求解/问题二/结果/问题二_拟合汇总.csv": "f7ff95ed524ea8194c9407a859b7be913bda0dcc3692f3e32971599cdda6eb6e",
+    "求解/问题二/结果/领域替代互补_top.csv": "e48e9c36926de86a9306fa4511030ed95340f5dd1f5a7bfa202731d53fae2784",
+    "求解/问题二/结果/领域替代互补矩阵.csv": "eac0568f4c0facafcad37cf9b99a1e632cb4d91580e615b0f1a4fa4838fc2dba",
+    "求解/广义标度律参数.csv": "7008f219457a593451c19f97c37e370eecbb8736e2e5ff274d39322d79186c37",
+    "求解/问题三/结果/三档预算最优配置.csv": "2661c8918be84c092609a5b00022032f9e5d9318827c15b822ac85ada57331e9",
+    "求解/问题三/结果/上下文长度与最优质量.csv": "0ba74d3c22e36fad98f8f7a62727a638f58a4a8c9f02d855ca741d3a91a69352",
+    "求解/问题三/结果/上下文长度敏感性.csv": "9ef50f8994789b3b0c9668e70ce212149989e17d18a042494e01b27067e532b4",
+    "求解/问题三/结果/上下文长度连续扫描.csv": "a8f02096eb859219522498cc6093289ef21aea209f8f4adb7bf63a15f86f84f8",
+    "求解/问题三/结果/成本函数对比.csv": "1c02b836457033a722b20e96aa3e53eb7050816ea2c27adedfb6593157af6f17",
+    "求解/问题三/结果/结构性转移识别.csv": "52985d6e21d2f0e2114f70d09f7c2f0fa7118198d0b92b6267a1d532a35394fb",
+    "求解/问题三/结果/质量基线灵敏度.csv": "a5f4b3f79947da8bd055a2a2c81891ad467cedd18964680639cfdfdf5d939984",
+    "求解/问题三/结果/配比项算力等价.csv": "c12e3b58a90359d3eb1c75629a6dde57ad93f537140b28e7dc2a340e3a878aa4",
+    "求解/问题三/结果/预算扫略.csv": "da9450bcb7753c618da61b84fd94f748e216f492d491140bce04642355a71e46",
+    "求解/问题四/结果/C3口径异常行.csv": "6036d6e0ff5a7d282421b165440f5d54c6f90ae82137127faee2f9bc35363511",
+    "求解/问题四/结果/C4宏观摘要.csv": "d19708272cf348b0916ab3d6068b72fe1e3209403b44c79fe4b2a2723b1fb9d5",
+    "求解/问题四/结果/C4宏观趋势.csv": "c76b68a7afe23197da0be816cdf10e37ebc927e1f73fe5326c5269bba56272e3",
+    "求解/问题四/结果/C8与C1一致性校验.csv": "628a0f99c8cbeb2a03c59901d8182111b2acea4dfd143f6410e85240dd9655f7",
+    "求解/问题四/结果/C8子任务类别汇总.csv": "9ddfc81e9c91ac7182266b0d9db396d503faabb3197c6c4205eb7310abc31181",
+    "求解/问题四/结果/C8逐任务聚合.csv": "08a4add415a6844c0b78d09bdf0bd50e9c6848dfccb1763a439bb8ddfb0bdc88",
+    "求解/问题四/结果/C8逐任务解析结果.csv": "8d03522e4a393e429b29013117e1a394da99f9c1dc0363812bec7f3ed3c3781b",
+    "求解/问题四/结果/logistic参数.csv": "eb54a43de67abc8e2e8916bbee48820ad8183a6b8a60aa78be70d8c6c4ea9ad1",
+    "求解/问题四/结果/Loss_Benchmark映射.csv": "646713f998e733a5174bb4d61509011c460844a0d089c4f45ecc44a7e7dcdda0",
+    "求解/问题四/结果/Loss_Benchmark映射明细.csv": "5d93a3373e19bdbe932f184f5ae20b51b7c27c25d473e6d0f9b7458c033530c0",
+    "求解/问题四/结果/前沿序列.csv": "fa2aab0313c9f730dff48c4279bf150c4a5cbfe717faeeaa4cda42b7e44a0d84",
+    "求解/问题四/结果/前沿预测.csv": "c1237cec10dc3cd76e1ee4262cb38211877b0b9e0c0615ba054166e38ff05ac8",
+    "求解/问题四/结果/前沿预测_结构外推情景.csv": "d6b4f2ca5534fca9640bd3f63405ecec94235db13d782ca31ce0f71bee0f015f",
+    "求解/问题四/结果/年份效应.csv": "3099d954fd790e9dcb9ec91c1c5196b64097e19748e99f0141ab2068efcd1848",
+    "求解/问题四/结果/筛选漏斗.csv": "84d1c0d3b2dbd57458c4311fae03551c0c729266ccf77117197080289c1ab4da",
+    "求解/问题四/结果/规模时间分解.csv": "275bd7e565964ff6e80f0a70819f890ed6a7e8e90ec3624dee8c1e717985a705",
+    "求解/问题四/结果/规模时间分解_长周期.csv": "3a49a247df3bea83c1966260477a6b3ac4812cba7ce058c7f91f6a6a30ed1b5d",
+    "求解/问题四/结果/逐任务聚合.csv": "c29c825ce23e5f460f48fbc852e6f34376ae1cfbcd001faeea24d527ec7934b1",
+    "求解/问题四/结果/面板回归数据.csv": "e36f65468f45f47d2e3e388fb517dfbe0f9e311fb456780b12405587b2118bf5",
+    "求解/复现清单.json": "ffe2e3fba2c200b5e911f6112199ea305e0878dc22c1987889983f62efb13308",
     "论文/论文.tex": "1ef1002ad32787a2f62421dba7fb9a2373e7e5afeffe6b6f5417a6cad43010e4",
-    "论文/0.摘要.tex": "d59b97e99a96ab4a8e162c220c0735a8ade1acee55829d3b79b61f6dd48c47ea",
-    "论文/1.引言.tex": "2fe395ab22af2d609f68d849339829e8485a0bccc47793cbe0e1da3bc989bc68",
-    "论文/2.总体分析.tex": "f0efe895752d3f4c1e323f5a099fcc2b53134b260cda7d45cd53b43c23b28acc",
-    "论文/figures/overall-architecture.tex": "2928f0fa1e139f8eaa1a78da0dd7b566cce41dc4a404c13aee77985776f2ad5c",
-    "论文/3.模型假设.tex": "49791369eaf9dd8a89c37d9ff578166c0f589cff7ae5fcd9d86a6250da283368",
-    "论文/4.符号说明.tex": "23cd57a9162ee43ef4e312023cdb74bbbe24381f0548e0c13b4aa8c2a4783c69",
+    "论文/0.摘要.tex": "f3980900cf76571f5d7622123a6d8cb184c2dfef43a9049184831ab4f909d0c6",
+    "论文/1.引言.tex": "50eeeea62383fc9d8c85ff8186efc367f76dfc2233b7a22ff6390246420a191b",
+    "论文/2.总体分析.tex": "0a895f94ee3b4e2a22cb320278c030ac373111fd50f22acb5b8543b4c316ce53",
+    "论文/figures/overall-architecture.tex": "975f850641936f7f9398825a0ff24023e075fde76938562b377ab97510d6f3a2",
+    "论文/3.模型假设.tex": "18edaa59e825985b90094abd4502293910b83697a5fb661f3e48bc4f199aa476",
+    "论文/4.符号说明.tex": "020321b44de52eb62645dbcff4c998342d906de3cbd81a250fb611d52c7a44bb",
     "论文/5.模型的建立与求解.tex": "94b5c61e0df940ddfb505a712a996cf21d1edf8c17a03c53d3bcd4890fccb7f7",
-    "论文/5.1.问题一.tex": "f68b7941b41a364d3074ed90901750645eb28829b900a36e1307f6e15d280341",
+    "论文/5.1.问题一.tex": "21889ec53c57b69c48034c0c4c530d177efbf260fe01e19598fca1f50c1e0bb8",
     "论文/figures/q1-workflow.tex": "1fc2b91b2ddd6a19c56154cc5d06a71f7cab45a58b458138d5896c68e7a0b66e",
-    "论文/5.2.问题二.tex": "4e4d75182466a047c3cbe803fb348d9f8b4463ab297606e09e205daf1fc5c0d1",
-    "论文/5.3.问题三.tex": "1579a2c732c638f7c12d545291336c743900a78de0017a5b97a9481d8f1da8f4",
-    "论文/5.4.问题四.tex": "b9bea0e147ea03454da92c5685edc2b8f85edded63d352753f7c0ceb7e5639a2",
-    "论文/6.模型检验.tex": "3dca990d1cdcee4e5d8db0c39954e216b415da55a95e8ebc1d97baf1cff4e330",
-    "论文/7.模型评价.tex": "c5bd3993ecc2a0b02d38348e0b3714248466ffaedd187143c0b4bdbe5b438b36",
-    "论文/8.模型改进推广.tex": "c33ab3f267d736364ff08a2e96ad6affc9531f441689e79be0b3a7d8c581b1b4",
-    "论文/10.参考文献.tex": "79355aab22c1006b749b65d8b95abdf397c53e9034d8bde577473750451e708b",
-    "论文/11.附录.tex": "9d474bdb6bc807b601c8410cbfb4d6cd12c4d54277f1bc699e4f4091f1915ab8"
+    "论文/5.2.问题二.tex": "8e0c17b0f70146463682fd0c7e4527f290ceb44bec5504e6081e5e92db24b871",
+    "论文/5.3.问题三.tex": "c748866dadf7fe81d4abc92be209855621704c0b62460aa33b981a74c0df2dde",
+    "论文/5.4.问题四.tex": "c63113d50d1562be307629f0d3a7de263993e638d969e511db425b6e3b6fc93c",
+    "论文/6.模型检验.tex": "35c47c0e52e5a46403009de09a59903fbaac16157a77a30f4a448755cb53dba1",
+    "论文/7.模型评价.tex": "0134da33aabe5eafc0b580e8ccd8ad5f918c850f01a89199a2ebcf3f7c73ff14",
+    "论文/8.模型改进推广.tex": "13f541e4de3f5ef1086f9d585786fa8a5c8bf75c3ed3159a323fb254f492cd7e",
+    "论文/10.参考文献.tex": "1358fa041d31948457ada27a63822d0ba15fdd849dd72dea5a00b551a4d20c78",
+    "论文/11.附录.tex": "3c7cf9a2f87af3a5f0536a9219d549cfa227bae97b3c40fa618bbc82e9027faa",
+    "求解/问题一/图片/图0_A1-A3全量质量评分.png": "65d50e4d477d77627d1fa206d085d09b335acbb02b1ecc69c7bece3631475009",
+    "求解/问题一/图片/图6_冲突与赋权诊断.png": "18120e1ef87ab4f9fc41a8ea23465676cf910c6e31677df2ab192f4e1f3189e9",
+    "求解/问题一/图片/图1_训练配比结构.png": "9cc1aae62493b38c24cb45e1e0c6f9afc551ba3d8822fa86a3bc6ea34d71526d",
+    "求解/问题一/图片/图2_线性模型R2.png": "29a7c143fd2c58ea2de3b05c2ee367c69fb3618791674eee98aa89d457b8f530",
+    "求解/问题一/图片/图9_非线性代理对照.png": "f9cb019187798a7bcc4a7d42f06d86622c842e20ce6e65b0ccae1365a47b8a5e",
+    "求解/问题一/图片/图4_混合系数热力图.png": "bde7dab6eb8eeb06a5b22b5493caef94639e00481819c369b1057b4462d48bba",
+    "求解/问题一/图片/图3_预测vs实测.png": "fb812e4ad862d2d0ed569d9d0064305023174463956496909ef362999d85ef94",
+    "求解/问题一/图片/图5_领域质量评分.png": "5dcd7cea35ebbc41a45f7b5d13fa7778f540849f6e4169ecd2dd18b5850c71e0",
+    "求解/问题一/图片/图7_外推与跨尺度.png": "e9bb9fb127b3cee6fbc6dfea3ea1ee05490c34e4bbf4db0c47a8f88ff2da30b0",
+    "求解/问题一/图片/图8_问题一求解流程.png": "30c7efac5023dc9473142b78515f138096c7bd34223d303b71690346ddaf324e",
+    "求解/问题二/图片/图0_问题二分析框架.png": "33195c8cc8eec709d2d7ad042b227dcc4be995922e02f092af35159339c4a9b4",
+    "求解/问题二/图片/图7_质量方向对照.png": "43269e1e6e93f8d04d3eef15c2eb7d21615c3ae5df81b5917852f4f55150d70f",
+    "求解/问题二/图片/图1_经典标度律拟合.png": "6b76ecae63096c561702ab15bd06390abe3fac6067ab444240688a000d4bf9ae",
+    "求解/问题二/图片/图3_质量边际影响.png": "8be4d451162b526046ac0f2054670a744a21593714c5abe9a42ff00df1affed8",
+    "求解/问题二/图片/图2_广义标度律验证.png": "00b08d283dc76928c0fdb1e111e6bbf534717412031a09f021b8b69940b42093",
+    "求解/问题二/图片/图4_边际效用对比.png": "77dc1b7fcb81d1ba94a0e12e9af6700ac46be5f4a9e2055b0cd09bae77e280bd",
+    "求解/问题二/图片/图5_质量参数替代.png": "c75158f039b553d80f6b85ced234d754f2fc2509c2edaab8825df4901b3e88a3",
+    "求解/问题二/图片/图6_领域替代互补.png": "7c8f387cd2468f5be6556a4da8226654226e8383a607764792737acea63f1a7f",
+    "论文/figures/q3-workflow.pdf": "a990e31f39536e297a0ea93934507b0a4c1f4e59087bd6fac88810163888c463",
+    "求解/问题三/图片/图2_预算份额结构性转移.png": "8419649890bbf227b56ec6995901e7617f11a46f712eac45665c1ced0978ce06",
+    "求解/问题三/图片/图4_质量成本函数对比.png": "b86a30a5aab7d8610dfaf2a3d8189cf1ea488f7e97ae280c4e0b38c5969891bc",
+    "求解/问题三/图片/图3_上下文长度敏感性.png": "589711462b21d9e542ef0029113dc20477467a48f4d6cd605ffdc082b87a7ae8",
+    "论文/figures/q4-workflow.pdf": "68c2fea7ae460f2ac2e08bb8036d51d016240bf375e7f327fa2c4b63ef8df450",
+    "求解/问题四/图片/图1_Loss_Benchmark映射.png": "a4bd9c77ec66d879581eb2e0925e66c6d30b7131fba61be17cda26aa4f6df7aa",
+    "求解/问题四/图片/图7_年度规模效应.png": "f90231c7f3a545ca68ce5e335d2c6ca3701960957a8c3151af4905d31c0f56ad",
+    "求解/问题四/图片/图2_规模时间分解.png": "17c4eef58109f860ccfdb0940919e9759f8f1a588c727ba17a7369b8a7b86798",
+    "求解/问题四/图片/图3_能力前沿预测.png": "8bb6775232b64913bb0eaeb0c07db091405b3fd4465ce73bbeca3b0ff4fc6cfd",
+    "求解/问题四/图片/图6_六维能力分布.png": "9c76ea13d00a20fbf00d2e97d5d98f25e5b3e7738ce9236ac4057c9dd0f2dbc2",
+    "求解/问题四/图片/图4_逐任务聚合.png": "195b5c29a06db69f9aae947af18d66bf15510c22f4661e5a8d0743912c9c5e8c",
+    "求解/问题四/图片/图5_C4宏观趋势.png": "a9f59986332ff945426c6c2e6fefd7b890503e30dbe97d5325f4ada8ce145e68",
+    "求解/图表来源.json": "3f66dfeb6457bbd72424eed75ee310be0386247bbeac24740ce402aaac61c2f2",
+    ".github/workflows/build-paper.yml": "175ca16b7f7a41375cd76023173deef186d56d45af17faa3d0a75b2a5588ff1c",
+    "expand_正文扩写与表达修订记录.md": "5020587b4896b65eff06bc5b44381d59de4c8b08a5101d7d98a4527607149084",
+    "全文复核_主线整合与交付.md": "15af491db7f2b65833ca5840d582054f8fcbb8a41ad0e311f12d3518e64412e4",
+    "求解/Kendall并列秩校正核验.json": "beb42701eebf099f06e8f83c4ba5d908e5ba1d939dbba5f62634ee5f1b57e8d8",
+    "求解/tests/test_reproduction.py": "ed818d2d461795dfa3cfd6d2d3e42578448a349eb489fac109efd139d22251be",
+    "求解/复现论文.py": "59266edbbd494b76cdaf415895a88c99fc9ac499668f7848decf3be477062e29",
+    "求解/审稿补充/PDF编译核验.json": "3c00ea772bc1db4fe37209f5035eed9a93cc9ca42ef1e2074c6398441e0035c6",
+    "求解/审稿补充/q1_决策与稳健性.py": "ea350ba0bb14d125b5ace3a5ad3585ac37e7ff383ddc1354633a68c76c0319dd",
+    "求解/审稿补充/q1_结果/README.md": "b77316d5f65e6bb9832c25cd75000713ffe6a3f9f8a9ebc14c288d8e1ea9c16d",
+    "求解/审稿补充/q1_结果/q1_A1标尺诊断.json": "ac5c6d61d6d82a5747159c3ca6df2dd9d282fe19e3024f1180c11ae4a5818f62",
+    "求解/审稿补充/q1_结果/q1_决策诊断.json": "b987162eccc14f9538e4b5fce8ba2d2772c167ea34dba2d6ea8afeb86c5fbc54",
+    "求解/审稿补充/q1_结果/q1_复现清单.json": "fe89a3d2b098e9f0468acc1373f86e8b73519151e34ea156e1e684e0446ea166",
+    "求解/审稿补充/q1_结果/q1_核岭正式配方核验.json": "1b91490871357401b6aab9a8cd320dd5f87dc093693d1a0461feb2a9d08891f6",
+    "求解/审稿补充/q23_尺度与结构敏感性.py": "067a856e491c4d840a0b90d5171d85a0895cdce998abb195c99135c61d3b7c93",
+    "求解/审稿补充/q23_结果/README.md": "bb8bc0d0c0736e468cd95937a7c25ea7564926c65cb789be4648966052bc01fa",
+    "求解/审稿补充/q23_结果/q23_核验.json": "15b5910cffb4e710d292bae57e30b130695c35df76249156a63ad4fbaa1c5989",
+    "求解/审稿补充/q3_复现差异/check_q3_delta.py": "9d5c40b8450226efb8e77ff1cc65c1c6601b6cefb359b0077a211f8036654588",
+    "求解/审稿补充/q3_复现差异/q3_delta_summary.json": "513eab54ea02ff62d5fac0615d85643f4614114e7e5b89a02c2bdd139949bfb2",
+    "求解/审稿补充/q3_复现差异/q3_reproduction_delta.md": "7ec3cbeb06998e03b9894688b6f1c83c471629b4021ce2d519fbb6b93b409a24",
+    "求解/审稿补充/q4_时间与前沿验证.py": "738babbcbb95d32b47863ec2bc4e4678ddfca525139dc9752fe6d9cd2a797173",
+    "求解/审稿补充/q4_结果/q4_诊断摘要.json": "ee42926212305e24c30ff5a7399395555c1288400046f5e40b9eb0a78e0e78a7",
+    "求解/审稿补充/q4_结果/说明.md": "0e38cb5ab24ca36a35eddcff38a8bd7753b0da78a3e84c8bef6a34e5d44b0127",
+    "求解/审稿补充/主线补充检验/independent_q1_q4_results.json": "cade6d9465ddfcd56dbb7a542e27f31de43347fb672fbc64fbf1226a4b66ca4b",
+    "求解/审稿补充/主线补充检验/independent_q23_and_timecuts_results.json": "fece0931fcf5ba1ddaff1f7dfe378d8492e0b9c0a3c7feffbcfa9c9c9a1b3295",
+    "求解/审稿补充/历史核验_a784920/PDF编译核验.json": "3c00ea772bc1db4fe37209f5035eed9a93cc9ca42ef1e2074c6398441e0035c6",
+    "求解/审稿补充/历史核验_a784920/README.md": "dc9f68da4b57f3928e6e6699a697840b88c85c79e7e8ce9768c81917dd88f5d6",
+    "求解/审稿补充/历史核验_a784920/完整复现比较.json": "cf71e1966f846588b28cacf56d20201a17917d4ce6297d6787cc362f85ccd5b9",
+    "求解/审稿补充/历史核验_a784920/本轮修订核验.json": "ec0d93d1128caba64b45ccee87cb1b258cb14ae1b90d9f59f3b2073ffecae05e",
+    "求解/审稿补充/完整复现比较.json": "ab33972b431d71177e72a8a7b209d2410b34b5318a3d4e40037d12da52922951",
+    "求解/审稿补充/本轮修订核验.json": "ec0d93d1128caba64b45ccee87cb1b258cb14ae1b90d9f59f3b2073ffecae05e",
+    "求解/源码静态等价核验.json": "231437b9820a1134edef34b67441d4376fa302fdf262cd6e61bb571116ef12a6",
+    "求解/绘制问题三四流程图.py": "c6f3ec782ce0b4535de725d28f7d5bd7f4f4d1da7b86912ec7f447e19790e449",
+    "求解/补充检验.py": "ac3a4ad3cf3087b2211830bc327101b3334969ec287561e2589f902dd7b45860",
+    "求解/问题一/出版导出.py": "25bfc85c7ef711d2079b588222d70aade9971030da79ac662ed574d5ee216dfa",
+    "求解/问题一/图片/图0_A1-A3全量质量评分_布局核验.json": "9f8e94eeda44131d699852001824121e7e1a04fb4ddd43116609a7a06e0bef59",
+    "求解/问题一/图片/图1_训练配比结构_布局核验.json": "6aa8fb2c3056b2c00fac95b53326784d55bc6edb4e6e4aeea8834d6624ea64b9",
+    "求解/问题一/图片/图2_线性模型R2_布局核验.json": "df940c474c0526bf9b2e4723fc447019a65f463670b756fbc6d93df36e1d6954",
+    "求解/问题一/图片/图3_预测vs实测_布局核验.json": "bad3f600b9c12fb8f96ec480802b9a238ce969f166e57b5a52b695072c4e23ba",
+    "求解/问题一/图片/图4_混合系数热力图_布局核验.json": "679f53000de1b8a1a90551a5a5e7471d871f5a8f6dad7684aa5e26d63a49e5cd",
+    "求解/问题一/图片/图5_领域质量评分_布局核验.json": "67517505c35ff50c3acb009385dc1400a1b3b421abfa00364eb31678f36207d7",
+    "求解/问题一/图片/图6_冲突与赋权诊断_布局核验.json": "2f399ec3cf93e7e3296fdb6063e55c17bf0b7b85c63107c0218728a4874bb506",
+    "求解/问题一/图片/图7_外推与跨尺度_布局核验.json": "dbd0261df4ea311c849b45db5620b184ffedd9d00d1991613dad1d3019889c22",
+    "求解/问题一/图片/图8_问题一求解流程_布局核验.json": "6cfa0554fd18102ae6c2c1f6f37e6f72504f4f8c9a11f48b7c32320e4b98066f",
+    "求解/问题一/图片/图形溯源.json": "ed6aeec80fcf7300f0f6ed3d07d546a518e86646cfca1df64154f7222d9f0685",
+    "求解/问题一/图片/绘图数据核验.json": "b414f5170142d39ffa165dfe9446229f854e3e0a2539755eb325fbf981f61d2a",
+    "求解/问题一/展示风格公共.py": "5f0f0e69c5c71c35af44e33518a86191fdacf10ea50ebd2922d24dd7d5d78548",
+    "求解/问题一/展示风格冲突.py": "6b9f29afc8ddb674628d055d4d6a7e2c0181a459bcb4cc9388b9d14c8092c1a4",
+    "求解/问题一/展示风格概览.py": "cac81035acd992e10805fec0680495cb17935b0220d7633e3b3bf300a331bd2e",
+    "求解/问题一/展示风格流程.py": "8e8cc09e1f771f65aac3e8a0b062e99b5816cb9c871af65c67d34c6f037e08a2",
+    "求解/问题一/展示风格诊断.py": "0ceeef44a28e6a363d03699e0aa1e773dfc6d36b6fba9c4ddbea18064e1d8c34",
+    "求解/问题一/展示风格非线性.py": "10785c134c6d4f5e2dda7a9b29138cd45784c87ccd61609a1a9af954acb4d6c0",
+    "求解/问题一/绘图数据.py": "c9cf6a7c71bc10f94e8e290b826e37438bc3c8ef245e335ec32fa7d10365e839",
+    "求解/问题一/重绘图表.py": "a4373820a847053428a941538889aa0f6561da8a1b18f7ebb738c7e1d44be451",
+    "求解/问题三/图片/论文绘图数据核验.json": "215b62717f2680297d7bb90ac2af60e5dc88c012fa044d7f0044835179b64482",
+    "求解/问题三/论文绘图.py": "87d533bababd0640321264ae14c0933b1c1cb0748722b568c304ebfe1326f23b",
+    "求解/问题二/重绘图表.py": "7dc17ba8096a1bb1242b7a972b604908087b75c0eb0da2156015e3de1591ca50",
+    "求解/问题四/重绘任务分布.py": "6c309a99aee3fcb98655f748ecd8e8d70bd58046ff23d4cf00d0d9a15d96d2f3",
+    "求解/问题四/重绘图表.py": "4a78f275df5957671bc72b049b8f3118f3e831f43931b70af3181c8dd5dc206f",
+    "论文/5.1.1.具体分析.tex": "5ad2d1f7fcf3dec1157a79cdd5a688c8115c2f990a81a4fca8a9f28db0796d75",
+    "论文/5.1.2.模型准备.tex": "9a26126985ed861b16ac3fa065759081646e765b0ea92bb2e0489953338fac7d",
+    "论文/5.1.3.模型建立.tex": "293f5d467db88a13324a6e4c47b054d926c8579bef8105f9e782ad73f0f69a2c",
+    "论文/5.1.4.模型求解.tex": "64094dac88c5b323aa6388b0072d03a5ac363c816364c1216b8f2dd067cf7b74",
+    "论文/figures/q3-workflow-layout.json": "6ed447acdaf8bed7139bcd97770898c8b35cc31ee454c25f1bdff0f6f49d70cf",
+    "论文/figures/q4-workflow-layout.json": "318b0f2b12cbd0240763e930351db901f8eb1b8ab006126b79940f7fb1ae15c4",
+    "论文/第三题修改说明.md": "9c272840658e7442ea2858379c2155024825bd01b2e143a7d87a3dfde073a245",
+    "论文修改清单_背景与问题一.md": "f020c4a1376e5d7a563bb8b5edb52ccde42b40c16bd0912c32dfe1166702763b",
+    "评审修订_执行与验证记录.md": "9f73445a27615b01a417387fdcba9d3a5c4b93929c0bebf5f0d3c415e74dddcf",
+    "问题一_ARS图形修订.md": "d642a454284c32e870f85ff0040d3ad4b49ea5385720b7d2b5ae5c14a5f602cd",
+    "问题一_humanizer语言修订记录.md": "753accdc7ff2384fafcc1f15747a8fcdc010725d2ed806a4b55744db065fdf8c",
+    "问题一_修订决策与记录.md": "4b00e424a31091a6e039889fd05d016cc341f5a86ce46646863e000b1dd4688f",
+    "问题一_图片重绘说明.md": "1f1ee384b1a0c10053449a88945f092dc07be162fce157ce5f8259b1f1209c8d",
+    "问题一_图片预览.md": "b0d1f06d6c286f42a4778367377e893cdde8123602225ed36426b6e11e2a410a",
+    "问题一_格式自查报告.md": "5c1e35c8a86b40f781e22fe1cd1860fdded9f8e61104babef76232eefcaa9b26",
+    "问题三四_流程图补充记录.md": "e9847b11da19ae4766185d593a5200d9376d2a22203dcfad4d730abb822ece48"
   },
-  "figure_count": 31,
-  "figure_provenance": "求解/图表来源.json",
-  "reproduction_script_sha256": "a668206fe67cd148927bfc4787f87bbd78ae23e2f7578cb411e6c723203960e0",
-  "unit_test_script_sha256": "916270ccf84f651c8201c30e6f728bf67cf29e06383e0bdc76d3425a01b74f0c",
-  "all_static_checks_passed": true
+  "all_static_checks_passed": true,
+  "finished_at_utc": "2026-09-26T20:24:26.980637+00:00"
 }

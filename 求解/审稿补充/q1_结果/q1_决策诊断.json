@@ -1,5 +1,7 @@
 {
   "status": "independent_diagnostic_not_new_training",
+  "linear_candidate_source": "线性有界配比对照.csv",
+  "formal_candidate_source": "推荐配比调整.csv",
   "weights_definition": "A4 raw mean shares restricted to the 13 validation domains, then normalized",
   "target_weights": {
     "arxiv": 0.11607304067311047,
@@ -20,7 +22,7 @@
   "krr_reference_rule": "row-closed reference; linear baseline uses original raw shares",
   "fixed_krr_theta": 0.0625,
   "fixed_krr_lambda": 0.0001,
-  "saved_1m_krr_max_abs_error": 4.661160346586257e-12,
+  "saved_1m_krr_max_abs_error": 3.865352482534945e-12,
   "candidate_training_convex_hull_L1_distance": 0.08204880043859802,
   "ridge_sensitivity": [
     {
@@ -65,9 +67,9 @@
     },
     {
       "model": "sqrt_krr",
-      "reference": 4.817337853604048,
-      "candidate": 4.988626147774969,
-      "reference_minus_candidate": -0.17128829417092106
+      "reference": 4.817337853604113,
+      "candidate": 4.9886261477751,
+      "reference_minus_candidate": -0.1712882941709868
     }
   ],
   "weighted_recipe_diagnostics": [
@@ -151,5 +153,18 @@
       "observed_rank_of_predicted_best": 2.0,
       "observed_regret_of_predicted_best": 0.02805611836338695
     }
-  ]
+  ],
+  "formal_kernel_candidate_check": {
+    "recipe_role": "current_kernel_recommendation_with_training_convex_hull_constraint",
+    "reference": 4.817337853603734,
+    "candidate": 4.6443640024157204,
+    "M_p": -0.17297385118801323,
+    "certificate_reconstruction_max_error": 4.163336342344337e-16,
+    "certificate_constraint_residual": 4.702904732312163e-13,
+    "active_training_rows": 48,
+    "multistart_objective_span": 1.0913936421275139e-11,
+    "saved_multistart_all_success": true,
+    "new_vs_old_linear_recipe_L1": 1.244517076044,
+    "interpretation": "Saved certificate and fixed-model prediction verified; no optimization rerun, global optimality or real-training claim."
+  }
 }

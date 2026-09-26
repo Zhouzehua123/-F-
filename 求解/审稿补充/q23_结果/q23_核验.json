@@ -1,12 +1,12 @@
 {
-  "source_revision": "90beddeb17699edbd49f6fab5036517f42a8d2b9",
+  "source_revision": "4f34f38acd5fc0dbe59b68e52a5d9e4be6e4315b",
   "scope": "独立补充诊断，不替换主模型参数或正式结果；不构成统计置信区间",
   "tool_record": {
     "assistant": "OpenAI Codex",
     "purpose": "审稿补充代码整理与核验",
     "recorded_date": "2026-09-27"
   },
-  "created_utc": "2026-09-26T17:02:49.461024+00:00",
+  "created_utc": "2026-09-26T20:02:23.391672+00:00",
   "parameters": {
     "E": 1.655829298277712,
     "A": 0.3807738432831394,
@@ -17,16 +17,16 @@
     "gamma": 0.9778867817378788
   },
   "fixed_gamma_parameters": {
-    "E": 1.6559073018498736,
-    "A": 0.38079033828069037,
-    "alpha": 0.32660382637224433,
-    "B": 1.2514524127363973,
-    "beta": 0.27665841891301296,
-    "C": 0.3572630407528302,
+    "E": 1.6559073008737013,
+    "A": 0.3807903402457638,
+    "alpha": 0.3266038250195556,
+    "B": 1.2514524119046633,
+    "beta": 0.2766584192527342,
+    "C": 0.35726304061784514,
     "gamma": 1.0
   },
   "Q0_reference": 0.5486879207625752,
-  "Q0_candidate": 0.5353599676259162,
+  "Q0_candidate": 0.5181862492349606,
   "quality_scale_counterexample": [
     {
       "mapping_power": 0.5,
@@ -62,7 +62,7 @@
   "gamma_restricted": {
     "success": true,
     "nfev": 3,
-    "objective_relative_change": 0.0002408264176696484,
+    "objective_relative_change": 0.00024082641766720592,
     "fit_rows": [
       {
         "case": "原参数",
@@ -74,9 +74,9 @@
       {
         "case": "gamma固定1受限拟合",
         "gamma": 1.0,
-        "objective": 0.5770032519869202,
-        "RMSE": 0.035552708641154174,
-        "MAE": 0.017134555716055374
+        "objective": 0.5770032519869188,
+        "RMSE": 0.03555270864243573,
+        "MAE": 0.017134555751302842
       }
     ],
     "endpoint_budget": 7.0794578438414025e+19,
@@ -93,10 +93,10 @@
       {
         "case": "gamma固定1受限拟合",
         "C_budget": 7.0794578438414025e+19,
-        "N_B": 0.979749460924374,
-        "D_B": 6.977981596787703,
-        "Q": 0.9640472692118772,
-        "L": 2.7832163104368335,
+        "N_B": 0.9797494828340375,
+        "D_B": 6.977981321095866,
+        "Q": 0.9640472837436503,
+        "L": 2.7832163104549954,
         "budget_relative_residual": 0.0
       }
     ],
@@ -122,26 +122,26 @@
       "gamma固定1受限拟合": [
         {
           "C_budget": 7.0794578438414025e+19,
-          "N_B": 0.5512186241218215,
-          "D_B": 20.037576325943405,
+          "N_B": 0.5512186247323396,
+          "D_B": 20.037576303750207,
           "Q": 0.5486879207625752,
-          "L": 2.8257765281108207,
+          "L": 2.825776528169088,
           "budget_relative_residual": 0.0
         },
         {
           "C_budget": 7.0794578438414025e+19,
-          "N_B": 1.0321339254954003,
-          "D_B": 6.342244987431444,
+          "N_B": 1.0321339267895335,
+          "D_B": 6.3422449827184595,
           "Q": 1.0,
-          "L": 2.783485442292628,
+          "L": 2.783485442307433,
           "budget_relative_residual": 0.0
         },
         {
           "C_budget": 7.0794578438414025e+19,
-          "N_B": 0.979749460924374,
-          "D_B": 6.977981596787703,
-          "Q": 0.9640472692118772,
-          "L": 2.7832163104368335,
+          "N_B": 0.9797494828340375,
+          "D_B": 6.977981321095866,
+          "Q": 0.9640472837436503,
+          "L": 2.7832163104549954,
           "budget_relative_residual": 0.0
         }
       ]
@@ -203,36 +203,36 @@
     },
     {
       "retained_fraction": 0.25,
-      "M_transferred": -0.04969977090197063,
-      "target_loss": 2.0953618521048947,
-      "equivalent_budget": 1.983734467547456e+22,
-      "budget_multiple": 1.983734467547456
+      "M_transferred": -0.04324346279702105,
+      "target_loss": 2.1018181602098442,
+      "equivalent_budget": 1.8063261034746623e+22,
+      "budget_multiple": 1.8063261034746623
     },
     {
       "retained_fraction": 0.5,
-      "M_transferred": -0.09939954180394125,
-      "target_loss": 2.045662081202924,
-      "equivalent_budget": 4.308144592084108e+22,
-      "budget_multiple": 4.308144592084108
+      "M_transferred": -0.0864869255940421,
+      "target_loss": 2.058574697412823,
+      "equivalent_budget": 3.48734667571371e+22,
+      "budget_multiple": 3.48734667571371
     },
     {
       "retained_fraction": 0.75,
-      "M_transferred": -0.14909931270591187,
-      "target_loss": 1.9959623103009534,
-      "equivalent_budget": 1.0487652809810716e+23,
-      "budget_multiple": 10.487652809810715
+      "M_transferred": -0.12973038839106316,
+      "target_loss": 2.015331234615802,
+      "equivalent_budget": 7.3009055399248025e+22,
+      "budget_multiple": 7.300905539924803
     },
     {
       "retained_fraction": 1.0,
-      "M_transferred": -0.1987990836078825,
-      "target_loss": 1.9462625393989827,
-      "equivalent_budget": 2.962618744758929e+23,
-      "budget_multiple": 29.626187447589288
+      "M_transferred": -0.1729738511880842,
+      "target_loss": 1.972087771818781,
+      "equivalent_budget": 1.69073900546881e+23,
+      "budget_multiple": 16.907390054688097
     }
   ],
   "baseline_sensitivity": [
     {
-      "case": "参考配方固定基线",
+      "case": "正式Q3外生成本基线",
       "Q0": 0.5486879207625752,
       "C_budget": 1e+22,
       "N_B": 6.09052085407539,
@@ -242,13 +242,23 @@
       "budget_relative_residual": 0.0
     },
     {
-      "case": "仅将候选自身质量作为费用基线的对照",
-      "Q0": 0.5353599676259162,
+      "case": "仅将闭合参考质量作为费用基线的对照",
+      "Q0": 0.5487532995736568,
       "C_budget": 1e+22,
-      "N_B": 6.096837846276386,
-      "D_B": 229.00292476142505,
+      "N_B": 6.09048868152465,
+      "D_B": 229.4409478006688,
       "Q": 1.0,
-      "L": 2.145136535886043,
+      "L": 2.145061241534516,
+      "budget_relative_residual": 0.0
+    },
+    {
+      "case": "仅将核岭候选质量作为费用基线的对照",
+      "Q0": 0.5181862492349606,
+      "C_budget": 1e+22,
+      "N_B": 6.104296788633178,
+      "D_B": 228.48998779475968,
+      "Q": 1.0,
+      "L": 2.145225021282447,
       "budget_relative_residual": 0.0
     }
   ],
@@ -270,19 +280,39 @@
     "project:求解/广义标度律参数.csv": "7008f219457a593451c19f97c37e370eecbb8736e2e5ff274d39322d79186c37",
     "project:求解/问题一_关键量.json": "67352ca69b02130cb19683cfa13c1c9932c5c576715e71d8cc5e02aaac208af1",
     "project:求解/17域质量映射.csv": "d8e12a6fa9b45a6a481e0fba3beb59acf7f297be953fb96cd22f0aa9ff964af8",
-    "project:求解/问题一/结果/推荐配比调整.csv": "242165ca62d254cb74def1a0d7771bcf8b8e22b2463433d031f9b647c8edf318",
-    "project:求解/问题二/结果/配比项校准.csv": "685632aeb9dfbcd734c050e24898af0f4b00da7a0eb2493b434ab92a3d83868f",
+    "project:求解/问题一/结果/推荐配比调整.csv": "d4329087f5604f4b585fa0eaedac8e82bcbb0079386f4d7ca8356e055c7bb90d",
+    "attachment:A_data_value/regmix_tables/train_mixture_1m.csv": "04a32ef4ab594376bf90e11404c033668f887c351d6a03ad3744824c7296a2d8",
+    "project:求解/问题二/结果/配比项校准.csv": "e9180190aa77246092f7bd0b27ab6f5b676c5dd47e7b123db9f0eaaed3c4f618",
+    "project:求解/问题一/结果/核岭推荐_目标对照.csv": "cb7e197515e65cb377a1694be9c12ce7551837b76d0cc07c77810b947211cffd",
     "project:求解/问题三/结果/预算扫略.csv": "da9450bcb7753c618da61b84fd94f748e216f492d491140bce04642355a71e46",
     "attachment:B_scaling_laws/pythia_training_log_existing.csv": "529a59644b0f57bf3a76037838b614bfedc35e58bb26b93052e34ffc63e454c2",
     "attachment:B_scaling_laws/supplementary_NQ_experiment.csv": "c7450ce0d67d8692535fef4709e60e2da60b2c184738bf96df160a4be0a33a7f",
+    "project:求解/问题三/结果/配比项算力等价.csv": "c12e3b58a90359d3eb1c75629a6dde57ad93f537140b28e7dc2a340e3a878aa4",
     "project:求解/问题二/结果/经典标度律参数.csv": "fd02b2cd67d7f660c00a28802d15e93a687f1ab757f8cec0fae313cf32a0ea07"
   },
-  "script_sha256": "8e98251da4bf434e8328ea52b04eade4e5793ad694e5c23c04514a1a1c95bb63",
+  "script_sha256": "067a856e491c4d840a0b90d5171d85a0895cdce998abb195c99135c61d3b7c93",
   "versions": {
     "python": "3.13.12",
-    "numpy": "2.2.6",
+    "numpy": "2.5.3",
     "pandas": "3.0.2",
-    "scipy": "1.17.1"
+    "scipy": "1.18.1"
   },
-  "revision_note": "source_revision 是读取时的 Git HEAD；本补充脚本可尚未提交，其精确身份由 script_sha256 标识。"
+  "revision_note": "source_revision 是读取时的 Git HEAD；本补充脚本可尚未提交，其精确身份由 script_sha256 标识。",
+  "quality_baselines": {
+    "Q0_official_exogenous": 0.5486879207625752,
+    "raw_reference_mass": 0.9998808593749999,
+    "Q_raw_reference": 0.5486879207625752,
+    "Q_closed_reference": 0.5487532995736568,
+    "Q_krr_candidate": 0.5181862492349606,
+    "closed_minus_official": 6.53788110815956e-05,
+    "policy": "正式Q3保持共享外生Q0；闭合参考质量与候选质量仅作另列成本基线对照"
+  },
+  "M_source": "Q1 核岭推荐_目标对照.csv，经 Q2 配比项校准.csv 传递",
+  "official_transfer_checks": {
+    "M": -0.1729738511880842,
+    "target_loss": 1.9720877718187808,
+    "budget_multiple": 16.907390054688136,
+    "independent_target_loss": 1.972087771818781,
+    "independent_budget_multiple": 16.907390054688097
+  }
 }

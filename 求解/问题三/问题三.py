@@ -200,8 +200,10 @@ print('  推荐配比在 C=1e22 时得到的损失 %.4f，若改用参考配比�
       % (r_mix['L'], C_eq, C_eq / 1e22))
 print('  （说明：M(p) 是损失水平上的固定平移，与算力无关，故换算为算力收益会被'
       '损失的算力弹性放大，此倍数宜作量级参考。）')
-save_csv_safe(pd.DataFrame([{'mixture': '参考配比', 'M_p': 0.0, **r_ref},
-                            {'mixture': '问题一有界推荐', 'M_p': M_p, **r_mix}]),
+save_csv_safe(pd.DataFrame([{'mixture': '参考配比', 'M_p': 0.0, **r_ref,
+                            'equivalent_reference_budget':1e22,'budget_multiplier':1.0},
+                            {'mixture': '问题一有界推荐', 'M_p': M_p, **r_mix,
+                             'equivalent_reference_budget':C_eq,'budget_multiplier':C_eq/1e22}]),
               '配比项算力等价.csv')
 
 # ============ 6. 预算扫略与结构性转移识别 ============

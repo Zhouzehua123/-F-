@@ -46,7 +46,8 @@
     },
     {
       "path": "求解/问题一/结果/推荐配比调整.csv",
-      "kind": "csv"
+      "kind": "csv",
+      "atol": 1e-06
     },
     {
       "path": "求解/问题一/结果/最优配比预测.csv",
@@ -153,6 +154,24 @@
     {
       "path": "求解/问题一_关键量.json",
       "kind": "json"
+    },
+    {
+      "path": "求解/问题一/结果/线性有界配比对照.csv",
+      "kind": "csv"
+    },
+    {
+      "path": "求解/问题一/结果/核岭推荐_训练凸组合.csv",
+      "kind": "csv",
+      "comparison": "kernel_certificate"
+    },
+    {
+      "path": "求解/问题一/结果/核岭推荐_多初值.csv",
+      "kind": "csv",
+      "comparison": "kernel_runs"
+    },
+    {
+      "path": "求解/问题一/结果/核岭推荐_目标对照.csv",
+      "kind": "csv"
     }
   ],
   "问题二": [

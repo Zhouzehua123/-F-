@@ -4,6 +4,7 @@
 用法：python 求解/审稿补充/q1_决策与稳健性.py --data-dir <real_attachments>
 可用 --section decision 只复核决策，或 --section quality 只复核标尺。
 固定既有超参数，不重新搜索核岭；四档岭参数沿用原敏感性区间。
+线性对照读取“线性有界配比对照.csv”；正式配方读取“推荐配比调整.csv”。
 诊断不产生真实语言模型训练结果。实现与说明经 OpenAI Codex 辅助。
 """
 from pathlib import Path
@@ -62,7 +63,7 @@ def decision_diagnostics(data, out):
     targets = [c.removeprefix('metric/the_pile_').removesuffix('_val_loss') for c in lc]
     x, y = mix[mc].to_numpy(float), loss[lc].to_numpy(float)
     ref = x.mean(0)
-    saved_recipe = pd.read_csv(RESULTS / '推荐配比调整.csv').set_index('domain').loc[domains]
+    saved_recipe = pd.read_csv(RESULTS / '线性有界配比对照.csv').set_index('domain').loc[domains]
     rec = saved_recipe.recommended_mixture.to_numpy(float)
     np.testing.assert_allclose(ref, saved_recipe.reference_mixture, atol=1e-12, rtol=0)
     weights = ref[[domains.index(d) for d in targets]].copy()
@@ -115,14 +116,16 @@ def decision_diagnostics(data, out):
         })
 
     krr = pure_definitions('求解/问题一/非线性代理对照.py', {'kernel', 'centered_kernel', 'cross_center', 'krr_predict'})['krr_predict']
+    config = json.loads((RESULTS / '非线性代理对照_复现清单.json').read_text(encoding='utf-8-sig'))
+    gamma, krr_lambda = float(config['selected_gamma']), float(config['selected_lambda'])
     px = x / x.sum(1, keepdims=True)
     tx_frame = pd.read_csv(folder / 'test_mixture_1m.csv').sort_values('index')
     tx = tx_frame[mc].to_numpy(float)
-    test_pred = krr(px, y, tx / tx.sum(1, keepdims=True), 0.0625, 0.0001)
+    test_pred = krr(px, y, tx / tx.sum(1, keepdims=True), gamma, krr_lambda)
     saved_test = table[(table.scope == '1m') & (table.model == 'sqrt_krr')].pivot(index='index', columns='loss_domain', values='predicted').loc[tx_frame['index'], targets].to_numpy()
     max_error = float(np.max(np.abs(test_pred-saved_test)))
     np.testing.assert_allclose(test_pred, saved_test, atol=1e-9, rtol=0)
-    kp = krr(px, y, np.vstack([ref/ref.sum(), rec]), 0.0625, 0.0001) @ weights
+    kp = krr(px, y, np.vstack([ref/ref.sum(), rec]), gamma, krr_lambda) @ weights
     lp = (np.vstack([ref, rec]) @ a0 + b0) @ weights
     candidate = [dict(model=model, reference=float(v[0]), candidate=float(v[1]), reference_minus_candidate=float(v[0]-v[1])) for model, v in [('linear_ridge', lp), ('sqrt_krr', kp)]]
     # 给出训练支持域检查；不把凸包外自动解释成预测无效。
@@ -132,17 +135,48 @@ def decision_diagnostics(data, out):
         b_eq=np.r_[rec, 1], bounds=(0, None), method='highs')
     if not projection.success:
         raise RuntimeError(projection.message)
+    formal = pd.read_csv(RESULTS / '推荐配比调整.csv').set_index('domain').loc[domains]
+    formal_p = formal.recommended_mixture.to_numpy(float)
+    formal_ref = formal.reference_mixture.to_numpy(float)
+    np.testing.assert_allclose(formal_ref, ref/ref.sum(), atol=1e-12, rtol=0)
+    certificate = pd.read_csv(RESULTS / '核岭推荐_训练凸组合.csv').set_index('index')
+    z = certificate.loc[mix['index'], 'convex_weight'].to_numpy(float)
+    reconstruction_error = float(np.max(np.abs(z @ px-formal_p)))
+    residual = max(float(abs(z.sum()-1)), float(max(0, -z.min())),
+                   float(np.max(np.abs(formal_p[fixed]-formal_ref[fixed]))),
+                   float(np.maximum(formal_p[~fixed]-2.5*formal_ref[~fixed], 0).max()))
+    assert reconstruction_error < 1e-10 and residual < 1e-8
+    formal_scores = krr(px, y, np.vstack([formal_ref, formal_p]), gamma, krr_lambda) @ weights
+    saved_targets = pd.read_csv(RESULTS / '核岭推荐_目标对照.csv').set_index('mixture')
+    np.testing.assert_allclose(formal_scores, saved_targets.loc[['参考配比', '问题一有界推荐'], 'predicted_weighted_loss'], atol=1e-9, rtol=0)
+    starts = pd.read_csv(RESULTS / '核岭推荐_多初值.csv')
+    formal_check = {
+        'recipe_role': 'current_kernel_recommendation_with_training_convex_hull_constraint',
+        'reference': float(formal_scores[0]), 'candidate': float(formal_scores[1]),
+        'M_p': float(formal_scores[1]-formal_scores[0]),
+        'certificate_reconstruction_max_error': reconstruction_error,
+        'certificate_constraint_residual': residual,
+        'active_training_rows': int(np.sum(z > 1e-8)),
+        'multistart_objective_span': float(starts.objective.max()-starts.objective.min()),
+        'saved_multistart_all_success': bool(starts.success.all()),
+        'new_vs_old_linear_recipe_L1': float(np.abs(formal_p-rec).sum()),
+        'interpretation': 'Saved certificate and fixed-model prediction verified; no optimization rerun, global optimality or real-training claim.',
+    }
+    write_json(out, 'q1_核岭正式配方核验.json', formal_check)
     summary = {
         'status': 'independent_diagnostic_not_new_training',
+        'linear_candidate_source': '线性有界配比对照.csv',
+        'formal_candidate_source': '推荐配比调整.csv',
         'weights_definition': 'A4 raw mean shares restricted to the 13 validation domains, then normalized',
         'target_weights': dict(zip(targets, weights.tolist())),
         'reference_raw_sum': float(ref.sum()),
         'krr_reference_rule': 'row-closed reference; linear baseline uses original raw shares',
-        'fixed_krr_theta': 0.0625, 'fixed_krr_lambda': 0.0001,
+        'fixed_krr_theta': gamma, 'fixed_krr_lambda': krr_lambda,
         'saved_1m_krr_max_abs_error': max_error,
         'candidate_training_convex_hull_L1_distance': float(projection.fun),
         'ridge_sensitivity': sensitivity, 'candidate_model_comparison': candidate,
         'weighted_recipe_diagnostics': weighted,
+        'formal_kernel_candidate_check': formal_check,
     }
     pd.DataFrame(weighted).to_csv(out / 'q1_目标一致检验.csv', index=False, encoding='utf-8-sig')
     pd.DataFrame(candidate).to_csv(out / 'q1_线性候选双代理对照.csv', index=False, encoding='utf-8-sig')
@@ -266,6 +300,9 @@ def main():
         'section': args.section, 'python': platform.python_version(),
         'description': 'Independent diagnostics; original result hashes unchanged. No language model training.',
         'script_sha256': digest(__file__),
+        'method_sources': {p.relative_to(ROOT).as_posix(): digest(p) for p in
+                           [ROOT / '求解/问题一/问题一.py', ROOT / '求解/问题一/非线性代理对照.py',
+                            ROOT / '求解/问题一/核岭支持域推荐.py']},
         'protected_inputs': {p.relative_to(ROOT).as_posix(): h for p, h in before.items()},
         'regmix_inputs': {p.relative_to(data).as_posix(): digest(p) for p in sorted((data / 'A_data_value/regmix_tables').glob('*.csv'))},
         'outputs': {p.name: digest(p) for p in sorted(out.glob('q1_*')) if p.is_file() and p.name != 'q1_复现清单.json'},

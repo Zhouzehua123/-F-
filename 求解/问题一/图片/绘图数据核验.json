@@ -3,12 +3,12 @@
   "skill": "academic-research-suite 3.22.0 / visualization_agent",
   "scripts_sha256": {
     "重绘图表.py": "a4373820a847053428a941538889aa0f6561da8a1b18f7ebb738c7e1d44be451",
-    "绘图数据.py": "3be6ec2b46f65a37ed61f4b038fd9fdab4de6dea841aaea324f1d9dbbb60e0c0",
+    "绘图数据.py": "c9cf6a7c71bc10f94e8e290b826e37438bc3c8ef245e335ec32fa7d10365e839",
     "出版导出.py": "25bfc85c7ef711d2079b588222d70aade9971030da79ac662ed574d5ee216dfa",
     "展示风格公共.py": "5f0f0e69c5c71c35af44e33518a86191fdacf10ea50ebd2922d24dd7d5d78548",
-    "展示风格冲突.py": "0e582ee320b48e103b3306c918a90bd30e1d95fadecdd1c6574af7117cbd4fda",
+    "展示风格冲突.py": "6b9f29afc8ddb674628d055d4d6a7e2c0181a459bcb4cc9388b9d14c8092c1a4",
     "展示风格概览.py": "cac81035acd992e10805fec0680495cb17935b0220d7633e3b3bf300a331bd2e",
-    "展示风格流程.py": "4ae1aeceb2c34986cef01a6eb3ed22644583dab3b1675f056725a873b9dca774",
+    "展示风格流程.py": "8e8cc09e1f771f65aac3e8a0b062e99b5816cb9c871af65c67d34c6f037e08a2",
     "展示风格诊断.py": "0ceeef44a28e6a363d03699e0aa1e773dfc6d36b6fba9c4ddbea18064e1d8c34",
     "展示风格非线性.py": "10785c134c6d4f5e2dda7a9b29138cd45784c87ccd61609a1a9af954acb4d6c0"
   },
@@ -21,9 +21,9 @@
       "passed": true,
       "max_abs_diff": 1.2212453270876722e-15
     },
-    "参考配比": {
+    "闭合参考配比": {
       "passed": true,
-      "max_abs_diff": 9.71445146547012e-17
+      "max_abs_diff": 8.673617379884035e-17
     },
     "训练领域平均损失": {
       "passed": true,
@@ -80,7 +80,7 @@
       "columns": 7
     },
     "求解/问题一/结果/推荐配比调整.csv": {
-      "sha256": "242165ca62d254cb74def1a0d7771bcf8b8e22b2463433d031f9b647c8edf318",
+      "sha256": "d4329087f5604f4b585fa0eaedac8e82bcbb0079386f4d7ca8356e055c7bb90d",
       "rows": 17,
       "columns": 4
     },
@@ -169,8 +169,16 @@
     }
   },
   "output_figures": [
+    "图0_A1-A3全量质量评分",
+    "图1_训练配比结构",
+    "图2_线性模型R2",
+    "图3_预测vs实测",
+    "图4_混合系数热力图",
+    "图5_领域质量评分",
     "图6_冲突与赋权诊断",
-    "图8_问题一求解流程"
+    "图7_外推与跨尺度",
+    "图8_问题一求解流程",
+    "图9_非线性代理对照"
   ],
   "indicator_key": [
     {

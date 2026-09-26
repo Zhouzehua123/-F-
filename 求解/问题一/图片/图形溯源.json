@@ -2,12 +2,12 @@
   "scope": "本次生成的图形、实际读取输入和绘图程序；不替代模型假设与论文分页审查。",
   "scripts_sha256": {
     "重绘图表.py": "a4373820a847053428a941538889aa0f6561da8a1b18f7ebb738c7e1d44be451",
-    "绘图数据.py": "3be6ec2b46f65a37ed61f4b038fd9fdab4de6dea841aaea324f1d9dbbb60e0c0",
+    "绘图数据.py": "c9cf6a7c71bc10f94e8e290b826e37438bc3c8ef245e335ec32fa7d10365e839",
     "出版导出.py": "25bfc85c7ef711d2079b588222d70aade9971030da79ac662ed574d5ee216dfa",
     "展示风格公共.py": "5f0f0e69c5c71c35af44e33518a86191fdacf10ea50ebd2922d24dd7d5d78548",
-    "展示风格冲突.py": "0e582ee320b48e103b3306c918a90bd30e1d95fadecdd1c6574af7117cbd4fda",
+    "展示风格冲突.py": "6b9f29afc8ddb674628d055d4d6a7e2c0181a459bcb4cc9388b9d14c8092c1a4",
     "展示风格概览.py": "cac81035acd992e10805fec0680495cb17935b0220d7633e3b3bf300a331bd2e",
-    "展示风格流程.py": "4ae1aeceb2c34986cef01a6eb3ed22644583dab3b1675f056725a873b9dca774",
+    "展示风格流程.py": "8e8cc09e1f771f65aac3e8a0b062e99b5816cb9c871af65c67d34c6f037e08a2",
     "展示风格诊断.py": "0ceeef44a28e6a363d03699e0aa1e773dfc6d36b6fba9c4ddbea18064e1d8c34",
     "展示风格非线性.py": "10785c134c6d4f5e2dda7a9b29138cd45784c87ccd61609a1a9af954acb4d6c0"
   },
@@ -33,7 +33,7 @@
       "columns": 7
     },
     "求解/问题一/结果/推荐配比调整.csv": {
-      "sha256": "242165ca62d254cb74def1a0d7771bcf8b8e22b2463433d031f9b647c8edf318",
+      "sha256": "d4329087f5604f4b585fa0eaedac8e82bcbb0079386f4d7ca8356e055c7bb90d",
       "rows": 17,
       "columns": 4
     },
@@ -123,6 +123,54 @@
   },
   "figures": [
     {
+      "file": "图0_A1-A3全量质量评分.png",
+      "sha256": "65d50e4d477d77627d1fa206d085d09b335acbb02b1ecc69c7bece3631475009"
+    },
+    {
+      "file": "图0_A1-A3全量质量评分.svg",
+      "sha256": "5a30598c8b88f10d2304b8d2e6d258d176889047ae093ebc6547f77f0bc938e6"
+    },
+    {
+      "file": "图1_训练配比结构.png",
+      "sha256": "9cc1aae62493b38c24cb45e1e0c6f9afc551ba3d8822fa86a3bc6ea34d71526d"
+    },
+    {
+      "file": "图1_训练配比结构.svg",
+      "sha256": "4734a2e2712343fb2c8235d5e15e548fd8293ca550212879266c3356d6b13330"
+    },
+    {
+      "file": "图2_线性模型R2.png",
+      "sha256": "29a7c143fd2c58ea2de3b05c2ee367c69fb3618791674eee98aa89d457b8f530"
+    },
+    {
+      "file": "图2_线性模型R2.svg",
+      "sha256": "037e77b7fcdb69d88300ec2454c735c1b278e0314dcc39628a03f10eb923b210"
+    },
+    {
+      "file": "图3_预测vs实测.png",
+      "sha256": "fb812e4ad862d2d0ed569d9d0064305023174463956496909ef362999d85ef94"
+    },
+    {
+      "file": "图3_预测vs实测.svg",
+      "sha256": "b6154e3495e0c4a95f1b399c2508ccd603ff8c22cc5932471b591036d314eaa0"
+    },
+    {
+      "file": "图4_混合系数热力图.png",
+      "sha256": "bde7dab6eb8eeb06a5b22b5493caef94639e00481819c369b1057b4462d48bba"
+    },
+    {
+      "file": "图4_混合系数热力图.svg",
+      "sha256": "15044cb498597d4a33f69f7ed53b7a75ca29a400a6a8f259ed424a61e015117c"
+    },
+    {
+      "file": "图5_领域质量评分.png",
+      "sha256": "5dcd7cea35ebbc41a45f7b5d13fa7778f540849f6e4169ecd2dd18b5850c71e0"
+    },
+    {
+      "file": "图5_领域质量评分.svg",
+      "sha256": "12cf1619b8800c0d1e5cccd3ccebc45efb66e4e372706bae12139b148a013e79"
+    },
+    {
       "file": "图6_冲突与赋权诊断.png",
       "sha256": "18120e1ef87ab4f9fc41a8ea23465676cf910c6e31677df2ab192f4e1f3189e9"
     },
@@ -131,12 +179,28 @@
       "sha256": "343fe287ce288ba79e243277c5c6787b0a485cf6a58823c7a04dc8d56c1a9b9d"
     },
     {
+      "file": "图7_外推与跨尺度.png",
+      "sha256": "e9bb9fb127b3cee6fbc6dfea3ea1ee05490c34e4bbf4db0c47a8f88ff2da30b0"
+    },
+    {
+      "file": "图7_外推与跨尺度.svg",
+      "sha256": "9c13357e6c98dcb6ecf4ea989423203f852cf194917e65b443a7f7249adc7513"
+    },
+    {
       "file": "图8_问题一求解流程.png",
-      "sha256": "4e8b35231d00b0478bab3b6efa224b945f957e368b225fbde96e5c145f2c0801"
+      "sha256": "30c7efac5023dc9473142b78515f138096c7bd34223d303b71690346ddaf324e"
     },
     {
       "file": "图8_问题一求解流程.svg",
-      "sha256": "323ee96f245d3d5aff647d8f1372479794818948d0efef8d6fde88798918245d"
+      "sha256": "3bf6186f057f9968ab6827f74e13cc60e5b41881f5637997c3b68673cf95f793"
+    },
+    {
+      "file": "图9_非线性代理对照.png",
+      "sha256": "f9cb019187798a7bcc4a7d42f06d86622c842e20ce6e65b0ccae1365a47b8a5e"
+    },
+    {
+      "file": "图9_非线性代理对照.svg",
+      "sha256": "c0b736fefa9d1e44b11b8b01c42b4855a93b019bac5caa9cc8130435d6326e4f"
     }
   ]
 }

@@ -4,14 +4,14 @@
   "n_A1": 51230,
   "pooled_score_reconstruction_max_error": 1.3237189122605741e-11,
   "length_centers_pooled": {
+    "rps_doc_mean_word_length": 8.056603773584904,
     "rps_doc_word_count": 151.99999999999997,
-    "rps_doc_num_sentences": 23.999999999999996,
-    "rps_doc_mean_word_length": 8.056603773584904
+    "rps_doc_num_sentences": 23.999999999999996
   },
   "length_centers_A1": {
+    "rps_doc_mean_word_length": 5.322730202757456,
     "rps_doc_word_count": 253.0,
-    "rps_doc_num_sentences": 20.0,
-    "rps_doc_mean_word_length": 5.322730202757456
+    "rps_doc_num_sentences": 20.0
   },
   "github_fraction_pooled": 0.7843966165758427,
   "github_fraction_A1": 0.19519812609798945,
@@ -53,7 +53,7 @@
       "A1_calibration": 0.504666997821889
     }
   ],
-  "quality_global_mean_pooled": 0.4911980771914707,
+  "quality_global_mean_pooled": 0.4911980771914706,
   "quality_global_mean_A1_calibrated": 0.5215479279096739,
   "raw_inputs": [
     {

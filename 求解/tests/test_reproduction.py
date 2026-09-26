@@ -129,6 +129,111 @@ class ReproductionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, '覆盖不完整'):
             MODULE.verify_models(self.root, self.root / 'data', self.report_dir)
 
+    def test_unknown_policy_cannot_bypass_numeric_comparison(self):
+        self.manifest['问题一'][0]['comparison'] = 'ignore_values'
+        self.save_manifest()
+        with self.assertRaisesRegex(ValueError, '比较规则'):
+            self.verify(self.write_good)
+
+    def test_kernel_certificate_requires_valid_saved_and_regenerated_points(self):
+        certificate = '求解/问题一/结果/核岭推荐_训练凸组合.csv'
+        (self.root / certificate).write_text('index,convex_weight\n0,1\n', encoding='utf-8')
+        self.manifest['问题一'].append({'path': certificate, 'kind': 'csv', 'comparison': 'kernel_certificate'})
+        self.save_manifest()
+        def runner(work, *args):
+            self.write_good(work)
+            (work / certificate).write_text('index,convex_weight\n0,1\n', encoding='utf-8')
+        for saved_ok, new_ok in [(False, True), (True, False)]:
+            with self.subTest(saved=saved_ok, regenerated=new_ok):
+                with patch.object(MODULE, 'check_kernel_certificate', create=True,
+                                  side_effect=[{'equal': saved_ok}, {'equal': new_ok}]):
+                    with self.assertRaisesRegex(RuntimeError, '不一致'):
+                        self.verify(runner)
+
+    def test_recipe_tolerance_is_explicit_and_scoped(self):
+        recipe = '求解/问题一/结果/推荐配比调整.csv'
+        (self.root / recipe).write_text('domain,recommended_mixture\na,0.2\nb,0.8\n', encoding='utf-8')
+        self.manifest['问题一'].append({'path': recipe, 'kind': 'csv', 'atol': 1e-6})
+        self.save_manifest()
+        def runner(work, *args):
+            self.write_good(work)
+            (work / recipe).write_text('domain,recommended_mixture\na,0.2000005\nb,0.7999995\n', encoding='utf-8')
+        report = self.verify(runner)
+        self.assertEqual(report['outputs'][recipe]['atol'], 1e-6)
+        self.manifest['问题一'][0]['atol'] = 1e-6
+        self.save_manifest()
+        with self.assertRaisesRegex(ValueError, '容差'):
+            self.verify(runner)
+
+    def write_kernel_runs(self):
+        folder = self.root / '求解/问题一/结果'
+        rows = MODULE.pd.DataFrame({'start': range(4), 'success': [True] * 4,
+                                   'objective': [4.5] * 4, 'constraint_residual': [1e-13] * 4,
+                                   'iterations': [20] * 4, 'stationarity_gap': [3e-7] * 4})
+        (folder / '核岭推荐_目标对照.csv').write_text(
+            'mixture,predicted_weighted_loss,M_p\n参考配比,4.7,0\n问题一有界推荐,4.5,-0.2\n', encoding='utf-8')
+        rows.to_csv(folder / '核岭推荐_多初值.csv', index=False)
+        return rows, folder / '核岭推荐_多初值.csv'
+
+    def test_real_kernel_runs_reject_nonfinite_and_negative_diagnostics(self):
+        rows, path = self.write_kernel_runs()
+        self.assertTrue(MODULE.check_kernel_runs(self.root)['equal'])
+        for field in ['objective', 'constraint_residual', 'stationarity_gap', 'iterations']:
+            for value in [float('-inf'), float('inf'), float('nan')]:
+                with self.subTest(field=field, value=value):
+                    bad = rows.astype({field: float}).copy(); bad.loc[0, field] = value
+                    bad.to_csv(path, index=False)
+                    self.assertFalse(MODULE.check_kernel_runs(self.root)['equal'])
+        bad = rows.copy(); bad.loc[0, 'constraint_residual'] = -1e-12
+        bad.to_csv(path, index=False)
+        self.assertFalse(MODULE.check_kernel_runs(self.root)['equal'])
+
+    def test_real_kernel_runs_require_four_distinct_starts_and_typed_fields(self):
+        rows, path = self.write_kernel_runs()
+        invalid = [MODULE.pd.concat([rows.iloc[[0]]] * 4, ignore_index=True),
+                   rows.assign(start=[0, 1, 2, 4]), rows.assign(success=[1] * 4),
+                   rows.assign(iterations=[1.5] * 4), rows.assign(iterations=[0] * 4),
+                   rows.drop(columns=['stationarity_gap'])]
+        for bad in invalid:
+            with self.subTest(columns=list(bad), values=bad.iloc[0].to_dict()):
+                bad.to_csv(path, index=False)
+                self.assertFalse(MODULE.check_kernel_runs(self.root)['equal'])
+
+    def test_real_kernel_runs_allow_only_roundoff_negative_gap(self):
+        rows, path = self.write_kernel_runs()
+        rows.loc[0, 'stationarity_gap'] = -1e-13
+        rows.to_csv(path, index=False)
+        result = MODULE.check_kernel_runs(self.root)
+        self.assertTrue(result['equal'])
+        self.assertIn('recorded protected-gradient gap', result['validation'])
+        rows.loc[0, 'stationarity_gap'] = -1e-7
+        rows.to_csv(path, index=False)
+        self.assertFalse(MODULE.check_kernel_runs(self.root)['equal'])
+
+    def write_kernel_certificate(self):
+        data = self.root / 'data'; raw = data / 'A_data_value/regmix_tables'
+        raw.mkdir(parents=True)
+        (raw / 'train_mixture_1m.csv').write_text(
+            'index,train_the_pile_a,train_the_pile_b\n0,0.2,0.8\n1,0.8,0.2\n2,0.5,0.5\n', encoding='utf-8')
+        (raw / 'train_pile_loss_1m.csv').write_text('index,metric/the_pile_a_val_loss\n0,4\n', encoding='utf-8')
+        folder = self.root / '求解/问题一/结果'
+        (folder / '核岭推荐_训练凸组合.csv').write_text('index,convex_weight\n0,0.5\n1,0.5\n2,0\n', encoding='utf-8')
+        recipe = folder / '推荐配比调整.csv'
+        recipe.write_text('domain,reference_mixture,recommended_mixture\na,0.5,0.5\nb,0.5,0.5\n', encoding='utf-8')
+        return data, folder, recipe
+
+    def test_real_kernel_certificate_rejects_nan_reference(self):
+        data, folder, recipe = self.write_kernel_certificate()
+        self.assertTrue(MODULE.check_kernel_certificate(self.root, data)['equal'])
+        recipe.write_text('domain,reference_mixture,recommended_mixture\na,,0.5\nb,0.5,0.5\n', encoding='utf-8')
+        self.assertFalse(MODULE.check_kernel_certificate(self.root, data)['equal'])
+
+    def test_real_kernel_certificate_allows_nonunique_convex_weights(self):
+        data, folder, recipe = self.write_kernel_certificate()
+        self.assertTrue(MODULE.check_kernel_certificate(self.root, data)['equal'])
+        (folder / '核岭推荐_训练凸组合.csv').write_text('index,convex_weight\n0,0\n1,0\n2,1\n', encoding='utf-8')
+        self.assertTrue(MODULE.check_kernel_certificate(self.root, data)['equal'])
+
 
 if __name__ == "__main__":
     unittest.main()

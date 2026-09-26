@@ -1,0 +1,13 @@
+{
+  "recipe_role": "current_kernel_recommendation_with_training_convex_hull_constraint",
+  "reference": 4.817337853603734,
+  "candidate": 4.6443640024157204,
+  "M_p": -0.17297385118801323,
+  "certificate_reconstruction_max_error": 4.163336342344337e-16,
+  "certificate_constraint_residual": 4.702904732312163e-13,
+  "active_training_rows": 48,
+  "multistart_objective_span": 1.0913936421275139e-11,
+  "saved_multistart_all_success": true,
+  "new_vs_old_linear_recipe_L1": 1.244517076044,
+  "interpretation": "Saved certificate and fixed-model prediction verified; no optimization rerun, global optimality or real-training claim."
+}

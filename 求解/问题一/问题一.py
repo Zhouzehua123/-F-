@@ -524,10 +524,10 @@ res_b = minimize(obj, p0m, method='SLSQP', bounds=bnds, constraints=cons)
 p_b = build(res_b.x)
 rec_df = pd.DataFrame({'domain': DOMAINS, 'reference_mixture': ref, 'recommended_mixture': p_b,
                        'adjustment': p_b - ref}).sort_values('adjustment', ascending=False)
-save_csv_safe(rec_df, '推荐配比调整.csv')
-print('\n无约束最优加权平均损失 %.4f；有界推荐 %.4f；参考配方 %.4f'
+save_csv_safe(rec_df, '线性有界配比对照.csv')
+print('\n线性对照：无约束最优加权平均损失 %.4f；有界方案 %.4f；参考配方 %.4f'
       % (obj(res.x), obj(res_b.x), float(w_ref @ predict(ref[None, :], A, b)[0])))
-print('有界推荐配比（调整量最大增/减各 5 域）：')
+print('线性有界对照配比（调整量最大增/减各 5 域；正式推荐见后续核岭输出）：')
 print(rec_df.head(5).to_string(index=False))
 print(rec_df.tail(5).to_string(index=False))
 
@@ -568,4 +568,5 @@ if RC_FAILS:
 # 模型结果全部保存后生成正文采用的正式图。
 import subprocess as _subprocess
 _subprocess.run([sys.executable, os.path.join(BASE_DIR, '非线性代理对照.py'), '--data-dir', DATA_DIR], check=True)
+_subprocess.run([sys.executable, os.path.join(BASE_DIR, '核岭支持域推荐.py'), '--data-dir', DATA_DIR], check=True)
 _subprocess.run([sys.executable, os.path.join(BASE_DIR, '重绘图表.py'), '--data-dir', DATA_DIR], check=True)

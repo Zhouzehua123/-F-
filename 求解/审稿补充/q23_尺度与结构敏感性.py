@@ -168,12 +168,35 @@ def main():
         raise ValueError('候选配方有未映射的质量领域')
     reference_q = float(mix.reference_mixture @ mapped)
     candidate_q = float(mix.recommended_mixture @ mapped)
-    if abs(reference_q-q0) > 1e-10:
-        raise ValueError('共享基线与参考配方加权值不一致')
+    # Q3 沿用原始平均份额计费；KRR 使用和为 1 的闭合参考配比。
+    # 分别重建并核验两种口径，不把闭合后的质量静默写回正式 Q0。
+    raw_mix = read_attachment('train_mixture_1m.csv')
+    mix_columns = [name for name in raw_mix if name.startswith('train_the_pile_')]
+    raw_reference = raw_mix[mix_columns].mean()
+    raw_reference.index = raw_reference.index.str.removeprefix('train_the_pile_')
+    raw_reference = raw_reference.reindex(mix.domain)
+    if raw_reference.isna().any() or not np.isfinite(raw_reference).all():
+        raise ValueError('原始平均配比与推荐领域不能一一对应')
+    raw_mass = float(raw_reference.sum())
+    raw_reference_q = float(raw_reference.to_numpy() @ mapped.to_numpy())
+    closed_reference = raw_reference.to_numpy()/raw_mass
+    if abs(raw_reference_q-q0) > 1e-10:
+        raise ValueError('共享外生成本基线与原始平均份额加权值不一致')
+    if not np.allclose(mix.reference_mixture, closed_reference, rtol=0, atol=1e-10):
+        raise ValueError('核岭参考配比与原始平均份额的闭合结果不一致')
+    if abs(reference_q-raw_reference_q/raw_mass) > 1e-10:
+        raise ValueError('闭合参考质量口径核验失败')
+    if abs(float(mix.recommended_mixture.sum())-1) > 1e-8 or mix.recommended_mixture.min() < -1e-10:
+        raise ValueError('候选配比不满足概率单纯形约束')
     calibration = read_project('求解/问题二/结果/配比项校准.csv')
+    krr_calibration = read_project('求解/问题一/结果/核岭推荐_目标对照.csv')
+    if list(calibration.mixture) != list(krr_calibration.mixture) or not np.allclose(
+            calibration[['predicted_weighted_loss', 'M_p']],
+            krr_calibration[['predicted_weighted_loss', 'M_p']], rtol=0, atol=1e-12):
+        raise ValueError('Q2 配比修正与 Q1 核岭目标对照不一致')
     gains = calibration.loc[~np.isclose(calibration.M_p, 0), 'M_p']
     if len(gains) != 1:
-        raise ValueError('需有一个非零线性条件候选配比项')
+        raise ValueError('需有一个非零核岭候选配比项')
     m = float(gains.iloc[0])
     if m >= 0:
         raise ValueError('本补充的固定收益幅度算例要求现有 M<0')
@@ -241,7 +264,20 @@ def main():
         logc = brentq(lambda logc: fixed_quality(p, np.exp(logc), 1., q0)['L']-target, np.log(1e21), np.log(1e25))
         budget = float(np.exp(logc))
         transfer_rows.append(dict(retained_fraction=fraction, M_transferred=fraction*m, target_loss=target, equivalent_budget=budget, budget_multiple=budget/1e22))
-    baseline_rows = [dict(case='参考配方固定基线', Q0=q0, **base), dict(case='仅将候选自身质量作为费用基线的对照', Q0=candidate_q, **fixed_quality(p, 1e22, 1., candidate_q))]
+    baseline_rows = [dict(case='正式Q3外生成本基线', Q0=q0, **base),
+                     dict(case='仅将闭合参考质量作为费用基线的对照', Q0=reference_q, **fixed_quality(p, 1e22, 1., reference_q)),
+                     dict(case='仅将核岭候选质量作为费用基线的对照', Q0=candidate_q, **fixed_quality(p, 1e22, 1., candidate_q))]
+    official_transfer = read_project('求解/问题三/结果/配比项算力等价.csv')
+    official_candidate = official_transfer.loc[official_transfer.M_p.ne(0)]
+    if len(official_candidate) != 1:
+        raise ValueError('正式Q3配比表须有且仅有一个非零配比项')
+    saved = official_candidate.iloc[0]
+    official_checks = dict(M=float(saved.M_p), target_loss=float(saved.L), budget_multiple=float(saved.budget_multiplier),
+                           independent_target_loss=transfer_rows[-1]['target_loss'], independent_budget_multiple=transfer_rows[-1]['budget_multiple'])
+    if abs(float(saved.M_p)-m)>1e-12 or abs(float(saved.L)-transfer_rows[-1]['target_loss'])>1e-7:
+        raise ValueError('正式Q3配比损失与独立代回不一致')
+    if not np.isclose(saved.budget_multiplier, transfer_rows[-1]['budget_multiple'], rtol=1e-6, atol=1e-8):
+        raise ValueError('正式Q3等效预算与独立反解不一致')
 
     classic = read_project('求解/问题二/结果/经典标度律参数.csv').iloc[0]
     classic_pred = classic.E + classic.A*b1.N_params_B**-classic.alpha + classic.B*b1.D_tokens_B**-classic.beta
@@ -253,6 +289,12 @@ def main():
     summary = dict(source_revision=revision, scope='独立补充诊断，不替换主模型参数或正式结果；不构成统计置信区间', tool_record=dict(assistant='OpenAI Codex', purpose='审稿补充代码整理与核验', recorded_date='2026-09-27'), created_utc=datetime.now(timezone.utc).isoformat(), parameters=asdict(p), fixed_gamma_parameters=asdict(alt), Q0_reference=q0, Q0_candidate=candidate_q, quality_scale_counterexample=scale_rows, B6_contrast=contrast_summary, gamma_restricted=dict(success=bool(fit.success), nfev=int(fit.nfev), objective_relative_change=relative_cost, fit_rows=fit_rows, endpoint_budget=sat_budget, endpoint_profiles=endpoint_rows, endpoint_candidates=endpoint_candidates), saved_solution_checks=profile_rows, M_amplitude=transfer_rows, baseline_sensitivity=baseline_rows, original_model_metrics=metric_rows, input_sha256=inputs, script_sha256=sha256(Path(__file__)), versions=dict(python=platform.python_version(), numpy=np.__version__, pandas=pd.__version__, scipy=scipy.__version__))
 
     summary['revision_note'] = 'source_revision 是读取时的 Git HEAD；本补充脚本可尚未提交，其精确身份由 script_sha256 标识。'
+    summary['quality_baselines'] = dict(Q0_official_exogenous=q0, raw_reference_mass=raw_mass,
+                                       Q_raw_reference=raw_reference_q, Q_closed_reference=reference_q,
+                                       Q_krr_candidate=candidate_q, closed_minus_official=reference_q-q0,
+                                       policy='正式Q3保持共享外生Q0；闭合参考质量与候选质量仅作另列成本基线对照')
+    summary['M_source'] = 'Q1 核岭推荐_目标对照.csv，经 Q2 配比项校准.csv 传递'
+    summary['official_transfer_checks'] = official_checks
     # 输入在本次诊断前后保持不变；程序只在独立输出目录写入自己的文件。
     for spec, digest in inputs.items():
         kind, relative = spec.split(':', 1)
@@ -274,7 +316,7 @@ def main():
 - gamma=1仅受限重估其他6个参数，用相同soft-L1目标比较，不替代原参数，也不构成置信区间。
 - 剖面抽查只核对少量预算的端点与局部候选，不能证明所有预算全局最优。
 - 配比幅度表在Q=1、现有费用关系下反解预算，幅度比例为假设；不代表实测节约。
-- 配比基线表仅改变费用基线作对照，正式Q3仍采用共同参考基线。
+- 配比基线表区分正式Q3外生Q0、核岭闭合参考质量、核岭候选质量；后两项仅改变费用基线作对照，正式Q3不变。
 - 原模型误差表只用保存参数代回数据，无额外主模型拟合。
 
 输入及脚本SHA-256、版本、求解状态和全精度数值见q23_核验.json。原模型、附件、参数和原结果不被写入。
