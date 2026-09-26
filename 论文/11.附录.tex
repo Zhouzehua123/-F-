@@ -298,3 +298,41 @@ python 求解/绘制问题三四流程图.py
 \lstinputlisting[language=Python,firstnumber=1,caption={问题三四流程图（求解/\allowbreak{}绘制问题三四流程图.py）},label={code:dep16}]{../求解/绘制问题三四流程图.py}
 
 \lstinputlisting[language={[LaTeX]TeX},firstnumber=1,caption={总体流程图原生源码（论文/\allowbreak{}figures/\allowbreak{}overall-architecture.tex）}]{figures/overall-architecture.tex}
+
+\clearpage
+\subsection*{附录 F：问题三图表的计算公式与口径}
+
+图\ref{fig:p3_shift}--图\ref{fig:p3_ctx}的坐标和费用份额由保存的求解结果计算。下文沿用正文符号：$N,D$ 分别为参数个数和 token 数，$C_{\mathrm b}$ 的单位为 FLOPs，$g(Q)$ 的单位为 FLOPs/token；$Q_0$ 为参考配比加权质量基线。图\ref{fig:p3_workflow}为方法流程示意，不对应额外的数值推导。
+
+\Needspace{4\baselineskip}
+\textbf{1.预算与费用份额图}\par\nopagebreak[4]
+图\ref{fig:p3_shift}在 $L_{\mathrm{ctx}}=2048$、$M=0$ 和幂函数型成本下，逐个预算点求解正文式\eqref{eq:p3_problem}，得到 $(N^*,D^*,Q^*)$。图中的质量完成度和质量处理份额分别按
+\begin{equation}
+ \Theta=\frac{Q^*-Q_0}{1-Q_0},\qquad
+ f_Q=\frac{D^*\,[g(Q^*)-g(Q_0)]}{C_{\mathrm b}}
+ \label{eq:app_p3_plot_share}
+\end{equation}
+计算。基础训练和注意力份额为
+\begin{equation}
+ f_{\mathrm{base}}=\frac{6N^*D^*}{C_{\mathrm b}},\qquad
+ f_{\mathrm{attn}}=\frac{\eta N^*D^*L_{\mathrm{ctx}}}{C_{\mathrm b}}.
+ \label{eq:app_p3_plot_costshares}
+\end{equation}
+将式\eqref{eq:p3_cost_total}的三项成本分别除以预算，即得上述份额，其和等于 $C_{\mathrm{tot}}/C_{\mathrm b}$；当前预算扫描配置用尽预算，因而该和在数值误差范围内等于 1。纵轴按百分数显示 $100\Theta$ 及三类份额的 100 倍。“预算扫略.csv”的 141 条记录均有有效配置，图中标记对应这些记录；启动点和饱和点是在该离散预算网格上识别的首次满足 $Q>Q_0+10^{-7}$ 和 $Q\ge1-10^{-7}$ 的记录，容差与正式绘图程序一致。
+
+\Needspace{4\baselineskip}
+\textbf{2.成本形式比较图}\par\nopagebreak[4]
+图\ref{fig:p3_cost}读取“成本函数对比.csv”中三种成本形式与三档预算的九组求解记录，各组均固定 $L_{\mathrm{ctx}}=2048$、$M=0$。左图柱高为 $Q^*$，质量投入柱高为 $100f_Q$；其中 $f_Q$ 仍按式\eqref{eq:app_p3_plot_share}计算。三种成本函数为正文表\ref{tab:p3_functions}中的 $g(Q)$，其差异通过预算约束影响数值候选配置。
+
+\Needspace{4\baselineskip}
+\textbf{3.上下文敏感性图}\par\nopagebreak[4]
+图\ref{fig:p3_ctx}固定幂函数型成本和 $M=0$，在每档预算下分别改变 $L_{\mathrm{ctx}}$ 并求解配置。注意力成本与基础训练成本具有相同的 $ND$ 因子，消去后得到
+\begin{equation}
+ \lambda=\frac{C_{\mathrm{attn}}}{C_{\mathrm{base}}}=\frac{\eta ND L_{\mathrm{ctx}}}{6ND}=\frac{\eta L_{\mathrm{ctx}}}{6},
+ \qquad
+ L_{\mathrm{crit}}=\frac{6}{\eta}=30{,}000\ \mathrm{tokens}.
+ \label{eq:app_p3_context}
+\end{equation}
+令 $\lambda=1$ 即得图中竖线所示的 $L_{\mathrm{crit}}$。左图预算为 $10^{22}$ FLOPs，使用“上下文长度连续扫描.csv”中的 $L_{\mathrm{ctx}}$ 与 $N^*/10^9$（字段 N\_B，单位为十亿个参数）；右图在 $10^{19}$、$10^{20}$、$10^{21}$ FLOPs 三档预算下，使用“上下文长度与最优质量.csv”中的 $L_{\mathrm{ctx}}$ 与 $Q^*$。C7 的五个离散档位来自“上下文长度敏感性.csv”，作为方形标记叠加在左图中。当前连续扫描包含 40 个有效点，右图每档预算均有 14 个有效点，五档配置也均有有效输出。折线仅连接计算点以辅助读图，不表示区间内另有求解结果。
+
+上述公式只用于把已保存的求解结果转换为图中坐标或份额，图表不构成新的实验观测；输入文件、生成程序及复现命令见附录 E 的表\ref{tab:figure_code_map}和代码清单。
