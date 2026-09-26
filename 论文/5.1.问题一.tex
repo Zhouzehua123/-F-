@@ -478,7 +478,7 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.80\textwidth]{../求解/问题一/图片/图4_混合系数热力图.png}
+  \includegraphics[width=0.76\textwidth]{../求解/问题一/图片/图4_混合系数热力图.png}
   \caption{线性岭领域回归系数}
   \label{fig:p1_heatmap}
 \end{figure}
@@ -487,16 +487,16 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 
 图\ref{fig:p1_scatter}汇总 1M 检验集的 $3{,}328$ 个实测与预测数据点，六边形颜色表示分箱内记录数，上方与右侧分别为实测损失和预测损失的频数分布。
 
-图中仍有记录偏离预测值等于实测值的参考线，因此平均检验精度接近训练精度，并不表示每条记录的预测都准确。
-
-加入 $\bar Q$ 后，13 个验证域的平均 $R^2$ 增加 $9.8\times10^{-5}$。这一差异反映了冗余参数化对岭惩罚的影响，不是质量提供独立信息的证据。我们据此保留原配比回归；质量投入的作用则由问题二、三结合附件 B 的半合成实验另行分析。
-
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.60\textwidth]{../求解/问题一/图片/图3_预测vs实测.png}
+  \includegraphics[width=0.56\textwidth]{../求解/问题一/图片/图3_预测vs实测.png}
   \caption{线性岭预测与实测损失}
   \label{fig:p1_scatter}
 \end{figure}
+
+图中仍有记录偏离预测值等于实测值的参考线，因此平均检验精度接近训练精度，并不表示每条记录的预测都准确。
+
+加入 $\bar Q$ 后，13 个验证域的平均 $R^2$ 增加 $9.8\times10^{-5}$。这一差异反映了冗余参数化对岭惩罚的影响，不是质量提供独立信息的证据。我们据此保留原配比回归；质量投入的作用则由问题二、三结合附件 B 的半合成实验另行分析。
 
 文本质量与损失难度并非同一个概念。图\ref{fig:p1_quality}利用 6 个可映射领域，对照 A1--A3 的熵权评分 $Q$ 与损失代理 $Q^{(\text{loss})}$ 的排序。右侧连线连接同一领域在两套口径下的名次，名次 1 表示得分最高。
 
