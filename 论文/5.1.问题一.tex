@@ -95,7 +95,7 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。列
 \begin{equation}
     Q_i = \sum_{j=1}^{22} w_j\, x'_{ij},\qquad Q_d=\frac{1}{n_d}\sum_{i\in\mathcal D_d}Q_i,\qquad \sum_j w_j=1
 \end{equation}
-表\ref{tab:p1_dir}中，推理与洁净程度对综合评分的影响较大：modernbert\_\allowbreak{}reasoning 的权重为 $0.150$，modernbert\_\allowbreak{}cleanliness 为 $0.142$。这里的 $w_j$ 依据样本分布中的信息差异计算，不能直接代表指标本身的重要程度。极端左偏的分布也可能获得较高熵权，因此第\ref{sec:check}节将通过更换赋权方式，考察评分结果的变化。
+表\ref{tab:p1_dir}中，推理与洁净程度对综合评分的影响较大：modernbert\_\allowbreak{}reasoning 的权重为 $0.150$，modernbert\_\allowbreak{}cleanliness 为 $0.142$。这里的 $w_j$ 依据样本分布中的信息差异计算，不能直接代表指标本身的重要程度。极端左偏的分布也可能获得较高熵权，因此第\ref{sec:sensitivity}节将通过更换赋权方式，考察评分结果的变化。
 
 二分类字段的类别索引从 0 开始，表中的索引 1 对应列表第二项。
 
@@ -422,16 +422,16 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 
 图\ref{fig:p1_r2}分别展示 1M 训练与检验的决定系数，以及 60M、1B 检验的 Pearson 相关系数；连线连接同一验证领域的两个结果。
 
+同尺度下，线性岭回归的训练与检验表现接近。1M 检验的平均 $R^2$ 为 $0.619$，训练均值为 $0.629$，训练集各验证域介于 $0.42\sim0.77$。在这一对照中，未出现训练表现明显优于检验的现象。
+
+平均值之外，各验证域的可预测程度仍有区别。现有检验结果中，arxiv 和 dm\_\allowbreak{}mathematics 的 $R^2$ 分别约为 $0.430$、$0.428$，pubmed\_\allowbreak{}abstracts 和 pile\_\allowbreak{}cc 则约为 $0.788$、$0.771$。这里比较的是配方变化能够解释多少损失变异，不是四类文本谁更优。例如，数学领域的平均损失较低，并不意味着其损失随配方变化的部分更容易由线性式解释。因此，损失高低、拟合优度和文本质量应分别阅读。
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.78\textwidth]{../求解/问题一/图片/图2_线性模型R2.png}
   \caption{线性岭配比回归检验}
   \label{fig:p1_r2}
 \end{figure}
-
-图\ref{fig:p1_r2}显示，同尺度下训练与检验表现接近。1M 检验的平均 $R^2$ 为 $0.619$，训练均值为 $0.629$，训练集各验证域介于 $0.42\sim0.77$。在这一对照中，未出现训练表现明显优于检验的现象。
-
-平均值之外，各验证域的可预测程度仍有区别。现有检验结果中，arxiv 和 dm\_\allowbreak{}mathematics 的 $R^2$ 分别约为 $0.430$、$0.428$，pubmed\_\allowbreak{}abstracts 和 pile\_\allowbreak{}cc 则约为 $0.788$、$0.771$。这里比较的是配方变化能够解释多少损失变异，不是四类文本谁更优。例如，数学领域的平均损失较低，并不意味着其损失随配方变化的部分更容易由线性式解释。因此，损失高低、拟合优度和文本质量应分别阅读。
 
 在相同五折下，线性基线的综合折外 RMSE 为 $0.5761$；核岭选择 $\theta=0.0625$、$\lambda_k=10^{-4}$，对应 $0.2558$。表\ref{tab:p1_nonlinear}同时列出同尺度与跨尺度结果，所有 RMSE 都在“配方$\times$验证域”上汇总，$R^2$ 则先逐域计算再平均。
 

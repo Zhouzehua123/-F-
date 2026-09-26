@@ -638,6 +638,8 @@ AutoFakeBold = 2
            {\settowidth\labelwidth{\@biblabel{#1}}%
             \leftmargin\labelwidth
             \advance\leftmargin\labelsep
+            \setlength{\itemsep}{2pt plus 1pt minus 1pt}%
+            \setlength{\parsep}{0pt}%
             \@openbib@code
             \usecounter{enumiv}%
             \let\p@enumiv\@empty

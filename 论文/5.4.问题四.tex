@@ -32,7 +32,7 @@ C1 的时间字段为 Submission Date，表示记录提交的时间。因此，�
 
 表\ref{tab:p4_funnel}展示了主样本的筛选过程。先去掉关键字段不完整的记录，再按许可白名单保留本文讨论的开放权重模型。白名单包括 apache-2.0、mit、gpl-3.0、cc-by-4.0、mpl-2.0、bsd-3-clause、cc-by-sa-4.0、openrail，以及 llama2、llama3、llama3.1、llama3.2、llama3.3、gemma。其他或未知许可不进入主样本；进入白名单只说明符合本研究的筛选条件，不表示这些许可的具体要求完全相同。
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \centering
 \caption{主样本的形成及模型类型构成}
 \label{tab:p4_funnel}
@@ -69,7 +69,7 @@ C8 保留的是任务原始指标，C1 则对汇总分数作过基准调整，�
 
 这里还需区分两种匹配用途。表\ref{tab:p4_c8chk}以完整 C1 记录与 C8 对照，用来检查两个来源在排序和分值上的关系；后续子任务分析则限定在许可筛选后的主样本所对应的目录中。前者按有效记录配对计数，后者按可用目录及任务计数，因此表中的配对数量大于子任务目录数量并不矛盾。名称规范化只是统一匹配键，无法把重复提交自动转化为相互独立的观测。
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \centering
 \caption{C8 原始指标与 C1 汇总得分的记录级相关性及绝对偏差}
 \label{tab:p4_c8chk}
@@ -242,7 +242,7 @@ C3 先按 Average 与六维均分的差值检查一致性，差值超过 5 分�
 \label{fig:p4_frontier}
 \end{figure}
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \centering
 \caption{以 2025 年 3 月数据为基点的能力前沿预测}
 \label{tab:p4_frontier}
@@ -347,11 +347,12 @@ GPQA & Extended 子集 & 961 & 39.74 & 44.87 & 55.1 \\
 
 对子任务排序时，样本数与评分方式需要一并保留。各项缺失情况不同，参与某一任务统计的目录集合可能略有变化；不同任务的原始得分也有各自的难度背景。表\ref{tab:p4_sub}用于指出当前记录中表现较弱的具体位置，便于把综合能力的短板落实到任务，而不据此给出统一的训练收益排序。
 
+\FloatBarrier
 \subsubsection{宏观资源证据与预测边界}
 
 Epoch AI 数据库 C4 与 C1 的名称规范化后只有 1 条匹配，不能组成逐模型联合样本，因此这里只把 C4 作为宏观资料\cite{epoch2025}。图\ref{fig:p4_c4}上图连接各年 Language 记录的算力中位数和最大值，左下图给出开放权重标记 Yes 的比例，右下图以全量 $3{,}523$ 条记录为背景展示字段覆盖；浅色部分对应缺失或状态未明确的记录。
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.84\textwidth]{../求解/问题四/图片/图5_C4宏观趋势.png}
 \caption{资源趋势与字段覆盖}
