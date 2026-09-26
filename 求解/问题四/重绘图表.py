@@ -283,7 +283,7 @@ def main():
     lb=pd.read_csv(src/'leaderboard_cleaned.csv')
     lb['P']=pd.to_numeric(lb['#Params (B)'],errors='coerce')
     lb['date']=pd.to_datetime(lb['Submission Date'],errors='coerce')
-    lb['avg']=pd.to_numeric(lb['Average ⬆️'],errors='coerce')
+    lb['avg']=pd.to_numeric(lb['Average \u2b06\ufe0f'],errors='coerce')
     lb[TASKS]=lb[TASKS].apply(pd.to_numeric,errors='coerce')
     lb=lb[lb[TASKS].notna().all(axis=1)&lb.date.notna()&lb.P.notna()&lb['Hub License'].astype(str).str.strip().str.lower().isin(LICENSES)].copy()
     assert len(lb)==2346

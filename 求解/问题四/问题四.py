@@ -5,12 +5,12 @@
 """
 问题四：技术演进分析与前沿预测
 数据：C1/C2 排行榜、C3 时序、C4 Epoch 宏观元数据、C5/C6 Loss-Benchmark 桥接、C7 架构、C8 逐任务 JSON
-流程：1) 明确口径：时间轴(提交日期)、开源口径(开源权重+许可允许研究复现)、模型类型(pretrained/chat)
+流程：1) 明确口径：时间轴(提交日期)、开放权重样本口径(许可白名单)、模型类型(pretrained/chat)
       2) C8 逐任务聚合（必做），并与 C1 六维交叉校验
       3) C6 桥接（按可比性分层）+ C5 对照，建立 Loss -> Benchmark 映射
       4) 面板回归（含年份固定效应）分离规模扩张与非规模技术进步贡献
       5) 情景设定下 logistic 饱和外推 12/24 个月能力前沿 + 残差 bootstrap 不确定性
-      6) C4 宏观算力/数据量/开源权重证据，支撑"算力增长放缓"情景
+      6) C4 宏观算力/数据量/开放权重参照，不直接代入能力回归
 输出：图片到 图片/，结果 CSV 到 结果/
 """
 import sys, os, json, glob, re, collections
@@ -37,21 +37,22 @@ lb = pd.read_csv(os.path.join(C_DIR, 'leaderboard_cleaned.csv'))
 lb['P'] = pd.to_numeric(lb['#Params (B)'], errors='coerce')
 lb['date'] = pd.to_datetime(lb['Submission Date'], errors='coerce')
 lb['Year'] = lb['date'].dt.year
-lb['avg'] = pd.to_numeric(lb['Average ⬆️'], errors='coerce')
+lb['avg'] = pd.to_numeric(lb['Average \u2b06\ufe0f'], errors='coerce')
 for t in TASKS:
     lb[t] = pd.to_numeric(lb[t], errors='coerce')
 
-TYPE_PRE = ['🟢 pretrained', '🟩 continuously pretrained']
-TYPE_CHAT = ['💬 chat models (RLHF, DPO, IFT, ...)',
-             '🔶 fine-tuned on domain-specific datasets']
-TYPE_EXCL = ['🤝 base merges and moerges', '🌸 multimodal', '❓ other']
+# 字段中的特殊符号使用 Unicode 转义，保证附录打印后仍能准确复制。
+TYPE_PRE = ['\U0001f7e2 pretrained', '\U0001f7e9 continuously pretrained']
+TYPE_CHAT = ['\U0001f4ac chat models (RLHF, DPO, IFT, ...)',
+             '\U0001f536 fine-tuned on domain-specific datasets']
+TYPE_EXCL = ['\U0001f91d base merges and moerges', '\U0001f338 multimodal', '\u2753 other']
 
 PERMISSIVE = {'apache-2.0', 'mit', 'gpl-3.0', 'cc-by-4.0', 'mpl-2.0', 'bsd-3-clause',
               'llama2', 'llama3', 'llama3.1', 'llama3.2', 'llama3.3', 'gemma',
               'cc-by-sa-4.0', 'openrail'}
 
 def license_ok(x):
-    """许可是否允许研究与复现（非商用/受限/未知一律排除）。"""
+    """按本文列明的许可白名单筛选；不将各许可的具体条款视为相同。"""
     return str(x).strip().lower() in PERMISSIVE
 
 lb['license_ok'] = lb['Hub License'].map(license_ok)
@@ -73,10 +74,11 @@ save_csv_safe(pd.DataFrame(funnel), '筛选漏斗.csv')
 print('=== 1. 数据口径与筛选漏斗 ===')
 print(pd.DataFrame(funnel).to_string(index=False))
 print('  时间轴口径：以 C1 的 Submission Date（提交日期）为基准。')
-print('  开源口径：权重可获取（pretrained/持续预训练/chat/微调）且 Hub License 允许研究复现。')
-print('  模型类型口径：pretrained 与 chat/finetuned 分组统计；base 合并模型（%d 条）、'
-      '多模态（%d 条）不并入主分析。'
-      % (int(lb['Type'].eq(TYPE_EXCL[0]).sum()), int(lb['Type'].eq(TYPE_EXCL[1]).sum())))
+print('  主样本口径：时间、参数量与六维得分完整，且 Hub License 在本文白名单中。')
+print('  模型类型口径：主样本保留全部类型；pretrained 与 chat/finetuned 另作分组分析。')
+print('  主样本中的其他类型：base 合并模型 %d 条，多模态 %d 条。'
+      % (int(core_o['Type'].eq(TYPE_EXCL[0]).sum()),
+         int(core_o['Type'].eq(TYPE_EXCL[1]).sum())))
 print('  提交日期范围：%s ~ %s' % (str(lb.date.min())[:10], str(lb.date.max())[:10]))
 
 # ============ 2. C8 逐任务聚合（必用） ============
@@ -144,7 +146,7 @@ for t in TASKS:
                      '平均绝对偏差': float(np.mean(np.abs(a[okm] - bq[okm]))) if okm.sum() else np.nan})
 chk = pd.DataFrame(chk_rows)
 save_csv_safe(chk, 'C8与C1一致性校验.csv')
-print('  C8 与 C1 逐维一致性（规范化模型名匹配，命中 %d 个模型）：' % len(mrg))
+print('  C8 与 C1 逐维一致性（规范化模型名匹配，得到 %d 条配对记录）：' % len(mrg))
 print(chk.to_string(index=False))
 print('  口径说明：C8 存的是各任务的原始指标（acc/acc_norm/exact_match），'
       'C1 存的是官方按随机基线归一化后的六维得分（例如 GPQA=(raw-0.25)/0.75、'
@@ -494,17 +496,15 @@ print('  桥接：全样本 r=%.3f；分解（%s）：规模 %.1f%% / 非规模 
       % (bridge_df.iloc[2]['Pearson_r'], d0['前沿区间'], d0['规模占比%'], d0['非规模占比%'],
          dec_all.iloc[1]['规模占比%'], dec_all.iloc[1]['非规模占比%']))
 print('  前沿预测（+12/+24 个月）：%s %.2f（90%%CI %.2f-%.2f）；%s %.2f（90%%CI %.2f-%.2f）；'
-      '技术增速减半情景 %.2f / %.2f'
+      'logistic 增长参数减半情景 %.2f / %.2f'
       % (fut['对应日历时点'].iloc[0], fut.frontier_pred.iloc[0], fut['CI_low_5%'].iloc[0],
          fut['CI_high_95%'].iloc[0], fut['对应日历时点'].iloc[1], fut.frontier_pred.iloc[1],
          fut['CI_low_5%'].iloc[1], fut['CI_high_95%'].iloc[1],
          fut['情景_技术增速减半'].iloc[0], fut['情景_技术增速减半'].iloc[1]))
 print('\n  结构外推情景（基准前沿 F=%.2f）：' % F_last)
 print(scen_df.round(2).to_string(index=False))
-print('  两条路线互为校验：曲线外推（logistic）给出约 %.0f-%.0f，结构外推给出约 '
-      '%.0f-%.0f；差异来自“前沿是否已饱和”的判断，故以区间而非点值作为结论。'
-      % (min(fut.frontier_pred.min(), fut['CI_low_5%'].min()), fut['CI_high_95%'].max(),
-         scen_df['结构外推前沿'].min(), scen_df['结构外推前沿'].max()))
+print('  两条路线用于比较预测假设，不构成独立验证。logistic 的重抽样区间见上表；'
+      '结构外推给出的是情景点值，其范围不能作为置信区间。')
 
 # 模型结果全部保存后生成正文采用的正式图。
 import subprocess as _subprocess

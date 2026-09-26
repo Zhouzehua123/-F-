@@ -135,6 +135,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
     frame=none,
     breaklines=true,
     keepspaces=true,
+    literate={-}{{\char45}}1 {*}{{\char42}}1,
     showspaces=false,
     showstringspaces=false,
     breakatwhitespace=false,
