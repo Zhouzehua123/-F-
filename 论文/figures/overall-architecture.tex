@@ -22,7 +22,7 @@
 \node[archmodel, fill=archblue, text=white] (q1) at (-0.8,-0.75)
   {问题一：数据质量与领域配比\\熵权评价、冲突分析、岭与核岭};
 \node[archoutput] (o1) at (4.8,-0.75)
-  {综合质量评分\\配比与损失关系\\推荐配比};
+  {综合质量评分\\配比与损失关系\\线性条件候选};
 
 \node[archdata] (b) at (-5.8,-3.0) {附件 B\\规模、训练量\\与质量信息};
 \node[archmodel] (q2) at (-0.8,-3.0)
@@ -42,7 +42,7 @@
 \node[archmodel] (q4) at (-0.8,-7.5)
   {问题四：能力演进与前沿预测\\损失与评测桥接、回归与外推};
 \node[archoutput] (o4) at (4.8,-7.5)
-  {规模与非规模贡献\\能力前沿预测区间};
+  {规模关联项与剩余项\\前沿条件预测与分位范围};
 
 \foreach \archsrc/\archmid/\archdst in {a/q1/o1,b/q2/o2,c/q3/o3,d/q4/o4} {
   \draw[archlink] (\archsrc.east) -- (\archmid.west);

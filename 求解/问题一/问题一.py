@@ -66,12 +66,12 @@ DIRECTION_NOTE = {
     'rps_doc_num_sentences': '文档句数（过少/过多均不佳）',
     'rps_doc_unigram_entropy': '一元词熵（越高越多样）',
     'rps_doc_frac_unique_words': '唯一词占比（越高越多样）',
-    'rps_doc_frac_no_alph_words': '非字母字符占比（越低越好）',
-    'rps_doc_frac_chars_top_2gram': 'Top-2 字符 2-gram 占比（重复度，越低越好）',
-    'rps_doc_frac_chars_top_3gram': 'Top-2 字符 3-gram 占比（重复度，越低越好）',
-    'rps_lines_uppercase_letter_fraction': '大写字母行占比（越低越好）',
+    'rps_doc_frac_no_alph_words': '不含字母的词项占比（越低越好）',
+    'rps_doc_frac_chars_top_2gram': '最高频词2-gram覆盖的字符占比（越低越好）',
+    'rps_doc_frac_chars_top_3gram': '最高频词3-gram覆盖的字符占比（越低越好）',
+    'rps_lines_uppercase_letter_fraction': '大写字符占全部字符的比例（越低越好）',
     'rps_lines_ending_with_terminal_punctution_mark': '以终止标点结尾的行占比（越高越好）',
-    'rps_lines_numerical_chars_fraction': '含数字字符行占比（越低越好）',
+    'rps_lines_numerical_chars_fraction': '数字字符占全部字符的比例（越低越好）',
     'rps_doc_mean_word_length': '平均词长（过短/过长均不佳）',
 }
 CONFLICT_TAU = 1.5      # 成对 z 分数差阈值

@@ -1,0 +1,49 @@
+{
+  "purpose": "事后诊断，不替代论文原模型、原结果或点预测；单次留出窗口恰为累计平台",
+  "n_C1": 2346,
+  "n_C3_valid": 4579,
+  "unique_exact_names": 2294,
+  "names_in_multiple_years": 0,
+  "mean_submission_dates": {
+    "2024": "2024-09-21 02:46:51.083123",
+    "2025": "2025-02-06 13:10:17.414248"
+  },
+  "mean_date_gap_years": 0.37900874372970694,
+  "origin_observed_cumulative": 50.998185133125,
+  "origin_logistic_fitted": 53.267437856396484,
+  "original_R2": 0.9750477016402347,
+  "original_result_verified": true,
+  "curve_inputs": "C3年度累计最高分与C1月度前1%均值累计最大值；未作历史量表校准",
+  "diagnostic_limits": "删点改变权重和时间窗口；单次留出为事后检查，不能用于宣称基线普遍优越",
+  "versions": {
+    "numpy": "2.2.6",
+    "pandas": "3.0.2",
+    "scipy": "1.17.1"
+  },
+  "original_result_sha256": {
+    "C3口径异常行.csv": "6036d6e0ff5a7d282421b165440f5d54c6f90ae82137127faee2f9bc35363511",
+    "C4宏观摘要.csv": "d19708272cf348b0916ab3d6068b72fe1e3209403b44c79fe4b2a2723b1fb9d5",
+    "C4宏观趋势.csv": "c76b68a7afe23197da0be816cdf10e37ebc927e1f73fe5326c5269bba56272e3",
+    "C8与C1一致性校验.csv": "628a0f99c8cbeb2a03c59901d8182111b2acea4dfd143f6410e85240dd9655f7",
+    "C8子任务类别汇总.csv": "9ddfc81e9c91ac7182266b0d9db396d503faabb3197c6c4205eb7310abc31181",
+    "C8逐任务聚合.csv": "08a4add415a6844c0b78d09bdf0bd50e9c6848dfccb1763a439bb8ddfb0bdc88",
+    "C8逐任务解析结果.csv": "8d03522e4a393e429b29013117e1a394da99f9c1dc0363812bec7f3ed3c3781b",
+    "logistic参数.csv": "eb54a43de67abc8e2e8916bbee48820ad8183a6b8a60aa78be70d8c6c4ea9ad1",
+    "Loss_Benchmark映射.csv": "646713f998e733a5174bb4d61509011c460844a0d089c4f45ecc44a7e7dcdda0",
+    "Loss_Benchmark映射明细.csv": "5d93a3373e19bdbe932f184f5ae20b51b7c27c25d473e6d0f9b7458c033530c0",
+    "前沿序列.csv": "343bbcb2f091c46a414ca8aa33eae235df659600304f12192c5ffccd348ba9c8",
+    "前沿预测.csv": "c1237cec10dc3cd76e1ee4262cb38211877b0b9e0c0615ba054166e38ff05ac8",
+    "前沿预测_结构外推情景.csv": "d6b4f2ca5534fca9640bd3f63405ecec94235db13d782ca31ce0f71bee0f015f",
+    "年份效应.csv": "3099d954fd790e9dcb9ec91c1c5196b64097e19748e99f0141ab2068efcd1848",
+    "筛选漏斗.csv": "84d1c0d3b2dbd57458c4311fae03551c0c729266ccf77117197080289c1ab4da",
+    "规模时间分解.csv": "6cf76c289059a545bb47567af66092e765d0cfa1e465e5a4db0b69f2c0a11204",
+    "规模时间分解_长周期.csv": "7878140609e43e058303e4fc3bab2ec36c79748c6e4a6fe41d79eeb5c792d44e",
+    "逐任务聚合.csv": "c29c825ce23e5f460f48fbc852e6f34376ae1cfbcd001faeea24d527ec7934b1",
+    "面板回归数据.csv": "e36f65468f45f47d2e3e388fb517dfbe0f9e311fb456780b12405587b2118bf5"
+  },
+  "source_hashes": {
+    "leaderboard_cleaned.csv": "199891128629f24f83ed2f51211eee65a82a13f45275e79a8227d5dacc7c2846",
+    "leaderboard_extended_timeseries.csv": "ab2b5715b2945ebdeeabfb18e8d040f7c68d8c76bd02c01e446959218bfcd184"
+  },
+  "original_results_unchanged": true
+}

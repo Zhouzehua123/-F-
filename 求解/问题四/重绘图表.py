@@ -131,12 +131,12 @@ def decomposition(audit):
         ax.plot([1.31,1.69],[v[2],v[2]],lw=.7,color=INK)
         for i, (value, y) in enumerate(zip(v,[v[0],v[2],v[2]])):
             ax.text(i, y+1.2, f'{value:.2f}',ha='center',fontsize=10)
-        ax.set(xticks=[0,1,2],xticklabels=['规模项','非规模项','总增量'],ylim=(0,67))
+        ax.set(xticks=[0,1,2],xticklabels=['规模\n关联项','未解释\n剩余项','总增量'],ylim=(0,67))
         title(ax,label)
         grid(ax)
-        ax.text(.03,.93,f'规模占比 {r["规模占比%"]:.1f}%\n非规模占比 {r["非规模占比%"]:.1f}%', transform=ax.transAxes,va='top',fontsize=9)
+        ax.text(.03,.93,f'关联项 {r["规模占比%"]:.1f}%\n剩余项 {r["非规模占比%"]:.1f}%', transform=ax.transAxes,va='top',fontsize=9)
     axes[0].set_ylabel('前沿提升 / 分')
-    fig.subplots_adjust(left=.10,right=.98,bottom=.17,top=.85,wspace=.20)
+    fig.subplots_adjust(left=.10,right=.98,bottom=.21,top=.85,wspace=.20)
     save(fig,'图2_规模时间分解',audit)
 
 def forecast(lb, audit):
@@ -155,7 +155,7 @@ def forecast(lb, audit):
     ax=fig.add_subplot(gs[0]); last=2019+par.t_last
     xx=np.linspace(x.min(),2027.3,250)
     ax.axvspan(last,2027.4,color='#F3EFF6',zorder=0)
-    ax.plot(xx,log(xx),color=PURPLE,lw=1.6,label='logistic 曲线')
+    ax.plot(xx,log(xx),color=PURPLE,lw=1.6,label='logistic 条件曲线')
     slow_x=np.linspace(last,2027.3,100)
     slow_y=log(last+0.5*(slow_x-last))
     assert np.allclose(log(last+0.5*(pred.iloc[:,0]+2019-last)),pred['情景_技术增速减半'])
@@ -165,7 +165,7 @@ def forecast(lb, audit):
     ax.scatter(x[len(hist):],y[len(hist):],color=TEAL,marker='o',s=20,label='C1 月度前沿',zorder=3)
     xp=pred.iloc[:,0].to_numpy()+2019
     ax.scatter(xp,pred['情景_技术增速减半'],marker='v',s=23,color=GOLD,zorder=4)
-    ax.errorbar(xp,pred.frontier_pred,yerr=[pred.frontier_pred-pred['CI_low_5%'],pred['CI_high_95%']-pred.frontier_pred],fmt='D',color=PURPLE,capsize=4,ms=4,label='90% bootstrap 区间')
+    ax.errorbar(xp,pred.frontier_pred,yerr=[pred.frontier_pred-pred['CI_low_5%'],pred['CI_high_95%']-pred.frontier_pred],fmt='D',color=PURPLE,capsize=4,ms=4,label='重拟合 5%–95% 分位')
     ax.set(xlim=(2019,2027.5),ylim=(0,75),xticks=[2019,2021,2023,2025,2027],ylabel='前沿得分 / 分')
     ax.axvline(last,color='#ACA5B2',ls='--',lw=.8)
     ax.text(last+.15,7,'预测期',fontsize=9,color=PURPLE)
@@ -173,10 +173,10 @@ def forecast(lb, audit):
     ax.legend(loc='upper left',ncol=2,fontsize=8,handlelength=1.4,columnspacing=.8)
     grid(ax)
     ax=fig.add_subplot(gs[1]); scen=read('前沿预测_结构外推情景')
-    styles=[('放缓',1,GOLD,'v'),('基准',0,TEAL,'o'),('扩容',2,PURPLE,'s')]
+    styles=[('年增量减半',1,GOLD,'v'),('年增量延续',0,TEAL,'o'),('规模扩容',2,PURPLE,'s')]
     for name,i,color,mark in styles:
         vals=[scen[scen['前瞻年数'].eq(yr)].iloc[i]['结构外推前沿'] for yr in [1,2]]
-        yy=np.array([1,0])+{'放缓':-.19,'基准':0,'扩容':.19}[name]
+        yy=np.array([1,0])+{'年增量减半':-.19,'年增量延续':0,'规模扩容':.19}[name]
         ax.scatter(vals,yy,color=color,marker=mark,s=32,label=name)
         for v,z in zip(vals,yy):
             ax.text(v+.4,z,f'{v:.2f}',va='center',fontsize=9)
@@ -277,6 +277,8 @@ def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--data',type=Path,required=True)
     ap.add_argument('--audit',type=Path)
+    ap.add_argument('--figures',nargs='+',choices=['bridge','decomposition','forecast','subtasks','macro','distributions','scale'],
+                    help='只重绘指定图；省略时重绘全部图。')
     args=ap.parse_args(); before=hashes();style()
     if args.audit:args.audit.mkdir(parents=True,exist_ok=True)
     src=args.data/'C_efficiency_evolution'
@@ -295,20 +297,25 @@ def main():
     saved=read('Loss_Benchmark映射明细')
     assert actual.Model.tolist()==saved.Model.tolist()
     assert np.allclose(actual[['Val_Loss','LB_Average']],saved[['Val_Loss','LB_Average']])
-    bridge(args.audit);decomposition(args.audit);forecast(lb,args.audit);subtasks(args.audit)
-    macro(args.audit);distributions(lb,args.audit);scale(args.audit)
+    renderers={'bridge':lambda:bridge(args.audit),'decomposition':lambda:decomposition(args.audit),
+               'forecast':lambda:forecast(lb,args.audit),'subtasks':lambda:subtasks(args.audit),
+               'macro':lambda:macro(args.audit),'distributions':lambda:distributions(lb,args.audit),
+               'scale':lambda:scale(args.audit)}
+    selected=args.figures or list(renderers)
+    for name in selected:
+        renderers[name]()
     assert before==hashes(),'绘图期间结果文件发生改变'
     if args.audit:
-        report={'records':len(lb),'years':lb.date.dt.year.value_counts().to_dict(),
+        report={'rendered_figures':selected,'records':len(lb),'years':lb.date.dt.year.value_counts().to_dict(),
                 'task_summary':lb[TASKS].describe().to_dict(),'result_files_unchanged':True,
                 'chart_contracts':{
                     '图1':'分层散点与已存拟合；仅组内损失范围；两面板纵轴不同。',
-                    '图2':'两个窗口的加性贡献；同一纵轴；非规模项为分解残差。',
-                    '图3':'历史记录、模型曲线、仅两时点的bootstrap区间；结构情景独立面板。',
+                    '图2':'两个窗口的规模关联项和未解释剩余项；同一纵轴；占比不是技术增长的因果份额。',
+                    '图3':'历史汇总点、条件曲线、仅两时点曲线重拟合5%–95%分位范围；非未来观测预测区间；结构情景独立面板。',
                     '图4':'37子任务中位数/前5%均值/最大值；原始指标；按类别分面。',
                     '图5':'年度算力跨度、Yes记录比例、全量字段覆盖；2026覆盖不完整。',
                     '图6':'2346条实际附件记录的四分位区间与完整极差；展示总体分布。',
-                    '图7':'年度分面规模散点及既有固定效应直线；未重拟合。'}}
+                    '图7':'合并横截面的年度分面规模散点及既有年份控制直线；未重拟合。'}}
         (args.audit/'plot_checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
 
 if __name__=='__main__':main()

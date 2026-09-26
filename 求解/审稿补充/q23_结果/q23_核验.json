@@ -1,0 +1,288 @@
+{
+  "source_revision": "90beddeb17699edbd49f6fab5036517f42a8d2b9",
+  "scope": "独立补充诊断，不替换主模型参数或正式结果；不构成统计置信区间",
+  "tool_record": {
+    "assistant": "OpenAI Codex",
+    "purpose": "审稿补充代码整理与核验",
+    "recorded_date": "2026-09-27"
+  },
+  "created_utc": "2026-09-26T17:02:49.461024+00:00",
+  "parameters": {
+    "E": 1.655829298277712,
+    "A": 0.3807738432831394,
+    "alpha": 0.3266200361390786,
+    "B": 1.2514914814202815,
+    "beta": 0.2766577594921601,
+    "C": 0.3544331548328615,
+    "gamma": 0.9778867817378788
+  },
+  "fixed_gamma_parameters": {
+    "E": 1.6559073018498736,
+    "A": 0.38079033828069037,
+    "alpha": 0.32660382637224433,
+    "B": 1.2514524127363973,
+    "beta": 0.27665841891301296,
+    "C": 0.3572630407528302,
+    "gamma": 1.0
+  },
+  "Q0_reference": 0.5486879207625752,
+  "Q0_candidate": 0.5353599676259162,
+  "quality_scale_counterexample": [
+    {
+      "mapping_power": 0.5,
+      "Q_B_at_A_baseline": 0.7407347168606149,
+      "derivative_h": 0.675005489305405,
+      "marginal_quality_benefit": 0.24104283110356853,
+      "local_baseline_release_budget": 2.9417630453758325e+19
+    },
+    {
+      "mapping_power": 1.0,
+      "Q_B_at_A_baseline": 0.5486879207625752,
+      "derivative_h": 1.0,
+      "marginal_quality_benefit": 0.3527471735901702,
+      "local_baseline_release_budget": 1.5732102441852533e+19
+    },
+    {
+      "mapping_power": 2.0,
+      "Q_B_at_A_baseline": 0.301058434390758,
+      "derivative_h": 1.0973758415251504,
+      "marginal_quality_benefit": 0.38337008775818077,
+      "local_baseline_release_budget": 1.3720141158074982e+19
+    }
+  ],
+  "B6_contrast": {
+    "groups": 45,
+    "minimum": 0.10670000000000002,
+    "maximum": 0.6091000000000002,
+    "median": 0.31420000000000003,
+    "additive_model": 0.319733907492616,
+    "spearman_vs_N": -0.748853610759104,
+    "spearman_vs_D": -0.2540839030242197
+  },
+  "gamma_restricted": {
+    "success": true,
+    "nfev": 3,
+    "objective_relative_change": 0.0002408264176696484,
+    "fit_rows": [
+      {
+        "case": "原参数",
+        "gamma": 0.9778867817378788,
+        "objective": 0.5768643278173705,
+        "RMSE": 0.03555716775844271,
+        "MAE": 0.017130190223313805
+      },
+      {
+        "case": "gamma固定1受限拟合",
+        "gamma": 1.0,
+        "objective": 0.5770032519869202,
+        "RMSE": 0.035552708641154174,
+        "MAE": 0.017134555716055374
+      }
+    ],
+    "endpoint_budget": 7.0794578438414025e+19,
+    "endpoint_profiles": [
+      {
+        "case": "原参数",
+        "C_budget": 7.0794578438414025e+19,
+        "N_B": 1.0321060464827456,
+        "D_B": 6.342346519047044,
+        "Q": 1.0,
+        "L": 2.7834152703393515,
+        "budget_relative_residual": 0.0
+      },
+      {
+        "case": "gamma固定1受限拟合",
+        "C_budget": 7.0794578438414025e+19,
+        "N_B": 0.979749460924374,
+        "D_B": 6.977981596787703,
+        "Q": 0.9640472692118772,
+        "L": 2.7832163104368335,
+        "budget_relative_residual": 0.0
+      }
+    ],
+    "endpoint_candidates": {
+      "原参数": [
+        {
+          "C_budget": 7.0794578438414025e+19,
+          "N_B": 0.5512050602222109,
+          "D_B": 20.038069405004787,
+          "Q": 0.5486879207625752,
+          "L": 2.8272630261686778,
+          "budget_relative_residual": 0.0
+        },
+        {
+          "C_budget": 7.0794578438414025e+19,
+          "N_B": 1.0321060464827456,
+          "D_B": 6.342346519047044,
+          "Q": 1.0,
+          "L": 2.7834152703393515,
+          "budget_relative_residual": 0.0
+        }
+      ],
+      "gamma固定1受限拟合": [
+        {
+          "C_budget": 7.0794578438414025e+19,
+          "N_B": 0.5512186241218215,
+          "D_B": 20.037576325943405,
+          "Q": 0.5486879207625752,
+          "L": 2.8257765281108207,
+          "budget_relative_residual": 0.0
+        },
+        {
+          "C_budget": 7.0794578438414025e+19,
+          "N_B": 1.0321339254954003,
+          "D_B": 6.342244987431444,
+          "Q": 1.0,
+          "L": 2.783485442292628,
+          "budget_relative_residual": 0.0
+        },
+        {
+          "C_budget": 7.0794578438414025e+19,
+          "N_B": 0.979749460924374,
+          "D_B": 6.977981596787703,
+          "Q": 0.9640472692118772,
+          "L": 2.7832163104368335,
+          "budget_relative_residual": 0.0
+        }
+      ]
+    }
+  },
+  "saved_solution_checks": [
+    {
+      "C_budget": 1e+19,
+      "N_B": 0.22465229378221221,
+      "D_B": 6.944775564463847,
+      "Q": 0.5486879207625752,
+      "L": 3.170860155210812,
+      "budget_relative_residual": 0.0,
+      "saved_L": 3.170860156228013,
+      "saved_Q": 0.5486879207625752,
+      "profile_minus_saved_loss": -1.0172009901054935e-09
+    },
+    {
+      "C_budget": 6.309573444801943e+19,
+      "N_B": 0.934186622278825,
+      "D_B": 6.494147051188259,
+      "Q": 0.9562750230657133,
+      "L": 2.807598735817465,
+      "budget_relative_residual": 0.0,
+      "saved_L": 2.807598736726877,
+      "saved_Q": 0.9562751142216176,
+      "profile_minus_saved_loss": -9.094116570906863e-10
+    },
+    {
+      "C_budget": 7.0794578438414025e+19,
+      "N_B": 1.0321060464827456,
+      "D_B": 6.342346519047044,
+      "Q": 1.0,
+      "L": 2.7834152703393515,
+      "budget_relative_residual": 0.0,
+      "saved_L": 2.7834152708350195,
+      "saved_Q": 1.0,
+      "profile_minus_saved_loss": -4.956679511280981e-10
+    },
+    {
+      "C_budget": 1e+22,
+      "N_B": 6.09052085407539,
+      "D_B": 229.43872498342884,
+      "Q": 1.0,
+      "L": 2.1450616230068653,
+      "budget_relative_residual": 0.0,
+      "saved_L": 2.145061622649673,
+      "saved_Q": 1.0,
+      "profile_minus_saved_loss": 3.5719249780186146e-10
+    }
+  ],
+  "M_amplitude": [
+    {
+      "retained_fraction": 0.0,
+      "M_transferred": -0.0,
+      "target_loss": 2.1450616230068653,
+      "equivalent_budget": 9.999999999999958e+21,
+      "budget_multiple": 0.9999999999999958
+    },
+    {
+      "retained_fraction": 0.25,
+      "M_transferred": -0.04969977090197063,
+      "target_loss": 2.0953618521048947,
+      "equivalent_budget": 1.983734467547456e+22,
+      "budget_multiple": 1.983734467547456
+    },
+    {
+      "retained_fraction": 0.5,
+      "M_transferred": -0.09939954180394125,
+      "target_loss": 2.045662081202924,
+      "equivalent_budget": 4.308144592084108e+22,
+      "budget_multiple": 4.308144592084108
+    },
+    {
+      "retained_fraction": 0.75,
+      "M_transferred": -0.14909931270591187,
+      "target_loss": 1.9959623103009534,
+      "equivalent_budget": 1.0487652809810716e+23,
+      "budget_multiple": 10.487652809810715
+    },
+    {
+      "retained_fraction": 1.0,
+      "M_transferred": -0.1987990836078825,
+      "target_loss": 1.9462625393989827,
+      "equivalent_budget": 2.962618744758929e+23,
+      "budget_multiple": 29.626187447589288
+    }
+  ],
+  "baseline_sensitivity": [
+    {
+      "case": "参考配方固定基线",
+      "Q0": 0.5486879207625752,
+      "C_budget": 1e+22,
+      "N_B": 6.09052085407539,
+      "D_B": 229.43872498342884,
+      "Q": 1.0,
+      "L": 2.1450616230068653,
+      "budget_relative_residual": 0.0
+    },
+    {
+      "case": "仅将候选自身质量作为费用基线的对照",
+      "Q0": 0.5353599676259162,
+      "C_budget": 1e+22,
+      "N_B": 6.096837846276386,
+      "D_B": 229.00292476142505,
+      "Q": 1.0,
+      "L": 2.145136535886043,
+      "budget_relative_residual": 0.0
+    }
+  ],
+  "original_model_metrics": [
+    {
+      "case": "经典全量",
+      "rows": 1176,
+      "RMSE": 0.00014649608992798712,
+      "MAE": 0.00010523189569957539
+    },
+    {
+      "case": "广义联合",
+      "rows": 1536,
+      "RMSE": 0.03555716775844271,
+      "MAE": 0.017130190223313805
+    }
+  ],
+  "input_sha256": {
+    "project:求解/广义标度律参数.csv": "7008f219457a593451c19f97c37e370eecbb8736e2e5ff274d39322d79186c37",
+    "project:求解/问题一_关键量.json": "67352ca69b02130cb19683cfa13c1c9932c5c576715e71d8cc5e02aaac208af1",
+    "project:求解/17域质量映射.csv": "d8e12a6fa9b45a6a481e0fba3beb59acf7f297be953fb96cd22f0aa9ff964af8",
+    "project:求解/问题一/结果/推荐配比调整.csv": "242165ca62d254cb74def1a0d7771bcf8b8e22b2463433d031f9b647c8edf318",
+    "project:求解/问题二/结果/配比项校准.csv": "685632aeb9dfbcd734c050e24898af0f4b00da7a0eb2493b434ab92a3d83868f",
+    "project:求解/问题三/结果/预算扫略.csv": "da9450bcb7753c618da61b84fd94f748e216f492d491140bce04642355a71e46",
+    "attachment:B_scaling_laws/pythia_training_log_existing.csv": "529a59644b0f57bf3a76037838b614bfedc35e58bb26b93052e34ffc63e454c2",
+    "attachment:B_scaling_laws/supplementary_NQ_experiment.csv": "c7450ce0d67d8692535fef4709e60e2da60b2c184738bf96df160a4be0a33a7f",
+    "project:求解/问题二/结果/经典标度律参数.csv": "fd02b2cd67d7f660c00a28802d15e93a687f1ab757f8cec0fae313cf32a0ea07"
+  },
+  "script_sha256": "8e98251da4bf434e8328ea52b04eade4e5793ad694e5c23c04514a1a1c95bb63",
+  "versions": {
+    "python": "3.13.12",
+    "numpy": "2.2.6",
+    "pandas": "3.0.2",
+    "scipy": "1.17.1"
+  },
+  "revision_note": "source_revision 是读取时的 Git HEAD；本补充脚本可尚未提交，其精确身份由 script_sha256 标识。"
+}

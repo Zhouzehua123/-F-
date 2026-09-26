@@ -1,0 +1,72 @@
+{
+  "status": "calibration_sensitivity_not_replacement",
+  "n_records": 272505,
+  "n_A1": 51230,
+  "pooled_score_reconstruction_max_error": 1.3237189122605741e-11,
+  "length_centers_pooled": {
+    "rps_doc_word_count": 151.99999999999997,
+    "rps_doc_num_sentences": 23.999999999999996,
+    "rps_doc_mean_word_length": 8.056603773584904
+  },
+  "length_centers_A1": {
+    "rps_doc_word_count": 253.0,
+    "rps_doc_num_sentences": 20.0,
+    "rps_doc_mean_word_length": 5.322730202757456
+  },
+  "github_fraction_pooled": 0.7843966165758427,
+  "github_fraction_A1": 0.19519812609798945,
+  "domain_rank_spearman": 0.9642857142857145,
+  "domain_means": [
+    {
+      "domain": "arxiv",
+      "pooled_calibration": 0.7250089980279818,
+      "A1_calibration": 0.7296880042952985
+    },
+    {
+      "domain": "book",
+      "pooled_calibration": 0.5591777734508694,
+      "A1_calibration": 0.5093686823489785
+    },
+    {
+      "domain": "c4",
+      "pooled_calibration": 0.6327027209147381,
+      "A1_calibration": 0.5851901382275485
+    },
+    {
+      "domain": "commoncrawl",
+      "pooled_calibration": 0.6118956714868795,
+      "A1_calibration": 0.588447446017182
+    },
+    {
+      "domain": "github",
+      "pooled_calibration": 0.44919643547691745,
+      "A1_calibration": 0.49274230967047383
+    },
+    {
+      "domain": "stackexchange",
+      "pooled_calibration": 0.6332619879736073,
+      "A1_calibration": 0.6319706956199318
+    },
+    {
+      "domain": "wikipedia",
+      "pooled_calibration": 0.5450234347076541,
+      "A1_calibration": 0.504666997821889
+    }
+  ],
+  "quality_global_mean_pooled": 0.4911980771914707,
+  "quality_global_mean_A1_calibrated": 0.5215479279096739,
+  "raw_inputs": [
+    {
+      "path": "A_data_value/slimpajama_quality_signal_sample.jsonl.xz",
+      "sha256": "14a4eeec4c7d98efd78942ddd9c1329640527f2108e73227be449bc1a8dbe579"
+    },
+    {
+      "path": "A_data_value/slimpajama_quality_extended/arxiv_part-6777d8857c6e-000486.jsonl.xz",
+      "sha256": "ae1e3399f84f605d994fc60b46984d742e14abb3355d8e7a91822eae1b99e16a"
+    },
+    {
+      "path": "A_data_value/slimpajama_quality_extended/github_part-6777d8857c6e-000275.jsonl.xz",
+      "sha256": "7af069c71c6027a10f2013cc14dd9d5d17855c264734f69c955544ff6cff7382"
+    }
+  ]
+}
