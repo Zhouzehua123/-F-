@@ -160,6 +160,8 @@
 
 程序使用 Python 3，主要依赖 NumPy、pandas、SciPy、scikit-learn、Matplotlib 和 Pillow，数据解压及 JSON 读取调用 Python 标准库。四问共用 求解/\allowbreak{}\_common.py，附件根目录由环境变量 MODELING\_DATA\_DIR 或程序参数指定，也可放在项目祖先目录的 real\_attachments 下。压缩 JSONL 文件直接读取，无需修改附件。下面列出四问的完整主程序，涵盖数据读取、模型求解、检验和结果输出；公共模块及正式绘图依赖也在后文完整列出，代码清单直接引用实际源文件。
 
+本次运行环境为 Windows 11、Python 3.14.0，依赖版本为 NumPy 2.5.3、pandas 3.0.6、SciPy 1.18.1、scikit-learn 1.9.1、Matplotlib 3.11.2 和 Pillow 12.3.0。复现时将下列 22 份 Python 代码分别按题注中的相对路径保存为 UTF-8 文件，另保留总体流程图的 TikZ 源码。题目附件保留 \texttt{A\_data\_value}、\texttt{B\_scaling\_laws}、\texttt{C\_efficiency\_evolution} 的目录结构。统计绘图使用宋体（SimSun）和 Times New Roman；第三问另需 Adobe 思源宋体文件 \texttt{SourceHanSerifCN-Regular.otf}，放在 \texttt{论文/fonts/} 下。该字体可从 Adobe 官方项目 \url{https://github.com/adobe-fonts/source-han-serif} 获取。字体与依赖版本不同可能改变字形及像素排布，数值核对以计算结果为准。
+
 运行时依次执行问题一、问题二和问题三，问题四读取附件 C、可单独运行。问题一输出质量、配比和关键量，问题二据此估计配比修正及广义标度律参数，问题三读取前两问共享文件。各程序的输入、输出关系见表\ref{tab:code_map}。
 
 \begin{table}[!htbp]
@@ -179,7 +181,17 @@
 
 \subsubsection*{正式图表与复现顺序}
 
-四问主程序在结果保存后调用对应的正式绘图程序。只复现图形时，在项目根目录运行 \texttt{python 求解/复现论文.py --data-dir <附件根目录> --mode figures}；该模式读取随文保存的 CSV，不重新拟合。需要重新计算时使用同一入口的 \texttt{--mode verify-models}，它在独立目录依次运行四问，按固定的 84 项预期输出清单，先删除隔离副本中的对应文件，再要求逐项重新生成并比较；包括跨问传递的质量映射、关键量 JSON 和标度律参数。缺失、未生成或数值不一致均报错；没有基准的新输出单列为未比较，不计作核对成功。原结果不被覆盖。数值结果按容差比较；核岭配方绝对容差为 $10^{-6}$。训练凸组合不唯一，故另验非负性、权重和、配方重建及约束，多初值记录则验目标、可行性和驻点间隙，不要求非唯一权重与迭代次数逐项相同；第三问使用无量纲预算约束以改善求解稳定性。
+从题目附件首次生成结果时，不需要预先准备结果 CSV。安装上述依赖、保存代码和字体后，在项目根目录依次运行以下命令；其中附件路径替换为实际位置，环境变量设置采用 Windows PowerShell 语法。四问主程序在结果保存后调用对应的正式绘图程序，最后一条命令生成第三、四问的方法流程图。
+\begin{lstlisting}[language={},numbers=none]
+$env:MODELING_DATA_DIR="D:/题目附件"
+python 求解/问题一/问题一.py
+python 求解/问题二/问题二.py
+python 求解/问题三/问题三.py
+python 求解/问题四/问题四.py
+python 求解/绘制问题三四流程图.py
+\end{lstlisting}
+
+已有结果 CSV 时，只复现图形可在项目根目录运行 \texttt{python 求解/复现论文.py --data-dir <附件根目录> --mode figures}，该模式不重新拟合。已有完整结果作为比较基准时，使用同一入口的 \texttt{--mode verify-models}，它在独立目录依次运行四问，按固定的 84 项预期输出清单，先删除隔离副本中的对应文件，再要求逐项重新生成并比较；包括跨问传递的质量映射、关键量 JSON 和标度律参数。缺失、未生成或数值不一致均报错；没有基准的新输出单列为未比较，不计作核对成功。原结果不被覆盖。数值结果按容差比较；核岭配方绝对容差为 $10^{-6}$。训练凸组合不唯一，故另验非负性、权重和、配方重建及约束，多初值记录则验目标、可行性和驻点间隙，不要求非唯一权重与迭代次数逐项相同；第三问使用无量纲预算约束以改善求解稳定性。
 
 补充的决策与时间检验使用 \texttt{python 求解/补充检验.py --data-dir <附件根目录>}，输出写入独立复现记录目录；其中包括相同加权目标的选优、配方预测分歧、质量结构与收益迁移敏感性、时间留出对照，均不替换四问保存结果。
 
@@ -234,55 +246,55 @@
 
 \Needspace{8\baselineskip}
 \subsubsection*{问题一：质量评价、冲突统计与配比建模}
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一完整求解程序},label={code:p1}]{../求解/问题一/问题一.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一完整求解程序（求解/\allowbreak{}问题一/\allowbreak{}问题一.py）},label={code:p1}]{../求解/问题一/问题一.py}
 
 \Needspace{8\baselineskip}
 \subsubsection*{问题二：广义标度律、验证与边际分析}
-\lstinputlisting[language=Python,firstnumber=1,caption={问题二完整求解程序},label={code:p2}]{../求解/问题二/问题二.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题二完整求解程序（求解/\allowbreak{}问题二/\allowbreak{}问题二.py）},label={code:p2}]{../求解/问题二/问题二.py}
 
 \Needspace{8\baselineskip}
 \subsubsection*{问题三：预算约束优化与敏感性分析}
-\lstinputlisting[language=Python,firstnumber=1,caption={问题三完整求解程序},label={code:p3}]{../求解/问题三/问题三.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题三完整求解程序（求解/\allowbreak{}问题三/\allowbreak{}问题三.py）},label={code:p3}]{../求解/问题三/问题三.py}
 
 \Needspace{8\baselineskip}
 \subsubsection*{问题四：任务解析、能力分解与前沿预测}
-\lstinputlisting[language=Python,firstnumber=1,caption={问题四完整求解程序},label={code:p4}]{../求解/问题四/问题四.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题四完整求解程序（求解/\allowbreak{}问题四/\allowbreak{}问题四.py）},label={code:p4}]{../求解/问题四/问题四.py}
 
 \subsubsection*{公共模块、非线性预测与完整绘图程序}
-\lstinputlisting[language=Python,firstnumber=1,caption={统一复现入口},label={code:dep1}]{../求解/复现论文.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={统一复现入口（求解/\allowbreak{}复现论文.py）},label={code:dep1}]{../求解/复现论文.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={决策、质量结构与时间外推补充检验},label={code:diagnostics}]{../求解/补充检验.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={决策、质量结构与时间外推补充检验（求解/\allowbreak{}补充检验.py）},label={code:diagnostics}]{../求解/补充检验.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={公共数据与绘图模块},label={code:dep2}]{../求解/_common.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={公共数据与绘图模块（求解/\allowbreak{}\_common.py）},label={code:dep2}]{../求解/_common.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一核岭预测与交叉验证},label={code:dep3}]{../求解/问题一/非线性代理对照.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一核岭预测与交叉验证（求解/\allowbreak{}问题一/\allowbreak{}非线性代理对照.py）},label={code:dep3}]{../求解/问题一/非线性代理对照.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={核岭训练支持范围内的配比推荐},label={code:kernel_recipe}]{../求解/问题一/核岭支持域推荐.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={核岭训练支持范围内的配比推荐（求解/\allowbreak{}问题一/\allowbreak{}核岭支持域推荐.py）},label={code:kernel_recipe}]{../求解/问题一/核岭支持域推荐.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一正式绘图入口},label={code:dep4}]{../求解/问题一/重绘图表.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一正式绘图入口（求解/\allowbreak{}问题一/\allowbreak{}重绘图表.py）},label={code:dep4}]{../求解/问题一/重绘图表.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一绘图数据读取},label={code:dep5}]{../求解/问题一/绘图数据.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一绘图数据读取（求解/\allowbreak{}问题一/\allowbreak{}绘图数据.py）},label={code:dep5}]{../求解/问题一/绘图数据.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一图形样式与导出},label={code:dep6}]{../求解/问题一/展示风格公共.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一图形样式与导出（求解/\allowbreak{}问题一/\allowbreak{}展示风格公共.py）},label={code:dep6}]{../求解/问题一/展示风格公共.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一概览图},label={code:dep7}]{../求解/问题一/展示风格概览.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一概览图（求解/\allowbreak{}问题一/\allowbreak{}展示风格概览.py）},label={code:dep7}]{../求解/问题一/展示风格概览.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一诊断图},label={code:dep8}]{../求解/问题一/展示风格诊断.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一诊断图（求解/\allowbreak{}问题一/\allowbreak{}展示风格诊断.py）},label={code:dep8}]{../求解/问题一/展示风格诊断.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一冲突图},label={code:dep9}]{../求解/问题一/展示风格冲突.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一冲突图（求解/\allowbreak{}问题一/\allowbreak{}展示风格冲突.py）},label={code:dep9}]{../求解/问题一/展示风格冲突.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一流程图},label={code:dep10}]{../求解/问题一/展示风格流程.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一流程图（求解/\allowbreak{}问题一/\allowbreak{}展示风格流程.py）},label={code:dep10}]{../求解/问题一/展示风格流程.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一核岭验证图},label={code:dep11}]{../求解/问题一/展示风格非线性.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一核岭验证图（求解/\allowbreak{}问题一/\allowbreak{}展示风格非线性.py）},label={code:dep11}]{../求解/问题一/展示风格非线性.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={出版图形导出},label={code:dep12}]{../求解/问题一/出版导出.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={出版图形导出（求解/\allowbreak{}问题一/\allowbreak{}出版导出.py）},label={code:dep12}]{../求解/问题一/出版导出.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题二正式绘图},label={code:dep13}]{../求解/问题二/重绘图表.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题二正式绘图（求解/\allowbreak{}问题二/\allowbreak{}重绘图表.py）},label={code:dep13}]{../求解/问题二/重绘图表.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题三正式绘图},label={code:dep14}]{../求解/问题三/论文绘图.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题三正式绘图（求解/\allowbreak{}问题三/\allowbreak{}论文绘图.py）},label={code:dep14}]{../求解/问题三/论文绘图.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题四正式绘图},label={code:dep15}]{../求解/问题四/重绘图表.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题四正式绘图（求解/\allowbreak{}问题四/\allowbreak{}重绘图表.py）},label={code:dep15}]{../求解/问题四/重绘图表.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题三四流程图},label={code:dep16}]{../求解/绘制问题三四流程图.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题三四流程图（求解/\allowbreak{}绘制问题三四流程图.py）},label={code:dep16}]{../求解/绘制问题三四流程图.py}
 
-\lstinputlisting[language={[LaTeX]TeX},firstnumber=1,caption={总体流程图原生源码}]{figures/overall-architecture.tex}
+\lstinputlisting[language={[LaTeX]TeX},firstnumber=1,caption={总体流程图原生源码（论文/\allowbreak{}figures/\allowbreak{}overall-architecture.tex）}]{figures/overall-architecture.tex}
