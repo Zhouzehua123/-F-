@@ -1,5 +1,5 @@
-# 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6；机构：OpenAI；版本发布日期：2026-04-21。
-# 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-5.6）辅助。
+# 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6-Luna；机构：OpenAI；版本发布日期：2026-04-21。
+# 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-5.6-Luna）辅助。
 """Q1 展示版的字体、分组标题和导出约定。"""
 from pathlib import Path
 import json
