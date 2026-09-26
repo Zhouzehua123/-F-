@@ -46,12 +46,12 @@
   B5 & published\_\allowbreak{}scaling\_\allowbreak{}data & 真实 & 使用 & 与文献记录比较，相关 $r=0.910$，MAPE 为 8.0\% \\
   B6 & supplementary\_\allowbreak{}NQ\_\allowbreak{}experiment & 半合成 & 使用 & 360 点用于估计质量缺口项；说明半合成条件下的质量效应，不作为直接实验观测 \\
   B7 & supplementary\_\allowbreak{}NQ\_\allowbreak{}experiment\_\allowbreak{}expanded & 半合成 & 使用 & 新增记录用于开发阶段检查，相关 $r=0.991$ \\
-  B8 & supplementary\_\allowbreak{}NQ\_\allowbreak{}experiment\_\allowbreak{}large & 半合成 & 部分使用 & $Q_{\text{score}}$ 与 B6/B7 的方向相反，且含低于不可约损失下限的记录；不并入拟合，用于说明来源间的差异 \\
+  B8 & supplementary\_\allowbreak{}NQ\_\allowbreak{}experiment\_\allowbreak{}large & 半合成 & 部分使用 & $Q_{\text{score}}$ 与 B6/B7 的方向相反，且含低于本模型参考渐近损失基准的记录；不并入拟合，用于说明来源间的差异 \\
   B9 & supplementary\_\allowbreak{}large\_\allowbreak{}models & 真实 & 使用 & 提供百亿参数以上模型的参数量、数据量和开源可及性资料 \\
   B10 & supplementary\_\allowbreak{}large\_\allowbreak{}baseline & 估算 & 使用 & 比较百亿参数以上的损失估算，$r\approx1.000$、MAPE 为 1.0\%；该对照不作为直接观测 \\
   B11 & open\_\allowbreak{}model\_\allowbreak{}family\_\allowbreak{}metadata & 真实 & 未使用 & 未用于本文分析 \\
   B12 & pythia\_\allowbreak{}checkpoint\_\allowbreak{}index & 真实 & 未使用 & 未用于本文分析 \\
-  C1 & leaderboard\_\allowbreak{}cleaned & 真实 & 使用 & 按六维得分、许可、类型和提交日期整理样本；筛选后的 2{,}346 条用于面板回归和前沿分析 \\
+  C1 & leaderboard\_\allowbreak{}cleaned & 真实 & 使用 & 按六维得分、许可、类型和提交日期整理样本；筛选后的 2{,}346 条用于合并横截面回归和前沿分析 \\
   C2 & leaderboard\_\allowbreak{}enhanced & 真实 & 未使用 & 作为 C1 的增强替代版本，为避免重复计入而不另用 \\
   C3 & leaderboard\_\allowbreak{}extended\_\allowbreak{}timeseries & 混合 & 使用 & 核算 2019--2025 年增量；排除 13 条一致性异常记录，长期解释仍保留评分来源差异 \\
   C4 & epoch\_\allowbreak{}all\_\allowbreak{}ai\_\allowbreak{}models & 真实 & 使用 & 观察训练算力趋势，年斜率 $+0.589$ dex；核对数据量与权重字段，Yes 为 1{,}325、No 为 1{,}328 \\
@@ -104,7 +104,7 @@
   质量与损失难度一致性.csv & 两套质量口径在 6 个映射域上的排序比较 \\
   质量项增量检验.csv & 冗余质量特征加入后的 $R^2$ 差值 \\
   混合系数矩阵.csv、截距.csv & 配比—损失岭回归系数与截距 \\
-  推荐配比调整.csv & 有界推荐配比与调整量 \\
+  推荐配比调整.csv & 线性条件候选配比与调整量 \\
   问题一\_\allowbreak{}拟合汇总.csv & 各损失域的拟合与检验指标 \\
   岭正则敏感性.csv & 正则系数灵敏度 \\
   经典标度律参数.csv & 经典标度律参数、拟合与留出验证指标 \\
@@ -124,7 +124,7 @@
   C8逐任务聚合.csv、C8子任务类别汇总.csv & 子任务前沿与剩余空间 \\
   C8与C1一致性校验.csv & C8 与 C1 的秩相关校验 \\
   Loss\_\allowbreak{}Benchmark映射.csv & 分层桥接拟合结果 \\
-  规模时间分解.csv、规模时间分解\_\allowbreak{}长周期.csv & 规模/非规模贡献分解 \\
+  规模时间分解.csv、规模时间分解\_\allowbreak{}长周期.csv & 规模关联项与剩余项分解 \\
   C3口径异常行.csv & C3 自洽性审计剔除的记录 \\
   前沿预测.csv、前沿预测\_\allowbreak{}结构外推情景.csv & 能力前沿预测与情景 \\
   C4宏观趋势.csv、C4宏观摘要.csv & C4 宏观算力与开源权重证据 \\
@@ -169,19 +169,21 @@
 \toprule
 问题 & 核心程序 & 输入 & 主要输出\\
 \midrule
-一 & 求解/\allowbreak{}问题一/\allowbreak{}\mbox{问题一.py} & 附件 A & 质量评分、回归系数、推荐配比\\
+一 & 求解/\allowbreak{}问题一/\allowbreak{}\mbox{问题一.py} & 附件 A & 质量评分、回归系数、条件候选\\
 二 & 求解/\allowbreak{}问题二/\allowbreak{}\mbox{问题二.py} & 附件 B、问题一结果 & 标度律参数、验证指标、配比修正\\
 三 & 求解/\allowbreak{}问题三/\allowbreak{}\mbox{问题三.py} & 前两问共享结果、附件 C7 & 三档配置、预算扫描与敏感性\\
-四 & 求解/\allowbreak{}问题四/\allowbreak{}\mbox{问题四.py} & 附件 C & 任务聚合、贡献分解与前沿预测\\
+四 & 求解/\allowbreak{}问题四/\allowbreak{}\mbox{问题四.py} & 附件 C & 任务聚合、关联分解与前沿情景\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \subsubsection*{正式图表与复现顺序}
 
-四问主程序在结果保存后调用对应的正式绘图程序。只复现图形时，在项目根目录运行 \texttt{python 求解/复现论文.py --data-dir <附件根目录> --mode figures}；该模式读取随文保存的 CSV，不重新拟合。需要重新计算时使用同一入口的 \texttt{--mode verify-models}，它在独立目录依次运行四问，比较重算结果与保存结果，不覆盖原结果。数值环境可能产生极小浮点尾差，重算采用相对容差比较；第三问使用无量纲预算约束以改善求解稳定性。
+四问主程序在结果保存后调用对应的正式绘图程序。只复现图形时，在项目根目录运行 \texttt{python 求解/复现论文.py --data-dir <附件根目录> --mode figures}；该模式读取随文保存的 CSV，不重新拟合。需要重新计算时使用同一入口的 \texttt{--mode verify-models}，它在独立目录依次运行四问，比较重算结果与保存结果，不覆盖原结果。核验按\texttt{复现预期输出.json}中明确列出的 81 项 CSV/JSON 执行，每问运行前只从隔离副本移除该问预期输出，逐项确认重新生成后再比较。缺失输出、数值不一致或进程失败均保留报告并返回失败。数值比较采用相对容差 $10^{-6}$、绝对容差 $10^{-8}$；核岭清单中的环境版本、脚本哈希和运行耗时另列元数据，不作为数值一致性结论。第三问使用无量纲预算约束以改善求解稳定性。
 
 核岭的独立计算入口为问题一目录中的“非线性代理对照.py”，参数搜索、折分配、预测明细和汇总分别保存。绘图只读取这些输出；其结果不替换问题二、三采用的线性配比系数。总体流程图为原生 TikZ；其余正式图的生成程序见表\ref{tab:figure_code_map}，流程图属于方法示意，不代表新增观测数据。
+
+补充诊断位于 \texttt{求解/审稿补充}，与原求解结果分开保存。三个入口分别为“q1\_决策与稳健性.py”“q23\_尺度与结构敏感性.py”“q4\_时间与前沿验证.py”，均接受 \texttt{--data-dir} 和 \texttt{--output-dir}。它们读取原始附件及现有拟合结果，输出候选排序、质量标尺、曲率、收益迁移和预测窗口的诊断表；新增对照不覆盖原拟合参数与配置文件。各诊断目录保存输入哈希、计算设定与检查摘要，表中数值可由对应程序重新计算。复现入口的回归测试位于 \texttt{求解/tests/test\_reproduction.py}，使用微型数据检验缺失输出、结果差异与异常报告，不替代四问的实际重算。
 
 \FloatBarrier
 \begin{longtable}{@{}p{0.13\textwidth}p{0.38\textwidth}p{0.43\textwidth}@{}}
@@ -198,7 +200,7 @@
 \bottomrule
 \endfoot
 图\ref{fig:overall_architecture} & 论文/\allowbreak{}figures/\allowbreak{}overall-architecture.tex & 总体建模流程；原生 TikZ 源码 \\
-图\ref{fig:q1_workflow} & 问题一/\allowbreak{}重绘图表.py & 质量评价、配比预测与线性推荐流程 \\
+图\ref{fig:q1_workflow} & 问题一/\allowbreak{}重绘图表.py & 质量评价、配比预测与线性候选流程 \\
 图\ref{fig:p1_quality_full} & 问题一/\allowbreak{}重绘图表.py & 全量领域质量评分、抽样与扩展域级对照 \\
 图\ref{fig:p1_conf} & 问题一/\allowbreak{}重绘图表.py & 冲突指标对与熵权结果 \\
 图\ref{fig:p1_structure} & 问题一/\allowbreak{}重绘图表.py & 附件 A4 的 512 组训练配方 \\
@@ -222,8 +224,8 @@
 图\ref{fig:p3_ctx} & 问题三/\allowbreak{}论文绘图.py & 问题三保存的预算、成本与上下文扫描 CSV \\
 图\ref{fig:p4_workflow} & 绘制问题三四流程图.py & 对应小问的方法与输入输出关系 \\
 图\ref{fig:p4_map} & 问题四/\allowbreak{}重绘图表.py & 损失--得分映射结果与附件 C6 \\
-图\ref{fig:p4_scale} & 问题四/\allowbreak{}重绘图表.py & 面板回归结果与附件 C1、C3 \\
-图\ref{fig:p4_decomp} & 问题四/\allowbreak{}重绘图表.py & 近期与长周期贡献分解结果 \\
+图\ref{fig:p4_scale} & 问题四/\allowbreak{}重绘图表.py & 合并横截面回归结果与附件 C1 \\
+图\ref{fig:p4_decomp} & 问题四/\allowbreak{}重绘图表.py & 近期与长周期的规模关联项和剩余项 \\
 图\ref{fig:p4_frontier} & 问题四/\allowbreak{}重绘图表.py & 前沿序列、logistic 参数及两类情景预测 \\
 图\ref{fig:p4_distribution} & 问题四/\allowbreak{}重绘图表.py & 经许可筛选的附件 C1 六维得分 \\
 图\ref{fig:p4_task} & 问题四/\allowbreak{}重绘图表.py & 附件 C8 的 37 项子任务聚合结果 \\

@@ -14,10 +14,10 @@ rps_doc_word_count,False,target,文档词数（过短/过长均不佳）,0.98961
 rps_doc_num_sentences,False,target,文档句数（过少/过多均不佳）,0.9894731035037456,0.051758592885808564
 rps_doc_unigram_entropy,False,positive,一元词熵（越高越多样）,0.9930179055328143,0.03432952771464079
 rps_doc_frac_unique_words,False,positive,唯一词占比（越高越多样）,0.9891679667952685,0.053258887552351655
-rps_doc_frac_no_alph_words,False,negative,非字母字符占比（越低越好）,0.9942152708848097,0.02844232764465338
-rps_doc_frac_chars_top_2gram,False,negative,Top-2 字符 2-gram 占比（重复度，越低越好）,0.9973884606500123,0.01284040382361296
-rps_doc_frac_chars_top_3gram,False,negative,Top-2 字符 3-gram 占比（重复度，越低越好）,0.9975982603668408,0.0118088616084168
-rps_lines_uppercase_letter_fraction,False,negative,大写字母行占比（越低越好）,0.9936288486166402,0.03132564576677537
+rps_doc_frac_no_alph_words,False,negative,不含字母的词项占比（越低越好）,0.9942152708848097,0.02844232764465338
+rps_doc_frac_chars_top_2gram,False,negative,最高频词2-gram覆盖的字符占比（越低越好）,0.9973884606500123,0.01284040382361296
+rps_doc_frac_chars_top_3gram,False,negative,最高频词3-gram覆盖的字符占比（越低越好）,0.9975982603668408,0.0118088616084168
+rps_lines_uppercase_letter_fraction,False,negative,大写字符占全部字符的比例（越低越好）,0.9936288486166402,0.03132564576677537
 rps_lines_ending_with_terminal_punctution_mark,False,positive,以终止标点结尾的行占比（越高越好）,0.9822792731502606,0.08712918256417065
-rps_lines_numerical_chars_fraction,False,negative,含数字字符行占比（越低越好）,0.9974845411152731,0.01236799586486834
+rps_lines_numerical_chars_fraction,False,negative,数字字符占全部字符的比例（越低越好）,0.9974845411152731,0.01236799586486834
 rps_doc_mean_word_length,False,target,平均词长（过短/过长均不佳）,0.9924862890434877,0.03694337705306938

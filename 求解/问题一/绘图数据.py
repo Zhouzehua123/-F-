@@ -29,12 +29,12 @@ INDICATOR_NAMES = {
     'dsir_books': '书籍域权重', 'dsir_wiki': '维基域权重', 'dsir_math': '数学域权重',
     'qurater': '四维质量聚合', 'ad_en': '广告信号', 'rps_doc_word_count': '文档词数',
     'rps_doc_num_sentences': '文档句数', 'rps_doc_unigram_entropy': '一元词熵',
-    'rps_doc_frac_unique_words': '不同词占比', 'rps_doc_frac_no_alph_words': '非字母信号',
-    'rps_doc_frac_chars_top_2gram': '2-gram 重复度',
-    'rps_doc_frac_chars_top_3gram': '3-gram 重复度',
-    'rps_lines_uppercase_letter_fraction': '大写字母行占比',
+    'rps_doc_frac_unique_words': '不同词占比', 'rps_doc_frac_no_alph_words': '无字母词项占比',
+    'rps_doc_frac_chars_top_2gram': '高频词2元字符比',
+    'rps_doc_frac_chars_top_3gram': '高频词3元字符比',
+    'rps_lines_uppercase_letter_fraction': '大写字符占比',
     'rps_lines_ending_with_terminal_punctution_mark': '终止标点行占比',
-    'rps_lines_numerical_chars_fraction': '含数字行占比',
+    'rps_lines_numerical_chars_fraction': '数字字符占比',
     'rps_doc_mean_word_length': '平均词长',
 }
 
