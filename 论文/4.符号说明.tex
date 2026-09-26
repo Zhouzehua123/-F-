@@ -1,60 +1,61 @@
 \section{符号说明}
 
-主要符号列于表\ref{tab:符号说明}。表中“1”表示无量纲，B 表示十亿。问题二拟合时以十亿参数和十亿 tokens 计量规模，问题三计算成本时转换为参数个数和 token 数。
+主要符号列于表\ref{tab:符号说明}。问题二拟合时以十亿参数和十亿 tokens 计量规模，问题三计算成本时转换为参数个数和 token 数。
 
 \begingroup
 \captionsetup[table]{font={bundledsong,minusfour,bf}}
 \setlength{\tabcolsep}{3pt}
-\begin{longtable}{@{}>{\centering\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.52\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}@{}}
-\caption{主要符号、含义与单位}\label{tab:符号说明}\\
+\renewcommand{\arraystretch}{1.10}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.28\textwidth}>{\raggedright\arraybackslash}p{0.69\textwidth}@{}}
+\caption{主要符号及含义}\label{tab:符号说明}\\
 \toprule
-符号 & 含义 & 单位\\
+符号 & 含义\\
 \midrule
 \endfirsthead
-\caption{主要符号、含义与单位（续）}\\
+\caption{主要符号及含义（续）}\\
 \toprule
-符号 & 含义 & 单位\\
+符号 & 含义\\
 \midrule
 \endhead
 \bottomrule
 \endfoot
-$N$ & 模型包含的参数数量 & B 或参数个数\\
-$D$ & 用于模型训练的数据总量 & B tokens 或 tokens\\
-$L,E$ & 分别表示验证交叉熵损失与不可约损失 & 1\\
-$Q$ & 数据质量评分，分值越高则质量越好 & 1\\
-$Q_0$ & 质量基线；问题二说明来源间的参考水平，问题三采用参考配比加权质量 & 1\\
-$\bm p$ & 各领域训练占比构成的向量，各项非负且总和为 1 & 1\\
-$A,B$ & 参数规模项、数据规模项的标度系数 & 随规模计量单位确定\\
-$\alpha,\beta$ & 参数规模项、数据规模项的幂指数 & 1\\
-$C,C_q$ & 质量缺口系数，问题三记为 $C_q$ & 1\\
-$\gamma$ & 质量缺口的幂指数 & 1\\
-$\varepsilon_N,\varepsilon_D,\varepsilon_Q$ & 损失对参数量、数据量和质量的弹性 & 1\\
-$M(\bm p)$ & 相对参考配比的损失平移修正 & 1\\
-$C_{\text{train}},C_Q,C_{\text{attn}}$ & 基础训练、质量提升和注意力开销 & FLOPs\\
-$C_{\text{budget}},C_{\mathrm b}$ & 总算力预算，问题三简记为 $C_{\mathrm b}$ & FLOPs\\
-$g(Q)$ & 单个 token 的质量处理成本 & FLOPs/token\\
-$\eta$ & 注意力开销系数；参数个数作为计数代入成本公式 & FLOPs/token$^2$\\
-$L_{\text{ctx}},L_{\text{crit}}$ & 上下文长度、注意力与训练开销相等时的长度 & tokens\\
-$\lambda(L_{\text{ctx}})$ & 注意力开销与基础训练开销的比值 & 1\\
-$\tau(Q)$ & 质量处理成本折算的等效附加参数规模 & 参数个数\\
-$\Theta(C_{\mathrm b})$ & 质量提升完成度 & 1\\
-$F(t),K$ & 能力前沿及 logistic 饱和上界 & 分\\
-$t,t_0$ & 以 2019 年为原点的时间、logistic 拐点时间 & 年\\
-$r$ & logistic 增长率 & 年$^{-1}$\\
-$b_P$ & 参数量每扩大十倍对应的回归得分变化 & 分\\
-$b_t$ & 面板回归的年度得分变化系数 & 分/年\\
-$\alpha_t$ & 面板回归的年份固定效应 & 分\\
-$\bar B$ & Leaderboard 六维平均得分 & 分\\
-$Q_i,Q_d,\bar Q(\bm p)$ & 依次表示样本评分、领域平均评分和按训练配比加权的质量指数 & 1\\
-$\bm P,\bm L$ & 分别由各组训练配比及其对应的验证损失构成的矩阵 & 1\\
-$\bm A,\bm b$ & 配比回归中的系数矩阵和截距向量 & 1\\
-$\lambda$ & 配比回归的岭惩罚系数，设为 $10^{-3}$ & 1\\
-$\tau$ & 判断两个指标的标准化得分是否冲突的阈值，设为 $1.5$ & 1\\
-$w_j,e_j$ & 指标 $j$ 对应的熵权系数与信息熵值 & 1\\
-$W$ & Kendall 协同系数，用于衡量指标排序的一致程度 & 1\\
-$\rho_c,\rho_0$ & 指标评价的冲突比例及指标独立条件下的参考冲突比例 & 1\\
-$R^2$ & 决定系数 & 1\\
-RMSE、MAE & 均方根误差、平均绝对误差 & 与响应变量一致\\
-MAPE & 平均绝对百分比误差 & \%\\
+$N$ & 模型包含的参数数量\\
+$D$ & 用于模型训练的数据总量\\
+$L,E$ & 分别表示验证交叉熵损失与不可约损失\\
+$Q$ & 数据质量评分，分值越高则质量越好\\
+$Q_0$ & 质量基线；问题二说明来源间的参考水平，问题三采用参考配比加权质量\\
+$\bm p$ & 各领域训练占比构成的向量，各项非负且总和为 1\\
+$A,B$ & 参数规模项、数据规模项的标度系数\\
+$\alpha,\beta$ & 参数规模项、数据规模项的幂指数\\
+$C,C_q$ & 质量缺口系数，问题三记为 $C_q$\\
+$\gamma$ & 质量缺口的幂指数\\
+$\varepsilon_N,\varepsilon_D,\varepsilon_Q$ & 损失对参数量、数据量和质量的弹性\\
+$M(\bm p)$ & 相对参考配比的损失平移修正\\
+$C_{\text{train}},C_Q,C_{\text{attn}}$ & 基础训练、质量提升和注意力开销\\
+$C_{\text{budget}},C_{\mathrm b}$ & 总算力预算，问题三简记为 $C_{\mathrm b}$\\
+$g(Q)$ & 单个 token 的质量处理成本\\
+$\eta$ & 注意力开销系数；参数个数作为计数代入成本公式\\
+$L_{\text{ctx}},L_{\text{crit}}$ & 上下文长度、注意力与训练开销相等时的长度\\
+$\lambda(L_{\text{ctx}})$ & 注意力开销与基础训练开销的比值\\
+$\tau(Q)$ & 质量处理成本折算的等效附加参数规模\\
+$\Theta(C_{\mathrm b})$ & 质量提升完成度\\
+$F(t),K$ & 能力前沿及 logistic 饱和上界\\
+$t,t_0$ & 以 2019 年为原点的时间、logistic 拐点时间\\
+$r$ & logistic 增长率\\
+$b_P$ & 参数量每扩大十倍对应的回归得分变化\\
+$b_t$ & 面板回归的年度得分变化系数\\
+$\alpha_t$ & 面板回归的年份固定效应\\
+$\bar B$ & Leaderboard 六维平均得分\\
+$Q_i,Q_d,\bar Q(\bm p)$ & 依次表示样本评分、领域平均评分和按训练配比加权的质量指数\\
+$\bm P,\bm L$ & 分别由各组训练配比及其对应的验证损失构成的矩阵\\
+$\bm A,\bm b$ & 配比回归中的系数矩阵和截距向量\\
+$\lambda$ & 配比回归的岭惩罚系数，设为 $10^{-3}$\\
+$\tau$ & 判断两个指标的标准化得分是否冲突的阈值，设为 $1.5$\\
+$w_j,e_j$ & 指标 $j$ 对应的熵权系数与信息熵值\\
+$W$ & Kendall 协同系数，用于衡量指标排序的一致程度\\
+$\rho_c,\rho_0$ & 指标评价的冲突比例及指标独立条件下的参考冲突比例\\
+$R^2$ & 决定系数\\
+RMSE、MAE & 均方根误差、平均绝对误差\\
+MAPE & 平均绝对百分比误差\\
 \end{longtable}
 \endgroup
