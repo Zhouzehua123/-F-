@@ -131,10 +131,10 @@ def decomposition(audit):
         ax.plot([1.31,1.69],[v[2],v[2]],lw=.7,color=INK)
         for i, (value, y) in enumerate(zip(v,[v[0],v[2],v[2]])):
             ax.text(i, y+1.2, f'{value:.2f}',ha='center',fontsize=10)
-        ax.set(xticks=[0,1,2],xticklabels=['规模项','非规模项','总增量'],ylim=(0,67))
+        ax.set(xticks=[0,1,2],xticklabels=['规模代理项','非规模剩余','总增量'],ylim=(0,67))
         title(ax,label)
         grid(ax)
-        ax.text(.03,.93,f'规模占比 {r["规模占比%"]:.1f}%\n非规模占比 {r["非规模占比%"]:.1f}%', transform=ax.transAxes,va='top',fontsize=9)
+        ax.text(.03,.93,f'规模代理项 {r["规模占比%"]:.1f}%\n非规模剩余 {r["非规模占比%"]:.1f}%', transform=ax.transAxes,va='top',fontsize=9)
     axes[0].set_ylabel('前沿提升 / 分')
     fig.subplots_adjust(left=.10,right=.98,bottom=.17,top=.85,wspace=.20)
     save(fig,'图2_规模时间分解',audit)
@@ -165,7 +165,7 @@ def forecast(lb, audit):
     ax.scatter(x[len(hist):],y[len(hist):],color=TEAL,marker='o',s=20,label='C1 月度前沿',zorder=3)
     xp=pred.iloc[:,0].to_numpy()+2019
     ax.scatter(xp,pred['情景_技术增速减半'],marker='v',s=23,color=GOLD,zorder=4)
-    ax.errorbar(xp,pred.frontier_pred,yerr=[pred.frontier_pred-pred['CI_low_5%'],pred['CI_high_95%']-pred.frontier_pred],fmt='D',color=PURPLE,capsize=4,ms=4,label='90% bootstrap 区间')
+    ax.errorbar(xp,pred.frontier_pred,yerr=[pred.frontier_pred-pred['CI_low_5%'],pred['CI_high_95%']-pred.frontier_pred],fmt='D',color=PURPLE,capsize=4,ms=4,label='曲线重拟合 5%—95%')
     ax.set(xlim=(2019,2027.5),ylim=(0,75),xticks=[2019,2021,2023,2025,2027],ylabel='前沿得分 / 分')
     ax.axvline(last,color='#ACA5B2',ls='--',lw=.8)
     ax.text(last+.15,7,'预测期',fontsize=9,color=PURPLE)
@@ -303,8 +303,8 @@ def main():
                 'task_summary':lb[TASKS].describe().to_dict(),'result_files_unchanged':True,
                 'chart_contracts':{
                     '图1':'分层散点与已存拟合；仅组内损失范围；两面板纵轴不同。',
-                    '图2':'两个窗口的加性贡献；同一纵轴；非规模项为分解残差。',
-                    '图3':'历史记录、模型曲线、仅两时点的bootstrap区间；结构情景独立面板。',
+                    '图2':'两个窗口的代理核算；同一纵轴；非规模项为算术剩余，不识别因果贡献。',
+                    '图3':'历史记录、模型曲线、仅两时点的曲线重拟合分位范围；结构情景独立面板。',
                     '图4':'37子任务中位数/前5%均值/最大值；原始指标；按类别分面。',
                     '图5':'年度算力跨度、Yes记录比例、全量字段覆盖；2026覆盖不完整。',
                     '图6':'2346条实际附件记录的四分位区间与完整极差；展示总体分布。',

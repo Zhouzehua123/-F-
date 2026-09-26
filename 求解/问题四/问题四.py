@@ -302,8 +302,19 @@ pred_l = Xl @ bl
 R2_l = 1 - np.sum((ts_ok.avg.values - pred_l) ** 2) / \
     np.sum((ts_ok.avg.values - ts_ok.avg.values.mean()) ** 2)
 
-front_year = ts_ok.groupby('Year').agg(avg=('avg', 'max'), P=('P', 'max')).reset_index()
-front_year['cum_avg'] = front_year.avg.cummax()      # 前沿边界按定义单调不减
+def matched_annual_frontier(records):
+    """累计最高分与其模型规模配对；同分时保留先达到的前沿记录。"""
+    rows=[];incumbent=None
+    for year,group in records.groupby('Year',sort=True):
+        candidate=group.sort_values(['avg','P','Model'],ascending=[False,True,True]).iloc[0]
+        if incumbent is None or candidate.avg>incumbent.avg:
+            incumbent=candidate
+        rows.append(dict(Year=int(year),avg=float(candidate.avg),P=float(incumbent.P),
+                         cum_avg=float(incumbent.avg),frontier_model=incumbent.Model,
+                         frontier_record_year=int(incumbent.Year)))
+    return pd.DataFrame(rows)
+
+front_year = matched_annual_frontier(ts_ok)
 front_year['t'] = front_year.Year - 2019
 front_year['logP'] = np.log10(front_year.P)
 save_csv_safe(front_year, '前沿序列.csv')
@@ -348,7 +359,8 @@ t_front, s_front = t_front[idx], np.maximum.accumulate(s_front[idx])
 def month_stats(period):
     g = lb_o[lb_o.date.dt.to_period('M').eq(period)]
     g = g.nlargest(max(1, int(len(g) * 0.01)), 'avg')
-    return float(g.avg.mean()), float(g.P.max())
+    # 同一组模型的均分与平均对数规模配对；返回几何均值用于原对数比公式。
+    return float(g.avg.mean()), float(10**np.log10(g.P).mean())
 
 p0, pk = mon_top1.index[0], mon_top1.idxmax()
 F0_, P0_ = month_stats(p0)

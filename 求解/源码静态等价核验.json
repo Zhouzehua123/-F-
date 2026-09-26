@@ -1,7 +1,7 @@
 {
-  "review_date": "2026-09-26",
+  "review_date": "2026-09-27",
   "base_commit": "35ca26d0039a9d5f3ecc61354af58d30ed1a7f5e",
-  "scope": "Static review against historical generation sources. Two explicitly documented algorithm/display changes supersede prior AST equivalence. Kendall recalculation and one flowchart regeneration are recorded separately; other models and figures were not rerun.",
+  "scope": "Historical source identities and the historical reproduction manifest are retained. Current source hashes distinguish comment-only differences from documented algorithm and display changes. The user approved supported kernel-ridge recommendation and matched-frontier decomposition. All four solvers were rerun in an isolated copy: 84 expected outputs matched and original results stayed unchanged. After that run, nonunique-certificate comparison was refined and independently rechecked; eight focused tests passed. The final Q2 display edit changes labels only. No paper PDF was compiled, by the agreed Overleaf workflow.",
   "historical_manifest": "求解/复现清单.json",
   "source_files": [
     {
@@ -20,15 +20,16 @@
     {
       "path": "求解/复现论文.py",
       "historical_run_sha256": "8056665eae2e55172dd1154492b80757282ed034edae3e724010b0ff8c1064ab",
-      "current_source_sha256": "85ebe9dcebe91acb8ba2a7df90e3ab07ca3391cf10f54171f23190ebff63f723",
+      "current_source_sha256": "08f2ce7089e682c42d4d62720cf8fdd6197ef09d5ded330364a9bafb8443bb59",
       "historical_source": {
         "kind": "historical_run_copy",
         "run": "audit14/repro_final/model-check-b6n4fcir",
         "newline": "original mixed or CRLF bytes"
       },
-      "ast_equal": true,
-      "differences_only_comments_and_newlines": true,
-      "previous_reviewed_source_sha256": "3b9c25a523f1f3688c4caeaab23ea99762a366176f734255ad552e6086c84cf6"
+      "ast_equal": false,
+      "differences_only_comments_and_newlines": false,
+      "previous_reviewed_source_sha256": "85ebe9dcebe91acb8ba2a7df90e3ab07ca3391cf10f54171f23190ebff63f723",
+      "change_note": "Require regeneration of all 84 expected CSV/JSON outputs in an isolated copy. Validate nonunique convex certificates and solver diagnostics semantically; compare recipe shares at absolute tolerance 1e-6. Eight focused regression tests and four independent repeated recipe outputs passed."
     },
     {
       "path": "求解/绘制问题三四流程图.py",
@@ -98,7 +99,7 @@
     {
       "path": "求解/问题一/展示风格流程.py",
       "historical_run_sha256": "ec06e6432274a87f15bc18a7858d925786cccd18378aca8c4fc12dc442799e6d",
-      "current_source_sha256": "13878829523609af8d1f769b710bb96a1b3dbd08bbd5b7e5e4e33e52f9b6d978",
+      "current_source_sha256": "769e7d9f62d22d8cf3c6952b9dc395c0de458875ae3f43520f55d5cb54d911b4",
       "historical_source": {
         "kind": "historical_run_copy",
         "run": "audit14/repro_final/model-check-b6n4fcir",
@@ -109,7 +110,8 @@
       "previous_reviewed_source_sha256": "d5e281564acb3fdf50d638fcb2ce9c472b216a1884fc7e23f549af67a38add4d",
       "historical_ast_equal_at_previous_review": true,
       "authorized_change": "Flowchart labels now state tie correction and redundant-feature comparison",
-      "verification": "求解/Kendall并列秩校正核验.json"
+      "verification": "求解/Kendall并列秩校正核验.json",
+      "change_note": "Display the approved kernel-ridge recommendation within the training convex hull, retaining fixed-domain and share-cap constraints; retain previous tie-correction and redundant-feature descriptions."
     },
     {
       "path": "求解/问题一/展示风格诊断.py",
@@ -140,15 +142,16 @@
     {
       "path": "求解/问题一/绘图数据.py",
       "historical_run_sha256": "4c82be09d9c86344d9df0a34ff60c5199ee9e1af83eceb2352f551ef4df84448",
-      "current_source_sha256": "7d66c9b1667ddd3fde61eeddbb888406ff88e4d3ff42b408087dd5dcb524d893",
+      "current_source_sha256": "ac9b58e6c0114973ed26db6587ecb0abe5c96f1be1eb45619e2b8228299b314f",
       "historical_source": {
         "kind": "historical_run_copy",
         "run": "audit14/repro_final/model-check-b6n4fcir",
         "newline": "original mixed or CRLF bytes"
       },
-      "ast_equal": true,
-      "differences_only_comments_and_newlines": true,
-      "previous_reviewed_source_sha256": "b19704b3c94b34f31450adac63dd714f692aaf8b59d10211359d9c8a845ef183"
+      "ast_equal": false,
+      "differences_only_comments_and_newlines": false,
+      "previous_reviewed_source_sha256": "b19704b3c94b34f31450adac63dd714f692aaf8b59d10211359d9c8a845ef183",
+      "change_note": "Validate the formal reference recipe against the closed training mean, matching the new recommendation definition."
     },
     {
       "path": "求解/问题一/重绘图表.py",
@@ -166,7 +169,7 @@
     {
       "path": "求解/问题一/问题一.py",
       "historical_run_sha256": "7bd1b7a626ce3723fe34e6377cc3d4cf4a9c57f0a71cb6991118d1b146fd1768",
-      "current_source_sha256": "55fe139dd139bab525f643f37eaf1b2e574bcd3d0ca41f293099b1f1e03ac853",
+      "current_source_sha256": "01c377a16b5714719f20e2ccca0ebc3c8362cb27341794e61fc9ee650e7719ba",
       "historical_source": {
         "kind": "historical_run_copy",
         "run": "audit14/repro_final/model-check-b6n4fcir",
@@ -177,7 +180,8 @@
       "previous_reviewed_source_sha256": "0c67881891d70ecef1d8f115c1c94842d344d7bb8e16e8ed9e598ed97f5712ca",
       "historical_ast_equal_at_previous_review": true,
       "authorized_change": "Kendall tie-correction helper and call site; redundant-feature explanatory docstring",
-      "verification": "求解/Kendall并列秩校正核验.json"
+      "verification": "求解/Kendall并列秩校正核验.json",
+      "change_note": "Retain the linear bounded recipe as a comparison; invoke the existing kernel fit and the new supported recipe solver. Previous Kendall correction retained."
     },
     {
       "path": "求解/问题一/非线性代理对照.py",
@@ -208,68 +212,110 @@
     {
       "path": "求解/问题三/问题三.py",
       "historical_run_sha256": "32eeac8bea0916879c7aa135dd02a7b1d556f81b00307093423774f663d1bf4f",
-      "current_source_sha256": "f05a50b16bf0083e1c747dd1afadff178f85bcfb2290dd41bc0f15274793b9b6",
+      "current_source_sha256": "17e79e39d7e567f14aae1e25e55f45d829ecfb4319d6da7252359c4b865026c8",
       "historical_source": {
         "kind": "historical_run_copy",
         "run": "audit14/repro_final/model-check-b6n4fcir",
         "newline": "original mixed or CRLF bytes"
       },
-      "ast_equal": true,
-      "differences_only_comments_and_newlines": true,
-      "previous_reviewed_source_sha256": "2488e7c111bd8c12a20dd86f2d6cf94c6af6763c1945d61dc8c3c9da1761e029"
+      "ast_equal": false,
+      "differences_only_comments_and_newlines": false,
+      "previous_reviewed_source_sha256": "2488e7c111bd8c12a20dd86f2d6cf94c6af6763c1945d61dc8c3c9da1761e029",
+      "change_note": "Persist equivalent reference budget and multiplier for the updated mixture calibration. Baseline configurations, quality baseline and cost equations unchanged."
     },
     {
       "path": "求解/问题二/重绘图表.py",
       "historical_run_sha256": "ea609a1f4d1ec16ab568029fec25d8e76bf205cb82bf8ab1c5a3a721a58e7a77",
-      "current_source_sha256": "7235efbb0ea4307d5db20b1b6d5a3b3227679c539be0e89a96c8ae9c5fc419f7",
+      "current_source_sha256": "4aa304f68e69c2d1ee13e9ccf72d5206eab629b3eb493266f3a2ccb68ff08a30",
       "historical_source": {
         "kind": "historical_run_copy",
         "run": "audit14/repro_final/model-check-b6n4fcir",
         "newline": "original mixed or CRLF bytes"
       },
-      "ast_equal": true,
-      "differences_only_comments_and_newlines": true,
-      "previous_reviewed_source_sha256": "76e4f35b3817c41b03f7313d97d48bda7818e4c50d84ddd566573ae95a93ae19"
+      "ast_equal": false,
+      "differences_only_comments_and_newlines": false,
+      "previous_reviewed_source_sha256": "76e4f35b3817c41b03f7313d97d48bda7818e4c50d84ddd566573ae95a93ae19",
+      "change_note": "Clarify separate inputs: linear coefficients for domain similarity and kernel loss difference for conditional mixture benefit. Read-only figure regeneration."
     },
     {
       "path": "求解/问题二/问题二.py",
       "historical_run_sha256": "36e3ef2bd47acedf147f7e8753e1a4c2b265af8f8b97e83d4108d21d96d40bf5",
-      "current_source_sha256": "20f76a94d116bfe79b70097b769205a7c77e2771ecc2186e5da14160a2a1e27b",
+      "current_source_sha256": "637e382ee5beb753a41375527b7d37d26eb3cf4f11ea32f8eed0e212c489fb18",
       "historical_source": {
         "kind": "historical_run_copy",
         "run": "audit14/repro_final/model-check-b6n4fcir",
         "newline": "original mixed or CRLF bytes"
       },
-      "ast_equal": true,
-      "differences_only_comments_and_newlines": true,
-      "previous_reviewed_source_sha256": "8847f7718f96cc02c9b810ad236bee7796b80f6d01e5da7a5ee5835cc5bb63eb"
+      "ast_equal": false,
+      "differences_only_comments_and_newlines": false,
+      "previous_reviewed_source_sha256": "8847f7718f96cc02c9b810ad236bee7796b80f6d01e5da7a5ee5835cc5bb63eb",
+      "change_note": "Read the approved kernel-ridge recipe loss difference for mixture calibration; keep linear coefficients for domain similarity. Scaling-law fit unchanged."
     },
     {
       "path": "求解/问题四/重绘图表.py",
       "historical_run_sha256": "48aaf7cfef45e26d83444c72cddc1ad09aba57da2d52221a50b94d74b63c6781",
-      "current_source_sha256": "14380ae19df1e12f87b7ac895141d1e6cf4be7240fec2fbb867bbd15a82d65bd",
+      "current_source_sha256": "7cf5d9e26885ea760e7bfe5983122e23d9a3596b55d32ab5ce69c0cc7d917cee",
       "historical_source": {
         "kind": "git",
         "commit": "d5e8463",
         "newline": "Git content restored to CRLF"
       },
-      "ast_equal": true,
-      "differences_only_comments_and_newlines": true,
-      "previous_reviewed_source_sha256": "007c48e21f2376909c2d9eca5310f12060657225ad1a10a05e858b16e9d36c48"
+      "ast_equal": false,
+      "differences_only_comments_and_newlines": false,
+      "previous_reviewed_source_sha256": "14380ae19df1e12f87b7ac895141d1e6cf4be7240fec2fbb867bbd15a82d65bd",
+      "change_note": "Read the corrected paired-frontier decomposition; label scale proxy, arithmetic remainder and conditional curve-refit quantiles accurately."
     },
     {
       "path": "求解/问题四/问题四.py",
       "historical_run_sha256": "b08f26807ce01e049961e13085f4660baa883f5da70c1b15babeeb111952b633",
-      "current_source_sha256": "ce51c8229bb80fb5f34d1b960070214584cba03c64ce0ee9701bf042215f7411",
+      "current_source_sha256": "1f09a2bc16caae1d069f8c4590351ab63a431228a81c2e9ebe59a82797124555",
       "historical_source": {
         "kind": "git",
         "commit": "d5e8463",
         "newline": "Git content restored to CRLF"
       },
-      "ast_equal": true,
-      "differences_only_comments_and_newlines": true,
-      "previous_reviewed_source_sha256": "843f976ed7c82fbb15b2028f31d9b533feab16d8af2d9aa238a19efbb67ee815"
+      "ast_equal": false,
+      "differences_only_comments_and_newlines": false,
+      "previous_reviewed_source_sha256": "843f976ed7c82fbb15b2028f31d9b533feab16d8af2d9aa238a19efbb67ee815",
+      "change_note": "Pair each cumulative frontier score with the size of its incumbent model. For near-term top-1% means, pair score with mean log size of the same group. Prediction curves unchanged."
+    },
+    {
+      "path": "求解/补充检验.py",
+      "historical_run_sha256": null,
+      "current_source_sha256": "fd996c74f63d9468de3b237c875f08fc3089e41a99e8fbddf129f24d2f673eb9",
+      "historical_source": null,
+      "ast_equal": null,
+      "differences_only_comments_and_newlines": false,
+      "change_note": "New read-only evidence checks for weighted decision ranking, regularization, quality response and mapping, mixture transfer and time holdouts. Writes a separate diagnostics directory, never overwrites official results."
+    },
+    {
+      "path": "求解/问题一/核岭支持域推荐.py",
+      "historical_run_sha256": null,
+      "historical_source": null,
+      "ast_equal": null,
+      "differences_only_comments_and_newlines": false,
+      "change_note": "New approved solver: fixed existing kernel hyperparameters, training convex hull, four fixed domains, original share caps and decision weights. Four deterministic starts using fully corrective conditional gradients; feasible stationary result, no global-optimality claim.",
+      "current_source_sha256": "7741bca0fe9deefc3dbf253df17ce52dfb9a4144677f3c3376d2156685cefb43"
     }
   ],
-  "previous_review_commit": "465753f2c1423826f2e3e1c8f6ce5d585c296dc3"
+  "previous_review_commit": "2fc1b107478e783a95f28009818638129c3d1c20",
+  "current_verification": {
+    "model_command": "python 求解/复现论文.py --data-dir <附件根目录> --mode verify-models",
+    "expected_outputs": 84,
+    "matched_outputs": 84,
+    "source_results_unchanged": true,
+    "uncompared_outputs": [
+      "求解/问题一/结果/非线性代理对照_复现清单.json"
+    ],
+    "uncompared_reason": "Runtime/environment manifest is reported separately and is not counted among matched numerical outputs.",
+    "focused_comparison_tests_passed": 8,
+    "independent_review": "P2 PASS; corrected comparison semantics independently rechecked after the full solve.",
+    "full_run_report_sha256": "4d75dca99eae278f77b4e611424040c5987c34d99c1f81b0be522b7ec9bd2df2",
+    "kernel_reference_loss": 4.817337853604089,
+    "kernel_recommended_loss": 4.644364002416005,
+    "mixture_loss_difference": -0.17297385118808428,
+    "conditional_budget_multiplier": 16.907390054688136,
+    "long_term_scale_share_percent": 51.40098847772789,
+    "paper_compiled_after_edit": false
+  }
 }

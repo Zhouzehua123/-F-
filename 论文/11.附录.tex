@@ -51,7 +51,7 @@
   B10 & supplementary\_\allowbreak{}large\_\allowbreak{}baseline & 估算 & 使用 & 比较百亿参数以上的损失估算，$r\approx1.000$、MAPE 为 1.0\%；该对照不作为直接观测 \\
   B11 & open\_\allowbreak{}model\_\allowbreak{}family\_\allowbreak{}metadata & 真实 & 未使用 & 未用于本文分析 \\
   B12 & pythia\_\allowbreak{}checkpoint\_\allowbreak{}index & 真实 & 未使用 & 未用于本文分析 \\
-  C1 & leaderboard\_\allowbreak{}cleaned & 真实 & 使用 & 按六维得分、许可、类型和提交日期整理样本；筛选后的 2{,}346 条用于面板回归和前沿分析 \\
+  C1 & leaderboard\_\allowbreak{}cleaned & 真实 & 使用 & 按六维得分、许可、类型和提交日期整理样本；筛选后的 2{,}346 条用于记录级规模—年份回归和前沿分析 \\
   C2 & leaderboard\_\allowbreak{}enhanced & 真实 & 未使用 & 作为 C1 的增强替代版本，为避免重复计入而不另用 \\
   C3 & leaderboard\_\allowbreak{}extended\_\allowbreak{}timeseries & 混合 & 使用 & 核算 2019--2025 年增量；排除 13 条一致性异常记录，长期解释仍保留评分来源差异 \\
   C4 & epoch\_\allowbreak{}all\_\allowbreak{}ai\_\allowbreak{}models & 真实 & 使用 & 观察训练算力趋势，年斜率 $+0.589$ dex；核对数据量与权重字段，Yes 为 1{,}325、No 为 1{,}328 \\
@@ -179,9 +179,11 @@
 
 \subsubsection*{正式图表与复现顺序}
 
-四问主程序在结果保存后调用对应的正式绘图程序。只复现图形时，在项目根目录运行 \texttt{python 求解/复现论文.py --data-dir <附件根目录> --mode figures}；该模式读取随文保存的 CSV，不重新拟合。需要重新计算时使用同一入口的 \texttt{--mode verify-models}，它在独立目录依次运行四问，比较重算结果与保存结果，不覆盖原结果。数值环境可能产生极小浮点尾差，重算采用相对容差比较；第三问使用无量纲预算约束以改善求解稳定性。
+四问主程序在结果保存后调用对应的正式绘图程序。只复现图形时，在项目根目录运行 \texttt{python 求解/复现论文.py --data-dir <附件根目录> --mode figures}；该模式读取随文保存的 CSV，不重新拟合。需要重新计算时使用同一入口的 \texttt{--mode verify-models}，它在独立目录依次运行四问，按固定的 84 项预期输出清单，先删除隔离副本中的对应文件，再要求逐项重新生成并比较；包括跨问传递的质量映射、关键量 JSON 和标度律参数。缺失、未生成或数值不一致均报错；没有基准的新输出单列为未比较，不计作核对成功。原结果不被覆盖。数值结果按容差比较；核岭配方绝对容差为 $10^{-6}$。训练凸组合不唯一，故另验非负性、权重和、配方重建及约束，多初值记录则验目标、可行性和驻点间隙，不要求非唯一权重与迭代次数逐项相同；第三问使用无量纲预算约束以改善求解稳定性。
 
-核岭的独立计算入口为问题一目录中的“非线性代理对照.py”，参数搜索、折分配、预测明细和汇总分别保存。绘图只读取这些输出；其结果不替换问题二、三采用的线性配比系数。总体流程图为原生 TikZ；其余正式图的生成程序见表\ref{tab:figure_code_map}，流程图属于方法示意，不代表新增观测数据。
+补充的决策与时间检验使用 \texttt{python 求解/补充检验.py --data-dir <附件根目录>}，输出写入独立复现记录目录；其中包括相同加权目标的选优、配方预测分歧、质量结构与收益迁移敏感性、时间留出对照，均不替换四问保存结果。
+
+核岭的独立计算入口为问题一目录中的“非线性代理对照.py”，参数搜索、折分配、预测明细和汇总分别保存。绘图只读取这些输出；核岭支持域推荐程序读取其固定超参数，在训练凸包和既有配比上限内搜索；问题二、三沿用该推荐的核岭损失差，线性系数仅作领域作用解释。总体流程图为原生 TikZ；其余正式图的生成程序见表\ref{tab:figure_code_map}，流程图属于方法示意，不代表新增观测数据。
 
 \FloatBarrier
 \begin{longtable}{@{}p{0.13\textwidth}p{0.38\textwidth}p{0.43\textwidth}@{}}
@@ -198,7 +200,7 @@
 \bottomrule
 \endfoot
 图\ref{fig:overall_architecture} & 论文/\allowbreak{}figures/\allowbreak{}overall-architecture.tex & 总体建模流程；原生 TikZ 源码 \\
-图\ref{fig:q1_workflow} & 问题一/\allowbreak{}重绘图表.py & 质量评价、配比预测与线性推荐流程 \\
+图\ref{fig:q1_workflow} & 问题一/\allowbreak{}重绘图表.py & 质量评价、配比预测与核岭支持域推荐流程 \\
 图\ref{fig:p1_quality_full} & 问题一/\allowbreak{}重绘图表.py & 全量领域质量评分、抽样与扩展域级对照 \\
 图\ref{fig:p1_conf} & 问题一/\allowbreak{}重绘图表.py & 冲突指标对与熵权结果 \\
 图\ref{fig:p1_structure} & 问题一/\allowbreak{}重绘图表.py & 附件 A4 的 512 组训练配方 \\
@@ -222,7 +224,7 @@
 图\ref{fig:p3_ctx} & 问题三/\allowbreak{}论文绘图.py & 问题三保存的预算、成本与上下文扫描 CSV \\
 图\ref{fig:p4_workflow} & 绘制问题三四流程图.py & 对应小问的方法与输入输出关系 \\
 图\ref{fig:p4_map} & 问题四/\allowbreak{}重绘图表.py & 损失--得分映射结果与附件 C6 \\
-图\ref{fig:p4_scale} & 问题四/\allowbreak{}重绘图表.py & 面板回归结果与附件 C1、C3 \\
+图\ref{fig:p4_scale} & 问题四/\allowbreak{}重绘图表.py & 记录级规模—年份回归结果与附件 C1、C3 \\
 图\ref{fig:p4_decomp} & 问题四/\allowbreak{}重绘图表.py & 近期与长周期贡献分解结果 \\
 图\ref{fig:p4_frontier} & 问题四/\allowbreak{}重绘图表.py & 前沿序列、logistic 参数及两类情景预测 \\
 图\ref{fig:p4_distribution} & 问题四/\allowbreak{}重绘图表.py & 经许可筛选的附件 C1 六维得分 \\
@@ -249,9 +251,13 @@
 \subsubsection*{公共模块、非线性预测与完整绘图程序}
 \lstinputlisting[language=Python,firstnumber=1,caption={统一复现入口},label={code:dep1}]{../求解/复现论文.py}
 
+\lstinputlisting[language=Python,firstnumber=1,caption={决策、质量结构与时间外推补充检验},label={code:diagnostics}]{../求解/补充检验.py}
+
 \lstinputlisting[language=Python,firstnumber=1,caption={公共数据与绘图模块},label={code:dep2}]{../求解/_common.py}
 
 \lstinputlisting[language=Python,firstnumber=1,caption={问题一核岭预测与交叉验证},label={code:dep3}]{../求解/问题一/非线性代理对照.py}
+
+\lstinputlisting[language=Python,firstnumber=1,caption={核岭训练支持范围内的配比推荐},label={code:kernel_recipe}]{../求解/问题一/核岭支持域推荐.py}
 
 \lstinputlisting[language=Python,firstnumber=1,caption={问题一正式绘图入口},label={code:dep4}]{../求解/问题一/重绘图表.py}
 

@@ -42,7 +42,7 @@
 \node[archmodel] (q4) at (-0.8,-7.5)
   {问题四：能力演进与前沿预测\\损失与评测桥接、回归与外推};
 \node[archoutput] (o4) at (4.8,-7.5)
-  {规模与非规模贡献\\能力前沿预测区间};
+  {规模项与非规模剩余项\\能力前沿条件外推};
 
 \foreach \archsrc/\archmid/\archdst in {a/q1/o1,b/q2/o2,c/q3/o3,d/q4/o4} {
   \draw[archlink] (\archsrc.east) -- (\archmid.west);

@@ -3,7 +3,7 @@
     "tex": "论文/figures/q1-workflow.tex",
     "figure": "求解/问题一/图片/图8_问题一求解流程.png",
     "source": "求解/问题一/重绘图表.py",
-    "sha256": "63dc4b8eae59d66ec34a46240dea8b48f05b174316fd062a6133f65347f7be9e"
+    "sha256": "1132c9344591b7d5a1714a6e920ddb9dc4885925566c969dd12c79dad936fd38"
   },
   {
     "tex": "论文/5.1.问题一.tex",
@@ -63,7 +63,7 @@
     "tex": "论文/5.2.问题二.tex",
     "figure": "求解/问题二/图片/图0_问题二分析框架.png",
     "source": "求解/问题二/重绘图表.py",
-    "sha256": "28aefa897b7445f4fdaa4c55bd6e25bcac64c623eef7062609c7c7617da23ec5"
+    "sha256": "33195c8cc8eec709d2d7ad042b227dcc4be995922e02f092af35159339c4a9b4"
   },
   {
     "tex": "论文/5.2.问题二.tex",
@@ -153,13 +153,13 @@
     "tex": "论文/5.4.问题四.tex",
     "figure": "求解/问题四/图片/图2_规模时间分解.png",
     "source": "求解/问题四/重绘图表.py",
-    "sha256": "597f8cc5576314a544e262d0a3c57cc676b201c9c1de69b5296e74b9bbacee71"
+    "sha256": "2c58f792da0e3aef3bc422192d2e902449181a26e62fdb62097ff8b36857b25a"
   },
   {
     "tex": "论文/5.4.问题四.tex",
     "figure": "求解/问题四/图片/图3_能力前沿预测.png",
     "source": "求解/问题四/重绘图表.py",
-    "sha256": "f828159eacfc8b030cc0beff965a9a04600ebf8a400dabe021a298b0a9fea8fa"
+    "sha256": "c92da4926d8f0586bf53f242f870a80fb7ce6582dc14a21415f1976a700551a9"
   },
   {
     "tex": "论文/5.4.问题四.tex",
@@ -183,6 +183,6 @@
     "tex": "论文/2.总体分析.tex",
     "figure": "论文/figures/overall-architecture.tex",
     "source": "原生TikZ，随论文编译",
-    "sha256": "50dceaa289af0185c2e5a83ca025dc0aa2e94b357d256ecdb9f8f737453dc0c8"
+    "sha256": "9fdc4c1db7a1c39fe4f09d9c084603567884aea198c90dcf4c182e9270789ff1"
   }
 ]

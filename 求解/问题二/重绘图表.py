@@ -142,9 +142,9 @@ def redesign(py,b6,b7,b7n,b8,b8c,read,model,classic,E,A,a,B,b,C,g,save):
         ax.text(x+.27,y+.22,body,fontsize=10,va='center')
     def arrow(x,y,u,v,dash=False):
         ax.add_patch(FancyArrowPatch((x,y),(u,v),arrowstyle='-|>',mutation_scale=11,color=GRAY,lw=1.1,linestyle='--' if dash else '-'))
-    for y,h,t,col in [(2.4,'B1 · 规模轨迹','1,176 个检查点',BLUE),(1.25,'B6 · 质量实验','360 条半合成记录',TEAL),(.1,'问题一 · 配比输出','17 域效应系数',RED)]:box(.1,y,2.8,.86,h,t,col)
+    for y,h,t,col in [(2.4,'B1 · 规模轨迹','1,176 个检查点',BLUE),(1.25,'B6 · 质量实验','360 条半合成记录',TEAL),(.1,'问题一 · 配比输出','线性系数 / 核岭损失差',RED)]:box(.1,y,2.8,.86,h,t,col)
     box(3.55,1.85,2.9,1.4,'规模—质量标度律',r'$E+AN^{-\alpha}+BD^{-\beta}$'+'\n'+r'$+\ C(1-Q)^\gamma$',BLUE)
-    box(3.55,.1,2.9,1.05,'领域效应结构','相似模式与任务权衡',RED)
+    box(3.55,.1,2.9,1.05,'配比影响分析','领域相似性 / 收益校准',RED)
     box(7,2.4,2.85,.86,'跨来源检验','真实 / 半合成 / 估算',BLUE)
     box(7,1.25,2.85,.86,'规模与质量取舍','弹性 / 等损失条件',TEAL)
     box(7,.1,2.85,.86,'配比情景修正','在损失尺度可迁移时',RED)
