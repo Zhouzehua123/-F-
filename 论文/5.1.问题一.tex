@@ -52,7 +52,7 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。列
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
-\Needspace{12\baselineskip}
+\Needspace{5\baselineskip}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.33\textwidth}>{\raggedright\arraybackslash}p{0.31\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.08\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}@{}}
   \caption{质量指标的含义、评价方向及熵权}
   \label{tab:p1_dir} \\
@@ -412,7 +412,7 @@ wikipedia & 0.5450 & 0.5047 \\
 \end{longtable}
 \endgroup
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.94\textwidth]{../求解/问题一/图片/图6_冲突与赋权诊断.png}
   \caption{指标冲突与熵权}
@@ -490,7 +490,6 @@ wikipedia & 0.5450 & 0.5047 \\
 
 跨尺度时，两种模型的绝对损失均有明显偏差，核岭在 60M、1B 的负 $R^2$ 不能用较高排序相关抵消。因此，核岭主要用于 1M 同尺度预测；下文的系数、冗余特征对照与有界候选仍属于线性近似。问题二、三对线性配比修正的传递是一项条件假设，而非已经验证的大模型绝对损失规律。核岭精度的改善不能直接赋予线性候选同等可信度，候选收益还需按优化目标单独检查。
 
-
 训练与检验表现接近，说明拟合关系在同尺度配方中具有一定稳定性；各任务的误差差异则表明，候选结果仍依赖评价任务的组成。若应用更重视某个预测精度较低的领域，还需单独检查该领域的偏差，不能只依据平均逐域指标作配方决策。
 
 线性基线的跨规模比较还需考虑损失基准的变化。60M 相对 1M 的损失约为 $0.68$ 倍，直接沿用原损失尺度会影响误差评价。因此，采用 Pearson 相关系数比较变化趋势：60M 检验均值为 $0.782$，1B 为 $0.651$。配比变化对应的部分趋势得以保留，但绝对损失预测仍需调整尺度。
@@ -510,16 +509,16 @@ wikipedia & 0.5450 & 0.5047 \\
 
 图\ref{fig:p1_scatter}汇总 1M 检验集的 $3{,}328$ 个实测与预测数据点，六边形颜色表示分箱内记录数，上方与右侧分别为实测损失和预测损失的频数分布。
 
+图中仍有记录偏离预测值等于实测值的参考线，因此平均检验精度接近训练精度，并不表示每条记录的预测都准确。
+
+加入 $\bar Q$ 后，13 个验证域的平均 $R^2$ 增加 $9.8\times10^{-5}$。这一差异反映了冗余参数化对岭惩罚的影响，不是质量提供独立信息的证据。我们据此保留原配比回归；质量投入的作用则由问题二、三结合附件 B 的半合成实验另行分析。
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.60\textwidth]{../求解/问题一/图片/图3_预测vs实测.png}
   \caption{线性岭预测与实测损失}
   \label{fig:p1_scatter}
 \end{figure}
-
-图中仍有记录偏离预测值等于实测值的参考线，因此平均检验精度接近训练精度，并不表示每条记录的预测都准确。
-
-加入 $\bar Q$ 后，13 个验证域的平均 $R^2$ 增加 $9.8\times10^{-5}$。这一差异反映了冗余参数化对岭惩罚的影响，不是质量提供独立信息的证据。我们据此保留原配比回归；质量投入的作用则由问题二、三结合附件 B 的半合成实验另行分析。
 
 文本质量与损失难度并非同一个概念。图\ref{fig:p1_quality}利用 6 个可映射领域，对照 A1--A3 的熵权评分 $Q$ 与损失代理 $Q^{(\text{loss})}$ 的排序。右侧连线连接同一领域在两套口径下的名次，名次 1 表示得分最高。
 

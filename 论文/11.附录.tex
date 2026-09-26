@@ -1,4 +1,5 @@
-\clearpage
+\FloatBarrier
+\Needspace{6\baselineskip}
 \makeatletter
 \let\@oldaddcontentsline\addcontentsline
 \renewcommand{\addcontentsline}[3]{}
@@ -130,7 +131,6 @@
   求解/广义标度律参数.csv、问题一\_\allowbreak{}关键量.json & 跨问共享的接口参数 \\
 \end{longtable}
 
-
 \subsection*{附录 D：人工智能工具及输出使用说明}
 
 本论文末尾对人工智能工具的实际使用范围作统一说明。腾讯 WorkBuddy 接入 DeepSeek-V4-Flash（2026-07-31 公开测试）用于文段相关辅助；OpenAI Codex（GPT-5.6-Luna，2026-07-09）用于图表展示、排版检查、程序整理、数据整理和结果复核。工具信息见文献 \cite{ai_workbuddy,ai_codex56luna}。正文表达与段落衔接另经 OpenAI Codex 辅助润色。
@@ -176,8 +176,6 @@
 \bottomrule
 \end{tabularx}
 \end{table}
-\FloatBarrier
-
 
 \subsubsection*{正式图表与复现顺序}
 
@@ -187,6 +185,7 @@
 
 补充诊断位于 \texttt{求解/审稿补充}，与原求解结果分开保存。三个入口分别为“q1\_决策与稳健性.py”“q23\_尺度与结构敏感性.py”“q4\_时间与前沿验证.py”，均接受 \texttt{--data-dir} 和 \texttt{--output-dir}。它们读取原始附件及现有拟合结果，输出候选排序、质量标尺、曲率、收益迁移和预测窗口的诊断表；新增对照不覆盖原拟合参数与配置文件。各诊断目录保存输入哈希、计算设定与检查摘要，表中数值可由对应程序重新计算。复现入口的回归测试位于 \texttt{求解/tests/test\_reproduction.py}，使用微型数据检验缺失输出、结果差异与异常报告，不替代四问的实际重算。
 
+\FloatBarrier
 \begin{longtable}{@{}p{0.13\textwidth}p{0.38\textwidth}p{0.43\textwidth}@{}}
 \caption{正式图表与生成程序的对应关系}\label{tab:figure_code_map}\\
 \toprule
