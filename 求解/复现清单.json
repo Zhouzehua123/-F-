@@ -1,42 +1,247 @@
 {
   "schema_version": 1,
-  "created_at_utc": "2026-09-26T07:51:30.815014+00:00",
+  "created_at_utc": "2026-09-26T09:10:35.200156+00:00",
   "random_seed": 20260926,
   "input_files": [
     {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\domain_mapping_guide.csv",
+      "sha256": "4a4479f41b9f46116e688cd0c13ccdad4e687192fc1a38c4add690771ebff480",
+      "bytes": 1296
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_domain_sample.jsonl.xz",
+      "sha256": "4fa8eea3d39c7f789abd62a456c88c9d4e032c58a0fff4c27853b9f50e5d7b04",
+      "bytes": 165293312
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_domain_summary.csv",
+      "sha256": "7696e26dc0ee809285ab3ebc5ee7da187fbe7e756a6303ee5e231d93c9221317",
+      "bytes": 1265
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_tables\\est_mixture_10b.csv",
+      "sha256": "880c7ca1ebef470422e2b93d9bfcd0976db7db4e34ea57047518d95fe43327d1",
+      "bytes": 6113
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_tables\\est_mixture_70b.csv",
+      "sha256": "880c7ca1ebef470422e2b93d9bfcd0976db7db4e34ea57047518d95fe43327d1",
+      "bytes": 6113
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_tables\\est_pile_loss_10b.csv",
+      "sha256": "226457581f3f59e15e44d8f72dee31fa7492c821699725fef47627d82cf34c0d",
+      "bytes": 6467
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_tables\\est_pile_loss_70b.csv",
+      "sha256": "d0883b2d1a44da9386a6d629a3623c724ee291cba1ac87b6d1079e5377307682",
+      "bytes": 6467
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_tables\\test_mixture_1B.csv",
+      "sha256": "dd38052949c0a5f84165bdcb3ae3a331c7f07efd9bb83848bd579dfc4ce75a2c",
+      "bytes": 6393
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_tables\\test_mixture_1m.csv",
+      "sha256": "197267b7d6f15367e2f46c881e564c35b0d34e51b1754bb09d07e650cf8e1ce8",
+      "bytes": 23537
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_tables\\test_mixture_60m.csv",
+      "sha256": "197267b7d6f15367e2f46c881e564c35b0d34e51b1754bb09d07e650cf8e1ce8",
+      "bytes": 23537
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_tables\\test_pile_loss_1B.csv",
+      "sha256": "b2451e2b7fa15400688edc39e4d32f21ccbe0fb356e07d62a0e9ccddf247114f",
+      "bytes": 10639
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_tables\\test_pile_loss_1m.csv",
+      "sha256": "e027b1674f60140a65a87b5e4a59ab5f09dc33e8fd02c080682678074b160f53",
+      "bytes": 61175
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_tables\\test_pile_loss_60m.csv",
+      "sha256": "8fe69d59ab7dd4fae4736459f4265ec93c7ed1ad1eca407346052560edc72b5b",
+      "bytes": 61827
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_tables\\train_mixture_1m.csv",
+      "sha256": "04a32ef4ab594376bf90e11404c033668f887c351d6a03ad3744824c7296a2d8",
+      "bytes": 46412
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\regmix_tables\\train_pile_loss_1m.csv",
+      "sha256": "49a959aa07ce5c20831d5abe3a7896ff0cd90a398bd407c8913fd5588be0465a",
+      "bytes": 121898
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\slimpajama_quality_extended\\arxiv_part-6777d8857c6e-000486.jsonl.xz",
+      "sha256": "ae1e3399f84f605d994fc60b46984d742e14abb3355d8e7a91822eae1b99e16a",
+      "bytes": 3652724
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\slimpajama_quality_extended\\github_part-6777d8857c6e-000275.jsonl.xz",
+      "sha256": "7af069c71c6027a10f2013cc14dd9d5d17855c264734f69c955544ff6cff7382",
+      "bytes": 37618172
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\A_data_value\\slimpajama_quality_signal_sample.jsonl.xz",
+      "sha256": "14a4eeec4c7d98efd78942ddd9c1329640527f2108e73227be449bc1a8dbe579",
+      "bytes": 103349792
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\attachment_size_summary.csv",
+      "sha256": "4bd3ff16d316f3f2a623e4b103d1f3a4abe3edfc8f31b80f1627b122dab2911f",
+      "bytes": 277728
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\cerebras_training_log.csv",
+      "sha256": "178f878cad2cb31e4ec104c670553de23818197876d824a113fdb911125951a6",
+      "bytes": 89643
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\open_model_family_metadata.csv",
+      "sha256": "641682f0ea6c46f25a0188ac723af44e0bc2e27c760e744743a15e97e29ee064",
+      "bytes": 1975
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\published_scaling_data.csv",
+      "sha256": "dd858c5e48610e28589340d5db023d6abfb31df597506789ccdfc6a546731bbd",
+      "bytes": 1967
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\pythia_checkpoint_index.csv",
+      "sha256": "0f7f63535cbc1bbef5165776562e71401af9f762cfe02aaea30c824f45fbc9ed",
+      "bytes": 117698
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\pythia_training_log_existing.csv",
+      "sha256": "529a59644b0f57bf3a76037838b614bfedc35e58bb26b93052e34ffc63e454c2",
+      "bytes": 111459
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\scaling_baseline.csv",
+      "sha256": "2272983ded93de35e05f9acbf95ebceedf43f283345e4be72b54fee94080391e",
+      "bytes": 1421
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\supplementary_large_baseline.csv",
+      "sha256": "a240e210c5b37444356c28eea96c6cc36be79c29baae1621c2e08aff727ccfeb",
+      "bytes": 4744
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\supplementary_large_models.csv",
+      "sha256": "ee794c1c586ed33c485a9eb9a2a3d993790402b63297e9b2765a1387930e940e",
+      "bytes": 13400
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\supplementary_NQ_experiment.csv",
+      "sha256": "c7450ce0d67d8692535fef4709e60e2da60b2c184738bf96df160a4be0a33a7f",
+      "bytes": 13670
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\supplementary_NQ_experiment_expanded.csv",
+      "sha256": "880fd265ca3e1d9bc93b4559af7ed7c18f89040634266c50bae03d88486e0f3a",
+      "bytes": 17154
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\supplementary_NQ_experiment_large.csv",
+      "sha256": "bda0d449f75c73bbd04141e5cffbf4bea7002073e34b7fa95a638570fa095ffe",
+      "bytes": 81268
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\training_trajectories\\pythia_0.070542B_trajectory.csv",
+      "sha256": "19663f2f14d62af377377962ec8f794148450bfb278fdbeb2452f4641fe6a440",
+      "bytes": 14040
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\training_trajectories\\pythia_0.162405B_trajectory.csv",
+      "sha256": "8e2b78cde966b0a3e8b6272935c3f3dcccc5a54e94bb7db79ded2fd8fdf5a124",
+      "bytes": 14040
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\training_trajectories\\pythia_0.409009B_trajectory.csv",
+      "sha256": "8c803195d475d8ff320afd90887ae48cec6463f4d01a2264c6680611ed9db170",
+      "bytes": 14040
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\training_trajectories\\pythia_1.040867B_trajectory.csv",
+      "sha256": "bb73b2852db183bee3d76c76f55e2bdcc292d7ed0881cb27966525b56afcafc0",
+      "bytes": 14040
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\training_trajectories\\pythia_1.416184B_trajectory.csv",
+      "sha256": "cd0d718747fb6048cb474066dbf35f64ef852f59cba2886484cbdf14bc68a02f",
+      "bytes": 14040
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\training_trajectories\\pythia_11.965825B_trajectory.csv",
+      "sha256": "e223b3d48bc4fef3cbc03fd583ff7aef87e474903d829f6c417310cb99fa7b5e",
+      "bytes": 14540
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\training_trajectories\\pythia_2.782831B_trajectory.csv",
+      "sha256": "552f03249b69234009eb028b3296d6bd1b1cb3a52c0d3a84a669baa0e3179482",
+      "bytes": 14040
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\B_scaling_laws\\training_trajectories\\pythia_6.86104B_trajectory.csv",
+      "sha256": "8814c8414fddc914444c74e6cf8da02e3e156a0d7fb8acea6c5da05e438bf054",
+      "bytes": 13540
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\C_efficiency_evolution\\epoch_all_ai_models.csv",
+      "sha256": "0b98a01bcb8d96958745b6fbe505416c38f719948d9029b38ff6233425c0e1c1",
+      "bytes": 6671403
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\C_efficiency_evolution\\leaderboard_cleaned.csv",
+      "sha256": "199891128629f24f83ed2f51211eee65a82a13f45275e79a8227d5dacc7c2846",
+      "bytes": 1011558
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\C_efficiency_evolution\\leaderboard_enhanced.csv",
+      "sha256": "d8ae5b1e00f36bf17adb0c3fbf88c60edd54298625d2db1aa744b2b001202799",
+      "bytes": 1036749
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\C_efficiency_evolution\\leaderboard_extended_timeseries.csv",
+      "sha256": "ab2b5715b2945ebdeeabfb18e8d040f7c68d8c76bd02c01e446959218bfcd184",
+      "bytes": 826723
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\C_efficiency_evolution\\loss_benchmark_bridge.csv",
+      "sha256": "284dee7f8878bfe8ebf48c4efbcaa85c1c566377edc5008727c06efa6520170f",
+      "bytes": 11807
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\C_efficiency_evolution\\loss_benchmark_bridge_expanded.csv",
+      "sha256": "e175462233c2b856e2878c603055b4ed70135f021300f912852af1bb485ba4fd",
+      "bytes": 19124
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\real_attachments\\C_efficiency_evolution\\model_architecture_metadata.csv",
+      "sha256": "ee24622cb3a6334f08d72c9ea373be26d5e5585bb266367c5f66d77499112ffc",
+      "bytes": 2357
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\17域质量映射.csv",
+      "sha256": "d8e12a6fa9b45a6a481e0fba3beb59acf7f297be953fb96cd22f0aa9ff964af8",
+      "bytes": 1945
+    },
+    {
       "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\_common.py",
-      "sha256": "b034a3b5087f7391a9e1ab417ee9b77a3f3762b088a4b9396aa02005a25537a9",
-      "bytes": 13694
+      "sha256": "2d0e79bf52badf010cd67629701fdb2905fb63914b3705a95f557d9e16a4939e",
+      "bytes": 13829
     },
     {
       "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\复现论文.py",
-      "sha256": "cdfed4dab087fa5493ea9c6ed95ab6e2f619108769b26df0ef384996d1380967",
-      "bytes": 6903
-    },
-    {
-      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\问题一.py",
-      "sha256": "637010b33cc2732aab10b03fd6be13d80b27f63408423d23e94c9be15eea700d",
-      "bytes": 27940
-    },
-    {
-      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题二\\问题二.py",
-      "sha256": "36e3ef2bd47acedf147f7e8753e1a4c2b265af8f8b97e83d4108d21d96d40bf5",
-      "bytes": 17730
-    },
-    {
-      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题三\\问题三.py",
-      "sha256": "32eeac8bea0916879c7aa135dd02a7b1d556f81b00307093423774f663d1bf4f",
-      "bytes": 19410
-    },
-    {
-      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题四\\问题四.py",
-      "sha256": "dacd3416e8da93c03dbff8c2512412b1e92c83d716f9e8dbaa669bcda7bdf30b",
-      "bytes": 28366
-    },
-    {
-      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\非线性代理对照.py",
-      "sha256": "d9353973b4e97ce8612ff33539010c010d70007a03851ddcab8596adf4e31265",
-      "bytes": 11296
+      "sha256": "8056665eae2e55172dd1154492b80757282ed034edae3e724010b0ff8c1064ab",
+      "bytes": 7180
     },
     {
       "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\广义标度律参数.csv",
@@ -44,9 +249,104 @@
       "bytes": 182
     },
     {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\绘制问题三四流程图.py",
+      "sha256": "051d8e57a426f2a7df23be01b8d21712cdd443fa1ffc626ebd25c2b1c5a59471",
+      "bytes": 9973
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\出版导出.py",
+      "sha256": "38e89034257602f7f55aa43cf974cc232a8157cde9c7371e5eb4146893bf8279",
+      "bytes": 6865
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\展示风格公共.py",
+      "sha256": "edd03f372270c1c475dac3447c67384f6c2b1f9f036ed96a5e0f89316467f1e2",
+      "bytes": 4274
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\展示风格冲突.py",
+      "sha256": "0aa5fe5f5a279ee7584e09b1afb9cead71eb7936164218a6d285552bec746b18",
+      "bytes": 5529
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\展示风格概览.py",
+      "sha256": "1fcb3cf5f936e65485d160f6ae9c832ac04adb24f894b41cab60dccb3b2882c3",
+      "bytes": 7764
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\展示风格流程.py",
+      "sha256": "ec06e6432274a87f15bc18a7858d925786cccd18378aca8c4fc12dc442799e6d",
+      "bytes": 5987
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\展示风格诊断.py",
+      "sha256": "b228303e140d110297d035b3c888c5e35f66fdc34912f88736f6fbb2950ee7f2",
+      "bytes": 8696
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\展示风格非线性.py",
+      "sha256": "7d935d7c27b15c7ae62cdd39eba522ae02e9e0bdca6b2b6092d20f41c59065cd",
+      "bytes": 3024
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\绘图数据.py",
+      "sha256": "4c82be09d9c86344d9df0a34ff60c5199ee9e1af83eceb2352f551ef4df84448",
+      "bytes": 9287
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\重绘图表.py",
+      "sha256": "cd9dcf326a823820a3d9d04fc55314fab2eed6ab020f809e5914e907d6ece645",
+      "bytes": 4000
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\问题一.py",
+      "sha256": "7bd1b7a626ce3723fe34e6377cc3d4cf4a9c57f0a71cb6991118d1b146fd1768",
+      "bytes": 29938
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一\\非线性代理对照.py",
+      "sha256": "9f85b7eaa418c7affca508bc8184c8ffc90adcb2cdaa8ee394dd028b084ef58d",
+      "bytes": 11656
+    },
+    {
       "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题一_关键量.json",
-      "sha256": "f4818bcb7be81bc70e19a4a582e012a38bcb68352cc4cec75998f697fac317af",
+      "sha256": "8e8b8823cf2126a6afa93fe1168f056df760798e1135a4427e3ea8a8f5229897",
       "bytes": 541
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题三\\论文绘图.py",
+      "sha256": "bea56d05eb7f9a583682e4a8cadca5de53ac54ce2258a5ca59e1250f674fabf4",
+      "bytes": 10863
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题三\\问题三.py",
+      "sha256": "32eeac8bea0916879c7aa135dd02a7b1d556f81b00307093423774f663d1bf4f",
+      "bytes": 19410
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题二\\重绘图表.py",
+      "sha256": "ea609a1f4d1ec16ab568029fec25d8e76bf205cb82bf8ab1c5a3a721a58e7a77",
+      "bytes": 23192
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题二\\问题二.py",
+      "sha256": "36e3ef2bd47acedf147f7e8753e1a4c2b265af8f8b97e83d4108d21d96d40bf5",
+      "bytes": 17730
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题四\\重绘图表.py",
+      "sha256": "52812ca52e61899ec6ef55fa24d69aced89980cfea9a2073801811cf18b8d7ab",
+      "bytes": 19190
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\求解\\问题四\\问题四.py",
+      "sha256": "dacd3416e8da93c03dbff8c2512412b1e92c83d716f9e8dbaa669bcda7bdf30b",
+      "bytes": 28366
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\数模论文\\tmp\\p2_publish\\论文\\figures\\overall-architecture.tex",
+      "sha256": "50dceaa289af0185c2e5a83ca025dc0aa2e94b357d256ecdb9f8f737453dc0c8",
+      "bytes": 2449
     }
   ],
   "runtime": {
@@ -65,7 +365,9 @@
   "key_parameters": {
     "kernel_gamma": 0.0625,
     "kernel_lambda": 0.0001,
-    "q3_budget_constraint": "1-C_total/C_budget >=0"
+    "q3_budget_constraint": "1-C_total/C_budget >=0",
+    "qurater": "four separately 1%-99% normalized dimensions, equal average, outer indicator normalization",
+    "duplicate_records": "retained as supplied"
   },
   "reproduce_command": "python 求解/复现论文.py --data-dir <附件根目录> --mode verify-models"
 }

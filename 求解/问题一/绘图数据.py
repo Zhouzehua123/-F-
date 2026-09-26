@@ -1,8 +1,10 @@
+# 本程序的整理与核对使用 Codex 辅助；模型：GPT-6 系列；机构：OpenAI；系列首次发布日期：2026-09-03。
 # 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-6）辅助。
 """读取问题一既有结果并核对绘图数值；不拟合、不优化、不写结果表。"""
 from pathlib import Path
 from types import SimpleNamespace
 import hashlib
+import json
 
 import numpy as np
 import pandas as pd
@@ -25,7 +27,7 @@ INDICATOR_NAMES = {
     'modernbert_cleanliness': '文本洁净度', 'modernbert_readability': '可读性',
     'modernbert_reasoning': '推理性', 'modernbert_professionalism': '专业性',
     'dsir_books': '书籍域权重', 'dsir_wiki': '维基域权重', 'dsir_math': '数学域权重',
-    'qurater': '教育质量评级', 'ad_en': '广告信号', 'rps_doc_word_count': '文档词数',
+    'qurater': '四维质量聚合', 'ad_en': '广告信号', 'rps_doc_word_count': '文档词数',
     'rps_doc_num_sentences': '文档句数', 'rps_doc_unigram_entropy': '一元词熵',
     'rps_doc_frac_unique_words': '不同词占比', 'rps_doc_frac_no_alph_words': '非字母信号',
     'rps_doc_frac_chars_top_2gram': '2-gram 重复度',
@@ -96,6 +98,8 @@ def load_plot_data(data_dir=None):
     conflicts = result('冲突指标对_top20.csv').sort_values('conflict_rate', ascending=False)
     proxy = result('Loss代理领域难度.csv').sort_values('quality_score_Q(loss代理)', ascending=False)
     link = result('质量与损失难度一致性.csv')
+    nonlinear_domains = result('非线性代理对照_逐域.csv')
+    nonlinear_predictions = result('非线性代理对照_预测明细.csv')
 
     same('中心化系数', coef.to_numpy()-coef.to_numpy().mean(axis=0), centered)
     same('熵权之和', weights.weight.sum(), 1.)
@@ -140,11 +144,15 @@ def load_plot_data(data_dir=None):
     same('60M/1M 均值', cross_values.mean(axis=0), cross.loss_ratio_60m_vs_1m)
     same('60M/1M 标准差', cross_values.std(axis=0), cross.loss_ratio_std)
     rho = float(link.Q_A1A3.corr(link['Q_loss代理'], method='spearman'))
-    same('质量口径 Spearman', rho, .6)
+    shared_path = HERE.parent/'问题一_关键量.json'
+    shared = json.loads(shared_path.read_text(encoding='utf-8'))
+    inputs[shared_path.relative_to(ROOT).as_posix()] = {'sha256': sha256(shared_path), '_path': shared_path}
+    same('质量口径 Spearman', rho, shared['spearman_quality_vs_lossproxy'])
     return SimpleNamespace(quality=quality, weights=weights, conflicts=conflicts, metrics=metrics,
                            coef=coef, centered=centered, train_x=train_x, reference=train_x.mean(),
                            observed=test_y.to_numpy(), prediction=prediction, proxy=proxy, link=link,
-                           rho=rho, ratios=ratios, scale=scale, cross=cross, inputs=inputs, checks=checks)
+                           rho=rho, ratios=ratios, scale=scale, cross=cross, inputs=inputs, checks=checks,
+                           nonlinear_domains=nonlinear_domains, nonlinear_predictions=nonlinear_predictions)
 
 
 def verify_inputs_unchanged(data):

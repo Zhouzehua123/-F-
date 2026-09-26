@@ -413,8 +413,6 @@ AutoFakeBold = 2
   \phantomsection
   \pdfbookmark[1]{标题}{mrite-huawei-title}%
   \begin{center}%
-    \includegraphics[width=.72\textwidth]{#2}\par
-    \vspace{.75cm}%
     \begin{tabularx}{.95\textwidth}{@{}lX@{}}
       {\zihao{-2}\heiti 题\quad 目：} & \hfill\zihao{3}\heiti\bfseries \@title\hfill\null\\
       \cline{2-2}

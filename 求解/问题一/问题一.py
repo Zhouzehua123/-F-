@@ -60,7 +60,7 @@ DIRECTION_NOTE = {
     'dsir_books': 'DSIR 书籍域重要性权重',
     'dsir_wiki': 'DSIR 维基域重要性权重',
     'dsir_math': 'DSIR 数学域重要性权重',
-    'qurater': '教育质量评级（列表型，4 级）',
+    'qurater': 'QuRating 四维质量（各维稳健归一化后等权聚合）',
     'ad_en': '广告含量（列表型，2 维；第 1 类=“无广告”，正向。依据：原文抽查显示第 1 类概率最低的样本均为广告文案）',
     'rps_doc_word_count': '文档词数（过短/过长均不佳）',
     'rps_doc_num_sentences': '文档句数（过少/过多均不佳）',
@@ -87,7 +87,27 @@ def _softmax_expected(v):
     p = np.exp(a); p = p / np.nansum(p)
     return float(p @ np.linspace(0.0, 1.0, len(a)))
 
+def aggregate_qurater(values):
+    """四维含义依次为写作风格、所需专业知识、事实知识、教育价值。
+
+    本文选取四维同向等权；各维缺失以中位数填补，按1%--99%分位缩放。
+    聚合后作为22指标之一，仍进入统一的外层方向与分位归一化。
+    """
+    a = np.asarray(values, dtype=float)
+    if a.ndim != 2 or a.shape[1] != 4:
+        raise ValueError('qurater 应为四个维度，而非类别 logits')
+    a = np.where(np.isfinite(a), a, np.nan)
+    med = np.nanmedian(a, axis=0)
+    if not np.isfinite(med).all():
+        raise ValueError('qurater 某维无有效记录')
+    a = np.where(np.isnan(a), med, a)
+    lo, hi = np.quantile(a, [.01, .99], axis=0)
+    return np.clip((a-lo)/np.maximum(hi-lo, 1e-12), 0, 1).mean(axis=1)
+
+
 def _scalarize(name, value):
+    if name == 'qurater':
+        return np.nan  # 读取全量四维后单独归一化聚合
     if value is None:
         return np.nan
     if isinstance(value, (list, tuple)):
@@ -107,7 +127,7 @@ def load_quality_records():
     sample_path = DATA('slimpajama_quality_signal_sample.jsonl')
     ext_paths = sorted(glob.glob(os.path.join(DATA_DIR, 'A_data_value',
                                               'slimpajama_quality_extended', '*.jsonl.xz')))
-    rows, meta = [], []
+    rows, meta, qurater_values = [], [], []
     miss = {c: 0 for c in QUALITY_COLS}
 
     def _is_missing(v):
@@ -136,6 +156,10 @@ def load_quality_records():
                     if _is_missing(obj.get(c)):
                         miss[c] += 1
                 rows.append([_scalarize(c, obj.get(c)) for c in QUALITY_COLS])
+                q = obj.get('qurater')
+                if q is not None and (not isinstance(q, (list, tuple)) or len(q) != 4):
+                    raise ValueError('qurater 维数错误')
+                qurater_values.append(q if q is not None else [np.nan]*4)
                 excerpt = ''
                 if source == 'A1':
                     excerpt = ' '.join(str(obj.get('content', '')).split())[:180]
@@ -146,13 +170,14 @@ def load_quality_records():
         hint = 'arxiv' if os.path.basename(path).lower().startswith('arxiv') else 'github'
         consume(path, 'A2' if hint == 'arxiv' else 'A3', hint)
     X = pd.DataFrame(rows, columns=QUALITY_COLS)
+    X['qurater'] = aggregate_qurater(qurater_values)
     M = pd.DataFrame(meta, columns=['id', 'domain', 'source', 'excerpt'])
     miss_df = pd.DataFrame([{'indicator': k, 'missing_count': v} for k, v in miss.items()])
     save_csv_safe(miss_df, '质量信号缺失审计.csv')
     if miss_df.missing_count.sum() > 0:
         print('\n质量信号缺失审计（合计 %d 个指标取值缺失）：' % int(miss_df.missing_count.sum()))
         print(miss_df[miss_df.missing_count > 0].to_string(index=False))
-        print('  处理方式：方向统一后按该指标中位数填充（不把缺失当作高质量或低质量）。')
+        print('  处理方式：方向统一前按该指标中位数填充（不把缺失当作高质量或低质量）。')
     return X, M
 
 def orient_and_normalize(raw):
@@ -180,7 +205,7 @@ def quality_evaluation():
     entropy = -(P * np.log(P)).sum(axis=0) / np.log(len(norm))
     divergence = np.maximum(1 - entropy, 0)
     w_entropy = divergence / divergence.sum()
-    # ---- 对照方案：等权 / 第一主成分 ----
+    # ---- 对照方案：等权 / 首主成分非负载荷加权 ----
     w_equal = np.full(len(QUALITY_COLS), 1.0 / len(QUALITY_COLS))
     Z = (norm.values - norm.values.mean(0)) / (norm.values.std(0) + 1e-12)
     _, _, vt = np.linalg.svd(Z, full_matrices=False)
@@ -189,6 +214,7 @@ def quality_evaluation():
         pc1 = -pc1
     w_pca = np.clip(pc1, 0, None); w_pca = w_pca / w_pca.sum()
 
+    # CSV 的历史字段名“PCA第一主成分”表示非负载荷加权，并非标准主成分得分。
     names = ['熵权法', '等权平均', 'PCA第一主成分']
     wdict = dict(zip(names, [w_entropy, w_equal, w_pca]))
     sc = {k: norm.values @ wdict[k] for k in names}
@@ -202,6 +228,17 @@ def quality_evaluation():
             stats.spearmanr(dom_tmp['熵权法'], dom_tmp['等权平均']).statistic,
             stats.spearmanr(dom_tmp['熵权法'], dom_tmp['PCA第一主成分']).statistic]})
     save_csv_safe(cmp_df, '赋权方案对比.csv')
+
+    # 仅作判向敏感性对照：将广告方向反转后重新计算熵权，不替换主评分。
+    flipped = norm.copy()
+    flipped['ad_en'] = 1 - flipped['ad_en']
+    pf = (flipped.values + 1e-12) / (flipped.values.sum(0, keepdims=True) + 1e-12)
+    ef = -(pf * np.log(pf)).sum(0) / np.log(len(flipped))
+    wf = np.maximum(1-ef, 0); wf /= wf.sum()
+    direction_check = meta[['domain']].assign(
+        main_score=sc['熵权法'], reversed_ad_score=flipped.values @ wf
+    ).groupby('domain').mean().reset_index()
+    save_csv_safe(direction_check, '广告方向敏感性.csv')
 
     wdf = pd.DataFrame({'indicator': QUALITY_COLS,
                         'list_type': [c in LIST_COLS for c in QUALITY_COLS],
@@ -252,7 +289,7 @@ def quality_evaluation():
     Zall = (norm.values - norm.values.mean(axis=0)) / (norm.values.std(axis=0) + 1e-12)
     iu_all = np.triu_indices(22, 1)
     pd_all = np.abs(Zall[:, iu_all[0]] - Zall[:, iu_all[1]])
-    # 样本至少一对指标超过阈值即作标记；22.3%仍指“样本×指标对”的比例。
+    # 样本至少一对指标超过阈值即作标记；冲突率仍指“样本×指标对”的比例。
     # 裁决仅提供域内相对标签，不删样本、不降权，也不改变质量评分。
     flagged = (pd_all > CONFLICT_TAU).any(axis=1)
     median = meta.groupby('domain')['quality_Q'].transform('median')
@@ -305,7 +342,7 @@ def quality_evaluation():
     print(pd.DataFrame(ag).to_string(index=False))
     print('\n赋权方案对比：')
     print(cmp_df.to_string(index=False))
-    print('\nad_en 熵权 = %.4f（单指标权重最大项，须在敏感性分析中讨论）'
+    print('\nad_en 熵权 = %.4f（方向敏感性另列对照）'
           % w_entropy[QUALITY_COLS.index('ad_en')])
     print('冲突最集中的 5 组指标对：')
     print(top_pairs.head(5).to_string())
@@ -506,7 +543,8 @@ print('\n===== 问题一求解完成 =====')
 print('训练平均 R2=%.4f; 同尺度检验 R2=%.4f; 跨尺度相关 60M=%.4f, 1B=%.4f'
       % (r2_tr.mean(), r2_te1.mean(), r_te2.mean(), r_te3.mean()))
 print('追加混合质量指数 Qbar 的平均 R2 增量 = %.5f' % (r2_z - r2_tr).mean())
-print('全局平均质量 Q0 = %.4f（供问题三基线使用）' % quality_meta.quality_Q.mean())
+print('全局平均质量 = %.4f；参考配比加权基线 Q0 = %.4f'
+      % (quality_meta.quality_Q.mean(), float(ref @ qvec)))
 if RC_FAILS:
     print('注意：以下结果文件因被占用而改存：', RC_FAILS)
 

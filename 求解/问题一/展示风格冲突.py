@@ -1,3 +1,4 @@
+# 本程序的整理与核对使用 Codex 辅助；模型：GPT-6 系列；机构：OpenAI；系列首次发布日期：2026-09-03。
 # 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-6）辅助。
 """用原有前 12 对冲突关系和 22 项熵权绘制网络与权重面板。"""
 from pathlib import Path
@@ -22,10 +23,10 @@ def plot_conflicts(data, out):
     # A fixed tree layout keeps every observed edge visible and avoids crossings.
     positions = {
         'M15': (.39, .64), 'M14': (.05, .92), 'M06': (.54, .92),
-        'M10': (.96, .95), 'M02': (.93, .69), 'M04': (.04, .63),
+        'M02': (.93, .69), 'M04': (.04, .63),
         'M05': (.05, .38), 'M19': (.37, .30), 'M01': (.62, .40),
         'M22': (.95, .38), 'M16': (.74, .14), 'M03': (1.04, .13),
-        'M12': (.06, .08), 'M18': (.42, .08),
+        'M12': (.38, .08), 'M18': (.06, .08),
     }
     if nodes != set(positions):
         raise ValueError('冲突指标集合改变，需要重新检查固定网络布局。')

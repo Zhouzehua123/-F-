@@ -1,6 +1,7 @@
-"""问题一九幅图的展示版入口：只读既有结果，不执行求解程序。
+# 本程序的整理与核对使用 Codex 辅助；模型：GPT-6 系列；机构：OpenAI；系列首次发布日期：2026-09-03。
+"""问题一十幅图的展示版入口：只读既有结果，不执行求解程序。
 
-运行：python 重绘图表.py --data-dir E:/华为杯f/real_attachments
+运行：python 重绘图表.py --data-dir <附件根目录>
 输出：同名400 dpi PNG、矢量SVG、数据及画布边界核验记录。
 开发辅助工具：OpenAI Codex；采用 academic-research-suite 图形工作流。
 """
@@ -40,16 +41,24 @@ def main():
         functions[i](data,args.output_dir)
         print(f'已绘制 {NAMES[i]}',flush=True)
     verify_inputs_unchanged(data)
-    manifest = {'source_revision':'fb9e541f382bfd3ba48ff8f4c813beda689f1db7', 'style':'建模展示风',
+    manifest = {'style':'建模展示风',
                 'skill':'academic-research-suite 3.22.0 / visualization_agent',
                 'scripts_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in
-                    [Path(__file__),HERE/'绘图数据.py',*sorted(HERE.glob('展示风格*.py'))]},'input_checks':data.checks,
+                    [Path(__file__),HERE/'绘图数据.py',HERE/'出版导出.py',*sorted(HERE.glob('展示风格*.py'))]},'input_checks':data.checks,
                 'inputs':{k:{field:value for field,value in v.items() if field!='_path'} for k,v in data.inputs.items()},
                 'output_figures':[NAMES[i] for i in selected],
                 'indicator_key':data.weights[['code','indicator','display_name']].to_dict(orient='records'),
                 'domain_key':DOMAIN_NAMES,'prediction_points':int(data.observed.size),
                 'coefficient_entries':int(data.centered.size),'whole_paper_compiled':False}
     (args.output_dir/'绘图数据核验.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+    provenance = {
+        'scope': '本次生成的图形、实际读取输入和绘图程序；不替代模型假设与论文分页审查。',
+        'scripts_sha256': manifest['scripts_sha256'], 'inputs': manifest['inputs'],
+        'figures': [{'file': NAMES[i]+ext,
+                     'sha256': hashlib.sha256((args.output_dir/(NAMES[i]+ext)).read_bytes()).hexdigest()}
+                    for i in selected for ext in ('.png','.svg')],
+    }
+    (args.output_dir/'图形溯源.json').write_text(json.dumps(provenance,ensure_ascii=False,indent=2),encoding='utf-8')
     print(f'{len(data.checks)} 项数值核对通过；{len(data.inputs)} 个输入文件哈希未变。',flush=True)
 
 

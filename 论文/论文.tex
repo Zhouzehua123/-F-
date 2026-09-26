@@ -1,6 +1,6 @@
 % !TEX program = xelatex
 % 第23届“华为杯”中国研究生数学建模竞赛
-% 封面图片位于同一主文件条目的 figures/ 中；装配时该目录会与论文.tex 同级复制。
+% 封面图片位于主文件同级的 figures/ 中。
 \PassOptionsToPackage{quiet}{xeCJK}
 \documentclass[withoutpreface,bwprint]{format}
 \usepackage{placeins} % 保持图表与对应讨论相邻
@@ -25,7 +25,7 @@
 \memberc{苏永强}
 \supervisor{}
 
-% 图片封面 + 独立题目页；摘要和正文继续沿用系统现有内容与 format.cls。
+% 图片封面后接论文题目和摘要。
 \mriteHuaweiCover{figures/logo.pdf}{figures/title.pdf}
 
 \input{0.摘要.tex}

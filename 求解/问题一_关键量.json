@@ -1,16 +1,16 @@
 {
-  "train_mean_R2": 0.6289646324507253,
-  "test1m_mean_R2": 0.6185892983926031,
-  "test60m_mean_r": 0.7824073978099199,
-  "test1B_mean_r": 0.6514508347395176,
+  "train_mean_R2": 0.6289646324507255,
+  "test1m_mean_R2": 0.6185892983926032,
+  "test60m_mean_r": 0.7824073978099201,
+  "test1B_mean_r": 0.6514508347395169,
   "n_quality_records": 272505,
   "n_A1": 51230,
   "n_ext": 221275,
-  "Q0_global_mean": 0.4951575263874397,
-  "Q0_mix_weighted": 0.5510126482511157,
-  "kendall_W_full": 0.0686557507487291,
-  "conflict_rate_full": 0.223455433638733,
+  "Q0_global_mean": 0.4911980771853528,
+  "Q0_mix_weighted": 0.5486879207625752,
+  "kendall_W_full": 0.0758301691640003,
+  "conflict_rate_full": 0.2190089684998035,
   "conflict_indep_baseline": 0.2888443663464849,
   "spearman_quality_vs_lossproxy": 0.6,
-  "Qbar_R2_gain_mean": 9.917043919242914e-05
+  "Qbar_R2_gain_mean": 9.77832191467657e-05
 }

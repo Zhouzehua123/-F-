@@ -73,8 +73,8 @@
     "A_data_value\\regmix_tables\\test_mixture_1B.csv": "dd38052949c0a5f84165bdcb3ae3a331c7f07efd9bb83848bd579dfc4ce75a2c",
     "A_data_value\\regmix_tables\\test_pile_loss_1B.csv": "b2451e2b7fa15400688edc39e4d32f21ccbe0fb356e07d62a0e9ccddf247114f"
   },
-  "script_sha256": "d9353973b4e97ce8612ff33539010c010d70007a03851ddcab8596adf4e31265",
+  "script_sha256": "9f85b7eaa418c7affca508bc8184c8ffc90adcb2cdaa8ee394dd028b084ef58d",
   "command": "python 求解/问题一/非线性代理对照.py --data-dir <附件根目录>",
-  "elapsed_seconds": 2.9586160999606363,
+  "elapsed_seconds": 3.270429000025615,
   "shared_outputs_modified": false
 }

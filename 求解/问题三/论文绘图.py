@@ -1,3 +1,4 @@
+# 本程序的整理与核对使用 Codex 辅助；模型：GPT-6 系列；机构：OpenAI；系列首次发布日期：2026-09-03。
 # 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-6）辅助。
 """从已保存的 CSV 重绘论文图；不运行优化器，也不修改原始结果。
 
@@ -102,7 +103,7 @@ ax[1].axhline(q0, color="#777777", ls=":", lw=1)
 for x, y in zip(opt.C, opt.Q):
     ax[1].annotate(f"{y:.3f}", (x, y), xytext=(0, 8), textcoords="offset points",
                    ha="center", fontsize=8)
-ax[1].text(1.4e20, q0-.065, r"基线 $Q_0=0.551$", fontsize=9, color="#666666")
+ax[1].text(1.4e20, q0-.065, rf"基线 $Q_0={q0:.3f}$", fontsize=9, color="#666666")
 ax[1].set_ylim(.45, 1.12)
 ax[1].set_ylabel(r"最优质量 $Q^*$")
 panel(ax[1], "(b) 质量水平")

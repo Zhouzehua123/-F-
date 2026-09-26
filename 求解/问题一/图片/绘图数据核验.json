@@ -1,16 +1,16 @@
 {
-  "source_revision": "fb9e541f382bfd3ba48ff8f4c813beda689f1db7",
   "style": "建模展示风",
   "skill": "academic-research-suite 3.22.0 / visualization_agent",
   "scripts_sha256": {
-    "重绘图表.py": "07039f5d557a256099ec5b0dd19e9d75530e0ff025fc166c2a907255738ec421",
-    "绘图数据.py": "14b248cb6881e0ad37404763b8357f6fe88a5bf6b97767f07f46c918226bfcfa",
-    "展示风格公共.py": "b149c3924e175ae1df312fb4014b0faca5238aec63d53dea6dd62c217ec21ee0",
-    "展示风格冲突.py": "6203a6a266aacbef83aba63939d4622f3438aaac5f71786aa53bc5c7d95b4678",
-    "展示风格概览.py": "884290d3a66b9ee3b7f3f014da82d3d526c9ace3846242516b6ecab4879ae1b2",
-    "展示风格流程.py": "21431472cd71fbb5e189b22ece4992865f14faf17a6a8b19a57e4c8acff75285",
-    "展示风格诊断.py": "6d0ee4a75496630e15acdbff7a51f378f3c3880f57c39cc59ed056b977f0f12a",
-    "展示风格非线性.py": "92268bd45948be4d7fa86a9f3fc3f1e8dd7e36be10cb9bf56537e96eeff80074"
+    "重绘图表.py": "cd9dcf326a823820a3d9d04fc55314fab2eed6ab020f809e5914e907d6ece645",
+    "绘图数据.py": "4c82be09d9c86344d9df0a34ff60c5199ee9e1af83eceb2352f551ef4df84448",
+    "出版导出.py": "38e89034257602f7f55aa43cf974cc232a8157cde9c7371e5eb4146893bf8279",
+    "展示风格公共.py": "edd03f372270c1c475dac3447c67384f6c2b1f9f036ed96a5e0f89316467f1e2",
+    "展示风格冲突.py": "0aa5fe5f5a279ee7584e09b1afb9cead71eb7936164218a6d285552bec746b18",
+    "展示风格概览.py": "1fcb3cf5f936e65485d160f6ae9c832ac04adb24f894b41cab60dccb3b2882c3",
+    "展示风格流程.py": "ec06e6432274a87f15bc18a7858d925786cccd18378aca8c4fc12dc442799e6d",
+    "展示风格诊断.py": "b228303e140d110297d035b3c888c5e35f66fdc34912f88736f6fbb2950ee7f2",
+    "展示风格非线性.py": "7d935d7c27b15c7ae62cdd39eba522ae02e9e0bdca6b2b6092d20f41c59065cd"
   },
   "input_checks": {
     "中心化系数": {
@@ -19,7 +19,7 @@
     },
     "熵权之和": {
       "passed": true,
-      "max_abs_diff": 9.992007221626409e-16
+      "max_abs_diff": 1.2212453270876722e-15
     },
     "参考配比": {
       "passed": true,
@@ -95,17 +95,17 @@
       "columns": 3
     },
     "求解/问题一/结果/质量域评分_全量.csv": {
-      "sha256": "85231b8eb753aeb86febb9c04bc23a937fa49e049a8d4a8078c5bc4cf9ae78c0",
+      "sha256": "048a3b0f7cf665bb1e1a82c066c37373c95e717d6d6bb5cff3b69a6909e79d44",
       "rows": 7,
       "columns": 4
     },
     "求解/问题一/结果/质量指标熵权.csv": {
-      "sha256": "b56c5da16744a7a303db395a87f5e93c0ecf04f7dc6c1044c32b4b02fb55b591",
+      "sha256": "fac2ea1fe2de0c1498bb9dab786c040dec955e3021fe13100493b86e382c171c",
       "rows": 22,
       "columns": 6
     },
     "求解/问题一/结果/冲突指标对_top20.csv": {
-      "sha256": "1f69a460c984b1c16410933da8d0c26b6a7e961426ea8032458df27fad7bc7d0",
+      "sha256": "43791325d4268436d4b7cff9b0b613976e97a2b67e5bb7012a35d2e57ca548a1",
       "rows": 20,
       "columns": 2
     },
@@ -115,9 +115,19 @@
       "columns": 3
     },
     "求解/问题一/结果/质量与损失难度一致性.csv": {
-      "sha256": "65273382be288e5d3690253908aac3d4b8f3090159d4e443fb5ffe176b636710",
+      "sha256": "c79e5d8461844fbd1503824ed317e86d19c54df9cf36ff7e752d108c47b9f026",
       "rows": 6,
       "columns": 5
+    },
+    "求解/问题一/结果/非线性代理对照_逐域.csv": {
+      "sha256": "f3aee790c59f8f6256db643ca189d069b6bafec55ad2ad050e31e4859046ecc2",
+      "rows": 104,
+      "columns": 7
+    },
+    "求解/问题一/结果/非线性代理对照_预测明细.csv": {
+      "sha256": "0e5f86b6c61f912bfcdaf6027af28fac1b23ef7002b3e685a7f717c350775775",
+      "rows": 28288,
+      "columns": 6
     },
     "附件/A_data_value/regmix_tables/train_mixture_1m.csv": {
       "sha256": "04a32ef4ab594376bf90e11404c033668f887c351d6a03ad3744824c7296a2d8",
@@ -153,6 +163,9 @@
       "sha256": "8fe69d59ab7dd4fae4736459f4265ec93c7ed1ad1eca407346052560edc72b5b",
       "rows": 256,
       "columns": 14
+    },
+    "求解/问题一_关键量.json": {
+      "sha256": "8e8b8823cf2126a6afa93fe1168f056df760798e1135a4427e3ea8a8f5229897"
     }
   },
   "output_figures": [
@@ -216,7 +229,7 @@
     {
       "code": "M10",
       "indicator": "qurater",
-      "display_name": "教育质量评级"
+      "display_name": "四维质量聚合"
     },
     {
       "code": "M11",

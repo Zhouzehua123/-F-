@@ -1,3 +1,4 @@
+# 本程序的整理与核对使用 Codex 辅助；模型：GPT-6 系列；机构：OpenAI；系列首次发布日期：2026-09-03。
 # 本程序由 OpenAI Codex（GPT-6）辅助实现；仅从保存的验证结果绘图。
 """核岭增强的证据图：逐域精度及逐配方平均损失；不重新拟合。"""
 from pathlib import Path
@@ -10,12 +11,11 @@ from 出版导出 import export_figure
 
 
 def plot_nonlinear(data, out):
-    result = Path(__file__).resolve().parent / '结果'
-    table = pd.read_csv(result/'非线性代理对照_逐域.csv')
+    table = data.nonlinear_domains
     table = table[table.scope.eq('1m')]
     a = table[table.model.eq('ridge')].set_index('loss_domain')
     b = table[table.model.eq('sqrt_krr')].set_index('loss_domain').loc[a.index]
-    pred = pd.read_csv(result/'非线性代理对照_预测明细.csv')
+    pred = data.nonlinear_predictions
     pred = pred[pred.scope.eq('1m') & pred.model.eq('sqrt_krr')]
     p = pred.groupby('index')[['observed','predicted']].mean()
     assert len(p) == 256 and len(a) == 13 and len(pred) == 3328

@@ -43,7 +43,12 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。列
     \qquad
     x'_{ij}=\begin{cases}1-v_{ij},&\text{负向指标},\\v_{ij},&\text{其余指标}.\end{cases}
 \end{equation}
-其中 $\operatorname{clip}_{[0,1]}(v)=\min(1,\max(0,v))$；分位数按相邻顺序统计量线性插值得到。长度型指标也经过这一步缩放。各指标最终均取值于 $[0,1]$，且越大越好。与直接使用最小、最大值相比，分位数端点降低了极端值对缩放区间的影响，代价是端点外的差异不再保留。各领域及抽样、扩展集沿用同一组全量端点与权重，保证评分可比较。含多个有序类别的列表字段通过 softmax 将类别 logits 转为概率，再计算归一化期望级别；单元素列表直接取其数值。表\ref{tab:p1_dir}列出各字段的含义、方向及权重。
+其中 $\operatorname{clip}_{[0,1]}(v)=\min(1,\max(0,v))$；分位数按相邻顺序统计量线性插值得到。长度型指标也经过这一步缩放。各指标最终均取值于 $[0,1]$，且越大越好。与直接使用最小、最大值相比，分位数端点降低了极端值对缩放区间的影响，代价是端点外的差异不再保留。各领域及抽样、扩展集沿用同一组全量端点与权重，保证评分可比较。含多个有序类别的列表字段通过 softmax 将类别 logits 转为概率，再计算归一化期望级别；单元素列表直接取其数值。qurater 的四个分量分别为写作风格、所需专业知识、事实知识和教育价值，属于不同维度而非互斥等级\cite{slimpajama2025}。设其原始值为 $q_{ir}$（$r=1,\ldots,4$），各维缺失先用该维全量中位数填补，再以对应的第 1、99 百分位数 $a_r^q,b_r^q$ 计算
+\begin{equation}
+ x_{i,\mathrm{qurater}}=\frac14\sum_{r=1}^{4}
+ \operatorname{clip}_{[0,1]}\!\left(\frac{q_{ir}-a_r^q}{\max(b_r^q-a_r^q,10^{-12})}\right).
+\end{equation}
+聚合值作为 22 个指标之一，继续参与上述外层分位数归一化。四维同向等权是本文的评价设定：把知识密度与专业要求纳入广义质量，同时承认专业要求越高并不必然越适合所有训练任务；数据卡仅规定字段含义，并未规定本文的权重。表\ref{tab:p1_dir}列出各字段的含义、方向及权重。
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
@@ -61,28 +66,28 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。列
   \endhead
   \bottomrule
   \endfoot
-  fineweb\_\allowbreak{}edu & 文本用于教育的价值 & 列表(1) & 正向 & 0.0437 \\
-  fluency\_\allowbreak{}en & 英语流畅度（第 1 类=流畅，已核验） & 列表(2) & 正向 & 0.0682 \\
-  modernbert\_\allowbreak{}cleanliness & 文本内容的洁净程度 & 列表(6) & 正向 & 0.1434 \\
-  modernbert\_\allowbreak{}readability & 文本的易读程度 & 列表(6) & 正向 & 0.0567 \\
-  modernbert\_\allowbreak{}reasoning & 内容体现的推理程度 & 列表(6) & 正向 & \textbf{0.1517} \\
-  modernbert\_\allowbreak{}professionalism & 内容的专业程度 & 列表(6) & 正向 & 0.0396 \\
+  fineweb\_\allowbreak{}edu & 文本用于教育的价值 & 列表(1) & 正向 & 0.0433 \\
+  fluency\_\allowbreak{}en & 英语流畅度（索引 1=流畅，已核验） & 列表(2) & 正向 & 0.0675 \\
+  modernbert\_\allowbreak{}cleanliness & 文本内容的洁净程度 & 列表(6) & 正向 & 0.1420 \\
+  modernbert\_\allowbreak{}readability & 文本的易读程度 & 列表(6) & 正向 & 0.0562 \\
+  modernbert\_\allowbreak{}reasoning & 内容体现的推理程度 & 列表(6) & 正向 & \textbf{0.1502} \\
+  modernbert\_\allowbreak{}professionalism & 内容的专业程度 & 列表(6) & 正向 & 0.0392 \\
   dsir\_\allowbreak{}books & 相对于书籍领域的重要性权重 & 标量 & 正向 & 0.0081 \\
-  dsir\_\allowbreak{}wiki & 相对于维基领域的重要性权重 & 标量 & 正向 & 0.0081 \\
+  dsir\_\allowbreak{}wiki & 相对于维基领域的重要性权重 & 标量 & 正向 & 0.0080 \\
   dsir\_\allowbreak{}math & 相对于数学领域的重要性权重 & 标量 & 正向 & 0.0086 \\
-  qurater & 教育质量评级（4 维 softmax 期望） & 列表(4) & 正向 & 0.0492 \\
-  ad\_\allowbreak{}en & 广告含量（\textbf{第 1 类=“无广告”，正向}；依据：原文抽查） & 列表(2) & 正向 & 0.0072 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}word\_\allowbreak{}count & 文档包含的词总数 & 标量 & 长度型 & 0.0516 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}num\_\allowbreak{}sentences & 文档包含的句子总数 & 标量 & 长度型 & 0.0523 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy & 用一元词熵衡量词汇多样性 & 标量 & 正向 & 0.0347 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words & 不同词项所占比例 & 标量 & 正向 & 0.0538 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}no\_\allowbreak{}alph\_\allowbreak{}words & 非字母字符所占比例 & 标量 & 负向 & 0.0287 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}2gram & 字符 2-gram 的重复程度 & 标量 & 负向 & 0.0130 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}3gram & 字符 3-gram 的重复程度 & 标量 & 负向 & 0.0119 \\
-  rps\_\allowbreak{}lines\_\allowbreak{}uppercase\_\allowbreak{}letter\_\allowbreak{}fraction & 大写字母行所占比例 & 标量 & 负向 & 0.0316 \\
-  rps\_\allowbreak{}lines\_\allowbreak{}ending\_\allowbreak{}with\_\allowbreak{}terminal\_\allowbreak{}punctution\_\allowbreak{}mark & 以终止标点结束的行所占比例 & 标量 & 正向 & 0.0880 \\
-  rps\_\allowbreak{}lines\_\allowbreak{}numerical\_\allowbreak{}chars\_\allowbreak{}fraction & 含有数字的行所占比例 & 标量 & 负向 & 0.0125 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}mean\_\allowbreak{}word\_\allowbreak{}length & 词项长度的平均值 & 标量 & 长度型 & 0.0373 \\
+  qurater & 四维质量：分维归一化后等权聚合 & 列表(4) & 正向 & 0.0586 \\
+  ad\_\allowbreak{}en & 广告含量（\textbf{索引 1=“无广告”，正向}；依据：原文抽查） & 列表(2) & 正向 & 0.0071 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}word\_\allowbreak{}count & 文档包含的词总数 & 标量 & 长度型 & 0.0511 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}num\_\allowbreak{}sentences & 文档包含的句子总数 & 标量 & 长度型 & 0.0518 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy & 用一元词熵衡量词汇多样性 & 标量 & 正向 & 0.0343 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words & 不同词项所占比例 & 标量 & 正向 & 0.0533 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}no\_\allowbreak{}alph\_\allowbreak{}words & 非字母字符所占比例 & 标量 & 负向 & 0.0284 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}2gram & 字符 2-gram 的重复程度 & 标量 & 负向 & 0.0128 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}3gram & 字符 3-gram 的重复程度 & 标量 & 负向 & 0.0118 \\
+  rps\_\allowbreak{}lines\_\allowbreak{}uppercase\_\allowbreak{}letter\_\allowbreak{}fraction & 大写字母行所占比例 & 标量 & 负向 & 0.0313 \\
+  rps\_\allowbreak{}lines\_\allowbreak{}ending\_\allowbreak{}with\_\allowbreak{}terminal\_\allowbreak{}punctution\_\allowbreak{}mark & 以终止标点结束的行所占比例 & 标量 & 正向 & 0.0871 \\
+  rps\_\allowbreak{}lines\_\allowbreak{}numerical\_\allowbreak{}chars\_\allowbreak{}fraction & 含有数字的行所占比例 & 标量 & 负向 & 0.0124 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}mean\_\allowbreak{}word\_\allowbreak{}length & 词项长度的平均值 & 标量 & 长度型 & 0.0369 \\
 \end{longtable}
 \endgroup
 
@@ -90,7 +95,9 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。列
 \begin{equation}
     Q_i = \sum_{j=1}^{22} w_j\, x'_{ij},\qquad Q_d=\frac{1}{n_d}\sum_{i\in\mathcal D_d}Q_i,\qquad \sum_j w_j=1
 \end{equation}
-表\ref{tab:p1_dir}中，推理与洁净程度对综合评分的影响较大：modernbert\_\allowbreak{}reasoning 的权重为 $0.152$，modernbert\_\allowbreak{}cleanliness 为 $0.143$。这里的 $w_j$ 依据样本分布中的信息差异计算，不能直接代表指标本身的重要程度。极端左偏的分布也可能获得较高熵权，因此第\ref{sec:check}节将通过更换赋权方式，考察评分结果的变化。
+表\ref{tab:p1_dir}中，推理与洁净程度对综合评分的影响较大：modernbert\_\allowbreak{}reasoning 的权重为 $0.150$，modernbert\_\allowbreak{}cleanliness 为 $0.142$。这里的 $w_j$ 依据样本分布中的信息差异计算，不能直接代表指标本身的重要程度。极端左偏的分布也可能获得较高熵权，因此第\ref{sec:check}节将通过更换赋权方式，考察评分结果的变化。
+
+二分类字段的类别索引从 0 开始，表中的索引 1 对应列表第二项。
 
 字段缺失情况见表\ref{tab:p1_missing}。逐项检查后，采用对应指标的中位数填补缺失值，使填补值处于分布的中间水平，避免将缺失记录直接赋为高分或低分。
 
@@ -119,7 +126,7 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。列
 \Needspace{4\baselineskip}
 \textbf{2. 方法选择及其依据}\par\nopagebreak[4]
 
-综合质量评分方法的选择兼顾可解释性与计算结果。表\ref{tab:algo1}对熵权法、等权平均及 PCA 第一主成分进行比较。评价分歧从两个层面考察：成对标准化得分差用于识别单条文本的指标分歧，Kendall 协同系数用于衡量整体排序的一致程度。配比拟合以线性岭回归为解释基线，以平方根嵌入核岭为非线性预测模型，通过共同五折检验其误差差异。
+综合质量评分方法的选择兼顾可解释性与计算结果。表\ref{tab:algo1}对熵权法、等权平均及首主成分非负载荷加权对照进行比较。评价分歧从两个层面考察：成对标准化得分差用于识别单条文本的指标分歧，Kendall 协同系数用于衡量整体排序的一致程度。配比拟合以线性岭回归为解释基线，以平方根嵌入核岭为非线性预测模型，通过共同五折检验其误差差异。
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
@@ -137,13 +144,13 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。列
   \endhead
   \bottomrule
   \endfoot
-  熵权法 & 1.000 & 1.000 & 0.495 \\
-  等权平均 & 0.854 & 0.679 & 0.639 \\
-  PCA 第一主成分 & 0.881 & 0.679 & 0.520 \\
+  熵权法 & 1.000 & 1.000 & 0.491 \\
+  等权平均 & 0.875 & 0.643 & 0.637 \\
+  首主成分非负载荷加权 & 0.927 & 0.679 & 0.496 \\
 \end{longtable}
 \endgroup
 
-表\ref{tab:algo1}显示，熵权与等权评分的样本相关系数为 $0.854$，而领域均分排序的 Spearman 系数为 $0.679$。两种赋权方式的总体趋势接近，但具体领域的名次有所变化。本文采用熵权法，根据样本中的信息差异确定权重，并进一步检验赋权方式对结果的影响。PCA 能够减少相关信息、压缩维度，但其第一主成分难以直接解释为文本质量，故未用于最终评分。
+表\ref{tab:algo1}显示，熵权与等权评分的样本相关系数为 $0.875$，而领域均分排序的 Spearman 系数为 $0.643$。两种赋权方式的总体趋势接近，但具体领域的名次有所变化。本文采用熵权法，根据样本中的信息差异确定权重，并进一步检验赋权方式对结果的影响。对照方案先对标准化指标矩阵取首主成分载荷，统一符号使载荷总和非负，再将负载荷截为零并归一化，最后对原归一化指标加权。因此它是首主成分非负载荷加权评分，不是标准 PCA 的投影得分；这种处理保证各项权重非负，但改变了主成分原有的方差最大化含义，本文仅将其作为赋权对照。
 
 样本得分的相关与领域排序的相关回答两个不同问题。前者考察两种规则是否倾向于同时提高或降低同一文本的得分，后者考察汇总到领域后名次是否保持。领域均值由大量文本共同决定，两个均值接近的领域可能在赋权调整后交换名次，而大多数文本的相对得分仍然相近。因此，方法比较同时保留得分与排序两个层面，解释时也分别对照，避免用一个相关系数代替全部稳定性判断。
 
@@ -210,7 +217,7 @@ Kendall 系数使用的是各指标对全部文本给出的排序。若两个指
 \begin{equation}
     L_{d}(\bm p) = \sum_{k=1}^{17} a_{dk}\, p_k + b_d,\qquad d=1,\dots,13
 \end{equation}
-其矩阵形式为
+令系数矩阵的第 $k$ 行、第 $d$ 列为 $A_{kd}=a_{dk}$，其矩阵形式为
 \begin{equation}
     \hat{\bm L} = \bm P \bm A + \bm 1 \bm b^{\top}
 \end{equation}
@@ -308,7 +315,7 @@ Kendall 系数使用的是各指标对全部文本给出的排序。若两个指
 
 \noindent\textbf{辅助分析说明：} 本问数据整理、绘图与数值核对使用 Codex 辅助，模型为 GPT-5.4（OpenAI，2026-03-05）及 GPT-6 系列（OpenAI，2026-09-03 系列首次发布）\cite{ai_codex54,ai_codex6}。
 
-本问分别利用 A1--A3 和 A4--A15 开展质量评价与配比计算。质量评分包含 A1 的 $51{,}230$ 条抽样记录及 A2、A3 的 $221{,}275$ 条扩展记录，共计 $272{,}505$ 条。
+本问分别利用 A1--A3 和 A4--A15 开展质量评价与配比计算。质量评分包含 A1 的 $51{,}230$ 条抽样记录及 A2、A3 的 $221{,}275$ 条扩展记录，共计 $272{,}505$ 条。按附件 ID 核对，其中有 $261{,}086$ 个唯一 ID，$11{,}419$ 个 ID 在不同文件中各出现两次。本文的全量熵权、领域均分和冲突率均按附件记录计权，重复 ID 的记录也分别参与计算；因此这些记录不应解释为同等数量的独立文本，抽样与扩展集之间也不是完全独立的验证。
 
 \Needspace{4\baselineskip}
 \textbf{1. 质量评分与冲突分析}\par\nopagebreak[4]
@@ -338,23 +345,23 @@ Kendall 系数使用的是各指标对全部文本给出的排序。若两个指
   \endhead
   \bottomrule
   \endfoot
-  arxiv & arxiv & 0.7031 & 0.7011 & $+0.0021$ \\
-  stackexchange & stackexchange & 0.6549 & — & — \\
-  c4 & （配方侧无同名列） & 0.6368 & — & — \\
-  commoncrawl & pile\_\allowbreak{}cc & 0.6153 & — & — \\
-  book & gutenberg\_\allowbreak{}pg\_\allowbreak{}19 & 0.5524 & — & — \\
-  wikipedia & wikipedia\_\allowbreak{}en & 0.5509 & — & — \\
-  github & github & 0.4553 & 0.4547 & $+0.0006$ \\
+  arxiv & arxiv & 0.7272 & 0.7248 & $+0.0024$ \\
+  stackexchange & stackexchange & 0.6333 & — & — \\
+  c4 & （配方侧无同名列） & 0.6327 & — & — \\
+  commoncrawl & pile\_\allowbreak{}cc & 0.6119 & — & — \\
+  book & gutenberg\_\allowbreak{}pg\_\allowbreak{}19 & 0.5592 & — & — \\
+  wikipedia & wikipedia\_\allowbreak{}en & 0.5450 & — & — \\
+  github & github & 0.4498 & 0.4492 & $+0.0006$ \\
 \end{longtable}
 \endgroup
 
-arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者的评分差值分别为 $+0.0021$、$+0.0006$。差值较小，说明在可直接比较的领域内，抽样集与扩展集的平均评分接近。
+arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者的评分差值分别为 $+0.0024$、$+0.0006$。差值较小，说明在可直接比较的领域内，抽样集与扩展集的平均评分接近。
 
-均值对照仍需回到原始文本理解。已有原文抽查中，arxiv 的一个低分片段主要由章节格式定义和排版命令组成，评分约为 $0.354$；一个高分片段则以连贯语句介绍计算机实验的用途，评分约为 $0.832$。同属 arxiv 的记录出现这种差别，说明领域名称并不能代替文本内容检查。对预训练语料而言，正文叙述与格式代码在语言信号上差异明显，综合评分会把这种差异反映到单条记录上。
+均值对照仍需回到原始文本理解。已有原文抽查中，arxiv 的一个低分片段主要由章节格式定义和排版命令组成，评分约为 $0.350$；一个高分片段则以连贯语句介绍计算机实验的用途，评分约为 $0.849$。同属 arxiv 的记录出现这种差别，说明领域名称并不能代替文本内容检查。对预训练语料而言，正文叙述与格式代码在语言信号上差异明显，综合评分会把这种差异反映到单条记录上。
 
-网页语料中也存在可辨认的对照。c4 的一个低分片段反复出现同一家具商品短语，评分约为 $0.298$；另一个高分片段介绍国际关系课程的研究对象，评分约为 $0.907$。这些实例可以帮助理解重复程度、句子组织和内容连续性为何参与评分，但抽查只展示具体记录，不替代对全部文本的人工质量标注，也不能单凭总分判断某一个分类器的方向。
+网页语料中也存在可辨认的对照。c4 的一个低分片段反复出现同一家具商品短语，评分约为 $0.284$；另一个高分片段介绍细胞内不同细胞器的空间分工，评分约为 $0.914$。这些实例可以帮助理解重复程度、句子组织和内容连续性为何参与评分，但抽查只展示具体记录，不替代对全部文本的人工质量标注，也不能单凭总分判断某一个分类器的方向。
 
-在全量领域均分中，arxiv 的 $0.703$ 与 github 的 $0.455$ 分别位于评分两端。stackexchange、c4、commoncrawl 依次为 $0.655$、$0.637$、$0.615$；book 与 wikipedia 较为接近，分别为 $0.552$、$0.551$。这一排序由 22 个分类器信号加权得到。例如，rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words 与 rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy 均可能随文档长度变化。因此，网页类评分高于书籍、百科，仅表示其在本评分体系下得分较高，不能直接推断其对所有训练任务都更有利。
+在全量领域均分中，arxiv 的 $0.725$ 与 github 的 $0.449$ 分别位于评分两端。stackexchange、c4、commoncrawl 依次为 $0.633$、$0.633$、$0.612$；book 与 wikipedia 较为接近，分别为 $0.559$、$0.545$。这一排序由 22 个质量信号加权得到。例如，rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words 与 rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy 均可能随文档长度变化。因此，网页类评分高于书籍、百科，仅表示其在本评分体系下得分较高，不能直接推断其对所有训练任务都更有利。
 
 表\ref{tab:p1_conf}比较各集合的冲突比例和排序一致性；图\ref{fig:p1_conf}则给出分歧较多的指标对及对应的熵权分布。图\ref{fig:p1_conf}左侧展示冲突率最高的 12 对指标关系，边旁数值为冲突率，线宽与其成正比；右侧列出全部 22 项熵权。M01--M22 按表\ref{tab:p1_dir}的指标顺序编号，紫色与青绿色分别对应列表型与标量型指标。
 
@@ -374,9 +381,9 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
   \endhead
   \bottomrule
   \endfoot
-  A1 抽样集 & 51{,}230 & 0.2252 & 0.2888 & 0.780 & 0.0783 \\
-  A2+A3 扩展集 & 221{,}275 & 0.2208 & 0.2888 & 0.764 & 0.0628 \\
-  全量 & 272{,}505 & 0.2235 & 0.2888 & 0.774 & 0.0687 \\
+  A1 抽样集 & 51{,}230 & 0.2219 & 0.2888 & 0.768 & 0.0853 \\
+  A2+A3 扩展集 & 221{,}275 & 0.2162 & 0.2888 & 0.748 & 0.0715 \\
+  全量 & 272{,}505 & 0.2190 & 0.2888 & 0.758 & 0.0758 \\
 \end{longtable}
 \endgroup
 
@@ -387,13 +394,13 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
   \label{fig:p1_conf}
 \end{figure}
 
-表\ref{tab:p1_conf}显示，抽样集、扩展集及全量记录的冲突率均处于 $0.221\sim0.225$。统计集合的变化未明显改变这一比例。
+表\ref{tab:p1_conf}显示，抽样集、扩展集及全量记录的冲突率均处于 $0.216\sim0.222$。统计集合的变化未明显改变这一比例。
 
-全量排序的 Kendall 系数为 $0.069$，表明排序一致程度有限。尽管 $\chi^2$ 检验得到 $p<0.001$，大样本下的统计显著性不能代替对一致程度的判断。实际冲突率为 $22.3\%$，低于独立参照的 $28.9\%$，二者比值为 $0.774$。两项统计量说明，指标间存在共同方向，也保留了较多分歧。
+全量排序的 Kendall 系数为 $0.076$，表明排序一致程度有限。尽管 $\chi^2$ 检验得到 $p<0.001$，大样本下的统计显著性不能代替对一致程度的判断。实际冲突率为 $21.9\%$，低于独立参照的 $28.9\%$，二者比值为 $0.758$。两项统计量说明，指标间存在共同方向，也保留了较多分歧。
 
 这些分歧既来自指标含义，也来自计算尺度。rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy 与 rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words 都关注词汇多样性，却不使用同一尺度；modernbert\_\allowbreak{}professionalism 对学术文本和论坛内容的反应也可能不同。另如 ad\_\allowbreak{}en，长文档中的二分类概率容易靠近两端。由此，同一文本在不同指标下得到不同评价是可以预期的。
 
-若以“至少一对指标超过阈值”标记文本，则 272,505 条记录中有 271,982 条被标记，占 $99.81\%$；这与 $22.3\%$ 的样本--指标对冲突率不是同一口径，也说明该标记不宜直接作为剔除规则。综合裁决使用 $Q_i$ 相对领域中位数的高低，仅记录域内相对标签；计算领域均值时仍纳入这些记录，不删样本或降权。后两问采用聚合评分，不将该标签视为独立的质量真值。
+若以“至少一对指标超过阈值”标记文本，则 272,505 条记录中有 271,458 条被标记，占 $99.62\%$；这与 $21.9\%$ 的样本--指标对冲突率不是同一口径，也说明该标记不宜直接作为剔除规则。综合裁决使用 $Q_i$ 相对领域中位数的高低，仅记录域内相对标签；计算领域均值时仍纳入这些记录，不删样本或降权。后两问采用聚合评分，不将该标签视为独立的质量真值。
 
 \FloatBarrier
 \Needspace{4\baselineskip}
@@ -418,7 +425,7 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.78\textwidth]{../求解/问题一/图片/图2_线性模型R2.png}
-  \caption{配比回归检验}
+  \caption{线性岭配比回归检验}
   \label{fig:p1_r2}
 \end{figure}
 
@@ -468,7 +475,7 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.80\textwidth]{../求解/问题一/图片/图4_混合系数热力图.png}
-  \caption{领域回归系数}
+  \caption{线性岭领域回归系数}
   \label{fig:p1_heatmap}
 \end{figure}
 
@@ -479,13 +486,13 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.60\textwidth]{../求解/问题一/图片/图3_预测vs实测.png}
-  \caption{预测与实测损失}
+  \caption{线性岭预测与实测损失}
   \label{fig:p1_scatter}
 \end{figure}
 
 图中仍有记录偏离预测值等于实测值的参考线，因此平均检验精度接近训练精度，并不表示每条记录的预测都准确。
 
-加入 $\bar Q$ 后，13 个验证域的平均 $R^2$ 仅增加 $9.9\times10^{-5}$，对原配比回归的改善很小。这与 $\bar Q$ 本身为占比的线性组合有关，不能据此判断质量投入无效。因此保留原回归，问题二、三再利用附件 B 的半合成实验研究质量变化的影响。
+加入 $\bar Q$ 后，13 个验证域的平均 $R^2$ 仅增加 $9.8\times10^{-5}$，对原配比回归的改善很小。这与 $\bar Q$ 本身为占比的线性组合有关，不能据此判断质量投入无效。因此保留原回归，问题二、三再利用附件 B 的半合成实验研究质量变化的影响。
 
 文本质量与损失难度并非同一个概念。图\ref{fig:p1_quality}利用 6 个可映射领域，对照 A1--A3 的熵权评分 $Q$ 与损失代理 $Q^{(\text{loss})}$ 的排序。右侧连线连接同一领域在两套口径下的名次，名次 1 表示得分最高。
 
@@ -504,7 +511,7 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 
 A16 将配方领域与质量信号领域建立对应。现有映射中，arxiv、github、stackexchange 为直接对应；wikipedia\_\allowbreak{}en 与 wikipedia、gutenberg\_\allowbreak{}pg\_\allowbreak{}19 与 book、pile\_\allowbreak{}cc 与 commoncrawl 为近似对应。两类映射都利用已有领域评分，但近似对应还依赖语料来源与内容相近这一条件，名称相近本身并不能证明两份语料的质量分布完全相同。
 
-其余 11 个配方领域在质量数据中没有直接对应，现有计算统一使用全局均值 $0.4952$。这样可以为混合质量指数提供完整的领域向量，但这些领域之间的质量差别并没有由该向量单独辨认。对它们的配比作用，仍须查看回归系数和验证损失，而不能依据相同的代入分数作高低排序。
+其余 11 个配方领域在质量数据中没有直接对应，现有计算统一使用全局均值 $0.4912$。这样可以为混合质量指数提供完整的领域向量，但这些领域之间的质量差别并没有由该向量单独辨认。对它们的配比作用，仍须查看回归系数和验证损失，而不能依据相同的代入分数作高低排序。
 
 上述对应还说明了为什么只选 6 个可映射领域比较质量与损失代理的名次。它们具备可说明的文本评分来源，比较对象较为明确；把缺少直接质量观测的领域一并加入，则会将均值代入规则与实际观测混在同一排序中。本文据此分别展示映射后的质量参照和全部验证任务的损失结果，使读者能够追溯每项指标来自哪个统计集合。
 
