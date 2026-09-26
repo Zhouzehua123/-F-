@@ -302,10 +302,11 @@ python 求解/绘制问题三四流程图.py
 \clearpage
 \subsection*{附录 F：问题三图表的计算公式与口径}
 
-以下说明图中的曲线、标记和柱高如何由模型输出或结果文件得到。流程图是方法示意，不对应额外的数值公式。
+图\ref{fig:p3_shift}--图\ref{fig:p3_ctx}的坐标和费用份额由保存的求解结果计算。下文沿用正文符号：$N,D$ 分别为参数个数和 token 数，$C_{\mathrm b}$ 的单位为 FLOPs，$g(Q)$ 的单位为 FLOPs/token；$Q_0$ 为参考配比加权质量基线。图\ref{fig:p3_workflow}为方法流程示意，不对应额外的数值推导。
 
-\paragraph{1.预算与费用份额图}
-预算扫描在固定上下文长度、配比情景和质量成本形式下，逐个预算点求解正文式\eqref{eq:p3_problem}，得到 $(N^*,D^*,Q^*)$。图中的质量完成度和质量处理份额分别按
+\Needspace{4\baselineskip}
+\textbf{1.预算与费用份额图}\par\nopagebreak[4]
+图\ref{fig:p3_shift}在 $L_{\mathrm{ctx}}=2048$、$M=0$ 和幂函数型成本下，逐个预算点求解正文式\eqref{eq:p3_problem}，得到 $(N^*,D^*,Q^*)$。图中的质量完成度和质量处理份额分别按
 \begin{equation}
  \Theta=\frac{Q^*-Q_0}{1-Q_0},\qquad
  f_Q=\frac{D^*\,[g(Q^*)-g(Q_0)]}{C_{\mathrm b}}
@@ -317,19 +318,21 @@ python 求解/绘制问题三四流程图.py
  f_{\mathrm{attn}}=\frac{\eta N^*D^*L_{\mathrm{ctx}}}{C_{\mathrm b}}.
  \label{eq:app_p3_plot_costshares}
 \end{equation}
-三类份额之和等于 $C_{\mathrm{tot}}/C_{\mathrm b}$；当前预算扫描配置用尽预算，因而该和在数值误差范围内等于 1。纵轴按百分数显示 $100\Theta$ 及三类份额的 100 倍。图中每个标记对应“预算扫略.csv”中的一条有效记录；启动点和饱和点是在该离散预算网格上识别的首次满足 $Q>Q_0+10^{-7}$ 和 $Q\ge1-10^{-7}$ 的记录，容差与正式绘图程序一致。
+将式\eqref{eq:p3_cost_total}的三项成本分别除以预算，即得上述份额，其和等于 $C_{\mathrm{tot}}/C_{\mathrm b}$；当前预算扫描配置用尽预算，因而该和在数值误差范围内等于 1。纵轴按百分数显示 $100\Theta$ 及三类份额的 100 倍。“预算扫略.csv”的 141 条记录均有有效配置，图中标记对应这些记录；启动点和饱和点是在该离散预算网格上识别的首次满足 $Q>Q_0+10^{-7}$ 和 $Q\ge1-10^{-7}$ 的记录，容差与正式绘图程序一致。
 
-\paragraph{2.成本形式比较图}
-成本形式比较图不重新采样解析函数，而是直接读取“成本函数对比.csv”的九组求解记录。每个柱子的质量高度为记录中的 $Q^*$，质量投入柱高为 $100f_Q$；其中 $f_Q$ 仍按式\eqref{eq:app_p3_plot_share}计算。三种成本函数为正文表\ref{tab:p3_functions}中的 $g(Q)$，其差异通过预算约束影响最优配置。
+\Needspace{4\baselineskip}
+\textbf{2.成本形式比较图}\par\nopagebreak[4]
+图\ref{fig:p3_cost}读取“成本函数对比.csv”中三种成本形式与三档预算的九组求解记录，各组均固定 $L_{\mathrm{ctx}}=2048$、$M=0$。左图柱高为 $Q^*$，质量投入柱高为 $100f_Q$；其中 $f_Q$ 仍按式\eqref{eq:app_p3_plot_share}计算。三种成本函数为正文表\ref{tab:p3_functions}中的 $g(Q)$，其差异通过预算约束影响数值候选配置。
 
-\paragraph{3.上下文敏感性图}
-上下文敏感性图固定预算和成本形式，对给定的 $L_{\mathrm{ctx}}$ 重新求解配置。注意力与基础训练的成本比为
+\Needspace{4\baselineskip}
+\textbf{3.上下文敏感性图}\par\nopagebreak[4]
+图\ref{fig:p3_ctx}固定幂函数型成本和 $M=0$，在每档预算下分别改变 $L_{\mathrm{ctx}}$ 并求解配置。注意力成本与基础训练成本具有相同的 $ND$ 因子，消去后得到
 \begin{equation}
- \lambda=\frac{\eta L_{\mathrm{ctx}}}{6},
+ \lambda=\frac{C_{\mathrm{attn}}}{C_{\mathrm{base}}}=\frac{\eta ND L_{\mathrm{ctx}}}{6ND}=\frac{\eta L_{\mathrm{ctx}}}{6},
  \qquad
  L_{\mathrm{crit}}=\frac{6}{\eta}=30{,}000\ \mathrm{tokens}.
  \label{eq:app_p3_context}
 \end{equation}
-左图直接使用“上下文长度连续扫描.csv”中的 $L_{\mathrm{ctx}}$ 与 $N^*/10^9$（字段 N\_B，单位为十亿个参数）；右图使用“上下文长度与最优质量.csv”中的 $L_{\mathrm{ctx}}$ 与 $Q^*$。C7 的五个离散档位来自“上下文长度敏感性.csv”，作为方形标记叠加在左图中。缺失或求解失败的记录不补插值，图中只连接已有有效记录。
+令 $\lambda=1$ 即得图中竖线所示的 $L_{\mathrm{crit}}$。左图预算为 $10^{22}$ FLOPs，使用“上下文长度连续扫描.csv”中的 $L_{\mathrm{ctx}}$ 与 $N^*/10^9$（字段 N\_B，单位为十亿个参数）；右图在 $10^{19}$、$10^{20}$、$10^{21}$ FLOPs 三档预算下，使用“上下文长度与最优质量.csv”中的 $L_{\mathrm{ctx}}$ 与 $Q^*$。C7 的五个离散档位来自“上下文长度敏感性.csv”，作为方形标记叠加在左图中。当前连续扫描包含 40 个有效点，右图每档预算均有 14 个有效点，五档配置也均有有效输出。折线仅连接计算点以辅助读图，不表示区间内另有求解结果。
 
 上述公式只用于把已保存的求解结果转换为图中坐标或份额，图表不构成新的实验观测；输入文件、生成程序及复现命令见附录 E 的表\ref{tab:figure_code_map}和代码清单。
