@@ -15,7 +15,7 @@
 \begin{figure}[htbp]
   \centering
   \input{figures/q1-workflow.tex}
-  \caption{问题一的质量评价与领域配比建模流程}
+  \caption{问题一分析流程}
   \label{fig:q1_workflow}
 \end{figure}
 
@@ -225,10 +225,10 @@ $\bar L_d$ 为领域 $d$ 的平均交叉熵损失。代理值的计算范围为�
 
 图\ref{fig:p1_quality_full}汇总了各领域的质量均值和离散程度，柱高和误差线分别表示领域均值与标准差，$n$ 为对应记录数。对于同时出现在抽样集与扩展集中的领域，表\ref{tab:p1_qa}进一步比较两套评分。
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.95\textwidth]{../求解/问题一/图片/图0_A1-A3全量质量评分.png}
-  \caption{A1--A3 全量质量信号的领域级评分（均值±标准差）}
+  \caption{领域质量评分}
   \label{fig:p1_quality_full}
 \end{figure}
 
@@ -260,7 +260,7 @@ $\bar L_d$ 为领域 $d$ 的平均交叉熵损失。代理值的计算范围为�
 
 arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者的评分差值分别为 $+0.0021$、$+0.0006$。差值较小，说明在可直接比较的领域内，抽样集与扩展集的平均评分接近。
 
-在全量领域均分中，arxiv 的 $0.703$ 与 github 的 $0.455$ 分别位于评分两端。stackexchange、c4、commoncrawl 依次为 $0.655$、$0.637$、$0.615$；book 与 wikipedia 较为接近，分别为 $0.552$、$0.551$。这一排序由 22 个分类器信号共同确定。例如，rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words 与 rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy 均受文档长度影响。因此，网页类评分高于书籍、百科，不代表其在所有训练任务中都具有更高价值。
+在全量领域均分中，arxiv 的 $0.703$ 与 github 的 $0.455$ 分别位于评分两端。stackexchange、c4、commoncrawl 依次为 $0.655$、$0.637$、$0.615$；book 与 wikipedia 较为接近，分别为 $0.552$、$0.551$。这一排序由 22 个分类器信号加权得到。例如，rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words 与 rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy 均可能随文档长度变化。因此，网页类评分高于书籍、百科，仅表示其在本评分体系下得分较高，不能直接推断其对所有训练任务都更有利。
 
 表\ref{tab:p1_conf}比较各集合的冲突比例和排序一致性；图\ref{fig:p1_conf}则给出分歧较多的指标对及对应的熵权分布。图\ref{fig:p1_conf}左侧展示冲突率最高的 12 对指标关系，边旁数值为冲突率，线宽与其成正比；右侧列出全部 22 项熵权。M01--M22 按表\ref{tab:p1_dir}的指标顺序编号，紫色与青绿色分别对应列表型与标量型指标。
 
@@ -286,18 +286,18 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 \end{longtable}
 \endgroup
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图6_冲突与赋权诊断.png}
-  \caption{冲突率最高的 12 对指标关系网络与 22 项质量指标熵权}
+  \caption{指标冲突与熵权}
   \label{fig:p1_conf}
 \end{figure}
 
 表\ref{tab:p1_conf}显示，抽样集、扩展集及全量记录的冲突率均处于 $0.221\sim0.225$。统计集合的变化未明显改变这一比例。
 
-全量记录的 Kendall 系数为 $0.069$，表明排序一致程度较弱。尽管 $\chi^2$ 检验得到 $p<0.001$，大样本下的统计显著性并不意味着高度一致。冲突比例的比较则显示，实际值为 $22.3\%$，独立参照为 $28.9\%$，二者比值为 $0.774$。两项结果说明，指标间存在共同判断，但仍保留较多分歧。
+全量排序的 Kendall 系数为 $0.069$，表明排序一致程度有限。尽管 $\chi^2$ 检验得到 $p<0.001$，大样本下的统计显著性不能代替对一致程度的判断。实际冲突率为 $22.3\%$，低于独立参照的 $28.9\%$，二者比值为 $0.774$。两项统计量说明，指标间存在共同方向，也保留了较多分歧。
 
-分歧与指标所测内容及其计算方式有关。rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy 和 rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words 都描述词汇多样性，但使用的尺度不同；modernbert\_\allowbreak{}professionalism 面对学术文本与论坛内容时，也可能给出不同评价。分布形态还会增加差异，例如 ad\_\allowbreak{}en 的二分类概率在长文档上容易靠近两端。这些因素共同说明，同一文本未必在每个指标上都得到相近评价。
+这些分歧既来自指标含义，也来自计算尺度。rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy 与 rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words 都关注词汇多样性，却不使用同一尺度；modernbert\_\allowbreak{}professionalism 对学术文本和论坛内容的反应也可能不同。另如 ad\_\allowbreak{}en，长文档中的二分类概率容易靠近两端。由此，同一文本在不同指标下得到不同评价是可以预期的。
 
 计算领域均值时仍纳入冲突样本，综合裁决使用 $Q_i$ 相对领域中位数的高低，同时保留标记。后两问采用的是聚合结果，不以这些样本单独作判断。
 
@@ -310,31 +310,31 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 
 图\ref{fig:p1_heatmap}以 17 个训练领域为行、13 个验证领域为列，展示全部 221 项中心化回归系数。颜色表示系数的正负及大小，色标在 $[-1,1]$ 内为线性映射，其余区间采用对称对数映射；每列仅标注绝对值最大的系数。图\ref{fig:p1_scatter}汇总 1M 检验集的 $3{,}328$ 个实测与预测数据点，六边形颜色表示分箱内记录数，上方与右侧分别为实测损失和预测损失的频数分布。
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图1_训练配比结构.png}
-  \caption{前 8 组训练配方的领域占比热图与全部 512 组配方的平均占比}
+  \caption{训练配方分布}
   \label{fig:p1_structure}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图2_线性模型R2.png}
-  \caption{1M 训练与检验的决定系数及 60M、1B 检验的 Pearson 相关系数}
+  \caption{配比回归检验}
   \label{fig:p1_r2}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图4_混合系数热力图.png}
-  \caption{17 个训练领域与 13 个验证领域的中心化回归系数热图}
+  \caption{领域回归系数}
   \label{fig:p1_heatmap}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图3_预测vs实测.png}
-  \caption{1M 检验集实测与预测损失的六边形分箱频数及边缘分布}
+  \caption{预测与实测损失}
   \label{fig:p1_scatter}
 \end{figure}
 
@@ -348,10 +348,10 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 
 文本质量与损失难度并非同一个概念。图\ref{fig:p1_quality}利用 6 个可映射领域，对照 A1--A3 的熵权评分 $Q$ 与损失代理 $Q^{(\text{loss})}$ 的排序。右侧连线连接同一领域在两套口径下的名次，名次 1 表示得分最高。
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图5_领域质量评分.png}
-  \caption{13 个验证域的损失难度代理得分及 6 个映射领域的两套质量名次对照}
+  \caption{质量与损失难度}
   \label{fig:p1_quality}
 \end{figure}
 
@@ -392,16 +392,16 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 \end{longtable}
 \endgroup
 
-推荐配方提高了 pubmed\_\allowbreak{}central、stackexchange、pubmed\_\allowbreak{}abstracts 的占比，并降低 pile\_\allowbreak{}cc、arxiv、github 和 freelaw 的占比，见表\ref{tab:p1_rec}。这些调整以 13 个验证域的加权平均损失为依据，不构成对各领域文本质量的重新评价。例如，arxiv 占比下降，说明在现有任务权重与约束下，将相应预算分配至其他领域更有利，但这并不说明 arxiv 语料质量较低。
+表\ref{tab:p1_rec}中的推荐方案提高了 pubmed\_\allowbreak{}central、stackexchange、pubmed\_\allowbreak{}abstracts 的占比，并降低 pile\_\allowbreak{}cc、arxiv、github 和 freelaw 的占比。这些调整以 13 个验证域的加权平均损失为目标，不构成对各领域文本质量的重新排序。例如，arxiv 占比下降，仅表示在现有任务权重与约束下，将相应预算分配至其他领域更有利，并不说明 arxiv 语料质量较低。
 
-图\ref{fig:p1_extrap}进一步比较相同配方下的规模差异。60M/1M 的领域损失比均值处于 $0.51\sim0.82$。外推表中，10B 的 est/train 因子均值为 $0.338$，标准差为 $0.038$；70B 的均值为 $0.266$，标准差为 $0.036$。这些比例可为跨规模调整提供参照，但 10B、70B 并非新增观测，仅用于检查估算关系的一致性。
+图\ref{fig:p1_extrap}比较相同配方下的跨尺度损失比。60M/1M 的领域损失比均值处于 $0.51\sim0.82$；外推记录中，10B 的 est/train 因子均值为 $0.338$，标准差为 $0.038$，70B 对应的均值与标准差分别为 $0.266$、$0.036$。10B 和 70B 没有新增实测训练记录，这些数值仅用于检查估算比例的稳定性。
 
 图\ref{fig:p1_extrap}(A)的各领域在每个外推尺度下均包含 63 条记录，箱体对应第 25 至第 75 百分位，箱内竖线为中位数，两端须为最小值和最大值；图中比值为外推损失与同配方 1M 训练损失之比。图\ref{fig:p1_extrap}(B)的圆点与误差线分别表示同配方 60M/1M 损失比的均值和标准差。
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图7_外推与跨尺度.png}
-  \caption{10B、70B 外推损失比的箱线分布及同配方 60M/1M 损失比的均值与标准差}
+  \caption{跨尺度损失比较}
   \label{fig:p1_extrap}
 \end{figure}
 
