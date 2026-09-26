@@ -1,0 +1,248 @@
+{
+  "review_date": "2026-09-26",
+  "base_commit": "35ca26d0039a9d5f3ecc61354af58d30ed1a7f5e",
+  "scope": "Static equivalence review only; models and figures were not rerun. Original generation manifests retain their historical hashes and timings.",
+  "historical_manifest": "求解/复现清单.json",
+  "source_files": [
+    {
+      "path": "求解/_common.py",
+      "historical_run_sha256": "2d0e79bf52badf010cd67629701fdb2905fb63914b3705a95f557d9e16a4939e",
+      "current_source_sha256": "7af49b9d5de8ddc3feace1566e43829afffcdb935b94e735cc699938b0a04dcd",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/复现论文.py",
+      "historical_run_sha256": "8056665eae2e55172dd1154492b80757282ed034edae3e724010b0ff8c1064ab",
+      "current_source_sha256": "3b9c25a523f1f3688c4caeaab23ea99762a366176f734255ad552e6086c84cf6",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/绘制问题三四流程图.py",
+      "historical_run_sha256": "051d8e57a426f2a7df23be01b8d21712cdd443fa1ffc626ebd25c2b1c5a59471",
+      "current_source_sha256": "877b71c49d419dc1b8c266b14e8c3ea2de87babd1775baeab7c6014db9443385",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题一/出版导出.py",
+      "historical_run_sha256": "38e89034257602f7f55aa43cf974cc232a8157cde9c7371e5eb4146893bf8279",
+      "current_source_sha256": "761f0fef7c7729089bd108a2e21a65f36e4607c413b772621a97a0dcae3dc9d5",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题一/展示风格公共.py",
+      "historical_run_sha256": "edd03f372270c1c475dac3447c67384f6c2b1f9f036ed96a5e0f89316467f1e2",
+      "current_source_sha256": "243391192159fd14500259d2be36b0a7d39044222ddaacec65b889bc5bb0085c",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题一/展示风格冲突.py",
+      "historical_run_sha256": "0aa5fe5f5a279ee7584e09b1afb9cead71eb7936164218a6d285552bec746b18",
+      "current_source_sha256": "9ad8afbeb746711f9bbc8e207a20bd05d2a4b064df77a0bb6ad7fc8c72253576",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题一/展示风格概览.py",
+      "historical_run_sha256": "1fcb3cf5f936e65485d160f6ae9c832ac04adb24f894b41cab60dccb3b2882c3",
+      "current_source_sha256": "39df371b9dce63cf237a4c4cdddf67cdfbcc0c53806cd6eb69f14f684defd160",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题一/展示风格流程.py",
+      "historical_run_sha256": "ec06e6432274a87f15bc18a7858d925786cccd18378aca8c4fc12dc442799e6d",
+      "current_source_sha256": "d5e281564acb3fdf50d638fcb2ce9c472b216a1884fc7e23f549af67a38add4d",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题一/展示风格诊断.py",
+      "historical_run_sha256": "b228303e140d110297d035b3c888c5e35f66fdc34912f88736f6fbb2950ee7f2",
+      "current_source_sha256": "5bdb6cff6672a2b11a2d1b0490dc6f772f4359b6e84a7a36838b002d5c69362c",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题一/展示风格非线性.py",
+      "historical_run_sha256": "7d935d7c27b15c7ae62cdd39eba522ae02e9e0bdca6b2b6092d20f41c59065cd",
+      "current_source_sha256": "da9e33698fa6e52eede5743f14f3559bd9d0032662d087d01ec084b6cc809e8e",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题一/绘图数据.py",
+      "historical_run_sha256": "4c82be09d9c86344d9df0a34ff60c5199ee9e1af83eceb2352f551ef4df84448",
+      "current_source_sha256": "b19704b3c94b34f31450adac63dd714f692aaf8b59d10211359d9c8a845ef183",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题一/重绘图表.py",
+      "historical_run_sha256": "cd9dcf326a823820a3d9d04fc55314fab2eed6ab020f809e5914e907d6ece645",
+      "current_source_sha256": "ba6230cf0cc99bd34b60a3ce8ab1d24b4d953c07ef35375e504cc817968fe107",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题一/问题一.py",
+      "historical_run_sha256": "7bd1b7a626ce3723fe34e6377cc3d4cf4a9c57f0a71cb6991118d1b146fd1768",
+      "current_source_sha256": "0c67881891d70ecef1d8f115c1c94842d344d7bb8e16e8ed9e598ed97f5712ca",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题一/非线性代理对照.py",
+      "historical_run_sha256": "9f85b7eaa418c7affca508bc8184c8ffc90adcb2cdaa8ee394dd028b084ef58d",
+      "current_source_sha256": "a0cdbb81cda09ad3c545400cb8058dbb2a2220669e6430a6942d348bb081c5d0",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题三/论文绘图.py",
+      "historical_run_sha256": "bea56d05eb7f9a583682e4a8cadca5de53ac54ce2258a5ca59e1250f674fabf4",
+      "current_source_sha256": "936650ea50de9615f2898b7c8e61ee0243b1060b011b741d4621950bafd2ebcb",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题三/问题三.py",
+      "historical_run_sha256": "32eeac8bea0916879c7aa135dd02a7b1d556f81b00307093423774f663d1bf4f",
+      "current_source_sha256": "2488e7c111bd8c12a20dd86f2d6cf94c6af6763c1945d61dc8c3c9da1761e029",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题二/重绘图表.py",
+      "historical_run_sha256": "ea609a1f4d1ec16ab568029fec25d8e76bf205cb82bf8ab1c5a3a721a58e7a77",
+      "current_source_sha256": "76e4f35b3817c41b03f7313d97d48bda7818e4c50d84ddd566573ae95a93ae19",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题二/问题二.py",
+      "historical_run_sha256": "36e3ef2bd47acedf147f7e8753e1a4c2b265af8f8b97e83d4108d21d96d40bf5",
+      "current_source_sha256": "8847f7718f96cc02c9b810ad236bee7796b80f6d01e5da7a5ee5835cc5bb63eb",
+      "historical_source": {
+        "kind": "historical_run_copy",
+        "run": "audit14/repro_final/model-check-b6n4fcir",
+        "newline": "original mixed or CRLF bytes"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题四/重绘图表.py",
+      "historical_run_sha256": "48aaf7cfef45e26d83444c72cddc1ad09aba57da2d52221a50b94d74b63c6781",
+      "current_source_sha256": "007c48e21f2376909c2d9eca5310f12060657225ad1a10a05e858b16e9d36c48",
+      "historical_source": {
+        "kind": "git",
+        "commit": "d5e8463",
+        "newline": "Git content restored to CRLF"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    },
+    {
+      "path": "求解/问题四/问题四.py",
+      "historical_run_sha256": "b08f26807ce01e049961e13085f4660baa883f5da70c1b15babeeb111952b633",
+      "current_source_sha256": "843f976ed7c82fbb15b2028f31d9b533feab16d8af2d9aa238a19efbb67ee815",
+      "historical_source": {
+        "kind": "git",
+        "commit": "d5e8463",
+        "newline": "Git content restored to CRLF"
+      },
+      "ast_equal": true,
+      "differences_only_comments_and_newlines": true
+    }
+  ]
+}
