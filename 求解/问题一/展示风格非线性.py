@@ -1,5 +1,5 @@
-# 本程序的整理与核对使用 Codex 辅助；模型：GPT-6 系列；机构：OpenAI；系列首次发布日期：2026-09-03。
-# 本程序由 OpenAI Codex（GPT-6）辅助实现；仅从保存的验证结果绘图。
+# 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6；机构：OpenAI；版本发布日期：2026-04-21。
+# 本程序由 OpenAI Codex（GPT-5.6）辅助实现；仅从保存的验证结果绘图。
 """核岭增强的证据图：逐域精度及逐配方平均损失；不重新拟合。"""
 from pathlib import Path
 import numpy as np

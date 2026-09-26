@@ -1,5 +1,5 @@
-# 本程序的整理与核对使用 Codex 辅助；模型：GPT-6 系列；机构：OpenAI；系列首次发布日期：2026-09-03。
-# 本程序由 OpenAI Codex（GPT-6）辅助实现，用于统一执行正式绘图与隔离复核。
+# 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6；机构：OpenAI；版本发布日期：2026-04-21。
+# 本程序由 OpenAI Codex（GPT-5.6）辅助实现，用于统一执行正式绘图与隔离复核。
 """在仓库根目录执行：
 python 求解/复现论文.py --data-dir <附件根目录> --mode figures
 python 求解/复现论文.py --data-dir <附件根目录> --mode verify-models

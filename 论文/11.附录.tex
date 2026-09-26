@@ -133,9 +133,9 @@
 
 \subsection*{附录 D：运行环境与核心实现}
 
-本论文末尾对人工智能工具的实际使用范围作统一说明。腾讯 WorkBuddy 接入 DeepSeek-V4-Flash（2026-07-31 公开测试）用于图表展示参考，GLM-5.1 用于排版检查；OpenAI Codex（GPT-5.4、GPT-6 系列）用于程序整理、数据整理和结果复核。各问局部说明只覆盖对应环节，所有采用内容均经队伍核验并以保存的输入、输出和源程序为准。工具信息见文献 \cite{ai_workbuddy,ai_glm,ai_codex54,ai_codex6}。
+本论文末尾对人工智能工具的实际使用范围作统一说明。腾讯 WorkBuddy 接入 DeepSeek-V4-Flash（2026-07-31 公开测试）用于图表展示参考，GLM-5.1 用于排版检查；OpenAI Codex（GPT-5.6，2026-04-21）用于程序整理、数据整理和结果复核。工具信息见文献 \cite{ai_workbuddy,ai_glm,ai_codex56}。
 
-运行输入、参数及输出以随文提供的源程序和结果文件为准。各问程序开头注明辅助工具及使用范围。
+各程序的运行输入、参数和输出关系见附录代码清单及表\ref{tab:code_map}；各问程序开头注明辅助工具及使用范围。
 
 程序使用 Python 3，主要依赖 NumPy、pandas、SciPy、scikit-learn、Matplotlib 和 Pillow，数据解压及 JSON 读取调用 Python 标准库。四问共用 求解/\allowbreak{}\_common.py，附件根目录由环境变量 MODELING\_DATA\_DIR 或程序参数指定，也可放在项目祖先目录的 real\_attachments 下。压缩 JSONL 文件直接读取，无需修改附件。下面列出四问的完整主程序，涵盖数据读取、模型求解、检验和结果输出；公共模块及正式绘图依赖也在后文完整列出，代码清单直接引用实际源文件。
 

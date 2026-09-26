@@ -1,5 +1,5 @@
-# 本程序的整理与核对使用 Codex 辅助；模型：GPT-6 系列；机构：OpenAI；系列首次发布日期：2026-09-03。
-# 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-6）辅助。
+# 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6；机构：OpenAI；版本发布日期：2026-04-21。
+# 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-5.6）辅助。
 """问题一双泳道流程图；仅调整展示，不运行模型或读取原始附件。
 
 使用 academic-research-suite 的 visualization_agent 绘图检查规范；
