@@ -166,7 +166,7 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。列
 \Needspace{4\baselineskip}
 \textbf{1. 综合质量评分}\par\nopagebreak[4]
 
-将预处理后的 $m$ 条文本表示为矩阵 $\bm X=(x'_{ij})$，每行包含 22 项质量值。先逐列计算信息熵 $e_j$，再根据信息差异确定权重 $w_j$：
+将预处理后的 $m$ 条文本表示为矩阵 $\bm X=(x'_{ij})$，每行包含 22 项质量值。以 Shannon 信息熵\cite{shannon1948}描述各列得分的分布，再用归一化熵 $e_j$ 的信息差异确定权重 $w_j$：
 \begin{equation}
     e_j = -\frac{1}{\ln m}\sum_{i=1}^{m} f_{ij}\ln f_{ij},\qquad f_{ij}=\frac{x'_{ij}+\varepsilon}{\sum_i (x'_{ij}+\varepsilon)},\qquad
     w_j = \frac{1-e_j}{\sum_{j=1}^{22}(1-e_j)}
@@ -200,7 +200,7 @@ $\bar L_d$ 为领域 $d$ 的平均交叉熵损失。代理值的计算范围为�
 \begin{equation}
     \rho_c = \frac{1}{m\binom{22}{2}}\sum_{i=1}^{m}\sum_{j<k}\mathbf 1\{\delta_i(j,k)>\tau\}
 \end{equation}
-为比较实际冲突比例，假定各指标为相互独立的标准正态变量，得到参照值 $\rho_0=2\Phi(-\tau/\sqrt2)$。当 $\rho_c/\rho_0<1$ 时，实际冲突比例低于该参照。另将 22 个指标视为评价者、$m$ 条文本视为评价对象，采用 Kendall 协同系数衡量整体排序的一致程度：
+为比较实际冲突比例，假定各指标为相互独立的标准正态变量，得到参照值 $\rho_0=2\Phi(-\tau/\sqrt2)$。当 $\rho_c/\rho_0<1$ 时，实际冲突比例低于该参照。另将 22 个指标视为评价者、$m$ 条文本视为评价对象，采用 Kendall 协同系数\cite{kendall1939}衡量整体排序的一致程度：
 \begin{equation}
     W = \frac{12\sum_i (R_i-\bar R)^2}{22^2(m^3-m)-22\sum_{j=1}^{22}T_j},\qquad
     T_j=\sum_g(t_{jg}^3-t_{jg})
@@ -224,7 +224,7 @@ Kendall 系数使用的是各指标对全部文本给出的排序。若两个指
 \begin{equation}
     \hat{\bm L} = \bm P \bm A + \bm 1 \bm b^{\top}
 \end{equation}
-在理想行和约束下，普通回归无法唯一识别截距与配比系数；舍入偏差虽可打破严格共线性，仍会形成近似共线。为获得稳定估计，对系数矩阵 $\bm A\in\mathbb R^{17\times13}$ 施加岭惩罚，并与截距 $\bm b$ 联合求解：
+在理想行和约束下，普通回归无法唯一识别截距与配比系数；舍入偏差虽可打破严格共线性，仍会形成近似共线。为获得稳定估计，对系数矩阵 $\bm A\in\mathbb R^{17\times13}$ 施加岭惩罚\cite{hoerl1970ridge}，并与截距 $\bm b$ 联合求解：
 \begin{equation}
     \min_{\bm A,\bm b}\ \left\|\bm L-\bm P\bm A-\bm 1\bm b^{\top}\right\|_F^2 + \lambda\left\|\bm A\right\|_F^2
 \end{equation}
@@ -261,7 +261,7 @@ Kendall 系数使用的是各指标对全部文本给出的排序。若两个指
 \Needspace{4\baselineskip}
 \textbf{4. 平方根嵌入核岭预测}\par\nopagebreak[4]
 
-线性模型便于解释领域间的份额转移，但可能遗漏配方对损失的非线性影响。为此，我们先对存在舍入误差的配方逐行闭合，再作平方根变换，在保留零占比的同时构造核函数：
+线性模型便于解释领域间的份额转移，但可能遗漏配方对损失的非线性影响。核岭回归将岭惩罚与核函数结合，可用于非线性预测\cite{sklearn_krr}。为此，我们先对存在舍入误差的配方逐行闭合，再作平方根变换，在保留零占比的同时构造核函数：
 \begin{equation}
  \tilde p_k=\frac{p_k}{\sum_l p_l},\qquad
  k_\theta(\bm p,\bm q)=\exp\!\left[-\theta\sum_{k=1}^{17}
@@ -407,7 +407,7 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 \Needspace{4\baselineskip}
 \textbf{2. 领域配比与损失的拟合及验证}\par\nopagebreak[4]
 
-配比拟合的结果从四个角度展示：图\ref{fig:p1_structure}给出训练配方构成，图\ref{fig:p1_r2}比较训练与检验精度，图\ref{fig:p1_heatmap}展示不同训练领域的系数差异，图\ref{fig:p1_scatter}对照同尺度的预测和观测损失。
+配比拟合的结果依次展示训练配方构成、线性基线与核岭的验证表现、不同训练领域的相对系数，以及同尺度预测和观测损失的对应关系。
 
 \begingroup
 \setlength{\intextsep}{6pt plus 1pt minus 1pt}
