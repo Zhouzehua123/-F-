@@ -8,9 +8,9 @@
 
 \subsubsection{具体分析}
 
-问题一需要回答三个相互关联的问题：如何将 22 个质量指标合成为可比较的评分，如何识别并处理指标评价之间的冲突，以及训练领域配比如何影响验证损失。本文据此建立质量综合评价、冲突分析和配比回归三个模块，分别采用熵权法、成对标准化得分差与 Kendall 协同系数、岭正则线性混合回归。质量评价给出样本、语料和领域三个层次的评分，配比回归则描述 17 个训练领域配比与 13 个验证领域交叉熵损失之间的关系\cite{liu2024regmix}。
+质量指标有 22 个，但它们的取值形式和评价侧重点并不相同。本问先将这些信号整理为统一的评分，再检查同一文本是否受到相反评价。评分采用熵权法，分别汇总到样本、语料和领域；评价分歧则用成对标准化得分差和 Kendall 协同系数描述。完成质量评价后，再以岭正则线性混合回归研究 17 个训练领域与 13 个验证领域之间的配比--损失关系\cite{liu2024regmix}，据此推荐语料配方。
 
-具体求解分为两条流程。质量评价流程从 A1--A3 的质量信号出发，经过缺失处理、指标标量化、方向统一和归一化，计算综合评分并分析指标冲突。配比建模流程将训练配方与验证损失按索引匹配，用岭回归估计配比与损失的关系，再利用 1M、60M、1B 检验集及 10B、70B 外推表考察模型表现，求得有界推荐配比。两条流程通过领域映射表关联，整体步骤见图\ref{fig:q1_workflow}。
+图\ref{fig:q1_workflow}中的两条分析线分别处理质量和配比。A1--A3 先补齐缺失，将列表值压缩为标量，再统一方向、归一化，最后计算质量与冲突。配比部分把训练配方和验证损失按索引配对，完成岭回归后，依次用 1M、60M、1B 检验记录和 10B、70B 外推表作比较，再计算有界推荐方案。两条线所用的领域分类通过映射表联系起来。
 
 \begin{figure}[htbp]
   \centering
@@ -24,7 +24,7 @@
 \Needspace{4\baselineskip}
 \textbf{1. 数据来源与预处理}\par\nopagebreak[4]
 
-问题一使用两类数据。配方表 A4 包含 17 个 The Pile 子领域的训练配比，各分量非负且总和为 1\cite{gao2020pile}；损失表 A5 包含 13 个验证领域的交叉熵损失，两表通过 index 列对应。nih\_\allowbreak{}exporter、enron\_\allowbreak{}emails、europarl 和 philpapers 四个训练领域没有对应的验证损失列，因此保留其配比分量，并在系数解释中将其标为“间接影响域”。
+一组训练配方对应一组验证损失，二者分别记录在 A4、A5 中，以 index 连接。A4 使用 The Pile 的 17 个领域，每项占比非负、整行和为 1\cite{gao2020pile}；A5 则只有 13 列领域交叉熵损失。其中 nih\_\allowbreak{}exporter、enron\_\allowbreak{}emails、europarl 和 philpapers 没有对应的验证列，但仍是训练配方的一部分。本文将其记为“间接影响域”，保留占比参与拟合，不把它们解释为单独的验证目标。
 
 A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为使各指标能够共同参与评分，需要统一其方向。设第 $j$ 个指标的原始值为 $x_j$，正向指标作极差归一化，负向指标反向缩放；对于过长或过短均不合适的长度型指标，使用其与稳健中心的接近程度表示质量：
 \begin{equation}
@@ -34,7 +34,7 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
         \exp\!\left(-\dfrac{|\ln(1+x_j)-m_j|}{2.5\,\text{MAD}_j}\right), & \text{长度型指标}
     \end{cases}
 \end{equation}
-其中，$m_j$ 和 $\text{MAD}_j$ 分别为对数尺度上的中位数和中位绝对偏差。处理后的 $x'_j$ 位于 $[0,1]$，数值越大表示质量越高。表\ref{tab:p1_dir}列出了各指标的类型、方向依据及熵权。8 个列表型指标按有序类别 logits 处理，先由 softmax 概率计算归一化期望级别，将其压缩为标量，再参与归一化。
+上述变换把质量值放到 $[0,1]$ 内，并规定得分越高、质量越好。其中 $m_j$ 是对数值的中位数，$\text{MAD}_j$ 是对应的中位绝对偏差。列表型指标不能直接与标量合成，故对 8 个此类字段先将有序类别 logits 经 softmax 转成概率，再求归一化期望级别，得到一个可参与归一化的数值。表\ref{tab:p1_dir}汇总了字段含义、处理方向和计算权重。
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
@@ -81,9 +81,9 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
 \begin{equation}
     Q_i = \sum_{j=1}^{22} w_j\, x'_{ij},\qquad Q_d=\frac{1}{n_d}\sum_{i\in\mathcal D_d}Q_i,\qquad \sum_j w_j=1
 \end{equation}
-权重 $w_j$ 由熵权法确定。表\ref{tab:p1_dir}中，modernbert\_\allowbreak{}reasoning 和 modernbert\_\allowbreak{}cleanliness 的权重分别为 $0.152$ 和 $0.143$，在本指标体系中提供的信息量最多。熵权对指标分布形态较敏感，极端左偏的指标可能获得较大权重，因此还需考察赋权方案变化对结果的影响，相关检验见第\ref{sec:check}节。
+在表\ref{tab:p1_dir}中，综合分数受推理与洁净程度两项影响较多：modernbert\_\allowbreak{}reasoning 的权重为 $0.152$，modernbert\_\allowbreak{}cleanliness 为 $0.143$。不过，$w_j$ 是从样本分布算出的信息差异，不能直接理解为指标本身有多重要。极端左偏的分布也可能取得较高熵权，因此第\ref{sec:check}节还会更换赋权方式，观察结果是否改变。
 
-读取质量信号时逐字段检查缺失情况，结果见表\ref{tab:p1_missing}。缺失值按对应指标的中位数填充，以避免将缺失直接解释为高质量或低质量。
+字段缺失情况列于表\ref{tab:p1_missing}。逐项检查后，对缺失处使用该指标的中位数填补，使其先取一个居中的水平，避免把缺失直接计作高分或低分。
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
@@ -110,7 +110,7 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
 \Needspace{4\baselineskip}
 \textbf{2. 方法选择及其依据}\par\nopagebreak[4]
 
-质量聚合比较熵权法、等权平均和 PCA 第一主成分三种方案，结果见表\ref{tab:algo1}。冲突分析采用成对标准化得分差与 Kendall 协同系数，分别考察单个样本的评价分歧和整体排序的一致程度。配比建模则比较普通最小二乘、岭回归与随机森林。
+综合质量采用哪种评分方式，需要结合解释性和计算结果选择。表\ref{tab:algo1}比较了熵权法、等权平均及 PCA 第一主成分。评价分歧则分开考察：成对标准化得分差回答一条文本在哪些指标上有分歧，Kendall 协同系数回答整体排序是否一致。配比拟合的候选方法包括普通最小二乘、岭回归和随机森林，本文采用岭回归。
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
@@ -134,49 +134,49 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
 \end{longtable}
 \endgroup
 
-表\ref{tab:algo1}显示，等权方案与熵权方案的样本级得分相关系数为 $0.854$，领域排序的 Spearman 相关系数为 $0.679$。两种方案的主体格局相近，但部分领域名次会随赋权方式改变，因此将赋权方案纳入灵敏度分析。本文采用熵权法，利用指标自身的信息量确定权重；PCA 虽可降维并减少相关性，但主成分含义较难解释，受篇幅限制不作备选。
+表\ref{tab:algo1}显示，熵权与等权评分的样本相关为 $0.854$，但按领域均分排序后的 Spearman 系数为 $0.679$。两种赋权方式给出的总体趋势相近，具体领域的名次却会改变。本文采用熵权法，以样本中的信息差异确定权重，并继续检验改换权重的影响。PCA 虽能减少相关信息、压缩维度，其第一主成分却不容易直接说明文本质量，故未作为最终评分。
 
-17 个领域配比之和为 1，配比变量之间存在闭合约束。岭回归通过 $L_2$ 正则化稳定系数估计，兼顾模型解释与外推分析，因此用于配比建模。冲突分析同时报告样本级分歧与 Kendall 协同系数：前者对应同一文本受到不同评价的情形，后者描述各指标对样本排序的整体一致性。
+配比回归更需要注意系数稳定性。17 项占比之和为 1，增加其中一项就必须减少其他项，普通回归可能因此出现不稳定估计。岭回归加入 $L_2$ 惩罚后，既可缓解这一问题，也保留了线性系数的解释。
 
 \subsubsection{模型建立}
 
 \Needspace{4\baselineskip}
 \textbf{1. 综合质量评分}\par\nopagebreak[4]
 
-将 $m$ 条质量样本的 22 个指标统一方向并归一化，记所得矩阵为 $\bm X=(x'_{ij})$。由各指标在样本间的分布计算信息熵 $e_j$，再确定熵权 $w_j$：
+处理后的 $m$ 条文本组成矩阵 $\bm X=(x'_{ij})$，每行含 22 项质量值。赋权时先逐列计算信息熵 $e_j$，再由列间的信息差异确定 $w_j$，计算如下：
 \begin{equation}
     e_j = -\frac{1}{\ln m}\sum_{i=1}^{m} f_{ij}\ln f_{ij},\qquad f_{ij}=\frac{x'_{ij}+\varepsilon}{\sum_i (x'_{ij}+\varepsilon)},\qquad
     w_j = \frac{1-e_j}{\sum_{j=1}^{22}(1-e_j)}
 \end{equation}
-为与附件 B 的损失数据耦合，本问同时给出“结果导向”的领域质量代理指标：以各验证域在平均配方下的观测损失表征领域内在难度并映射为质量：
+除了文本指标，还可从验证损失观察各领域的拟合难度。在平均配方下，损失较低的领域更容易被当前模型拟合。为将这种差别与附件 B 联系起来，另定义一个基于损失的质量代理值：
 \begin{equation}
     Q_d^{(\text{loss})}=1-\frac{\bar L_d-\min_d \bar L_d}{\max_d \bar L_d-\min_d \bar L_d}
 \end{equation}
-其中 $\bar L_d$ 为领域 $d$ 的平均交叉熵损失。该代理指标仅在 13 个可测损失域上有定义，与 A1--A3 的 7 个质量域并非同一分类体系，二者的关联由 A16 映射表建立、并在模型求解中作一致性检验。
+$\bar L_d$ 为领域 $d$ 的平均交叉熵损失。这里能够计算代理值的是有损失列的 13 个领域，而文本质量来自 A1--A3 的 7 类语料。两套分类先按 A16 对应，再在结果部分比较它们的排序，避免把不同含义的分数直接混用。
 
 \Needspace{4\baselineskip}
 \textbf{2. 质量冲突的定义与处理}\par\nopagebreak[4]
 
-当两个质量指标对同一文本给出显著不一致的评价时即产生冲突。以方向统一后的标准化得分为基础，定义第 $i$ 样本在指标 $j$ 与 $k$ 上的冲突指示：
+若同一条文本在两个指标上相差较大，就有必要检查它的综合评价。为使不同指标的差值可比，先对同向指标标准化，再定义样本 $i$ 在指标 $j$、$k$ 之间的距离：
 \begin{equation}
     \delta_i(j,k) = \left| z_{ij} - z_{ik} \right|,\qquad z_{ij}=\frac{x'_{ij}-\mu_j}{\sigma_j},\qquad
     \mathbf 1\{\delta_i(j,k)>\tau\}
 \end{equation}
-取阈值 $\tau=1.5$；全样本冲突率为
+以 $\tau=1.5$ 标记冲突，将全部样本中的指标对一并统计，得到全样本冲突率：
 \begin{equation}
     \rho_c = \frac{1}{m\binom{22}{2}}\sum_{i=1}^{m}\sum_{j<k}\mathbf 1\{\delta_i(j,k)>\tau\}
 \end{equation}
-为给出参照系，本文同时计算“指标独立”基准 $\rho_0=2\Phi(-\tau/\sqrt2)$：若 $\rho_c/\rho_0<1$，说明指标间存在正相关、并非互相矛盾。指标间整体一致性用 Kendall 协同系数检验（22 个指标为评价者、$m$ 条文本为评价对象）：
+冲突比例还需要一个比较标准。假定指标为相互独立的标准正态变量，可得参照值 $\rho_0=2\Phi(-\tau/\sqrt2)$；若 $\rho_c/\rho_0<1$，说明实际冲突少于这一参照。另一方面，把 22 个指标当作评价者、$m$ 条文本当作评价对象，用 Kendall 协同系数检查整体排序：
 \begin{equation}
     W = \frac{12\sum_i (R_i-\bar R)^2}{22^2\,(m^3-m)},\qquad R_i=\sum_{j=1}^{22} r_{ij},\qquad
     \chi^2 = 22(m-1)W
 \end{equation}
-其中 $r_{ij}$ 为第 $i$ 样本在第 $j$ 指标上的秩。消解规则为：若某样本被判为冲突，则以其上“多数指标”的方向（即加权得分 $Q_i$ 相对该样本所在域中位数的偏离方向）作为该样本的最终质量裁决，并在报告中保留冲突标记以供下游剔除或降权。
+其中 $r_{ij}$ 为指标 $j$ 给样本 $i$ 的排序。遇到已标记的冲突文本时，比较加权评分 $Q_i$ 与本领域中位数，据其高低作综合判断，本文称为“多数指标方向裁决”。裁决之后仍保留冲突标记，便于后续根据用途选择保留、剔除或降低权重。
 
 \Needspace{4\baselineskip}
 \textbf{3. 领域配比的线性混合回归}\par\nopagebreak[4]
 
-记训练配方矩阵为 $\bm P\in[0,1]^{n\times17}$，每行对应一组配方且分量之和为 1；损失矩阵为 $\bm L\in\mathbb R^{n\times13}$。对每个验证领域建立线性混合模型：
+将训练配方排成 $\bm P\in[0,1]^{n\times17}$，将逐组对应的验证损失排成 $\bm L\in\mathbb R^{n\times13}$。由于每组占比之和为 1，$\bm P$ 的每一行也满足这一条件。随后分别对 13 个验证领域拟合线性关系：
 \begin{equation}
     L_{d}(\bm p) = \sum_{k=1}^{17} a_{dk}\, p_k + b_d,\qquad d=1,\dots,13
 \end{equation}
@@ -184,7 +184,7 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
 \begin{equation}
     \hat{\bm L} = \bm P \bm A + \bm 1 \bm b^{\top}
 \end{equation}
-由于 $\bm P$ 各行和为 1，回归存在闭合不可辨识性，采用岭正则估计系数矩阵 $\bm A\in\mathbb R^{17\times 13}$ 与截距 $\bm b$：
+行和恒定使截距与配比系数在普通回归中不能唯一分开。为获得稳定估计，给系数矩阵 $\bm A\in\mathbb R^{17\times13}$ 加入岭惩罚，与截距 $\bm b$ 一起求解：
 \begin{equation}
     \min_{\bm A,\bm b}\ \left\|\bm L-\bm P\bm A-\bm 1\bm b^{\top}\right\|_F^2 + \lambda\left\|\bm A\right\|_F^2
 \end{equation}
@@ -193,16 +193,16 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
     \begin{bmatrix}\bm A\\ \bm b^{\top}\end{bmatrix}
     = \left(\tilde{\bm P}^{\top}\tilde{\bm P}+\lambda \bm D\right)^{-1}\tilde{\bm P}^{\top}\bm L
 \end{equation}
-其中 $\tilde{\bm P}=[\bm P,\ \bm 1]$，$\bm D=\mathrm{diag}(1,\dots,1,0)$（不惩罚截距），$\lambda=10^{-3}$。
+式中，扩展矩阵为 $\tilde{\bm P}=[\bm P,\ \bm 1]$，惩罚矩阵为 $\bm D=\mathrm{diag}(1,\dots,1,0)$。最后一个对角元取零，表示不惩罚截距；本次计算取 $\lambda=10^{-3}$。
 
 \Needspace{4\baselineskip}
 \textbf{4. 混合质量指数及其增量检验}\par\nopagebreak[4]
 
-为考察质量评分的引入方式，构造混合质量指数 $\bar Q(\bm p)=\sum_k p_kQ_k$。其中，$Q_k$ 依据 A16 建立映射：direct 和 near\_\allowbreak{}direct 领域取 A1--A3 的相应领域质量，inferred 领域取全局均值。将该指数加入配比回归，进行增量检验：
+配比已经进入回归，质量评分是否还能补充信息，可以通过增量比较判断。先按占比求混合质量 $\bar Q(\bm p)=\sum_k p_kQ_k$。各 $Q_k$ 按 A16 取得：direct、near\_\allowbreak{}direct 对应到 A1--A3 的领域评分，inferred 则取全局均值。把所得 $\bar Q$ 加入回归，得到
 \begin{equation}
     \hat{\bm L} = \bm P \bm A + \bm 1 \bm b^{\top} + \bm 1\, c^{\top}\bar Q(\bm p)
 \end{equation}
-若质量项带来的 $R^2$ 增量可忽略，则说明线性配比已吸收质量信息，此时不宜重复引入以免共线；质量评分转而作为独立资源交由问题二、三使用。
+新增项的作用用前后 $R^2$ 之差衡量。增量若很小，说明这一线性质量组合对原配比模型没有明显补充，重复放入还会加重共线性。质量作为独立训练投入的作用，因而留到问题二、三另行分析。
 
 \Needspace{4\baselineskip}
 \textbf{5. 配比优化与有界推荐}\par\nopagebreak[4]
@@ -212,16 +212,18 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
     \min_{\bm p\in\Delta_{17}}\ \sum_{d\in\mathcal M} w_d\left(\sum_k a_{dk}p_k+b_d\right),
     \qquad \Delta_{17}=\left\{\bm p:\ p_k\ge0,\ \textstyle\sum_k p_k=1\right\}
 \end{equation}
-进一步将各领域配比限制在参考值的 2.5 倍以内，得到有界推荐方案。
+推荐方案还要求每个领域的占比不超过其参考值的 2.5 倍，以限制线性优化产生的集中配置。
 
 \subsubsection{模型求解}
 
-模型求解使用 A1--A3 的质量信号及 A4--A15 的配方与损失数据。质量记录共 $272{,}505$ 条，其中 A1 抽样集包含 $51{,}230$ 条，A2 与 A3 扩展集合计 $221{,}275$ 条。
+\noindent\textbf{辅助分析说明：} 本问数据整理、绘图与数值核对使用 Codex 辅助，模型为 GPT-5.4（OpenAI，2026-03-05）及 GPT-6 系列（OpenAI，2026-09-03 系列首次发布）\cite{ai_codex54,ai_codex6}。
+
+本问把质量评价与配比计算分别安排在 A1--A3 和 A4--A15 上。质量评分使用 A1 的 $51{,}230$ 条抽样记录和 A2、A3 的 $221{,}275$ 条扩展记录，合计 $272{,}505$ 条。
 
 \Needspace{4\baselineskip}
 \textbf{1. 质量评分与冲突分析}\par\nopagebreak[4]
 
-质量域的领域级评分如图\ref{fig:p1_quality_full}所示，柱高和误差线分别表示领域均值与标准差，$n$ 为对应记录数。A1 抽样集与扩展集的对照结果如表\ref{tab:p1_qa}所示。
+图\ref{fig:p1_quality_full}汇总了各领域的质量均值和离散程度，柱高和误差线分别表示领域均值与标准差，$n$ 为对应记录数。对于同时出现在抽样集与扩展集中的领域，表\ref{tab:p1_qa}进一步比较两套评分。
 
 \begin{figure}[ht]
   \centering
@@ -256,11 +258,11 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
 \end{longtable}
 \endgroup
 
-由表\ref{tab:p1_qa}可知，在同时具有抽样与扩展质量信号的两个域上（arxiv、github），两种口径的域级质量差异不超过 $0.002$（arxiv $+0.0021$、github $+0.0006$），说明抽样集对扩展集具有代表性、评分口径可跨集合迁移。
+arxiv、github 均有抽样和扩展数据，表\ref{tab:p1_qa}中两者之差依次为 $+0.0021$、$+0.0006$。这两个差值都较小，说明在可直接比较的领域中，抽样集与扩展集的平均评分接近。
 
-全体记录的领域质量排序为 arxiv（0.703）$>$ stackexchange（0.655）$>$ c4（0.637）$>$ commoncrawl（0.615）$>$ book（0.552）$\approx$ wikipedia（0.551）$>$ github（0.455）。需要指出，该排序是 22 个分类器信号的合成结果，其中若干信号（如 rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words、rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy）与文档长度相关，因此“c4/commoncrawl 高于 book/wikipedia”反映的是信号体系的口径，而非对语料价值的终极判断——这一点在使用该评分时须注意。
+全量领域均分中，arxiv 的 $0.703$ 与 github 的 $0.455$ 分别处在两端。stackexchange、c4、commoncrawl 依次为 $0.655$、$0.637$、$0.615$；book 与 wikipedia 接近，分别为 $0.552$、$0.551$。这一排序反映的是 22 个分类器信号共同给出的评价。例如，rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words 与 rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy 都会受到文档长度影响。因此，网页类得分高于书籍、百科，并不意味着它们在所有训练任务中都更有价值。
 
-冲突与一致性检验结果如表\ref{tab:p1_conf}所示。图\ref{fig:p1_conf}左侧展示冲突率最高的 12 对指标关系，边旁数值为冲突率，线宽与其成正比；右侧列出全部 22 项熵权。M01--M22 按表\ref{tab:p1_dir}的指标顺序编号，紫色与青绿色分别对应列表型与标量型指标。
+表\ref{tab:p1_conf}比较各集合的冲突比例和排序一致性；图\ref{fig:p1_conf}则给出分歧较多的指标对及对应的熵权分布。图\ref{fig:p1_conf}左侧展示冲突率最高的 12 对指标关系，边旁数值为冲突率，线宽与其成正比；右侧列出全部 22 项熵权。M01--M22 按表\ref{tab:p1_dir}的指标顺序编号，紫色与青绿色分别对应列表型与标量型指标。
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
@@ -291,16 +293,18 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
   \label{fig:p1_conf}
 \end{figure}
 
-由表\ref{tab:p1_conf}可知：（1）三套数据的冲突率几乎一致（$0.221\sim0.225$），说明冲突结构在抽样集与扩展集上同样成立，A2/A3 的结论可外推至 A1 所代表的总体；
+从表\ref{tab:p1_conf}可见，无论只统计抽样记录、扩展记录，还是合在一起计算，冲突率都在 $0.221\sim0.225$ 内。更换统计集合没有明显改变这一比例。
 
-（2）Kendall 协同系数为 $0.069$（$\chi^2$ 检验 $p<0.001$，样本量极大故显著性很高），属于“正相关但一致性较弱”的水平，与冲突率 $22.3\%$ 一致，说明“各质量指标完全一致、不存在冲突”的判断并不成立；（3）但冲突率低于指标完全独立时的基准 $28.9\%$（比值 $0.774$），说明指标间确为正相关，冲突主要发生在语义上本就不同的指标之间。
+全量记录的 Kendall 系数为 $0.069$，一致程度较弱；$\chi^2$ 检验虽有 $p<0.001$，但在大样本下显著并不代表一致性很强。冲突率的对照提供了另一面证据：实际为 $22.3\%$，独立参照为 $28.9\%$，二者比值 $0.774$。因此，指标间既有共同判断，也保留了较多分歧。
 
-冲突成因可归纳为三类：一是度量对象不同（如 rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy 与 rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words 同测“多样性”但量纲不同），二是内容类型差异（如 modernbert\_\allowbreak{}professionalism 对学术文本与论坛文本的评价尺度不同），三是分布形态差异（如 ad\_\allowbreak{}en 为二分类概率、在长文档上两极化）。
+分歧与指标所测内容及其计算方式有关。rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy 和 rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words 都描述词汇多样性，但使用的尺度不同；modernbert\_\allowbreak{}professionalism 面对学术文本与论坛内容时，也可能给出不同评价。分布形态还会增加差异，例如 ad\_\allowbreak{}en 的二分类概率在长文档上容易靠近两端。这些因素共同说明，同一文本未必在每个指标上都得到相近评价。
 
-据此本文按“多数指标方向裁决 + 冲突标记保留”的规则消解：冲突样本仍参与领域均值，但以 $Q_i$ 相对域中位数的偏离方向标注其可信度，并在问题二、三中不单独使用冲突样本。
+计算领域均值时仍纳入冲突样本，综合裁决使用 $Q_i$ 相对领域中位数的高低，同时保留标记。后两问采用的是聚合结果，不以这些样本单独作判断。
 
 \Needspace{4\baselineskip}
 \textbf{2. 领域配比与损失的拟合及验证}\par\nopagebreak[4]
+
+配比拟合的结果从四个角度展示：图\ref{fig:p1_structure}给出训练配方构成，图\ref{fig:p1_r2}比较训练与检验精度，图\ref{fig:p1_scatter}对照同尺度的预测和观测损失，图\ref{fig:p1_heatmap}展示不同训练领域的系数差异。
 
 图\ref{fig:p1_structure}将前 8 组训练配方的领域占比绘为热图，仅标注占比不低于 $10\%$ 的格子；右侧按同一领域顺序列出全部 512 组配方的平均占比。图\ref{fig:p1_r2}分别展示 1M 训练与检验的决定系数，以及 60M、1B 检验的 Pearson 相关系数；连线连接同一验证领域的两个结果。
 
@@ -334,15 +338,15 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
   \label{fig:p1_scatter}
 \end{figure}
 
-由图\ref{fig:p1_r2}可知，训练集上 13 个损失域的 $R^2$ 位于 $0.42\sim0.77$ 之间、平均 $0.629$；同尺度 1M 检验集平均 $R^2=0.619$，与训练接近，说明模型未明显过拟合。
+从图\ref{fig:p1_r2}看，同尺度检验与训练表现接近：1M 检验的平均 $R^2$ 为 $0.619$，训练均值为 $0.629$，训练集各验证域介于 $0.42\sim0.77$。在这一对照中，没有出现训练明显好于检验的现象。
 
-由于不同参数规模下损失水平本身不同（60M 与 1M 的损失比约 $0.68$），跨尺度直接比较 $R^2$ 无意义，故改用尺度无关的 Pearson 相关：60M 与 1B 检验集上的平均相关分别为 $0.782$ 与 $0.651$，表明同一套配比—损失系数可在不同参数规模间复用。
+跨规模比较时，先要注意损失基准变了。60M 相对 1M 的损失约为 $0.68$ 倍，若直接套用原来的损失尺度，误差评价会受到影响。为比较变化趋势，改用 Pearson 相关：60M 检验均值为 $0.782$，1B 为 $0.651$。配比变化对应的部分趋势仍然存在，但预测绝对损失时还需调整尺度。
 
-由图\ref{fig:p1_heatmap}可知，各训练域对验证损失的相对影响差异明显，dm\_\allowbreak{}mathematics、arxiv 等域降低损失，而 pile\_\allowbreak{}cc、ubuntu\_\allowbreak{}irc 等域抬高损失，印证了领域配比是影响模型性能的关键变量。
+图\ref{fig:p1_heatmap}显示，各训练领域对验证任务的作用并不相同。dm\_\allowbreak{}mathematics、arxiv 等领域在部分任务上对应较低损失，pile\_\allowbreak{}cc、ubuntu\_\allowbreak{}irc 等领域则表现出不同方向。配比选择因而需要结合验证任务权重，不能仅看某一个系数。
 
-为验证质量信息的引入方式，本文比较了“仅配比”与“配比+混合质量指数 $\bar Q$”两种设定：追加质量项后 13 个损失域的平均 $R^2$ 增量仅为 $9.9\times10^{-5}$，说明线性配比系数已经吸收了质量信息。因此本文不把质量评分再次作为配比模型的解释变量，而是将其作为独立资源交由问题二、三使用。
+追加 $\bar Q$ 后，13 个验证域的平均 $R^2$ 只增加 $9.9\times10^{-5}$，原配比回归几乎没有改善。这与 $\bar Q$ 本身就是占比的线性组合有关，不能据此认定质量投入没有作用。因此保留原回归，问题二、三再利用附件 B 的半合成实验研究改变质量的影响。
 
-两套质量口径（A1--A3 的熵权质量 $Q$ 与损失难度代理 $Q^{(\text{loss})}$）在 6 个可映射域上的排序一致性如图\ref{fig:p1_quality}所示。右侧连线连接同一领域在两套口径下的名次，名次 1 表示得分最高。
+文本质量与损失难度并非同一个概念。图\ref{fig:p1_quality}利用 6 个可映射领域，对照 A1--A3 的熵权评分 $Q$ 与损失代理 $Q^{(\text{loss})}$ 的排序。右侧连线连接同一领域在两套口径下的名次，名次 1 表示得分最高。
 
 \begin{figure}[ht]
   \centering
@@ -351,12 +355,12 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
   \label{fig:p1_quality}
 \end{figure}
 
-由图\ref{fig:p1_quality}(A)可知，13 个损失域的内在难度差异显著，dm\_\allowbreak{}mathematics 最易（代理质量 $1.000$）、ubuntu\_\allowbreak{}irc 最难（代理质量 $0.000$）；图\ref{fig:p1_quality}(B)显示，A16 的 direct/near\_\allowbreak{}direct 映射中两套口径的 Spearman 排序相关为 $0.60$：arxiv、stackexchange、github 三个域在两种口径下同向（文本质量高、损失也相对低），但 wikipedia、book、pile\_\allowbreak{}cc 存在明显分歧——文本质量较高而该域损失并不低（学术与百科长文属“高质量但难拟合”）。因此质量评分必须按用途区分：面向数据治理使用 A1--A3 的文本质量，面向性能预测使用损失难度代理。
+图\ref{fig:p1_quality}(A)中的端点来自损失高低：dm\_\allowbreak{}mathematics 为 $1.000$，对应 13 域中的低损失端；ubuntu\_\allowbreak{}irc 为 $0.000$，对应高损失端。再按 A16 的 direct/near\_\allowbreak{}direct 映射比较两类评分，图\ref{fig:p1_quality}(B)给出的 Spearman 系数为 $0.60$。arxiv、stackexchange、github 的相对位置较一致，wikipedia、book、pile\_\allowbreak{}cc 则不同。文本质量较高与模型容易拟合并不是一回事，故语料治理使用文本评分，损失预测仍需单独考虑领域难度。
 
 \Needspace{4\baselineskip}
 \textbf{3. 配比推荐与跨尺度分析}\par\nopagebreak[4]
 
-无约束优化倾向于把配比集中于单一低损失域（预测加权平均损失 $4.177$），不具备可落地性；故采用 2.5 倍上限的有界推荐作为最终方案，推荐配比与参考配比的对比见表\ref{tab:p1_rec}，该方案使预测加权平均损失由 $5.336$ 降至 $5.136$（下降 $0.199$）。
+没有占比上限时，线性优化会把配方集中到一个低损失领域，预测加权损失可到 $4.177$。为避免配方集中在单一领域，把各域上限限制为参考占比的 2.5 倍。表\ref{tab:p1_rec}中，有界方案的损失为 $5.136$，参考方案为 $5.336$；依据未舍入值计算，改善量为 $0.199$。
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
@@ -387,9 +391,9 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
 \end{longtable}
 \endgroup
 
-由表\ref{tab:p1_rec}可知，推荐方案应显著增加 pubmed\_\allowbreak{}central、stackexchange、pubmed\_\allowbreak{}abstracts 等学术领域的配比，同时压缩 pile\_\allowbreak{}cc、arxiv、github、freelaw 等领域的占比。需要说明的是，这一结论是针对“13 个验证域加权平均损失”这一目标的优化结果，与“提升单个域自身表现”并不等价（例如 arxiv 的配比下降并不意味着 arxiv 质量低，而是因为其对加权平均损失的边际贡献为负）。
+推荐配方增加了 pubmed\_\allowbreak{}central、stackexchange、pubmed\_\allowbreak{}abstracts 的份额，同时减少 pile\_\allowbreak{}cc、arxiv、github 和 freelaw，详见表\ref{tab:p1_rec}。这些调整服务于 13 个验证域的加权平均损失，并非重新评定各域文本质量。例如，arxiv 份额下降，表示在现有任务权重和约束下把这部分预算分给其他领域更有利，并不说明 arxiv 语料质量较低。
 
-外推稳健性方面，10B 与 70B 外推表的损失尺度因子（est/train）在各损失域上高度一致（10B 均值 $0.338$、标准差 $0.038$；70B 均值 $0.266$、标准差 $0.036$），且同配方下 60M 与 1M 的跨尺度损失比稳定（均值 $0.51\sim0.82$），说明同一套配比—损失系数可在不同参数规模间复用、具备跨尺度外推能力，如图\ref{fig:p1_extrap}所示。
+图\ref{fig:p1_extrap}进一步比较同配方下的规模差异。60M/1M 的领域损失比均值分布在 $0.51\sim0.82$。在外推表中，10B 的 est/train 因子均值为 $0.338$，标准差 $0.038$；70B 的均值为 $0.266$，标准差 $0.036$。这些比例为跨规模调整提供参照，但 10B、70B 并非新增观测，只能检查估算关系是否一致。
 
 图\ref{fig:p1_extrap}(A)的各领域在每个外推尺度下均包含 63 条记录，箱体对应第 25 至第 75 百分位，箱内竖线为中位数，两端须为最小值和最大值；图中比值为外推损失与同配方 1M 训练损失之比。图\ref{fig:p1_extrap}(B)的圆点与误差线分别表示同配方 60M/1M 损失比的均值和标准差。
 
@@ -400,7 +404,7 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
   \label{fig:p1_extrap}
 \end{figure}
 
-本节得到领域质量评分、配比与损失的定量关系及有界推荐配比，并通过质量口径对照、同尺度检验和跨尺度分析考察结果，为后续资源配置研究提供数据侧输入。
+通过本问计算，得到领域质量、配比系数和有界推荐方案。后续将使用这些结果安排训练投入，同时注意两点：质量名次会随指标选择变化，跨规模损失也不能直接沿用原尺度。
 
 \FloatBarrier
 \endgroup
