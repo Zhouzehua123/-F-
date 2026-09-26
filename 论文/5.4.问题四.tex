@@ -11,13 +11,6 @@
 
 图\ref{fig:p4_workflow}按数据用途列出四条分析路径。损失与得分的分层回归用于判断变化方向；历史增量分解与未来预测直接使用评测得分，其中规模、年度回归的系数也用于结构情景。子任务结果用于定位能力短板，宏观资料则单独提供资源趋势参照。
 
-\begin{figure}[H]
- \centering
- \includegraphics[width=0.94\textwidth]{figures/q4-workflow.pdf}
- \caption{问题四技术演进与能力前沿分析流程}
- \label{fig:p4_workflow}
-\end{figure}
-
 \noindent\textbf{辅助分析说明：} 本问的文段相关辅助参考腾讯 WorkBuddy 接入的 DeepSeek-V4-Flash（2026-07-31 公开测试），图表展示、程序整理与复现核对使用 OpenAI Codex（GPT-5.6-Luna，2026-07-09）\cite{ai_workbuddy,ai_codex56luna}。正文表达与段落衔接另经 OpenAI Codex 辅助润色。
 
 \textbf{1.综合得分、许可筛选与时间变量}\par\nopagebreak[4]
@@ -29,6 +22,13 @@
 近期变化采用 C1，长期趋势用 C3 作为补充。时间变量按评测记录的时间字段定义：年度回归取 $t=\text{年份}-2019$，月度前沿用月中点 \mbox{$t=\text{年份}-2019+(\text{月}-0.5)/12$}，C3 的年度记录放在年中。这样既能比较规模和年度变化，也不把年度资料误当成精确到月的观测。
 
 C1 的时间字段为 Submission Date，表示记录提交的时间。因此，同一月份的样本是这一时间口径下可观察到的评测记录，不能据此确定各模型完成训练或实际发布的先后。月度聚合有助于减少具体提交日的影响，年度回归则进一步概括较粗的时间差异；两者都沿用原始记录的时间含义。将年份改写为从 2019 年起算，只是改变时间原点，便于与 C3 的历史段连接。
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.94\textwidth]{figures/q4-workflow.pdf}
+ \caption{问题四技术演进与能力前沿分析流程}
+ \label{fig:p4_workflow}
+\end{figure}
 
 表\ref{tab:p4_funnel}展示了主样本的筛选过程。先去掉关键字段不完整的记录，再按许可白名单保留本文讨论的开放权重模型。白名单包括 apache-2.0、mit、gpl-3.0、cc-by-4.0、mpl-2.0、bsd-3-clause、cc-by-sa-4.0、openrail，以及 llama2、llama3、llama3.1、llama3.2、llama3.3、gemma。其他或未知许可不进入主样本；进入白名单只说明符合本研究的筛选条件，不表示这些许可的具体要求完全相同。
 
@@ -352,7 +352,7 @@ GPQA & Extended 子集 & 961 & 39.74 & 44.87 & 55.1 \\
 
 Epoch AI 数据库 C4 与 C1 的名称规范化后只有 1 条匹配，不能组成逐模型联合样本，因此这里只把 C4 作为宏观资料\cite{epoch2025}。图\ref{fig:p4_c4}上图连接各年 Language 记录的算力中位数和最大值，左下图给出开放权重标记 Yes 的比例，右下图以全量 $3{,}523$ 条记录为背景展示字段覆盖；浅色部分对应缺失或状态未明确的记录。
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.84\textwidth]{../求解/问题四/图片/图5_C4宏观趋势.png}
 \caption{资源趋势与字段覆盖}

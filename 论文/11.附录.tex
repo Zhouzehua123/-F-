@@ -1,4 +1,5 @@
-\clearpage
+\FloatBarrier
+\Needspace{6\baselineskip}
 \makeatletter
 \let\@oldaddcontentsline\addcontentsline
 \renewcommand{\addcontentsline}[3]{}
@@ -130,7 +131,6 @@
   求解/广义标度律参数.csv、问题一\_\allowbreak{}关键量.json & 跨问共享的接口参数 \\
 \end{longtable}
 
-
 \subsection*{附录 D：人工智能工具及输出使用说明}
 
 本论文末尾对人工智能工具的实际使用范围作统一说明。腾讯 WorkBuddy 接入 DeepSeek-V4-Flash（2026-07-31 公开测试）用于文段相关辅助；OpenAI Codex（GPT-5.6-Luna，2026-07-09）用于图表展示、排版检查、程序整理、数据整理和结果复核。工具信息见文献 \cite{ai_workbuddy,ai_codex56luna}。正文表达与段落衔接另经 OpenAI Codex 辅助润色。
@@ -176,8 +176,6 @@
 \bottomrule
 \end{tabularx}
 \end{table}
-\FloatBarrier
-
 
 \subsubsection*{正式图表与复现顺序}
 
@@ -185,6 +183,7 @@
 
 核岭的独立计算入口为问题一目录中的“非线性代理对照.py”，参数搜索、折分配、预测明细和汇总分别保存。绘图只读取这些输出；其结果不替换问题二、三采用的线性配比系数。总体流程图为原生 TikZ；其余正式图的生成程序见表\ref{tab:figure_code_map}，流程图属于方法示意，不代表新增观测数据。
 
+\FloatBarrier
 \begin{longtable}{@{}p{0.13\textwidth}p{0.38\textwidth}p{0.43\textwidth}@{}}
 \caption{正式图表与生成程序的对应关系}\label{tab:figure_code_map}\\
 \toprule
