@@ -3,16 +3,16 @@
 % ════════════════════════════════════════════
 \section{模型检验与分析}
 
-得到一组配置或预测后，还要问两个问题：换一批记录，误差是否仍在可接受范围？改变关键设定，结论是否会变？本节先汇总误差，再考察赋权、成本、预算等设定变化。
+本节分别检查检验样本上的预测误差，以及赋权、成本和预算变化后的配置与结论。
 
 \subsection{误差分析}
 \label{sec:check}
 
-表\ref{tab:error}把四问中可比较的检验放在一起。问题一的岭回归、问题二的经典和广义标度律，以及问题四的损失--得分桥接和面板回归，分别报告 $R^2$、RMSE、MAE、MAPE。这样既能看拟合解释度，也能看到预测值实际偏离多少。
+表\ref{tab:error}汇总各问使用的检验指标。问题一的岭回归、问题二的经典和广义标度律，以及问题四的损失--得分桥接和面板回归，分别报告 $R^2$、RMSE、MAE、MAPE。这样既能看拟合解释度，也能看到预测值实际偏离多少。
 
 \begin{table}[!htbp]
 \centering
-  \caption{模型误差分析结果}
+  \caption{各问拟合、预测误差与预算约束残差汇总}
   \label{tab:error}
 \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.33\textwidth}>{\centering\arraybackslash}p{0.17\textwidth}>{\centering\arraybackslash}p{0.15\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}@{}}
 \toprule
@@ -44,15 +44,15 @@
 
 \subsection{灵敏度分析}
 
-灵敏度分析逐项改变赋权方式、冲突阈值、岭正则、质量成本、质量基线、上下文长度和预算，比较输出是否改变，完整结果见表\ref{tab:sensitivity}。重点不在寻找一个“最稳”的总分，而在于区分哪些结论跨设定仍成立，哪些只在特定成本或样本口径下成立。
+灵敏度分析逐项改变赋权方式、冲突阈值、岭正则、质量成本、质量基线、上下文长度和预算，比较输出是否改变，完整结果见表\ref{tab:sensitivity}。据此区分在所检验设定下保持的结论，以及依赖具体成本或样本条件的结论。
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}>{\raggedright\arraybackslash}p{0.26\textwidth}@{}}
-\caption{灵敏度分析结果}\label{tab:sensitivity} \\
+\caption{评分规则、成本与预算变化下的结果稳定性}\label{tab:sensitivity} \\
 \toprule
 参数/设定变化 & 输出变化 & 灵敏度评估 \\
 \midrule
 \endfirsthead
-\caption[]{灵敏度分析结果（续）} \\
+\caption[]{评分规则、成本与预算变化下的结果稳定性（续）} \\
 \toprule
 参数/设定变化 & 输出变化 & 灵敏度评估 \\
 \midrule
@@ -80,6 +80,4 @@
 
 \textbf{（2）需要区分的边界。} $L_{\text{crit}}=30{,}000$ tokens 只表示注意力费用与基础训练费用相等，不代表最优解在此处发生突变；$1.78\times10^{19}$、$7.08\times10^{19}$ FLOPs 是预算网格中首次出现质量投入和首次达到上界的有效点，实际边界还受网格间距、求解状态及成本形式影响。
 
-\textbf{（3）依赖条件的结果。} $C=10^{19}$ FLOPs 下更换质量成本时，最优质量覆盖 $0.551\sim1.000$，说明低预算策略依赖成本设定，应同时比较各情景；损失--得分桥接只有 $R^2=0.26$，不能精确换算能力分；领域排序也会受指标方向和赋权方式影响。报告这些条件，比用一个整体拟合优度概括所有结论更可靠。
-
-所以，模型的稳定性应按具体结论判断。冲突率的相对方向和中高预算的质量饱和较为稳定；低预算配置、领域排名及能力换算都需要同时注明成本、评分和数据来源条件。
+\textbf{（3）依赖条件的结果。} $C=10^{19}$ FLOPs 下更换质量成本时，最优质量覆盖 $0.551\sim1.000$，说明低预算策略依赖成本设定，应同时比较各情景；损失--得分桥接只有 $R^2=0.26$，不能精确换算能力分；领域排序也会受指标方向和赋权方式影响。
