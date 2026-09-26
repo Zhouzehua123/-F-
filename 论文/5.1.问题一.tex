@@ -38,42 +38,42 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.33\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\raggedright\arraybackslash}p{0.31\textwidth}>{\centering\arraybackslash}p{0.08\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.33\textwidth}>{\raggedright\arraybackslash}p{0.31\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}>{\centering\arraybackslash}p{0.08\textwidth}>{\centering\arraybackslash}p{0.10\textwidth}@{}}
   \caption{质量指标的含义、评价方向及熵权}
   \label{tab:p1_dir} \\
   \toprule
-  指标字段 & 类型 & 指标含义与判向依据 & 方向 & 熵权 $w_j$ \\
+  指标字段 & 指标含义与判向依据 & 类型 & 方向 & 熵权 $w_j$ \\
   \midrule
   \endfirsthead
   \caption{质量指标的含义、评价方向及熵权（续）} \\
   \toprule
-  指标字段 & 类型 & 指标含义与判向依据 & 方向 & 熵权 $w_j$ \\
+  指标字段 & 指标含义与判向依据 & 类型 & 方向 & 熵权 $w_j$ \\
   \midrule
   \endhead
   \bottomrule
   \endfoot
-  fineweb\_\allowbreak{}edu & 列表(1) & 文本用于教育的价值 & 正向 & 0.0437 \\
-  fluency\_\allowbreak{}en & 列表(2) & 英语流畅度（第 1 类=流畅，已核验） & 正向 & 0.0682 \\
-  modernbert\_\allowbreak{}cleanliness & 列表(6) & 文本内容的洁净程度 & 正向 & 0.1434 \\
-  modernbert\_\allowbreak{}readability & 列表(6) & 文本的易读程度 & 正向 & 0.0567 \\
-  modernbert\_\allowbreak{}reasoning & 列表(6) & 内容体现的推理程度 & 正向 & \textbf{0.1517} \\
-  modernbert\_\allowbreak{}professionalism & 列表(6) & 内容的专业程度 & 正向 & 0.0396 \\
-  dsir\_\allowbreak{}books & 标量 & 相对于书籍领域的重要性权重 & 正向 & 0.0081 \\
-  dsir\_\allowbreak{}wiki & 标量 & 相对于维基领域的重要性权重 & 正向 & 0.0081 \\
-  dsir\_\allowbreak{}math & 标量 & 相对于数学领域的重要性权重 & 正向 & 0.0086 \\
-  qurater & 列表(4) & 教育质量评级（4 项取均值） & 正向 & 0.0492 \\
-  ad\_\allowbreak{}en & 列表(2) & 广告含量（\textbf{第 1 类=“无广告”，正向}；依据：原文抽查） & 正向 & 0.0072 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}word\_\allowbreak{}count & 标量 & 文档包含的词总数 & 长度型 & 0.0516 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}num\_\allowbreak{}sentences & 标量 & 文档包含的句子总数 & 长度型 & 0.0523 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy & 标量 & 用一元词熵衡量词汇多样性 & 正向 & 0.0347 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words & 标量 & 不同词项所占比例 & 正向 & 0.0538 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}no\_\allowbreak{}alph\_\allowbreak{}words & 标量 & 非字母字符所占比例 & 负向 & 0.0287 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}2gram & 标量 & 字符 2-gram 的重复程度 & 负向 & 0.0130 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}3gram & 标量 & 字符 3-gram 的重复程度 & 负向 & 0.0119 \\
-  rps\_\allowbreak{}lines\_\allowbreak{}uppercase\_\allowbreak{}letter\_\allowbreak{}fraction & 标量 & 大写字母行所占比例 & 负向 & 0.0316 \\
-  rps\_\allowbreak{}lines\_\allowbreak{}ending\_\allowbreak{}with\_\allowbreak{}terminal\_\allowbreak{}punctution\_\allowbreak{}mark & 标量 & 以终止标点结束的行所占比例 & 正向 & 0.0880 \\
-  rps\_\allowbreak{}lines\_\allowbreak{}numerical\_\allowbreak{}chars\_\allowbreak{}fraction & 标量 & 含有数字的行所占比例 & 负向 & 0.0125 \\
-  rps\_\allowbreak{}doc\_\allowbreak{}mean\_\allowbreak{}word\_\allowbreak{}length & 标量 & 词项长度的平均值 & 长度型 & 0.0373 \\
+  fineweb\_\allowbreak{}edu & 文本用于教育的价值 & 列表(1) & 正向 & 0.0437 \\
+  fluency\_\allowbreak{}en & 英语流畅度（第 1 类=流畅，已核验） & 列表(2) & 正向 & 0.0682 \\
+  modernbert\_\allowbreak{}cleanliness & 文本内容的洁净程度 & 列表(6) & 正向 & 0.1434 \\
+  modernbert\_\allowbreak{}readability & 文本的易读程度 & 列表(6) & 正向 & 0.0567 \\
+  modernbert\_\allowbreak{}reasoning & 内容体现的推理程度 & 列表(6) & 正向 & \textbf{0.1517} \\
+  modernbert\_\allowbreak{}professionalism & 内容的专业程度 & 列表(6) & 正向 & 0.0396 \\
+  dsir\_\allowbreak{}books & 相对于书籍领域的重要性权重 & 标量 & 正向 & 0.0081 \\
+  dsir\_\allowbreak{}wiki & 相对于维基领域的重要性权重 & 标量 & 正向 & 0.0081 \\
+  dsir\_\allowbreak{}math & 相对于数学领域的重要性权重 & 标量 & 正向 & 0.0086 \\
+  qurater & 教育质量评级（4 项取均值） & 列表(4) & 正向 & 0.0492 \\
+  ad\_\allowbreak{}en & 广告含量（\textbf{第 1 类=“无广告”，正向}；依据：原文抽查） & 列表(2) & 正向 & 0.0072 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}word\_\allowbreak{}count & 文档包含的词总数 & 标量 & 长度型 & 0.0516 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}num\_\allowbreak{}sentences & 文档包含的句子总数 & 标量 & 长度型 & 0.0523 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}unigram\_\allowbreak{}entropy & 用一元词熵衡量词汇多样性 & 标量 & 正向 & 0.0347 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}unique\_\allowbreak{}words & 不同词项所占比例 & 标量 & 正向 & 0.0538 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}no\_\allowbreak{}alph\_\allowbreak{}words & 非字母字符所占比例 & 标量 & 负向 & 0.0287 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}2gram & 字符 2-gram 的重复程度 & 标量 & 负向 & 0.0130 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}frac\_\allowbreak{}chars\_\allowbreak{}top\_\allowbreak{}3gram & 字符 3-gram 的重复程度 & 标量 & 负向 & 0.0119 \\
+  rps\_\allowbreak{}lines\_\allowbreak{}uppercase\_\allowbreak{}letter\_\allowbreak{}fraction & 大写字母行所占比例 & 标量 & 负向 & 0.0316 \\
+  rps\_\allowbreak{}lines\_\allowbreak{}ending\_\allowbreak{}with\_\allowbreak{}terminal\_\allowbreak{}punctution\_\allowbreak{}mark & 以终止标点结束的行所占比例 & 标量 & 正向 & 0.0880 \\
+  rps\_\allowbreak{}lines\_\allowbreak{}numerical\_\allowbreak{}chars\_\allowbreak{}fraction & 含有数字的行所占比例 & 标量 & 负向 & 0.0125 \\
+  rps\_\allowbreak{}doc\_\allowbreak{}mean\_\allowbreak{}word\_\allowbreak{}length & 词项长度的平均值 & 标量 & 长度型 & 0.0373 \\
 \end{longtable}
 \endgroup
 
@@ -87,23 +87,23 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.44\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.44\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}@{}}
   \caption{A1--A3 中 272{,}505 条记录的质量字段缺失统计}
   \label{tab:p1_missing} \\
   \toprule
-  缺失字段 & 涉及记录数 & 缺失情况 \\
+  缺失字段 & 缺失情况 & 涉及记录数 \\
   \midrule
   \endfirsthead
   \caption{质量字段缺失统计（续）} \\
   \toprule
-  缺失字段 & 涉及记录数 & 缺失情况 \\
+  缺失字段 & 缺失情况 & 涉及记录数 \\
   \midrule
   \endhead
   \bottomrule
   \endfoot
-  modernbert\_\allowbreak{}reasoning & 13 & 该记录中此字段的 6 个分量均为 NaN \\
-  modernbert\_\allowbreak{}professionalism & 6 & 该记录中此字段的 6 个分量均为 NaN \\
-  其余 20 个指标 & 0 & 未发现缺失值 \\
+  modernbert\_\allowbreak{}reasoning & 该记录中此字段的 6 个分量均为 NaN & 13 \\
+  modernbert\_\allowbreak{}professionalism & 该记录中此字段的 6 个分量均为 NaN & 6 \\
+  其余 20 个指标 & 未发现缺失值 & 0 \\
 \end{longtable}
 \endgroup
 
@@ -114,23 +114,23 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
-\begin{longtable}{@{}>{\centering\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}@{}}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}@{}}
   \caption{不同赋权方式下的样本得分及领域排序比较}
   \label{tab:algo1} \\
   \toprule
-  赋权方法 & 样本平均得分 & 与熵权得分的相关系数 & 领域排序相关性\newline Spearman 系数，参照熵权法 \\
+  赋权方法 & 与熵权得分的相关系数 & 领域排序相关性\newline Spearman 系数，参照熵权法 & 样本平均得分 \\
   \midrule
   \endfirsthead
   \caption{不同赋权方式下的样本得分及领域排序比较（续）} \\
   \toprule
-  赋权方法 & 样本平均得分 & 与熵权得分的相关系数 & 领域排序相关性\newline Spearman 系数，参照熵权法 \\
+  赋权方法 & 与熵权得分的相关系数 & 领域排序相关性\newline Spearman 系数，参照熵权法 & 样本平均得分 \\
   \midrule
   \endhead
   \bottomrule
   \endfoot
-  熵权法 & 0.495 & 1.000 & 1.000 \\
-  等权平均 & 0.639 & 0.854 & 0.679 \\
-  PCA 第一主成分 & 0.520 & 0.881 & 0.679 \\
+  熵权法 & 1.000 & 1.000 & 0.495 \\
+  等权平均 & 0.854 & 0.679 & 0.639 \\
+  PCA 第一主成分 & 0.881 & 0.679 & 0.520 \\
 \end{longtable}
 \endgroup
 
@@ -234,27 +234,27 @@ $\bar L_d$ 为领域 $d$ 的平均交叉熵损失。这里能够计算代理值�
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
-\begin{longtable}{@{}>{\centering\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}@{}}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}@{}}
   \caption{各领域在 A1 抽样集与 A2/A3 扩展集中的质量评分}
   \label{tab:p1_qa} \\
   \toprule
-  质量信号领域 & A1 评分 $Q$ & 扩展集评分 $Q$ & 评分差值 & 训练配方对应领域 \\
+  质量信号领域 & 训练配方对应领域 & A1 评分 $Q$ & 扩展集评分 $Q$ & 评分差值 \\
   \midrule
   \endfirsthead
   \caption{各领域在 A1 抽样集与 A2/A3 扩展集中的质量评分（续）} \\
   \toprule
-  质量信号领域 & A1 评分 $Q$ & 扩展集评分 $Q$ & 评分差值 & 训练配方对应领域 \\
+  质量信号领域 & 训练配方对应领域 & A1 评分 $Q$ & 扩展集评分 $Q$ & 评分差值 \\
   \midrule
   \endhead
   \bottomrule
   \endfoot
-  arxiv & 0.7031 & 0.7011 & $+0.0021$ & arxiv \\
-  stackexchange & 0.6549 & — & — & stackexchange \\
-  c4 & 0.6368 & — & — & （配方侧无同名列） \\
-  commoncrawl & 0.6153 & — & — & pile\_\allowbreak{}cc \\
-  book & 0.5524 & — & — & gutenberg\_\allowbreak{}pg\_\allowbreak{}19 \\
-  wikipedia & 0.5509 & — & — & wikipedia\_\allowbreak{}en \\
-  github & 0.4553 & 0.4547 & $+0.0006$ & github \\
+  arxiv & arxiv & 0.7031 & 0.7011 & $+0.0021$ \\
+  stackexchange & stackexchange & 0.6549 & — & — \\
+  c4 & （配方侧无同名列） & 0.6368 & — & — \\
+  commoncrawl & pile\_\allowbreak{}cc & 0.6153 & — & — \\
+  book & gutenberg\_\allowbreak{}pg\_\allowbreak{}19 & 0.5524 & — & — \\
+  wikipedia & wikipedia\_\allowbreak{}en & 0.5509 & — & — \\
+  github & github & 0.4553 & 0.4547 & $+0.0006$ \\
 \end{longtable}
 \endgroup
 
@@ -266,23 +266,23 @@ arxiv、github 均有抽样和扩展数据，表\ref{tab:p1_qa}中两者之差�
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
-\begin{longtable}{@{}>{\centering\arraybackslash}p{0.18\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}@{}}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.18\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}>{\centering\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\centering\arraybackslash}p{0.13\textwidth}@{}}
   \caption{各数据集的指标冲突比例与排序一致性}
   \label{tab:p1_conf} \\
   \toprule
-  统计范围 & 记录数 & Kendall $W$ & 冲突比例 $\rho_c$ & 独立基准 $\rho_0$ & $\rho_c/\rho_0$ \\
+  统计范围 & 记录数 & 冲突比例 $\rho_c$ & 独立基准 $\rho_0$ & $\rho_c/\rho_0$ & Kendall $W$ \\
   \midrule
   \endfirsthead
   \caption{各数据集的指标冲突比例与排序一致性（续）} \\
   \toprule
-  统计范围 & 记录数 & Kendall $W$ & 冲突比例 $\rho_c$ & 独立基准 $\rho_0$ & $\rho_c/\rho_0$ \\
+  统计范围 & 记录数 & 冲突比例 $\rho_c$ & 独立基准 $\rho_0$ & $\rho_c/\rho_0$ & Kendall $W$ \\
   \midrule
   \endhead
   \bottomrule
   \endfoot
-  A1 抽样集 & 51{,}230 & 0.0783 & 0.2252 & 0.2888 & 0.780 \\
-  A2+A3 扩展集 & 221{,}275 & 0.0628 & 0.2208 & 0.2888 & 0.764 \\
-  全量 & 272{,}505 & 0.0687 & 0.2235 & 0.2888 & 0.774 \\
+  A1 抽样集 & 51{,}230 & 0.2252 & 0.2888 & 0.780 & 0.0783 \\
+  A2+A3 扩展集 & 221{,}275 & 0.2208 & 0.2888 & 0.764 & 0.0628 \\
+  全量 & 272{,}505 & 0.2235 & 0.2888 & 0.774 & 0.0687 \\
 \end{longtable}
 \endgroup
 
@@ -357,7 +357,8 @@ arxiv、github 均有抽样和扩展数据，表\ref{tab:p1_qa}中两者之差�
 
 图\ref{fig:p1_quality}(A)中的端点来自损失高低：dm\_\allowbreak{}mathematics 为 $1.000$，对应 13 域中的低损失端；ubuntu\_\allowbreak{}irc 为 $0.000$，对应高损失端。再按 A16 的 direct/near\_\allowbreak{}direct 映射比较两类评分，图\ref{fig:p1_quality}(B)给出的 Spearman 系数为 $0.60$。arxiv、stackexchange、github 的相对位置较一致，wikipedia、book、pile\_\allowbreak{}cc 则不同。文本质量较高与模型容易拟合并不是一回事，故语料治理使用文本评分，损失预测仍需单独考虑领域难度。
 
-\Needspace{4\baselineskip}
+\FloatBarrier
+\Needspace{22\baselineskip}
 \textbf{3. 配比推荐与跨尺度分析}\par\nopagebreak[4]
 
 没有占比上限时，线性优化会把配方集中到一个低损失领域，预测加权损失可到 $4.177$。为避免配方集中在单一领域，把各域上限限制为参考占比的 2.5 倍。表\ref{tab:p1_rec}中，有界方案的损失为 $5.136$，参考方案为 $5.336$；依据未舍入值计算，改善量为 $0.199$。
@@ -368,26 +369,26 @@ arxiv、github 均有抽样和扩展数据，表\ref{tab:p1_qa}中两者之差�
   \caption{配比上限约束下的推荐方案与参考方案}
   \label{tab:p1_rec} \\
   \toprule
-  训练领域 & 参考占比 & 推荐占比 & 占比变化量 \\
+  训练领域 & 推荐占比 & 参考占比 & 占比变化量 \\
   \midrule
   \endfirsthead
   \caption{配比上限约束下的推荐方案与参考方案（续）} \\
   \toprule
-  训练领域 & 参考占比 & 推荐占比 & 占比变化量 \\
+  训练领域 & 推荐占比 & 参考占比 & 占比变化量 \\
   \midrule
   \endhead
   \bottomrule
   \endfoot
-  pubmed\_\allowbreak{}central & 0.1137 & 0.2843 & $+0.1706$ \\
-  stackexchange & 0.0994 & 0.2486 & $+0.1491$ \\
-  pubmed\_\allowbreak{}abstracts & 0.0662 & 0.1654 & $+0.0993$ \\
-  gutenberg\_\allowbreak{}pg\_\allowbreak{}19 & 0.0469 & 0.1173 & $+0.0704$ \\
-  dm\_\allowbreak{}mathematics & 0.0255 & 0.0637 & $+0.0382$ \\
-  uspto\_\allowbreak{}backgrounds & 0.0755 & 0.0000 & $-0.0755$ \\
-  freelaw & 0.0968 & 0.0000 & $-0.0968$ \\
-  github & 0.1107 & 0.0000 & $-0.1107$ \\
-  arxiv & 0.1130 & 0.0000 & $-0.1130$ \\
-  pile\_\allowbreak{}cc & 0.1195 & 0.0000 & $-0.1195$ \\
+  pubmed\_\allowbreak{}central & 0.2843 & 0.1137 & $+0.1706$ \\
+  stackexchange & 0.2486 & 0.0994 & $+0.1491$ \\
+  pubmed\_\allowbreak{}abstracts & 0.1654 & 0.0662 & $+0.0993$ \\
+  gutenberg\_\allowbreak{}pg\_\allowbreak{}19 & 0.1173 & 0.0469 & $+0.0704$ \\
+  dm\_\allowbreak{}mathematics & 0.0637 & 0.0255 & $+0.0382$ \\
+  uspto\_\allowbreak{}backgrounds & 0.0000 & 0.0755 & $-0.0755$ \\
+  freelaw & 0.0000 & 0.0968 & $-0.0968$ \\
+  github & 0.0000 & 0.1107 & $-0.1107$ \\
+  arxiv & 0.0000 & 0.1130 & $-0.1130$ \\
+  pile\_\allowbreak{}cc & 0.0000 & 0.1195 & $-0.1195$ \\
 \end{longtable}
 \endgroup
 
