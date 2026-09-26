@@ -13,7 +13,7 @@
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图0_问题二分析框架.png}
+  \includegraphics[width=0.94\textwidth]{../求解/问题二/图片/图0_问题二分析框架.png}
   \caption{问题二分析流程}
   \label{fig:p2_framework}
 \end{figure}
@@ -60,7 +60,7 @@ B6、B7 的评分与损失呈负相关，组内相关的平均值分别为 $-0.9
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图7_质量方向对照.png}
+  \includegraphics[width=0.94\textwidth]{../求解/问题二/图片/图7_质量方向对照.png}
   \caption{质量方向检验}
   \label{fig:p2_direction}
 \end{figure}
@@ -190,7 +190,7 @@ B6、B7 的评分与损失呈负相关，组内相关的平均值分别为 $-0.9
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图1_经典标度律拟合.png}
+  \includegraphics[width=0.94\textwidth]{../求解/问题二/图片/图1_经典标度律拟合.png}
   \caption{经典标度律拟合}
   \label{fig:p2_classic}
 \end{figure}
@@ -241,7 +241,7 @@ B6、B7 的评分与损失呈负相关，组内相关的平均值分别为 $-0.9
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图3_质量边际影响.png}
+  \includegraphics[width=0.94\textwidth]{../求解/问题二/图片/图3_质量边际影响.png}
   \caption{质量项影响}
   \label{fig:p2_quality}
 \end{figure}
@@ -283,7 +283,7 @@ B6、B7 的评分与损失呈负相关，组内相关的平均值分别为 $-0.9
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图2_广义标度律验证.png}
+  \includegraphics[width=0.94\textwidth]{../求解/问题二/图片/图2_广义标度律验证.png}
   \caption{分层验证误差}
   \label{fig:p2_general}
 \end{figure}
@@ -373,22 +373,24 @@ B9 提供大模型元数据，B10 提供估算损失，两者先按模型名称�
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图4_边际效用对比.png}
+  \includegraphics[width=0.94\textwidth]{../求解/问题二/图片/图4_边际效用对比.png}
   \caption{边际效用与弹性}
   \label{fig:p2_margin}
 \end{figure}
 
-\begin{figure}[!htbp]
-  \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图5_质量参数替代.png}
-  \caption{规模与质量替代}
-  \label{fig:p2_subst}
-\end{figure}
+\FloatBarrier
 
 \begin{samepage}
 固定 $D=300$B tokens 后，还可以反求达到目标损失需要的质量，见图\ref{fig:p2_subst}。三个子图各对应一个目标，横轴为参数量，纵轴为质量；实线在主拟合范围内，虚线为外推。对于 $L=1.95$，图中特别放大了高质量区间，并将参数轴延至 $10^4$B 以展示理论边界，这不表示该规模在工程上可行。
 \par
 \end{samepage}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.94\textwidth]{../求解/问题二/图片/图5_质量参数替代.png}
+  \caption{规模与质量替代}
+  \label{fig:p2_subst}
+\end{figure}
 
 \begin{samepage}
 接近质量满分时，导数还需特别注意。拟合得到 $\gamma=0.9779<1$，使 $|\partial L/\partial Q|$ 在 $Q<1$ 内逐渐增大，并在 $Q\to1^-$ 发散。因此，边际数值只在离端点较远的位置解释，不能直接用满分附近的导数建议实际投入。
@@ -403,7 +405,7 @@ B9 提供大模型元数据，B10 提供估算损失，两者先按模型名称�
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题二/图片/图6_领域替代互补.png}
+  \includegraphics[width=0.94\textwidth]{../求解/问题二/图片/图6_领域替代互补.png}
   \caption{领域相似性}
   \label{fig:p2_dom}
 \end{figure}

@@ -32,17 +32,18 @@ def plot_prediction(data, out):
     x, y = data.observed.ravel(), data.prediction.ravel()
     lo, hi = min(x.min(),y.min()), max(x.max(),y.max())
     lo, hi = np.floor(lo*2)/2-.1, np.ceil(hi*2)/2+.1
-    fig = plt.figure(figsize=(6.5,5.2))
+    fig = plt.figure(figsize=(4.3,3.7))
     # Equal axis lengths and identical numerical ranges preserve the 45-degree reference.
-    ax = fig.add_axes([.12,.14,.58,.725])
-    top = fig.add_axes([.12,.88,.58,.085], sharex=ax)
-    right = fig.add_axes([.715,.14,.08,.725], sharey=ax)
-    cax = fig.add_axes([.865,.26,.022,.44])
+    square_height = .57 * 4.3 / 3.7
+    ax = fig.add_axes([.15,.17,.57,square_height])
+    top = fig.add_axes([.15,.855,.57,.085], sharex=ax)
+    right = fig.add_axes([.735,.17,.075,square_height], sharey=ax)
+    cax = fig.add_axes([.865,.29,.025,.39])
     h = ax.hexbin(x,y,gridsize=43,mincnt=1,cmap=SEQ,linewidths=0,
                   extent=(lo,hi,lo,hi),rasterized=False)
     ax.plot([lo,hi],[lo,hi],color=GOLD,lw=1.15,ls=(0,(4,3)),label='预测值 = 实测值')
     ax.set(xlim=(lo,hi),ylim=(lo,hi),xlabel='实测验证损失',ylabel='模型预测损失',aspect='equal')
-    ax.legend(loc='lower right',fontsize=9)
+    ax.legend(loc='lower right',fontsize=8)
     ax.text(.035,.963,f'N = {len(x):,}',transform=ax.transAxes,ha='left',va='top',
             fontsize=10,color=BLUE,bbox={'facecolor':'white','edgecolor':'none','alpha':.9,'pad':3})
     bins=np.linspace(lo,hi,37)
@@ -59,8 +60,8 @@ def plot_prediction(data, out):
 def plot_coefficients(data,out):
     matrix=data.centered.to_numpy()
     vmax=float(np.abs(matrix).max())
-    fig=plt.figure(figsize=(6.5,5.4))
-    ax=fig.add_axes([.15,.25,.81,.61])
+    fig=plt.figure(figsize=(5.3,4.3))
+    ax=fig.add_axes([.18,.29,.79,.57])
     # Only colour mapping changes: all 221 original coefficients are retained.
     norm=SymLogNorm(linthresh=1,linscale=.5,vmin=-vmax,vmax=vmax,base=10)
     mesh=ax.imshow(matrix,aspect='auto',interpolation='nearest',cmap=DIVERGING,norm=norm)
@@ -79,9 +80,9 @@ def plot_coefficients(data,out):
         v=matrix[i,j]
         ax.text(j,i,f'{v:+.1f}',ha='center',va='center',fontsize=9,
                  color=annotation_color(DIVERGING(norm(v))))
-    panel(ax,'A','中心化混合系数 · 17 训练领域 × 13 验证领域',PURPLE)
+    panel(ax,'A','17 个训练域 × 13 个验证域',PURPLE)
     ax.set_xlabel('验证领域',labelpad=9)
-    cax=fig.add_axes([.27,.087,.58,.025])
+    cax=fig.add_axes([.29,.12,.60,.025])
     cb=fig.colorbar(mesh,cax=cax,orientation='horizontal',ticks=[-15,-5,-1,0,1,5,15])
     cb.ax.set_xticklabels(['−15','−5','−1','0','1','5','15'])
     cb.set_label('中心化系数（对称对数色标）',labelpad=4)
@@ -91,9 +92,9 @@ def plot_coefficients(data,out):
 
 def plot_quality_comparison(data,out):
     p=data.proxy
-    fig=plt.figure(figsize=(6.5,4.6))
-    ax=fig.add_axes([.15,.16,.335,.66])
-    ar=fig.add_axes([.56,.16,.405,.66])
+    fig=plt.figure(figsize=(5.3,3.65))
+    ax=fig.add_axes([.16,.17,.315,.66])
+    ar=fig.add_axes([.56,.17,.40,.66])
     y=np.arange(len(p))
     vals=p['quality_score_Q(loss代理)'].to_numpy()
     ax.barh(y,vals,height=.57,color=BLUE,alpha=.85)

@@ -227,7 +227,7 @@ $\bar L_d$ 为领域 $d$ 的平均交叉熵损失。这里能够计算代理值�
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.95\textwidth]{../求解/问题一/图片/图0_A1-A3全量质量评分.png}
+  \includegraphics[width=0.84\textwidth]{../求解/问题一/图片/图0_A1-A3全量质量评分.png}
   \caption{领域质量评分}
   \label{fig:p1_quality_full}
 \end{figure}
@@ -288,7 +288,7 @@ arxiv、github 均有抽样和扩展数据，表\ref{tab:p1_qa}中两者之差�
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图6_冲突与赋权诊断.png}
+  \includegraphics[width=0.94\textwidth]{../求解/问题一/图片/图6_冲突与赋权诊断.png}
   \caption{指标冲突与熵权}
   \label{fig:p1_conf}
 \end{figure}
@@ -306,51 +306,59 @@ arxiv、github 均有抽样和扩展数据，表\ref{tab:p1_qa}中两者之差�
 
 配比拟合的结果从四个角度展示：图\ref{fig:p1_structure}给出训练配方构成，图\ref{fig:p1_r2}比较训练与检验精度，图\ref{fig:p1_scatter}对照同尺度的预测和观测损失，图\ref{fig:p1_heatmap}展示不同训练领域的系数差异。
 
-图\ref{fig:p1_structure}将前 8 组训练配方的领域占比绘为热图，仅标注占比不低于 $10\%$ 的格子；右侧按同一领域顺序列出全部 512 组配方的平均占比。图\ref{fig:p1_r2}分别展示 1M 训练与检验的决定系数，以及 60M、1B 检验的 Pearson 相关系数；连线连接同一验证领域的两个结果。
-
-图\ref{fig:p1_heatmap}以 17 个训练领域为行、13 个验证领域为列，展示全部 221 项中心化回归系数。颜色表示系数的正负及大小，色标在 $[-1,1]$ 内为线性映射，其余区间采用对称对数映射；每列仅标注绝对值最大的系数。图\ref{fig:p1_scatter}汇总 1M 检验集的 $3{,}328$ 个实测与预测数据点，六边形颜色表示分箱内记录数，上方与右侧分别为实测损失和预测损失的频数分布。
+图\ref{fig:p1_structure}将前 8 组训练配方的领域占比绘为热图，仅标注占比不低于 $10\%$ 的格子；右侧按同一领域顺序列出全部 512 组配方的平均占比。
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图1_训练配比结构.png}
+  \includegraphics[width=0.84\textwidth]{../求解/问题一/图片/图1_训练配比结构.png}
   \caption{训练配方分布}
   \label{fig:p1_structure}
 \end{figure}
 
+图\ref{fig:p1_r2}分别展示 1M 训练与检验的决定系数，以及 60M、1B 检验的 Pearson 相关系数；连线连接同一验证领域的两个结果。
+
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图2_线性模型R2.png}
+  \includegraphics[width=0.84\textwidth]{../求解/问题一/图片/图2_线性模型R2.png}
   \caption{配比回归检验}
   \label{fig:p1_r2}
-\end{figure}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图4_混合系数热力图.png}
-  \caption{领域回归系数}
-  \label{fig:p1_heatmap}
-\end{figure}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图3_预测vs实测.png}
-  \caption{预测与实测损失}
-  \label{fig:p1_scatter}
 \end{figure}
 
 从图\ref{fig:p1_r2}看，同尺度检验与训练表现接近：1M 检验的平均 $R^2$ 为 $0.619$，训练均值为 $0.629$，训练集各验证域介于 $0.42\sim0.77$。在这一对照中，没有出现训练明显好于检验的现象。
 
 跨规模比较时，先要注意损失基准变了。60M 相对 1M 的损失约为 $0.68$ 倍，若直接套用原来的损失尺度，误差评价会受到影响。为比较变化趋势，改用 Pearson 相关：60M 检验均值为 $0.782$，1B 为 $0.651$。配比变化对应的部分趋势仍然存在，但预测绝对损失时还需调整尺度。
 
+\FloatBarrier
+
+图\ref{fig:p1_heatmap}以 17 个训练领域为行、13 个验证领域为列，展示全部 221 项中心化回归系数。颜色表示系数的正负及大小，色标在 $[-1,1]$ 内为线性映射，其余区间采用对称对数映射；每列仅标注绝对值最大的系数。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.84\textwidth]{../求解/问题一/图片/图4_混合系数热力图.png}
+  \caption{领域回归系数}
+  \label{fig:p1_heatmap}
+\end{figure}
+
 图\ref{fig:p1_heatmap}显示，各训练领域对验证任务的作用并不相同。dm\_\allowbreak{}mathematics、arxiv 等领域在部分任务上对应较低损失，pile\_\allowbreak{}cc、ubuntu\_\allowbreak{}irc 等领域则表现出不同方向。配比选择因而需要结合验证任务权重，不能仅看某一个系数。
+
+图\ref{fig:p1_scatter}汇总 1M 检验集的 $3{,}328$ 个实测与预测数据点，六边形颜色表示分箱内记录数，上方与右侧分别为实测损失和预测损失的频数分布。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.68\textwidth]{../求解/问题一/图片/图3_预测vs实测.png}
+  \caption{预测与实测损失}
+  \label{fig:p1_scatter}
+\end{figure}
+
+图中仍有记录偏离预测值等于实测值的参考线，因此平均检验精度接近训练精度，并不表示每条记录的预测都准确。
 
 追加 $\bar Q$ 后，13 个验证域的平均 $R^2$ 只增加 $9.9\times10^{-5}$，原配比回归几乎没有改善。这与 $\bar Q$ 本身就是占比的线性组合有关，不能据此认定质量投入没有作用。因此保留原回归，问题二、三再利用附件 B 的半合成实验研究改变质量的影响。
 
 文本质量与损失难度并非同一个概念。图\ref{fig:p1_quality}利用 6 个可映射领域，对照 A1--A3 的熵权评分 $Q$ 与损失代理 $Q^{(\text{loss})}$ 的排序。右侧连线连接同一领域在两套口径下的名次，名次 1 表示得分最高。
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图5_领域质量评分.png}
+  \includegraphics[width=0.84\textwidth]{../求解/问题一/图片/图5_领域质量评分.png}
   \caption{质量与损失难度}
   \label{fig:p1_quality}
 \end{figure}
@@ -358,27 +366,20 @@ arxiv、github 均有抽样和扩展数据，表\ref{tab:p1_qa}中两者之差�
 图\ref{fig:p1_quality}(A)中的端点来自损失高低：dm\_\allowbreak{}mathematics 为 $1.000$，对应 13 域中的低损失端；ubuntu\_\allowbreak{}irc 为 $0.000$，对应高损失端。再按 A16 的 direct/near\_\allowbreak{}direct 映射比较两类评分，图\ref{fig:p1_quality}(B)给出的 Spearman 系数为 $0.60$。arxiv、stackexchange、github 的相对位置较一致，wikipedia、book、pile\_\allowbreak{}cc 则不同。文本质量较高与模型容易拟合并不是一回事，故语料治理使用文本评分，损失预测仍需单独考虑领域难度。
 
 \FloatBarrier
-\Needspace{22\baselineskip}
+\Needspace{4\baselineskip}
 \textbf{3. 配比推荐与跨尺度分析}\par\nopagebreak[4]
 
 没有占比上限时，线性优化会把配方集中到一个低损失领域，预测加权损失可到 $4.177$。为避免配方集中在单一领域，把各域上限限制为参考占比的 2.5 倍。表\ref{tab:p1_rec}中，有界方案的损失为 $5.136$，参考方案为 $5.336$；依据未舍入值计算，改善量为 $0.199$。
 
-\begingroup
-\setlength{\tabcolsep}{3pt}
-\begin{longtable}{@{}>{\centering\arraybackslash}p{0.30\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}@{}}
+\begin{table}[!htbp]
+  \centering
+  \setlength{\tabcolsep}{3pt}
   \caption{配比上限约束下的推荐方案与参考方案}
-  \label{tab:p1_rec} \\
+  \label{tab:p1_rec}
+  \begin{tabular}{@{}>{\centering\arraybackslash}p{0.30\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.22\textwidth}>{\centering\arraybackslash}p{0.20\textwidth}@{}}
   \toprule
   训练领域 & 推荐占比 & 参考占比 & 占比变化量 \\
   \midrule
-  \endfirsthead
-  \caption{配比上限约束下的推荐方案与参考方案（续）} \\
-  \toprule
-  训练领域 & 推荐占比 & 参考占比 & 占比变化量 \\
-  \midrule
-  \endhead
-  \bottomrule
-  \endfoot
   pubmed\_\allowbreak{}central & 0.2843 & 0.1137 & $+0.1706$ \\
   stackexchange & 0.2486 & 0.0994 & $+0.1491$ \\
   pubmed\_\allowbreak{}abstracts & 0.1654 & 0.0662 & $+0.0993$ \\
@@ -389,8 +390,9 @@ arxiv、github 均有抽样和扩展数据，表\ref{tab:p1_qa}中两者之差�
   github & 0.0000 & 0.1107 & $-0.1107$ \\
   arxiv & 0.0000 & 0.1130 & $-0.1130$ \\
   pile\_\allowbreak{}cc & 0.0000 & 0.1195 & $-0.1195$ \\
-\end{longtable}
-\endgroup
+  \bottomrule
+  \end{tabular}
+\end{table}
 
 表\ref{tab:p1_rec}中的推荐方案提高了 pubmed\_\allowbreak{}central、stackexchange、pubmed\_\allowbreak{}abstracts 的占比，压低了 pile\_\allowbreak{}cc、arxiv、github 和 freelaw。调整目标是 13 个验证域的加权损失，而不是重新给领域质量排序；因此 arxiv 占比下降只表示在当前权重和约束下转移份额更有利，不表示其文本质量较低。
 
@@ -400,7 +402,7 @@ arxiv、github 均有抽样和扩展数据，表\ref{tab:p1_qa}中两者之差�
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.98\textwidth]{../求解/问题一/图片/图7_外推与跨尺度.png}
+  \includegraphics[width=0.84\textwidth]{../求解/问题一/图片/图7_外推与跨尺度.png}
   \caption{跨尺度损失比较}
   \label{fig:p1_extrap}
 \end{figure}

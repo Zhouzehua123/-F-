@@ -262,9 +262,13 @@ AutoFakeBold = 2
  % 如果图片没有指定后缀, 依次按下列顺序搜索
 \DeclareGraphicsExtensions{.pdf,.eps,.jpg,.png}
 % 图表标题
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
 \DeclareCaptionFont{song}{\songti}
 \DeclareCaptionFont{minusfour}{\zihao{-4}}
 \captionsetup[figure]{%
+	skip=6pt,
 	format=plain,
 	justification=centering,   % 标题从第二行开始都有缩进, 应该和 justification=raggedright 的效果一样.
 	labelsep=quad, % 分隔符是一个空格
@@ -272,6 +276,7 @@ AutoFakeBold = 2
 	position=bottom % position=bottom, 不代表标题放在下面, 标题仍放在你放\caption的位置.
 }
 \captionsetup[table]{%
+	skip=6pt,
 	format=plain,
 	justification=centering,   % 标题从第二行开始都有缩进, 应该和 justification=raggedright 的效果一样.
 	labelsep=quad, % 分隔符是一个空格
