@@ -30,15 +30,20 @@ A4 与 A5 分别记录训练配方及其对应的验证损失，通过 index 关
 
 按索引关联的作用，是把同一次实验的输入配方与输出损失放在同一行。训练领域数与验证领域数不同，反映的是输入覆盖范围和评价任务覆盖范围的差别。缺少某个领域的验证列，并不意味着该领域没有进入训练；它在其他验证任务上的作用仍可通过配方占比参与拟合。后面的推荐模型据此区分可调整领域与固定参考占比的领域，使评价对象、拟合输入和优化变量之间保持对应。
 
-A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为使各指标能够共同参与评分，需要统一其方向。设第 $j$ 个指标的原始值为 $x_j$，正向指标作极差归一化，负向指标反向缩放；对于过长或过短均不合适的长度型指标，使用其与稳健中心的接近程度表示质量：
+A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。列表值先转为标量，非有限值视为缺失并按全量记录中该指标的中位数填补。设处理后的值为 $x_{ij}$。对于过长或过短均不合适的长度型指标，先以稳健中心接近度作变换；其余指标保留原值：
 \begin{equation}
-    x'_j = \begin{cases}
-        \dfrac{x_j-\min x_j}{\max x_j-\min x_j}, & \text{正向指标}\\[6pt]
-        \dfrac{\max x_j-x_j}{\max x_j-\min x_j}, & \text{负向指标}\\[6pt]
-        \exp\!\left(-\dfrac{|\ln(1+x_j)-m_j|}{2.5\,\text{MAD}_j}\right), & \text{长度型指标}
+    u_{ij} = \begin{cases}
+        \exp\!\left(-\dfrac{|\ell_{ij}-m_j|}{2.5\,(\mathrm{MAD}_j+10^{-9})}\right), & \text{长度型指标},\\[6pt]
+        x_{ij}, & \text{其余指标},
     \end{cases}
 \end{equation}
-经上述变换，质量值统一至 $[0,1]$，数值越大表示质量越高。其中，$m_j$ 为对数值的中位数，$\text{MAD}_j$ 为对应的中位绝对偏差。由于列表型指标无法直接与标量合成，含多个有序类别的字段先通过 softmax 将类别 logits 转化为概率，再计算归一化期望级别；单元素列表则直接取其数值。两类结果均压缩为标量后参与后续评分。表\ref{tab:p1_dir}列出了各字段的含义、处理方向及计算权重。
+其中 $\ell_{ij}=\ln(1+\max(x_{ij},0))$，$m_j=\operatorname{median}_i\ell_{ij}$，$\mathrm{MAD}_j=\operatorname{median}_i|\ell_{ij}-m_j|$。随后对每个变换后指标，取 A1--A3 全量记录的第 1 和第 99 百分位数 $a_j$、$b_j$，进行分位数截断归一化，再对负向指标取补：
+\begin{equation}
+    v_{ij}=\operatorname{clip}_{[0,1]}\!\left(\frac{u_{ij}-a_j}{\max(b_j-a_j,10^{-12})}\right),
+    \qquad
+    x'_{ij}=\begin{cases}1-v_{ij},&\text{负向指标},\\v_{ij},&\text{其余指标}.\end{cases}
+\end{equation}
+其中 $\operatorname{clip}_{[0,1]}(v)=\min(1,\max(0,v))$；分位数按相邻顺序统计量线性插值得到。长度型指标也经过这一步缩放。各指标最终均取值于 $[0,1]$，且越大越好。与直接使用最小、最大值相比，分位数端点降低了极端值对缩放区间的影响，代价是端点外的差异不再保留。各领域及抽样、扩展集沿用同一组全量端点与权重，保证评分可比较。含多个有序类别的列表字段通过 softmax 将类别 logits 转为概率，再计算归一化期望级别；单元素列表直接取其数值。表\ref{tab:p1_dir}列出各字段的含义、方向及权重。
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
@@ -65,7 +70,7 @@ A1--A3 提供 SlimPajama 语料的 22 个质量指标\cite{slimpajama2025}。为
   dsir\_\allowbreak{}books & 相对于书籍领域的重要性权重 & 标量 & 正向 & 0.0081 \\
   dsir\_\allowbreak{}wiki & 相对于维基领域的重要性权重 & 标量 & 正向 & 0.0081 \\
   dsir\_\allowbreak{}math & 相对于数学领域的重要性权重 & 标量 & 正向 & 0.0086 \\
-  qurater & 教育质量评级（4 项取均值） & 列表(4) & 正向 & 0.0492 \\
+  qurater & 教育质量评级（4 维 softmax 期望） & 列表(4) & 正向 & 0.0492 \\
   ad\_\allowbreak{}en & 广告含量（\textbf{第 1 类=“无广告”，正向}；依据：原文抽查） & 列表(2) & 正向 & 0.0072 \\
   rps\_\allowbreak{}doc\_\allowbreak{}word\_\allowbreak{}count & 文档包含的词总数 & 标量 & 长度型 & 0.0516 \\
   rps\_\allowbreak{}doc\_\allowbreak{}num\_\allowbreak{}sentences & 文档包含的句子总数 & 标量 & 长度型 & 0.0523 \\

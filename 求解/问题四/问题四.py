@@ -398,11 +398,13 @@ for _ in range(600):
 boot = np.array(boot)
 lo, hi = np.percentile(boot, 5, axis=0), np.percentile(boot, 95, axis=0)
 
-# 情景分析：算力增长放缓 -> 技术增速减半
+# 条件情景：以 logistic 增长参数减半表征放缓，不估计算力到增长率的传导。
 def logistic_slow(t, K, r, t0, halve_from):
-    te = np.minimum(t, halve_from)
-    return K / (1 + np.exp(-r * (te - t0)))
-s_slow = logistic_slow(t_pred, K_fit, r_fit, t0_fit, t_pred[0] - 1)
+    """减速前沿用原曲线，减速后增长参数为 r/2，连接点连续。"""
+    t = np.asarray(t, dtype=float)
+    effective_t = np.minimum(t, halve_from) + 0.5 * np.maximum(t - halve_from, 0.0)
+    return logistic(effective_t, K, r, t0)
+s_slow = logistic_slow(t_pred, K_fit, r_fit, t0_fit, t_last)
 
 fut = pd.DataFrame({'t(2019起算年)': t_pred, '对应日历时点':
                     ['%d-%02d' % (2019 + int(np.floor(tt)), int(round((tt % 1) * 12)) + 1)
