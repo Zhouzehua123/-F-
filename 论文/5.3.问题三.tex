@@ -36,7 +36,7 @@
 \subsubsection{模型建立}
 
 \textbf{1.每个训练 token 的算力代价}\par\nopagebreak[4]
-基础训练使用 $6ND$ 的成本近似\cite{hoffmann2022chinchilla}，质量与注意力费用按题设计算\cite{data2026f}。由于三类 $g(Q)$ 在允许范围内均递增，可记质量提升的单位增量费用为 $\Delta g(Q)=g(Q)-g(Q_0)\ge0$，从而将总成本写为
+基础训练使用 $6ND$ 的成本近似\cite{hoffmann2022chinchilla}，质量与注意力费用按照题目第三问及题目附录 B 的成本设定计算。由于三类 $g(Q)$ 在允许范围内均递增，可记质量提升的单位增量费用为 $\Delta g(Q)=g(Q)-g(Q_0)\ge0$，从而将总成本写为
 \begin{equation}
  C_{\mathrm{tot}}
  =6ND+D\Delta g(Q)+\eta ND L_{\mathrm{ctx}}
@@ -163,7 +163,7 @@
 
 \subsubsection{模型求解}
 
-\noindent\textbf{辅助分析说明：} 本问的文段相关辅助参考腾讯 WorkBuddy 接入的 DeepSeek-V4-Flash（2026-07-31 公开测试），图表展示、程序整理与复现核对使用 OpenAI Codex（GPT-5.6-Luna，2026-07-09）\cite{ai_workbuddy,ai_codex56luna}。正文表达与段落衔接另经 OpenAI Codex 辅助润色。
+\noindent\textbf{辅助分析说明：} 本问的文段相关辅助参考腾讯 WorkBuddy 接入的 DeepSeek-V4-Flash（2026-07-31 公开测试），图表展示、程序整理与复现核对使用 OpenAI Codex（GPT-5.6-Luna，2026-07-09）\cite{ai_workbuddy,ai_deepseek,ai_codex56luna}。正文表达与段落衔接另经 OpenAI Codex 辅助润色。
 
 \textbf{1.预算增加后，质量与规模如何分配}\par\nopagebreak[4]
 比较表\ref{tab:p3_opt}中的三档配置，我们发现各项投入并未按相同比例增长。参数和数据都在增加，但数据更快，$D/N$ 由 30.9 升到 76.1。质量在低预算档停留于基线，中、高预算档则达到上界，不能简单地按固定比例同时扩张三项投入。

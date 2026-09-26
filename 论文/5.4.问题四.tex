@@ -11,7 +11,7 @@
 
 图\ref{fig:p4_workflow}按数据用途列出四条分析路径。损失与得分的分层回归用于判断变化方向；历史增量分解与未来预测直接使用评测得分，其中规模、年度回归的系数也用于结构情景。子任务结果用于定位能力短板，宏观资料则单独提供资源趋势参照。
 
-\noindent\textbf{辅助分析说明：} 本问的文段相关辅助参考腾讯 WorkBuddy 接入的 DeepSeek-V4-Flash（2026-07-31 公开测试），图表展示、程序整理与复现核对使用 OpenAI Codex（GPT-5.6-Luna，2026-07-09）\cite{ai_workbuddy,ai_codex56luna}。正文表达与段落衔接另经 OpenAI Codex 辅助润色。
+\noindent\textbf{辅助分析说明：} 本问的文段相关辅助参考腾讯 WorkBuddy 接入的 DeepSeek-V4-Flash（2026-07-31 公开测试），图表展示、程序整理与复现核对使用 OpenAI Codex（GPT-5.6-Luna，2026-07-09）\cite{ai_workbuddy,ai_deepseek,ai_codex56luna}。正文表达与段落衔接另经 OpenAI Codex 辅助润色。
 
 \textbf{1.综合得分、许可筛选与时间变量}\par\nopagebreak[4]
 综合分数 $\bar B$ 定义为 Open LLM Leaderboard v2 六项评测的平均值，满分 100\cite{openllm2025}。六项包括 IFEval、BBH、MATH Lvl 5、GPQA、MUSR 和 MMLU-PRO，分别对应指令遵循、综合推理、数学、研究生级问答、多步推理和专业知识。其中，IFEval 用可验证指令衡量遵循要求的程度\cite{zhou2023ifeval}；MMLU-Pro 增加推理要求并扩展选项数量，考察较高难度的知识与推理表现\cite{wang2024mmlupro}。本文沿用附件中的评测结果，用平均值追踪整体变化，再用单项得分识别相对薄弱的能力维度。
