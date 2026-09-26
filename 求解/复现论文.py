@@ -202,8 +202,10 @@ def verify_models(root, data, report_dir, *, full_scope=True):
                     result.update(regenerated=True, saved_sha256=sha(root/rel), new_sha256=sha(target))
                     report['checked_count'] += 1
                 report['outputs'][rel] = result
-            failed = [rel for rel, result in report['outputs'].items() if not result['equal']]
-            if failed: raise RuntimeError('复现输出缺失或结果不一致: ' + ', '.join(failed))
+        # 数值差异先记录，让可运行的后续问也得到检查；最终仍整体失败。
+        # 进程异常（例如上游缺文件）由上面的异常分支及时报告。
+        failed = [rel for rel, result in report['outputs'].items() if not result['equal']]
+        if failed: raise RuntimeError('复现输出缺失或结果不一致: ' + ', '.join(failed))
         if report['checked_count'] != report['expected_count'] or report['checked_count'] == 0:
             raise RuntimeError('未完整核对预期输出')
         report['passed'] = True

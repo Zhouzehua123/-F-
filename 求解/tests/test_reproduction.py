@@ -81,6 +81,27 @@ class ReproductionTests(unittest.TestCase):
         self.assertEqual(report['commands'][0]['status'], 'failed')
         self.assertTrue(report['source_results_unchanged'])
 
+    def test_difference_does_not_skip_independent_later_question(self):
+        later = '求解/问题二/结果/later.csv'
+        (self.root / later).parent.mkdir(parents=True)
+        (self.root / later).write_text('value\n1\n', encoding='utf-8')
+        self.manifest['问题二'] = [{'path': later, 'kind': 'csv'}]
+        self.save_manifest()
+        called = []
+        def runner(work, script, *args):
+            called.append(script.parent.name)
+            if script.parent.name == '问题一':
+                self.write_good(work)
+                (work / self.csv).write_text('domain,value\na,9\nb,2\n', encoding='utf-8')
+            else:
+                self.assertFalse((work / later).exists())
+                (work / later).write_text('value\n1\n', encoding='utf-8')
+        with self.assertRaisesRegex(RuntimeError, '不一致'): self.verify(runner)
+        self.assertEqual(called, ['问题一', '问题二'])
+        report = json.loads((self.report_dir / '模型复现比较.json').read_text(encoding='utf-8'))
+        self.assertFalse(report['passed'])
+        self.assertTrue(report['outputs'][later]['equal'])
+
     def test_empty_manifest_and_unsafe_path_are_rejected(self):
         for manifest in [{}, {'问题一': []}, {'问题一': [{'path': '求解/../../outside.csv', 'kind': 'csv'}]}]:
             with self.subTest(manifest=manifest):

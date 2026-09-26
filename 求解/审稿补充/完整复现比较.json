@@ -1,0 +1,638 @@
+{
+  "passed": false,
+  "expected_count": 81,
+  "checked_count": 81,
+  "outputs": {
+    "求解/问题一/结果/17域质量映射.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "d8e12a6fa9b45a6a481e0fba3beb59acf7f297be953fb96cd22f0aa9ff964af8",
+      "new_sha256": "d8e12a6fa9b45a6a481e0fba3beb59acf7f297be953fb96cd22f0aa9ff964af8"
+    },
+    "求解/问题一/结果/Loss代理领域难度.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "66deef641e71a910d62ca140cbc8a68179dbfca7993c05e5cb0294809ec46f9c",
+      "new_sha256": "66deef641e71a910d62ca140cbc8a68179dbfca7993c05e5cb0294809ec46f9c"
+    },
+    "求解/问题一/结果/冲突指标对_top20.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "43791325d4268436d4b7cff9b0b613976e97a2b67e5bb7012a35d2e57ca548a1",
+      "new_sha256": "43791325d4268436d4b7cff9b0b613976e97a2b67e5bb7012a35d2e57ca548a1"
+    },
+    "求解/问题一/结果/冲突样本裁决汇总.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "9f4a631f2ae8143501a99969bc64848e97fa1af91f26359b202003c302251449",
+      "new_sha256": "9f4a631f2ae8143501a99969bc64848e97fa1af91f26359b202003c302251449"
+    },
+    "求解/问题一/结果/冲突阈值灵敏度.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "dba71940f61391089fac45ba5dc699dd8db7f34e839f24d3fcbb374501a40713",
+      "new_sha256": "dba71940f61391089fac45ba5dc699dd8db7f34e839f24d3fcbb374501a40713"
+    },
+    "求解/问题一/结果/原文抽查.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "b408342f083e0117f2587384ac7e032d1c87d0326a406e263425ffd427335705",
+      "new_sha256": "1b0fa9b79f0a156dc9a3f5f1d5e38c84d092684d8ef595b787514c92a204b528"
+    },
+    "求解/问题一/结果/外推尺度因子.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "6fb2c3cee1e0e19384326307524ac5e355a6d235e9f8a0779ea57b16417fa3ef",
+      "new_sha256": "6fb2c3cee1e0e19384326307524ac5e355a6d235e9f8a0779ea57b16417fa3ef"
+    },
+    "求解/问题一/结果/岭正则敏感性.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "73fca241c5d336949be77a6f1593020f99de982d1e4518f77b93176d414608d7",
+      "new_sha256": "73fca241c5d336949be77a6f1593020f99de982d1e4518f77b93176d414608d7"
+    },
+    "求解/问题一/结果/广告方向敏感性.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "6f6d08f3c548693b3c6332f2587047fcae193bbe6536616b135ad9aafbce20f4",
+      "new_sha256": "8562b07d64bb28c8644decbc2a4aa7b03d69c1f6b3c6a3ec43aab363e4b85e8a"
+    },
+    "求解/问题一/结果/截距.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "1a9047516b40b80f64f21342992f03ecf9fe62d90cca03fdf9134c52fa00214e",
+      "new_sha256": "1a9047516b40b80f64f21342992f03ecf9fe62d90cca03fdf9134c52fa00214e"
+    },
+    "求解/问题一/结果/抽样集与扩展集域级对照.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "665326361e16d54d2c6e8a5c22bff2477d2cdcf4cc2bf828ecac4532e05f60df",
+      "new_sha256": "6e4a1ffb1dcec97be7acc1d4e38ec86552da784997f88ad877f31ffb2a76c37d"
+    },
+    "求解/问题一/结果/推荐配比调整.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "242165ca62d254cb74def1a0d7771bcf8b8e22b2463433d031f9b647c8edf318",
+      "new_sha256": "242165ca62d254cb74def1a0d7771bcf8b8e22b2463433d031f9b647c8edf318"
+    },
+    "求解/问题一/结果/最优配比预测.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "fa8eb64b727eab6d93d477c4f1b239643f3e1ad32065b277a43d2da1dbfa7490",
+      "new_sha256": "fa8eb64b727eab6d93d477c4f1b239643f3e1ad32065b277a43d2da1dbfa7490"
+    },
+    "求解/问题一/结果/样本级质量评分.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "fd7da0146d3dbecc39432c84df6efa7ad4efa3fee1dcf8564b390133b44e6c1d",
+      "new_sha256": "dc4880e1b3c532f0a710835da1964d81d4402518961082072dbf8b52e8e87a03"
+    },
+    "求解/问题一/结果/混合系数矩阵.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "8a8c96a5702e29b736b3aa6a55de589edeed0046df703af2a929272c80a807e5",
+      "new_sha256": "8a8c96a5702e29b736b3aa6a55de589edeed0046df703af2a929272c80a807e5"
+    },
+    "求解/问题一/结果/混合系数矩阵_中心化.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "93c3da47c2cfdc8a0f1b7c3ee4b2c44e2b0d750a741ec5ad9dfcfee34945d4be",
+      "new_sha256": "93c3da47c2cfdc8a0f1b7c3ee4b2c44e2b0d750a741ec5ad9dfcfee34945d4be"
+    },
+    "求解/问题一/结果/训练域边际效应.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "9c37d501dc1c3d2ebc4d17e9b160240ba2ae04db0b598996b07fd10674c3bd2c",
+      "new_sha256": "9c37d501dc1c3d2ebc4d17e9b160240ba2ae04db0b598996b07fd10674c3bd2c"
+    },
+    "求解/问题一/结果/质量与损失难度一致性.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "c79e5d8461844fbd1503824ed317e86d19c54df9cf36ff7e752d108c47b9f026",
+      "new_sha256": "c79e5d8461844fbd1503824ed317e86d19c54df9cf36ff7e752d108c47b9f026"
+    },
+    "求解/问题一/结果/质量信号缺失审计.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "f231f07f84aa6931421a66e4eef4e7f85b289687d50c5ef0c749cf861e97b3a3",
+      "new_sha256": "f231f07f84aa6931421a66e4eef4e7f85b289687d50c5ef0c749cf861e97b3a3"
+    },
+    "求解/问题一/结果/质量冲突与一致性.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "2aa41e0b0548df2f5054390d8b6f6b5e4561f801c174223db251bda33104cfd9",
+      "new_sha256": "2aa41e0b0548df2f5054390d8b6f6b5e4561f801c174223db251bda33104cfd9"
+    },
+    "求解/问题一/结果/质量域评分_全量.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "048a3b0f7cf665bb1e1a82c066c37373c95e717d6d6bb5cff3b69a6909e79d44",
+      "new_sha256": "0336a2a68d88dc595f6047b31b261c2744c3392e5acba2d823146b2eb7f9f2a2"
+    },
+    "求解/问题一/结果/质量域评分_抽样与扩展.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "8a12c303e4ca1b509315ef73a4786847b8d352e3e75f5db1c4f1078006588b9a",
+      "new_sha256": "dfb89119ab32becb5548cecc038ce1cb8b6ac9bc1f484ec9896e56862f9a7ef2"
+    },
+    "求解/问题一/结果/质量指标熵权.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "133738676ce93b3610f86eef7ccc6e4458e5438e4fd9153bdac9835e7fac4fba",
+      "new_sha256": "133738676ce93b3610f86eef7ccc6e4458e5438e4fd9153bdac9835e7fac4fba"
+    },
+    "求解/问题一/结果/质量项增量检验.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "e6a75ff46342378568fe3c5b21275cf43c4833122a9a35c2b4e79a23abf92afb",
+      "new_sha256": "0da981750b713460c70ba2b25120d47df24ac84e1b848bd12a10b2e3e6e75935"
+    },
+    "求解/问题一/结果/赋权方案对比.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "304bb92fb2ee449fe5f96c08621996a834423b4d5ff1ebf93512dca402af77c5",
+      "new_sha256": "1f5cd9522ddedd140e37eb76cb8a2236cd044f95c9bc14f870e8466804c07588"
+    },
+    "求解/问题一/结果/跨尺度损失比_60m_vs_1m.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "122cb9f4247864771919325d65b371b773532a5c67a30452d48998f433be108e",
+      "new_sha256": "122cb9f4247864771919325d65b371b773532a5c67a30452d48998f433be108e"
+    },
+    "求解/问题一/结果/问题一_拟合汇总.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "b78ad028641222d91f2fcffbeef6d27287462d1dd48157a839b84482e7f68b03",
+      "new_sha256": "b78ad028641222d91f2fcffbeef6d27287462d1dd48157a839b84482e7f68b03"
+    },
+    "求解/问题一/结果/非线性代理对照_五折.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "35d8d8ad973fd9ca081f9696e770e47b7f134292174af340e53e8f27dba74df2",
+      "new_sha256": "ee9039c0a284f219fc671967117aeae555f860c16c1d9c1e69494c6c411c45b4"
+    },
+    "求解/问题一/结果/非线性代理对照_参数搜索.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "dc12e36036e673b70727b946885c58c047bc2e5d2932ca874efa90d5448e5e91",
+      "new_sha256": "7e3e3d883b98702778074069df3b18cd3cd73ff1270e78b04d45d2dd07022979"
+    },
+    "求解/问题一/结果/非线性代理对照_复现清单.json": {
+      "equal": true,
+      "fields_differ": [],
+      "metadata_not_compared": {
+        "python": {
+          "saved": "3.14.0",
+          "regenerated": "3.13.12"
+        },
+        "packages": {
+          "saved": {
+            "numpy": "2.5.3",
+            "pandas": "3.0.6",
+            "scipy": "1.18.1",
+            "scikit-learn": "1.9.1"
+          },
+          "regenerated": {
+            "numpy": "2.5.3",
+            "pandas": "3.0.2",
+            "scipy": "1.18.1",
+            "scikit-learn": "1.9.1"
+          }
+        },
+        "script_sha256": {
+          "saved": "9f85b7eaa418c7affca508bc8184c8ffc90adcb2cdaa8ee394dd028b084ef58d",
+          "regenerated": "8b5cddeeb7dfe2e6802f8ba0d13fdae4f5813dcea3cc9e7dd8366d919f312e0b"
+        },
+        "elapsed_seconds": {
+          "saved": 3.270429000025615,
+          "regenerated": 2.9332048000069335
+        }
+      },
+      "regenerated": true,
+      "saved_sha256": "069fa43bf002fe0177ce8a8eb961d2b46cdf785db5f824abbf7cb5b4b0ba8182",
+      "new_sha256": "6aed45a56563c3d1a6172b372ea02c24a63210b948895014f16e7a60127773e3"
+    },
+    "求解/问题一/结果/非线性代理对照_折分配.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "09188221ced4f1e7c9462e88b750fd10d4699a93ff2850a86779fcdb7ce84df3",
+      "new_sha256": "09188221ced4f1e7c9462e88b750fd10d4699a93ff2850a86779fcdb7ce84df3"
+    },
+    "求解/问题一/结果/非线性代理对照_汇总.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "b78da54f2623c57ae96ba3d45ff5762b0b43f603471f22af3a90d89452d3915e",
+      "new_sha256": "da76c6f55115cfb1d25a994304e098eefbf13c0d00b620ac8f92b84318d646dd"
+    },
+    "求解/问题一/结果/非线性代理对照_逐域.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "f3aee790c59f8f6256db643ca189d069b6bafec55ad2ad050e31e4859046ecc2",
+      "new_sha256": "555fc4fd3a43c6e481ab091ef79f39853ee34b4246c83fe1ca08f71c67d485e4"
+    },
+    "求解/问题一/结果/非线性代理对照_预测明细.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "0e5f86b6c61f912bfcdaf6027af28fac1b23ef7002b3e685a7f717c350775775",
+      "new_sha256": "f74ddd714a05f15237c3476cd755110d62831d4a3c038e2eb64e09f14f9ca7ad"
+    },
+    "求解/问题一/结果/领域质量评分.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "66deef641e71a910d62ca140cbc8a68179dbfca7993c05e5cb0294809ec46f9c",
+      "new_sha256": "66deef641e71a910d62ca140cbc8a68179dbfca7993c05e5cb0294809ec46f9c"
+    },
+    "求解/17域质量映射.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "d8e12a6fa9b45a6a481e0fba3beb59acf7f297be953fb96cd22f0aa9ff964af8",
+      "new_sha256": "d8e12a6fa9b45a6a481e0fba3beb59acf7f297be953fb96cd22f0aa9ff964af8"
+    },
+    "求解/问题一_关键量.json": {
+      "equal": true,
+      "fields_differ": [],
+      "metadata_not_compared": {},
+      "regenerated": true,
+      "saved_sha256": "67352ca69b02130cb19683cfa13c1c9932c5c576715e71d8cc5e02aaac208af1",
+      "new_sha256": "0a56a6219aa43f1fdbe60d6876de2467fa768603eb40122ed341a217ea890eeb"
+    },
+    "求解/问题二/结果/B3轨迹验证.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "eb6ba9a9f1886b1aa359f835c147bd79c1b26c8d2fc0fc541d9953891aa5168f",
+      "new_sha256": "de3b08e9674895e4362b3f752a70e31a686a48af77c906153787357330bb4dd3"
+    },
+    "求解/问题二/结果/广义标度律分层验证.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "ed427edfc6d867352d8e7ad1343669cc408353efeb98168380be2317dd58ae29",
+      "new_sha256": "1af3070ec38c3337eb246fd7f25c4d787e8c690f76461fe84dcd4ce1d124d3d1"
+    },
+    "求解/问题二/结果/广义标度律参数.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "7008f219457a593451c19f97c37e370eecbb8736e2e5ff274d39322d79186c37",
+      "new_sha256": "471d0f0122f78e16a646b12213642d3a56d787dbd7e7122a2d61be062268f286"
+    },
+    "求解/问题二/结果/广义标度律形式对比.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "f1776f0e4f9cf62daddc6bc291c2bb6947d565dc1251cfa7bc47fa04d81e497c",
+      "new_sha256": "18dce1abb9d38e135fca919fd2bcb5697aff7ee086443310e11328ed5637f59f"
+    },
+    "求解/问题二/结果/弹性与替代关系.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "d16ab2a83e885a667c9447c397c7e661cd3b8990d31af69b66c62790672baeea",
+      "new_sha256": "9fbfdef058b67f38f75e05f47eaa7e4451473f099a2737d2ddaee2637ae1e98a"
+    },
+    "求解/问题二/结果/替代率随质量变化.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "ae36f197c928c7ebe9f748a4a5798f89c36e81976f706e06a8e488582672e771",
+      "new_sha256": "586e3f8b727ca1c2be8ef504093e7a8e8bb5d8bfbd9598ccea4fdd6532551e49"
+    },
+    "求解/问题二/结果/百亿参数以上外推.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "4f4f4eeb000e18b622ba27f685aedf37b95b47e5d5078a85708161de04dd96ea",
+      "new_sha256": "aa94b3952f0557383c2c4f633a7d25702f270419f82e093bf268de102832ada6"
+    },
+    "求解/问题二/结果/经典标度律参数.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "fd02b2cd67d7f660c00a28802d15e93a687f1ab757f8cec0fae313cf32a0ea07",
+      "new_sha256": "c84c6bec18962d496734a3fb3fe8864e1ce79ebdf0bdbaa8b1bc2ac736c4035b"
+    },
+    "求解/问题二/结果/质量与损失下限.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "f9491ff5433077506fc8393a0bd6d9b1f85c35b316a86dfeb10a5d66f3f869f9",
+      "new_sha256": "b72fad2583da5c7058ff2ab16e86211acc85e7df66eed2e62babf1e4abf9a238"
+    },
+    "求解/问题二/结果/质量参数替代关系.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "f10aa1a5ec893299c7837229038fa97131c9fea986a45996e65d8f6549e4002c",
+      "new_sha256": "aca45e4a6299765dff2d4ef60f9daf0acdffa632988b74557e03e4fd449d8c46"
+    },
+    "求解/问题二/结果/质量字段方向审计.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "3f22a352ddb6a441d8ad2e7bd531878817397b873a138e0ab1da543fd82a10a6",
+      "new_sha256": "3f22a352ddb6a441d8ad2e7bd531878817397b873a138e0ab1da543fd82a10a6"
+    },
+    "求解/问题二/结果/配比项校准.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "685632aeb9dfbcd734c050e24898af0f4b00da7a0eb2493b434ab92a3d83868f",
+      "new_sha256": "685632aeb9dfbcd734c050e24898af0f4b00da7a0eb2493b434ab92a3d83868f"
+    },
+    "求解/问题二/结果/问题二_拟合汇总.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "7a8876e33d21d9e429505c55e9f602ecf03907b858b5a62c18303be9773755e1",
+      "new_sha256": "a282d00079a0c89e2d2e7cd7f3d98585bf1ec948115a04c7469d25a495a9e80c"
+    },
+    "求解/问题二/结果/领域替代互补_top.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "e48e9c36926de86a9306fa4511030ed95340f5dd1f5a7bfa202731d53fae2784",
+      "new_sha256": "e48e9c36926de86a9306fa4511030ed95340f5dd1f5a7bfa202731d53fae2784"
+    },
+    "求解/问题二/结果/领域替代互补矩阵.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "eac0568f4c0facafcad37cf9b99a1e632cb4d91580e615b0f1a4fa4838fc2dba",
+      "new_sha256": "eac0568f4c0facafcad37cf9b99a1e632cb4d91580e615b0f1a4fa4838fc2dba"
+    },
+    "求解/广义标度律参数.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "7008f219457a593451c19f97c37e370eecbb8736e2e5ff274d39322d79186c37",
+      "new_sha256": "471d0f0122f78e16a646b12213642d3a56d787dbd7e7122a2d61be062268f286"
+    },
+    "求解/问题三/结果/三档预算最优配置.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "2661c8918be84c092609a5b00022032f9e5d9318827c15b822ac85ada57331e9",
+      "new_sha256": "41174f4ba22fa4ad44ae76481a723c2056e596395216b1aaf7c8b904403e53fa"
+    },
+    "求解/问题三/结果/上下文长度与最优质量.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "0ba74d3c22e36fad98f8f7a62727a638f58a4a8c9f02d855ca741d3a91a69352",
+      "new_sha256": "4645a295ce7b0e698f62806089111826e345b8834afa8e10a2d3414bf059b4b9"
+    },
+    "求解/问题三/结果/上下文长度敏感性.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "9ef50f8994789b3b0c9668e70ce212149989e17d18a042494e01b27067e532b4",
+      "new_sha256": "fadb2d717ae474df1a1b8018f7cf4186bc864a51c48084ea3b78d0a18d6c63bf"
+    },
+    "求解/问题三/结果/上下文长度连续扫描.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "a8f02096eb859219522498cc6093289ef21aea209f8f4adb7bf63a15f86f84f8",
+      "new_sha256": "34d01346c753388c62e443bfe098869aa4ca8fde718328c21cab0ce4017178be"
+    },
+    "求解/问题三/结果/成本函数对比.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "1c02b836457033a722b20e96aa3e53eb7050816ea2c27adedfb6593157af6f17",
+      "new_sha256": "343098f7fbe49f81cb6b443cfacb56cdc4494d8ccc809ce8d623250844b9bced"
+    },
+    "求解/问题三/结果/结构性转移识别.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "52985d6e21d2f0e2114f70d09f7c2f0fa7118198d0b92b6267a1d532a35394fb",
+      "new_sha256": "a50ccabb0ffcb6f23bb62f65f9526786c5e4585196d3fd8389945a4223c78a92"
+    },
+    "求解/问题三/结果/质量基线灵敏度.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "a5f4b3f79947da8bd055a2a2c81891ad467cedd18964680639cfdfdf5d939984",
+      "new_sha256": "93292063304e8608c840a3e50e3da308b1d75209b2d7a3ee075b94bb4374da19"
+    },
+    "求解/问题三/结果/配比项算力等价.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "8dbcdbb7056fc8834740eb940b7f26e2cce14a7796f506a19a42e5eb7b5dadd5",
+      "new_sha256": "287c5e0ee62dfdf15b71a6202e50a86365dba77159328dc5c3578152222667fa"
+    },
+    "求解/问题三/结果/预算扫略.csv": {
+      "equal": false,
+      "columns_differ": [
+        "D_over_N",
+        "c_qual",
+        "f_qual"
+      ],
+      "regenerated": true,
+      "saved_sha256": "da9450bcb7753c618da61b84fd94f748e216f492d491140bce04642355a71e46",
+      "new_sha256": "055eab7200d911e29bda4595a030bc053476f8fd3d73ac359310430f93492744"
+    },
+    "求解/问题四/结果/C3口径异常行.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "6036d6e0ff5a7d282421b165440f5d54c6f90ae82137127faee2f9bc35363511",
+      "new_sha256": "6036d6e0ff5a7d282421b165440f5d54c6f90ae82137127faee2f9bc35363511"
+    },
+    "求解/问题四/结果/C4宏观摘要.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "d19708272cf348b0916ab3d6068b72fe1e3209403b44c79fe4b2a2723b1fb9d5",
+      "new_sha256": "b755339092346a344b43d79aa45409d3cdb05db4f2e7145dbd00c831e97e734c"
+    },
+    "求解/问题四/结果/C4宏观趋势.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "c76b68a7afe23197da0be816cdf10e37ebc927e1f73fe5326c5269bba56272e3",
+      "new_sha256": "c76b68a7afe23197da0be816cdf10e37ebc927e1f73fe5326c5269bba56272e3"
+    },
+    "求解/问题四/结果/C8与C1一致性校验.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "628a0f99c8cbeb2a03c59901d8182111b2acea4dfd143f6410e85240dd9655f7",
+      "new_sha256": "628a0f99c8cbeb2a03c59901d8182111b2acea4dfd143f6410e85240dd9655f7"
+    },
+    "求解/问题四/结果/C8子任务类别汇总.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "9ddfc81e9c91ac7182266b0d9db396d503faabb3197c6c4205eb7310abc31181",
+      "new_sha256": "9ddfc81e9c91ac7182266b0d9db396d503faabb3197c6c4205eb7310abc31181"
+    },
+    "求解/问题四/结果/C8逐任务聚合.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "08a4add415a6844c0b78d09bdf0bd50e9c6848dfccb1763a439bb8ddfb0bdc88",
+      "new_sha256": "08a4add415a6844c0b78d09bdf0bd50e9c6848dfccb1763a439bb8ddfb0bdc88"
+    },
+    "求解/问题四/结果/C8逐任务解析结果.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "8d03522e4a393e429b29013117e1a394da99f9c1dc0363812bec7f3ed3c3781b",
+      "new_sha256": "8d03522e4a393e429b29013117e1a394da99f9c1dc0363812bec7f3ed3c3781b"
+    },
+    "求解/问题四/结果/logistic参数.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "eb54a43de67abc8e2e8916bbee48820ad8183a6b8a60aa78be70d8c6c4ea9ad1",
+      "new_sha256": "be4d2814436746ec244fca028718a07141440dd09f43b0bb7b71224863f342a0"
+    },
+    "求解/问题四/结果/Loss_Benchmark映射.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "646713f998e733a5174bb4d61509011c460844a0d089c4f45ecc44a7e7dcdda0",
+      "new_sha256": "4b2f74b62157df8ed6c998af569c57657457ddea796bb65d072d2fa64a8d8805"
+    },
+    "求解/问题四/结果/Loss_Benchmark映射明细.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "5d93a3373e19bdbe932f184f5ae20b51b7c27c25d473e6d0f9b7458c033530c0",
+      "new_sha256": "5d93a3373e19bdbe932f184f5ae20b51b7c27c25d473e6d0f9b7458c033530c0"
+    },
+    "求解/问题四/结果/前沿序列.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "343bbcb2f091c46a414ca8aa33eae235df659600304f12192c5ffccd348ba9c8",
+      "new_sha256": "343bbcb2f091c46a414ca8aa33eae235df659600304f12192c5ffccd348ba9c8"
+    },
+    "求解/问题四/结果/前沿预测.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "c1237cec10dc3cd76e1ee4262cb38211877b0b9e0c0615ba054166e38ff05ac8",
+      "new_sha256": "66e802cbc10aecced75580cfcadb45766044539bfdae6808e72659f9ab01c419"
+    },
+    "求解/问题四/结果/前沿预测_结构外推情景.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "d6b4f2ca5534fca9640bd3f63405ecec94235db13d782ca31ce0f71bee0f015f",
+      "new_sha256": "0077ee5f0f8c645a285fc40798890a69f3f9fccf26bf815a2f4693fcee3953e2"
+    },
+    "求解/问题四/结果/年份效应.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "3099d954fd790e9dcb9ec91c1c5196b64097e19748e99f0141ab2068efcd1848",
+      "new_sha256": "9dace92e634a71207e5ea14fce45567f3ccacee8538e401f10cc461f5460caa3"
+    },
+    "求解/问题四/结果/筛选漏斗.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "84d1c0d3b2dbd57458c4311fae03551c0c729266ccf77117197080289c1ab4da",
+      "new_sha256": "84d1c0d3b2dbd57458c4311fae03551c0c729266ccf77117197080289c1ab4da"
+    },
+    "求解/问题四/结果/规模时间分解.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "6cf76c289059a545bb47567af66092e765d0cfa1e465e5a4db0b69f2c0a11204",
+      "new_sha256": "7ff2aed687e4c2e21b5f7f46415e616b001dc3ca906b42376b80b3334a9d79b2"
+    },
+    "求解/问题四/结果/规模时间分解_长周期.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "7878140609e43e058303e4fc3bab2ec36c79748c6e4a6fe41d79eeb5c792d44e",
+      "new_sha256": "c6199c46c6df6cdb7954e71886d0bb277334eb47d5aceff0ca79c8699d53dec2"
+    },
+    "求解/问题四/结果/逐任务聚合.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "c29c825ce23e5f460f48fbc852e6f34376ae1cfbcd001faeea24d527ec7934b1",
+      "new_sha256": "c29c825ce23e5f460f48fbc852e6f34376ae1cfbcd001faeea24d527ec7934b1"
+    },
+    "求解/问题四/结果/面板回归数据.csv": {
+      "equal": true,
+      "columns_differ": [],
+      "regenerated": true,
+      "saved_sha256": "e36f65468f45f47d2e3e388fb517dfbe0f9e311fb456780b12405587b2118bf5",
+      "new_sha256": "e36f65468f45f47d2e3e388fb517dfbe0f9e311fb456780b12405587b2118bf5"
+    }
+  },
+  "commands": [
+    {
+      "script": "求解/问题一/问题一.py",
+      "status": "completed"
+    },
+    {
+      "script": "求解/问题二/问题二.py",
+      "status": "completed"
+    },
+    {
+      "script": "求解/问题三/问题三.py",
+      "status": "completed"
+    },
+    {
+      "script": "求解/问题四/问题四.py",
+      "status": "completed"
+    }
+  ],
+  "workspace": "isolated temporary copy (local path omitted)",
+  "error": "RuntimeError: 复现输出缺失或结果不一致: 求解/问题三/结果/预算扫略.csv",
+  "source_results_unchanged": true,
+  "environment": {
+    "python": "3.13.12",
+    "numpy": "2.5.3",
+    "pandas": "3.0.2",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.10.8",
+    "Pillow": "11.3.0"
+  },
+  "interpretation": "All four entrypoints completed and all 81 expected outputs were regenerated. 80 files meet the strict comparison. Q3 budget sweep fails the unchanged strict tolerance; independent feasibility/objective diagnostics are recorded separately. No original numeric results were overwritten."
+}
