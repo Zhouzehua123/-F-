@@ -8,6 +8,15 @@
 
 已有研究给出了固定算力下参数和数据的配置关系\cite{hoffmann2022chinchilla}。本题还要负担质量处理与长上下文计算，故在问题二的损失函数上加入这些费用，先求不同预算的方案，再检查成本形式改变后结论是否保持。
 
+图\ref{fig:p3_workflow}梳理了本问的计算过程。先汇入前两问的质量基线、配比修正与损失参数，再将训练、质量处理和注意力费用写入预算约束。多初值求解后，分别比较三档预算配置、连续预算中的质量投入阶段，以及成本形式和上下文改变时的配置差异。
+
+\begin{figure}[!htbp]
+ \centering
+ \includegraphics[width=0.94\textwidth]{figures/q3-workflow.pdf}
+ \caption{问题三资源配置与求解流程}
+ \label{fig:p3_workflow}
+\end{figure}
+
 \par\medskip\noindent\textbf{数据与计算口径}\par
 
 本问直接使用问题二估计的损失参数。其中规模项为 $A=0.3808$、$\alpha=0.3266$、$B=1.2515$、$\beta=0.2767$，质量项为 $C_q=0.3544$、$\gamma=0.9779$，常数项为 $E=1.6558$。质量系数改记 $C_q$，以区别预算 $C_{\mathrm b}$。计算费用时，$N$、$D$ 分别用参数个数与 token 个数；代入损失式时再换成 $n=N/10^9$、$d=D/10^9$。下列表格的 B 均表示十亿。

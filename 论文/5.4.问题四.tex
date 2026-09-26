@@ -9,6 +9,15 @@
 
 前三问研究训练损失，本问研究模型的实际评测得分。已有研究分别讨论了规模增加时的能力涌现\cite{wei2022emergent}，以及评分方式造成的表观突变\cite{schaeffer2023mirage}。本文先检查损失和得分是否保持反向关系，再把历史增长拆成规模变化与其他变化两部分，最后估计未来的能力前沿。由于评测体系和样本来源并不完全一致，综合分数与单项任务结果同时保留：前者用于比较整体水平，后者用于寻找具体短板。
 
+图\ref{fig:p4_workflow}按数据用途列出四条分析路径。损失与得分的分层回归用于判断变化方向；历史增量分解与未来预测直接使用评测得分，其中规模、年度回归的系数也用于结构情景。子任务结果用于定位能力短板，宏观资料则单独提供资源趋势参照。
+
+\begin{figure}[!htbp]
+ \centering
+ \includegraphics[width=0.94\textwidth]{figures/q4-workflow.pdf}
+ \caption{问题四技术演进与能力前沿分析流程}
+ \label{fig:p4_workflow}
+\end{figure}
+
 \noindent\textbf{辅助分析说明：} 本问数据整理、绘图与数值核对使用 Codex 辅助，模型为 GPT-5.4（OpenAI，2026-03-05）及 GPT-6 系列（OpenAI，2026-09-03 系列首次发布）\cite{ai_codex54,ai_codex6}。
 
 \textbf{1.综合得分、许可筛选与时间变量}\par\nopagebreak[4]
