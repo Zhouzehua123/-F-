@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 # 本程序及代码的整理与核对使用人工智能工具 Codex 辅助。
 # 模型：GPT-5.6-Luna；开发机构：OpenAI。
-# 版本发布日期：2026-09-03（系列首次发布）。
+# 版本发布日期：2026-07-09（型号发布）。
 """
 问题一：数据质量评价、质量冲突消解与领域配比建模
 数据：附件 A（A1-A3 质量信号；A4-A15 配方/Loss；A16 域映射）
 方法：1) 22 指标方向统一 + 1%--99% 分位数截断归一化 + 熵权法三级综合评分（样本/语料/领域）
       2) 成对 z 分数差冲突定义 + Kendall 协同系数一致性检验 + 域内中位数裁决
-      3) 岭正则线性混合回归刻画 17 域配比 -> 13 域损失，并检验追加质量项的增量解释力
+      3) 岭正则线性混合回归刻画 17 域配比 -> 13 域损失，并对照冗余质量特征的拟合变化
 输出：图片到 图片/，结果 CSV 到 结果/
 """
 import sys, os, json, lzma, glob
@@ -194,6 +194,27 @@ def orient_and_normalize(raw):
         norm[c] = 1 - v if c in NEGATIVE_COLS else v
     return oriented, norm
 
+def kendall_concordance(values):
+    """对象为行、评价指标为列；平均秩并扣除各列的并列秩修正项。"""
+    values = np.asarray(values, dtype=float)
+    if values.ndim != 2 or not np.isfinite(values).all():
+        raise ValueError('Kendall W 需要有限值二维矩阵')
+    m, n = values.shape
+    if m < 2 or n < 2:
+        raise ValueError('Kendall W 至少需要两个对象和两个评价指标')
+    rank_sum = np.zeros(m)
+    tie_term = 0
+    for column in values.T:
+        rank_sum += stats.rankdata(column, method='average')
+        _, counts = np.unique(column, return_counts=True)
+        # 转成 Python 整数，避免大样本分母乘法发生 int64 溢出。
+        tie_term += sum(int(t)**3 - int(t) for t in counts if t > 1)
+    denominator = n**2 * (m**3 - m) - n * tie_term
+    if denominator <= 0:
+        raise ValueError('所有指标均无排序差异，Kendall W 未定义')
+    return float(12 * np.sum((rank_sum - rank_sum.mean())**2) / denominator)
+
+
 def quality_evaluation():
     raw, meta = load_quality_records()
     raw = raw.replace([np.inf, -np.inf], np.nan)
@@ -254,11 +275,7 @@ def quality_evaluation():
     def agreement(idx, label):
         Zs = norm.loc[idx]
         m, n = Zs.shape                      # m 条文本（对象），n=22 指标（评价者）
-        rank_sum = np.zeros(m)
-        for c in Zs.columns:
-            rank_sum += stats.rankdata(Zs[c].values, method='average')
-        S = np.sum((rank_sum - rank_sum.mean()) ** 2)
-        W = 12 * S / max(n ** 2 * (m ** 3 - m), 1)
+        W = kendall_concordance(Zs.values)
         Am = (Zs.values - Zs.values.mean(axis=0)) / (Zs.values.std(axis=0) + 1e-12)
         iu = np.triu_indices(n, 1)
         pairdiff = np.abs(Am[:, iu[0]] - Am[:, iu[1]])

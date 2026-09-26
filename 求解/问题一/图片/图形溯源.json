@@ -188,11 +188,11 @@
     },
     {
       "file": "图8_问题一求解流程.png",
-      "sha256": "fbf378ce04208ee3e487bb36cf58c2fe35a3bf2b6755b88262aac02da77fd1cf"
+      "sha256": "63dc4b8eae59d66ec34a46240dea8b48f05b174316fd062a6133f65347f7be9e"
     },
     {
       "file": "图8_问题一求解流程.svg",
-      "sha256": "095a8bb29b30f25b53d296c44780c64c21168683cb12161486a5ce51bb77a84c"
+      "sha256": "55db504cbe64c5d4f4b6dd53dadf32d722e77788efdcd049af076c589009bc42"
     },
     {
       "file": "图9_非线性代理对照.png",
@@ -201,6 +201,333 @@
     {
       "file": "图9_非线性代理对照.svg",
       "sha256": "554c262862214500e271e01f4d4e9bcf7f0db1ece3f5d407dd142c63a012981e"
+    }
+  ],
+  "original_generation_note": "顶层 scripts_sha256 和 inputs 保留原生成记录；后续局部重绘的源码和输入见 subsequent_generation_runs。figures 如存在，则记录当前图文件。",
+  "subsequent_generation_runs": [
+    {
+      "style": "建模展示风",
+      "skill": "academic-research-suite 3.22.0 / visualization_agent",
+      "scripts_sha256": {
+        "重绘图表.py": "a4373820a847053428a941538889aa0f6561da8a1b18f7ebb738c7e1d44be451",
+        "绘图数据.py": "7d66c9b1667ddd3fde61eeddbb888406ff88e4d3ff42b408087dd5dcb524d893",
+        "出版导出.py": "25bfc85c7ef711d2079b588222d70aade9971030da79ac662ed574d5ee216dfa",
+        "展示风格公共.py": "5f0f0e69c5c71c35af44e33518a86191fdacf10ea50ebd2922d24dd7d5d78548",
+        "展示风格冲突.py": "6b9f29afc8ddb674628d055d4d6a7e2c0181a459bcb4cc9388b9d14c8092c1a4",
+        "展示风格概览.py": "cac81035acd992e10805fec0680495cb17935b0220d7633e3b3bf300a331bd2e",
+        "展示风格流程.py": "13878829523609af8d1f769b710bb96a1b3dbd08bbd5b7e5e4e33e52f9b6d978",
+        "展示风格诊断.py": "0ceeef44a28e6a363d03699e0aa1e773dfc6d36b6fba9c4ddbea18064e1d8c34",
+        "展示风格非线性.py": "10785c134c6d4f5e2dda7a9b29138cd45784c87ccd61609a1a9af954acb4d6c0"
+      },
+      "input_checks": {
+        "中心化系数": {
+          "passed": true,
+          "max_abs_diff": 3.552713678800501e-15
+        },
+        "熵权之和": {
+          "passed": true,
+          "max_abs_diff": 1.2212453270876722e-15
+        },
+        "参考配比": {
+          "passed": true,
+          "max_abs_diff": 9.71445146547012e-17
+        },
+        "训练领域平均损失": {
+          "passed": true,
+          "max_abs_diff": 0.0
+        },
+        "训练 R2": {
+          "passed": true,
+          "max_abs_diff": 1.1102230246251565e-16
+        },
+        "1M 检验 R2": {
+          "passed": true,
+          "max_abs_diff": 3.3306690738754696e-16
+        },
+        "10b 外推均值": {
+          "passed": true,
+          "max_abs_diff": 2.220446049250313e-16
+        },
+        "70b 外推均值": {
+          "passed": true,
+          "max_abs_diff": 1.6653345369377348e-16
+        },
+        "60M/1M 均值": {
+          "passed": true,
+          "max_abs_diff": 0.0
+        },
+        "60M/1M 标准差": {
+          "passed": true,
+          "max_abs_diff": 9.71445146547012e-17
+        },
+        "质量口径 Spearman": {
+          "passed": true,
+          "max_abs_diff": 0.0
+        }
+      },
+      "inputs": {
+        "求解/问题一/结果/混合系数矩阵.csv": {
+          "sha256": "8a8c96a5702e29b736b3aa6a55de589edeed0046df703af2a929272c80a807e5",
+          "rows": 17,
+          "columns": 14
+        },
+        "求解/问题一/结果/混合系数矩阵_中心化.csv": {
+          "sha256": "93c3da47c2cfdc8a0f1b7c3ee4b2c44e2b0d750a741ec5ad9dfcfee34945d4be",
+          "rows": 17,
+          "columns": 14
+        },
+        "求解/问题一/结果/截距.csv": {
+          "sha256": "1a9047516b40b80f64f21342992f03ecf9fe62d90cca03fdf9134c52fa00214e",
+          "rows": 13,
+          "columns": 2
+        },
+        "求解/问题一/结果/问题一_拟合汇总.csv": {
+          "sha256": "b78ad028641222d91f2fcffbeef6d27287462d1dd48157a839b84482e7f68b03",
+          "rows": 13,
+          "columns": 7
+        },
+        "求解/问题一/结果/推荐配比调整.csv": {
+          "sha256": "242165ca62d254cb74def1a0d7771bcf8b8e22b2463433d031f9b647c8edf318",
+          "rows": 17,
+          "columns": 4
+        },
+        "求解/问题一/结果/外推尺度因子.csv": {
+          "sha256": "6fb2c3cee1e0e19384326307524ac5e355a6d235e9f8a0779ea57b16417fa3ef",
+          "rows": 13,
+          "columns": 3
+        },
+        "求解/问题一/结果/跨尺度损失比_60m_vs_1m.csv": {
+          "sha256": "122cb9f4247864771919325d65b371b773532a5c67a30452d48998f433be108e",
+          "rows": 13,
+          "columns": 3
+        },
+        "求解/问题一/结果/质量域评分_全量.csv": {
+          "sha256": "048a3b0f7cf665bb1e1a82c066c37373c95e717d6d6bb5cff3b69a6909e79d44",
+          "rows": 7,
+          "columns": 4
+        },
+        "求解/问题一/结果/质量指标熵权.csv": {
+          "sha256": "fac2ea1fe2de0c1498bb9dab786c040dec955e3021fe13100493b86e382c171c",
+          "rows": 22,
+          "columns": 6
+        },
+        "求解/问题一/结果/冲突指标对_top20.csv": {
+          "sha256": "43791325d4268436d4b7cff9b0b613976e97a2b67e5bb7012a35d2e57ca548a1",
+          "rows": 20,
+          "columns": 2
+        },
+        "求解/问题一/结果/Loss代理领域难度.csv": {
+          "sha256": "66deef641e71a910d62ca140cbc8a68179dbfca7993c05e5cb0294809ec46f9c",
+          "rows": 13,
+          "columns": 3
+        },
+        "求解/问题一/结果/质量与损失难度一致性.csv": {
+          "sha256": "c79e5d8461844fbd1503824ed317e86d19c54df9cf36ff7e752d108c47b9f026",
+          "rows": 6,
+          "columns": 5
+        },
+        "求解/问题一/结果/非线性代理对照_逐域.csv": {
+          "sha256": "f3aee790c59f8f6256db643ca189d069b6bafec55ad2ad050e31e4859046ecc2",
+          "rows": 104,
+          "columns": 7
+        },
+        "求解/问题一/结果/非线性代理对照_预测明细.csv": {
+          "sha256": "0e5f86b6c61f912bfcdaf6027af28fac1b23ef7002b3e685a7f717c350775775",
+          "rows": 28288,
+          "columns": 6
+        },
+        "附件/A_data_value/regmix_tables/train_mixture_1m.csv": {
+          "sha256": "04a32ef4ab594376bf90e11404c033668f887c351d6a03ad3744824c7296a2d8",
+          "rows": 512,
+          "columns": 18
+        },
+        "附件/A_data_value/regmix_tables/train_pile_loss_1m.csv": {
+          "sha256": "49a959aa07ce5c20831d5abe3a7896ff0cd90a398bd407c8913fd5588be0465a",
+          "rows": 512,
+          "columns": 14
+        },
+        "附件/A_data_value/regmix_tables/test_mixture_1m.csv": {
+          "sha256": "197267b7d6f15367e2f46c881e564c35b0d34e51b1754bb09d07e650cf8e1ce8",
+          "rows": 256,
+          "columns": 18
+        },
+        "附件/A_data_value/regmix_tables/test_pile_loss_1m.csv": {
+          "sha256": "e027b1674f60140a65a87b5e4a59ab5f09dc33e8fd02c080682678074b160f53",
+          "rows": 256,
+          "columns": 14
+        },
+        "附件/A_data_value/regmix_tables/est_pile_loss_10b.csv": {
+          "sha256": "226457581f3f59e15e44d8f72dee31fa7492c821699725fef47627d82cf34c0d",
+          "rows": 63,
+          "columns": 14
+        },
+        "附件/A_data_value/regmix_tables/est_pile_loss_70b.csv": {
+          "sha256": "d0883b2d1a44da9386a6d629a3623c724ee291cba1ac87b6d1079e5377307682",
+          "rows": 63,
+          "columns": 14
+        },
+        "附件/A_data_value/regmix_tables/test_pile_loss_60m.csv": {
+          "sha256": "8fe69d59ab7dd4fae4736459f4265ec93c7ed1ad1eca407346052560edc72b5b",
+          "rows": 256,
+          "columns": 14
+        },
+        "求解/问题一_关键量.json": {
+          "sha256": "b22c55f8ae0a0769501466331e60861559c6379f20888cace342424ad9b38fb1"
+        }
+      },
+      "output_figures": [
+        "图8_问题一求解流程"
+      ],
+      "indicator_key": [
+        {
+          "code": "M01",
+          "indicator": "fineweb_edu",
+          "display_name": "教育价值"
+        },
+        {
+          "code": "M02",
+          "indicator": "fluency_en",
+          "display_name": "英语流畅度"
+        },
+        {
+          "code": "M03",
+          "indicator": "modernbert_cleanliness",
+          "display_name": "文本洁净度"
+        },
+        {
+          "code": "M04",
+          "indicator": "modernbert_readability",
+          "display_name": "可读性"
+        },
+        {
+          "code": "M05",
+          "indicator": "modernbert_reasoning",
+          "display_name": "推理性"
+        },
+        {
+          "code": "M06",
+          "indicator": "modernbert_professionalism",
+          "display_name": "专业性"
+        },
+        {
+          "code": "M07",
+          "indicator": "dsir_books",
+          "display_name": "书籍域权重"
+        },
+        {
+          "code": "M08",
+          "indicator": "dsir_wiki",
+          "display_name": "维基域权重"
+        },
+        {
+          "code": "M09",
+          "indicator": "dsir_math",
+          "display_name": "数学域权重"
+        },
+        {
+          "code": "M10",
+          "indicator": "qurater",
+          "display_name": "四维质量聚合"
+        },
+        {
+          "code": "M11",
+          "indicator": "ad_en",
+          "display_name": "广告信号"
+        },
+        {
+          "code": "M12",
+          "indicator": "rps_doc_word_count",
+          "display_name": "文档词数"
+        },
+        {
+          "code": "M13",
+          "indicator": "rps_doc_num_sentences",
+          "display_name": "文档句数"
+        },
+        {
+          "code": "M14",
+          "indicator": "rps_doc_unigram_entropy",
+          "display_name": "一元词熵"
+        },
+        {
+          "code": "M15",
+          "indicator": "rps_doc_frac_unique_words",
+          "display_name": "不同词占比"
+        },
+        {
+          "code": "M16",
+          "indicator": "rps_doc_frac_no_alph_words",
+          "display_name": "非字母信号"
+        },
+        {
+          "code": "M17",
+          "indicator": "rps_doc_frac_chars_top_2gram",
+          "display_name": "2-gram 重复度"
+        },
+        {
+          "code": "M18",
+          "indicator": "rps_doc_frac_chars_top_3gram",
+          "display_name": "3-gram 重复度"
+        },
+        {
+          "code": "M19",
+          "indicator": "rps_lines_uppercase_letter_fraction",
+          "display_name": "大写字母行占比"
+        },
+        {
+          "code": "M20",
+          "indicator": "rps_lines_ending_with_terminal_punctution_mark",
+          "display_name": "终止标点行占比"
+        },
+        {
+          "code": "M21",
+          "indicator": "rps_lines_numerical_chars_fraction",
+          "display_name": "含数字行占比"
+        },
+        {
+          "code": "M22",
+          "indicator": "rps_doc_mean_word_length",
+          "display_name": "平均词长"
+        }
+      ],
+      "domain_key": {
+        "arxiv": "学术预印本",
+        "freelaw": "法律判例",
+        "nih_exporter": "科研项目",
+        "pubmed_central": "医学全文",
+        "wikipedia_en": "百科",
+        "dm_mathematics": "数学",
+        "github": "代码",
+        "philpapers": "哲学论文",
+        "stackexchange": "专业问答",
+        "enron_emails": "邮件",
+        "gutenberg_pg_19": "图书",
+        "pile_cc": "网页",
+        "ubuntu_irc": "技术聊天",
+        "europarl": "议会记录",
+        "hackernews": "科技社区",
+        "pubmed_abstracts": "医学摘要",
+        "uspto_backgrounds": "专利背景",
+        "wikipedia": "百科",
+        "book": "图书",
+        "commoncrawl": "Common Crawl",
+        "c4": "C4"
+      },
+      "prediction_points": 3328,
+      "coefficient_entries": 221,
+      "whole_paper_compiled": false,
+      "review_date": "2026-09-26",
+      "reason": "Kendall 并列秩校正；质量项改述为冗余特征对照。仅重绘问题一流程图，其余图数值不受影响。",
+      "figures": [
+        {
+          "file": "图8_问题一求解流程.png",
+          "sha256": "63dc4b8eae59d66ec34a46240dea8b48f05b174316fd062a6133f65347f7be9e"
+        },
+        {
+          "file": "图8_问题一求解流程.svg",
+          "sha256": "55db504cbe64c5d4f4b6dd53dadf32d722e77788efdcd049af076c589009bc42"
+        }
+      ]
     }
   ]
 }

@@ -1,4 +1,4 @@
-# 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6-Luna；机构：OpenAI；版本发布日期：2026-04-21。
+# 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6-Luna；机构：OpenAI；版本发布日期：2026-07-09。
 # 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-5.6-Luna）辅助。
 """问题一双泳道流程图；仅调整展示，不运行模型或读取原始附件。
 
@@ -78,7 +78,7 @@ def plot_workflow(data, out):
     node(4.54, 3.06, 1.72, .90, 'A16  领域映射',
          '构造配比加权\n质量指数', PURPLE)
     node(.20, 2.18, 1.88, .64, '指标冲突诊断',
-         '成对标准化差异\nKendall 排序一致性', GOLD, body_size=9)
+         '成对标准化差异\nKendall 并列秩校正', GOLD, body_size=9)
 
     arrow([(2.11, 3.50), (2.50, 3.50)], PURPLE)
     arrow([(4.08, 3.50), (4.49, 3.50)], PURPLE)
@@ -100,7 +100,7 @@ def plot_workflow(data, out):
     # The quality term is an incremental diagnostic, not the sole regression input.
     arrow([(5.40, 3.02), (5.40, 2.20), (2.46, 2.20), (2.46, 1.66)],
           color=PURPLE, dashed=True)
-    ax.text(3.88, 2.31, '追加质量项的增量检验', fontsize=9,
+    ax.text(3.88, 2.31, '追加质量项的冗余特征对照', fontsize=9,
             color=PURPLE, ha='center', va='center',
             bbox={'boxstyle': 'square,pad=.15',
                   'facecolor': _tint(PURPLE, .045), 'edgecolor': 'none'}, zorder=5)
@@ -109,7 +109,7 @@ def plot_workflow(data, out):
     arrow([(.22, .21), (.62, .21)], GRAY)
     ax.text(.72, .21, '主要处理流程', fontsize=9, va='center', color=GRAY)
     arrow([(3.08, .21), (3.48, .21)], PURPLE, dashed=True)
-    ax.text(3.58, .21, '质量项增量检验', fontsize=9, va='center', color=GRAY)
+    ax.text(3.58, .21, '冗余质量特征对照', fontsize=9, va='center', color=GRAY)
 
     save(fig, '图8_问题一求解流程', out)
 

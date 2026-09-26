@@ -8,7 +8,7 @@
   "n_ext": 221275,
   "Q0_global_mean": 0.4911980771853528,
   "Q0_mix_weighted": 0.5486879207625752,
-  "kendall_W_full": 0.0758301691640003,
+  "kendall_W_full": 0.07606461223592832,
   "conflict_rate_full": 0.2190089684998035,
   "conflict_indep_baseline": 0.2888443663464849,
   "spearman_quality_vs_lossproxy": 0.6,

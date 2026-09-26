@@ -1,4 +1,4 @@
-# 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6-Luna；机构：OpenAI；版本发布日期：2026-04-21。
+# 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6-Luna；机构：OpenAI；版本发布日期：2026-07-09。
 # 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-5.6-Luna）辅助。
 """问题一预测、系数、质量口径及尺度诊断的展示图；不重新求解。"""
 from 展示风格公共 import panel, clean, save, PURPLE, TEAL, GOLD, BLUE, INK, GRAY

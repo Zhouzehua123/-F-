@@ -1,0 +1,207 @@
+{
+  "scope": "Only Kendall W, its chi-square approximation and nominal p were recalculated. Full models and plots were not rerun.",
+  "tests": [
+    "perfect concordance",
+    "opposite rankings",
+    "identical tied rankings",
+    "undefined constant matrix",
+    "independent scipy Friedman comparison"
+  ],
+  "cache_matches_all_saved_quality_scores_atol": 1e-12,
+  "results": [
+    {
+      "dataset": "A1抽样集",
+      "records": 51230,
+      "old_W": 0.08533725663721657,
+      "corrected_W": 0.08543727079777341,
+      "chi2": 96291.05080538095,
+      "nominal_p": 0.0
+    },
+    {
+      "dataset": "A2+A3扩展集",
+      "records": 221275,
+      "old_W": 0.07153128405874201,
+      "corrected_W": 0.07182141925284499,
+      "chi2": 349628.6799225885,
+      "nominal_p": 0.0
+    },
+    {
+      "dataset": "全量",
+      "records": 272505,
+      "old_W": 0.07583016916400037,
+      "corrected_W": 0.07606461223592832,
+      "chi2": 456014.04404026706,
+      "nominal_p": 0.0
+    }
+  ],
+  "quality_scores_and_weights_unchanged": true,
+  "figures_contain_no_numeric_kendall_W": true,
+  "base_commit": "465753f2c1423826f2e3e1c8f6ce5d585c296dc3",
+  "date": "2026-09-26",
+  "current_sources": {
+    "求解/_common.py": "403bd4d3efa96e10625630730b847f3e2b3df947bf12bf1f1df599b7f6479ced",
+    "求解/复现论文.py": "85ebe9dcebe91acb8ba2a7df90e3ab07ca3391cf10f54171f23190ebff63f723",
+    "求解/绘制问题三四流程图.py": "d4c839aa8491ea7253520956eb620fbf0d3f051b180dbd63fbdf56fa5e4d8e63",
+    "求解/问题一/出版导出.py": "25bfc85c7ef711d2079b588222d70aade9971030da79ac662ed574d5ee216dfa",
+    "求解/问题一/展示风格公共.py": "5f0f0e69c5c71c35af44e33518a86191fdacf10ea50ebd2922d24dd7d5d78548",
+    "求解/问题一/展示风格冲突.py": "6b9f29afc8ddb674628d055d4d6a7e2c0181a459bcb4cc9388b9d14c8092c1a4",
+    "求解/问题一/展示风格概览.py": "cac81035acd992e10805fec0680495cb17935b0220d7633e3b3bf300a331bd2e",
+    "求解/问题一/展示风格流程.py": "13878829523609af8d1f769b710bb96a1b3dbd08bbd5b7e5e4e33e52f9b6d978",
+    "求解/问题一/展示风格诊断.py": "0ceeef44a28e6a363d03699e0aa1e773dfc6d36b6fba9c4ddbea18064e1d8c34",
+    "求解/问题一/展示风格非线性.py": "10785c134c6d4f5e2dda7a9b29138cd45784c87ccd61609a1a9af954acb4d6c0",
+    "求解/问题一/绘图数据.py": "7d66c9b1667ddd3fde61eeddbb888406ff88e4d3ff42b408087dd5dcb524d893",
+    "求解/问题一/重绘图表.py": "a4373820a847053428a941538889aa0f6561da8a1b18f7ebb738c7e1d44be451",
+    "求解/问题一/问题一.py": "55fe139dd139bab525f643f37eaf1b2e574bcd3d0ca41f293099b1f1e03ac853",
+    "求解/问题一/非线性代理对照.py": "8b5cddeeb7dfe2e6802f8ba0d13fdae4f5813dcea3cc9e7dd8366d919f312e0b",
+    "求解/问题三/论文绘图.py": "87d533bababd0640321264ae14c0933b1c1cb0748722b568c304ebfe1326f23b",
+    "求解/问题三/问题三.py": "f05a50b16bf0083e1c747dd1afadff178f85bcfb2290dd41bc0f15274793b9b6",
+    "求解/问题二/重绘图表.py": "7235efbb0ea4307d5db20b1b6d5a3b3227679c539be0e89a96c8ae9c5fc419f7",
+    "求解/问题二/问题二.py": "20f76a94d116bfe79b70097b769205a7c77e2771ecc2186e5da14160a2a1e27b",
+    "求解/问题四/重绘图表.py": "14380ae19df1e12f87b7ac895141d1e6cf4be7240fec2fbb867bbd15a82d65bd",
+    "求解/问题四/问题四.py": "ce51c8229bb80fb5f34d1b960070214584cba03c64ce0ee9701bf042215f7411"
+  },
+  "updated_results": {
+    "求解/问题一/结果/质量冲突与一致性.csv": "1e23839d3dc7a8114ea03b4c0f1fc7058b10565a6e6530891970892a360b5581",
+    "求解/问题一_关键量.json": "b22c55f8ae0a0769501466331e60861559c6379f20888cace342424ad9b38fb1"
+  },
+  "regenerated_figure": {
+    "scope": "本次生成的图形、实际读取输入和绘图程序；不替代模型假设与论文分页审查。",
+    "scripts_sha256": {
+      "重绘图表.py": "a4373820a847053428a941538889aa0f6561da8a1b18f7ebb738c7e1d44be451",
+      "绘图数据.py": "7d66c9b1667ddd3fde61eeddbb888406ff88e4d3ff42b408087dd5dcb524d893",
+      "出版导出.py": "25bfc85c7ef711d2079b588222d70aade9971030da79ac662ed574d5ee216dfa",
+      "展示风格公共.py": "5f0f0e69c5c71c35af44e33518a86191fdacf10ea50ebd2922d24dd7d5d78548",
+      "展示风格冲突.py": "6b9f29afc8ddb674628d055d4d6a7e2c0181a459bcb4cc9388b9d14c8092c1a4",
+      "展示风格概览.py": "cac81035acd992e10805fec0680495cb17935b0220d7633e3b3bf300a331bd2e",
+      "展示风格流程.py": "13878829523609af8d1f769b710bb96a1b3dbd08bbd5b7e5e4e33e52f9b6d978",
+      "展示风格诊断.py": "0ceeef44a28e6a363d03699e0aa1e773dfc6d36b6fba9c4ddbea18064e1d8c34",
+      "展示风格非线性.py": "10785c134c6d4f5e2dda7a9b29138cd45784c87ccd61609a1a9af954acb4d6c0"
+    },
+    "inputs": {
+      "求解/问题一/结果/混合系数矩阵.csv": {
+        "sha256": "8a8c96a5702e29b736b3aa6a55de589edeed0046df703af2a929272c80a807e5",
+        "rows": 17,
+        "columns": 14
+      },
+      "求解/问题一/结果/混合系数矩阵_中心化.csv": {
+        "sha256": "93c3da47c2cfdc8a0f1b7c3ee4b2c44e2b0d750a741ec5ad9dfcfee34945d4be",
+        "rows": 17,
+        "columns": 14
+      },
+      "求解/问题一/结果/截距.csv": {
+        "sha256": "1a9047516b40b80f64f21342992f03ecf9fe62d90cca03fdf9134c52fa00214e",
+        "rows": 13,
+        "columns": 2
+      },
+      "求解/问题一/结果/问题一_拟合汇总.csv": {
+        "sha256": "b78ad028641222d91f2fcffbeef6d27287462d1dd48157a839b84482e7f68b03",
+        "rows": 13,
+        "columns": 7
+      },
+      "求解/问题一/结果/推荐配比调整.csv": {
+        "sha256": "242165ca62d254cb74def1a0d7771bcf8b8e22b2463433d031f9b647c8edf318",
+        "rows": 17,
+        "columns": 4
+      },
+      "求解/问题一/结果/外推尺度因子.csv": {
+        "sha256": "6fb2c3cee1e0e19384326307524ac5e355a6d235e9f8a0779ea57b16417fa3ef",
+        "rows": 13,
+        "columns": 3
+      },
+      "求解/问题一/结果/跨尺度损失比_60m_vs_1m.csv": {
+        "sha256": "122cb9f4247864771919325d65b371b773532a5c67a30452d48998f433be108e",
+        "rows": 13,
+        "columns": 3
+      },
+      "求解/问题一/结果/质量域评分_全量.csv": {
+        "sha256": "048a3b0f7cf665bb1e1a82c066c37373c95e717d6d6bb5cff3b69a6909e79d44",
+        "rows": 7,
+        "columns": 4
+      },
+      "求解/问题一/结果/质量指标熵权.csv": {
+        "sha256": "fac2ea1fe2de0c1498bb9dab786c040dec955e3021fe13100493b86e382c171c",
+        "rows": 22,
+        "columns": 6
+      },
+      "求解/问题一/结果/冲突指标对_top20.csv": {
+        "sha256": "43791325d4268436d4b7cff9b0b613976e97a2b67e5bb7012a35d2e57ca548a1",
+        "rows": 20,
+        "columns": 2
+      },
+      "求解/问题一/结果/Loss代理领域难度.csv": {
+        "sha256": "66deef641e71a910d62ca140cbc8a68179dbfca7993c05e5cb0294809ec46f9c",
+        "rows": 13,
+        "columns": 3
+      },
+      "求解/问题一/结果/质量与损失难度一致性.csv": {
+        "sha256": "c79e5d8461844fbd1503824ed317e86d19c54df9cf36ff7e752d108c47b9f026",
+        "rows": 6,
+        "columns": 5
+      },
+      "求解/问题一/结果/非线性代理对照_逐域.csv": {
+        "sha256": "f3aee790c59f8f6256db643ca189d069b6bafec55ad2ad050e31e4859046ecc2",
+        "rows": 104,
+        "columns": 7
+      },
+      "求解/问题一/结果/非线性代理对照_预测明细.csv": {
+        "sha256": "0e5f86b6c61f912bfcdaf6027af28fac1b23ef7002b3e685a7f717c350775775",
+        "rows": 28288,
+        "columns": 6
+      },
+      "附件/A_data_value/regmix_tables/train_mixture_1m.csv": {
+        "sha256": "04a32ef4ab594376bf90e11404c033668f887c351d6a03ad3744824c7296a2d8",
+        "rows": 512,
+        "columns": 18
+      },
+      "附件/A_data_value/regmix_tables/train_pile_loss_1m.csv": {
+        "sha256": "49a959aa07ce5c20831d5abe3a7896ff0cd90a398bd407c8913fd5588be0465a",
+        "rows": 512,
+        "columns": 14
+      },
+      "附件/A_data_value/regmix_tables/test_mixture_1m.csv": {
+        "sha256": "197267b7d6f15367e2f46c881e564c35b0d34e51b1754bb09d07e650cf8e1ce8",
+        "rows": 256,
+        "columns": 18
+      },
+      "附件/A_data_value/regmix_tables/test_pile_loss_1m.csv": {
+        "sha256": "e027b1674f60140a65a87b5e4a59ab5f09dc33e8fd02c080682678074b160f53",
+        "rows": 256,
+        "columns": 14
+      },
+      "附件/A_data_value/regmix_tables/est_pile_loss_10b.csv": {
+        "sha256": "226457581f3f59e15e44d8f72dee31fa7492c821699725fef47627d82cf34c0d",
+        "rows": 63,
+        "columns": 14
+      },
+      "附件/A_data_value/regmix_tables/est_pile_loss_70b.csv": {
+        "sha256": "d0883b2d1a44da9386a6d629a3623c724ee291cba1ac87b6d1079e5377307682",
+        "rows": 63,
+        "columns": 14
+      },
+      "附件/A_data_value/regmix_tables/test_pile_loss_60m.csv": {
+        "sha256": "8fe69d59ab7dd4fae4736459f4265ec93c7ed1ad1eca407346052560edc72b5b",
+        "rows": 256,
+        "columns": 14
+      },
+      "求解/问题一_关键量.json": {
+        "sha256": "b22c55f8ae0a0769501466331e60861559c6379f20888cace342424ad9b38fb1"
+      }
+    },
+    "figures": [
+      {
+        "file": "图8_问题一求解流程.png",
+        "sha256": "63dc4b8eae59d66ec34a46240dea8b48f05b174316fd062a6133f65347f7be9e"
+      },
+      {
+        "file": "图8_问题一求解流程.svg",
+        "sha256": "55db504cbe64c5d4f4b6dd53dadf32d722e77788efdcd049af076c589009bc42"
+      }
+    ]
+  },
+  "historical_manifest_note": "求解/复现清单.json retains original run hashes and timing. This record documents the subsequent targeted correction and does not claim a complete model rerun.",
+  "tool_date_reference": {
+    "GPT-5.6-Luna": "2026-07-09",
+    "source": "https://developers.openai.com/api/docs/changelog",
+    "scope": "Release date only; not evidence of actual tool usage."
+  }
+}
