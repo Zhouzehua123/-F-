@@ -7,7 +7,7 @@
     "绘图数据.py": "32c29eb2b3b5278fb59e0af7c56da5ba70615536c301cf8ae4185dfd3f0bd059",
     "展示风格公共.py": "be012153f6e78fe4f70b9398cce5bbe6931f90084280feca8e1f26d820d3470d",
     "展示风格冲突.py": "b6ded27fe7fc0fa55c5e89159c23ea53ac67f8ad9ff0864860639072b906129b",
-    "展示风格概览.py": "352ab250ece21ea7eb7b892451232bf6fb48325422930af67d8bd7b8f358e3ee",
+    "展示风格概览.py": "91c9c39f6abd568768e74a12ef581eca157285bdc4c0e592d869ac6028f0e10b",
     "展示风格流程.py": "bfb33ab2b3e0a9769635011ee1a871d23cc75f6b6c6b426ff8bb8378e4a1132d",
     "展示风格诊断.py": "93321e7aff7378bb09b36dd338d8603c1ac7a7fa855433bacbae0e638acd92e7"
   },
@@ -155,9 +155,8 @@
     }
   },
   "output_figures": [
-    "图3_预测vs实测",
-    "图4_混合系数热力图",
-    "图5_领域质量评分"
+    "图1_训练配比结构",
+    "图2_线性模型R2"
   ],
   "indicator_key": [
     {

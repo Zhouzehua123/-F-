@@ -61,9 +61,9 @@ def plot_mixture(data, out):
     matrix = data.train_x.loc[:, order].iloc[:8].to_numpy().T
     assert matrix.shape == (17, 8)
     values = data.reference.loc[order].to_numpy()
-    fig = plt.figure(figsize=(6.5, 4.8))
+    fig = plt.figure(figsize=(5.0, 3.65))
     grid = fig.add_gridspec(1, 2, width_ratios=[1.30, 1],
-                           left=.175, right=.975, bottom=.17, top=.85, wspace=.16)
+                           left=.20, right=.98, bottom=.21, top=.86, wspace=.18)
     ax = fig.add_subplot(grid[0])
     right = fig.add_subplot(grid[1], sharey=ax)
     cmap = LinearSegmentedColormap.from_list(
@@ -100,18 +100,18 @@ def plot_mixture(data, out):
     clean(right, bands=True, n=17)
     right.tick_params(axis='y', which='both', length=0)
     panel(right, 'B', '平均领域占比', TEAL)
-    cax = fig.add_axes([.185, .044, .365, .019])
+    cax = fig.add_axes([.205, .055, .38, .020])
     bar = fig.colorbar(image, cax=cax, orientation='horizontal',
                       ticks=[0, .25, .5, .75, 1], format=PercentFormatter(1, decimals=0))
     bar.ax.tick_params(length=2, labelsize=9, pad=2)
     bar.outline.set_linewidth(.4)
-    fig.text(.585, .053, '配方实际占比', ha='left', va='center', fontsize=9, color=GRAY)
+    fig.text(.64, .065, '配方实际占比', ha='left', va='center', fontsize=9, color=GRAY)
     save(fig, STEMS[1], out)
 
 
 def plot_fit(data, out):
     m = data.metrics.sort_values('test1m_R2', ascending=False)
-    fig, axes = plt.subplots(1, 2, figsize=(6.5, 4.5), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(5.0, 3.45), sharey=True)
     y = np.arange(len(m))
     specs = [
         (axes[0], 'train_R2', 'test1m_R2', '训练 1M', '检验 1M',
@@ -128,7 +128,7 @@ def plot_fit(data, out):
                    facecolor='none', edgecolor=color2, linewidth=1.05, label=lab2, zorder=5)
         ax.set(xlim=(0, 1), xticks=[0, .25, .5, .75, 1],
                ylim=(len(m)-.6, -.6), xlabel=xlabel)
-        ax.legend(loc='upper center', bbox_to_anchor=(.5, -.21), ncol=2,
+        ax.legend(loc='upper center', bbox_to_anchor=(.5, -.27), ncol=2,
                   fontsize=9, handletextpad=.28, columnspacing=.8, borderaxespad=0)
         clean(ax, bands=True, n=len(m))
     axes[0].set(yticks=y, yticklabels=_names(m.index))
@@ -136,7 +136,7 @@ def plot_fit(data, out):
     axes[1].spines['left'].set_visible(False)
     panel(axes[0], 'A', '同尺度拟合与检验', PURPLE)
     panel(axes[1], 'B', '跨尺度相关性', BLUE)
-    fig.subplots_adjust(left=.175, right=.975, bottom=.23, top=.85, wspace=.16)
+    fig.subplots_adjust(left=.20, right=.96, bottom=.25, top=.85, wspace=.18)
     save(fig, STEMS[2], out)
 
 

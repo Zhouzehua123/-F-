@@ -353,25 +353,29 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 
 计算领域均值时仍纳入冲突样本，综合裁决使用 $Q_i$ 相对领域中位数的高低，同时保留标记。后两问采用的是聚合结果，不以这些样本单独作判断。
 
+\FloatBarrier
 \Needspace{4\baselineskip}
 \textbf{2. 领域配比与损失的拟合及验证}\par\nopagebreak[4]
 
-配比拟合的结果从四个角度展示：图\ref{fig:p1_structure}给出训练配方构成，图\ref{fig:p1_r2}比较训练与检验精度，图\ref{fig:p1_scatter}对照同尺度的预测和观测损失，图\ref{fig:p1_heatmap}展示不同训练领域的系数差异。
+配比拟合的结果从四个角度展示：图\ref{fig:p1_structure}给出训练配方构成，图\ref{fig:p1_r2}比较训练与检验精度，图\ref{fig:p1_heatmap}展示不同训练领域的系数差异，图\ref{fig:p1_scatter}对照同尺度的预测和观测损失。
+
+\begingroup
+\setlength{\intextsep}{6pt plus 1pt minus 1pt}
 
 图\ref{fig:p1_structure}将前 8 组训练配方的领域占比绘为热图，仅标注占比不低于 $10\%$ 的格子；右侧按同一领域顺序列出全部 512 组配方的平均占比。
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.84\textwidth]{../求解/问题一/图片/图1_训练配比结构.png}
+  \includegraphics[width=0.76\textwidth]{../求解/问题一/图片/图1_训练配比结构.png}
   \caption{训练配方分布}
   \label{fig:p1_structure}
 \end{figure}
 
 图\ref{fig:p1_r2}分别展示 1M 训练与检验的决定系数，以及 60M、1B 检验的 Pearson 相关系数；连线连接同一验证领域的两个结果。
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.84\textwidth]{../求解/问题一/图片/图2_线性模型R2.png}
+  \includegraphics[width=0.78\textwidth]{../求解/问题一/图片/图2_线性模型R2.png}
   \caption{配比回归检验}
   \label{fig:p1_r2}
 \end{figure}
@@ -386,13 +390,11 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 
 相关系数主要反映同一组配方下预测值与观测值是否共同变化。即使两者相差一个整体平移或正比例因子，相关仍可能较高，绝对误差却未必较小。这就是跨尺度结果另行报告 Pearson 相关的原因：它检验配方趋势的保留程度，不把损失单位上的偏移混入同一个解释。后续使用跨尺度系数时，仍需把趋势相似与数值校准分开处理。
 
-\FloatBarrier
-
 图\ref{fig:p1_heatmap}以 17 个训练领域为行、13 个验证领域为列，展示全部 221 项中心化回归系数。颜色表示系数的正负及大小，色标在 $[-1,1]$ 内为线性映射，其余区间采用对称对数映射；每列仅标注绝对值最大的系数。
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.84\textwidth]{../求解/问题一/图片/图4_混合系数热力图.png}
+  \includegraphics[width=0.80\textwidth]{../求解/问题一/图片/图4_混合系数热力图.png}
   \caption{领域回归系数}
   \label{fig:p1_heatmap}
 \end{figure}
@@ -403,7 +405,7 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{../求解/问题一/图片/图3_预测vs实测.png}
+  \includegraphics[width=0.60\textwidth]{../求解/问题一/图片/图3_预测vs实测.png}
   \caption{预测与实测损失}
   \label{fig:p1_scatter}
 \end{figure}
@@ -416,10 +418,11 @@ arxiv 与 github 均包含抽样和扩展数据。表\ref{tab:p1_qa}中，两者
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.84\textwidth]{../求解/问题一/图片/图5_领域质量评分.png}
+  \includegraphics[width=0.76\textwidth]{../求解/问题一/图片/图5_领域质量评分.png}
   \caption{质量与损失难度}
   \label{fig:p1_quality}
 \end{figure}
+\endgroup
 
 图\ref{fig:p1_quality}(A)的评分端点由损失高低确定：dm\_\allowbreak{}mathematics 为 $1.000$，对应 13 域中的低损失端；ubuntu\_\allowbreak{}irc 为 $0.000$，对应高损失端。依据 A16 的 direct/near\_\allowbreak{}direct 映射比较两类评分，图\ref{fig:p1_quality}(B)中的 Spearman 系数为 $0.60$。arxiv、stackexchange、github 的相对位置较一致，wikipedia、book、pile\_\allowbreak{}cc 则存在差异。较高的文本质量不必然对应较低的拟合难度，因此语料治理采用文本评分，损失预测则单独考虑领域难度。
 
