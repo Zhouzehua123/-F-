@@ -11,7 +11,7 @@
       4) 合并横截面回归（含年份控制项）核算规模关联项与未解释剩余项
       5) 情景设定下 logistic 饱和外推 12/24 个月能力前沿 + 残差 bootstrap 不确定性
       6) C4 宏观算力/数据量/开放权重参照，不直接代入能力回归
-输出：图片到 图片/，结果 CSV 到 结果/
+输出：任务聚合、规模关联分解、前沿预测及对应图表。
 """
 import sys, os, json, glob, re, collections
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

@@ -1,35 +1,7 @@
 # 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6-Luna；机构：OpenAI；版本发布日期：2026-07-09。
 # 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-5.6-Luna）辅助。
-"""
-scipilot-figure-skill :: export_figure.py
-=========================================
-Unified figure export to multiple formats at exact final size.
-
-- Vector preferred: PDF / SVG / EPS for line/bar/scatter (lossless, journal-friendly).
-- Raster for photos / micrographs: PNG / TIFF at >= 300 DPI; never JPEG for data figures.
-- Embeds TrueType fonts (fonttype 42) so journals don't reject Type-3 PDFs.
-- Optional grayscale preview to sanity-check colorblind safety.
-
-Usage
------
-    from export_figure import export_figure
-    import matplotlib.pyplot as plt
-
-    fig, ax = plt.subplots()
-    ax.plot([0,1,2],[3,1,4])
-
-    paths = export_figure(
-        fig,
-        basename="figs/fig1_main",
-        formats=["pdf", "svg", "png"],
-        size_inches=(3.5, 2.625),   # 强制成 Nature 单栏尺寸
-        dpi=600,
-        grayscale_preview=True,
-    )
-    # -> ['figs/fig1_main.pdf', 'figs/fig1_main.svg',
-    #     'figs/fig1_main.png', 'figs/fig1_main_grayscale.png']
-
-CLI: ``python export_figure.py demo`` 生成一张演示图并多格式导出。
+"""图形导出模块，来源：scipilot-figure-skill 的 export_figure.py。
+按指定尺寸导出 PNG、PDF、SVG 等格式，支持字体嵌入与灰度预览。
 """
 from __future__ import annotations
 

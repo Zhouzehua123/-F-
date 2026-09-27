@@ -76,7 +76,7 @@
 
 \subsection*{附录 C：结果文件与核心求解代码}
 
-四问的结果分别保存为 CSV，存放在 求解/问题一至问题四/结果/ 目录。表\ref{tab:appendix2}列出主要文件及其作用，表中省略“求解/问题X/结果/”这一共同前缀，便于阅读。
+四问程序将计算结果保存为 CSV 或 JSON。表\ref{tab:appendix2}列出主要输出的文件名及其含义，用于说明正文数据与计算过程的对应关系；完整求解程序与绘图程序列于附录 E。
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.42\textwidth}>{\raggedright\arraybackslash}p{0.54\textwidth}@{}}
   \caption{主要结果文件说明}
@@ -130,7 +130,7 @@
   C3口径异常行.csv & C3 自洽性审计剔除的记录 \\
   前沿预测.csv、前沿预测\_\allowbreak{}结构外推情景.csv & 能力前沿预测与情景 \\
   C4宏观趋势.csv、C4宏观摘要.csv & C4 宏观算力与开源权重证据 \\
-  求解/广义标度律参数.csv、问题一\_\allowbreak{}关键量.json & 跨问共享的接口参数 \\
+  广义标度律参数.csv、问题一\_\allowbreak{}关键量.json & 跨问共享的接口参数 \\
 \end{longtable}
 
 \subsection*{附录 D：人工智能工具及输出使用说明}
@@ -160,9 +160,9 @@
 
 各程序的运行输入、参数和输出关系见附录代码清单及表\ref{tab:code_map}；各问程序开头注明辅助工具及使用范围。
 
-程序使用 Python 3，主要依赖 NumPy、pandas、SciPy、scikit-learn、Matplotlib 和 Pillow，数据解压及 JSON 读取调用 Python 标准库。四问共用 求解/\allowbreak{}\_common.py，附件根目录由环境变量 MODELING\_DATA\_DIR 或程序参数指定，也可放在项目祖先目录的 real\_attachments 下。压缩 JSONL 文件直接读取，无需修改附件。下面列出四问的完整主程序，涵盖数据读取、模型求解、检验和结果输出；公共模块及正式绘图依赖也在后文完整列出，代码清单直接引用实际源文件。
+程序使用 Python 3，主要依赖 NumPy、pandas、SciPy、scikit-learn、Matplotlib 和 Pillow，数据解压及 JSON 读取调用 Python 标准库。四问共用代码\ref{code:dep2}中的数据读取与绘图模块，输入为题目提供的原始附件，压缩 JSONL 文件直接读取。以下完整列出四问主程序、公共模块、检验程序及绘图程序，涵盖数据读取、模型求解、结果输出与图形生成。
 
-原保存结果记录的环境为 Windows 11、Python 3.14.0，依赖版本为 NumPy 2.5.3、pandas 3.0.6、SciPy 1.18.1、scikit-learn 1.9.1、Matplotlib 3.11.2 和 Pillow 12.3.0。复现时将下列 Python 代码分别按题注中的相对路径保存为 UTF-8 文件，另保留总体流程图的 TikZ 源码。题目附件保留 \texttt{A\_data\_value}、\texttt{B\_scaling\_laws}、\texttt{C\_efficiency\_evolution} 的目录结构。统计绘图使用宋体（SimSun）和 Times New Roman；第三问另需 Adobe 思源宋体文件 \texttt{SourceHanSerifCN-Regular.otf}，放在 \texttt{论文/fonts/} 下。该字体可从 Adobe 官方项目 \url{https://github.com/adobe-fonts/source-han-serif} 获取。字体与依赖版本不同可能改变字形及像素排布，数值核对以计算结果为准。
+原保存结果记录的环境为 Windows 11、Python 3.14.0，依赖版本为 NumPy 2.5.3、pandas 3.0.6、SciPy 1.18.1、scikit-learn 1.9.1、Matplotlib 3.11.2 和 Pillow 12.3.0。各程序的文件名见代码题注；复现时使用 UTF-8 编码，按程序中的模块导入关系组织文件，并通过环境变量 \texttt{MODELING\_DATA\_DIR} 或输入参数指定题目附件位置。统计绘图使用宋体（SimSun）和 Times New Roman，第三问另使用 Adobe 思源宋体。字体可从 Adobe 官方项目 \url{https://github.com/adobe-fonts/source-han-serif} 获取，并按绘图程序的字体设置加载。字体与依赖版本不同可能改变字形及像素排布，数值核对以计算结果为准。
 
 运行时依次执行问题一、问题二和问题三，问题四读取附件 C、可单独运行。问题一输出质量、配比和关键量，问题二据此估计配比修正及广义标度律参数，问题三读取前两问共享文件。各程序的输入、输出关系见表\ref{tab:code_map}。
 
@@ -173,144 +173,136 @@
 \toprule
 问题 & 核心程序 & 输入 & 主要输出\\
 \midrule
-一 & 求解/\allowbreak{}问题一/\allowbreak{}\mbox{问题一.py} & 附件 A & 质量评分、解释系数、核岭支持域推荐\\
-二 & 求解/\allowbreak{}问题二/\allowbreak{}\mbox{问题二.py} & 附件 B、问题一结果 & 标度律参数、验证指标、配比修正\\
-三 & 求解/\allowbreak{}问题三/\allowbreak{}\mbox{问题三.py} & 前两问共享结果、附件 C7 & 三档配置、预算扫描与敏感性\\
-四 & 求解/\allowbreak{}问题四/\allowbreak{}\mbox{问题四.py} & 附件 C & 任务聚合、关联分解与前沿情景\\
+一 & 问题一主程序（代码\ref{code:p1}） & 附件 A & 质量评分、解释系数、核岭支持域推荐\\
+二 & 问题二主程序（代码\ref{code:p2}） & 附件 B、问题一结果 & 标度律参数、验证指标、配比修正\\
+三 & 问题三主程序（代码\ref{code:p3}） & 前两问共享结果、附件 C7 & 三档配置、预算扫描与敏感性\\
+四 & 问题四主程序（代码\ref{code:p4}） & 附件 C & 任务聚合、关联分解与前沿情景\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \subsubsection*{正式图表与复现顺序}
 
-从题目附件首次生成结果时，不需要预先准备结果 CSV。安装上述依赖、保存代码和字体后，在项目根目录依次运行以下命令；其中附件路径替换为实际位置，环境变量设置采用 Windows PowerShell 语法。四问主程序在结果保存后调用对应的正式绘图程序，最后一条命令生成第三、四问的方法流程图。
-\begin{lstlisting}[language={},numbers=none]
-$env:MODELING_DATA_DIR="D:/题目附件"
-python 求解/问题一/问题一.py
-python 求解/问题二/问题二.py
-python 求解/问题三/问题三.py
-python 求解/问题四/问题四.py
-python 求解/绘制问题三四流程图.py
-\end{lstlisting}
+从题目附件首次生成结果时，不需要预先准备结果 CSV。安装上述依赖并配置输入与字体后，依次运行代码\ref{code:p1}、\ref{code:p2}、\ref{code:p3}，再运行代码\ref{code:p4}。四问主程序在保存结果后调用对应的绘图程序；第三、四问的方法流程图由代码\ref{code:dep16}生成。
 
-已有结果时，可用 \texttt{python 求解/复现论文.py --data-dir <附件根目录> --mode figures} 重新绘图；该模式只读取保存结果。\texttt{--mode verify-models} 则在隔离副本依次求解四问，依据 \texttt{复现预期输出.json} 核对 85 项 CSV/JSON，包括跨问质量映射、关键量与标度律参数。每问运行前移除其旧输出，再要求重新生成；缺项、差异或进程错误均记录为失败，不覆盖原结果。
+已有结果时，代码\ref{code:dep1}的 \texttt{figures} 模式读取保存结果重新绘图；\texttt{verify-models} 模式则在隔离副本依次求解四问，核对 85 项 CSV/JSON 输出，包括跨问质量映射、关键量与标度律参数。每问运行前移除其旧输出，再要求重新生成；缺项、差异或进程错误均记录为失败，不覆盖原结果。
 
 一般数值按相对容差 $10^{-6}$、绝对容差 $10^{-8}$ 比较；核岭推荐份额沿用求解精度对应的绝对容差 $10^{-6}$，并另验配方约束。训练凸组合可能不唯一，故检查非负性、权重和及配方重建；多初值输出核对可行性、数值保护梯度下的间隙及目标值。平方根核在零份额边界不光滑，该间隙不构成光滑驻点的数学证书。环境版本和运行耗时另列元数据，不视为数值证据。第三问采用无量纲预算约束，微小派生费用的复现差异仍须单列解释。
 
-补充的决策与时间检验使用 \texttt{python 求解/补充检验.py --data-dir <附件根目录>}，输出写入独立复现记录目录；其中包括相同加权目标的选优、配方预测分歧、质量结构与收益迁移敏感性、时间留出对照，均不替换四问保存结果。
+代码\ref{code:diagnostics}给出决策与时间检验，包括相同加权目标的选优、配方预测分歧、质量结构与收益迁移敏感性以及时间留出对照；其诊断结果独立保存，不替换四问计算结果。
 
-核岭的独立计算入口为问题一目录中的“非线性代理对照.py”，参数搜索、折分配、预测明细和汇总分别保存。绘图只读取这些输出；核岭支持域推荐程序读取其固定超参数，在训练凸包和既有配比上限内搜索；问题二、三沿用该推荐的核岭损失差，线性系数仅作领域作用解释。总体流程图为原生 TikZ；其余正式图的生成程序见表\ref{tab:figure_code_map}，流程图属于方法示意，不代表新增观测数据。
+代码\ref{code:dep3}给出核岭预测与交叉验证，参数搜索、折分配、预测明细和汇总分别保存。绘图只读取这些输出；代码\ref{code:kernel_recipe}读取固定超参数，在训练凸包和既有配比上限内搜索推荐配方。问题二、三沿用该推荐的核岭损失差，线性系数仅作领域作用解释。总体流程图为原生 TikZ；其余正式图的生成程序见表\ref{tab:figure_code_map}，流程图属于方法示意，不代表新增观测数据。
 
-补充诊断位于 \texttt{求解/审稿补充}，与原求解结果分开保存。三个入口分别为“q1\_决策与稳健性.py”“q23\_尺度与结构敏感性.py”“q4\_时间与前沿验证.py”，均接受 \texttt{--data-dir} 和 \texttt{--output-dir}。它们读取原始附件及现有拟合结果，输出候选排序、质量标尺、曲率、收益迁移和预测窗口的诊断表；新增对照不覆盖原拟合参数与配置文件。各诊断目录保存输入哈希、计算设定与检查摘要，表中数值可由对应程序重新计算。复现入口的回归测试位于 \texttt{求解/tests/test\_reproduction.py}，使用微型数据检验缺失输出、结果差异与异常报告，不替代四问的实际重算。
+代码\ref{code:review_q1}、\ref{code:review_q23}和\ref{code:review_q4}分别给出质量标尺与配方决策、质量结构与收益迁移、年份与前沿窗口的补充检验。它们读取原始附件及已有拟合结果，输出候选排序、曲率、敏感性和预测窗口的诊断表，供相应结果的稳健性分析使用。
 
 \FloatBarrier
 \begin{longtable}{@{}p{0.13\textwidth}p{0.38\textwidth}p{0.43\textwidth}@{}}
 \caption{正式图表与生成程序的对应关系}\label{tab:figure_code_map}\\
 \toprule
-正文图号 & 生成程序（Python 路径相对求解目录） & 输入或图形内容\\
+正文图号 & 生成程序及代码编号 & 输入或图形内容\\
 \midrule
 \endfirsthead
 \caption[]{正式图表与生成程序的对应关系（续）}\\
 \toprule
-正文图号 & 生成程序（Python 路径相对求解目录） & 输入或图形内容\\
+正文图号 & 生成程序及代码编号 & 输入或图形内容\\
 \midrule
 \endhead
 \bottomrule
 \endfoot
-图\ref{fig:overall_architecture} & 论文/\allowbreak{}figures/\allowbreak{}overall-architecture.tex & 总体建模流程；原生 TikZ 源码 \\
-图\ref{fig:q1_workflow} & 问题一/\allowbreak{}重绘图表.py & 质量评价、配比预测与核岭支持域推荐流程 \\
-图\ref{fig:p1_quality_full} & 问题一/\allowbreak{}重绘图表.py & 全量领域质量评分、抽样与扩展域级对照 \\
-图\ref{fig:p1_conf} & 问题一/\allowbreak{}重绘图表.py & 冲突指标对与熵权结果 \\
-图\ref{fig:p1_structure} & 问题一/\allowbreak{}重绘图表.py & 附件 A4 的 512 组训练配方 \\
-图\ref{fig:p1_r2} & 问题一/\allowbreak{}重绘图表.py & 线性拟合汇总、附件 A4--A11 \\
-图\ref{fig:p1_nonlinear} & 问题一/\allowbreak{}重绘图表.py & 非线性代理对照逐域表及预测明细 \\
-图\ref{fig:p1_heatmap} & 问题一/\allowbreak{}重绘图表.py & 17×13 中心化混合系数矩阵 \\
-图\ref{fig:p1_scatter} & 问题一/\allowbreak{}重绘图表.py & 线性系数、截距及附件 A6--A7 \\
-图\ref{fig:p1_quality} & 问题一/\allowbreak{}重绘图表.py & 损失代理评分、文本评分与附件 A16 映射 \\
-图\ref{fig:p1_extrap} & 问题一/\allowbreak{}重绘图表.py & 附件 A4--A5、A8--A9、A12--A15 \\
-图\ref{fig:p2_framework} & 问题二/\allowbreak{}重绘图表.py & 问题二保存参数、结果与附件 B \\
-图\ref{fig:p2_direction} & 问题二/\allowbreak{}重绘图表.py & 问题二保存参数、结果与附件 B \\
-图\ref{fig:p2_classic} & 问题二/\allowbreak{}重绘图表.py & 问题二保存参数、结果与附件 B \\
-图\ref{fig:p2_quality} & 问题二/\allowbreak{}重绘图表.py & 问题二保存参数、结果与附件 B \\
-图\ref{fig:p2_general} & 问题二/\allowbreak{}重绘图表.py & 问题二保存参数、结果与附件 B \\
-图\ref{fig:p2_margin} & 问题二/\allowbreak{}重绘图表.py & 问题二保存参数、结果与附件 B \\
-图\ref{fig:p2_subst} & 问题二/\allowbreak{}重绘图表.py & 问题二保存参数、结果与附件 B \\
-图\ref{fig:p2_dom} & 问题二/\allowbreak{}重绘图表.py & 问题二保存参数、结果与附件 B \\
-图\ref{fig:p3_workflow} & 绘制问题三四流程图.py & 对应小问的方法与输入输出关系 \\
-图\ref{fig:p3_shift} & 问题三/\allowbreak{}论文绘图.py & 问题三保存的预算、成本与上下文扫描 CSV \\
-图\ref{fig:p3_cost} & 问题三/\allowbreak{}论文绘图.py & 问题三保存的预算、成本与上下文扫描 CSV \\
-图\ref{fig:p3_ctx} & 问题三/\allowbreak{}论文绘图.py & 问题三保存的预算、成本与上下文扫描 CSV \\
-图\ref{fig:p4_workflow} & 绘制问题三四流程图.py & 对应小问的方法与输入输出关系 \\
-图\ref{fig:p4_map} & 问题四/\allowbreak{}重绘图表.py & 损失--得分映射结果与附件 C6 \\
-图\ref{fig:p4_scale} & 问题四/\allowbreak{}重绘图表.py & 合并横截面回归结果与附件 C1 \\
-图\ref{fig:p4_decomp} & 问题四/\allowbreak{}重绘图表.py & 近期与长周期的规模关联项和剩余项 \\
-图\ref{fig:p4_frontier} & 问题四/\allowbreak{}重绘图表.py & 前沿序列、logistic 参数及两类情景预测 \\
-图\ref{fig:p4_distribution} & 问题四/\allowbreak{}重绘图表.py & 经许可筛选的附件 C1 六维得分 \\
-图\ref{fig:p4_task} & 问题四/\allowbreak{}重绘图表.py & 附件 C8 的 37 项子任务聚合结果 \\
-图\ref{fig:p4_c4} & 问题四/\allowbreak{}重绘图表.py & 附件 C4 宏观趋势与字段覆盖结果 \\
+图\ref{fig:overall_architecture} & 总体流程图源码（代码\ref{code:overall_flow}） & 总体建模流程；原生 TikZ 源码 \\
+图\ref{fig:q1_workflow} & 问题一绘图（代码\ref{code:dep4}） & 质量评价、配比预测与核岭支持域推荐流程 \\
+图\ref{fig:p1_quality_full} & 问题一绘图（代码\ref{code:dep4}） & 全量领域质量评分、抽样与扩展域级对照 \\
+图\ref{fig:p1_conf} & 问题一绘图（代码\ref{code:dep4}） & 冲突指标对与熵权结果 \\
+图\ref{fig:p1_structure} & 问题一绘图（代码\ref{code:dep4}） & 附件 A4 的 512 组训练配方 \\
+图\ref{fig:p1_r2} & 问题一绘图（代码\ref{code:dep4}） & 线性拟合汇总、附件 A4--A11 \\
+图\ref{fig:p1_nonlinear} & 问题一绘图（代码\ref{code:dep4}） & 非线性代理对照逐域表及预测明细 \\
+图\ref{fig:p1_heatmap} & 问题一绘图（代码\ref{code:dep4}） & 17×13 中心化混合系数矩阵 \\
+图\ref{fig:p1_scatter} & 问题一绘图（代码\ref{code:dep4}） & 线性系数、截距及附件 A6--A7 \\
+图\ref{fig:p1_quality} & 问题一绘图（代码\ref{code:dep4}） & 损失代理评分、文本评分与附件 A16 映射 \\
+图\ref{fig:p1_extrap} & 问题一绘图（代码\ref{code:dep4}） & 附件 A4--A5、A8--A9、A12--A15 \\
+图\ref{fig:p2_framework} & 问题二绘图（代码\ref{code:dep13}） & 问题二保存参数、结果与附件 B \\
+图\ref{fig:p2_direction} & 问题二绘图（代码\ref{code:dep13}） & 问题二保存参数、结果与附件 B \\
+图\ref{fig:p2_classic} & 问题二绘图（代码\ref{code:dep13}） & 问题二保存参数、结果与附件 B \\
+图\ref{fig:p2_quality} & 问题二绘图（代码\ref{code:dep13}） & 问题二保存参数、结果与附件 B \\
+图\ref{fig:p2_general} & 问题二绘图（代码\ref{code:dep13}） & 问题二保存参数、结果与附件 B \\
+图\ref{fig:p2_margin} & 问题二绘图（代码\ref{code:dep13}） & 问题二保存参数、结果与附件 B \\
+图\ref{fig:p2_subst} & 问题二绘图（代码\ref{code:dep13}） & 问题二保存参数、结果与附件 B \\
+图\ref{fig:p2_dom} & 问题二绘图（代码\ref{code:dep13}） & 问题二保存参数、结果与附件 B \\
+图\ref{fig:p3_workflow} & 问题三、四流程图（代码\ref{code:dep16}） & 对应小问的方法与输入输出关系 \\
+图\ref{fig:p3_shift} & 问题三绘图（代码\ref{code:dep14}） & 问题三保存的预算、成本与上下文扫描 CSV \\
+图\ref{fig:p3_cost} & 问题三绘图（代码\ref{code:dep14}） & 问题三保存的预算、成本与上下文扫描 CSV \\
+图\ref{fig:p3_ctx} & 问题三绘图（代码\ref{code:dep14}） & 问题三保存的预算、成本与上下文扫描 CSV \\
+图\ref{fig:p4_workflow} & 问题三、四流程图（代码\ref{code:dep16}） & 对应小问的方法与输入输出关系 \\
+图\ref{fig:p4_map} & 问题四绘图（代码\ref{code:dep15}） & 损失--得分映射结果与附件 C6 \\
+图\ref{fig:p4_scale} & 问题四绘图（代码\ref{code:dep15}） & 合并横截面回归结果与附件 C1 \\
+图\ref{fig:p4_decomp} & 问题四绘图（代码\ref{code:dep15}） & 近期与长周期的规模关联项和剩余项 \\
+图\ref{fig:p4_frontier} & 问题四绘图（代码\ref{code:dep15}） & 前沿序列、logistic 参数及两类情景预测 \\
+图\ref{fig:p4_distribution} & 问题四绘图（代码\ref{code:dep15}） & 经许可筛选的附件 C1 六维得分 \\
+图\ref{fig:p4_task} & 问题四绘图（代码\ref{code:dep15}） & 附件 C8 的 37 项子任务聚合结果 \\
+图\ref{fig:p4_c4} & 问题四绘图（代码\ref{code:dep15}） & 附件 C4 宏观趋势与字段覆盖结果 \\
 \end{longtable}
 
 \Needspace{8\baselineskip}
 \subsubsection*{问题一：质量评价、冲突统计与配比建模}
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一完整求解程序（求解/\allowbreak{}问题一/\allowbreak{}问题一.py）},label={code:p1}]{../求解/问题一/问题一.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一完整求解程序（问题一.py）},label={code:p1}]{../求解/问题一/问题一.py}
 
 \Needspace{8\baselineskip}
 \subsubsection*{问题二：广义标度律、验证与边际分析}
-\lstinputlisting[language=Python,firstnumber=1,caption={问题二完整求解程序（求解/\allowbreak{}问题二/\allowbreak{}问题二.py）},label={code:p2}]{../求解/问题二/问题二.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题二完整求解程序（问题二.py）},label={code:p2}]{../求解/问题二/问题二.py}
 
 \Needspace{8\baselineskip}
 \subsubsection*{问题三：预算约束优化与敏感性分析}
-\lstinputlisting[language=Python,firstnumber=1,caption={问题三完整求解程序（求解/\allowbreak{}问题三/\allowbreak{}问题三.py）},label={code:p3}]{../求解/问题三/问题三.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题三完整求解程序（问题三.py）},label={code:p3}]{../求解/问题三/问题三.py}
 
 \Needspace{8\baselineskip}
 \subsubsection*{问题四：任务解析、能力分解与前沿预测}
-\lstinputlisting[language=Python,firstnumber=1,caption={问题四完整求解程序（求解/\allowbreak{}问题四/\allowbreak{}问题四.py）},label={code:p4}]{../求解/问题四/问题四.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题四完整求解程序（问题四.py）},label={code:p4}]{../求解/问题四/问题四.py}
 
 \subsubsection*{公共模块、非线性预测与完整绘图程序}
-\lstinputlisting[language=Python,firstnumber=1,caption={统一复现入口（求解/\allowbreak{}复现论文.py）},label={code:dep1}]{../求解/复现论文.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={统一复现入口（复现论文.py）},label={code:dep1}]{../求解/复现论文.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={决策、质量结构与时间外推补充检验（求解/\allowbreak{}补充检验.py）},label={code:diagnostics}]{../求解/补充检验.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={决策、质量结构与时间外推补充检验（补充检验.py）},label={code:diagnostics}]{../求解/补充检验.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={公共数据与绘图模块（求解/\allowbreak{}\_common.py）},label={code:dep2}]{../求解/_common.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={公共数据与绘图模块（\_common.py）},label={code:dep2}]{../求解/_common.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一核岭预测与交叉验证（求解/\allowbreak{}问题一/\allowbreak{}非线性代理对照.py）},label={code:dep3}]{../求解/问题一/非线性代理对照.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一核岭预测与交叉验证（非线性代理对照.py）},label={code:dep3}]{../求解/问题一/非线性代理对照.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={核岭训练支持范围内的配比推荐（求解/\allowbreak{}问题一/\allowbreak{}核岭支持域推荐.py）},label={code:kernel_recipe}]{../求解/问题一/核岭支持域推荐.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={核岭训练支持范围内的配比推荐（核岭支持域推荐.py）},label={code:kernel_recipe}]{../求解/问题一/核岭支持域推荐.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一正式绘图入口（求解/\allowbreak{}问题一/\allowbreak{}重绘图表.py）},label={code:dep4}]{../求解/问题一/重绘图表.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一正式绘图入口（重绘图表.py）},label={code:dep4}]{../求解/问题一/重绘图表.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一绘图数据读取（求解/\allowbreak{}问题一/\allowbreak{}绘图数据.py）},label={code:dep5}]{../求解/问题一/绘图数据.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一绘图数据读取（绘图数据.py）},label={code:dep5}]{../求解/问题一/绘图数据.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一图形样式与导出（求解/\allowbreak{}问题一/\allowbreak{}展示风格公共.py）},label={code:dep6}]{../求解/问题一/展示风格公共.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一图形样式与导出（展示风格公共.py）},label={code:dep6}]{../求解/问题一/展示风格公共.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一概览图（求解/\allowbreak{}问题一/\allowbreak{}展示风格概览.py）},label={code:dep7}]{../求解/问题一/展示风格概览.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一概览图（展示风格概览.py）},label={code:dep7}]{../求解/问题一/展示风格概览.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一诊断图（求解/\allowbreak{}问题一/\allowbreak{}展示风格诊断.py）},label={code:dep8}]{../求解/问题一/展示风格诊断.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一诊断图（展示风格诊断.py）},label={code:dep8}]{../求解/问题一/展示风格诊断.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一冲突图（求解/\allowbreak{}问题一/\allowbreak{}展示风格冲突.py）},label={code:dep9}]{../求解/问题一/展示风格冲突.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一冲突图（展示风格冲突.py）},label={code:dep9}]{../求解/问题一/展示风格冲突.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一流程图（求解/\allowbreak{}问题一/\allowbreak{}展示风格流程.py）},label={code:dep10}]{../求解/问题一/展示风格流程.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一流程图（展示风格流程.py）},label={code:dep10}]{../求解/问题一/展示风格流程.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题一核岭验证图（求解/\allowbreak{}问题一/\allowbreak{}展示风格非线性.py）},label={code:dep11}]{../求解/问题一/展示风格非线性.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题一核岭验证图（展示风格非线性.py）},label={code:dep11}]{../求解/问题一/展示风格非线性.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={出版图形导出（求解/\allowbreak{}问题一/\allowbreak{}出版导出.py）},label={code:dep12}]{../求解/问题一/出版导出.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={出版图形导出（出版导出.py）},label={code:dep12}]{../求解/问题一/出版导出.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题二正式绘图（求解/\allowbreak{}问题二/\allowbreak{}重绘图表.py）},label={code:dep13}]{../求解/问题二/重绘图表.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题二正式绘图（重绘图表.py）},label={code:dep13}]{../求解/问题二/重绘图表.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题三正式绘图（求解/\allowbreak{}问题三/\allowbreak{}论文绘图.py）},label={code:dep14}]{../求解/问题三/论文绘图.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题三正式绘图（论文绘图.py）},label={code:dep14}]{../求解/问题三/论文绘图.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题四正式绘图（求解/\allowbreak{}问题四/\allowbreak{}重绘图表.py）},label={code:dep15}]{../求解/问题四/重绘图表.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题四正式绘图（重绘图表.py）},label={code:dep15}]{../求解/问题四/重绘图表.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={问题三四流程图（求解/\allowbreak{}绘制问题三四流程图.py）},label={code:dep16}]{../求解/绘制问题三四流程图.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={问题三四流程图（绘制问题三四流程图.py）},label={code:dep16}]{../求解/绘制问题三四流程图.py}
 
-\subsubsection*{审稿补充诊断的计算程序}
-\lstinputlisting[language=Python,firstnumber=1,caption={质量标尺与线性对照稳健性诊断（求解/审稿补充/q1\_决策与稳健性.py）},label={code:review_q1}]{../求解/审稿补充/q1_决策与稳健性.py}
+\subsubsection*{稳健性与敏感性检验程序}
+\lstinputlisting[language=Python,firstnumber=1,caption={质量标尺与线性对照稳健性诊断（q1\_决策与稳健性.py）},label={code:review_q1}]{../求解/审稿补充/q1_决策与稳健性.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={质量尺度与配比收益诊断（求解/审稿补充/q23\_尺度与结构敏感性.py）},label={code:review_q23}]{../求解/审稿补充/q23_尺度与结构敏感性.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={质量尺度与配比收益诊断（q23\_尺度与结构敏感性.py）},label={code:review_q23}]{../求解/审稿补充/q23_尺度与结构敏感性.py}
 
-\lstinputlisting[language=Python,firstnumber=1,caption={年份与前沿窗口诊断（求解/审稿补充/q4\_时间与前沿验证.py）},label={code:review_q4}]{../求解/审稿补充/q4_时间与前沿验证.py}
+\lstinputlisting[language=Python,firstnumber=1,caption={年份与前沿窗口诊断（q4\_时间与前沿验证.py）},label={code:review_q4}]{../求解/审稿补充/q4_时间与前沿验证.py}
 
-\lstinputlisting[language={[LaTeX]TeX},firstnumber=1,caption={总体流程图原生源码（论文/\allowbreak{}figures/\allowbreak{}overall-architecture.tex）}]{figures/overall-architecture.tex}
+\lstinputlisting[language={[LaTeX]TeX},firstnumber=1,caption={总体流程图原生源码（overall-architecture.tex）},label={code:overall_flow}]{figures/overall-architecture.tex}
 
 \clearpage
 \subsection*{附录 F：问题三图表的计算公式与口径}
@@ -348,4 +340,4 @@ python 求解/绘制问题三四流程图.py
 \end{equation}
 令 $\lambda=1$ 即得图中竖线所示的 $L_{\mathrm{crit}}$。左图预算为 $10^{22}$ FLOPs，使用“上下文长度连续扫描.csv”中的 $L_{\mathrm{ctx}}$ 与 $N^*/10^9$（字段 N\_B，单位为十亿个参数）；右图在 $10^{19}$、$10^{20}$、$10^{21}$ FLOPs 三档预算下，使用“上下文长度与最优质量.csv”中的 $L_{\mathrm{ctx}}$ 与 $Q^*$。C7 的五个离散档位来自“上下文长度敏感性.csv”，作为方形标记叠加在左图中。当前连续扫描包含 40 个有效点，右图每档预算均有 14 个有效点，五档配置也均有有效输出。折线仅连接计算点以辅助读图，不表示区间内另有求解结果。
 
-上述公式只用于把已保存的求解结果转换为图中坐标或份额，图表不构成新的实验观测；输入文件、生成程序及复现命令见附录 E 的表\ref{tab:figure_code_map}和代码清单。
+上述公式只用于把已保存的求解结果转换为图中坐标或份额，图表不构成新的实验观测；输入、生成程序及运行顺序见附录 E 的表\ref{tab:figure_code_map}和代码清单。

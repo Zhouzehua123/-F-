@@ -12,7 +12,7 @@
       g(Q) 取附录 B 三型（指数型 1e7*exp(6Q)、幂函数型 5e9*Q^4、对数渐进型 2e9*ln(1+10Q)）
 临界上下文长度：注意力开销 = 基础训练开销 <=> eta*N*D*L = 6*N*D <=> L_crit = 6/eta = 30000
 方法：三档预算联合优化（SLSQP，对数参数化）；预算扫略 + 结构性转移识别；L_ctx 敏感性。
-输出：图片到 图片/，结果 CSV 到 结果/。
+输出：预算配置、敏感性结果及对应图表。
 """
 import sys, os, json
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

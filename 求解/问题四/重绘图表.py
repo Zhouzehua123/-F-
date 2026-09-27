@@ -1,10 +1,8 @@
 # 本绘图程序在人工智能工具 Codex 辅助下完成。
 # 开发机构：OpenAI；模型：GPT-5.6-Luna（2026-07-09）。
 # 仅读取附件和已有计算结果，不拟合模型，不写入结果目录。
-"""重绘问题四的七幅图。运行时以 --data 指定 real_attachments 目录。
-
-例：python 重绘图表.py --data ../../../../real_attachments
-可选 --audit 指定内部审查目录，输出可编辑 SVG、数据摘要和布局检查。
+"""重绘问题四的七幅图，输入为题目附件和已保存的模型结果。
+输出统计图、可编辑矢量图、数据摘要和布局检查结果。
 """
 from pathlib import Path
 import argparse

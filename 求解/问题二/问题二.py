@@ -8,7 +8,7 @@
       B6/B7 质量 Q；B8 大规模矩阵（方向异常，仅作可信度边界警示）；B9/B10 百亿参数以上外推）
 模型：经典 L = E + A N^-a + B D^-b
       广义 L = E + A N^-a + B D^-b + C (1-Q)^g（Q=1 退化为经典形式）
-输出：图片到 图片/，结果 CSV 到 结果/，参数共享至 求解/广义标度律参数.csv
+输出：标度律参数、验证指标及对应图表；广义标度律参数供问题三使用。
 """
 import sys, os, glob
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

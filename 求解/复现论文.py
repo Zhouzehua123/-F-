@@ -1,8 +1,6 @@
 # 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6-Luna；机构：OpenAI；版本发布日期：2026-07-09。
 # 本程序由 OpenAI Codex（GPT-5.6-Luna）辅助实现，用于统一执行正式绘图与隔离复核。
-"""在仓库根目录执行：
-python 求解/复现论文.py --data-dir <附件根目录> --mode figures
-python 求解/复现论文.py --data-dir <附件根目录> --mode verify-models
+"""统一绘图与数值核验。
 
 figures：读取已存结果、重绘正文全部图。verify-models：在临时副本运行完整四问，
 按复现预期输出.json逐一比较重新生成的CSV/JSON；不会回写原结果。

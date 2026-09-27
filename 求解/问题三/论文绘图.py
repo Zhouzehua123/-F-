@@ -2,7 +2,6 @@
 # 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-5.6-Luna）辅助。
 """从已保存的 CSV 重绘论文图；不运行优化器，也不修改原始结果。
 
-用法：python 求解/问题三/论文绘图.py
 依赖：numpy、pandas、matplotlib。输出同名 PNG（300 dpi）和矢量 PDF。
 圆点对应 CSV 有效记录；缺失区间用虚线连接两端，仅引导视线，不补算或插值。
 """

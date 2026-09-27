@@ -3,7 +3,6 @@
 # 仅读取既有附件、参数和结果绘图，不重新拟合或修改结果数据。
 """问题二图表：读取既有参数及附件，不重新拟合或覆盖跨问共享结果。
 
-运行：python 重绘图表.py
 依赖：numpy pandas scipy matplotlib；字体：Windows 宋体、Times New Roman。
 输出：原图片目录中的同名 PNG；不写入任何结果或参数文件。
 """

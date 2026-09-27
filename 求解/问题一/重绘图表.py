@@ -1,7 +1,6 @@
 # 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6-Luna；机构：OpenAI；版本发布日期：2026-07-09。
 """问题一十幅图的展示版入口：只读既有结果，不执行求解程序。
 
-运行：python 重绘图表.py --data-dir <附件根目录>
 输出：同名400 dpi PNG、矢量SVG、数据及画布边界核验记录。
 开发辅助工具：OpenAI Codex；采用 academic-research-suite 图形工作流。
 """

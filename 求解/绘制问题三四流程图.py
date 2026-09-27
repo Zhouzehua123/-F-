@@ -2,8 +2,7 @@
 # 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-5.6-Luna）辅助。
 """按论文已有分析绘制问题三、四流程图，不读取数据、不运行求解模型。
 
-运行：python 求解/绘制问题三四流程图.py
-输出：论文/figures 下的 PDF、SVG、400 dpi PNG 及文字边界核验记录。
+输出：PDF、SVG、400 dpi PNG 及文字边界核验记录。
 """
 from pathlib import Path
 import argparse

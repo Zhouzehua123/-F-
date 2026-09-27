@@ -8,7 +8,7 @@
 方法：1) 22 指标方向统一 + 1%--99% 分位数截断归一化 + 熵权法三级综合评分（样本/语料/领域）
       2) 成对 z 分数差冲突定义 + Kendall 协同系数一致性检验 + 域内中位数裁决
       3) 岭正则线性混合回归刻画 17 域配比 -> 13 域损失，并对照冗余质量特征的拟合变化
-输出：图片到 图片/，结果 CSV 到 结果/
+输出：质量评分、冲突统计、配比建模结果及对应图表。
 """
 import sys, os, json, lzma, glob
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

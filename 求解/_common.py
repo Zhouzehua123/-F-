@@ -1,13 +1,13 @@
 # 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6-Luna；机构：OpenAI；版本发布日期：2026-07-09。
 # 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-5.6-Luna）辅助。
-# 公共代码模板：求解/_common.py（系统自动播种，每个任务只写一次，不要覆写覆盖函数）
+# 公共模块：统一数据读取、缺失值处理、结果保存与绘图设置。
 import sys, os
 try:
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
     sys.stderr.reconfigure(encoding='utf-8', errors='replace')
 except Exception:
     pass
-# 问题目录 = 运行脚本所在目录（兼容 cd 求解/问题X 与 求解/ 根运行两种方式）
+# 根据运行脚本的位置确定该问的输入与输出位置。
 _script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 # 在 Jupyter / ipykernel 下 sys.argv[0] 指向内核启动脚本，须改用工作目录（notebook 所在目录）
 if 'ipykernel' in sys.modules or 'ipykernel_launcher' in os.path.basename(sys.argv[0]):
