@@ -1,8 +1,8 @@
-# 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6-Luna；机构：OpenAI；版本发布日期：2026-07-09。
+# 本程序的整理、复现核对或绘图实现参考 GPT-5.6-Luna 辅助。
 """问题一十幅图的展示版入口：只读既有结果，不执行求解程序。
 
 输出：同名400 dpi PNG、矢量SVG、数据及画布边界核验记录。
-开发辅助工具：OpenAI Codex；采用 academic-research-suite 图形工作流。
+开发辅助工具：GPT-5.6-Luna；采用 academic-research-suite 图形工作流。
 """
 from pathlib import Path
 import argparse

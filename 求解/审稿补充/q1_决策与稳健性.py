@@ -4,7 +4,7 @@
 可用 --section decision 只复核决策，或 --section quality 只复核标尺。
 固定既有超参数，不重新搜索核岭；四档岭参数沿用原敏感性区间。
 线性对照读取“线性有界配比对照.csv”；正式配方读取“推荐配比调整.csv”。
-诊断不产生真实语言模型训练结果。实现与说明经 OpenAI Codex 辅助。
+诊断不产生真实语言模型训练结果。实现与说明经 GPT-5.6-Luna 辅助。
 """
 from pathlib import Path
 import argparse

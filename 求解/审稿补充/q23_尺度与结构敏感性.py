@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# 本补充程序于 2026-09-27 使用 OpenAI Codex 辅助整理及核验。
+# 本补充程序参考 GPT-5.6-Luna 辅助整理及核验。
 # 用于质量尺度、质量指数和配比收益的独立敏感性检验。
 """Q2/Q3 的评分尺度、质量指数与配比收益敏感性。
 
@@ -284,7 +284,7 @@ def main():
         revision = subprocess.check_output(['git','rev-parse','HEAD'], cwd=PROJECT, stderr=subprocess.DEVNULL).decode().strip()
     except (OSError, subprocess.CalledProcessError):
         revision = None
-    summary = dict(source_revision=revision, scope='独立补充诊断，不替换主模型参数或正式结果；不构成统计置信区间', tool_record=dict(assistant='OpenAI Codex', purpose='审稿补充代码整理与核验', recorded_date='2026-09-27'), created_utc=datetime.now(timezone.utc).isoformat(), parameters=asdict(p), fixed_gamma_parameters=asdict(alt), Q0_reference=q0, Q0_candidate=candidate_q, quality_scale_counterexample=scale_rows, B6_contrast=contrast_summary, gamma_restricted=dict(success=bool(fit.success), nfev=int(fit.nfev), objective_relative_change=relative_cost, fit_rows=fit_rows, endpoint_budget=sat_budget, endpoint_profiles=endpoint_rows, endpoint_candidates=endpoint_candidates), saved_solution_checks=profile_rows, M_amplitude=transfer_rows, baseline_sensitivity=baseline_rows, original_model_metrics=metric_rows, input_sha256=inputs, script_sha256=sha256(Path(__file__)), versions=dict(python=platform.python_version(), numpy=np.__version__, pandas=pd.__version__, scipy=scipy.__version__))
+    summary = dict(source_revision=revision, scope='独立补充诊断，不替换主模型参数或正式结果；不构成统计置信区间', tool_record=dict(assistant='GPT-5.6-Luna', purpose='审稿补充代码整理与核验', recorded_date='2026-09-27'), created_utc=datetime.now(timezone.utc).isoformat(), parameters=asdict(p), fixed_gamma_parameters=asdict(alt), Q0_reference=q0, Q0_candidate=candidate_q, quality_scale_counterexample=scale_rows, B6_contrast=contrast_summary, gamma_restricted=dict(success=bool(fit.success), nfev=int(fit.nfev), objective_relative_change=relative_cost, fit_rows=fit_rows, endpoint_budget=sat_budget, endpoint_profiles=endpoint_rows, endpoint_candidates=endpoint_candidates), saved_solution_checks=profile_rows, M_amplitude=transfer_rows, baseline_sensitivity=baseline_rows, original_model_metrics=metric_rows, input_sha256=inputs, script_sha256=sha256(Path(__file__)), versions=dict(python=platform.python_version(), numpy=np.__version__, pandas=pd.__version__, scipy=scipy.__version__))
 
     summary['revision_note'] = 'source_revision 是读取时的 Git HEAD；本补充脚本可尚未提交，其精确身份由 script_sha256 标识。'
     summary['quality_baselines'] = dict(Q0_official_exogenous=q0, raw_reference_mass=raw_mass,

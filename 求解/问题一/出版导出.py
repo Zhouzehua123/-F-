@@ -1,5 +1,5 @@
-# 本程序的整理与核对使用 Codex 辅助；模型：GPT-5.6-Luna；机构：OpenAI；版本发布日期：2026-07-09。
-# 本程序的整理、复现核对或绘图实现使用 OpenAI Codex（GPT-5.6-Luna）辅助。
+# 本程序的整理、复现核对或绘图实现参考 GPT-5.6-Luna 辅助。
+# 本程序的整理、复现核对或绘图实现参考 GPT-5.6-Luna 辅助。
 """图形导出模块，来源：scipilot-figure-skill 的 export_figure.py。
 按指定尺寸导出 PNG、PDF、SVG 等格式，支持字体嵌入与灰度预览。
 """
