@@ -36,30 +36,30 @@
   A6--A9 & test\_\allowbreak{}mixture/loss\_\allowbreak{}1m, 60m & 真实 & 使用 & 分别检验同尺度和跨尺度的预测，每组 256 条 \\
   A10--A11 & test\_\allowbreak{}mixture/loss\_\allowbreak{}1B & 真实 & 使用 & 用 64 组记录检验跨尺度的预测 \\
   A12--A15 & est\_\allowbreak{}mixture/loss\_\allowbreak{}10b, 70b & 子集/外推 & 使用 & 各 63 组用于比较外推尺度因子的稳定性；属于外推记录，并非观测 \\
-  A16 & domain\_\allowbreak{}mapping\_\allowbreak{}guide & 参考 & 使用 & 连接 17 域与质量分类：6 域按 direct/near\_\allowbreak{}direct 对应，11 域标为 inferred 并使用全局均值 \\
+  A16 & domain\_\allowbreak{}mapping\_\allowbreak{}guide & 参考 & 使用 & 将质量分类映射到 17 个配方域；6 域按 direct/near\_\allowbreak{}direct 取分，另 11 域为 inferred，采用全局均值 \\
   A17 & regmix\_\allowbreak{}domain\_\allowbreak{}summary & 真实 & 未使用 & 未用于本文分析 \\
   A18 & regmix\_\allowbreak{}domain\_\allowbreak{}sample & 真实 & 未使用 & 未用于本文分析 \\
   B1 & pythia\_\allowbreak{}training\_\allowbreak{}log\_\allowbreak{}existing & 真实 & 使用 & 1{,}176 点用于经典拟合和模型留出检验；这组记录的拟合残差极小 \\
-  B2 & cerebras\_\allowbreak{}training\_\allowbreak{}log & 半合成 & 使用 & 作模型族外对照，MAPE 为 33.7\%；来源差异较大，只作定性参考 \\
-  B3 & training\_\allowbreak{}trajectories & 插值 & 使用 & 检查轨迹内部的 $D$ 指数：$-0.2806$ 至 $-0.2803$，对照拟合值 $-0.2799$ \\
+  B2 & cerebras\_\allowbreak{}training\_\allowbreak{}log & 半合成 & 使用 & 检查模型换族后的偏差，MAPE 33.7\%；由于来源差异，仅作定性对照 \\
+  B3 & training\_\allowbreak{}trajectories & 插值 & 使用 & 核对轨迹中的 $D$ 幂指数，范围为 $-0.2806$ 至 $-0.2803$，与拟合值 $-0.2799$ 比较 \\
   B4 & scaling\_\allowbreak{}baseline & 真实 & 使用 & 用不同模型族作检验，相关 $r=0.975$，MAPE 为 8.8\% \\
   B5 & published\_\allowbreak{}scaling\_\allowbreak{}data & 真实 & 使用 & 与文献记录比较，相关 $r=0.910$，MAPE 为 8.0\% \\
-  B6 & supplementary\_\allowbreak{}NQ\_\allowbreak{}experiment & 半合成 & 使用 & 360 点用于估计质量缺口项；说明半合成条件下的质量效应，不作为直接实验观测 \\
+  B6 & supplementary\_\allowbreak{}NQ\_\allowbreak{}experiment & 半合成 & 使用 & 用 360 点拟合质量缺口项；结果描述半合成设置中的质量作用，并非直接训练观测 \\
   B7 & supplementary\_\allowbreak{}NQ\_\allowbreak{}experiment\_\allowbreak{}expanded & 半合成 & 使用 & 新增记录用于开发阶段检查，相关 $r=0.991$ \\
   B8 & supplementary\_\allowbreak{}NQ\_\allowbreak{}experiment\_\allowbreak{}large & 半合成 & 部分使用 & $Q_{\text{score}}$ 与 B6/B7 的方向相反，且含低于本模型参考渐近损失基准的记录；不并入拟合，用于说明来源间的差异 \\
-  B9 & supplementary\_\allowbreak{}large\_\allowbreak{}models & 真实 & 使用 & 提供百亿参数以上模型的参数量、数据量和开源可及性资料 \\
-  B10 & supplementary\_\allowbreak{}large\_\allowbreak{}baseline & 估算 & 使用 & 比较百亿参数以上的损失估算，$r\approx1.000$、MAPE 为 1.0\%；该对照不作为直接观测 \\
+  B9 & supplementary\_\allowbreak{}large\_\allowbreak{}models & 真实 & 使用 & 核对百亿参数以上模型的规模、训练数据量及开源可及性 \\
+  B10 & supplementary\_\allowbreak{}large\_\allowbreak{}baseline & 估算 & 使用 & 百亿参数以上的损失估计对照：$r\approx1.000$、MAPE 1.0\%；保留估算属性，不视为直接观测 \\
   B11 & open\_\allowbreak{}model\_\allowbreak{}family\_\allowbreak{}metadata & 真实 & 未使用 & 未用于本文分析 \\
   B12 & pythia\_\allowbreak{}checkpoint\_\allowbreak{}index & 真实 & 未使用 & 未用于本文分析 \\
-  C1 & leaderboard\_\allowbreak{}cleaned & 真实 & 使用 & 按六维得分、许可、类型和提交日期整理样本；筛选后的 2{,}346 条用于合并横截面回归和前沿分析 \\
+  C1 & leaderboard\_\allowbreak{}cleaned & 真实 & 使用 & 依六维得分、许可、类型及提交日期筛选；保留 2{,}346 条，用于前沿分析和合并横截面回归 \\
   C2 & leaderboard\_\allowbreak{}enhanced & 真实 & 未使用 & 作为 C1 的增强替代版本，为避免重复计入而不另用 \\
   C3 & leaderboard\_\allowbreak{}extended\_\allowbreak{}timeseries & 混合 & 使用 & 核算 2019--2025 年增量；排除 13 条一致性异常记录及 7 条参数量为零的记录，保留 4,579 条；长期解释仍受评分来源差异限制 \\
-  C4 & epoch\_\allowbreak{}all\_\allowbreak{}ai\_\allowbreak{}models & 真实 & 使用 & 观察训练算力趋势，年斜率 $+0.589$ dex；核对数据量与权重字段，Yes 为 1{,}325、No 为 1{,}328 \\
+  C4 & epoch\_\allowbreak{}all\_\allowbreak{}ai\_\allowbreak{}models & 真实 & 使用 & 拟合训练算力年变化，斜率 $+0.589$ dex；统计数据量与权重字段，Yes 计 1{,}325 条、No 计 1{,}328 条 \\
   C5 & loss\_\allowbreak{}benchmark\_\allowbreak{}bridge & 混合 & 使用 & 作为损失与得分关系的对照，$n=43$、$r=-0.502$ \\
   C6 & loss\_\allowbreak{}benchmark\_\allowbreak{}bridge\_\allowbreak{}expanded & 混合 & 使用 & 用于主要损失--得分拟合，$n=75$；High、Medium 两层按可比程度分别处理 \\
-  C7 & model\_\allowbreak{}architecture\_\allowbreak{}metadata & 真实 & 使用 & 将 2048、4096、8192、32768、131072 五档上下文用于问题三灵敏度计算 \\
-  C8 & detailed\_\allowbreak{}results/ & 真实 & 使用 & 1{,}860 个目录取得有效结果，主样本交集的 964 个用于汇总 37 项任务；六维指标另与完整 C1 逐记录校验 \\
-  C9 & data/（Parquet） & 真实 & 未使用 & 与 C1 等价，本文不重复计入 \\
+  C7 & model\_\allowbreak{}architecture\_\allowbreak{}metadata & 真实 & 使用 & 提供问题三的上下文对照档位：2048、4096、8192、32768、131072 \\
+  C8 & detailed\_\allowbreak{}results/ & 真实 & 使用 & 有效目录为 1{,}860 个；与主样本配对的 964 个汇总 37 项任务，六维指标另对照完整 C1 逐记录检查 \\
+  C9 & data/（Parquet） & 真实 & 未使用 & 数据与 C1 对应，避免重复纳入 \\
   C10 & pythia\_\allowbreak{}eval\_\allowbreak{}details/ & 说明 & 未使用 & 只有 README 说明，不能作为 C8 的任务记录使用 \\
 \end{longtable}
 
@@ -68,9 +68,9 @@
 以下资料不全是直接观测，解释相应结果时需分别考虑其生成方式和评分来源。
 
 \begin{itemize}[itemindent=2em]
-\item \textbf{半合成数据}：B2 为 Cerebras 训练日志，B6/B7/B8 为 NQ 质量实验。本文以 B6 估计质量项，以 B7 新增点作开发阶段验证，5.2 节表格标明其半合成性质。检查来源差异后，B2、B8 均不参加主拟合。
-\item \textbf{外推与估算数据}：A12--A15 的 10B/70B 损失由 1M/60M/1B 记录作幂律外推，B10 则为百亿参数以上的损失估算。它们用来比较估算关系的稳定性，不当作真实训练观测。
-\item \textbf{插值数据}：B3 来自 Pythia 检查点之间的插值，只检查轨迹内部幂指数是否一致，不增加独立观测。
+\item \textbf{半合成数据}：这一类包含 B2 的 Cerebras 训练日志和 B6/B7/B8 的 NQ 质量实验。质量项用 B6 估计，开发阶段验证使用 B7 的新增点，其半合成属性已在 5.2 节表格中说明。来源差异的核查结果使 B2、B8 均留在主拟合之外。
+\item \textbf{外推与估算数据}：A12--A15 根据 1M/60M/1B 记录作幂律外推，生成 10B/70B 损失；B10 提供百亿参数以上模型的估算损失。两类数据都用于检查估算关系的稳定程度，不能当作真实训练记录。
+\item \textbf{插值数据}：B3 由 Pythia 检查点插值得到，用于核对同一轨迹内部的幂指数，不构成新增的独立观测。
 \item \textbf{混合口径数据}：C3 各年的评测标准并不完全相同，异常记录已检查并剔除。C5/C6 的 Loss 来源和验证集也未完全统一，因此按可比程度分层使用。
 \end{itemize}
 
@@ -173,7 +173,7 @@ GPT-5.6-Luna & GPT-5.6-Luna & OpenAI & 2026-07-09 & 图表展示、排版检查�
 
 原保存结果记录的环境为 Windows 11、Python 3.14.0，依赖版本为 NumPy 2.5.3、pandas 3.0.6、SciPy 1.18.1、scikit-learn 1.9.1、Matplotlib 3.11.2 和 Pillow 12.3.0。各程序的文件名见代码题注；复现时使用 UTF-8 编码，按程序中的模块导入关系组织文件，并通过环境变量 \texttt{MODELING\_DATA\_DIR} 或输入参数指定题目附件位置。统计绘图使用宋体（SimSun）和 Times New Roman，第三问另使用 Adobe 思源宋体。字体可从 Adobe 官方项目 \url{https://github.com/adobe-fonts/source-han-serif} 获取，并按绘图程序的字体设置加载。字体与依赖版本不同可能改变字形及像素排布，数值核对以计算结果为准。
 
-运行时依次执行问题一、问题二和问题三，问题四读取附件 C、可单独运行。问题一输出质量、配比和关键量，问题二据此估计配比修正及广义标度律参数，问题三读取前两问共享文件。各程序的输入、输出关系见表\ref{tab:code_map}。
+程序按问题一、问题二、问题三的顺序运行；问题四只需附件 C，可以单独执行。问题一先保存质量评分、配比结果和关键量，问题二读取这些结果，估计配比修正及广义标度律参数，问题三再读取前两问的共享文件。表\ref{tab:code_map}列出了各程序具体的输入和输出。
 
 \begin{table}[!htbp]
 \centering
@@ -279,7 +279,7 @@ GPT-5.6-Luna & GPT-5.6-Luna & OpenAI & 2026-07-09 & 图表展示、排版检查�
 \clearpage
 \subsection*{附录 F：问题三图表的计算公式与口径}
 
-图\ref{fig:p3_shift}--图\ref{fig:p3_ctx}的坐标和费用份额由保存的求解结果计算。下文沿用正文符号：$N,D$ 分别为参数个数和 token 数，$C_{\mathrm b}$ 的单位为 FLOPs，$g(Q)$ 的单位为 FLOPs/token；$Q_0$ 为参考配比加权质量基线。图\ref{fig:p3_workflow}为方法流程示意，不对应额外的数值推导。
+图\ref{fig:p3_shift}--图\ref{fig:p3_ctx}的坐标值与支出占比均从已保存的求解结果计算。下文保持正文的计量方式：$N,D$ 依次计实际参数个数、token 数；预算 $C_{\mathrm b}$ 以 FLOPs 计，单个 token 的处理费用 $g(Q)$ 以 FLOPs/token 计，$Q_0$ 为参考配比加权的质量基线。图\ref{fig:p3_workflow}只展示方法步骤，不引入额外数值推导。
 
 \Needspace{4\baselineskip}
 \textbf{1.预算与费用份额图}\par\nopagebreak[4]
@@ -303,13 +303,13 @@ GPT-5.6-Luna & GPT-5.6-Luna & OpenAI & 2026-07-09 & 图表展示、排版检查�
 
 \Needspace{4\baselineskip}
 \textbf{3.上下文敏感性图}\par\nopagebreak[4]
-图\ref{fig:p3_ctx}固定幂函数型成本和 $M=0$，在每档预算下分别改变 $L_{\mathrm{ctx}}$ 并求解配置。注意力成本与基础训练成本具有相同的 $ND$ 因子，消去后得到
+图\ref{fig:p3_ctx}使用幂函数型费用，保持 $M=0$，然后在各档预算中逐个改变 $L_{\mathrm{ctx}}$、重新求解配置。注意力和基础训练费用都包含 $ND$，作比时约去这一公因子可得
 \begin{equation}
  \lambda=\frac{C_{\mathrm{attn}}}{C_{\mathrm{base}}}=\frac{\eta ND L_{\mathrm{ctx}}}{6ND}=\frac{\eta L_{\mathrm{ctx}}}{6},
  \qquad
  L_{\mathrm{crit}}=\frac{6}{\eta}=30{,}000\ \mathrm{tokens}.
  \label{eq:app_p3_context}
 \end{equation}
-令 $\lambda=1$ 即得图中竖线所示的 $L_{\mathrm{crit}}$。左图预算为 $10^{22}$ FLOPs，使用“上下文长度连续扫描.csv”中的 $L_{\mathrm{ctx}}$ 与 $N^*/10^9$（字段 N\_B，单位为十亿个参数）；右图在 $10^{19}$、$10^{20}$、$10^{21}$ FLOPs 三档预算下，使用“上下文长度与最优质量.csv”中的 $L_{\mathrm{ctx}}$ 与 $Q^*$。C7 的五个离散档位来自“上下文长度敏感性.csv”，作为方形标记叠加在左图中。当前连续扫描包含 40 个有效点，右图每档预算均有 14 个有效点，五档配置也均有有效输出。折线仅连接计算点以辅助读图，不表示区间内另有求解结果。
+取 $\lambda=1$ 得到临界长度 $L_{\mathrm{crit}}$，图中以竖线标出。左图在 $10^{22}$ FLOPs 下绘制，横、纵坐标分别取“上下文长度连续扫描.csv”的 $L_{\mathrm{ctx}}$、$N^*/10^9$，后者对应字段 N\_B，单位为十亿个参数。右图分别使用 $10^{19}$、$10^{20}$、$10^{21}$ FLOPs 的结果，从“上下文长度与最优质量.csv”读取 $L_{\mathrm{ctx}}$、$Q^*$。左图的方形点来自“上下文长度敏感性.csv”，对应 C7 的五档离散长度。连续扫描有 40 个有效点，右图每个预算有 14 个有效点，五档离散求解也全部有效。相邻点用折线连接以便观察趋势，连线不表示其间还有额外求解结果。
 
 上述公式只用于把已保存的求解结果转换为图中坐标或份额，图表不构成新的实验观测；输入、生成程序及运行顺序见附录 E 的表\ref{tab:figure_code_map}和代码清单。
